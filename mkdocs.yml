@@ -1,0 +1,28 @@
+site_name: Catálogo ejercicios años anteriores
+theme:
+  name: material
+plugins:
+  - search
+  - tags
+  - macros
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+extra:
+  search:
+    boost:
+      tags: 2
+nav:
+  - Inicio: index.md
+  - Tags: tags.md
+  - Exámenes:
+    - "2012":
+      - exams/2012/p1.md
+      - exams/2012/p2.md
+      - exams/2012/exam.md
+    - "2021": exams/2021/exam.md
