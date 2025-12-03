@@ -19,7 +19,7 @@
     
     
       
-        <title>Ejercicio 2 — Monitor GestorPuente (3 puntos) - Catálogo ejercicios años anteriores</title>
+        <title>Ex02 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ejercicio-2-monitor-gestorpuente-3-puntos" class="md-skip">
+        <a href="#a-3-puntos" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ejercicio 2 — Monitor GestorPuente (3 puntos)
+              Ex02
             
           </span>
         </div>
@@ -417,6 +417,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen 2012 — Extraordinario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -477,8 +505,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -487,21 +513,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#enunciado" class="md-nav__link">
+  <a href="#a-3-puntos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enunciado
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
+        A. (3 puntos)
       
     </span>
   </a>
@@ -543,47 +558,95 @@
 
 
 
-<h1 id="ejercicio-2-monitor-gestorpuente-3-puntos">Ejercicio 2 — Monitor GestorPuente (3 puntos)</h1>
-<h2 id="enunciado">Enunciado</h2>
-<p>Se requiere un monitor que controle el acceso a un puente de capacidad 1, con accesos norte y sur, y prioridad de ambulancias.</p>
-<hr />
-<h2 id="solucion">Solución</h2>
-<details class="note">
-<summary>Mostrar solución</summary>
+  <h1>Ex02</h1>
+
+<h2 id="a-3-puntos">A. (3 puntos)</h2>
+<p>Sea un puente con capacidad para un vehículo y dos accesos: norte y sur. En caso de que haya vehículos intentando entrar por los dos accesos, debe entrar un vehículo por el extremo en el que haya más esperando (si el número de vehículos esperando en cada extremo es el mismo, no es necesario imponer un orden). En el caso de que intente entrar una ambulancia, tendrá prioridad sobre el resto de vehículos. No es necesario considerar el caso en que dos ambulancias intenten acceder simultáneamente al puente. 
+Se  pide  desarrollar  una  clase  monitor  GestorPuente  que  gestione  el  acceso  al  puente,  según  la especificación  previa.  Los  métodos  de  esta  clase  no  retornan  valores.  El  esqueleto  de  la  clase  es  el siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorPuente</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nCochesNorte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nCochesSur</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarNorte</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">nCochesNorte</span><span class="o">++</span><span class="p">;</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">nCochesNorte</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nCochesSur</span><span class="p">)</span><span class="w"> </span><span class="n">wait</span><span class="p">();</span>
-<span class="w">        </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">        </span><span class="n">nCochesNorte</span><span class="o">--</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarSur</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">nCochesSur</span><span class="o">++</span><span class="p">;</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">nCochesSur</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nCochesNorte</span><span class="p">)</span><span class="w"> </span><span class="n">wait</span><span class="p">();</span>
-<span class="w">        </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">        </span><span class="n">nCochesSur</span><span class="o">--</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarAmbulancia</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">hayCocheEnPuente</span><span class="p">)</span><span class="w"> </span><span class="n">wait</span><span class="p">();</span>
-<span class="w">        </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">        </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">salirPuente</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarNorte</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...}</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarSur</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...}</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarAmbulancia</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...}</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">salirPuente</span><span class="p">(){...}</span>
 <span class="p">}</span>
 </code></pre></div>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Una posible solución es:
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">es.upm.dit.adsw.puenteTurnoEspera</span><span class="p">;</span>
+<span class="cm">/**</span>
+<span class="cm">* @author Alejandro Alonso</span>
+<span class="cm">* Monitor que gestiona la entrada a un puente de coches</span>
+<span class="cm">* por sus dos extremos (norte y sur). Dentro el puente sólo puede</span>
+<span class="cm">* haber un coche. Si hay coches esperando en sus dos extremos, entra</span>
+<span class="cm">* uno por el extremos con más coches esperando. Si intenta entrar una</span>
+<span class="cm">* ambulancia, tendrá prioridad. No pueden intentar dos ambulancias</span>
+<span class="cm">* simultaneamente.</span>
+<span class="cm">*/</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorPuente</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// monitor</span>
+<span class="cm">/**</span>
+<span class="cm">* Indica si hay un coche dentro del puente</span>
+<span class="cm">*/</span>
+<span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="cm">/**</span>
+<span class="cm">* Indica el número de coches que están esperando</span>
+<span class="cm">*  para entrar en el puente por el Norte</span>
+<span class="cm">*/</span>
+<span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nCochesNorte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="cm">/**</span>
+<span class="cm">* Indica el número de coches que están esperando</span>
+<span class="cm">*  para entrar en el puente por el Sur</span>
+<span class="cm">*/</span>
+<span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nCochesSur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="cm">/**</span>
+<span class="cm">    Indica si hay una ambulancia esperando.</span>
+
+<span class="cm">*/</span>
+<span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="cm">/**</span>
+<span class="cm">* Método que ejecutan los coches que quiere entrar por el norte.</span>
+<span class="cm">*  El coche entrará en el puente cuando esté vacío, no haya más</span>
+<span class="cm">*  coches esperando en el sur y no haya ambulancias.</span>
+<span class="cm">*/</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarNorte</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">nCochesNorte</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="o">!!</span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">nCochesNorte</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nCochesSur</span><span class="p">)</span>
+<span class="w">        </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">    </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="n">nCochesNorte</span><span class="o">--</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm">* Método que ejecutan los coches que quiere entrar por el sur.</span>
+<span class="cm">* El coche entrará en el puente cuando esté vacío, no haya más</span>
+<span class="cm">* coches esperando en el sur y no haya ambulancias.</span>
+<span class="cm">*/</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarSur</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">nCochesSur</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">nCochesSur</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nCochesNorte</span><span class="p">)</span>
+<span class="w">    </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">    </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="n">nCochesSur</span><span class="o">--</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cm">/**</span>
+<span class="cm">* Método que ejecutan las ambulancias</span>
+<span class="cm">*/</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarAmbulancia</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">hayCocheEnPuente</span><span class="p">)</span><span class="w"> </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">    </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm">* Método que invoca un coche que está en el puente al salir de él.</span>
+<span class="cm">*/</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">salirPuente</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
 </details>
 
 
@@ -641,6 +704,10 @@
     
     
       <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
