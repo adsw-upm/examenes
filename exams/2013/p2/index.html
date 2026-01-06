@@ -761,11 +761,19 @@
 <li>
 <p>(b) (5 puntos) Programe <code>DetalleVinoActivity</code>. Suponga que la plantilla <em>detalle_vino.xml</em> muestra los campos de un 
 objeto <code>Vino</code> en los siguientes componentes: </p>
+<ul>
+<li>
+<ol>
+<li>foto en un <code>ImageView</code> (<em>R.id.foto</em>),</li>
+</ol>
 </li>
 <li>
-<p>foto en un <code>ImageView</code> (<em>R.id.foto</em>),</p>
-</li>
+<ol>
 <li>nombre, denominación y descripción en tres <code>EditText</code> (<em>R.id.nombre</em>, <em>R.id.denominacion</em>, <em>R.id.descripcion</em>).</li>
+</ol>
+</li>
+</ul>
+</li>
 </ul>
 <p>La actividad recibe en la intención el nombre del vino en la clave NOMBRE. Debe crear un objeto <code>Bodega</code> y recuperar el objeto <code>Vino</code> correspondiente al nombre recibido. A continuación, rellene los campos de la pantalla con los valores del vino. Puede suponer que todos los campos de un objeto <code>Vino</code> tienen un valor correcto.</p>
 <details class="note">
@@ -799,28 +807,32 @@ objeto <code>Vino</code> en los siguientes componentes: </p>
 </details>
 <p>Clases auxiliares:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Vino</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">enum</span><span class="w"> </span><span class="n">Denominacion</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">RIOJA</span><span class="p">,</span><span class="w"> </span><span class="n">RIBERA</span><span class="p">,</span><span class="w"> </span><span class="n">PENEDES</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">Denominacion</span><span class="w"> </span><span class="n">denominacion</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">foto</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">descripcion</span><span class="p">;</span>
-<span class="w">  </span><span class="c1">// suponga que tiene métodos métodos get/put para todos los campos</span>
-<span class="w">  </span><span class="c1">// suponga que tiene un método toString() que imprime el nombre del vino</span>
+<span class="w">    </span><span class="kd">enum</span><span class="w"> </span><span class="n">Denominacion</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">RIOJA</span><span class="p">,</span><span class="w"> </span><span class="n">RIBERA</span><span class="p">,</span><span class="w"> </span><span class="n">PENEDES</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Denominacion</span><span class="w"> </span><span class="n">denominacion</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">foto</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">descripcion</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// suponga que tiene métodos métodos get/put para todos los campos</span>
+<span class="w">    </span><span class="c1">// suponga que tiene un método toString() que imprime el nombre del vino</span>
 <span class="p">}</span>
+
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Bodega</span><span class="w"> </span><span class="p">{</span>
-<span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="n">Vino</span><span class="w"> </span><span class="nf">getVino</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{...</span><span class="w"> </span><span class="p">}</span>
-<span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Vino</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getListaVinos</span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span>
-<span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Bodega</span><span class="w"> </span><span class="nf">getBodega</span><span class="p">(){...}</span>
-<span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Vino</span><span class="w"> </span><span class="nf">getVino</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Vino</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getListaVinos</span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Bodega</span><span class="w"> </span><span class="nf">getBodega</span><span class="p">(){...}</span>
+<span class="p">}</span>
+
 <span class="c1">// ejemplo de uso de las clases anteriores</span>
+
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Ejemplo</span><span class="w"> </span><span class="p">{</span>
-<span class="w">     </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">Bodega</span><span class="w"> </span><span class="n">bodega</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Bodega</span><span class="p">.</span><span class="na">getBodega</span><span class="p">();</span><span class="w"> </span><span class="c1">// creo la bodega</span>
-<span class="w">  </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Vino</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vinos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bodega</span><span class="p">.</span><span class="na">getListaVinos</span><span class="p">();</span><span class="w"> </span><span class="c1">// lista de vinos</span>
-<span class="w">  </span><span class="n">Vino</span><span class="w"> </span><span class="n">vino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vinos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// obtener vino  recorriendo lista</span>
-<span class="w">            </span><span class="c1">// vino dado el nombre del vino</span>
-<span class="w">  </span><span class="n">Vino</span><span class="w"> </span><span class="n">valdehermoso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bodega</span><span class="p">.</span><span class="na">getVino</span><span class="p">(</span><span class="s">&quot;Valdehermoso&quot;</span><span class="p">);</span><span class="w"> </span>
-<span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Bodega</span><span class="w"> </span><span class="n">bodega</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Bodega</span><span class="p">.</span><span class="na">getBodega</span><span class="p">();</span><span class="w"> </span><span class="c1">// creo la bodega</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Vino</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vinos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bodega</span><span class="p">.</span><span class="na">getListaVinos</span><span class="p">();</span><span class="w"> </span><span class="c1">// lista de vinos</span>
+<span class="w">        </span><span class="n">Vino</span><span class="w"> </span><span class="n">vino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vinos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// obtener vino  recorriendo lista</span>
+<span class="w">        </span><span class="c1">// vino dado el nombre del vino</span>
+<span class="w">        </span><span class="n">Vino</span><span class="w"> </span><span class="n">valdehermoso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bodega</span><span class="p">.</span><span class="na">getVino</span><span class="p">(</span><span class="s">&quot;Valdehermoso&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
 
