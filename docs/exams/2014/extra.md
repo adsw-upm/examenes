@@ -12,3 +12,9 @@ exercises:
 
 ## Problema 2
 {{ include("extra02.md") }}
+
+## Problema 3
+{{ include("extra03.md") }}
+
+## Problema 4
+{{ include("extra04.md") }}
