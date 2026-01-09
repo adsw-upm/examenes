@@ -1,11 +1,11 @@
 ---
-year: 2013
+year: 2014
 exam: parcial recuperacion
 exercises:
   - p1r_ex01.md
   - p1r_ex02.md
 ---
-# Examen 2013 — Parcial 1 Recuperación
+# Examen 2014 — Parcial 1 Recuperación
 
 ## Problema 1
 {{ include("p1r_ex01.md") }}
