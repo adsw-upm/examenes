@@ -23,7 +23,7 @@
     
     
       
-        <title>Macro Rendering Error - Catálogo ejercicios años anteriores</title>
+        <title>Examen 2014 — Parcial 1 Recuperación - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#macro-rendering-error" class="md-skip">
+        <a href="#examen-2014-parcial-1-recuperacion" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Macro Rendering Error
+              Examen 2014 — Parcial 1 Recuperación
             
           </span>
         </div>
@@ -719,6 +719,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen 2014 — Parcial 1 Recuperación
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -726,7 +744,7 @@
   <span class="md-ellipsis">
     
   
-    Macro Rendering Error
+    Examen 2014 — Parcial 1 Recuperación
   
 
     
@@ -735,6 +753,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#problema-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -860,6 +919,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#problema-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -875,23 +964,140 @@
 
 
 
-<h1 id="macro-rendering-error"><em>Macro Rendering Error</em></h1>
-<p><em>File</em>: <code>exams/2014/p1r.md</code></p>
-<p><em>FileNotFoundError</em>: include: file not found: p1r_ex01.md</p>
-<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/mkdocs_macros/plugin.py&quot;, line 703, in render
-    return md_template.render(**page_variables)
-           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/jinja2/environment.py&quot;, line 1295, in render
-    self.environment.handle_exception()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File &quot;/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/jinja2/environment.py&quot;, line 942, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File &quot;&lt;template&gt;&quot;, line 4, in top-level template code
-  File &quot;/home/runner/work/examenes/examenes/main.py&quot;, line 40, in include
-    raise FileNotFoundError(f&quot;include: file not found: {path}&quot;)
-FileNotFoundError: include: file not found: p1r_ex01.md
+<h1 id="examen-2014-parcial-1-recuperacion">Examen 2014 — Parcial 1 Recuperación</h1>
+<h2 id="problema-1">Problema 1</h2>
+<ul>
+<li>(a) (5 puntos) Se llama montón (<em>heap</em>) a un <em>array</em> de valores enteros en el que, representado como un árbol binario, todo nodo es mayor o igual que culaquiera de sus dos hijos (si existen):</li>
+</ul>
+<p><img alt="" src="./p1/p1r_ex1.png" /></p>
+<p>Se ve que para todo nodo representado en la posición <code>i</code> de un array su hijo izquierdo se encuentra en la posición <code>2·i + 1</code> y su hijo derecho se encuentra en la posición <code>2·i + 2</code>.</p>
+<p>Así pues, para ordenar de mayor a menor un conjunto de valores enteros, basta con colocarlos primero como un montón, y después ir extrayendo sucesivamente el primer valor del array (la raíz principal), y a continuación recuperar el montón de los elementos restantes, hasta que no quede ningún elemento.</p>
+<p>Para recuperar el montón de los restantes elementos cuando se extrae el primer elemento de la tabla, basta con colocar en su lugar el último, y a continuación hacer descender éste en el árbol iterativamente, si resulta necesario, hasta el nivel donde no sea menor que ninguno de sus dos (posibles) descendientes. Detrás se puede ver el código de esta operación, aunque no resulta necesario en absoluto consultarlo, si se ha entendido correctamente este párrafo.</p>
+<p>Sabiendo que la operación de construir un montón a partir de un array de enteros cualquiera tiene una complejidad del orden de n ∗ log(n), se pide encontrar y justificar la complejidad del algoritmo completo de ordenación descrito</p>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="nf">montonOrdenado</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">monton</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">monton</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">monton</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">resultado</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">monton</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">ultimoIndice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">monton</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
+<span class="w">        </span><span class="n">monton</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">monton</span><span class="o">[</span><span class="n">ultimoIndice</span><span class="o">]</span><span class="p">;</span>
+<span class="w">        </span><span class="o">--</span><span class="n">ultimoIndice</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">indiceHijoIzquierdo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">indiceHijoDerecho</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+
+<span class="w">            </span><span class="c1">// No hay hijos</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">indiceHijoIzquierdo</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ultimoIndice</span><span class="p">)</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">            </span><span class="c1">// Solo hay hijo izquierdo</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">indiceHijoDerecho</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ultimoIndice</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">monton</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">monton</span><span class="o">[</span><span class="n">indiceHijoIzquierdo</span><span class="o">]</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">intercambia</span><span class="p">(</span><span class="n">monton</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">indiceHijoIzquierdo</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// Ambos hijos son menores o iguales</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">monton</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">monton</span><span class="o">[</span><span class="n">indiceHijoIzquierdo</span><span class="o">]</span><span class="p">)</span>
+<span class="w">                    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">monton</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">monton</span><span class="o">[</span><span class="n">indiceHijoDerecho</span><span class="o">]</span><span class="p">))</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">            </span><span class="c1">// Uno de los hijos es mayor</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">monton</span><span class="o">[</span><span class="n">indiceHijoDerecho</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">monton</span><span class="o">[</span><span class="n">indiceHijoIzquierdo</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">intercambia</span><span class="p">(</span><span class="n">monton</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">indiceHijoIzquierdo</span><span class="p">);</span>
+<span class="w">                </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">indiceHijoIzquierdo</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">intercambia</span><span class="p">(</span><span class="n">monton</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">indiceHijoDerecho</span><span class="p">);</span>
+<span class="w">                </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">indiceHijoDerecho</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">intercambia</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
+<span class="w">    </span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">;</span>
+<span class="w">    </span><span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>En la extracción de los valores en orden (descendente) del <em>array</em>, para cada uno de ellos hay que hacer descender en el árbol la nueva raiz, hasta que encuentre un lugar apropiado para que se siga cumpliendo la condición de <em>heap</em>. Y como el árbol está siempre equilibrado, este descenso será, como mucho, de longitud log(n).</p>
+<p>Como, por otra parte, esta operación ha de realizarse para cada uno de los valores del array, la complejidad de la extracción ordenada de los n valores será de orden n·log(n). Con lo que se tiene una complejidad para el algoritmo de ordenación completo (creación del heap original más extracción ordenada de todos sus valores) de orden n·log(n) + n·log(n). Expresión que, según las reglas de combinación de órdenes de complejidad, equivale simplemente a n·log(n).</p>
+</details>
+<h2 id="problema-2">Problema 2</h2>
+<ul>
+<li>(a) (5 puntos) En un museo se exhibe un cortometraje de corta duración repetidamente, con un breve descanso entre proyecciones. La capacidad de la sala es de 50 personas. En el descanso, se vacía la sala y pueden entrar los visitantes que lo deseen, sin sobrepasar la capacidad de la sala. Una vez comenzada la proyección, no se permite el acceso a nuevos visitantes, que quedan esperando al siguiente descanso.</li>
+</ul>
+<p>Escriba una clase Monitor que controle el acceso a la sala. Cada visitante es modelado como una hebra, que invoca el método <code>accederASala()</code> del Monitor cuando desea ver la proyección. Además hay otra hebra, Proyector, que periódicamente invoca el método <code>comienzaProyección()</code> y, tras la finalización de la proyección, invoca el método <code>terminaProyección()</code>.</p>
+<p>El monitor debe permitir acceso a la Sala a las hebras <code>Visitante</code> siempre que:
+- No se sobrepase la capacidad de la sala
+- No haya comenzado la proyección</p>
+<p>Cuando la proyección termine, se debe permitir que los visitantes que estaban esperando accedan a la
+sala. Se entiende que TODOS los asistentes a una proyección salen de la sala al terminar la
+proyección.</p>
+<p>SE PIDE EXCLUSIVAMENTE EL CÓDIGO DEL MONITOR. NO ESCRIBA EL CÓDIGO DE VISITANTE.</p>
+<p>A continuación se incluye el código del Proyector.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Proyector</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Monitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">duracionProyeccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">duracionDescanso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">Proyector</span><span class="w"> </span><span class="p">(</span><span class="n">Monitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">monitor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">monitor</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">sleep</span><span class="p">(</span><span class="n">duracionDescanso</span><span class="p">);</span>
+<span class="w">                </span><span class="n">monitor</span><span class="p">.</span><span class="na">comienzaProyeccion</span><span class="p">();</span>
+<span class="w">                </span><span class="n">sleep</span><span class="p">(</span><span class="n">duracionProyeccion</span><span class="p">);</span>
+<span class="w">                </span><span class="n">monitor</span><span class="p">.</span><span class="na">terminaProyeccion</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>```java</p>
+</details>
+<p>private int N= 10;
+private int numVisitantes;
+private boolean proyectando;</p>
+<p>Monitor() {
+    numVisitantes= 0;
+    proyectando= false;
+}</p>
+<p>public synchronized void comienzaProyeccion() {
+    proyectando= true;
+}</p>
+<p>public synchronized void terminaProyeccion() {
+    proyectando= false;
+    numVisitantes= 0;
+    notifyAll();
+}</p>
+<p>public synchronized void accederASala() {
+    while ( proyectando || numVisitantes &gt;= N)
+    {
+        try {
+            wait();
+        } catch (InterruptedException e) {
+        }
+    }
+    numVisitantes++;
+}
+```</p>
 
 
 

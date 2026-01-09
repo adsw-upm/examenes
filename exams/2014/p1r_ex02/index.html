@@ -19,7 +19,7 @@
     
     
       
-        <title>Extra02 - Catálogo ejercicios años anteriores</title>
+        <title>P1r ex02 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Extra02
+              P1r ex02
             
           </span>
         </div>
@@ -502,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1/" class="md-nav__link">
+      <a href="../../2013/p1/" class="md-nav__link">
         
   
   
@@ -530,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1r/" class="md-nav__link">
+      <a href="../../2013/p1r/" class="md-nav__link">
         
   
   
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p2/" class="md-nav__link">
+      <a href="../../2013/p2/" class="md-nav__link">
         
   
   
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extra/" class="md-nav__link">
+      <a href="../../2013/extra/" class="md-nav__link">
         
   
   
@@ -669,7 +669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2014/p1/" class="md-nav__link">
+      <a href="../p1/" class="md-nav__link">
         
   
   
@@ -697,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2014/p1r/" class="md-nav__link">
+      <a href="../p1r/" class="md-nav__link">
         
   
   
@@ -725,7 +725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2014/p2/" class="md-nav__link">
+      <a href="../p2/" class="md-nav__link">
         
   
   
@@ -753,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2014/extra/" class="md-nav__link">
+      <a href="../extra/" class="md-nav__link">
         
   
   
@@ -861,73 +861,76 @@
 
 
 
-  <h1>Extra02</h1>
+  <h1>P1r ex02</h1>
 
 <ul>
-<li>(a) (3 puntos) Escriba un monitor en Java que controle el acceso a un parking de coches. El parking tiene un número de plazas N y dispone de dos accesos, Este y Oeste.</li>
+<li>(a) (5 puntos) En un museo se exhibe un cortometraje de corta duración repetidamente, con un breve descanso entre proyecciones. La capacidad de la sala es de 50 personas. En el descanso, se vacía la sala y pueden entrar los visitantes que lo deseen, sin sobrepasar la capacidad de la sala. Una vez comenzada la proyección, no se permite el acceso a nuevos visitantes, que quedan esperando al siguiente descanso.</li>
 </ul>
-<p>Si el parking no está lleno, se admiten entradas por ambos accesos libremente. Si el parking está lleno, los coches deben esperar a que haya plazas disponibles. Cuando queda una plaza libre, el monitor debe alternar los accesos de entrada entre Este y Oeste. Cuando un coche abandona el parking, se considera irrelevante el acceso que usa para salir.</p>
-<p>El esqueleto del monitor con los nombres de los métodos es el siguiente:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Monitor</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">...</span>
-<span class="w">    </span><span class="n">Monitor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">numPlazas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">...</span>
-<span class="w">    </span><span class="n">entraCochePorEste</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">...</span>
-<span class="w">    </span><span class="n">entraCochePorOeste</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">...</span>
-<span class="w">    </span><span class="n">saleCoche</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<p>Escriba una clase Monitor que controle el acceso a la sala. Cada visitante es modelado como una hebra, que invoca el método <code>accederASala()</code> del Monitor cuando desea ver la proyección. Además hay otra hebra, Proyector, que periódicamente invoca el método <code>comienzaProyección()</code> y, tras la finalización de la proyección, invoca el método <code>terminaProyección()</code>.</p>
+<p>El monitor debe permitir acceso a la Sala a las hebras <code>Visitante</code> siempre que:
+- No se sobrepase la capacidad de la sala
+- No haya comenzado la proyección</p>
+<p>Cuando la proyección termine, se debe permitir que los visitantes que estaban esperando accedan a la
+sala. Se entiende que TODOS los asistentes a una proyección salen de la sala al terminar la
+proyección.</p>
+<p>SE PIDE EXCLUSIVAMENTE EL CÓDIGO DEL MONITOR. NO ESCRIBA EL CÓDIGO DE VISITANTE.</p>
+<p>A continuación se incluye el código del Proyector.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Proyector</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Monitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">duracionProyeccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">duracionDescanso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">Proyector</span><span class="w"> </span><span class="p">(</span><span class="n">Monitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">monitor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">monitor</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">sleep</span><span class="p">(</span><span class="n">duracionDescanso</span><span class="p">);</span>
+<span class="w">                </span><span class="n">monitor</span><span class="p">.</span><span class="na">comienzaProyeccion</span><span class="p">();</span>
+<span class="w">                </span><span class="n">sleep</span><span class="p">(</span><span class="n">duracionProyeccion</span><span class="p">);</span>
+<span class="w">                </span><span class="n">monitor</span><span class="p">.</span><span class="na">terminaProyeccion</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Una solución correcta es:
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Monitor</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numPlazas</span><span class="p">,</span><span class="w"> </span><span class="n">numCoches</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">turnoEste</span><span class="p">,</span><span class="w"> </span><span class="n">turnoOeste</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">esperaEnEste</span><span class="p">,</span><span class="w"> </span><span class="n">esperaEnOeste</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Monitor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">numPlazas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">numPlazas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numPlazas</span><span class="p">;</span>
-<span class="w">        </span><span class="n">numCoches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="n">turnoEste</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">turnoOeste</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">        </span><span class="n">esperaEnEste</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esperaEnOeste</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entraCochePorEste</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">esperaEnEste</span><span class="o">++</span><span class="p">;</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">numCoches</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">numPlazas</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">turnoOeste</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">esperaEnOeste</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">esperaEnEste</span><span class="o">--</span><span class="p">;</span>
-<span class="w">        </span><span class="n">numCoches</span><span class="o">++</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">numCoches</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">numPlazas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">turnoEste</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">            </span><span class="n">turnoOeste</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entraCochePorOeste</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">esperaEnOeste</span><span class="o">++</span><span class="p">;</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">numCoches</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">numPlazas</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">turnoEste</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">esperaEnEste</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">esperaEnOeste</span><span class="o">--</span><span class="p">;</span>
-<span class="w">        </span><span class="n">numCoches</span><span class="o">++</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">numCoches</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">numPlazas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">turnoEste</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">            </span><span class="n">turnoOeste</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">saleCoche</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">numCoches</span><span class="o">--</span><span class="p">;</span>
-<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></p>
+<p>```java</p>
 </details>
+<p>private int N= 10;
+private int numVisitantes;
+private boolean proyectando;</p>
+<p>Monitor() {
+    numVisitantes= 0;
+    proyectando= false;
+}</p>
+<p>public synchronized void comienzaProyeccion() {
+    proyectando= true;
+}</p>
+<p>public synchronized void terminaProyeccion() {
+    proyectando= false;
+    numVisitantes= 0;
+    notifyAll();
+}</p>
+<p>public synchronized void accederASala() {
+    while ( proyectando || numVisitantes &gt;= N)
+    {
+        try {
+            wait();
+        } catch (InterruptedException e) {
+        }
+    }
+    numVisitantes++;
+}
+```</p>
 
 
 
