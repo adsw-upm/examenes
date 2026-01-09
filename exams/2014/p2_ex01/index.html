@@ -19,7 +19,7 @@
     
     
       
-        <title>P1r ex02 - Catálogo ejercicios años anteriores</title>
+        <title>P2 ex01 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              P1r ex02
+              P2 ex01
             
           </span>
         </div>
@@ -502,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1/" class="md-nav__link">
+      <a href="../../2013/p1/" class="md-nav__link">
         
   
   
@@ -530,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1r/" class="md-nav__link">
+      <a href="../../2013/p1r/" class="md-nav__link">
         
   
   
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p2/" class="md-nav__link">
+      <a href="../../2013/p2/" class="md-nav__link">
         
   
   
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extra/" class="md-nav__link">
+      <a href="../../2013/extra/" class="md-nav__link">
         
   
   
@@ -669,7 +669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2014/p1/" class="md-nav__link">
+      <a href="../p1/" class="md-nav__link">
         
   
   
@@ -697,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2014/p1r/" class="md-nav__link">
+      <a href="../p1r/" class="md-nav__link">
         
   
   
@@ -725,7 +725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2014/p2/" class="md-nav__link">
+      <a href="../p2/" class="md-nav__link">
         
   
   
@@ -753,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2014/extra/" class="md-nav__link">
+      <a href="../extra/" class="md-nav__link">
         
   
   
@@ -854,91 +854,92 @@
       
       
       
-        <span class="md-tag">monitores</span>
+        <span class="md-tag">android</span>
       
     
   </nav>
 
 
 
-  <h1>P1r ex02</h1>
+  <h1>P2 ex01</h1>
 
 <ul>
-<li>(a) (5 puntos) Desarrolle un monitor en Java que gestione el despegue de aviones y avionetas en un aeropuerto como se especifica a continuación:</li>
+<li>(a) (5 puntos) En la práctica 2 (Pacman en Android) deseamos añadir una nueva funcionalidad: que los jugadores ganen puntos. Consideraremos que cada escenario tiene sólo un jugador. El jugador ganará 1 punto
+cada vez que se mueva y avance una casilla.</li>
 </ul>
-<p>Los aviones, al despegar, generan turbulencias, por lo que entre dos despegues consecutivos debe transcurrir un intervalo mínimo de tiempo:</p>
-<ul>
-<li>3 minutos después del despegue de un avión.</li>
-<li>2 minutos después del despegue de una avioneta.</li>
-</ul>
-<p>Además se debe impedir que despeguen consecutivamente dos avionetas si hay aviones esperando. No hay restricciones de este tipo respecto a los aviones (pueden despegar consecutivamente).</p>
-<p>El monitor responde al siguiente esquema:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">GestorDespegue</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">...</span>
-
-<span class="w">    </span><span class="c1">// Lo invoca un avión cuando quiere despegar</span>
-<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">despegarAvion</span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span>
-
-<span class="w">    </span><span class="c1">// Lo invoca una avioneta cuando quiere despegar</span>
-<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">despegarAvioneta</span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span>
-
-<span class="w">    </span><span class="c1">// Lo invoca el temporizador para indicar que</span>
-<span class="w">    </span><span class="c1">// ha transcurrido el intervalo mínimo desde</span>
-<span class="w">    </span><span class="c1">// el despegue anterior</span>
-<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">autorizarDespegue</span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span>
-<span class="w">    </span><span class="p">...</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Para gestionar el intervalo de tiempo entre despegues, se dispone de una clase <code>Temporizador</code>, cuya interfaz se muestra a continuación. El método <code>iniciarTemporizador</code> arranca un temporizador que deja pasar un cierto tiempo. Cuando el tiempo expira, se invoca el método <code>autorizarDespegue</code> del objeto <code>GestorDespegue</code> que se pasa en el constructor. No es necesario desarrollar esta clase.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Temporizador</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Temporizador</span><span class="p">(</span><span class="n">GestorDespegue</span><span class="w"> </span><span class="n">gestor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">iniciarTemporizador</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">minutos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<p>Además, deseamos que al guardar una partida en la base de datos se almacene la puntuación, y que se recupere cuando se carga la partida. Al cargar una partida almacenada, se desea que DbLoadActivity muestre una lista de las partidas guardadas, mostrando en cada fila el nombre de la partida y los puntos obtenidos.</p>
+<p>Se pide: indique qué clases de la práctica debe modificar y cómo. Incluya exclusivamente las modificaciones realizadas. No hace falta que escriba completas las cabeceras de los métodos. En caso de que tenga varias alternativas, justifique y discuta su respuesta. </p>
+<p>Nota. En MyDbAdapter, basta con que indique las modificaciones necesarias para crear la tabla e insertar una nueva partida.</p>
 <details class="note">
-<summary>Mostrar solución</summary>
-<p>Una solución posible al problema del monitor de gestión de despegues es la siguiente:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorDespegue</span><span class="w"> </span><span class="p">{</span>
+<summary>mostrar solución</summary>
+<p>Debemos añadir un campo puntos. Se puede añadir en Escenario o en Jugador.</p>
+<ol>
+<li>Jugador</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">puntos</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPuntos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">puntos</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPuntos</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">puntos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">puntos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">puntos</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">incrementa</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">puntos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">puntos</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">puntos</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">pistaOcupada</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nAvionesEsperando</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tiempoAvion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tiempoAvioneta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">anteriorAvioneta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Temporizador</span><span class="w"> </span><span class="n">unTemporizador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Temporizador</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// Invocado por un avión cuando quiere despegar</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">despegarAvion</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">nAvionesEsperando</span><span class="o">++</span><span class="p">;</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">pistaOcupada</span><span class="p">)</span>
-<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
-
-<span class="w">        </span><span class="n">nAvionesEsperando</span><span class="o">--</span><span class="p">;</span>
-<span class="w">        </span><span class="n">anteriorAvioneta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-
-<span class="w">        </span><span class="n">unTemporizador</span><span class="p">.</span><span class="na">iniciarTemporizador</span><span class="p">(</span><span class="n">tiempoAvion</span><span class="p">);</span>
-<span class="w">        </span><span class="n">pistaOcupada</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Invocado por una avioneta cuando quiere despegar</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">despegarAvioneta</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">pistaOcupada</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">nAvionesEsperando</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">anteriorAvioneta</span><span class="p">))</span>
-<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
-
-<span class="w">        </span><span class="n">anteriorAvioneta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">        </span><span class="n">unTemporizador</span><span class="p">.</span><span class="na">iniciarTemporizador</span><span class="p">(</span><span class="n">tiempoAvioneta</span><span class="p">);</span>
-<span class="w">        </span><span class="n">pistaOcupada</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Invocado por el temporizador cuando finaliza el intervalo mínimo</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">finTemporizador</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">pistaOcupada</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="kd">private</span><span class="w"> </span><span class="nf">Jugador</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span>
+<span class="w">    </span><span class="n">puntos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Terreno, método move</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="n">Casilla</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="n">Movil</span><span class="w"> </span><span class="n">movil</span><span class="p">,</span><span class="w"> </span><span class="n">Direccion</span><span class="w"> </span><span class="n">direccion</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">origen</span><span class="p">.</span><span class="na">setMovil</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="w">    </span><span class="n">destino</span><span class="p">.</span><span class="na">setMovil</span><span class="p">(</span><span class="n">movil</span><span class="p">);</span>
+<span class="w">    </span><span class="n">movil</span><span class="p">.</span><span class="na">setCasilla</span><span class="p">(</span><span class="n">destino</span><span class="p">);</span>
+<span class="w">    </span><span class="n">jugador</span><span class="p">.</span><span class="na">incrementa</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>MyDbAdapter</li>
+</ol>
+<p>3.1. En DatabaseHelper, debemos cambiar el String para crear la tabla, añadiendo una columna:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">TABLE_FOTOS</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
+<span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">moviles</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">casillas</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="nb">date</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">puntos</span><span class="w"> </span><span class="nb">INT</span><span class="p">);</span>
+</code></pre></div>
+<p>3.2. inserfFoto()</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">COL_PUNTOS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;puntos&quot;</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">insertFoto</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Escenario</span><span class="w"> </span><span class="n">escenario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Escenario</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Jugador</span><span class="w"> </span><span class="n">jugador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">escenario</span><span class="p">.</span><span class="na">getTerreno</span><span class="p">().</span><span class="na">getJugador</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ContentValues</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ContentValues</span><span class="p">();</span>
+<span class="w">    </span><span class="n">values</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">COL_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">values</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">COL_MOVILES</span><span class="p">,</span><span class="w"> </span><span class="n">DbUtils</span><span class="p">.</span><span class="na">getStringMoviles</span><span class="p">(</span><span class="n">terreno</span><span class="p">));</span>
+<span class="w">    </span><span class="n">values</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">COL_CASILLAS</span><span class="p">,</span><span class="w"> </span><span class="n">DbUtils</span><span class="p">.</span><span class="na">getStringCasillas</span><span class="p">(</span><span class="n">terreno</span><span class="p">));</span>
+<span class="w">    </span><span class="n">values</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">COL_DATE</span><span class="p">,</span><span class="w"> </span><span class="n">prepareDate</span><span class="p">());</span>
+<span class="w">    </span><span class="n">values</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">COL_PUNTOS</span><span class="p">,</span><span class="w"> </span><span class="n">escenario</span><span class="p">.</span><span class="na">getPuntos</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">TABLE_FOTOS</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>DbLoadActivity</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DbLoadActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ListActivity</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">TAG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">“</span><span class="n">DbLoadActivity</span><span class="s">&quot;;</span>
+
+<span class="s">    @Override</span>
+<span class="s">    protected void onCreate(Bundle savedInstanceState) { ...</span>
+<span class="s">        String[] columns = { MyDbAdapter.COL_NAME, MyDbAdapter.COL_PUNTOS};</span>
+<span class="s">        ...</span>
+<span class="s">    }</span>
+
+<span class="s">    protected void onListItemClick(ListView listView,</span>
+<span class="s">        View view, int position, long id) {</span>
+<span class="s">        ...</span>
+<span class="s">        Jugador jugador = escenario.getTerreno().getJugador();</span>
+<span class="s">        jugador.setPuntos(cursor.getInt(cursor.getColumnIndex(</span>
+<span class="s">            MyDbAdapter.COL_PUNTOS));</span>
+<span class="s">    }</span>
+<span class="s">    ...</span>
+<span class="s">}</span>
 </code></pre></div>
 </details>
 
