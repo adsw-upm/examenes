@@ -905,7 +905,6 @@
 </ul>
 <details class="note">
 <summary></summary>
-</details>
 <p>En el sistema existen dos tipos de hebras que representan, respectivamente, el comportamiento de los coches y el control de los semáforos. Estas hebras invocan los métodos del monitor para actualizar el estado del cruce y sincronizarse.</p>
 <p>El monitor almacena el estado del cruce mediante atributos privados. En este caso se identifican los siguientes:</p>
 <ul>
@@ -952,6 +951,7 @@
 </code></pre></div>
 <p>Obsérvese que si cambian los semáforos cuando hay un coche en el cruce, no puede entrar ningún otro coche en la nueva orientación hasta que el coche que está en el cruce salga, ya que <code>cochePasando</code> será <code>true</code>.</p>
 <p>Los métodos <code>entraNorte</code> y <code>entraOeste</code> propagan <code>IntrruptedException</code>. Una alternativa sería maneja la interrupción en estos métodos con un bloque try-catch.</p>
+</details>
 
 
 
