@@ -1039,21 +1039,23 @@
 <p>1) Poner una pared hacia el OESTE. La pared no se añade. 
 2) Obtener la posible pared hacia el SUR. El resultado debe ser null. </p>
 <p>Y los casos de prueba correspondientes podrían ser:</p>
-<p>```java
-private Terreno terreno … 
-private Paredes paredes …</p>
-<p>@Test
-public void Test001() {
-   Casilla c = terreno.getCasilla(0, 0);
-   int size = paredes.size();
-   paredes.add(c, Direccion.OESTE);
-   assertEquals(paredes.size(), size); // la pared no se ha añadido
-}</p>
-<p>@Test
-public void Test002() {
-   Casilla c = terreno.getCasilla(0, 0);
-   assertNull(paredes.get(c, Direccion.SUR));
-}</p>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Terreno</span><span class="w"> </span><span class="n">terreno</span><span class="w"> </span><span class="err">…</span><span class="w"> </span>
+<span class="kd">private</span><span class="w"> </span><span class="n">Paredes</span><span class="w"> </span><span class="n">paredes</span><span class="w"> </span><span class="err">…</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Test001</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">Casilla</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getCasilla</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paredes</span><span class="p">.</span><span class="na">size</span><span class="p">();</span>
+<span class="w">   </span><span class="n">paredes</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">Direccion</span><span class="p">.</span><span class="na">OESTE</span><span class="p">);</span>
+<span class="w">   </span><span class="n">assertEquals</span><span class="p">(</span><span class="n">paredes</span><span class="p">.</span><span class="na">size</span><span class="p">(),</span><span class="w"> </span><span class="n">size</span><span class="p">);</span><span class="w"> </span><span class="c1">// la pared no se ha añadido</span>
+<span class="p">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Test002</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">Casilla</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getCasilla</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">   </span><span class="n">assertNull</span><span class="p">(</span><span class="n">paredes</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">Direccion</span><span class="p">.</span><span class="na">SUR</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
 </details>
 <ul>
 <li>(b) (1 punto) Escriba el método necesario para que un fantasma empiece moviéndose hacia el NORTE hasta que choca con una pared; cuando choca intenta moverse al ESTE hasta que choca con una pared; y así sucesivamente, rotando 90º a la derecha cada vez que choca. Si no puede desplazarse a ninguna de las casillas circundantes, deja pasar esta vez y espera al siguiente ciclo.</li>
@@ -1061,30 +1063,31 @@ public void Test002() {
 <details class="note">
 <summary>Mostar solución</summary>
 <p>Una posible implementación es:
-```java
-public class Fantasma01 {
-...</p>
-<p>public void run() {
-    Direccion[] direcciones =
-        {Direccion.NORTE, Direccion.ESTE, Direccion.SUR, Direccion.OESTE};
-    int direccionActual = 0;</p>
-<pre><code>while (vivo) {
-    if (casilla != null) {
-        for (int i = 0; i &lt; 4; i++) {
-            if (!terreno.hayPared(casilla, direcciones[direccionActual])) {
-                terreno.move(this, direcciones[direccionActual]);
-                break;
-            }
-            direccionActual = (direccionActual + 1) % 4;
-        }
-        try {
-            Thread.sleep(DELAY);
-        } catch (InterruptedException ignored) {}
-    }
-}
-</code></pre>
-<p>}
-}</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Fantasma01</span><span class="w"> </span><span class="p">{</span>
+<span class="p">...</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Direccion</span><span class="o">[]</span><span class="w"> </span><span class="n">direcciones</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="p">{</span><span class="n">Direccion</span><span class="p">.</span><span class="na">NORTE</span><span class="p">,</span><span class="w"> </span><span class="n">Direccion</span><span class="p">.</span><span class="na">ESTE</span><span class="p">,</span><span class="w"> </span><span class="n">Direccion</span><span class="p">.</span><span class="na">SUR</span><span class="p">,</span><span class="w"> </span><span class="n">Direccion</span><span class="p">.</span><span class="na">OESTE</span><span class="p">};</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">direccionActual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">vivo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">casilla</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">terreno</span><span class="p">.</span><span class="na">hayPared</span><span class="p">(</span><span class="n">casilla</span><span class="p">,</span><span class="w"> </span><span class="n">direcciones</span><span class="o">[</span><span class="n">direccionActual</span><span class="o">]</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">terreno</span><span class="p">.</span><span class="na">move</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">direcciones</span><span class="o">[</span><span class="n">direccionActual</span><span class="o">]</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="n">direccionActual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">direccionActual</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
 </details>
 
 
