@@ -1,0 +1,20 @@
+---
+year: 2016
+exam: parcial recuperacion
+exercises:
+  - p1r_ex01.md
+  - p1r_ex02.md
+  - p1r_ex03.md
+---
+
+
+# Examen 2016 — Parcial 1 Recuperación
+
+## Problema 1
+{{ include("p1_ex01.md") }}
+
+## Problema 2
+{{ include("p1_ex02.md") }}
+
+## Problema 3
+{{ include("p1_ex03.md") }}
