@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../p1/">
+      
+      
+        <link rel="next" href="../../2021/exam/">
       
       
         
@@ -19,7 +23,7 @@
     
     
       
-        <title>P1 ex01 - Catálogo ejercicios años anteriores</title>
+        <title>Macro Rendering Error - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -59,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#macro-rendering-error" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -91,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              P1 ex01
+              Macro Rendering Error
             
           </span>
         </div>
@@ -238,18 +247,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -270,7 +281,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -502,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1/" class="md-nav__link">
+      <a href="../../2013/p1/" class="md-nav__link">
         
   
   
@@ -530,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1r/" class="md-nav__link">
+      <a href="../../2013/p1r/" class="md-nav__link">
         
   
   
@@ -558,7 +569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p2/" class="md-nav__link">
+      <a href="../../2013/p2/" class="md-nav__link">
         
   
   
@@ -586,7 +597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extra/" class="md-nav__link">
+      <a href="../../2013/extra/" class="md-nav__link">
         
   
   
@@ -786,18 +797,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
         
           
           <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
@@ -818,7 +831,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -836,7 +849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p1/" class="md-nav__link">
+      <a href="../p1/" class="md-nav__link">
         
   
   
@@ -864,7 +877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p1r.md" class="md-nav__link">
+      <a href="../p1r.md" class="md-nav__link">
         
   
   
@@ -889,10 +902,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../2015/p2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -908,6 +930,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -920,7 +943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/extra.md" class="md-nav__link">
+      <a href="../extra.md" class="md-nav__link">
         
   
   
@@ -1001,6 +1024,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -1015,123 +1040,25 @@
                 
                   
 
-  <nav class="md-tags" >
-    
-      
-      
-      
-      
-        <span class="md-tag">complejidad</span>
-      
-    
-  </nav>
 
 
-
-  <h1>P1 ex01</h1>
-
-<p>Tenemos arrays de datos que están ordenados en orden ascendente, pero con los datos desplazados una distancia <span class="arithmatex">\( h \ge 0 \)</span>. Por ejemplo:</p>
-<table>
-<thead>
-<tr>
-<th>h</th>
-<th>array</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>[1, 3, 5, 7, 11, 13]</td>
-</tr>
-<tr>
-<td>1</td>
-<td>[13, 1, 3, 5, 7, 11]</td>
-</tr>
-<tr>
-<td>2</td>
-<td>[11, 13, 1, 3, 5, 7]</td>
-</tr>
-<tr>
-<td>3</td>
-<td>[7, 11, 13, 1, 3, 5]</td>
-</tr>
-<tr>
-<td>…</td>
-<td>…</td>
-</tr>
-</tbody>
-</table>
-<p>Supondremos que todos los datos del array son distintos.</p>
-<ul>
-<li>(a) (1,5 puntos) Dados un array y el desplazamiento <span class="arithmatex">\( h \)</span>, desarrolle un algoritmo de complejidad O(1) que devuelva el número mayor conociendo el array y el desplazamiento:
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor1</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">)</span>
+<h1 id="macro-rendering-error"><em>Macro Rendering Error</em></h1>
+<p><em>File</em>: <code>exams/2015/p2.md</code></p>
+<p><em>FileNotFoundError</em>: include: file not found: p2_01.md</p>
+<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
+  File &quot;/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/mkdocs_macros/plugin.py&quot;, line 703, in render
+    return md_template.render(**page_variables)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File &quot;/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/jinja2/environment.py&quot;, line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File &quot;/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/jinja2/environment.py&quot;, line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File &quot;&lt;template&gt;&quot;, line 4, in top-level template code
+  File &quot;/home/runner/work/examenes/examenes/main.py&quot;, line 40, in include
+    raise FileNotFoundError(f&quot;include: file not found: {path}&quot;)
+FileNotFoundError: include: file not found: p2_01.md
 </code></pre></div>
-Demuestre que el algoritmo es efectivamente de complejidad O(1).</li>
-</ul>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>Una solución sería:
-<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor1</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-El algoritmo es de complejidad O(1) porque el número de pasos del algoritmo es independiente de n.</p>
-</details>
-<ul>
-<li>(b) (1,5 puntos) Desarrolle un algoritmo de complejidad O(n) que devuelva el número mayor conociendo el array, pero sin saber el desplazamiento:
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor2</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span>
-</code></pre></div>
-Demuestre que el algoritmo es de complejidad O(n)</li>
-</ul>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>Una solución sería:
-<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor2</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">mayor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MIN_VALUE</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mayor</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num</span><span class="p">)</span>
-<span class="w">            </span><span class="n">mayor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">mayor</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-El algoritmo es de complejidad O(n) porque es un bucle que se ejecuta n veces.</p>
-</details>
-<ul>
-<li>(c) (2 puntos) Desarrolle un algoritmo de complejidad O(log n) que devuelva el número mayor conociendo el array, pero sin conocer el desplazamiento:
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor3</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span>
-</code></pre></div></li>
-</ul>
-<p>Pista:</p>
-<p>Hay que usar el algoritmo del apartado a) probando con diferentes valores de h. Para un valor de h:
-- Sabemos que es el correcto si el número siguiente es menor que <code>array[h]</code>.
-- Sabemos si hay que aumentar o disminuir h comparando <code>array[h]</code> con <code>array[0]</code>.</p>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>La siguiente solución utiliza un método auxiliar, <code>busca</code>:</p>
-<p><div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor3</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">busca</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">busca</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">z</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">a</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">h</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">num_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">num_1</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">array</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">busca</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span>
-<span class="w">        </span><span class="k">else</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">busca</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-</code></pre></div>
-El algoritmo es de complejidad O(log n) porque es un esquema de división sucesiva. Más desarrollado:
-- Al principio, h puede estar entre O y N-1
-- Tras 1 paso, h puede estar entre (O y N/2) o entre (N/2 y N); es decir, hemos reducido las opciones a la mitad (N/2)
-- Tras k pasos, el rango es N/2<sup>k</sup>; de forma que el rango se reduce a 1 (h encontrado) cuando 1 &lt;= N/2<sup>k</sup> -&gt; k=log(N)1 &lt;= N / 2^k  ➜  k = log₂(N) ⊂ O(log N)</p>
-</details>
 
 
 

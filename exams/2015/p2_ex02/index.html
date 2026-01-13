@@ -19,7 +19,7 @@
     
     
       
-        <title>P1 ex01 - Catálogo ejercicios años anteriores</title>
+        <title>P2 ex02 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              P1 ex01
+              P2 ex02
             
           </span>
         </div>
@@ -502,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1/" class="md-nav__link">
+      <a href="../../2013/p1/" class="md-nav__link">
         
   
   
@@ -530,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1r/" class="md-nav__link">
+      <a href="../../2013/p1r/" class="md-nav__link">
         
   
   
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p2/" class="md-nav__link">
+      <a href="../../2013/p2/" class="md-nav__link">
         
   
   
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extra/" class="md-nav__link">
+      <a href="../../2013/extra/" class="md-nav__link">
         
   
   
@@ -836,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p1/" class="md-nav__link">
+      <a href="../p1/" class="md-nav__link">
         
   
   
@@ -864,7 +864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p1r.md" class="md-nav__link">
+      <a href="../p1r.md" class="md-nav__link">
         
   
   
@@ -892,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p2/" class="md-nav__link">
+      <a href="../p2/" class="md-nav__link">
         
   
   
@@ -920,7 +920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/extra.md" class="md-nav__link">
+      <a href="../extra.md" class="md-nav__link">
         
   
   
@@ -1021,116 +1021,82 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">android</span>
       
     
   </nav>
 
 
 
-  <h1>P1 ex01</h1>
+  <h1>P2 ex02</h1>
 
-<p>Tenemos arrays de datos que están ordenados en orden ascendente, pero con los datos desplazados una distancia <span class="arithmatex">\( h \ge 0 \)</span>. Por ejemplo:</p>
-<table>
-<thead>
-<tr>
-<th>h</th>
-<th>array</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>[1, 3, 5, 7, 11, 13]</td>
-</tr>
-<tr>
-<td>1</td>
-<td>[13, 1, 3, 5, 7, 11]</td>
-</tr>
-<tr>
-<td>2</td>
-<td>[11, 13, 1, 3, 5, 7]</td>
-</tr>
-<tr>
-<td>3</td>
-<td>[7, 11, 13, 1, 3, 5]</td>
-</tr>
-<tr>
-<td>…</td>
-<td>…</td>
-</tr>
-</tbody>
-</table>
-<p>Supondremos que todos los datos del array son distintos.</p>
+<p>En el Juego del Pacman para Android tenemos un tablero de 8x8:</p>
+<p><img alt="" src="../p2/p2_02.png" /></p>
 <ul>
-<li>(a) (1,5 puntos) Dados un array y el desplazamiento <span class="arithmatex">\( h \)</span>, desarrolle un algoritmo de complejidad O(1) que devuelva el número mayor conociendo el array y el desplazamiento:
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor1</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">)</span>
-</code></pre></div>
-Demuestre que el algoritmo es efectivamente de complejidad O(1).</li>
+<li>(a) (1 punto) Indique las coordinadas (x,y) que debe pasar a juego.pon(terreno.getCasilla(x.y), 0) para poner un Patito (con identificador 0) en la casilla con un círculo azul (objetivo) situada en el extremo superior derecho.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Una solución sería:
-<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor1</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-El algoritmo es de complejidad O(1) porque el número de pasos del algoritmo es independiente de n.</p>
+<p>X = 7, Y = 7</p>
 </details>
 <ul>
-<li>(b) (1,5 puntos) Desarrolle un algoritmo de complejidad O(n) que devuelva el número mayor conociendo el array, pero sin saber el desplazamiento:
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor2</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span>
-</code></pre></div>
-Demuestre que el algoritmo es de complejidad O(n)</li>
+<li>(b) (1 punto) Suponga que tenemos un gestor de eventos táctiles onTouch(View v, MotionEvent event). Si pulsamos en el objetivo (círculo azul situado en el extremo superior derecho), ¿qué valores nos darán x e y si se calculan como sigue? int x = (int) event.getX() / lado1; int y = (int) event.getY() / lado1</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Una solución sería:
-<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor2</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">mayor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MIN_VALUE</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mayor</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num</span><span class="p">)</span>
-<span class="w">            </span><span class="n">mayor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<p>X = 7, Y = 0</p>
+</details>
+<p>Deseamos cambiar el comportamiento del gestor de eventos táctiles, de forma que el jugador ya no se mueva con el dedo. Queremos que al poner el dedo en una posición, aparezca un Patito si la casilla está vacía. El id de Patito registrado en Juego es 0. Además, queremos que muestre:
+    - una traza informativa (info) al pulsar en la pantalla. Ej. “Pulso en (3, 4)”
+    - una traza de depuración (debug) cuando pone el patito. Ej. “Patito puesto en (3, 4)”
+    - una traza de depuración si no coincide la posición al poner y quitar el dedo, porque ha realizado algún movimiento. Ej. “No coinciden poner y quitar dedo”
+    - una traza de advertencia (warn) si ya hay algún móvil en esa posición. “Patito no puesto ya hay otro móvil”.</p>
+<ul>
+<li>(c) (3 puntos) Complete el código del método onTouch() que se da en la hoja de respuestas.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyTouchListener</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">OnTouchListener</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">x1</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">y1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">onTouch</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="p">,</span><span class="w"> </span><span class="n">MotionEvent</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Movil</span><span class="w"> </span><span class="n">jugador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getJugador</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Juego</span><span class="w"> </span><span class="n">juego</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Juego</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">jugador</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getAction</span><span class="p">();</span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">action</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">MotionEvent</span><span class="p">.</span><span class="na">ACTION_DOWN</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getX</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">);</span>
+<span class="w">                </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getN</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getY</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">);</span>
+<span class="w">                </span><span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="err">“</span><span class="n">Pulso</span><span class="w"> </span><span class="nf">en</span><span class="w"> </span><span class="p">(</span><span class="err">“</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="err">“</span><span class="w"> </span><span class="err">“</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="err">“</span><span class="p">)</span><span class="err">”</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">MotionEvent</span><span class="p">.</span><span class="na">ACTION_UP</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getX</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getN</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getY</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">x</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">x1</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">y1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="err">“</span><span class="n">No</span><span class="w"> </span><span class="n">coinciden</span><span class="w"> </span><span class="n">poner</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">quitar</span><span class="w"> </span><span class="n">dedo</span><span class="err">”</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getN</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getN</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">terreno</span><span class="p">.</span><span class="na">getCasilla</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">).</span><span class="na">getMovil</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">Log</span><span class="p">.</span><span class="na">w</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="err">“</span><span class="n">Patito</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">puesto</span><span class="p">,</span><span class="w"> </span><span class="n">ya</span><span class="w"> </span><span class="n">hay</span><span class="w"> </span><span class="n">otro</span><span class="w"> </span><span class="n">móvil</span><span class="err">”</span><span class="p">);</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="n">juego</span><span class="p">.</span><span class="na">pon</span><span class="p">(</span><span class="n">terreno</span><span class="p">.</span><span class="na">getCasilla</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Patito puesto en (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">default</span><span class="p">:</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">mayor</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-El algoritmo es de complejidad O(n) porque es un bucle que se ejecuta n veces.</p>
-</details>
-<ul>
-<li>(c) (2 puntos) Desarrolle un algoritmo de complejidad O(log n) que devuelva el número mayor conociendo el array, pero sin conocer el desplazamiento:
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor3</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span>
-</code></pre></div></li>
-</ul>
-<p>Pista:</p>
-<p>Hay que usar el algoritmo del apartado a) probando con diferentes valores de h. Para un valor de h:
-- Sabemos que es el correcto si el número siguiente es menor que <code>array[h]</code>.
-- Sabemos si hay que aumentar o disminuir h comparando <code>array[h]</code> con <code>array[0]</code>.</p>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>La siguiente solución utiliza un método auxiliar, <code>busca</code>:</p>
-<p><div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor3</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">busca</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">busca</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">z</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">a</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">h</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">num_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">num_1</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">array</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">busca</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span>
-<span class="w">        </span><span class="k">else</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">busca</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-</code></pre></div>
-El algoritmo es de complejidad O(log n) porque es un esquema de división sucesiva. Más desarrollado:
-- Al principio, h puede estar entre O y N-1
-- Tras 1 paso, h puede estar entre (O y N/2) o entre (N/2 y N); es decir, hemos reducido las opciones a la mitad (N/2)
-- Tras k pasos, el rango es N/2<sup>k</sup>; de forma que el rango se reduce a 1 (h encontrado) cuando 1 &lt;= N/2<sup>k</sup> -&gt; k=log(N)1 &lt;= N / 2^k  ➜  k = log₂(N) ⊂ O(log N)</p>
 </details>
 
 
