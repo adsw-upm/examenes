@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../p1/">
+        <link rel="prev" href="../p1r/">
       
       
         <link rel="next" href="../../2021/exam/">
@@ -23,7 +23,7 @@
     
     
       
-        <title>Macro Rendering Error - Catálogo ejercicios años anteriores</title>
+        <title>Examen 2015 — Parcial 2 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#macro-rendering-error" class="md-skip">
+        <a href="#examen-2015-parcial-2" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Macro Rendering Error
+              Examen 2015 — Parcial 2
             
           </span>
         </div>
@@ -877,14 +877,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1r.md" class="md-nav__link">
+      <a href="../p1r/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    None
+    Examen 2015 — Parcial 1 Recuperación
   
 
     
@@ -914,6 +914,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen 2015 — Parcial 2
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -921,7 +939,7 @@
   <span class="md-ellipsis">
     
   
-    Macro Rendering Error
+    Examen 2015 — Parcial 2
   
 
     
@@ -930,6 +948,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#problema-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1027,6 +1086,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#problema-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1042,23 +1131,151 @@
 
 
 
-<h1 id="macro-rendering-error"><em>Macro Rendering Error</em></h1>
-<p><em>File</em>: <code>exams/2015/p2.md</code></p>
-<p><em>FileNotFoundError</em>: include: file not found: p2_01.md</p>
-<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/mkdocs_macros/plugin.py&quot;, line 703, in render
-    return md_template.render(**page_variables)
-           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/jinja2/environment.py&quot;, line 1295, in render
-    self.environment.handle_exception()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File &quot;/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/jinja2/environment.py&quot;, line 942, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File &quot;&lt;template&gt;&quot;, line 4, in top-level template code
-  File &quot;/home/runner/work/examenes/examenes/main.py&quot;, line 40, in include
-    raise FileNotFoundError(f&quot;include: file not found: {path}&quot;)
-FileNotFoundError: include: file not found: p2_01.md
+<h1 id="examen-2015-parcial-2">Examen 2015 — Parcial 2</h1>
+<h2 id="problema-1">Problema 1</h2>
+<p>Se pretende desarrollar una aplicación para Android de gestión de una colección de libros. La información de los libros se almacena en una Base de Datos sqlite. Una ListActivity muestra información de los libros
+almacenados.</p>
+<p>De los libros se almacena la siguiente información: Autor, Título, Año de publicación. Los dos primeros campos serán textuales, el último será un número. La Bases de Datos constará de una única tabla que
+contenga esta información.</p>
+<ul>
+<li>(a) (1 punto) Escriba la sentencia SQL correcta para la creación de la Base de Datos.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">libros</span><span class="w"> </span><span class="p">(</span><span class="n">_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span><span class="w"> </span><span class="n">Autor</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">Titulo</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">Año</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">)</span>
 </code></pre></div>
+</details>
+<p>Se decide programar un adaptador para manejar la base de datos. Parte de dicho adaptador es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DatabaseHelper</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">SQLiteDatabase</span><span class="w"> </span><span class="n">database</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">MySQLiteHelper</span><span class="w"> </span><span class="n">dbHelper</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DATABASE_VERSION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DATABASE_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;libros.db&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="err">…</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MySQLiteHelper</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">SQLiteOpenHelper</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nd">@Override</span>
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">SQLiteDatabase</span><span class="w"> </span><span class="n">db</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="err">…</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>(b) (1 punto) Escriba un método de la clase DatabaseHelper que devuelva un Cursor con la información de todos los libros. La cabecera del método será: public Cursor selectAll() { … }. Si necesita atributos adicionales, declárelos correctamente. No duplique las declaraciones de la pregunta anterior.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">Cursor</span><span class="w"> </span><span class="nf">recuperaTodosLosLibros</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="na">query</span><span class="p">(</span><span class="s">&quot;libros&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">COL_ID</span><span class="p">,</span><span class="w"> </span><span class="n">COL_AUTOR</span><span class="p">,</span><span class="w"> </span><span class="n">COL_TITULO</span><span class="p">,</span><span class="w"> </span><span class="n">COL_ANYO</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<p>Se pretende disponer de una actividad ListaLibrosActivity, que herede de ListActivity, según el siguiente esquema:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ListaLibrosActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ListActivity</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">DatabaseHelper</span><span class="w"> </span><span class="n">dbHelper</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">SimpleCursorAdapter</span><span class="w"> </span><span class="n">cursorAdapter</span><span class="p">;</span>
+<span class="w">    </span><span class="err">…</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>(c) (2 puntos) Se pretende que dicha actividad reaccione de forma que cuando el usuario pulse sobre un registro mostrado en el ListView, se lance otra actividad, llamada “EditarLibroActivity”, que ya está ya implementada. A la actividad “EditarLibroActivity” se le ha de pasar toda la información del libro seleccionado. Escriba el código necesario para implementar este comportamiento. </li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onListItemClick</span><span class="p">(</span><span class="n">ListView</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">super</span><span class="p">.</span><span class="na">onListItemClick</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Cursor</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productosCursor</span><span class="p">;</span>
+<span class="w">    </span><span class="n">c</span><span class="p">.</span><span class="na">moveToPosition</span><span class="p">(</span><span class="n">position</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">EditarLibroActivity</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="w">    </span><span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">ProductoDbAdaptador</span><span class="p">.</span><span class="na">COL_ID</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<span class="w">    </span><span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">Producto</span><span class="p">.</span><span class="na">AUTOR</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="n">indiceAutor</span><span class="p">));</span>
+<span class="w">    </span><span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">Producto</span><span class="p">.</span><span class="na">TITULO</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">getInt</span><span class="p">(</span><span class="n">indiceTitulo</span><span class="p">));</span>
+<span class="w">    </span><span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">Producto</span><span class="p">.</span><span class="na">ANYO</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">getInt</span><span class="p">(</span><span class="n">indiceAnyo</span><span class="p">));</span>
+<span class="w">    </span><span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">REQUEST_CODE</span><span class="p">,</span><span class="w"> </span><span class="n">MODIFICA_PRODUCTO</span><span class="p">);</span>
+<span class="w">    </span><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span><span class="w"> </span><span class="n">MODIFICA_PRODUCTO</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(d) (1 punto) Se desea guardar la base de datos de forma automática, cuando la aplicación sea interrumpida por otra ACTIVIDAD (por ejemplo, una llamada de teléfono o pulsar el botón de aplicaciones). Cuando se vuelva a la
+aplicación, se debe cargar la base de datos. ¿Qué métodos han de sobrecargarse relativos al ciclo de vida de la actividad principal? Ponga SÓLO el nombre de los métodos.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>sol a) onStart() – onStop() sol b) onResume() – onPause()</p>
+</details>
+<h2 id="problema-2">Problema 2</h2>
+<p>En el Juego del Pacman para Android tenemos un tablero de 8x8:</p>
+<p><img alt="" src="p2_02.png" /></p>
+<ul>
+<li>(a) (1 punto) Indique las coordinadas (x,y) que debe pasar a juego.pon(terreno.getCasilla(x.y), 0) para poner un Patito (con identificador 0) en la casilla con un círculo azul (objetivo) situada en el extremo superior derecho.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>X = 7, Y = 7</p>
+</details>
+<ul>
+<li>(b) (1 punto) Suponga que tenemos un gestor de eventos táctiles onTouch(View v, MotionEvent event). Si pulsamos en el objetivo (círculo azul situado en el extremo superior derecho), ¿qué valores nos darán x e y si se calculan como sigue? int x = (int) event.getX() / lado1; int y = (int) event.getY() / lado1</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>X = 7, Y = 0</p>
+</details>
+<p>Deseamos cambiar el comportamiento del gestor de eventos táctiles, de forma que el jugador ya no se mueva con el dedo. Queremos que al poner el dedo en una posición, aparezca un Patito si la casilla está vacía. El id de Patito registrado en Juego es 0. Además, queremos que muestre:
+    - una traza informativa (info) al pulsar en la pantalla. Ej. “Pulso en (3, 4)”
+    - una traza de depuración (debug) cuando pone el patito. Ej. “Patito puesto en (3, 4)”
+    - una traza de depuración si no coincide la posición al poner y quitar el dedo, porque ha realizado algún movimiento. Ej. “No coinciden poner y quitar dedo”
+    - una traza de advertencia (warn) si ya hay algún móvil en esa posición. “Patito no puesto ya hay otro móvil”.</p>
+<ul>
+<li>(c) (3 puntos) Complete el código del método onTouch() que se da en la hoja de respuestas.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyTouchListener</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">OnTouchListener</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">x1</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">y1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">onTouch</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="p">,</span><span class="w"> </span><span class="n">MotionEvent</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Movil</span><span class="w"> </span><span class="n">jugador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getJugador</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Juego</span><span class="w"> </span><span class="n">juego</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Juego</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">jugador</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getAction</span><span class="p">();</span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">action</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">MotionEvent</span><span class="p">.</span><span class="na">ACTION_DOWN</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getX</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">);</span>
+<span class="w">                </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getN</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getY</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">);</span>
+<span class="w">                </span><span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="err">“</span><span class="n">Pulso</span><span class="w"> </span><span class="nf">en</span><span class="w"> </span><span class="p">(</span><span class="err">“</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="err">“</span><span class="w"> </span><span class="err">“</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="err">“</span><span class="p">)</span><span class="err">”</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">MotionEvent</span><span class="p">.</span><span class="na">ACTION_UP</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getX</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getN</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getY</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">x</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">x1</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">y1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="err">“</span><span class="n">No</span><span class="w"> </span><span class="n">coinciden</span><span class="w"> </span><span class="n">poner</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">quitar</span><span class="w"> </span><span class="n">dedo</span><span class="err">”</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getN</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getN</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">terreno</span><span class="p">.</span><span class="na">getCasilla</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">).</span><span class="na">getMovil</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">Log</span><span class="p">.</span><span class="na">w</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="err">“</span><span class="n">Patito</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">puesto</span><span class="p">,</span><span class="w"> </span><span class="n">ya</span><span class="w"> </span><span class="n">hay</span><span class="w"> </span><span class="n">otro</span><span class="w"> </span><span class="n">móvil</span><span class="err">”</span><span class="p">);</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="n">juego</span><span class="p">.</span><span class="na">pon</span><span class="p">(</span><span class="n">terreno</span><span class="p">.</span><span class="na">getCasilla</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Patito puesto en (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">default</span><span class="p">:</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 
