@@ -1,8 +1,16 @@
 site_name: Catálogo ejercicios años anteriores
 theme:
   name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
 plugins:
-  - search
+  - search:
+      lang: es
   - tags
   - macros
 markdown_extensions:
