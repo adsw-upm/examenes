@@ -19,7 +19,7 @@
     
     
       
-        <title>Extra04 - Catálogo ejercicios años anteriores</title>
+        <title>Extra ex05 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Extra04
+              Extra ex05
             
           </span>
         </div>
@@ -502,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1/" class="md-nav__link">
+      <a href="../../2013/p1/" class="md-nav__link">
         
   
   
@@ -530,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1r/" class="md-nav__link">
+      <a href="../../2013/p1r/" class="md-nav__link">
         
   
   
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p2/" class="md-nav__link">
+      <a href="../../2013/p2/" class="md-nav__link">
         
   
   
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extra/" class="md-nav__link">
+      <a href="../../2013/extra/" class="md-nav__link">
         
   
   
@@ -836,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p1/" class="md-nav__link">
+      <a href="../p1/" class="md-nav__link">
         
   
   
@@ -864,7 +864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p1r/" class="md-nav__link">
+      <a href="../p1r/" class="md-nav__link">
         
   
   
@@ -892,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p2/" class="md-nav__link">
+      <a href="../p2/" class="md-nav__link">
         
   
   
@@ -920,7 +920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/extra/" class="md-nav__link">
+      <a href="../extra/" class="md-nav__link">
         
   
   
@@ -1028,124 +1028,89 @@
 
 
 
-  <h1>Extra04</h1>
+  <h1>Extra ex05</h1>
 
-<p>Se desea modificar la aplicación <code>Teleconote</code> de manera que la pantalla con la lista de notas (controlada por la actividad <code>ListaNotasActivity</code>) se comporte de forma que, al pinchar en una nota, si está cifrada, se descifre sin pedir ninguna contraseña. Si la nota no está cifrada, se deja como está.</p>
-<p>Obsérvese que no hay que mostrar el contenido de la nota, sólo descifrarla en caso necesario desde <code>ListaNotasActivity</code>.</p>
-<p>Puede suponer que la clase que contiene la tarea asíncrona, que programó en <code>DetalleNotaActivity</code>, está refactorizada como una clase de paquete, de la siguiente forma:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cifrar</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;?</span><span class="p">,</span><span class="o">?</span><span class="p">,</span><span class="o">?&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPreExecute</span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span>
-
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">doInBackground</span><span class="p">(...)</span><span class="w"> </span><span class="p">{...}</span>
-
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onProgressUpdate</span><span class="p">(...)</span><span class="w"> </span><span class="p">{...}</span>
-
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPostExecute</span><span class="p">(...)</span><span class="w"> </span><span class="p">{...}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>La tarea recibe varias cadenas (el título y contenido de la nota, así como su id), comunica el número de caracteres cifrados o descifrados, y devuelve el objeto nota con los campos <code>titulo</code> y <code>contenido</code> descifrados.</p>
 <ul>
-<li>(a) (3 puntos) Indique qué signatura debería tener la clase <code>Cifrar</code>.</li>
+<li>(a) (2 puntos) El proyecto 2 se basa en una adaptación del proyecto 1. Seleccione la respuesta o respuestas correctas en la hoja de respuestas. Las respuestas incorrectas restan.<ul>
+<li>
+<ol>
+<li>La clase Terreno se adapta al ciclo de vida de Android</li>
+<li>I. No sería imprescindible realizar esta adaptación; simplemente la aplicación seguiría usando recursos cuando no está en primer plano.</li>
+<li>II. Si no hacemos la adaptación, tendremos interbloqueos.</li>
+<li>III. Los móviles se congelan en onPause() y se descongelan en onResume().</li>
+<li>IV. Los móviles se resucitan en onCreate()</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Las clases que extienden Movil (p.ej. Jugador, Estatua, Depredador, …)</li>
+<li>I. Deben implementar restart() porque es un método abstracto en Movil</li>
+<li>II. Si además implementan Runnable, deben crear en restart() una hebra (new Thread()) y llamar a start() en la hebra creada</li>
+<li>III. Si ademá s implementan Runnable, deben crear en pause() una hebra (new Thread()) y llamar a pause() en la hebra creada</li>
+<li>IV. Siempre que extienden Movil deben implementar Runnable</li>
+</ol>
+</li>
+</ul>
+</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La signatura correcta de la clase <code>Cifrar</code> es:</p>
-<div class="highlight"><pre><span></span><code><span class="n">Cifrar</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">Nota</span><span class="o">&gt;</span>
-</code></pre></div>
+<ul>
+<li>
+<p>En 1 la opción correcta es III.</p>
+</li>
+<li>
+<p>En 2 las opciones correctas son III y IV.</p>
+</li>
+</ul>
 </details>
 <ul>
-<li>(b) (7 puntos) Indique los cambios necesarios para que se ejecute la tarea de descifrado con esta modificación. Tenga en cuenta que los cambios deben almacenarse en la base de datos, y que debe actualizarse la pantalla de <code>ListaNotasActivity</code>.</li>
+<li>(b) (3 puntos) Deseamos simplificar el comportamiento que hemos implementado el proyecto 2 para mover con el dedo el jugador. El nuevo comportamiento consiste en que si pulsamos en la casilla donde está el jugador, lanza un popup. Si pulsamos en una casilla diferente, el jugador se mueve en la dirección en la que está dicha casilla respecto del jugador.</li>
 </ul>
-<p>NOTA: Limítese a hacer los cambios necesarios. No es necesario volver a escribir el código de <code>Cifrar</code> ni las partes de <code>ListaNotasActivity</code> que no haya que modificar.</p>
+<p>Además, queremos poner una traza de error si se pulsa fuera del tablero.</p>
+<p>Suponga que dispone del método popup para lanzar el popup como en la práctica, así como el resto de métodos de las clases.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>A continuación se muestran únicamente los cambios necesarios para ejecutar la tarea de descifrado desde <code>ListaNotasActivity</code>. Los cambios relevantes se destacan conceptualmente. 
 <div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onListItemClick</span><span class="p">(</span><span class="n">ListView</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">super</span><span class="p">.</span><span class="na">onListItemClick</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Cursor</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">notasCursor</span><span class="p">;</span>
-<span class="w">    </span><span class="n">c</span><span class="p">.</span><span class="na">moveToPosition</span><span class="p">(</span><span class="n">position</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Nota</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNota</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">nota</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">nota</span><span class="p">.</span><span class="na">isCifrado</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">Cifrar</span><span class="p">().</span><span class="na">execute</span><span class="p">(</span>
-<span class="w">            </span><span class="n">nota</span><span class="p">.</span><span class="na">getContenido</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">nota</span><span class="p">.</span><span class="na">getTitulo</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">nota</span><span class="p">.</span><span class="na">getCategoria</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span><span class="w"> </span><span class="n">MODIFICA_NOTA</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cifrar</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">Nota</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">CLAVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="s">&quot;miclave&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// Se puede acceder a la UI</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPreExecute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Método de descifrado (no se modifica)</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">descifra</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Código existente que almacena el texto</span>
-<span class="w">        </span><span class="c1">// descifrado en un buffer</span>
-<span class="w">        </span><span class="p">...</span>
-<span class="w">        </span><span class="n">publishProgress</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Ejecución en segundo plano</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">Nota</span><span class="w"> </span><span class="nf">doInBackground</span><span class="p">(</span><span class="n">String</span><span class="p">...</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;doInBackground&quot;</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">titulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">contenido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">categoria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
-
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">titulo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">contenido</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">categoria</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">))</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Long</span><span class="p">.</span><span class="na">parseLong</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">NumberFormatException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">onTouch</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="p">,</span><span class="w"> </span><span class="n">MotionEvent</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Movil</span><span class="w"> </span><span class="n">jugador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getJugador</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">jugador</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">tituloDescifrado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">descifra</span><span class="p">(</span><span class="n">titulo</span><span class="p">,</span><span class="w"> </span><span class="n">CLAVE</span><span class="p">);</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">contenidoDescifrado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">descifra</span><span class="p">(</span><span class="n">contenido</span><span class="p">,</span><span class="w"> </span><span class="n">CLAVE</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getAction</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MotionEvent</span><span class="p">.</span><span class="na">ACTION_DOWN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getX</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">);</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getN</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getY</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">Nota</span><span class="w"> </span><span class="n">miNota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Nota</span><span class="p">(</span>
-<span class="w">            </span><span class="n">tituloDescifrado</span><span class="p">,</span>
-<span class="w">            </span><span class="n">contenidoDescifrado</span><span class="p">,</span>
-<span class="w">            </span><span class="n">categoria</span><span class="p">,</span>
-<span class="w">            </span><span class="kc">false</span>
-<span class="w">        </span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">miNota</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">            </span><span class="n">Casilla</span><span class="w"> </span><span class="n">casilla</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getCasilla</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">y1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Casilla</span><span class="w"> </span><span class="n">casillaJugador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jugador</span><span class="p">.</span><span class="na">getCasilla</span><span class="p">();</span>
 
-<span class="w">    </span><span class="c1">// Actualizaciones de progreso en la UI</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onProgressUpdate</span><span class="p">(</span><span class="n">Integer</span><span class="p">...</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onProgressUpdate</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onProgressUpdate&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">texto</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;</span>
-<span class="s">Ejecutándose...&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">value</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
-<span class="w">        </span><span class="c1">// Mostrar progreso por pantalla</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">casillaJugador</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">casilla</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">popup</span><span class="p">(</span><span class="n">casilla</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">x1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">casillaJugador</span><span class="p">.</span><span class="na">getX</span><span class="p">());</span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">y1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">casillaJugador</span><span class="p">.</span><span class="na">getY</span><span class="p">());</span>
+<span class="w">                </span><span class="n">Direccion</span><span class="w"> </span><span class="n">direccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// Al finalizar, se actualiza la BBDD y la lista</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPostExecute</span><span class="p">(</span><span class="n">Nota</span><span class="w"> </span><span class="n">miNota</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onPostExecute, nota Cifrada&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">notaDbAdaptador</span><span class="p">.</span><span class="na">actualizaNota</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">miNota</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cursorAdapter</span><span class="p">.</span><span class="na">notifyDataSetChanged</span><span class="p">();</span>
-<span class="w">        </span><span class="n">actualizaLista</span><span class="p">();</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dy</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">direccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Direccion</span><span class="p">.</span><span class="na">NORTE</span><span class="p">;</span>
+<span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dy</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">direccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Direccion</span><span class="p">.</span><span class="na">SUR</span><span class="p">;</span>
+<span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dx</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">direccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Direccion</span><span class="p">.</span><span class="na">ESTE</span><span class="p">;</span>
+<span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">direccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Direccion</span><span class="p">.</span><span class="na">OESTE</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">direccion</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">terreno</span><span class="p">.</span><span class="na">move</span><span class="p">(</span><span class="n">jugador</span><span class="p">,</span><span class="w"> </span><span class="n">direccion</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ha pulsado fuera del tablero&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </details>

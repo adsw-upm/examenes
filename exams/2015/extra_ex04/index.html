@@ -19,7 +19,7 @@
     
     
       
-        <title>Extra04 - Catálogo ejercicios años anteriores</title>
+        <title>Extra ex04 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Extra04
+              Extra ex04
             
           </span>
         </div>
@@ -502,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1/" class="md-nav__link">
+      <a href="../../2013/p1/" class="md-nav__link">
         
   
   
@@ -530,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1r/" class="md-nav__link">
+      <a href="../../2013/p1r/" class="md-nav__link">
         
   
   
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p2/" class="md-nav__link">
+      <a href="../../2013/p2/" class="md-nav__link">
         
   
   
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extra/" class="md-nav__link">
+      <a href="../../2013/extra/" class="md-nav__link">
         
   
   
@@ -836,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p1/" class="md-nav__link">
+      <a href="../p1/" class="md-nav__link">
         
   
   
@@ -864,7 +864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p1r/" class="md-nav__link">
+      <a href="../p1r/" class="md-nav__link">
         
   
   
@@ -892,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p2/" class="md-nav__link">
+      <a href="../p2/" class="md-nav__link">
         
   
   
@@ -920,7 +920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/extra/" class="md-nav__link">
+      <a href="../extra/" class="md-nav__link">
         
   
   
@@ -1028,125 +1028,213 @@
 
 
 
-  <h1>Extra04</h1>
+  <h1>Extra ex04</h1>
 
-<p>Se desea modificar la aplicación <code>Teleconote</code> de manera que la pantalla con la lista de notas (controlada por la actividad <code>ListaNotasActivity</code>) se comporte de forma que, al pinchar en una nota, si está cifrada, se descifre sin pedir ninguna contraseña. Si la nota no está cifrada, se deja como está.</p>
-<p>Obsérvese que no hay que mostrar el contenido de la nota, sólo descifrarla en caso necesario desde <code>ListaNotasActivity</code>.</p>
-<p>Puede suponer que la clase que contiene la tarea asíncrona, que programó en <code>DetalleNotaActivity</code>, está refactorizada como una clase de paquete, de la siguiente forma:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cifrar</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;?</span><span class="p">,</span><span class="o">?</span><span class="p">,</span><span class="o">?&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPreExecute</span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span>
+<p>Se pretende realizar una aplicación Android que gestione los gastos de un usuario. Cada vez que se realiza un gasto, el usuario puede introducir la cantidad gastada (“Importe”, campo numérico real) y en qué se lo ha gastado (“Concepto”, de tipo texto). Estos registros se guardarán en una base de datos sqlite, con una única tabla. La aplicación mostrará los registros existentes mediante una ListActivity. </p>
+<p>La aplicación dispone de un menú con dos opciones, “Añadir” y “Acerca de”. La especificación del menú es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;menu</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
 
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">doInBackground</span><span class="p">(...)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">    </span><span class="nt">&lt;item</span>
+<span class="w">        </span><span class="na">android:id=</span><span class="s">&quot;@+id/annadir&quot;</span>
+<span class="w">        </span><span class="na">android:title=</span><span class="s">&quot;Añadir&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onProgressUpdate</span><span class="p">(...)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">    </span><span class="nt">&lt;item</span>
+<span class="w">        </span><span class="na">android:id=</span><span class="s">&quot;@+id/ayuda&quot;</span>
+<span class="w">        </span><span class="na">android:title=</span><span class="s">&quot;Acerca de&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPostExecute</span><span class="p">(...)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="nt">&lt;/menu&gt;</span>
+</code></pre></div>
+<p>La sentencia SQL para crear la tabla en la base de datos es:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">gastos</span><span class="w"> </span><span class="p">(</span><span class="n">_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span><span class="w"> </span><span class="n">Concepto</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">Importe</span><span class="w"> </span><span class="nb">REAL</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">)</span>
+</code></pre></div>
+<p>La aplicación dispone de un adaptador de bases de datos, con la siguiente codificación (parcial):</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DatabaseHelper</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">SQLiteDatabase</span><span class="w"> </span><span class="n">database</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">MySQLiteHelper</span><span class="w"> </span><span class="n">dbHelper</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DATABASE_VERSION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DATABASE_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;libros.db&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="err">…</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>La tarea recibe varias cadenas (el título y contenido de la nota, así como su id), comunica el número de caracteres cifrados o descifrados, y devuelve el objeto nota con los campos <code>titulo</code> y <code>contenido</code> descifrados.</p>
 <ul>
-<li>(a) (3 puntos) Indique qué signatura debería tener la clase <code>Cifrar</code>.</li>
+<li>(a) (1 punto) Escriba una sentencia SQL que devuelva todos los registros de la base de datos cuyo importe supere el valor de 50,00.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La signatura correcta de la clase <code>Cifrar</code> es:</p>
-<div class="highlight"><pre><span></span><code><span class="n">Cifrar</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">Nota</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">gastos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">Importe</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (7 puntos) Indique los cambios necesarios para que se ejecute la tarea de descifrado con esta modificación. Tenga en cuenta que los cambios deben almacenarse en la base de datos, y que debe actualizarse la pantalla de <code>ListaNotasActivity</code>.</li>
+<li>
+<p>(b) (1 punto) Sobreescriba el método adecuado de ListActivity para implementar el siguiente comportamiento:</p>
+<ul>
+<li>1) la opción “Acerca de” muestra un Toast con el nombre del autor del código (usted);</li>
+<li>2) la opción “Añadir” se lance otra actividad llamada “AnadirGastoActivity” que ya está implementada.</li>
 </ul>
-<p>NOTA: Limítese a hacer los cambios necesarios. No es necesario volver a escribir el código de <code>Cifrar</code> ni las partes de <code>ListaNotasActivity</code> que no haya que modificar.</p>
+<p>Tenga en cuenta que “AnadirGastoActivity” devolverá un Intent con los datos del usuario.</p>
+</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>A continuación se muestran únicamente los cambios necesarios para ejecutar la tarea de descifrado desde <code>ListaNotasActivity</code>. Los cambios relevantes se destacan conceptualmente. 
 <div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onListItemClick</span><span class="p">(</span><span class="n">ListView</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">super</span><span class="p">.</span><span class="na">onListItemClick</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Cursor</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">notasCursor</span><span class="p">;</span>
-<span class="w">    </span><span class="n">c</span><span class="p">.</span><span class="na">moveToPosition</span><span class="p">(</span><span class="n">position</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">onOptionsItemSelected</span><span class="p">(</span><span class="n">MenuItem</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">getItemId</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="n">Nota</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNota</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">nota</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">nota</span><span class="p">.</span><span class="na">isCifrado</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">Cifrar</span><span class="p">().</span><span class="na">execute</span><span class="p">(</span>
-<span class="w">            </span><span class="n">nota</span><span class="p">.</span><span class="na">getContenido</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">nota</span><span class="p">.</span><span class="na">getTitulo</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">nota</span><span class="p">.</span><span class="na">getCategoria</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span><span class="w"> </span><span class="n">MODIFICA_NOTA</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cifrar</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">Nota</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">ayuda</span><span class="p">:</span>
+<span class="w">            </span><span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">msg_ayuda</span><span class="p">),</span>
+<span class="w">                    </span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span>
+<span class="w">            </span><span class="p">).</span><span class="na">show</span><span class="p">();</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">CLAVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="s">&quot;miclave&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// Se puede acceder a la UI</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPreExecute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Método de descifrado (no se modifica)</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">descifra</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Código existente que almacena el texto</span>
-<span class="w">        </span><span class="c1">// descifrado en un buffer</span>
-<span class="w">        </span><span class="p">...</span>
-<span class="w">        </span><span class="n">publishProgress</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Ejecución en segundo plano</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">Nota</span><span class="w"> </span><span class="nf">doInBackground</span><span class="p">(</span><span class="n">String</span><span class="p">...</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;doInBackground&quot;</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">titulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">contenido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">categoria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
-
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">titulo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">contenido</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">categoria</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">))</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Long</span><span class="p">.</span><span class="na">parseLong</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">NumberFormatException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">annadir</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Intent</span><span class="w"> </span><span class="n">miIntent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">AnadirGastoActivity</span><span class="p">.</span><span class="na">class</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">            </span><span class="n">miIntent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">REQUEST_CODE</span><span class="p">,</span><span class="w"> </span><span class="n">CREA_PRODUCTO</span><span class="p">);</span>
+<span class="w">            </span><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">miIntent</span><span class="p">,</span><span class="w"> </span><span class="n">CREA_PRODUCTO</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">tituloDescifrado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">descifra</span><span class="p">(</span><span class="n">titulo</span><span class="p">,</span><span class="w"> </span><span class="n">CLAVE</span><span class="p">);</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">contenidoDescifrado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">descifra</span><span class="p">(</span><span class="n">contenido</span><span class="p">,</span><span class="w"> </span><span class="n">CLAVE</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">Nota</span><span class="w"> </span><span class="n">miNota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Nota</span><span class="p">(</span>
-<span class="w">            </span><span class="n">tituloDescifrado</span><span class="p">,</span>
-<span class="w">            </span><span class="n">contenidoDescifrado</span><span class="p">,</span>
-<span class="w">            </span><span class="n">categoria</span><span class="p">,</span>
-<span class="w">            </span><span class="kc">false</span>
-<span class="w">        </span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">miNota</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Actualizaciones de progreso en la UI</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onProgressUpdate</span><span class="p">(</span><span class="n">Integer</span><span class="p">...</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onProgressUpdate</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onProgressUpdate&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">texto</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;</span>
-<span class="s">Ejecutándose...&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">value</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
-<span class="w">        </span><span class="c1">// Mostrar progreso por pantalla</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Al finalizar, se actualiza la BBDD y la lista</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPostExecute</span><span class="p">(</span><span class="n">Nota</span><span class="w"> </span><span class="n">miNota</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onPostExecute, nota Cifrada&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">notaDbAdaptador</span><span class="p">.</span><span class="na">actualizaNota</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">miNota</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cursorAdapter</span><span class="p">.</span><span class="na">notifyDataSetChanged</span><span class="p">();</span>
-<span class="w">        </span><span class="n">actualizaLista</span><span class="p">();</span>
+<span class="w">        </span><span class="k">default</span><span class="p">:</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(c) (1 punto) ¿Qué métodos relativos al ciclo de vida de las actividades ListActivity y AnadirGastoActivity se ejecutan desde que se selecciona la opción “Añadir” del menú hasta que se vuelve a mostrar la lista de gasto? Escriba sólo el nombre del método y la actividad a la que pertenece, y el orden adecuado.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Actividad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onPause()</td>
+<td>ListActivity</td>
+</tr>
+<tr>
+<td>onCreate()</td>
+<td>AnadirGastoActivity</td>
+</tr>
+<tr>
+<td>onStart()</td>
+<td>AnadirGastoActivity</td>
+</tr>
+<tr>
+<td>onResume()</td>
+<td>AnadirGastoActivity</td>
+</tr>
+<tr>
+<td>onStop()</td>
+<td>AnadirGastoActivity</td>
+</tr>
+<tr>
+<td>onPause()</td>
+<td>AnadirGastoActivity</td>
+</tr>
+<tr>
+<td>onRestart()</td>
+<td>ListActivity</td>
+</tr>
+<tr>
+<td>onStart()</td>
+<td>ListActivity</td>
+</tr>
+<tr>
+<td>onResume()</td>
+<td>ListActivity</td>
+</tr>
+<tr>
+<td>onStop()</td>
+<td>AnadirGastoActivity</td>
+</tr>
+</tbody>
+</table>
+</details>
+<ul>
+<li>(d) (1 punto) Escriba un método de la clase DatabaseHelper que añada un nuevo registro a la base de datos. La información del Concepto y del Importe se pasará como parámetros del método.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">creaProducto</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">gasto</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">importe</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ContentValues</span><span class="w"> </span><span class="n">valoresIniciales</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ContentValues</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">valoresIniciales</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;Concepto&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">gasto</span><span class="p">);</span>
+<span class="w">    </span><span class="n">valoresIniciales</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;Importe&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">importe</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">DATABASE_TABLE</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">valoresIniciales</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(e) (1 punto) Escriba una especificación de layout adecuada que se pueda utilizar en la actividad “AnadirGastoActivity”. Además de los campos de información, dispondrá de un botón “Guardar” y otro “Cancelar” (sólo hay que poner los botones). </li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;LinearLayout</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<span class="w">    </span><span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
+<span class="w">    </span><span class="na">android:layout_height=</span><span class="s">&quot;fill_parent &quot;</span>
+<span class="w">    </span><span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span><span class="nt">&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;LinearLayout</span>
+<span class="w">        </span><span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
+<span class="w">        </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content &quot;</span><span class="nt">&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;TextView</span>
+<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:text=</span><span class="s">&quot;Concepto &quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;EditText</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/editConcepto&quot;</span>
+<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
+<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/EditText&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/LinearLayout&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;LinearLayout</span>
+<span class="w">        </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">        </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span><span class="nt">&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;TextView</span>
+<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:text=</span><span class="s">&quot;Cantidad “ /&gt;</span>
+
+<span class="s">        &lt;EditText</span>
+<span class="s">            android:id=&quot;</span><span class="err">@+id/editTextCantidad&quot;</span>
+<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
+<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:inputType=</span><span class="s">&quot;numberDecimal&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/LinearLayout&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;LinearLayout</span><span class="w"> </span><span class="na">android:orientation=</span><span class="s">&quot;horizontal&quot;</span><span class="nt">&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;Button</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/buttonGuardar&quot;</span>
+<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:text=</span><span class="s">&quot;Guardar&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;Button</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/buttonCancelar&quot;</span>
+<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:text=</span><span class="s">&quot;Cancelar&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/LinearLayout&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
 </code></pre></div>
 </details>
 

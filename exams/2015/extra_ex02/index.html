@@ -19,7 +19,7 @@
     
     
       
-        <title>Extra04 - Catálogo ejercicios años anteriores</title>
+        <title>Extra ex02 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Extra04
+              Extra ex02
             
           </span>
         </div>
@@ -502,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1/" class="md-nav__link">
+      <a href="../../2013/p1/" class="md-nav__link">
         
   
   
@@ -530,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1r/" class="md-nav__link">
+      <a href="../../2013/p1r/" class="md-nav__link">
         
   
   
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p2/" class="md-nav__link">
+      <a href="../../2013/p2/" class="md-nav__link">
         
   
   
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extra/" class="md-nav__link">
+      <a href="../../2013/extra/" class="md-nav__link">
         
   
   
@@ -836,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p1/" class="md-nav__link">
+      <a href="../p1/" class="md-nav__link">
         
   
   
@@ -864,7 +864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p1r/" class="md-nav__link">
+      <a href="../p1r/" class="md-nav__link">
         
   
   
@@ -892,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/p2/" class="md-nav__link">
+      <a href="../p2/" class="md-nav__link">
         
   
   
@@ -920,7 +920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2015/extra/" class="md-nav__link">
+      <a href="../extra/" class="md-nav__link">
         
   
   
@@ -1021,130 +1021,54 @@
       
       
       
-        <span class="md-tag">android</span>
+        <span class="md-tag">monitores</span>
       
     
   </nav>
 
 
 
-  <h1>Extra04</h1>
+  <h1>Extra ex02</h1>
 
-<p>Se desea modificar la aplicación <code>Teleconote</code> de manera que la pantalla con la lista de notas (controlada por la actividad <code>ListaNotasActivity</code>) se comporte de forma que, al pinchar en una nota, si está cifrada, se descifre sin pedir ninguna contraseña. Si la nota no está cifrada, se deja como está.</p>
-<p>Obsérvese que no hay que mostrar el contenido de la nota, sólo descifrarla en caso necesario desde <code>ListaNotasActivity</code>.</p>
-<p>Puede suponer que la clase que contiene la tarea asíncrona, que programó en <code>DetalleNotaActivity</code>, está refactorizada como una clase de paquete, de la siguiente forma:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cifrar</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;?</span><span class="p">,</span><span class="o">?</span><span class="p">,</span><span class="o">?&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPreExecute</span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span>
-
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">doInBackground</span><span class="p">(...)</span><span class="w"> </span><span class="p">{...}</span>
-
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onProgressUpdate</span><span class="p">(...)</span><span class="w"> </span><span class="p">{...}</span>
-
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPostExecute</span><span class="p">(...)</span><span class="w"> </span><span class="p">{...}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>La tarea recibe varias cadenas (el título y contenido de la nota, así como su id), comunica el número de caracteres cifrados o descifrados, y devuelve el objeto nota con los campos <code>titulo</code> y <code>contenido</code> descifrados.</p>
+<p>Un sistema está compuesto por un conjunto de hebras que deben acceder a un recurso compartido con exclusión mutua. Estas hebras se dividen en dos grupos: H1 y H2. Las hebras del grupo H2 acceden al recurso con prioridad respecto a las del grupo H1. Es decir, las hebras H1 no pueden acceder al recurso si hay alguna hebra H2 esperando. Además, las hebras del grupo H1 deben acceder al recurso en el mismo orden en el que lo han solicitado.</p>
 <ul>
-<li>(a) (3 puntos) Indique qué signatura debería tener la clase <code>Cifrar</code>.</li>
+<li>(a) (4 puntos) Se pide desarrollar el monitor GestorRecurso que gestione el acceso al recurso, de acuerdo a las características descritas. El monitor deberá tener tres operaciones:<ul>
+<li>… solicitarRecursoH1(): Este método lo invocan las hebras del grupo H1 para solicitar acceso al recurso.</li>
+<li>… solicitarRecursoH2(): Este método lo invocan las hebras del grupo H2 para solicitar acceso al recurso.</li>
+<li>… liberarRecurso(): Este método lo invocan las hebras de los dos grupos para liberar el recurso.</li>
+</ul>
+</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La signatura correcta de la clase <code>Cifrar</code> es:</p>
-<div class="highlight"><pre><span></span><code><span class="n">Cifrar</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">Nota</span><span class="o">&gt;</span>
-</code></pre></div>
-</details>
-<ul>
-<li>(b) (7 puntos) Indique los cambios necesarios para que se ejecute la tarea de descifrado con esta modificación. Tenga en cuenta que los cambios deben almacenarse en la base de datos, y que debe actualizarse la pantalla de <code>ListaNotasActivity</code>.</li>
-</ul>
-<p>NOTA: Limítese a hacer los cambios necesarios. No es necesario volver a escribir el código de <code>Cifrar</code> ni las partes de <code>ListaNotasActivity</code> que no haya que modificar.</p>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>A continuación se muestran únicamente los cambios necesarios para ejecutar la tarea de descifrado desde <code>ListaNotasActivity</code>. Los cambios relevantes se destacan conceptualmente. 
-<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onListItemClick</span><span class="p">(</span><span class="n">ListView</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">super</span><span class="p">.</span><span class="na">onListItemClick</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Cursor</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">notasCursor</span><span class="p">;</span>
-<span class="w">    </span><span class="n">c</span><span class="p">.</span><span class="na">moveToPosition</span><span class="p">(</span><span class="n">position</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorRecurso</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">turno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ultimoSolicitar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nH2Esperando</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">recursoOcupado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">Nota</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNota</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">nota</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">nota</span><span class="p">.</span><span class="na">isCifrado</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">Cifrar</span><span class="p">().</span><span class="na">execute</span><span class="p">(</span>
-<span class="w">            </span><span class="n">nota</span><span class="p">.</span><span class="na">getContenido</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">nota</span><span class="p">.</span><span class="na">getTitulo</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">nota</span><span class="p">.</span><span class="na">getCategoria</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span><span class="w"> </span><span class="n">MODIFICA_NOTA</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cifrar</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">Nota</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">CLAVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="s">&quot;miclave&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// Se puede acceder a la UI</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPreExecute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Método de descifrado (no se modifica)</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">descifra</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Código existente que almacena el texto</span>
-<span class="w">        </span><span class="c1">// descifrado en un buffer</span>
-<span class="w">        </span><span class="p">...</span>
-<span class="w">        </span><span class="n">publishProgress</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Ejecución en segundo plano</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">Nota</span><span class="w"> </span><span class="nf">doInBackground</span><span class="p">(</span><span class="n">String</span><span class="p">...</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;doInBackground&quot;</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">titulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">contenido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">categoria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
-
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">titulo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">contenido</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">categoria</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">))</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Long</span><span class="p">.</span><span class="na">parseLong</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">NumberFormatException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">SolicitarRecursoH1</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">miTurno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ultimoSolicitar</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ultimoSolicitar</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">miTurno</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">turno</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">nH2Esperando</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">recursoOcupado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
 <span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">tituloDescifrado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">descifra</span><span class="p">(</span><span class="n">titulo</span><span class="p">,</span><span class="w"> </span><span class="n">CLAVE</span><span class="p">);</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">contenidoDescifrado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">descifra</span><span class="p">(</span><span class="n">contenido</span><span class="p">,</span><span class="w"> </span><span class="n">CLAVE</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">Nota</span><span class="w"> </span><span class="n">miNota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Nota</span><span class="p">(</span>
-<span class="w">            </span><span class="n">tituloDescifrado</span><span class="p">,</span>
-<span class="w">            </span><span class="n">contenidoDescifrado</span><span class="p">,</span>
-<span class="w">            </span><span class="n">categoria</span><span class="p">,</span>
-<span class="w">            </span><span class="kc">false</span>
-<span class="w">        </span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">miNota</span><span class="p">;</span>
+<span class="w">        </span><span class="n">turno</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">recursoOcupado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// Actualizaciones de progreso en la UI</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onProgressUpdate</span><span class="p">(</span><span class="n">Integer</span><span class="p">...</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onProgressUpdate</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onProgressUpdate&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">texto</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;</span>
-<span class="s">Ejecutándose...&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">value</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
-<span class="w">        </span><span class="c1">// Mostrar progreso por pantalla</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">SolicitarRecursoH2</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">nH2Esperando</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">recursoOcupado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">recursoOcupado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="n">nH2Esperando</span><span class="o">--</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// Al finalizar, se actualiza la BBDD y la lista</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPostExecute</span><span class="p">(</span><span class="n">Nota</span><span class="w"> </span><span class="n">miNota</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onPostExecute, nota Cifrada&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">notaDbAdaptador</span><span class="p">.</span><span class="na">actualizaNota</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">miNota</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cursorAdapter</span><span class="p">.</span><span class="na">notifyDataSetChanged</span><span class="p">();</span>
-<span class="w">        </span><span class="n">actualizaLista</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">LiberarRecurso</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">recursoOcupado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
