@@ -19,7 +19,7 @@
     
     
       
-        <title>Extra ex05 - Catálogo ejercicios años anteriores</title>
+        <title>P1 ex03 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -89,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Extra ex05
+              P1 ex03
             
           </span>
         </div>
@@ -996,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1/" class="md-nav__link">
+      <a href="../../2015/p1/" class="md-nav__link">
         
   
   
@@ -1024,7 +1024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1r/" class="md-nav__link">
+      <a href="../../2015/p1r/" class="md-nav__link">
         
   
   
@@ -1052,7 +1052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p2/" class="md-nav__link">
+      <a href="../../2015/p2/" class="md-nav__link">
         
   
   
@@ -1080,7 +1080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extra/" class="md-nav__link">
+      <a href="../../2015/extra/" class="md-nav__link">
         
   
   
@@ -1176,7 +1176,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2016/p1/" class="md-nav__link">
+      <a href="../p1/" class="md-nav__link">
         
   
   
@@ -1204,7 +1204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2016/p1r/" class="md-nav__link">
+      <a href="../p1r/" class="md-nav__link">
         
   
   
@@ -1232,7 +1232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2016/extra/" class="md-nav__link">
+      <a href="../extra/" class="md-nav__link">
         
   
   
@@ -1333,98 +1333,102 @@
       
       
       
-        <span class="md-tag">android</span>
+        <span class="md-tag">complejidad</span>
       
     
   </nav>
 
 
 
-  <h1>Extra ex05</h1>
+  <h1>P1 ex03</h1>
 
 <ul>
-<li>(a) (2 puntos) El proyecto 2 se basa en una adaptación del proyecto 1. Seleccione la respuesta o respuestas correctas en la hoja de respuestas. Las respuestas incorrectas restan.<ul>
-<li>
-<ol>
-<li>La clase Terreno se adapta al ciclo de vida de Android</li>
-<li>I. No sería imprescindible realizar esta adaptación; simplemente la aplicación seguiría usando recursos cuando no está en primer plano.</li>
-<li>II. Si no hacemos la adaptación, tendremos interbloqueos.</li>
-<li>III. Los móviles se congelan en onPause() y se descongelan en onResume().</li>
-<li>IV. Los móviles se resucitan en onCreate()</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>Las clases que extienden Movil (p.ej. Jugador, Estatua, Depredador, …)</li>
-<li>I. Deben implementar restart() porque es un método abstracto en Movil</li>
-<li>II. Si además implementan Runnable, deben crear en restart() una hebra (new Thread()) y llamar a start() en la hebra creada</li>
-<li>III. Si ademá s implementan Runnable, deben crear en pause() una hebra (new Thread()) y llamar a pause() en la hebra creada</li>
-<li>IV. Siempre que extienden Movil deben implementar Runnable</li>
-</ol>
-</li>
+<li>(a) (1 punto) Modifique la clase Sensor para que se pueda integrar en una hebra que comparta información con los sensores cercanos cada 30 s. Para ello se puede implementar la interfaz Runnable.</li>
 </ul>
-</li>
-</ul>
-<details class="note">
-<summary>Mostrar solución</summary>
-<ul>
-<li>
-<p>En 1 la opción correcta es III.</p>
-</li>
-<li>
-<p>En 2 las opciones correctas son III y IV.</p>
-</li>
-</ul>
-</details>
-<ul>
-<li>(b) (3 puntos) Deseamos simplificar el comportamiento que hemos implementado el proyecto 2 para mover con el dedo el jugador. El nuevo comportamiento consiste en que si pulsamos en la casilla donde está el jugador, lanza un popup. Si pulsamos en una casilla diferente, el jugador se mueve en la dirección en la que está dicha casilla respecto del jugador.</li>
-</ul>
-<p>Además, queremos poner una traza de error si se pulsa fuera del tablero.</p>
-<p>Suponga que dispone del método popup para lanzar el popup como en la práctica, así como el resto de métodos de las clases.</p>
-<details class="note">
-<summary>Mostrar solución</summary>
-<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">onTouch</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="p">,</span><span class="w"> </span><span class="n">MotionEvent</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Movil</span><span class="w"> </span><span class="n">jugador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getJugador</span><span class="p">();</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">jugador</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Sensor</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Runnable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Red</span><span class="w"> </span><span class="n">red</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">medida</span><span class="p">;</span><span class="w"> </span><span class="c1">// valor leído por el sensor</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getAction</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MotionEvent</span><span class="p">.</span><span class="na">ACTION_DOWN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getX</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">);</span>
-<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getN</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getY</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Sensor</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">Red</span><span class="w"> </span><span class="n">red</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">red</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">red</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">            </span><span class="n">Casilla</span><span class="w"> </span><span class="n">casilla</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getCasilla</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">y1</span><span class="p">);</span>
-<span class="w">            </span><span class="n">Casilla</span><span class="w"> </span><span class="n">casillaJugador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jugador</span><span class="p">.</span><span class="na">getCasilla</span><span class="p">();</span>
-
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">casillaJugador</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">casilla</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">popup</span><span class="p">(</span><span class="n">casilla</span><span class="p">);</span>
-<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">x1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">casillaJugador</span><span class="p">.</span><span class="na">getX</span><span class="p">());</span>
-<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">y1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">casillaJugador</span><span class="p">.</span><span class="na">getY</span><span class="p">());</span>
-<span class="w">                </span><span class="n">Direccion</span><span class="w"> </span><span class="n">direccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dy</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">                    </span><span class="n">direccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Direccion</span><span class="p">.</span><span class="na">NORTE</span><span class="p">;</span>
-<span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dy</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">                    </span><span class="n">direccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Direccion</span><span class="p">.</span><span class="na">SUR</span><span class="p">;</span>
-<span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dx</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">                    </span><span class="n">direccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Direccion</span><span class="p">.</span><span class="na">ESTE</span><span class="p">;</span>
-<span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">                    </span><span class="n">direccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Direccion</span><span class="p">.</span><span class="na">OESTE</span><span class="p">;</span>
-
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">direccion</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="n">terreno</span><span class="p">.</span><span class="na">move</span><span class="p">(</span><span class="n">jugador</span><span class="p">,</span><span class="w"> </span><span class="n">direccion</span><span class="p">);</span>
-<span class="w">                </span><span class="p">}</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// transmitir la lectura cada 30 segundos</span>
+<span class="w">                </span><span class="n">red</span><span class="p">.</span><span class="na">transmitir</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">medida</span><span class="p">);</span>
+<span class="w">                </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">30000</span><span class="p">);</span><span class="w"> </span><span class="c1">// 30 s</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">().</span><span class="na">interrupt</span><span class="p">();</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ha pulsado fuera del tablero&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Para implementar la interfaz Runnable espreciso redefinir el método run():
+<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sleep</span><span class="p">(</span><span class="mi">30000</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Sensor</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">red</span><span class="p">.</span><span class="na">cercanos</span><span class="p">(</span><span class="n">f</span><span class="p">).</span><span class="na">get</span><span class="p">(</span><span class="k">this</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">red</span><span class="p">.</span><span class="na">enviar</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">medida</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</details>
+<ul>
+<li>(b) (1 punto) Escriba una línea de código java para arrancar una hebra que ejecute el código concurrente de Sensor.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Para arrancar una hebra que ejecute el método run() anterior hay que crear la hebra a partir del Runnable y hacer start():
+<div class="highlight"><pre><span></span><code><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Sensor</span><span class="p">()).</span><span class="na">start</span><span class="p">();</span>
+</code></pre></div>
+o alternativamente:
+<div class="highlight"><pre><span></span><code><span class="n">Runnable</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Sensor</span><span class="p">(</span><span class="err">…</span><span class="p">);</span>
+<span class="n">Thread</span><span class="w"> </span><span class="n">tread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(</span><span class="n">sensor</span><span class="p">);</span>
+<span class="n">thread</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+</code></pre></div></p>
+</details>
+<ul>
+<li>(c) (1 punto) En el puesto de mando y control, un servidor ejecuta un programa basado en la clase Red de las preguntas anteriores, y recibe peticiones de los operadores locales y de los muchos sensores distribuidos por Madrid. Modifique la clase Red para que pueda atender cargas, recargas y peticiones concurrentes sin problemas de concurrencia.</li>
+</ul>
+<p>NOTAS
+1. Suponga que el valor medido por el sensor (medida) se actualiza automáticamente por algún mecanismo que no es relevante para examen.
+2. Suponga que la clase Red incluye el método
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enviar</span><span class="w"> </span><span class="p">(</span><span class="n">Sensor</span><span class="w"> </span><span class="n">destino</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">medida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span>
+</code></pre></div></p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Para que la clase Red se pueda usar de forma segura desde varias hebras es preciso convertirla en un monitor. Como no tiene atributos públicos basta para ello con sincronizar todos sus métodos públicos:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Red</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Diccionario</span><span class="w"> </span><span class="n">diccionario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DiccionarioImpl</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">cargar</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sensores</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">d0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">cercanos</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enviar</span><span class="p">(</span><span class="n">Sensor</span><span class="w"> </span><span class="n">destino</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">medida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
 </details>
 
 
