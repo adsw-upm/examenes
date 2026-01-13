@@ -16,6 +16,7 @@ Se tiene un sistema con dos hebras (H1 y H2) que acceden continuamente a un recu
     - ... void liberar(): Este método lo invocan las hebras para liberar el recurso compartido.
 
 ??? note "Mostrar solución"
+    ```java
     public class GestorCiclosAcceso {
         private boolean turnoH1 = true;
         private int nAccesoH1 = 0;
@@ -84,9 +85,10 @@ Se tiene un sistema con dos hebras (H1 y H2) que acceden continuamente a un recu
             notifyAll();
         }
     }
-    
+    ```
     Otra posible implementación, que utiliza máquinas de estados, es la siguiente:
     
+    ```java
     public class GestorCiclosAcceso2 {
         // estado 0 - espera H1
         // estado 1 - espera H1
@@ -131,4 +133,5 @@ Se tiene un sistema con dos hebras (H1 y H2) que acceden continuamente a un recu
             return false;
         }
     }
+    ```
 
