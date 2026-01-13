@@ -1015,10 +1015,41 @@
                 
                   
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">???</span>
+      
+    
+  </nav>
+
 
 
   <h1>P1r ex03</h1>
 
+<p>Dado el siguiente terreno de prueba y la situación del jugador y el depredador que se muestra:</p>
+<p><img alt="" src="../p1r/p1r_ex03.png" /></p>
+<ul>
+<li>(a) (1 punto) Describa un caso posible de error para detectar errores del método primerPaso de la clase Depredador del alumno y prográmelo con JUnit.</li>
+</ul>
+<details class="note">
+<summary>Mostar solución</summary>
+<p>Suponemos que la variable terreno se refiere al terreno creado con la configuración de la figura, y que la variable depredador se refiere al depredador situado en el terreno anterior.</p>
+<p>El primer paso de la ruta más corta desde la casilla donde está el depredador (1,1) y la del jugador (3,2) es la casilla (1,0). Para comprobar que el funcionamiento del método primerPaso() es correcto, pues, basta con probar la siguiente aserción</p>
+<p>assertEquals(terreno.getCasilla(1,0),</p>
+<p>depredador.primerPaso(terreno.getCasilla(1,1),terreno.getCasilla(3,2)))</p>
+</details>
+<ul>
+<li>(b) (1 punto) Escriba un caso de prueba para comprobar si el número de paredes en el terreno es igual a 10 (los bordes no cuentan), utilizando métodos públicos de las clases del proyecto.</li>
+</ul>
+<details class="note">
+<summary>Mostar solución</summary>
+<p>Para comprobar el número de paredes basta hacer
+    assertEquals(10, terreno.getparedes().size()</p>
+</details>
 
 
 
@@ -1026,6 +1057,8 @@
 
 
 
+  
+  
 
 
 
