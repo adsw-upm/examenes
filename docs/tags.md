@@ -4,4 +4,4 @@
 
 La siguiente página muestra automáticamente todos los ejercicios agrupados por tag.
 
-[TAGS]
+{{ generate_tags_list() }}
