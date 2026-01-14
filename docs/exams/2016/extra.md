@@ -2,8 +2,13 @@
 year: 2016
 exam: extraordinario
 exercises:
-  - p1_ex01.md
-  - p1_ex02.md
+  - extra_ex01.md
+  - extra_ex02.md
+  - extra_ex03.md
+  - extra_ex04.md
+  - extra_ex05.md
+  - extra_ex06.md
+  - extra_ex07.md
 ---
 
 
@@ -17,3 +22,15 @@ exercises:
 
 ## Problema 3
 {{ include("extra_ex03.md") }}
+
+## Problema 4
+{{ include("extra_ex04.md") }}
+
+## Problema 5
+{{ include("extra_ex05.md") }}
+
+## Problema 6
+{{ include("extra_ex06.md") }}
+
+## Problema 7
+{{ include("extra_ex07.md") }}
