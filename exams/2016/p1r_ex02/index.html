@@ -19,7 +19,7 @@
     
     
       
-        <title>P2 ex02 - Catálogo ejercicios años anteriores</title>
+        <title>P1r ex02 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -89,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              P2 ex02
+              P1r ex02
             
           </span>
         </div>
@@ -814,7 +814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1/" class="md-nav__link">
+      <a href="../../2014/p1/" class="md-nav__link">
         
   
   
@@ -842,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1r/" class="md-nav__link">
+      <a href="../../2014/p1r/" class="md-nav__link">
         
   
   
@@ -870,7 +870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p2/" class="md-nav__link">
+      <a href="../../2014/p2/" class="md-nav__link">
         
   
   
@@ -898,7 +898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extra/" class="md-nav__link">
+      <a href="../../2014/extra/" class="md-nav__link">
         
   
   
@@ -1178,7 +1178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2016/p1/" class="md-nav__link">
+      <a href="../p1/" class="md-nav__link">
         
   
   
@@ -1206,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2016/p1r/" class="md-nav__link">
+      <a href="../p1r/" class="md-nav__link">
         
   
   
@@ -1234,7 +1234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2016/p2/" class="md-nav__link">
+      <a href="../p2/" class="md-nav__link">
         
   
   
@@ -1262,7 +1262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2016/extra/" class="md-nav__link">
+      <a href="../extra/" class="md-nav__link">
         
   
   
@@ -1363,71 +1363,135 @@
       
       
       
-        <span class="md-tag">android</span>
+        <span class="md-tag">???</span>
       
     
   </nav>
 
 
 
-  <h1>P2 ex02</h1>
+  <h1>P1r ex02</h1>
 
-<p>Conteste a las siguientes preguntas:</p>
+<p>Una aplicación móvil registra la actividad de un senderista. Cuando empieza una caminata, la aplicación guarda la fecha (de comienzo del paseo) y una lista de coordenadas en el plano (x, y), obtenidas cada segundo. Cuando el senderista termina su actividad, la aplicación manda a un servidor la siguiente información: nombre completo del senderista (String), fecha de comienzo de la actividad (Date) y la lista de coordenadas recorridas.</p>
+<p>El servidor, escrito en Java, guarda para cada senderista, todas las rutas que haya recorrido. Para ello, dispone de un diccionario donde la clave es el nombre del senderista y el valor es una lista de todas las rutas recorridas por
+dicho senderista.</p>
+<p>Se dispone de las siguientes declaraciones:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Coordenada</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// constructor, getters y setters al uso</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">distancia</span><span class="p">(</span><span class="n">Coordenada</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">abs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="na">x</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">abs</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="na">y</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">sqrt</span><span class="p">(</span><span class="n">dx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dy</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dy</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Servidor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Diccionario</span><span class="w"> </span><span class="n">rutas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="cm">/* implementación */</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">anadir</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">senderista</span><span class="p">,</span><span class="w"> </span><span class="n">Ruta</span><span class="w"> </span><span class="n">ruta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">campeon</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Ruta</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">fechaComienzo</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Coordenada</span><span class="o">&gt;</span><span class="w"> </span><span class="n">puntos</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// constructor, getters y setters al uso</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">longitud</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
-<li>(a) (1,5 puntos) En un layout existe un widget de tipo EditText con id “telefono”. Escribir el código que extrae lo tecleado por el usuario en el widget y genera una traza con el contenido.</li>
+<li>(a) (1 punto) Codificar el método añadir.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<div class="highlight"><pre><span></span><code><span class="n">EditText</span><span class="w"> </span><span class="n">telefono</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditText</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">telefono</span><span class="p">);</span>
-<span class="n">String</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telefono</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">();</span>
-<span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">.(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="err">“</span><span class="n">Teléfono</span><span class="p">:</span><span class="w"> </span><span class="err">“</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">numero</span><span class="p">);</span>
+<p>Como se usa un diccionario, es necesario que tengamos una lista de senderistas registrados. Por ello queda:
+<div class="highlight"><pre><span></span><code><span class="c1">// rutas de cada senderista</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">Diccionario</span><span class="w"> </span><span class="n">rutasPorSenderista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DiccionarioHashMap</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="c1">// también vale:</span>
+<span class="c1">// private Map&lt;String, List&lt;Ruta&gt;&gt; rutasPorSenderista = new HashMap&lt;&gt;();</span>
+
+<span class="c1">// senderistas registrados, puede evitarse añadiendo keySet() a Diccionario</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lsenderistas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">anadir</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">senderista</span><span class="p">,</span><span class="w"> </span><span class="n">Ruta</span><span class="w"> </span><span class="n">ruta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Ruta</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Ruta</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="n">rutasPorSenderista</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">senderista</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// senderista no registrado</span>
+<span class="w">        </span><span class="n">lsenderistas</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">senderista</span><span class="p">);</span>
+<span class="w">        </span><span class="n">lr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Ruta</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">lr</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">ruta</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rutasPorSenderista</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">senderista</span><span class="p">,</span><span class="w"> </span><span class="n">lr</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</details>
+<ul>
+<li>(b) (1 punto) Codificar un método de la clase Ruta que calcule la longitud total del recorrido (método longitud de la clase Ruta).</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">longitud</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">puntos</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">puntos</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// ¿no hay puntos?</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">Coordenada</span><span class="w"> </span><span class="n">ant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">puntos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">puntos</span><span class="p">.</span><span class="na">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Coordenada</span><span class="w"> </span><span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">puntos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">ant</span><span class="p">.</span><span class="na">distancia</span><span class="p">(</span><span class="n">sig</span><span class="p">);</span>
+<span class="w">        </span><span class="n">ant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sig</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (1,5 puntos) Estando en una actividad se desea pasar a otra actividad llamada PantallaActivity. Escribir el código necesario para lanzar esta actividad pasándole un parámetro entero llamado “n”.</li>
+<li>(c) (2 puntos) Codificar un método de la clase Servidor que determine qué senderista ha recorrido más distancia en total, sumando todas sus rutas (método campeon de la clase Servidor). En caso de empate, puede devolver cualquiera.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<div class="highlight"><pre><span></span><code><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">PantallaActivity</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-<span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">&quot;n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
-<span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span>
-</code></pre></div>
-</details>
-<ul>
-<li>(c) (2 puntos) Necesitamos enviar un mensaje (String M) a una larga lista de destinatarios cuyas direcciones de email tenemos en una lista de direcciones <code>List&lt;Email&gt;</code>. Tenemos un método para enviar un correo:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span><span class="n">Email</span><span class="w"> </span><span class="n">direccion</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">mensaje</span><span class="p">)</span>
-</code></pre></div>
-<p>Como este método puede ser lento, usaremos una AsyncTask para el envío a la lista. Suponga que llamamos al método execute() pasándole como parámetro la String M. Escriba la cabecera y
-cuerpo del método de la AsyncTask que se ejecuta en otra hebra (thread) de forma que ocurra lo siguiente:
-    - cada vez que termina el envío de un mensaje, se lanza un Toast en la UI-thread con un mensaje que pone el email y el boolean que ha devuelto el método send()
-    - el resultado final es el tiempo transcurrido en la hebra asíncrona en milisegundos (un entero largo)</p>
-<details class="note">
-<summary>Mostrar solución</summary>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Correo</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Email</span><span class="o">&gt;</span><span class="w"> </span><span class="n">direcciones</span><span class="w"> </span><span class="p">...;</span>
+<p>campeón usa un método auxiliar para averiguar la la suma de longitudes de las rutas de un usuario:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">campeon</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">champ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">maxLong</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPreExecute</span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span><span class="w"> </span><span class="c1">// se ejecuta en la UIThread</span>
+<span class="w">    </span><span class="c1">// también:</span>
+<span class="w">    </span><span class="c1">// for (String senderista : rutasPorSenderista.keySet())</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">senderista</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">lsenderistas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Ruta</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Ruta</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="n">rutasPorSenderista</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">senderista</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">mayorCamino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sumaTotal</span><span class="p">(</span><span class="n">lr</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// se ejecuta en una nueva hebra, diferente de la UI Thread</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="nf">doInBackground</span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="p">...</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Long</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">mensaje</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Email</span><span class="w"> </span><span class="n">direccion</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">direcciones</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kt">boolean</span><span class="w"> </span><span class="n">enviado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">send</span><span class="p">(</span><span class="n">direccion</span><span class="p">,</span><span class="w"> </span><span class="n">mensaje</span><span class="p">);</span>
-<span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">direccion</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: “ + enviado;</span>
-<span class="s">            publishProgress(resultado);</span>
-<span class="s">        }</span>
-<span class="s">        Long t1 = System.currentTimeMillis();</span>
-<span class="s">        return t1 - t0;</span>
-<span class="s">    }</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mayorCamino</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">maxLong</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">maxLong</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mayorCamino</span><span class="p">;</span>
+<span class="w">            </span><span class="n">champ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">senderista</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">champ</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="s">    protected void onProgressUpdate(String... message) {...} // en la UIThread</span>
-<span class="s">    protected void onPostExecute(Long result) {...} // en la UIThread</span>
-<span class="s">}</span>
-</code></pre></div>
-<p>Sólo se da el código del método doInBackground, dado que los otros métodos se ejecutan en la UIThread. En particular, los Toast que se mencionan en el enunciado se lanzan desde los métodos     onProgressUpdate y onPostExecute, que se ejecutan en la hebra principal (UIThread).</p>
+<span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">sumaTotal</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Ruta</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">suma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Ruta</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">lr</span><span class="p">)</span>
+<span class="w">        </span><span class="n">suma</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="na">longitud</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">suma</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
 </details>
 
 
