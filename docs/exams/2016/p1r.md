@@ -11,10 +11,10 @@ exercises:
 # Examen 2016 — Parcial 1 Recuperación
 
 ## Problema 1
-{{ include("p1_ex01.md") }}
+{{ include("p1r_ex01.md") }}
 
 ## Problema 2
-{{ include("p1_ex02.md") }}
+{{ include("p1r_ex02.md") }}
 
 ## Problema 3
-{{ include("p1_ex03.md") }}
+{{ include("p1r_ex03.md") }}

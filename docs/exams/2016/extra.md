@@ -10,10 +10,10 @@ exercises:
 # Examen 2016 — Extraordinario
 
 ## Problema 1
-{{ include("p1_ex01.md") }}
+{{ include("extra_ex01.md") }}
 
 ## Problema 2
-{{ include("p1_ex02.md") }}
+{{ include("extra_ex02.md") }}
 
 ## Problema 3
-{{ include("p1_ex03.md") }}
+{{ include("extra_ex03.md") }}
