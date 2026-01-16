@@ -59,4 +59,9 @@ nav:
       - exams/2016/p1r.md
       - exams/2016/p2.md
       - exams/2016/extra.md
+    - "2017":
+      - exams/2017/p1.md
+      - exams/2017/p1r.md
+      - exams/2017/p2.md
+      - exams/2017/extra.md
     - "2021": exams/2021/exam.md
