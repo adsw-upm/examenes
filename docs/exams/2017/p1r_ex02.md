@@ -16,7 +16,7 @@ for (int i = 1; i < n; i++) {
 ```
 
 ??? note "Mostrar solución"
-El bucle se ejecuta n veces, y el tiempo de ejecución de f es constante, por lo que la complejidad es n*O(1) = O(n).
+    El bucle se ejecuta n veces, y el tiempo de ejecución de f es constante, por lo que la complejidad es n*O(1) = O(n).
 
 
 - (b) (1,65 puntos) Razone la complejidad de: 
