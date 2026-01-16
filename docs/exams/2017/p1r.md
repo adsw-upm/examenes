@@ -1,16 +1,16 @@
 ---
 year: 2017
-exam: parcial 1
+exam: parcial 1 recuperacion
 exercises:
-  - p1_ex01.md
-  - p2_ex02.md
+  - p1r_ex01.md
+  - p1r_ex02.md
 ---
 
 
-# Examen 2017 — Parcial 1
+# Examen 2017 — Parcial 1 Recuperación
 
 ## Problema 1
-{{ include("p1_ex01.md") }}
+{{ include("p1r_ex01.md") }}
 
 ## Problema 2
-{{ include("p1_ex02.md") }}
+{{ include("p1r_ex02.md") }}
