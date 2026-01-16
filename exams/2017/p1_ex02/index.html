@@ -336,6 +336,8 @@
       
         
       
+        
+      
     
     
     
@@ -1297,6 +1299,188 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2017
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2017
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen 2017 — Parcial 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p1r/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen 2017 — Parcial 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen 2017 — Parcial 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen 2017 — Parcial 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../2021/exam/" class="md-nav__link">
         
@@ -1357,10 +1541,99 @@
                 
                   
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">grafos</span>
+      
+    
+  </nav>
+
 
 
   <h1>P1 ex02</h1>
 
+<p>Se implementa un árbol binario de búsqueda (BST) con valores enteros positivos como un array, colocando su raíz principal en la posición 1 del array y, para todo nodo del mismo en la posición i, su hijo izquierdo en la posición 2<em>i, y su hijo derecho en la posición 2</em>i+1. La posición 0 del array mantiene el contador del número de nodos en el árbol. Un nodo no existe si su posición en el array no existe (se sale del tamaño del array) o el valor en el array es -1. Por ejemplo:</p>
+<p><img alt="" src="../p1/p1_ex02.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Índice</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Valor</td>
+<td>9</td>
+<td>8</td>
+<td>3</td>
+<td>10</td>
+<td>1</td>
+<td>6</td>
+<td>-1</td>
+<td>14</td>
+<td>-1</td>
+<td>-1</td>
+<td>4</td>
+<td>7</td>
+<td>-1</td>
+<td>-1</td>
+<td>13</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<p>Con esta representación de un árbol, se pide:</p>
+<ul>
+<li>(a) (2,5 puntos) Programar un recorrido en el árbol que imprima ordenados los contenidos de los nodos visitados:</li>
+</ul>
+<p>public void recorrer (int[] arbol) {...}</p>
+<p>En el ejemplo dado, debería imprimir:</p>
+<p>1 3 4 6 7 8 10 13 14</p>
+<p>Nota: suponga que no es necesario comprobar si la representación del árbol proporcionada es correcta.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>public void recorrer(int[] arbol) {
+    recorrer(arbol, 1);
+}</p>
+<p>private void recorrer(int[] arbol, int i) {
+    if (i &lt; arbol.length &amp;&amp; arbol[i] &gt;= 0) {
+        recorrer(arbol, 2 * i);
+        System.out.println(arbol[i]);
+        recorrer(arbol, 2 * i + 1);
+    }
+}</p>
+</details>
+<ul>
+<li>(b) (2,5 puntos) Razonar la complejidad de dicho recorrido.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>La complejidad (en tiempo) del algoritmo es lineal, es decir O(n), siendo n el número de nodos, puesto que recorre el árbol visitando todos sus nodos, y en cada uno de ellos realiza un trabajo de orden constante, es decir O(1).</p>
+<p>NOTA:</p>
+<p>Para la solución de la ecuación de recurrencia</p>
+<p>T(n) = T(n/2) + C + T(n/2) = 2 T(n/2) + C</p>
+<p>que se resuelve como O(n), <strong>ver apuntes</strong>.</p>
+</details>
 
 
 
@@ -1368,6 +1641,8 @@
 
 
 
+  
+  
 
 
 
