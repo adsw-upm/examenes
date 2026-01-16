@@ -1425,7 +1425,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 2017 — Parcial 1
+    Examen 2017 — Parcial 2
   
 
     
@@ -1547,7 +1547,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">hebras</span>
       
     
   </nav>
@@ -1556,7 +1556,167 @@
 
   <h1>P2 ex01</h1>
 
+<p>Se quiere desarrollar un sistema compuesto de dos conjuntos de hebras. Un conjunto de hebras (editoras) producen contenidos sobre un tema y los envían a un monitor, Gestor. Otro conjunto de hebras (suscriptoras) reciben los contenidos publicados sobre los temas a los que se suscriben. Las hebras editoras y suscriptoras utilizan los siguientes métodos del gestor para sincronizarse:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Gestor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enviarContenido</span><span class="w"> </span><span class="p">(</span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">,</span><span class="w"> </span><span class="n">Contenido</span><span class="w"> </span><span class="n">unContenido</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">Contenido</span><span class="w"> </span><span class="nf">recibirContenido</span><span class="w"> </span><span class="p">(</span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Se proporcionan las siguientes clases auxiliares que no hay que implementar:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Contenido</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">contenido</span><span class="p">;</span>
 
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Contenido</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">contenido</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">contenido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contenido</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">Tema</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">NACIONAL</span><span class="p">,</span><span class="w"> </span><span class="n">INTERNACIONAL</span><span class="p">,</span><span class="w"> </span><span class="n">CULTURA</span><span class="p">,</span><span class="w"> </span><span class="n">DEPORTE</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Tema</span><span class="w"> </span><span class="nf">random</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Nap</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Duerme un periodo aleatorio entre los limites indicados.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param min milisegundos minimos.</span>
+<span class="cm">     * @param max milisegundos maximos.</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">random</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>(a) (1 punto) Escriba el código de una clase que defina hebras suscriptoras. Cada hebra ejecuta un bucle N_VECES (una constante). En cada ciclo genera un tema aleatorio (ver más abajo) e invoca el gestor para recibir mensajes de ese tema. Al recibir un mensaje, invoca un método privado de la clase, procesarContenido(Contenido c), que no hay que implementar. Finalmente, se bloquea durante un tiempo aleatorio (puede usar el método nap.random()).</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Suscriptora</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Gestor</span><span class="w"> </span><span class="n">gestor</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N_VECES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">…</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Suscriptora</span><span class="p">(</span><span class="n">Gestor</span><span class="w"> </span><span class="n">gestor</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">gestor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gestor</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">procesarContenido</span><span class="p">(</span><span class="n">Contenido</span><span class="w"> </span><span class="n">unContenido</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Contenido</span><span class="w"> </span><span class="n">unContenido</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N_VECES</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">unTema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tema</span><span class="p">.</span><span class="na">random</span><span class="p">();</span>
+<span class="w">            </span><span class="n">unContenido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gestor</span><span class="p">.</span><span class="na">recibirContenido</span><span class="p">(</span><span class="n">unTema</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">unContenido</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">                </span><span class="n">procesarContenido</span><span class="p">(</span><span class="n">unContenido</span><span class="p">);</span>
+
+<span class="w">            </span><span class="n">Nap</span><span class="p">.</span><span class="na">random</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">);</span><span class="w"> </span><span class="c1">// por ejemplo</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (1 punto) Escriba un esquema del código de una clase para definir hebras editoras. En este caso, sólo hay que implementar el constructor. Su contenido sería similar a la anterior.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Editora</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Gestor</span><span class="w"> </span><span class="n">gestor</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N_VECES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Editora</span><span class="p">(</span><span class="n">Gestor</span><span class="w"> </span><span class="n">gestor</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">gestor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gestor</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(c) (2 puntos) Escriba el código de una clase con un programa principal (main) que arranque N_EDITORAS hebras editoras y N_SUSCRIPTORAS hebras suscriptoras, y cree el gestor de contenidos.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>```java
+public class PruebaGestor {</p>
+<pre><code>public static void main(String[] args) {
+    final int N_EDITORAS = 10;
+    final int N_SUSCRIPTORAS = 10;
+
+    Gestor gestor = new Gestor();
+
+    for (int i = 0; i &lt; N_EDITORAS; i++) {
+        new Editora(gestor, i).start();
+    }
+
+    for (int i = 0; i &lt; N_SUSCRIPTORAS; i++) {
+        new Suscriptora(gestor, i).start();
+    }
+}
+</code></pre>
+<p>}</p>
+</details>
+<p>```</p>
+<ul>
+<li>(d) (4 puntos) Completar la clase Gestor de forma que se comporte como un monitor, con lo necesario para sincronizar las hebras de las dos clases citadas. La implementación de los métodos del gestor debe cumplir la siguiente especificación:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enviarContenido</span><span class="p">(</span><span class="n">Contenido</span><span class="w"> </span><span class="n">unContenido</span><span class="p">,</span><span class="w"> </span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">)</span>
+</code></pre></div>
+<p>Cuando una hebra editora invoca este método para publicar un contenido, se debe reanudar la ejecución de todas las hebras suscriptoras que estuvieran esperando este tema. El contenido debe estar disponible para las suscriptoras hasta que una hebra editora envíe el siguiente contenido.</p>
+<div class="highlight"><pre><span></span><code><span class="p">...</span><span class="w"> </span><span class="n">Contenido</span><span class="w"> </span><span class="nf">recibirContenido</span><span class="w"> </span><span class="p">(</span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">)</span>
+</code></pre></div>
+<p>Cuando una hebra suscriptora invoca este método, recibe el último contenido publicado si su tema coincide con el solicitado. Si el último contenido es de otro tema, la hebra se bloquea hasta que una hebra editora envíe un contenido del tema solicitado.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Gestor</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Contenido</span><span class="w"> </span><span class="n">contenido</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Tema</span><span class="w"> </span><span class="n">tema</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enviarContenido</span><span class="p">(</span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">,</span><span class="w"> </span><span class="n">Contenido</span><span class="w"> </span><span class="n">unContenido</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">unContenido</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="n">contenido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unContenido</span><span class="p">;</span>
+<span class="w">        </span><span class="n">tema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unTema</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="n">Contenido</span><span class="w"> </span><span class="nf">recibirContenido</span><span class="p">(</span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">unTema</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">unTema</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">tema</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Interrupción no esperada&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">contenido</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">contenido</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 

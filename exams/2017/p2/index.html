@@ -23,7 +23,7 @@
     
     
       
-        <title>Examen 2017 — Parcial 1 - Catálogo ejercicios años anteriores</title>
+        <title>Examen 2017 — Parcial 2 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#examen-2017-parcial-1" class="md-skip">
+        <a href="#examen-2017-parcial-2" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Examen 2017 — Parcial 1
+              Examen 2017 — Parcial 2
             
           </span>
         </div>
@@ -1472,7 +1472,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 2017 — Parcial 1
+    Examen 2017 — Parcial 2
   
 
     
@@ -1490,7 +1490,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 2017 — Parcial 1
+    Examen 2017 — Parcial 2
   
 
     
@@ -1682,225 +1682,235 @@
 
 
 
-<h1 id="examen-2017-parcial-1">Examen 2017 — Parcial 1</h1>
+<h1 id="examen-2017-parcial-2">Examen 2017 — Parcial 2</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>En un proyecto se necesita programar una clase que represente un conjunto de palabras (String), sin que haya duplicados almacenados. Con este fin se realizan dos fases: fase 1 de carga de todas las palabras, con un método</p>
-<p>public void put (String palabra)</p>
-<p>y fase 2 de consulta, con un método</p>
-<p>boolean get (String palabra)</p>
-<p>que devuelve TRUE si, y solo si, la palabra dada como parámetro está en el diccionario.</p>
-<p>Se proponen varias opciones:
-    - 1) Las palabras se meten en un array, una tras otra; al acabar la fase 1, el array se ordena y se eliminan los duplicados, pasando a la fase 2 donde se usa el array sin duplicados.
-    - 2) Las palabras se meten en un diccionario implementado con una tabla hash, de forma que solo hay que almacenar la clave (es decir la palabra); si la clave está en el diccionario, get() devuelve TRUE.
-    - 3) Se combinan las opciones anteriores: las palabras (1) se meten en un array, (2) se ordena el array, (3) se eliminan duplicados, (4) los datos del array se cargan en un diccionario implementado con una tabla hash y (5) el método get() devuelve TRUE si, y solo si, la palabra está en el diccionario.</p>
-<ul>
-<li>(a) (2,5 puntos) Razone la complejidad de los métodos put() y get() en cada una de las opciones propuestos.</li>
-</ul>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>1)Fase 1: O(insertar al final del array n veces) + O(ordenar) + O(borrar duplicados) = O(n) + O(nlogn) + O(n)</p>
-<p>= O(nlog n).</p>
-<p>Fase 2: O(búsqueda array ordenado) = O(logn)</p>
-<p>2) Fase 1: O(insertar n veces) = O(n)</p>
-<p>Fase 2: O(1)</p>
-<p>3) Fase 1 = a) + O(transferir array→ hash) = O(nlogn) + O(n) = O(nlogn)</p>
-<p>Fase 2 = O(1)</p>
-</details>
-<ul>
-<li>(b) (2,5 puntos) Escriba el método public void put(String palabra) modificando el método public void put(String clave, String valor) del ejercicio 2 para que tenga la funcionalidad solicitada, usando internamente una tabla hash. Puede utilizar como base el código que aparece a continuación, rellenando los espacios que se indican.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HashListas</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">slots</span><span class="p">;</span><span class="w"> </span><span class="c1">// slots de la tabla Hash</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nDatos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// número de datos de la tabla</span>
+<p>Se quiere desarrollar un sistema compuesto de dos conjuntos de hebras. Un conjunto de hebras (editoras) producen contenidos sobre un tema y los envían a un monitor, Gestor. Otro conjunto de hebras (suscriptoras) reciben los contenidos publicados sobre los temas a los que se suscriben. Las hebras editoras y suscriptoras utilizan los siguientes métodos del gestor para sincronizarse:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Gestor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enviarContenido</span><span class="w"> </span><span class="p">(</span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">,</span><span class="w"> </span><span class="n">Contenido</span><span class="w"> </span><span class="n">unContenido</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">Contenido</span><span class="w"> </span><span class="nf">recibirContenido</span><span class="w"> </span><span class="p">(</span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Se proporcionan las siguientes clases auxiliares que no hay que implementar:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Contenido</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">contenido</span><span class="p">;</span>
 
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Constructor</span>
-<span class="cm">     * @param nSlots número de ranuras</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">HashListas</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">nSlots</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">slots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">nSlots</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nSlots</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">slots</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Contenido</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">contenido</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">contenido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contenido</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Calcula función hash e índice en slots</span>
-<span class="cm">     * @param clave String</span>
-<span class="cm">     * @return índice en slots</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getIdx</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">abs</span><span class="p">(</span><span class="n">clave</span><span class="p">.</span><span class="na">hashCode</span><span class="p">())</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">slots</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">Tema</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">NACIONAL</span><span class="p">,</span><span class="w"> </span><span class="n">INTERNACIONAL</span><span class="p">,</span><span class="w"> </span><span class="n">CULTURA</span><span class="p">,</span><span class="w"> </span><span class="n">DEPORTE</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Tema</span><span class="w"> </span><span class="nf">random</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Nap</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Mete una nueva palabra en el diccionario</span>
-<span class="cm">     * Si ya existe otra palabra, no hace nada</span>
-<span class="cm">     * @param clave palabra para almacenar</span>
+<span class="cm">     * Duerme un periodo aleatorio entre los limites indicados.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param min milisegundos minimos.</span>
+<span class="cm">     * @param max milisegundos maximos.</span>
 <span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Devuelve el valor asociado a la clave</span>
-<span class="cm">     * @param clave palabra que comprobamos</span>
-<span class="cm">     * @return true si está en el diccionario;</span>
-<span class="cm">     *         false en caso contrario</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">random</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<ul>
+<li>(a) (1 punto) Escriba el código de una clase que defina hebras suscriptoras. Cada hebra ejecuta un bucle N_VECES (una constante). En cada ciclo genera un tema aleatorio (ver más abajo) e invoca el gestor para recibir mensajes de ese tema. Al recibir un mensaje, invoca un método privado de la clase, procesarContenido(Contenido c), que no hay que implementar. Finalmente, se bloquea durante un tiempo aleatorio (puede usar el método nap.random()).</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HashListas</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">slots</span><span class="p">;</span><span class="w"> </span><span class="c1">// slots de la tabla Hash</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nDatos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// número de datos de la tabla</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Suscriptora</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Gestor</span><span class="w"> </span><span class="n">gestor</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N_VECES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">…</span><span class="p">;</span>
 
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Constructor</span>
-<span class="cm">     * @param nSlots número de ranuras</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">HashListas</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">nSlots</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">slots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">nSlots</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nSlots</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">slots</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Suscriptora</span><span class="p">(</span><span class="n">Gestor</span><span class="w"> </span><span class="n">gestor</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">gestor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gestor</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">procesarContenido</span><span class="p">(</span><span class="n">Contenido</span><span class="w"> </span><span class="n">unContenido</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Contenido</span><span class="w"> </span><span class="n">unContenido</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N_VECES</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">unTema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tema</span><span class="p">.</span><span class="na">random</span><span class="p">();</span>
+<span class="w">            </span><span class="n">unContenido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gestor</span><span class="p">.</span><span class="na">recibirContenido</span><span class="p">(</span><span class="n">unTema</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">unContenido</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">                </span><span class="n">procesarContenido</span><span class="p">(</span><span class="n">unContenido</span><span class="p">);</span>
+
+<span class="w">            </span><span class="n">Nap</span><span class="p">.</span><span class="na">random</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">);</span><span class="w"> </span><span class="c1">// por ejemplo</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (1 punto) Escriba un esquema del código de una clase para definir hebras editoras. En este caso, sólo hay que implementar el constructor. Su contenido sería similar a la anterior.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Editora</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Gestor</span><span class="w"> </span><span class="n">gestor</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N_VECES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
 
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Calcula función hash e índice en slots</span>
-<span class="cm">     * @param clave String</span>
-<span class="cm">     * @return índice en slots</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getIdx</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">abs</span><span class="p">(</span><span class="n">clave</span><span class="p">.</span><span class="na">hashCode</span><span class="p">())</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">slots</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Editora</span><span class="p">(</span><span class="n">Gestor</span><span class="w"> </span><span class="n">gestor</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">gestor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gestor</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Mete una nueva palabra en el diccionario</span>
-<span class="cm">     * Si ya existe otra palabra, no hace nada</span>
-<span class="cm">     * @param clave palabra para almacenar</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getIdx</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
-<span class="w">        </span><span class="n">put</span><span class="p">(</span><span class="n">slots</span><span class="o">[</span><span class="n">idx</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">clave</span><span class="p">);</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(c) (2 puntos) Escriba el código de una clase con un programa principal (main) que arranque N_EDITORAS hebras editoras y N_SUSCRIPTORAS hebras suscriptoras, y cree el gestor de contenidos.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>```java
+public class PruebaGestor {</p>
+<pre><code>public static void main(String[] args) {
+    final int N_EDITORAS = 10;
+    final int N_SUSCRIPTORAS = 10;
+
+    Gestor gestor = new Gestor();
+
+    for (int i = 0; i &lt; N_EDITORAS; i++) {
+        new Editora(gestor, i).start();
+    }
+
+    for (int i = 0; i &lt; N_SUSCRIPTORAS; i++) {
+        new Suscriptora(gestor, i).start();
+    }
+}
+</code></pre>
+<p>}</p>
+</details>
+<p>```</p>
+<ul>
+<li>(d) (4 puntos) Completar la clase Gestor de forma que se comporte como un monitor, con lo necesario para sincronizar las hebras de las dos clases citadas. La implementación de los métodos del gestor debe cumplir la siguiente especificación:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enviarContenido</span><span class="p">(</span><span class="n">Contenido</span><span class="w"> </span><span class="n">unContenido</span><span class="p">,</span><span class="w"> </span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">)</span>
+</code></pre></div>
+<p>Cuando una hebra editora invoca este método para publicar un contenido, se debe reanudar la ejecución de todas las hebras suscriptoras que estuvieran esperando este tema. El contenido debe estar disponible para las suscriptoras hasta que una hebra editora envíe el siguiente contenido.</p>
+<div class="highlight"><pre><span></span><code><span class="p">...</span><span class="w"> </span><span class="n">Contenido</span><span class="w"> </span><span class="nf">recibirContenido</span><span class="w"> </span><span class="p">(</span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">)</span>
+</code></pre></div>
+<p>Cuando una hebra suscriptora invoca este método, recibe el último contenido publicado si su tema coincide con el solicitado. Si el último contenido es de otro tema, la hebra se bloquea hasta que una hebra editora envíe un contenido del tema solicitado.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Gestor</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Contenido</span><span class="w"> </span><span class="n">contenido</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Tema</span><span class="w"> </span><span class="n">tema</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enviarContenido</span><span class="p">(</span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">,</span><span class="w"> </span><span class="n">Contenido</span><span class="w"> </span><span class="n">unContenido</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">unContenido</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="n">contenido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unContenido</span><span class="p">;</span>
+<span class="w">        </span><span class="n">tema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unTema</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">palabra</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">palabra</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="n">Contenido</span><span class="w"> </span><span class="nf">recibirContenido</span><span class="p">(</span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">unTema</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">unTema</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">tema</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Interrupción no esperada&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">contenido</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
-<span class="w">        </span><span class="n">nDatos</span><span class="o">++</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Devuelve el valor asociado a la clave</span>
-<span class="cm">     * @param clave palabra que comprobamos</span>
-<span class="cm">     * @return true si está en el diccionario;</span>
-<span class="cm">     *         false en caso contrario</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getIdx</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="n">slots</span><span class="o">[</span><span class="n">idx</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">clave</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">palabra</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">palabra</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">contenido</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>Se implementa un árbol binario de búsqueda (BST) con valores enteros positivos como un array, colocando su raíz principal en la posición 1 del array y, para todo nodo del mismo en la posición i, su hijo izquierdo en la posición 2<em>i, y su hijo derecho en la posición 2</em>i+1. La posición 0 del array mantiene el contador del número de nodos en el árbol. Un nodo no existe si su posición en el array no existe (se sale del tamaño del array) o el valor en el array es -1. Por ejemplo:</p>
-<p><img alt="" src="../p1/p1_ex02.png" /></p>
-<table>
-<thead>
-<tr>
-<th>Índice</th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-<th>10</th>
-<th>11</th>
-<th>12</th>
-<th>13</th>
-<th>14</th>
-<th>15</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Valor</td>
-<td>9</td>
-<td>8</td>
-<td>3</td>
-<td>10</td>
-<td>1</td>
-<td>6</td>
-<td>-1</td>
-<td>14</td>
-<td>-1</td>
-<td>-1</td>
-<td>4</td>
-<td>7</td>
-<td>-1</td>
-<td>-1</td>
-<td>13</td>
-<td>-1</td>
-</tr>
-</tbody>
-</table>
-<p>Con esta representación de un árbol, se pide:</p>
+<p>Tras numerosos e infructuosos intentos, España ha vuelto a ganar el festival de Eurovisión. Como país organizador, debe desarrollar una aplicación móvil para facilitar el televoto. Su misión es completar el código de la aplicación que se detalla a continuación.</p>
+<p>La aplicación consta de dos pantallas: MainActivity y VotacionActivity, como se ilustra en la figura.</p>
+<p>En la primera pantalla, el usuario introduce su país (p.ej. España) y puede elegir entre votar o listar canciones (esta última utilidad no es misión suya). Una vez escrito el país del usuario, si pincha en el botón Votación, pasa a la segunda pantalla VotacionActivity.</p>
+<p>En la segunda pantalla, VotacionActivity, el usuario puede realizar dos acciones. La primera es indicar a qué país vota (p.ej. Italia) y cuántos puntos le da (p.ej. 10), y pulsar el botón Votar. La segunda sería no realizar la votación (pulsando el botón Cancelar). Si el usuario pulsa el botón Votar, vuelve a la primera pantalla, y se muestra en un mensaje la votación realizada.</p>
+<p><img alt="" src="p2_ex02.png" /></p>
 <ul>
-<li>(a) (2,5 puntos) Programar un recorrido en el árbol que imprima ordenados los contenidos de los nodos visitados:</li>
+<li>(a) (2 puntos) Se pide que complete el código proporcionado en esta hoja de respuestas. Tenga que cuenta que sólo se entregará una hoja. Pase a esta hoja el código justo antes de entregar para evitar equivocaciones.</li>
 </ul>
-<p>public void recorrer (int[] arbol) {...}</p>
-<p>En el ejemplo dado, debería imprimir:</p>
-<p>1 3 4 6 7 8 10 13 14</p>
-<p>Nota: suponga que no es necesario comprobar si la representación del árbol proporcionada es correcta.</p>
+<p>Tal como se indica en la figura, de la Actividad MainActivity se pasa a VotacionActivity pasando la clave “country_voting” y el valor String introducido. De la segunda pantalla VotacionActivity, si el usuario pulsa en Votación, pasa a MainActivity pasándole los datos “country_voting” (valor String inicial recibido), “country_voted” (String del país votado) y “votes” (entero de los puntos).</p>
+<p>Debe completar cómo MainActivity pasa a VotacionActivity y cómo recibe estos valores. No tenga en cuenta casos anómalos (un valor no está relleno o no se ha pasado un valor entre actividades)</p>
 <details class="note">
 <summary>Mostrar solución</summary>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">recorrer</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arbol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">recorrer</span><span class="p">(</span><span class="n">arbol</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span>
 
-<span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">recorrer</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arbol</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">arbol</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">arbol</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">recorrer</span><span class="p">(</span><span class="n">arbol</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">arbol</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
-<span class="w">        </span><span class="n">recorrer</span><span class="p">(</span><span class="n">arbol</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">TAG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MainActivity</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getName</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">OBTENER_VOTOS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">TextView</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EditText</span><span class="w"> </span><span class="n">paisVotanteEditText</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Button</span><span class="w"> </span><span class="n">botonVotar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">botonVotacion</span><span class="p">);</span>
+<span class="w">        </span><span class="n">paisVotanteEditText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditText</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">editTextPaisVotante</span><span class="p">);</span>
+<span class="w">        </span><span class="n">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TextView</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">textViewResultado</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">botonVotar</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nd">@Override</span>
+<span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">country</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paisVotanteEditText</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">();</span>
+<span class="w">                </span><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span>
+<span class="w">                        </span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">VotacionActivity</span><span class="p">.</span><span class="na">class</span>
+<span class="w">                </span><span class="p">);</span>
+<span class="w">                </span><span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">&quot;country_voting&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">country</span><span class="p">);</span>
+<span class="w">                </span><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span><span class="w"> </span><span class="n">OBTENER_VOTOS</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onActivityResult</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">requestCode</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">resultCode</span><span class="p">,</span><span class="w"> </span><span class="n">Intent</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">,</span><span class="w"> </span><span class="n">resultCode</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">requestCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">OBTENER_VOTOS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">resultCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RESULT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Bundle</span><span class="w"> </span><span class="n">extras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">getExtras</span><span class="p">();</span>
+<span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">paisVotante</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;country_voting&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">paisVotado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;country_voted&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">votos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="p">.</span><span class="na">getInt</span><span class="p">(</span><span class="s">&quot;votes&quot;</span><span class="p">);</span>
+
+<span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">votos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; votos recibidos de &quot;</span>
+<span class="w">                        </span><span class="o">+</span><span class="w"> </span><span class="n">paisVotante</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; para &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">paisVotado</span><span class="p">;</span>
+
+<span class="w">                </span><span class="n">paisVotanteEditText</span><span class="p">.</span><span class="na">setEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">                </span><span class="n">resultado</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+<span class="w">                </span><span class="n">resultado</span><span class="p">.</span><span class="na">setVisibility</span><span class="p">(</span><span class="n">View</span><span class="p">.</span><span class="na">VISIBLE</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-</details>
-<ul>
-<li>(b) (2,5 puntos) Razonar la complejidad de dicho recorrido.</li>
-</ul>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>La complejidad (en tiempo) del algoritmo es lineal, es decir O(n), siendo n el número de nodos, puesto que recorre el árbol visitando todos sus nodos, y en cada uno de ellos realiza un trabajo de orden constante, es decir O(1).</p>
-<p>NOTA:</p>
-<p>Para la solución de la ecuación de recurrencia</p>
-<p>T(n) = T(n/2) + C + T(n/2) = 2 T(n/2) + C</p>
-<p>que se resuelve como O(n), <strong>ver apuntes</strong>.</p>
 </details>
 
 

@@ -1425,7 +1425,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 2017 — Parcial 1
+    Examen 2017 — Parcial 2
   
 
     
@@ -1547,7 +1547,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">android</span>
       
     
   </nav>
@@ -1556,7 +1556,72 @@
 
   <h1>P2 ex02</h1>
 
+<p>Tras numerosos e infructuosos intentos, España ha vuelto a ganar el festival de Eurovisión. Como país organizador, debe desarrollar una aplicación móvil para facilitar el televoto. Su misión es completar el código de la aplicación que se detalla a continuación.</p>
+<p>La aplicación consta de dos pantallas: MainActivity y VotacionActivity, como se ilustra en la figura.</p>
+<p>En la primera pantalla, el usuario introduce su país (p.ej. España) y puede elegir entre votar o listar canciones (esta última utilidad no es misión suya). Una vez escrito el país del usuario, si pincha en el botón Votación, pasa a la segunda pantalla VotacionActivity.</p>
+<p>En la segunda pantalla, VotacionActivity, el usuario puede realizar dos acciones. La primera es indicar a qué país vota (p.ej. Italia) y cuántos puntos le da (p.ej. 10), y pulsar el botón Votar. La segunda sería no realizar la votación (pulsando el botón Cancelar). Si el usuario pulsa el botón Votar, vuelve a la primera pantalla, y se muestra en un mensaje la votación realizada.</p>
+<p><img alt="" src="../p2/p2_ex02.png" /></p>
+<ul>
+<li>(a) (2 puntos) Se pide que complete el código proporcionado en esta hoja de respuestas. Tenga que cuenta que sólo se entregará una hoja. Pase a esta hoja el código justo antes de entregar para evitar equivocaciones.</li>
+</ul>
+<p>Tal como se indica en la figura, de la Actividad MainActivity se pasa a VotacionActivity pasando la clave “country_voting” y el valor String introducido. De la segunda pantalla VotacionActivity, si el usuario pulsa en Votación, pasa a MainActivity pasándole los datos “country_voting” (valor String inicial recibido), “country_voted” (String del país votado) y “votes” (entero de los puntos).</p>
+<p>Debe completar cómo MainActivity pasa a VotacionActivity y cómo recibe estos valores. No tenga en cuenta casos anómalos (un valor no está relleno o no se ha pasado un valor entre actividades)</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">TAG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MainActivity</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getName</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">OBTENER_VOTOS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">TextView</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EditText</span><span class="w"> </span><span class="n">paisVotanteEditText</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Button</span><span class="w"> </span><span class="n">botonVotar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">botonVotacion</span><span class="p">);</span>
+<span class="w">        </span><span class="n">paisVotanteEditText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditText</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">editTextPaisVotante</span><span class="p">);</span>
+<span class="w">        </span><span class="n">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TextView</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">textViewResultado</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">botonVotar</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nd">@Override</span>
+<span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">country</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paisVotanteEditText</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">();</span>
+<span class="w">                </span><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span>
+<span class="w">                        </span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">VotacionActivity</span><span class="p">.</span><span class="na">class</span>
+<span class="w">                </span><span class="p">);</span>
+<span class="w">                </span><span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">&quot;country_voting&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">country</span><span class="p">);</span>
+<span class="w">                </span><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span><span class="w"> </span><span class="n">OBTENER_VOTOS</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onActivityResult</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">requestCode</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">resultCode</span><span class="p">,</span><span class="w"> </span><span class="n">Intent</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">,</span><span class="w"> </span><span class="n">resultCode</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">requestCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">OBTENER_VOTOS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">resultCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RESULT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Bundle</span><span class="w"> </span><span class="n">extras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">getExtras</span><span class="p">();</span>
+<span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">paisVotante</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;country_voting&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">paisVotado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;country_voted&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">votos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="p">.</span><span class="na">getInt</span><span class="p">(</span><span class="s">&quot;votes&quot;</span><span class="p">);</span>
+
+<span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">votos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; votos recibidos de &quot;</span>
+<span class="w">                        </span><span class="o">+</span><span class="w"> </span><span class="n">paisVotante</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; para &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">paisVotado</span><span class="p">;</span>
+
+<span class="w">                </span><span class="n">paisVotanteEditText</span><span class="p">.</span><span class="na">setEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">                </span><span class="n">resultado</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+<span class="w">                </span><span class="n">resultado</span><span class="p">.</span><span class="na">setVisibility</span><span class="p">(</span><span class="n">View</span><span class="p">.</span><span class="na">VISIBLE</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 
