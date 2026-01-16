@@ -1397,7 +1397,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 2017 — Parcial 1
+    Examen 2017 — Parcial 1 Recuperación
   
 
     
@@ -1547,7 +1547,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">grafos</span>
       
     
   </nav>
@@ -1556,7 +1556,44 @@
 
   <h1>P1r ex01</h1>
 
-
+<p>Dado el siguiente árbol binario:</p>
+<p><img alt="" src="../p1r/p1r_ex01.png" /></p>
+<ul>
+<li>(a) (1,25 puntos) Escriba el resultado de recorrerlo en preorden.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>J A M K Z</p>
+</details>
+<p>Un ayuntamiento tiene una base de datos de 20.000 matrículas. Sobre estos datos el número de consultas es abrumadoramente superior al número de altas o bajas, por lo que solo nos preocuparemos por las consultas. Tenemos varias opciones para su implementación:</p>
+<pre><code>- 1) un array ordenado, de 20.000 elementos.
+- 2) una tabla hash de con direccionamiento abierto (resolución interna de colisiones, sondeo por lista), de  20.000 posiciones.
+- 3) una tabla hash con listas de desbordamiento y 8.192 (2^13) posiciones.
+- 4) un árbol binario de búsqueda (BST).
+</code></pre>
+<ul>
+<li>(b) (2,5 puntos) Para cada opción, indique los pros y los contras y elija razonadamente la estructura de datos que recomienda para el ayuntamiento. Debe argumentar en términos de espacio ocupado en memoria y del tiempo de búsqueda.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>1) + ocupa la memoria imprescindible, sin nada extra; * tiempo O(log n).</p>
+<p>2) * ocupa la memoria imprescindible y un poco más si se guardan los hashes; - el tiempo de acceso se dispara al llegar al 100% de ocupación y es inviable.</p>
+<p>3) - ocupa memoria para los datos, para la tabla de acceso y para las listas de desbordamiento; + el tiempo de acceso probable es O(1), si los hashes se distribuyen uniformemente y las listas tienen una longitud acotada a unas pocas matrículas (menos de una docena); - aunque en el improbable caso peor sería O(n).</p>
+<p>4) - ocupa memoria para los datos y para los enlaces entre nodos; + velocidad de acceso probable O(log n); - aunque en el improbable caso peor sería O(n).</p>
+<p>Óptimo:
+- por memoria ocupada: (a) array ordenado
+- por tiempo (probable) de acceso: (c) tabla hash</p>
+<p>Si la memoria no es un problema para 20.000 datos, la decisión se tomaría por tiempo de acceso: tabla hash (c).</p>
+<p>Si la memoria es la principal limitación, la mejor opción es el array ordenado (a)</p>
+</details>
+<p>Tenemos un árbol binario de búsqueda (BST) en el que cada nodo almacena un carácter. </p>
+<ul>
+<li>(c) (1,25 puntos) Dibuje el árbolresultante de insertar en la secuencia indicada las letras: Q W E R T Y U I O P.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p><img alt="" src="../p1r/p1r_ex01sol.png" /></p>
+</details>
 
 
 
