@@ -1581,7 +1581,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 1 Recuperación
+    Examen 2018 — Parcial 1 Recuperación
   
 
     
@@ -1740,7 +1740,155 @@
 
   <h1>P1r ex01</h1>
 
+<p>Dado un conjunto P de puntos en un plano de 2 dimensiones, necesitamos calcular el subconjunto de P tal que una banda elástica alrededor de ellos no deja a ningún punto fuera.</p>
+<p>En geometría, a este subconjunto se le denomina envolvente convexa (convex hull). Una de sus propiedades es que si enumeramos los puntos según las agujas del reloj (L1, L2, …, Ln) todos los pares de segmentos consecutivos van girando hacia la derecha. Por ejemplo, L1-L2 está girado a la derecha en comparación con L0-L1.</p>
+<p>En Internet hemos encontrado este algoritmo (Andrew, 1979) que divide el problema en 2 partes. Calcula la envolvente superior, luego la inferior, y las une.</p>
+<p>El algoritmo es como sigue para un conjunto de N puntos:
+    - 1. Se ordenan los puntos P en orden creciente de coordenada X y, si tienen el mismo X, en orden creciente de coordenada Y.
+    - 2. Se prepara una lista UPPER con los 2 primeros puntos, L0 y L1
+    - 3. Para i entre 2 y N,
+        - I. se añade Li a la lista UPPER
+        - II. mientras los 3 últimos puntos en la lista UPPER hagan un giro a la izquierda, se elimina el punto intermedio de esos 3
+    - 4. Se prepara una lista LOWER con los 2 últimos puntos L(n-1), L(n-2)
+    - 5. Para i entre N-3 y 0, descendiendo,
+        - I. se añade Li a la lista LOWER
+        - II. mientras los 3 últimos puntos en la lista LOWER hagan un giro a la izquierda, se elimina el punto intermedio de esos 3
+    - 6. Se concatenan las listas UPPER y LOWER prescindiendo de los puntos finales de cada una</p>
+<p>Suponga que disponemos de un método auxiliar que, dados 3 puntos, nos dice si los segmentos AB y BC hacen un giro a la izquierda: 
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="nf">giroIzquierda</span><span class="p">(</span><span class="n">Punto</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">Punto</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">Punto</span><span class="w"> </span><span class="n">C</span><span class="p">)</span>
+</code></pre></div></p>
+<ul>
+<li>(a) (5 puntos) Calcular la complejidad del algoritmo en función del tamaño N del conjunto de puntos P.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>El método auxiliar, giroIzquierda(), trabaja sobre 3 puntos A, B y C y es por tanto independiente del tamaño N del conjunto de puntos. Su complejidad es O(1).</p>
+<p>El algoritmo principal ordena una lista de N puntos. La comparación entre 2 puntos A y B es independiente del número de puntos, y por tanto es de complejidad O(1). El algoritmo de ordenación introduce su propia complejidad que se puede estimar en O(n log n) si escogemos un buen algoritmo como puede ser el merge sort.</p>
+<p>El algoritmo global:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Paso</th>
+<th>Descripción</th>
+<th>Complejidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Ordenación</td>
+<td>O(n log n)</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>new list UPPER</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>bucle 2..N</td>
+<td>O(n) (*)</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>new list LOWER</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>bucle 2..N</td>
+<td>O(n) (*)</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>concatena</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td style="text-align: right;">TOTAL</td>
+<td></td>
+<td>O(n log n)</td>
+</tr>
+</tbody>
+</table>
+<p>(*) En principio parece un bucle de N veces sobre una lista que va creciendo hasta N; resultando en N^2. Pero ocurre que cada pasada por el bucle elimina un elemento de la lista y o la lista es larga y el while termina pronto, o al revés. En resumen, que por una razón u otra no pasamos de O(n). En otras palabras, la combinación FOR-WHILE recorre exactamente N puntos, bien conservando cada punto o eliminándolo.</p>
+<p>Por otra parte, la operación remove(penúltimo) es independiente del tamaño de la lista y, por tanto, de O(1)</p>
+<p>Codificación en Java:
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Punto</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">scan</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Punto</span><span class="o">&gt;</span><span class="w"> </span><span class="n">puntos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">puntos</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 
+<span class="w">    </span><span class="n">puntos</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Punto</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nd">@Override</span>
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compare</span><span class="p">(</span><span class="n">Punto</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">Punto</span><span class="w"> </span><span class="n">p2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="na">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="na">x</span><span class="p">)</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="na">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="na">y</span><span class="p">;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="na">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="na">x</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Punto</span><span class="o">&gt;</span><span class="w"> </span><span class="n">upper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">upper</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">puntos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="w">    </span><span class="n">upper</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">puntos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">puntos</span><span class="p">.</span><span class="na">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">upper</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">puntos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">upper</span><span class="p">.</span><span class="na">size</span><span class="p">();</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="n">Punto</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">upper</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Punto</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">upper</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Punto</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">upper</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isGiroIzquierda</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">))</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="n">upper</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">puntos</span><span class="p">.</span><span class="na">size</span><span class="p">();</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Punto</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">lower</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">puntos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="w">    </span><span class="n">lower</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">puntos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lower</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">puntos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lower</span><span class="p">.</span><span class="na">size</span><span class="p">();</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="n">Punto</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lower</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Punto</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lower</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Punto</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lower</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isGiroIzquierda</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">))</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="n">lower</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Punto</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">hull</span><span class="p">.</span><span class="na">addAll</span><span class="p">(</span><span class="n">upper</span><span class="p">);</span>
+<span class="w">    </span><span class="n">hull</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">hull</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">hull</span><span class="p">.</span><span class="na">addAll</span><span class="p">(</span><span class="n">lower</span><span class="p">);</span>
+<span class="w">    </span><span class="n">hull</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">hull</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">hull</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isGiroIzquierda</span><span class="p">(</span><span class="n">Punto</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">Punto</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">Punto</span><span class="w"> </span><span class="n">C</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="na">getX</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="na">getY</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="na">getX</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="na">getY</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="p">.</span><span class="na">getX</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="p">.</span><span class="na">getY</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">val1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">y3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y1</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">val2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">y2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">x3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">val1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">val2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</details>
 
 
 

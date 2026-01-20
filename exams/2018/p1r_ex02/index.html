@@ -1581,7 +1581,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 1 Recuperación
+    Examen 2018 — Parcial 1 Recuperación
   
 
     
@@ -1731,7 +1731,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">grafos</span>
       
     
   </nav>
@@ -1740,7 +1740,76 @@
 
   <h1>P1r ex02</h1>
 
+<p>Se dispone de la clase Graph, con los métodos que se indican a continuación:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addNode</span><span class="p">(</span><span class="n">Node</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">vois</span><span class="w"> </span><span class="nf">addLink</span><span class="p">(</span><span class="n">Link</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addLink2D</span><span class="p">(</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getNodes</span><span class="p">()</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="nf">getNode</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Link</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getLinks</span><span class="p">()</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Link</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getLinks</span><span class="p">(</span><span class="n">Node</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">Link</span><span class="w"> </span><span class="nf">getLink</span><span class="p">(</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getWeight</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Un algoritmo alternativo a BFS y Dijkstra para recorrer un grafo es el algoritmo DFS (Depth First Search). El recorrido en profundidad se produce de tal forma que partiendo de un nodo se procesa el primero de los nodos alcanzables desde él mediante un Link, después el segundo y así sucesivamente todos los nodos que se pueden alcanzar con un solo Link. Para procesar cada uno de los nodos se utiliza el mismo procedimiento, siempre teniendo en cuenta que, al ser un grafo, no pasemos dos veces por el mismo nodo. En definitiva, se trata del recorrido en pre-orden usado para los árboles binarios BST.</p>
+<p>Se muestra a continuación un ejemplo del orden de recorrido de DFS sobre un árbol para ver si desde el nodo “A” se puede alcanzar el nodo destino “J”:</p>
+<p><img alt="" src="../p1r/p1r_ex02.png" /></p>
+<p>Una de las formas de implementar DFS en un grafo es mediante un método recursivo, cuyo seudocódigo se proporciona a continuación:</p>
+<div class="highlight"><pre><span></span><code>1 método DFS(origen):
+2   marcamos origen como visitado
+3   para cada vértice v adyacente a origen en el Grafo:
+4     si v no ha sido visitado:
+5       marcamos como visitado v
+6       llamamos recursivamente DFS(v)
+</code></pre></div>
+<ul>
+<li>(a) (5 puntos) Codificar el algoritmo ListaNodos que devuelve todos los nodos alcanzables desde un determinado nodo src. Los nodos alcanzables desde un nodo son todos aquellos a los que se puede llegar desde ese nodo siguiendo una secuencia de enlaces (Link) definidos en el grafo. En el caso del grafo del ejemplo anterior, desde el nodo C serían alcanzables: <C,E,I,J,F,K,L> y desde el nodo D: <D, G, H>. Tenga en cuenta que en un caso real pudiera haber bucles al tratarse de un grafo. Se valorará con 2 puntos el uso de la clase Set para aumentar la velocidad del método ListaNodos, si además se justifica adecuadamente la mejora producida por su utilización.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getNodesRec</span><span class="w"> </span><span class="p">(</span><span class="n">Node</span><span class="w"> </span><span class="n">src</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Creamos las variables necesaria</span>
+<span class="w">    </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visited</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="p">();</span>
 
+<span class="w">    </span><span class="c1">// Si el nodo no ha sido visitado, lo marcamos como visitado, lo añadimos a la lista</span>
+<span class="w">    </span><span class="n">List</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">visited</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">src</span><span class="p">);</span>
+<span class="w">    </span><span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">src</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Llamada al método recursivo</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">alcanzables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNodesRec</span><span class="w"> </span><span class="p">(</span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">visited</span><span class="p">);</span>
+<span class="w">    </span><span class="n">list</span><span class="p">.</span><span class="na">addAll</span><span class="p">(</span><span class="n">alcanzables</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getNodesRec</span><span class="w"> </span><span class="p">(</span><span class="n">Node</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visited</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">List</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Pasamos a recorrer los nodos desde los que se puede llegar con un Link desde este nodo</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Link</span><span class="w"> </span><span class="n">link</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">graph</span><span class="p">.</span><span class="na">getLinks</span><span class="p">(</span><span class="n">src</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Node</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">graph</span><span class="p">.</span><span class="na">getNode</span><span class="p">(</span><span class="n">link</span><span class="p">.</span><span class="na">getDst</span><span class="p">());</span>
+
+<span class="w">        </span><span class="c1">// Si el nodo ya ha sido visitado no hacemos nada</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">visited</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">next</span><span class="p">))</span>
+<span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Si el nodo no ha sido visitado, lo marcamos como visitado, lo añadimos a la lista</span>
+<span class="w">        </span><span class="n">visited</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">next</span><span class="p">);</span>
+<span class="w">        </span><span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">next</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">List</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNodesRec</span><span class="p">(</span><span class="n">next</span><span class="p">,</span><span class="w"> </span><span class="n">visited</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Añadimos a la lista de nodos alcanzables los nodos que devuelve getNodesRec al recorrer el nodo next</span>
+<span class="w">        </span><span class="n">list</span><span class="p">.</span><span class="na">addAll</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>El uso de Set para controlar la lista de visitados permite mejorar el algoritmo frente a List, ya que la búsqueda en listas no
+está tan optimizada como en Set.</p>
+</details>
 
 
 
