@@ -23,7 +23,7 @@
     
     
       
-        <title>Examen 2017 — Parcial 1 - Catálogo ejercicios años anteriores</title>
+        <title>Examen 2017 - Extraordinario - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#examen-2017-parcial-1" class="md-skip">
+        <a href="#examen-2017-extraordinario" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Examen 2017 — Parcial 1
+              Examen 2017 - Extraordinario
             
           </span>
         </div>
@@ -1500,7 +1500,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 2017 — Parcial 1
+    Examen 2017 - Extraordinario
   
 
     
@@ -1518,7 +1518,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 2017 — Parcial 1
+    Examen 2017 - Extraordinario
   
 
     
@@ -1559,6 +1559,39 @@
     <span class="md-ellipsis">
       
         Problema 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 5
       
     </span>
   </a>
@@ -1665,6 +1698,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#problema-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 5
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1682,225 +1748,387 @@
 
 
 
-<h1 id="examen-2017-parcial-1">Examen 2017 — Parcial 1</h1>
+<h1 id="examen-2017-extraordinario">Examen 2017 - Extraordinario</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>En un proyecto se necesita programar una clase que represente un conjunto de palabras (String), sin que haya duplicados almacenados. Con este fin se realizan dos fases: fase 1 de carga de todas las palabras, con un método</p>
-<p>public void put (String palabra)</p>
-<p>y fase 2 de consulta, con un método</p>
-<p>boolean get (String palabra)</p>
-<p>que devuelve TRUE si, y solo si, la palabra dada como parámetro está en el diccionario.</p>
-<p>Se proponen varias opciones:
-    - 1) Las palabras se meten en un array, una tras otra; al acabar la fase 1, el array se ordena y se eliminan los duplicados, pasando a la fase 2 donde se usa el array sin duplicados.
-    - 2) Las palabras se meten en un diccionario implementado con una tabla hash, de forma que solo hay que almacenar la clave (es decir la palabra); si la clave está en el diccionario, get() devuelve TRUE.
-    - 3) Se combinan las opciones anteriores: las palabras (1) se meten en un array, (2) se ordena el array, (3) se eliminan duplicados, (4) los datos del array se cargan en un diccionario implementado con una tabla hash y (5) el método get() devuelve TRUE si, y solo si, la palabra está en el diccionario.</p>
+<p>A pesar de que un genoma tiene más de dos gigas de (solo cuatro tipos distintos de) bases (A, G, C, T), la mayor parte del mismo es “basura”, pues solo una pequeña fracción de subsecuencias (contiguas) del mismo codifica la producción de aminoácidos, es decir, proteínas. A esas subsecuencias significativas de bases se les conoce con el nombre de genes.</p>
+<p>Las subsecuencias que constituyen genes son de longitud moderada, entre cien y mil bases, y tienen la característica de que al menos una de las cuatro bases se presenta en dicha subsecuencia con (mucha) menor frecuencia que las otras tres. Digamos, por ejemplo, 20 por ciento menos. Interpretado este porcentaje sobre el número total de bases de la subsecuencia considerada.</p>
 <ul>
-<li>(a) (2,5 puntos) Razone la complejidad de los métodos put() y get() en cada una de las opciones propuestos.</li>
+<li>(a) (5 puntos) Se pide diseñar un algoritmo (no un programa) que, a partir de un genoma especificado como una (muy) larga secuencia de bases, encuentre los genes de longitud 300 bases. Y a continuación, analizar la complejidad en espacio y en tiempo de dicho algoritmo en términos del tamaño del genoma.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>1)Fase 1: O(insertar al final del array n veces) + O(ordenar) + O(borrar duplicados) = O(n) + O(nlogn) + O(n)</p>
-<p>= O(nlog n).</p>
-<p>Fase 2: O(búsqueda array ordenado) = O(logn)</p>
-<p>2) Fase 1: O(insertar n veces) = O(n)</p>
-<p>Fase 2: O(1)</p>
-<p>3) Fase 1 = a) + O(transferir array→ hash) = O(nlogn) + O(n) = O(nlogn)</p>
-<p>Fase 2 = O(1)</p>
-</details>
-<ul>
-<li>(b) (2,5 puntos) Escriba el método public void put(String palabra) modificando el método public void put(String clave, String valor) del ejercicio 2 para que tenga la funcionalidad solicitada, usando internamente una tabla hash. Puede utilizar como base el código que aparece a continuación, rellenando los espacios que se indican.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HashListas</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">slots</span><span class="p">;</span><span class="w"> </span><span class="c1">// slots de la tabla Hash</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nDatos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// número de datos de la tabla</span>
-
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Constructor</span>
-<span class="cm">     * @param nSlots número de ranuras</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">HashListas</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">nSlots</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">slots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">nSlots</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nSlots</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">slots</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Calcula función hash e índice en slots</span>
-<span class="cm">     * @param clave String</span>
-<span class="cm">     * @return índice en slots</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getIdx</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">abs</span><span class="p">(</span><span class="n">clave</span><span class="p">.</span><span class="na">hashCode</span><span class="p">())</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">slots</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Mete una nueva palabra en el diccionario</span>
-<span class="cm">     * Si ya existe otra palabra, no hace nada</span>
-<span class="cm">     * @param clave palabra para almacenar</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Devuelve el valor asociado a la clave</span>
-<span class="cm">     * @param clave palabra que comprobamos</span>
-<span class="cm">     * @return true si está en el diccionario;</span>
-<span class="cm">     *         false en caso contrario</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<details class="note">
-<summary>Mostrar solución</summary>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HashListas</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">slots</span><span class="p">;</span><span class="w"> </span><span class="c1">// slots de la tabla Hash</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nDatos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// número de datos de la tabla</span>
-
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Constructor</span>
-<span class="cm">     * @param nSlots número de ranuras</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">HashListas</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">nSlots</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">slots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">nSlots</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nSlots</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">slots</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Calcula función hash e índice en slots</span>
-<span class="cm">     * @param clave String</span>
-<span class="cm">     * @return índice en slots</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getIdx</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">abs</span><span class="p">(</span><span class="n">clave</span><span class="p">.</span><span class="na">hashCode</span><span class="p">())</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">slots</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Mete una nueva palabra en el diccionario</span>
-<span class="cm">     * Si ya existe otra palabra, no hace nada</span>
-<span class="cm">     * @param clave palabra para almacenar</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getIdx</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
-<span class="w">        </span><span class="n">put</span><span class="p">(</span><span class="n">slots</span><span class="o">[</span><span class="n">idx</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">clave</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">palabra</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">palabra</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
-<span class="w">        </span><span class="n">nDatos</span><span class="o">++</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Devuelve el valor asociado a la clave</span>
-<span class="cm">     * @param clave palabra que comprobamos</span>
-<span class="cm">     * @return true si está en el diccionario;</span>
-<span class="cm">     *         false en caso contrario</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getIdx</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="n">slots</span><span class="o">[</span><span class="n">idx</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">clave</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">palabra</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">palabra</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<p>Se supone declarada una clase, llamémosla Contadores, con cuatro atributos enteros de valor inicial cero, que se van a usar para contar del número de cada tipo de base que hay, desde el principio del genoma hasta un punto dado. Y se supone también que tenemos un array, llamémosle ultimas300, que mantiene el valor de los cuatro contadores para cada uno de los últimos 300 puntos del genoma que hemos visitado, según lo exploramos desde el principio hasta el final de su cadena de bases.</p>
+<p>El algoritmo es:
+    1) Ir leyendo de un fichero el genoma base a base desde el principio hasta su posición 299, actualizando los contadores de ultimas300 en las posiciones 0-298.
+    2) Leer la siguiente base del genoma, incrementar el contador correspondiente a esa base en la última posición actualizada del array en una unidad, y guardar los cuatro valores actuales en la siguiente posición de ultimas300, manejando este array de manera circular (la posición siguiente a la 299 es la cero).
+    3) Restar de los cuatro contadores actuales los contadores que están en el array 299 posiciones antes (de manera circular también). Si uno de esos cuatro valores es menor que 60 (=300/4*0.8), hemos encontrado un gen y lo imprimimos.
+    4) Si aún quedan bases por leer en el genoma, volvemos al punto 2). En otro caso, hemos acabado el algoritmo.</p>
+<p>La complejidad en espacio es constante, pues el tamaño de ultimas300 es fijo, no depende del tamaño del genoma. En cuanto a la complejidad en tiempo, la parte 1) es también constante, ya que tampoco depende del tamaño del genoma. Mientras que las partes 2), 3) y 4) se ejecutan una vez por cada base del genoma (exceptuando las 299 primeras, valor constante). Y como resulta que esas tres partes tienen una complejidad constante, se tiene:</p>
+<p>C1 + C2<em>O(n-299) + C3</em>O(n-299) + C4<em>O(n-299) = (C1 - 299</em>(C2+C3+C4)) + (C2+C3+C4)<em>O(n) = C5 + C6</em>O(n) = C6*O(n) = O(n)</p>
+<p>Es decir, el algoritmo tiene una complejidad lineal en el tiempo.</p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>Se implementa un árbol binario de búsqueda (BST) con valores enteros positivos como un array, colocando su raíz principal en la posición 1 del array y, para todo nodo del mismo en la posición i, su hijo izquierdo en la posición 2<em>i, y su hijo derecho en la posición 2</em>i+1. La posición 0 del array mantiene el contador del número de nodos en el árbol. Un nodo no existe si su posición en el array no existe (se sale del tamaño del array) o el valor en el array es -1. Por ejemplo:</p>
-<p><img alt="" src="../p1/p1_ex02.png" /></p>
-<table>
-<thead>
-<tr>
-<th>Índice</th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-<th>10</th>
-<th>11</th>
-<th>12</th>
-<th>13</th>
-<th>14</th>
-<th>15</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Valor</td>
-<td>9</td>
-<td>8</td>
-<td>3</td>
-<td>10</td>
-<td>1</td>
-<td>6</td>
-<td>-1</td>
-<td>14</td>
-<td>-1</td>
-<td>-1</td>
-<td>4</td>
-<td>7</td>
-<td>-1</td>
-<td>-1</td>
-<td>13</td>
-<td>-1</td>
-</tr>
-</tbody>
-</table>
-<p>Con esta representación de un árbol, se pide:</p>
+<p>La clase RegistroDatos, permite almacenar los datos producidos por un conjunto de sensores. Los datos producidos por los sensores se envían como objetos de la clase Dato, cuya estructura se muestra a continuación:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Dato</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Dato</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">   </span><span class="c1">// Identificador único del sensor que ha generado el dato</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w">      </span><span class="c1">// Fecha en la que se ha producido el dato (clase Date de Java)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w">      </span><span class="c1">// Valor del dato producido</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="c1">//Contiene constructor, getters, y setters</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>La clase RegistroDatos guarda los datos recibidos en un array (private List<Dato> []datos). Cada dato se guarda en la posición del array que se obtiene aplicando el método hashCode de la clase String al identificador único del sensor que ha producido el dato y adaptando el resultado al tamaño del array datos. </p>
+<p>Además, se lleva una cuenta del número de datos que ha generado cada sensor, mediante el atributo cuentaDatos (private Map <String, Registro> cuentaDatos), usando como clave el identificador único del sensor que ha producido el dato y como valor un objeto de la clase Registro, cuya estructura se muestra a continuación:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Registro</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Registro</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">;</span><span class="w"> </span><span class="c1">// Identificador único del sensor</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cnt</span><span class="p">;</span><span class="w">            </span><span class="c1">// Número de datos producidos por ese sensor</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="c1">//Contiene constructor, getters, y setters</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
-<li>(a) (2,5 puntos) Programar un recorrido en el árbol que imprima ordenados los contenidos de los nodos visitados:</li>
+<li>(a) (5 puntos) Se pide completar los métodos Constructor, put, getDatos, size y countAbove de la clase RegistroDatos. El esqueleto de la se muestra a continuación:</li>
 </ul>
-<p>public void recorrer (int[] arbol) {...}</p>
-<p>En el ejemplo dado, debería imprimir:</p>
-<p>1 3 4 6 7 8 10 13 14</p>
-<p>Nota: suponga que no es necesario comprobar si la representación del árbol proporcionada es correcta.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RegistroDatos</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Dato</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">datos</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Registro</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cuentaDatos</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Constructor</span>
+<span class="cm">     * @param n número de posiciones del array datos donde se van a almacenar</span>
+<span class="cm">     * los datos producidos por los sensores</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">RegistroDatos</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//TODO</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Devuelve cuantos sensores han producido un número de datos por encima</span>
+<span class="cm">     * de un determinado umbral c.</span>
+<span class="cm">     * @param c umbral de cuenta.</span>
+<span class="cm">     * @return número de sensores que han generado más de c datos</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">countAbove</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//TODO</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Devuelve los datos producidos por un determinado sensor</span>
+<span class="cm">     * @param sensorId identificador del sensor</span>
+<span class="cm">     * @return lista de datos producidos por ese sensor.</span>
+<span class="cm">     * Si no hay ningún sensor con ese sensorId devolverá una lista con 0 valores.</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Dato</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getDatos</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">sensorId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//TODO</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Almacena un nuevo dato en el Registro de datos, para ello incrementa en uno la</span>
+<span class="cm">     * cuenta de datos</span>
+<span class="cm">     * proporcionados por el sensor, y almacena el dato en la posición correspondiente de</span>
+<span class="cm">     * la tabla Hash</span>
+<span class="cm">     * @param dato la nuevo dato a almacenar</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">Dato</span><span class="w"> </span><span class="n">dato</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//TODO</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Numero de Datos total almacenado.</span>
+<span class="cm">     * @return numero de datos.</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">size</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//TODO</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <details class="note">
 <summary>Mostrar solución</summary>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">recorrer</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arbol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">recorrer</span><span class="p">(</span><span class="n">arbol</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RegistroDatos</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Dato</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">datos</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Registro</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cuentaDatos</span><span class="p">;</span>
 
-<span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">recorrer</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arbol</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">arbol</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">arbol</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">recorrer</span><span class="p">(</span><span class="n">arbol</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">arbol</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
-<span class="w">        </span><span class="n">recorrer</span><span class="p">(</span><span class="n">arbol</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Constructor</span>
+<span class="cm">     * @param n número de posiciones del array datos donde se van a almacenar</span>
+<span class="cm">     * los datos producidos por los sensores</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">RegistroDatos</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">datos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">N</span><span class="o">]</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">datos</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">cuentaDatos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Registro</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Devuelve cuantos sensores han producido un número de datos por encima</span>
+<span class="cm">     * de un determinado umbral c.</span>
+<span class="cm">     * @param c umbral de cuenta.</span>
+<span class="cm">     * @return numero de sensores que han generado más de c datos</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">countAbove</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">cuenta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">keySet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuentaDatos</span><span class="p">.</span><span class="na">keySet</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">keySet</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cuentaDatos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">).</span><span class="na">getCnt</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">c</span><span class="p">)</span>
+<span class="w">                </span><span class="n">cuenta</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cuenta</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/*</span>
+<span class="cm">     * Devuelve los datos producidos por un determinado sensor</span>
+<span class="cm">     * @param sensorId identificador del sensor</span>
+<span class="cm">     * @return lista de datos producidos por ese sensor.</span>
+<span class="cm">     * Si no hay ningún sensor con ese sensorId devolverá una lista con 0 valores.</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Dato</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getDatos</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">sensorId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Dato</span><span class="o">&gt;</span><span class="w"> </span><span class="n">listaDatos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Dato</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">hc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorId</span><span class="p">.</span><span class="na">hashCode</span><span class="p">();</span>
+<span class="w">        </span><span class="n">hc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hc</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">datos</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Dato</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">datos</span><span class="o">[</span><span class="n">hc</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="na">getId</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="n">sensorId</span><span class="p">))</span>
+<span class="w">                </span><span class="n">listaDatos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">listaDatos</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * El método put (), se encarga de meter un nuevo dato en el Registro de datos,</span>
+<span class="cm">     * para ello incrementa en uno la cuenta de datos proporcionados por el sensor,</span>
+<span class="cm">     * y almacena el dato en la posición correspondiente de la tabla Hash</span>
+<span class="cm">     * @param dato la nuevo dato a almacenar</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">Dato</span><span class="w"> </span><span class="n">dato</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cuentaDatos</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">dato</span><span class="p">.</span><span class="na">getId</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">cuentaDatos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">dato</span><span class="p">.</span><span class="na">getId</span><span class="p">()).</span><span class="na">inc</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">cuentaDatos</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">dato</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Registro</span><span class="p">(</span><span class="n">dato</span><span class="p">.</span><span class="na">getId</span><span class="p">()));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">hc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dato</span><span class="p">.</span><span class="na">getId</span><span class="p">().</span><span class="na">hashCode</span><span class="p">();</span>
+<span class="w">        </span><span class="n">hc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hc</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">datos</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+<span class="w">        </span><span class="n">datos</span><span class="o">[</span><span class="n">hc</span><span class="o">]</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">dato</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Numero de Datos Total Almacenado.</span>
+<span class="cm">     * @return numero de datos.</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">size</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">suma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">keySet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuentaDatos</span><span class="p">.</span><span class="na">keySet</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">keySet</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">suma</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">cuentaDatos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">).</span><span class="na">getCnt</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">suma</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h2 id="problema-3">Problema 3</h2>
+<p>Varios ingenieros utilizan una base de datos para almacenar informes. Para ello disponen de una aplicación que permite almacenar un informe o recuperar un informe anterior. El acceso a los datos se organiza mediante una clase de Java que responde al esquema siguiente esquema:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Datos</span><span class="w"> </span><span class="p">{</span>
+<span class="err">…</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">guardar</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">consultar</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">terminar</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Las aplicaciones se ejecutan concurrentemente, y llaman a guardar o a consultar antes de realizar una secuencia de operaciones de almacenar o recuperar informes, respectivamente. Cuando han terminado de realizar estas operaciones llaman a terminar. Puede haber varias aplicaciones consultando informes a la vez, pero no consultando y guardando, ni varias guardando a la vez.</p>
+<p>Los objetos de la clase Ingeniero son hebras que ejecutan repetidamente el siguiente código:</p>
+<div class="highlight"><pre><span></span><code><span class="n">datos</span><span class="p">.</span><span class="na">guardar</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">ndoc</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// generar informe y almacenarlo en la base de datos</span>
+<span class="p">}</span>
+<span class="n">datos</span><span class="p">.</span><span class="na">terminar</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
+</code></pre></div>
+<p>o bien</p>
+<div class="highlight"><pre><span></span><code><span class="n">datos</span><span class="p">.</span><span class="na">consultar</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">ndoc</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// realizar consulta en la base de datos</span>
+<span class="p">}</span>
+<span class="n">datos</span><span class="p">.</span><span class="na">terminar</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>(a) (4 puntos) Complete el código de la clase Datos de forma que se cumplan las condiciones del enunciado.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Datos</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">consultando</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">guardando</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">guardar</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">guardando</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">consultando</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="n">guardando</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">consultar</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">guardando</span><span class="p">)</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="n">consultando</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">terminar</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">consultando</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">consultando</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">guardando</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2,5 puntos) Razonar la complejidad de dicho recorrido.</li>
+<li>(b) (2 puntos) Escriba el código de una posible implementación de la clase Ingeniero para consultar datos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La complejidad (en tiempo) del algoritmo es lineal, es decir O(n), siendo n el número de nodos, puesto que recorre el árbol visitando todos sus nodos, y en cada uno de ellos realiza un trabajo de orden constante, es decir O(1).</p>
-<p>NOTA:</p>
-<p>Para la solución de la ecuación de recurrencia</p>
-<p>T(n) = T(n/2) + C + T(n/2) = 2 T(n/2) + C</p>
-<p>que se resuelve como O(n), <strong>ver apuntes</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Ingeniero_Consulta</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Datos</span><span class="w"> </span><span class="n">datos</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ndoc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">// por ejemplo</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Ingeniero_Consulta</span><span class="p">(</span><span class="n">Datos</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">datos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">datos</span><span class="p">.</span><span class="na">consultar</span><span class="p">(</span><span class="s">&quot;clave&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// por ejemplo</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">ndoc</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// realizar la consulta</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">datos</span><span class="p">.</span><span class="na">terminar</span><span class="p">(</span><span class="s">&quot;clave&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(c) (2 puntos) Analice si puede haber problemas de inanición (starvation) en el acceso a los datos y, si es así, ponga algún ejemplo (sin resolverlo).</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Como en el problema original, la solución dada puede dar lugar a inanición de los ingenieros que guardan informes. Por ejemplo, sin entran varios a consultar y antes de que terminen entran otros nuevos, esta situación se puede prolongar indefinidamente, no dejando acceder nunca a otros ingenieros que deseen guardar informes. Las solución es establecer turnos para dar prioridad, alternativamente, a los que guardan (escritores) y a los que consultan (lectores)</p>
+</details>
+<h2 id="problema-4">Problema 4</h2>
+<p>Se dispone de una aplicación Android para la consulta de notas por parte de los alumnos. La aplicación consta de dos pantallas, denominadas MainActivity y ResultActivity.</p>
+<p>En la primera pantalla (MainActivity), el usuario introduce su identificación (nombre y apellidos) y el código numérico de la asignatura a consultar. Dispone de un botón con el texto “Consultar” que, al pulsarse, pasa a la segunda pantalla ResultActivity, mediante un Intent con la información de identificación del alumno y el código de la asignatura. La primera pantalla dispone de un layout en el que se dispone de dos EditText, uno para el nombre y otro para el código, mas el botón para realizar la consulta.</p>
+<p>En la segunda pantalla (ResultActivity), se consultará la base de datos de notas y se presentará la nota obtenida.</p>
+<p>Esta pantalla no es de nuestro interés.</p>
+<ul>
+<li>(a) (1 punto) Completar el código del método onCreate de la clase MainActivity.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EditText</span><span class="w"> </span><span class="n">etIdentificacion</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EditText</span><span class="w"> </span><span class="n">etCodigo</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">etIdentificacion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditText</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">editIdentificador</span><span class="p">);</span>
+<span class="w">        </span><span class="n">etCodigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditText</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">editCodigo</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Button</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">botonConsultar</span><span class="p">);</span>
+<span class="w">        </span><span class="n">b</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nd">@Override</span>
+<span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// método a rellenar</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Escriba a continuación el cuerpo del método onClick.</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">etIdentificacion</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">();</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">etCodigo</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Intent</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span><span class="n">getApplicationContext</span><span class="p">(),</span><span class="w"> </span><span class="n">ResultActivity</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="w">    </span><span class="n">i</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">&quot;ID&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<span class="w">    </span><span class="n">i</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">&quot;CODIGO&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">codigo</span><span class="p">);</span>
+<span class="w">    </span><span class="n">startActivity</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="p">}</span><span class="w">    </span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (1 punto) Indicar los métodos del ciclo de vida que se invocarán de la actividad MainActivity y ResultActivity en el orden correcto.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="n">MainActivity</span><span class="p">.</span><span class="na">onPause</span><span class="p">()</span>
+<span class="n">ResultActivity</span><span class="p">,</span><span class="n">onCreate</span><span class="p">()</span>
+<span class="n">ResultActivity</span><span class="p">.</span><span class="na">onStart</span><span class="p">()</span>
+<span class="n">ResultActivity</span><span class="p">.</span><span class="na">onResume</span><span class="p">()</span>
+<span class="n">MainActivity</span><span class="p">.</span><span class="na">onStop</span><span class="p">()</span>
+
+<span class="c1">// Se puede añadir MainActivity.onDestroy()</span>
+</code></pre></div>
+</details>
+<h2 id="problema-5">Problema 5</h2>
+<ul>
+<li>(a) (?? puntos) ¿A qué orden de complejidad se debería aproximar la gráfica de tiempo de ejecución para los métodos de
+ordenación por inserción y mezcla (merge sort ) ?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Inserción: O(n2); Mezcla: O(n·log n).</p>
+</details>
+<ul>
+<li>(b) (?? puntos) La clase HashListas implementa tablas hash con listas de desbordamiento. En ella se define el método
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">){...}</span>
+</code></pre></div>
+¿Para qué se usa este método?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Para calcular la posición del array que contiene la lista donde se almacena (o se podría almacenar) el elemento de clave s.</p>
+</details>
+<ul>
+<li>(c) (?? puntos) En este ejercicio se usa un diccionario para almacenar palabras de un texto y el número de veces que aparecen. Una de las operaciones que se efectúan consiste en imprimir una lista con las n palabras más (o menos) usadas (método getTop()). En el ejercicio esto se implementa copiando los valores del diccionario a un array, que se ordena según el criterio elegido. Cuando se dice que esto se hace con “evaluación perezosa”, ¿qué significa esta expresión?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Que el array no se ordena hasta que es necesario, es decir hasta que se llama a getTop o a countBelow.</p>
+</details>
+<ul>
+<li>(d) (?? puntos) En este ejercicio se usa una cola de paquetes que se puede implementar como un array o una lista. La cola está incluida en una clase, TsRouter, que tiene dos métodos públicos, send y get, que respectivamente añaden y recuperan paquetes de la cola. ¿Tienen que ser sincronizados estos métodos? ¿Por qué?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Sí, porque acceden a la cola, que es un objeto compartido por todas las hebras.</p>
+</details>
+<ul>
+<li>(e) (?? puntos) En este ejercicio se utiliza sincronización de lectores y escritores para acceder a una estructura de datos compartida, la lista de manzanas del juego de la serpiente, encapsulada en la clase AppleListMonitor. ¿Qué cambios habría que hacer en esta clase para cambiar la sincronización de lectores y escritores por exclusión mutua?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Bastaría con suprimir las referencias a monitor.openReading / monitor.closeReading y a monitor.openWriting / monitor.closeWriting y hacer sincronizados todos los métodos de AppleListMonitor.</p>
+</details>
+<ul>
+<li>(f) (?? puntos) En este ejercicio se utiliza un widget de tipo Button para lanzar el cálculo del índice de masa corporal. ¿Cómo se especifica qué método hay que ejecutar cuando se pulsa el botón?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Se puede hacer de dos maneras: poniendo un atributo
+<div class="highlight"><pre><span></span><code><span class="nl">Android</span><span class="p">:</span><span class="n">onClick</span><span class="o">=</span><span class="err">”</span><span class="n">método</span><span class="err">”</span>
+</code></pre></div>
+en el layout correspondiente, o bien en Java, implementando la interfaz OnClickListener:
+<div class="highlight"><pre><span></span><code><span class="n">button</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">muestraMensaje</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></p>
 </details>
 
 

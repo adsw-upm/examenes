@@ -19,7 +19,7 @@
     
     
       
-        <title>Extra ex01 - Catálogo ejercicios años anteriores</title>
+        <title>Extra ex05 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -89,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Extra ex01
+              Extra ex05
             
           </span>
         </div>
@@ -1180,7 +1180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1/" class="md-nav__link">
+      <a href="../../2016/p1/" class="md-nav__link">
         
   
   
@@ -1208,7 +1208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p1r/" class="md-nav__link">
+      <a href="../../2016/p1r/" class="md-nav__link">
         
   
   
@@ -1236,7 +1236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../p2/" class="md-nav__link">
+      <a href="../../2016/p2/" class="md-nav__link">
         
   
   
@@ -1264,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extra/" class="md-nav__link">
+      <a href="../../2016/extra/" class="md-nav__link">
         
   
   
@@ -1362,7 +1362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2017/p1/" class="md-nav__link">
+      <a href="../p1/" class="md-nav__link">
         
   
   
@@ -1390,7 +1390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2017/p1r/" class="md-nav__link">
+      <a href="../p1r/" class="md-nav__link">
         
   
   
@@ -1418,7 +1418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2017/p2/" class="md-nav__link">
+      <a href="../p2/" class="md-nav__link">
         
   
   
@@ -1446,7 +1446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2017/extra/" class="md-nav__link">
+      <a href="../extra/" class="md-nav__link">
         
   
   
@@ -1554,64 +1554,63 @@
 
 
 
-  <h1>Extra ex01</h1>
+  <h1>Extra ex05</h1>
 
-<p>Queremos programar una clase Conjunto usando internamente una tabla hash con lista de desbordamiento. Se pide programar los siguientes métodos:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
-</code></pre></div>
-<p>Razone la complejidad de dichos métodos.</p>
-<p>No se aceptará como solución recurrir a la clase Map o a la clase Set de la biblioteca de java.</p>
 <ul>
-<li>(a) (2,1 puntos) Escribir el código de los métodos mencionados.</li>
+<li>(a) (?? puntos) ¿A qué orden de complejidad se debería aproximar la gráfica de tiempo de ejecución para los métodos de
+ordenación por inserción y mezcla (merge sort ) ?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Conjunto</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">tabla</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Conjunto</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">tabla</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">size</span><span class="o">]</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hash</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tabla</span><span class="o">[</span><span class="n">h</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
-<span class="w">            </span><span class="n">tabla</span><span class="o">[</span><span class="n">h</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">tabla</span><span class="o">[</span><span class="n">h</span><span class="o">]</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="w">            </span><span class="n">tabla</span><span class="o">[</span><span class="n">h</span><span class="o">]</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hash</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tabla</span><span class="o">[</span><span class="n">h</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="p">;</span>
-<span class="w">        </span><span class="n">tabla</span><span class="o">[</span><span class="n">h</span><span class="o">]</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hash</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tabla</span><span class="o">[</span><span class="n">h</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tabla</span><span class="o">[</span><span class="n">h</span><span class="o">]</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">hash</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">abs</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="na">hashCode</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">tabla</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<p>Inserción: O(n2); Mezcla: O(n·log n).</p>
 </details>
 <ul>
-<li>(b) (1,4 puntos) Razonar la complejidad de los métodos.</li>
+<li>(b) (?? puntos) La clase HashListas implementa tablas hash con listas de desbordamiento. En ella se define el método
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">){...}</span>
+</code></pre></div>
+¿Para qué se usa este método?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La complejidad de add() es O(1) sobre el supuesto de que la tabla de direccionamiento está dimensionada holgadamente; si no, sería la complejidad de la lista de desbordamiento.</p>
-<p>La complejidad de remove() y contains() es la misma.</p>
+<p>Para calcular la posición del array que contiene la lista donde se almacena (o se podría almacenar) el elemento de clave s.</p>
+</details>
+<ul>
+<li>(c) (?? puntos) En este ejercicio se usa un diccionario para almacenar palabras de un texto y el número de veces que aparecen. Una de las operaciones que se efectúan consiste en imprimir una lista con las n palabras más (o menos) usadas (método getTop()). En el ejercicio esto se implementa copiando los valores del diccionario a un array, que se ordena según el criterio elegido. Cuando se dice que esto se hace con “evaluación perezosa”, ¿qué significa esta expresión?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Que el array no se ordena hasta que es necesario, es decir hasta que se llama a getTop o a countBelow.</p>
+</details>
+<ul>
+<li>(d) (?? puntos) En este ejercicio se usa una cola de paquetes que se puede implementar como un array o una lista. La cola está incluida en una clase, TsRouter, que tiene dos métodos públicos, send y get, que respectivamente añaden y recuperan paquetes de la cola. ¿Tienen que ser sincronizados estos métodos? ¿Por qué?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Sí, porque acceden a la cola, que es un objeto compartido por todas las hebras.</p>
+</details>
+<ul>
+<li>(e) (?? puntos) En este ejercicio se utiliza sincronización de lectores y escritores para acceder a una estructura de datos compartida, la lista de manzanas del juego de la serpiente, encapsulada en la clase AppleListMonitor. ¿Qué cambios habría que hacer en esta clase para cambiar la sincronización de lectores y escritores por exclusión mutua?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Bastaría con suprimir las referencias a monitor.openReading / monitor.closeReading y a monitor.openWriting / monitor.closeWriting y hacer sincronizados todos los métodos de AppleListMonitor.</p>
+</details>
+<ul>
+<li>(f) (?? puntos) En este ejercicio se utiliza un widget de tipo Button para lanzar el cálculo del índice de masa corporal. ¿Cómo se especifica qué método hay que ejecutar cuando se pulsa el botón?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Se puede hacer de dos maneras: poniendo un atributo
+<div class="highlight"><pre><span></span><code><span class="nl">Android</span><span class="p">:</span><span class="n">onClick</span><span class="o">=</span><span class="err">”</span><span class="n">método</span><span class="err">”</span>
+</code></pre></div>
+en el layout correspondiente, o bien en Java, implementando la interfaz OnClickListener:
+<div class="highlight"><pre><span></span><code><span class="n">button</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">muestraMensaje</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></p>
 </details>
 
 
