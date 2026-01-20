@@ -1637,7 +1637,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Extraordinario
+    Examen 2018 — Extraordinario
   
 
     
@@ -1740,7 +1740,190 @@
 
   <h1>Extra ex01</h1>
 
-
+<p>Vamos a trabajar el algoritmo del huevo. Sirve para modelar algoritmos de búsqueda rápida cuando las pruebas son destructivas, reemplazando a la búsqueda binaria en un array.</p>
+<p>Tenemos N huevos y un edificio de H pisos. Queremos saber el piso más alto desde el que podemos dejar caer el huevo sin que se rompa. Con las siguientes suposiciones:
+    - Un huevo que sobrevive a una caída se puede usar nuevamente.
+    - Un huevo roto queda descartado.
+    - El efecto de una caída es el mismo para todos los huevos.
+    - Si un huevo rompe al caer desde un piso, romperá si se cae desde un piso superior.
+    - Si un huevo no rompe desde un piso, tampoco romperá desde un piso superior.</p>
+<p>La búsqueda binaria no sirve. Por ejemplo, si solo tenemos un huevo N=1, el mejor algoritmo es la búsqueda lineal: ir tirando desde pisos consecutivos hasta que rompa. Si tenemos N = 2 huevos en un edificio de 100 plantas y probamos en el piso 50 y rompe, solo nos queda un huevo para 49 pruebas adicionales. El óptimo para N=2 y H=100 es empezar desde el piso 14. La búsqueda binaria vale cuando hay más huevos que pisos.</p>
+<p>Para averiguar el piso óptimo solo necesitamos tener en cuenta cuántos pisos tenemos para probar. Es decir, es lo mismo buscar en los pisos del 1 al 10 que entre el 71 y el 80.</p>
+<p>Para averiguar el número máximo de pruebas con N huevos y H pisos podemos usar un método recursivo:
+<div class="highlight"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="nf">drops</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">):</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">h</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">h</span>
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">):</span>
+<span class="w">        </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min</span><span class="p">(</span>
+<span class="w">            </span><span class="n">res</span><span class="p">,</span>
+<span class="w">            </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">drops</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">drops</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
+</code></pre></div>
+Simplemente probamos todos los pisos X en el rango de pisos y para cada uno de ellos tenemos 2 opciones
+    - que el huevo se rompa y tenemos N-1 huevos y X-1 pisos
+    - que el huevo no rompa y tenemos N huevos y H-X pisos</p>
+<p>Probamos este código y va muy muy lento. Medimos tiempos para N=2 y obtenemos esto:</p>
+<p><img alt="" src="../extra/extra_ex01.png" /></p>
+<ul>
+<li>(a) (2,5 puntos) Indicar la complejidad del algoritmo recursivo en función de H. No se pide que la calcule analíticamente, solo que la marque y la valide a partir de las medidas realizadas.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Estudio de opciones en base al coeficiente de correlación.</p>
+<table>
+<thead>
+<tr>
+<th>Complejidad</th>
+<th>r</th>
+<th>Evaluación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O(log h)</td>
+<td>0.36</td>
+<td>NO, r &lt;&lt; 1.0</td>
+</tr>
+<tr>
+<td>O(h)</td>
+<td>0.41</td>
+<td>NO, r &lt;&lt; 1.0</td>
+</tr>
+<tr>
+<td>O(h log h)</td>
+<td>0.43</td>
+<td>NO, r &lt;&lt; 1.0</td>
+</tr>
+<tr>
+<td>O(h^18)</td>
+<td>0.98</td>
+<td>Posible</td>
+</tr>
+<tr>
+<td>O(1.9^h)</td>
+<td>1.00</td>
+<td>Posible</td>
+</tr>
+</tbody>
+</table>
+<p>De las 2 opciones posibles, es absurdo que en un algoritmo recursivo como el presentado aparezca un polinomio de orden 18.</p>
+<p>Sí es posible una complejidad O(2^h), que es probablemente la solución.</p>
+<p>Del análisis de la relación de recurrencia, para N = 2, tenemos un bucle interno sobre <code>x</code> que se ejecuta <code>h</code> veces en forma de serie aritmética:
+<div class="highlight"><pre><span></span><code>T(n, h-1) + T(n, h-2) + … + T(n, 1)
+= h * (T(n, h-1) + T(n, 1)) / 2
+≈ h * T(n, h-1)
+</code></pre></div>
+El algoritmo completo queda definido por la recurrencia:
+<div class="highlight"><pre><span></span><code>T(h) = h * T(h-1)
+</code></pre></div>
+Intentamos validar la solución propuesta:
+<div class="highlight"><pre><span></span><code>T(h) = 2^h
+</code></pre></div>
+Sustituyendo en la recurrencia:
+<div class="highlight"><pre><span></span><code>2^h = h * 2^{h-1}
+</code></pre></div>
+Esta igualdad se cumple para h &gt;&gt; 1 (cuando <code>h</code> tiende a infinito).</p>
+<p>Para n constante, el algoritmo tiene complejidad O(2^h).</p>
+</details>
+<p>Como el algoritmo recursivo no es práctico, recurrimos a memorizar resultados intermedios, de forma similar a como se hace con las series de Fibonacci.
+<div class="highlight"><pre><span></span><code><span class="mo">01</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">eggDrop</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">02</span><span class="w">      </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">][</span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+<span class="mo">03</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">04</span><span class="w">          </span><span class="n">cache</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="mo">05</span><span class="w">          </span><span class="n">cache</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="mo">06</span><span class="w">      </span><span class="p">}</span>
+<span class="mo">07</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">h</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="mi">08</span><span class="w">          </span><span class="n">cache</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
+<span class="mi">09</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mi">10</span><span class="w">          </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">h</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mi">11</span><span class="w">              </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span>
+<span class="mi">12</span><span class="w">              </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mi">13</span><span class="w">                  </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">cache</span><span class="o">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">][</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">,</span>
+<span class="mi">14</span><span class="w">                                          </span><span class="n">cache</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="o">]</span><span class="p">);</span>
+<span class="mi">15</span><span class="w">                  </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">min</span><span class="p">(</span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+<span class="mi">16</span><span class="w">              </span><span class="p">}</span>
+<span class="mi">17</span><span class="w">              </span><span class="n">cache</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min</span><span class="p">;</span>
+<span class="mi">18</span><span class="w">          </span><span class="p">}</span>
+<span class="mi">19</span><span class="w">      </span><span class="p">}</span>
+<span class="mi">20</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">cache</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">h</span><span class="o">]</span><span class="p">;</span>
+<span class="mi">21</span><span class="w">  </span><span class="p">}</span>
+</code></pre></div></p>
+<ul>
+<li>(b) (2,5 puntos) Se pide que calcule la complejidad de la implementación iterativa, en función de N y H. Se valorará la corrección de los razonamientos usados para determinar la complejidad.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Línea</th>
+<th>Complejidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">2</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">3–6</td>
+<td>n · O(1) = O(n)</td>
+</tr>
+<tr>
+<td style="text-align: right;">7–8</td>
+<td>h · O(1) = O(h)</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>n · … (bucle <code>for</code>)</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>h · … (bucle <code>for</code>)</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>h · … (bucle <code>for</code>)</td>
+</tr>
+<tr>
+<td style="text-align: right;">13–15</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">12–16</td>
+<td>h · O(1) = O(h)</td>
+</tr>
+<tr>
+<td style="text-align: right;">17</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">10–18</td>
+<td>h · (O(1) + O(h) + O(1)) = O(h²)</td>
+</tr>
+<tr>
+<td style="text-align: right;">9–19</td>
+<td>n · O(h²) = O(n·h²)</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">2–21</td>
+<td>O(1) + O(n) + O(h) + O(n·h²) + O(1) = O(n·h²)</td>
+</tr>
+</tbody>
+</table>
+<p>Hemos convertido un algoritmo recursivo de orden exponencial en un algoritmo iterativo de orden cuadrático.</p>
+</details>
 
 
 

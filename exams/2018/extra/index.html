@@ -23,7 +23,7 @@
     
     
       
-        <title>Examen 20XX — Extraordinario - Catálogo ejercicios años anteriores</title>
+        <title>Examen 2018 — Extraordinario - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#examen-20xx-extraordinario" class="md-skip">
+        <a href="#examen-2018-extraordinario" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Examen 20XX — Extraordinario
+              Examen 2018 — Extraordinario
             
           </span>
         </div>
@@ -1687,7 +1687,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Extraordinario
+    Examen 2018 — Extraordinario
   
 
     
@@ -1705,7 +1705,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Extraordinario
+    Examen 2018 — Extraordinario
   
 
     
@@ -1746,6 +1746,50 @@
     <span class="md-ellipsis">
       
         Problema 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 5
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 6
       
     </span>
   </a>
@@ -1852,6 +1896,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#problema-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 5
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 6
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1869,9 +1957,298 @@
 
 
 
-<h1 id="examen-20xx-extraordinario">Examen 20XX — Extraordinario</h1>
+<h1 id="examen-2018-extraordinario">Examen 2018 — Extraordinario</h1>
 <h2 id="problema-1">Problema 1</h2>
+<p>Vamos a trabajar el algoritmo del huevo. Sirve para modelar algoritmos de búsqueda rápida cuando las pruebas son destructivas, reemplazando a la búsqueda binaria en un array.</p>
+<p>Tenemos N huevos y un edificio de H pisos. Queremos saber el piso más alto desde el que podemos dejar caer el huevo sin que se rompa. Con las siguientes suposiciones:
+    - Un huevo que sobrevive a una caída se puede usar nuevamente.
+    - Un huevo roto queda descartado.
+    - El efecto de una caída es el mismo para todos los huevos.
+    - Si un huevo rompe al caer desde un piso, romperá si se cae desde un piso superior.
+    - Si un huevo no rompe desde un piso, tampoco romperá desde un piso superior.</p>
+<p>La búsqueda binaria no sirve. Por ejemplo, si solo tenemos un huevo N=1, el mejor algoritmo es la búsqueda lineal: ir tirando desde pisos consecutivos hasta que rompa. Si tenemos N = 2 huevos en un edificio de 100 plantas y probamos en el piso 50 y rompe, solo nos queda un huevo para 49 pruebas adicionales. El óptimo para N=2 y H=100 es empezar desde el piso 14. La búsqueda binaria vale cuando hay más huevos que pisos.</p>
+<p>Para averiguar el piso óptimo solo necesitamos tener en cuenta cuántos pisos tenemos para probar. Es decir, es lo mismo buscar en los pisos del 1 al 10 que entre el 71 y el 80.</p>
+<p>Para averiguar el número máximo de pruebas con N huevos y H pisos podemos usar un método recursivo:
+<div class="highlight"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="nf">drops</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">):</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">h</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">h</span>
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">):</span>
+<span class="w">        </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min</span><span class="p">(</span>
+<span class="w">            </span><span class="n">res</span><span class="p">,</span>
+<span class="w">            </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">drops</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">drops</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
+</code></pre></div>
+Simplemente probamos todos los pisos X en el rango de pisos y para cada uno de ellos tenemos 2 opciones
+    - que el huevo se rompa y tenemos N-1 huevos y X-1 pisos
+    - que el huevo no rompa y tenemos N huevos y H-X pisos</p>
+<p>Probamos este código y va muy muy lento. Medimos tiempos para N=2 y obtenemos esto:</p>
+<p><img alt="" src="extra_ex01.png" /></p>
+<ul>
+<li>(a) (2,5 puntos) Indicar la complejidad del algoritmo recursivo en función de H. No se pide que la calcule analíticamente, solo que la marque y la valide a partir de las medidas realizadas.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Estudio de opciones en base al coeficiente de correlación.</p>
+<table>
+<thead>
+<tr>
+<th>Complejidad</th>
+<th>r</th>
+<th>Evaluación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O(log h)</td>
+<td>0.36</td>
+<td>NO, r &lt;&lt; 1.0</td>
+</tr>
+<tr>
+<td>O(h)</td>
+<td>0.41</td>
+<td>NO, r &lt;&lt; 1.0</td>
+</tr>
+<tr>
+<td>O(h log h)</td>
+<td>0.43</td>
+<td>NO, r &lt;&lt; 1.0</td>
+</tr>
+<tr>
+<td>O(h^18)</td>
+<td>0.98</td>
+<td>Posible</td>
+</tr>
+<tr>
+<td>O(1.9^h)</td>
+<td>1.00</td>
+<td>Posible</td>
+</tr>
+</tbody>
+</table>
+<p>De las 2 opciones posibles, es absurdo que en un algoritmo recursivo como el presentado aparezca un polinomio de orden 18.</p>
+<p>Sí es posible una complejidad O(2^h), que es probablemente la solución.</p>
+<p>Del análisis de la relación de recurrencia, para N = 2, tenemos un bucle interno sobre <code>x</code> que se ejecuta <code>h</code> veces en forma de serie aritmética:
+<div class="highlight"><pre><span></span><code>T(n, h-1) + T(n, h-2) + … + T(n, 1)
+= h * (T(n, h-1) + T(n, 1)) / 2
+≈ h * T(n, h-1)
+</code></pre></div>
+El algoritmo completo queda definido por la recurrencia:
+<div class="highlight"><pre><span></span><code>T(h) = h * T(h-1)
+</code></pre></div>
+Intentamos validar la solución propuesta:
+<div class="highlight"><pre><span></span><code>T(h) = 2^h
+</code></pre></div>
+Sustituyendo en la recurrencia:
+<div class="highlight"><pre><span></span><code>2^h = h * 2^{h-1}
+</code></pre></div>
+Esta igualdad se cumple para h &gt;&gt; 1 (cuando <code>h</code> tiende a infinito).</p>
+<p>Para n constante, el algoritmo tiene complejidad O(2^h).</p>
+</details>
+<p>Como el algoritmo recursivo no es práctico, recurrimos a memorizar resultados intermedios, de forma similar a como se hace con las series de Fibonacci.
+<div class="highlight"><pre><span></span><code><span class="mo">01</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">eggDrop</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">02</span><span class="w">      </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">][</span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+<span class="mo">03</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">04</span><span class="w">          </span><span class="n">cache</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="mo">05</span><span class="w">          </span><span class="n">cache</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="mo">06</span><span class="w">      </span><span class="p">}</span>
+<span class="mo">07</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">h</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="mi">08</span><span class="w">          </span><span class="n">cache</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
+<span class="mi">09</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mi">10</span><span class="w">          </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">h</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mi">11</span><span class="w">              </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span>
+<span class="mi">12</span><span class="w">              </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mi">13</span><span class="w">                  </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">cache</span><span class="o">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">][</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">,</span>
+<span class="mi">14</span><span class="w">                                          </span><span class="n">cache</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="o">]</span><span class="p">);</span>
+<span class="mi">15</span><span class="w">                  </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">min</span><span class="p">(</span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+<span class="mi">16</span><span class="w">              </span><span class="p">}</span>
+<span class="mi">17</span><span class="w">              </span><span class="n">cache</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min</span><span class="p">;</span>
+<span class="mi">18</span><span class="w">          </span><span class="p">}</span>
+<span class="mi">19</span><span class="w">      </span><span class="p">}</span>
+<span class="mi">20</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">cache</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">h</span><span class="o">]</span><span class="p">;</span>
+<span class="mi">21</span><span class="w">  </span><span class="p">}</span>
+</code></pre></div></p>
+<ul>
+<li>(b) (2,5 puntos) Se pide que calcule la complejidad de la implementación iterativa, en función de N y H. Se valorará la corrección de los razonamientos usados para determinar la complejidad.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Línea</th>
+<th>Complejidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">2</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">3–6</td>
+<td>n · O(1) = O(n)</td>
+</tr>
+<tr>
+<td style="text-align: right;">7–8</td>
+<td>h · O(1) = O(h)</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>n · … (bucle <code>for</code>)</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>h · … (bucle <code>for</code>)</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>h · … (bucle <code>for</code>)</td>
+</tr>
+<tr>
+<td style="text-align: right;">13–15</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">12–16</td>
+<td>h · O(1) = O(h)</td>
+</tr>
+<tr>
+<td style="text-align: right;">17</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">10–18</td>
+<td>h · (O(1) + O(h) + O(1)) = O(h²)</td>
+</tr>
+<tr>
+<td style="text-align: right;">9–19</td>
+<td>n · O(h²) = O(n·h²)</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">2–21</td>
+<td>O(1) + O(n) + O(h) + O(n·h²) + O(1) = O(n·h²)</td>
+</tr>
+</tbody>
+</table>
+<p>Hemos convertido un algoritmo recursivo de orden exponencial en un algoritmo iterativo de orden cuadrático.</p>
+</details>
 <h2 id="problema-2">Problema 2</h2>
+<p>Disponemos de las clases Datos, DatosOrdenado y BST, cuyos esquemas se pueden ver debajo. La case Datos almacena valores enteros sin ordenar en un array de tamaño fijado en el constructor. La clase DatosOrdenado almacena valores enteros ordenados de menor a mayor en un array de tamaño fijado en el constructor. La clase BST almacena valores enteros en un BST, donde en cada nodo del árbol se almacena un número entero en el campo valor.
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Datos</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">valores</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// …..</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaMenores</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// …</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// …</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DatosOrdenado</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">valores</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// …..</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaMenores</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// …</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// …</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BST</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Nodo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Nodo</span><span class="w"> </span><span class="n">izd</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Nodo</span><span class="w"> </span><span class="n">der</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Nodo</span><span class="w"> </span><span class="n">raiz</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// …..</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaMenores</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// …</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// …</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>En una aplicación concreta que estamos desarrollando, deseamos conocer cuántos valores almacenados son menores que un cierto valor val que se pasa como parámetro. Este valor que se pasa como parámetro puede no ser uno de los valores almacenados.</p>
+<ul>
+<li>(a) (2,5 puntos) Codificar el método public int cuentaMenores (int val), en cada una de las 3 clases: Datos, DatosOrdenado y BST. Nota: Para simplificar suponga que tanto en Datos como en DatosOrdenado, los arrays de enteros están ocupados en su totalidad por valores almacenados. Suponga que no hay datos repetidos y que no hay operaciones de modificación (inserción o borrado), sino exclusivamente se trata de buscar en una estructura de datos construida.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Datos</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaMenores</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">cuenta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nValores</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">valores</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">val</span><span class="p">)</span>
+<span class="w">                </span><span class="n">cuenta</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cuenta</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">DatosOrdenado</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaMenores</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valores</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">centro</span><span class="p">,</span><span class="w"> </span><span class="n">inf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">sup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">inf</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">sup</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">centro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">sup</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">inf</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">valores</span><span class="o">[</span><span class="n">centro</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">val</span><span class="p">)</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">centro</span><span class="p">;</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">valores</span><span class="o">[</span><span class="n">centro</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">sup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">inf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">sup</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">BST</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaMenores</span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">actual</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">cuenta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">actual</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">actual</span><span class="p">.</span><span class="na">valor</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">val</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">cuentaTodos</span><span class="p">(</span><span class="n">actual</span><span class="p">.</span><span class="na">izd</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">actual</span><span class="p">.</span><span class="na">valor</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">val</span><span class="p">)</span>
+<span class="w">            </span><span class="n">cuenta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">nizd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuentaMenores</span><span class="p">(</span><span class="n">actual</span><span class="p">.</span><span class="na">izd</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">nder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuentaMenores</span><span class="p">(</span><span class="n">actual</span><span class="p">.</span><span class="na">der</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cuenta</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nizd</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nder</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaTodos</span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">actual</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">actual</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cuentaTodos</span><span class="p">(</span><span class="n">actual</span><span class="p">.</span><span class="na">izd</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cuentaTodos</span><span class="p">(</span><span class="n">actual</span><span class="p">.</span><span class="na">der</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (2,5 puntos) Se pide: Considerando sólo los métodos cuentaMenores que acaba de implementar, cuál de las tres clases seleccionaría para almacenar un conjunto de valores de tamaño fijo (M) donde se vayan a realizar frecuentes llamas al método cuentaMenores.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>La clase Datos al tener los valores no ordenados nos obliga a recorrer todo el array, por lo tanto, la complejidad es proporcional al número de valores almacenados: O(N)</p>
+<p>La Clase DatosOrdenado, tiene los valores ordenados de menor a mayor. Que los valores estén ordenados permite utilizar búsqueda dicotómica para localizar el valor, o en su defecto la posición donde debería estar el valor que estamos buscando. Esta operación tiene una complejidad O(log N). Una vez localizada la posición donde está o debería estar el valor, todos los de la izquierda son menores que él, por lo tanto, por lo que directamente conocemos el número de valores menores que el que nos pasan como parámetro usando el índice de la posición del array donde está o debería estar el valor pasado como parámetro. El resultado es un algoritmo de orden O(log N)</p>
+<p>En el caso del BST la estructura de BST ayuda a encontrar el valor en el árbol con una complejidad O(log N),pero como lo que nos piden es el número de valores menor que el valor pasado como parámetro, e incluso puede ocurrir que le propio valor no se encuentre en el árbol, debemos recorrer casi todo el árbol con una complejidad O(N).</p>
+<p>Por lo tanto, a la vista de este análisis, para nuestro problema concreto, la clase seleccionada es DatosOrdenado</p>
+</details>
+<h2 id="problema-3">Problema 3</h2>
+<h2 id="problema-4">Problema 4</h2>
+<h2 id="problema-5">Problema 5</h2>
+<h2 id="problema-6">Problema 6</h2>
 
 
 
