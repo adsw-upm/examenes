@@ -1731,7 +1731,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">android</span>
       
     
   </nav>
@@ -1740,7 +1740,114 @@
 
   <h1>Extra ex06</h1>
 
+<p>Para la aplicación Android DaysUntil se desea añadir la posibilidad de añadir una descripción del evento introducido por el usuario. Esta información es opcional para la funcionalidad básica de la aplicación. Sin embargo, en caso de existir una descripción, esta debe incluirse en la información pasada como intención implícita para la creación de un evento en el calendario del usuario al pulsar un botón.</p>
+<p>Siendo el esqueleto del código el siguiente:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Devuelve el nombre del evento introducido por el usuario */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getEvento</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Devuelve la fecha del evento introducida por el usuario */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Calendar</span><span class="w"> </span><span class="nf">getFecha</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** </span>
+<span class="cm">     * A partir de un nombre y una fecha crea una intención implícita para la</span>
+<span class="cm">     * inserción de un nuevo evento en un calendario</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Intent</span><span class="w"> </span><span class="nf">eventIntent</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">Calendar</span><span class="w"> </span><span class="n">fecha</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">crearEvento</span><span class="w"> </span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Completar</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;android.support.constraint.ConstraintLayout</span>
+<span class="w">    </span><span class="err">…</span><span class="w"> </span><span class="nt">&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;LinearLayout</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;EditText</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/eventName&quot;</span>
+<span class="w">            </span><span class="err">…</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;EditText</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/eventDate&quot;</span>
+<span class="w">            </span><span class="err">…</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/LinearLayout&gt;</span>
+
+<span class="nt">&lt;/android.support.constraint.ConstraintLayout&gt;</span>
+</code></pre></div>
+<ul>
+<li>(a) Complete el código asociado a dicha funcionalidad, tanto en el código java como en la definición del layout asociado a la actividad en cuestión. Considere implementados los métodos getNombre y getFecha. Ha de implementar completamente cualquier otro método auxiliar que considere necesario. Nota: la clave esperada por la intención de crear un evento para la descripción del mismo es <code>java CalendarContract.Events.DESCRIPTION</code>.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Devuelve el nombre del evento introducido por el usuario */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getEvento</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Devuelve la fecha del evento introducida por el usuario */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Calendar</span><span class="w"> </span><span class="nf">getFecha</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * A partir de un nombre y una fecha crea una intención implícita para la inserción de un</span>
+<span class="cm">     * nuevo evento en un calendario</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Intent</span><span class="w"> </span><span class="nf">eventIntent</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">Calendar</span><span class="w"> </span><span class="n">fecha</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">crearEvento</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">EditText</span><span class="w"> </span><span class="n">eventDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eventDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditText</span><span class="p">)</span>
+<span class="w">                </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">eventDescription</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eventIntent</span><span class="p">(</span><span class="n">getEvento</span><span class="p">(),</span><span class="w"> </span><span class="n">getFecha</span><span class="p">());</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">eventDescription</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">().</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">CalendarContract</span><span class="p">.</span><span class="na">Events</span><span class="p">.</span><span class="na">DESCRIPTION</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">eventDescription</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;android.support.constraint.ConstraintLayout</span>
+<span class="w">    </span><span class="err">…</span><span class="w"> </span><span class="nt">&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;LinearLayout</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;EditText</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/eventName&quot;</span>
+<span class="w">            </span><span class="err">…</span><span class="w"> </span><span class="nt">/&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;EditText</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/eventDate&quot;</span>
+<span class="w">            </span><span class="err">…</span><span class="w"> </span><span class="nt">/&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;EditText</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/eventDescription&quot;</span>
+<span class="w">            </span><span class="na">android:hint=</span><span class="s">&quot;Event description&quot;</span>
+<span class="w">            </span><span class="err">…</span><span class="w"> </span><span class="nt">/&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;Button</span>
+<span class="w">            </span><span class="na">android:text=</span><span class="s">&quot;Add event to calendar&quot;</span>
+<span class="w">            </span><span class="na">android:onClick=</span><span class="s">&quot;crearEvento&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/LinearLayout&gt;</span>
+
+<span class="nt">&lt;/android.support.constraint.ConstraintLayout&gt;</span>
+</code></pre></div>
+</details>
 
 
 

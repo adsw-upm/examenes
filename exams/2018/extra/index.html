@@ -2246,9 +2246,379 @@ Esta igualdad se cumple para h &gt;&gt; 1 (cuando <code>h</code> tiende a infini
 <p>Por lo tanto, a la vista de este análisis, para nuestro problema concreto, la clase seleccionada es DatosOrdenado</p>
 </details>
 <h2 id="problema-3">Problema 3</h2>
+<ul>
+<li>(a) (2 puntos) Explique brevemente cuál es la diferencia entre interbloqueo (deadlock) y bloqueo vivo (livelock).</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>En un interbloqueo hay varias hebras suspendidas, esperando conseguir recursos que tienen que liberar otras hebras, de tal manera que en conjunto se forma una cada de espera circular y ninguna hebra puede avanzar.</p>
+<p>En un bloqueo vivo hay igualmente varias hebras intentando conseguir recursos que tienen otras hebras. La diferencia es que cuando una hebra no puede conseguir todos sus recursos libera los que tiene y lo vuelve a intentar. Como consecuencia, las hebras implicadas están continuamente activas, aunque sin realizar ningún progreso.</p>
+<p>Por tanto, la diferencia fundamental es que en un interbloqueo las hebras estás suspendidas y nunca se ejecutan, mientras que en un bloqueo vivo las hebras se ejecutan pero no progresan.</p>
+</details>
+<p>Sea un sistema con 8 GB de memoria principal. Tenemos procesos concurrentes que solicitan memoria en bloques de 2 GB a medida que la necesitan para su ejecución. Un proceso que ya tiene N bloques de memoria asignados puede solicitar más memoria, y si ya no hay memoria disponible espera a que la haya antes de continuar. La memoria asignada a un proceso se libera completamente cuando el proceso termina su ejecución.</p>
+<ul>
+<li>(b) (3 puntos) Indique razonadamente si es posible que se dé una situación de interbloqueo (deadlock), en qué circunstancias podría ocurrir y, si éste es el caso, cómo se podría evitar.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Los procesos acceden a un conjunto de recursos, los bloques de memoria, todos iguales, con una disponibilidad total limitada a 4 bloques en total. Se pueden producir interbloqueos si varios procesos intentan adquirir más memoria cuando ya está toda asignada a otros procesos que también necesitan más memoria.</p>
+<p>Por ejemplo, supóngase que hay dos procesos P y Q, que tiene asignados 2 bloques de memoria cada uno, es decir 4 en total, por lo que no hay bloques libres. Si ambos solicitan un bloque adicional cada uno, al no estar disponible se suspenden esperando que haya memoria libre. Para ello uno de los dos tendría que terminar, liberando su memoria, pero al no poder avanzar ninguno de los dos se quedan suspendidos indefinidamente.</p>
+<p>Podemos comprobar que se cumplen las condiciones necesarias de Coffman:
+1. Exclusión mutua: un bloque de memoria sólo puede estar asignado a un proceso.
+2. Tener y esperar: un proceso puede tener asignada memoria y esperar que conseguir más.
+3. Sin expulsión: no se quita memoria a un proceso hasta que termina su ejecución.
+4. Espera circular, como pone de manifiesto el ejemplo anterior.</p>
+<p>Para evitar el interbloqueo la solución más sencilla sería obligar a que los procesos soliciten toda la memoria que pueden necesitar al iniciarse, invalidando la condición 2. Nótese que la solución frecuentemente recomendada de asignar los recursos siempre en el mismo orden no es aplicable aquí porque todos los bloques de memoria son iguales</p>
+</details>
 <h2 id="problema-4">Problema 4</h2>
+<p>La panadería Molinga S.L. quiere modernizar sus instalaciones robotizando su sistema de producción de pan. Para ello han encargado a los alumnos de ADSW que realicen parte del sistema.</p>
+<p>Se desea realizar dos monitores para gestionar la amasadora y el horno de la panadería, con acceso exclusivo por parte de varios robots (threads). Existen 3 tipos de robots en la panadería:
+    - Robots de almacén, que meten ingredientes en la amasadora.
+    - Robots amasadores, que cuando tienen los ingredientes necesarios amasan y después meten la masa en el horno.
+    - Robots horneadores, que cuando tienen las masas necesarias para llenar un horno, hornean el pan.</p>
+<p>La amasadora permitirá introducir ingredientes a los r obots de almacén y amasar a los robots amasadores. Para hacer una masa de pan hacen falta cuatro ingredientes: agua, harina, levadura y sal, en la proporción de 4, 3, 2 y 1 unidades. No se permitirá a los robots de almacén introducir más ingredientes si hay suficientes para hacer una masa, y de igual manera no se permitirá a los robots amasadores amasar si no hay suficientes ingredientes para
+hacer una masa.</p>
+<p>El horno permitirá introducir masas a los robots amasadores y hornear a los robots horneadores. Un horno tiene un tamaño concreto, que recibirá como parámetro en el constructor, indicando el número de masas que es capaz de hornear. Por motivos de eficiencia, los robots horneadores solo podrán hornear si el horno está completamente lleno, y los robots amasadores solo podrán meter masas si hay hueco en el horno.</p>
+<p>Estructura de clases de la panadería:</p>
+<p><img alt="" src="extra_ex04.png" /></p>
+<p>Ejemplo de programa con varios robots:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">Ingrediente</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Agua</span><span class="p">,</span><span class="w"> </span><span class="n">Harina</span><span class="p">,</span><span class="w"> </span><span class="n">Levadura</span><span class="p">,</span><span class="w"> </span><span class="n">Sal</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Amasadora</span><span class="w"> </span><span class="n">amasadora</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Amasadora</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Horno</span><span class="w"> </span><span class="n">horno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Horno</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">RobotAlmacen</span><span class="p">(</span><span class="s">&quot;ED209&quot;</span><span class="p">,</span><span class="n">amasadora</span><span class="p">).</span><span class="na">start</span><span class="p">();</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">RobotAlmacen</span><span class="p">(</span><span class="s">&quot;T-800&quot;</span><span class="p">,</span><span class="n">amasadora</span><span class="p">).</span><span class="na">start</span><span class="p">();</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">RobotAlmacen</span><span class="p">(</span><span class="s">&quot;WALL-E&quot;</span><span class="p">,</span><span class="n">amasadora</span><span class="p">).</span><span class="na">start</span><span class="p">();</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">RobotAlmacen</span><span class="p">(</span><span class="s">&quot;Bumblebee&quot;</span><span class="p">,</span><span class="n">amasadora</span><span class="p">).</span><span class="na">start</span><span class="p">();</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">RobotAmasador</span><span class="p">(</span><span class="s">&quot;R2D2&quot;</span><span class="p">,</span><span class="n">amasadora</span><span class="p">,</span><span class="n">horno</span><span class="p">).</span><span class="na">start</span><span class="p">();</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">RobotAmasador</span><span class="p">(</span><span class="s">&quot;C3PO&quot;</span><span class="p">,</span><span class="n">amasadora</span><span class="p">,</span><span class="n">horno</span><span class="p">).</span><span class="na">start</span><span class="p">();</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">RobotAmasador</span><span class="p">(</span><span class="s">&quot;BB8&quot;</span><span class="p">,</span><span class="n">amasadora</span><span class="p">,</span><span class="n">horno</span><span class="p">).</span><span class="na">start</span><span class="p">();</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">RobotHorneador</span><span class="p">(</span><span class="s">&quot;Chappie&quot;</span><span class="p">,</span><span class="n">horno</span><span class="p">).</span><span class="na">start</span><span class="p">();</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">RobotHorneador</span><span class="p">(</span><span class="s">&quot;RoboCop&quot;</span><span class="p">,</span><span class="n">horno</span><span class="p">).</span><span class="na">start</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>Ejemplo de código del robor horneador:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RobotHorneador</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Horno</span><span class="w"> </span><span class="n">horno</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">panes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Random</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">RobotHorneador</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">Horno</span><span class="w"> </span><span class="n">horno</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">horno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">horno</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">panes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNombre</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="p">;}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">panesNuevos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">horno</span><span class="p">.</span><span class="na">hornear</span><span class="p">();</span>
+<span class="w">                </span><span class="k">this</span><span class="p">.</span><span class="na">panes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">panes</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">panesNuevos</span><span class="p">;</span>
+<span class="w">                </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="na">nextInt</span><span class="p">(</span><span class="mi">5000</span><span class="p">));</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<ul>
+<li>(a) (2,5 puntos) Desarrollar el monitor Amasadora</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>```java
+public class Amasadora {
+    private int cantidadAgua;
+    private int cantidadHarina;
+    private int cantidadLevadura;
+    private int cantidadSal;</p>
+<pre><code>public synchronized void amasar() {
+    try {
+        while (!((this.cantidadAgua &gt;= 4) &amp;&amp; (this.cantidadHarina &gt;= 3) &amp;&amp;
+               (this.cantidadLevadura &gt;= 2) &amp;&amp; (this.cantidadSal &gt;= 1))) {
+            wait();
+        }
+        this.cantidadAgua = this.cantidadAgua - 4;
+        this.cantidadHarina = this.cantidadHarina - 3;
+        this.cantidadLevadura = this.cantidadLevadura - 2;
+        this.cantidadSal = this.cantidadSal - 1;
+        notifyAll();
+    } catch (InterruptedException ignored) {}
+}
+
+public synchronized void meterIngredientes(Ingrediente ingrediente, int cantidad) {
+    try {
+        while (((this.cantidadAgua &gt;= 4) &amp;&amp; (this.cantidadHarina &gt;= 3) &amp;&amp;
+               (this.cantidadLevadura &gt;= 2) &amp;&amp; (this.cantidadSal &gt;= 1))) {
+            wait();
+        }
+        switch (ingrediente) {
+            case Agua:
+                this.cantidadAgua = this.cantidadAgua + cantidad;
+                break;
+            case Harina:
+                this.cantidadHarina = this.cantidadHarina + cantidad;
+                break;
+            case Levadura:
+                this.cantidadLevadura = this.cantidadLevadura + cantidad;
+                break;
+            case Sal:
+                this.cantidadSal = this.cantidadSal + cantidad;
+                break;
+        }
+        notifyAll();
+    } catch (InterruptedException ignored) {}
+}
+</code></pre>
+<p>}
+```java</p>
+</details>
+<ul>
+<li>(b) (2 puntos) Desarrollar el monitor Horno</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Horno</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">masas</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tamaño</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Horno</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">tamaño</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">tamaño</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tamaño</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">hornear</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">masas</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">tamaño</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">masas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">masas</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">tamaño</span><span class="p">;</span>
+<span class="w">            </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">tamaño</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">meterMasa</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">masas</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">tamaño</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">masas</span><span class="o">++</span><span class="p">;</span>
+<span class="w">            </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(c) (0,5 puntos) Proponer el método run() del Robot Amasador</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">amasadora</span><span class="p">.</span><span class="na">amasar</span><span class="p">();</span>
+<span class="w">        </span><span class="n">horno</span><span class="p">.</span><span class="na">meterMasa</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 <h2 id="problema-5">Problema 5</h2>
+<p>Se desea ampliar el juego de la serpiente con un contador de las manzanas que ha comido la serpiente. Naturalmente, cuando la serpiente come una manzana, este contador debe aumentar en una unidad. Para añadir dificultad al jugador, también puede perder manzanas de este contador por dos motivos:
+    - Si una bola choca con una manzana, el jugador pierde una unidad de su contador de manzanas comidas. El contador no puede nunca tener un valor inferior a cero como resultado de esta pérdida, pero la pérdida debe ejecutarse tan pronto como sea posible.
+    - Si la serpiente es golpeada en la cabeza por una bola, el contador de manzanas se reduce a la mitad, redondeando al entero inmediatamente inferior. Esto es, si el jugador tenía 7 puntos debe quedarse con 3.</p>
+<p>Siendo la clase manzanas:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Manzanas</span>
+<span class="kd">implements</span><span class="w"> </span><span class="n">Screen</span><span class="p">.</span><span class="na">Thing</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="cm">/** Constructor. */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Manzanas</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Font</span><span class="p">(</span><span class="s">&quot;SansSerif&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Font</span><span class="p">.</span><span class="na">BOLD</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Game</span><span class="p">.</span><span class="na">getScreen</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** La serpiente ha comido una manzana. */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">appleEaten</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Una bola ha destruido una manzana. */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">appleDestroid</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Una bola ha golpeado la cabeza de la serpiente. */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">headShot</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Se imprime en pantalla. */</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">paint</span><span class="p">(</span><span class="n">Graphics2D</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">setFont</span><span class="p">(</span><span class="n">font</span><span class="p">);</span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">setColor</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="na">BLACK</span><span class="p">);</span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">drawString</span><span class="p">(</span><span class="s">&quot;manzanas: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>Se pide que complete y modifique la clase monitor Manzanas como considere oportuno para obtener la
+funcionalidad descrita.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Contador de manzanas.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Manzanas</span>
+<span class="kd">implements</span><span class="w"> </span><span class="n">Screen</span><span class="p">.</span><span class="na">Thing</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">manzanas</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Manzanas</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Font</span><span class="p">(</span><span class="s">&quot;SansSerif&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Font</span><span class="p">.</span><span class="na">BOLD</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+<span class="w">        </span><span class="n">manzanas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Game</span><span class="p">.</span><span class="na">getScreen</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">appleEaten</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">manzanas</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">appleDestroid</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">manzanas</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">manzanas</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">headShot</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">manzanas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manzanas</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">paint</span><span class="p">(</span><span class="n">Graphics2D</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">setFont</span><span class="p">(</span><span class="n">font</span><span class="p">);</span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">setColor</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="na">BLACK</span><span class="p">);</span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">drawString</span><span class="p">(</span><span class="s">&quot;manzanas: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">manzanas</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 <h2 id="problema-6">Problema 6</h2>
+<p>Para la aplicación Android DaysUntil se desea añadir la posibilidad de añadir una descripción del evento introducido por el usuario. Esta información es opcional para la funcionalidad básica de la aplicación. Sin embargo, en caso de existir una descripción, esta debe incluirse en la información pasada como intención implícita para la creación de un evento en el calendario del usuario al pulsar un botón.</p>
+<p>Siendo el esqueleto del código el siguiente:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Devuelve el nombre del evento introducido por el usuario */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getEvento</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Devuelve la fecha del evento introducida por el usuario */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Calendar</span><span class="w"> </span><span class="nf">getFecha</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** </span>
+<span class="cm">     * A partir de un nombre y una fecha crea una intención implícita para la</span>
+<span class="cm">     * inserción de un nuevo evento en un calendario</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Intent</span><span class="w"> </span><span class="nf">eventIntent</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">Calendar</span><span class="w"> </span><span class="n">fecha</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">crearEvento</span><span class="w"> </span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Completar</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;android.support.constraint.ConstraintLayout</span>
+<span class="w">    </span><span class="err">…</span><span class="w"> </span><span class="nt">&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;LinearLayout</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;EditText</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/eventName&quot;</span>
+<span class="w">            </span><span class="err">…</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;EditText</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/eventDate&quot;</span>
+<span class="w">            </span><span class="err">…</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/LinearLayout&gt;</span>
+
+<span class="nt">&lt;/android.support.constraint.ConstraintLayout&gt;</span>
+</code></pre></div>
+<ul>
+<li>(a) Complete el código asociado a dicha funcionalidad, tanto en el código java como en la definición del layout asociado a la actividad en cuestión. Considere implementados los métodos getNombre y getFecha. Ha de implementar completamente cualquier otro método auxiliar que considere necesario. Nota: la clave esperada por la intención de crear un evento para la descripción del mismo es <code>java CalendarContract.Events.DESCRIPTION</code>.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Devuelve el nombre del evento introducido por el usuario */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getEvento</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Devuelve la fecha del evento introducida por el usuario */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Calendar</span><span class="w"> </span><span class="nf">getFecha</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * A partir de un nombre y una fecha crea una intención implícita para la inserción de un</span>
+<span class="cm">     * nuevo evento en un calendario</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Intent</span><span class="w"> </span><span class="nf">eventIntent</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">Calendar</span><span class="w"> </span><span class="n">fecha</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">crearEvento</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">EditText</span><span class="w"> </span><span class="n">eventDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eventDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditText</span><span class="p">)</span>
+<span class="w">                </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">eventDescription</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eventIntent</span><span class="p">(</span><span class="n">getEvento</span><span class="p">(),</span><span class="w"> </span><span class="n">getFecha</span><span class="p">());</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">eventDescription</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">().</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">CalendarContract</span><span class="p">.</span><span class="na">Events</span><span class="p">.</span><span class="na">DESCRIPTION</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">eventDescription</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;android.support.constraint.ConstraintLayout</span>
+<span class="w">    </span><span class="err">…</span><span class="w"> </span><span class="nt">&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;LinearLayout</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;EditText</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/eventName&quot;</span>
+<span class="w">            </span><span class="err">…</span><span class="w"> </span><span class="nt">/&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;EditText</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/eventDate&quot;</span>
+<span class="w">            </span><span class="err">…</span><span class="w"> </span><span class="nt">/&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;EditText</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/eventDescription&quot;</span>
+<span class="w">            </span><span class="na">android:hint=</span><span class="s">&quot;Event description&quot;</span>
+<span class="w">            </span><span class="err">…</span><span class="w"> </span><span class="nt">/&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;Button</span>
+<span class="w">            </span><span class="na">android:text=</span><span class="s">&quot;Add event to calendar&quot;</span>
+<span class="w">            </span><span class="na">android:onClick=</span><span class="s">&quot;crearEvento&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/LinearLayout&gt;</span>
+
+<span class="nt">&lt;/android.support.constraint.ConstraintLayout&gt;</span>
+</code></pre></div>
+</details>
 
 
 

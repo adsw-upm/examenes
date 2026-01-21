@@ -1731,7 +1731,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">monitores</span>
       
     
   </nav>
@@ -1740,7 +1740,87 @@
 
   <h1>Extra ex05</h1>
 
+<p>Se desea ampliar el juego de la serpiente con un contador de las manzanas que ha comido la serpiente. Naturalmente, cuando la serpiente come una manzana, este contador debe aumentar en una unidad. Para añadir dificultad al jugador, también puede perder manzanas de este contador por dos motivos:
+    - Si una bola choca con una manzana, el jugador pierde una unidad de su contador de manzanas comidas. El contador no puede nunca tener un valor inferior a cero como resultado de esta pérdida, pero la pérdida debe ejecutarse tan pronto como sea posible.
+    - Si la serpiente es golpeada en la cabeza por una bola, el contador de manzanas se reduce a la mitad, redondeando al entero inmediatamente inferior. Esto es, si el jugador tenía 7 puntos debe quedarse con 3.</p>
+<p>Siendo la clase manzanas:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Manzanas</span>
+<span class="kd">implements</span><span class="w"> </span><span class="n">Screen</span><span class="p">.</span><span class="na">Thing</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="cm">/** Constructor. */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Manzanas</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Font</span><span class="p">(</span><span class="s">&quot;SansSerif&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Font</span><span class="p">.</span><span class="na">BOLD</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Game</span><span class="p">.</span><span class="na">getScreen</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** La serpiente ha comido una manzana. */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">appleEaten</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Una bola ha destruido una manzana. */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">appleDestroid</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Una bola ha golpeado la cabeza de la serpiente. */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">headShot</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Se imprime en pantalla. */</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">paint</span><span class="p">(</span><span class="n">Graphics2D</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">setFont</span><span class="p">(</span><span class="n">font</span><span class="p">);</span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">setColor</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="na">BLACK</span><span class="p">);</span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">drawString</span><span class="p">(</span><span class="s">&quot;manzanas: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>Se pide que complete y modifique la clase monitor Manzanas como considere oportuno para obtener la
+funcionalidad descrita.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Contador de manzanas.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Manzanas</span>
+<span class="kd">implements</span><span class="w"> </span><span class="n">Screen</span><span class="p">.</span><span class="na">Thing</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">manzanas</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Manzanas</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Font</span><span class="p">(</span><span class="s">&quot;SansSerif&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Font</span><span class="p">.</span><span class="na">BOLD</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+<span class="w">        </span><span class="n">manzanas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Game</span><span class="p">.</span><span class="na">getScreen</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">appleEaten</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">manzanas</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">appleDestroid</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">manzanas</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">manzanas</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">headShot</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">manzanas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manzanas</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">paint</span><span class="p">(</span><span class="n">Graphics2D</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">setFont</span><span class="p">(</span><span class="n">font</span><span class="p">);</span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">setColor</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="na">BLACK</span><span class="p">);</span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">drawString</span><span class="p">(</span><span class="s">&quot;manzanas: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">manzanas</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 
