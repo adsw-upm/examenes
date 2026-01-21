@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 </android.support.constraint.ConstraintLayout>
 ```
 
-- (a) Complete el código asociado a dicha funcionalidad, tanto en el código java como en la definición del layout asociado a la actividad en cuestión. Considere implementados los métodos getNombre y getFecha. Ha de implementar completamente cualquier otro método auxiliar que considere necesario. Nota: la clave esperada por la intención de crear un evento para la descripción del mismo es ```java CalendarContract.Events.DESCRIPTION ```.
+- (a) Complete el código asociado a dicha funcionalidad, tanto en el código java como en la definición del layout asociado a la actividad en cuestión. Considere implementados los métodos getNombre y getFecha. Ha de implementar completamente cualquier otro método auxiliar que considere necesario. Nota: la clave esperada por la intención de crear un evento para la descripción del mismo es ```CalendarContract.Events.DESCRIPTION ```.
 
 ??? note "Mostrar solución"
     ```java

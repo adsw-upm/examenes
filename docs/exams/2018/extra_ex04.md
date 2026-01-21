@@ -120,7 +120,7 @@ public class RobotHorneador extends Thread {
             } catch (InterruptedException ignored) {}
         }
     }
-    ```java
+    ```
 
 
 - (b) (2 puntos) Desarrollar el monitor Horno
