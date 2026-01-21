@@ -2332,52 +2332,51 @@ hacer una masa.</p>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>```java
-public class Amasadora {
-    private int cantidadAgua;
-    private int cantidadHarina;
-    private int cantidadLevadura;
-    private int cantidadSal;</p>
-<pre><code>public synchronized void amasar() {
-    try {
-        while (!((this.cantidadAgua &gt;= 4) &amp;&amp; (this.cantidadHarina &gt;= 3) &amp;&amp;
-               (this.cantidadLevadura &gt;= 2) &amp;&amp; (this.cantidadSal &gt;= 1))) {
-            wait();
-        }
-        this.cantidadAgua = this.cantidadAgua - 4;
-        this.cantidadHarina = this.cantidadHarina - 3;
-        this.cantidadLevadura = this.cantidadLevadura - 2;
-        this.cantidadSal = this.cantidadSal - 1;
-        notifyAll();
-    } catch (InterruptedException ignored) {}
-}
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Amasadora</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cantidadAgua</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cantidadHarina</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cantidadLevadura</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cantidadSal</span><span class="p">;</span>
 
-public synchronized void meterIngredientes(Ingrediente ingrediente, int cantidad) {
-    try {
-        while (((this.cantidadAgua &gt;= 4) &amp;&amp; (this.cantidadHarina &gt;= 3) &amp;&amp;
-               (this.cantidadLevadura &gt;= 2) &amp;&amp; (this.cantidadSal &gt;= 1))) {
-            wait();
-        }
-        switch (ingrediente) {
-            case Agua:
-                this.cantidadAgua = this.cantidadAgua + cantidad;
-                break;
-            case Harina:
-                this.cantidadHarina = this.cantidadHarina + cantidad;
-                break;
-            case Levadura:
-                this.cantidadLevadura = this.cantidadLevadura + cantidad;
-                break;
-            case Sal:
-                this.cantidadSal = this.cantidadSal + cantidad;
-                break;
-        }
-        notifyAll();
-    } catch (InterruptedException ignored) {}
-}
-</code></pre>
-<p>}
-```java</p>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">amasar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="k">this</span><span class="p">.</span><span class="na">cantidadAgua</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">cantidadHarina</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">                   </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">cantidadLevadura</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">cantidadSal</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadAgua</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadAgua</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadHarina</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadHarina</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadLevadura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadLevadura</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadSal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadSal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">meterIngredientes</span><span class="p">(</span><span class="n">Ingrediente</span><span class="w"> </span><span class="n">ingrediente</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cantidad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(((</span><span class="k">this</span><span class="p">.</span><span class="na">cantidadAgua</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">cantidadHarina</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">                   </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">cantidadLevadura</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">cantidadSal</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">ingrediente</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="n">Agua</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadAgua</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadAgua</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cantidad</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="n">Harina</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadHarina</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadHarina</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cantidad</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="n">Levadura</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadLevadura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadLevadura</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cantidad</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="n">Sal</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadSal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">cantidadSal</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cantidad</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 </details>
 <ul>
 <li>(b) (2 puntos) Desarrollar el monitor Horno</li>
@@ -2554,7 +2553,7 @@ funcionalidad descrita.</p>
 <span class="nt">&lt;/android.support.constraint.ConstraintLayout&gt;</span>
 </code></pre></div>
 <ul>
-<li>(a) Complete el código asociado a dicha funcionalidad, tanto en el código java como en la definición del layout asociado a la actividad en cuestión. Considere implementados los métodos getNombre y getFecha. Ha de implementar completamente cualquier otro método auxiliar que considere necesario. Nota: la clave esperada por la intención de crear un evento para la descripción del mismo es <code>java CalendarContract.Events.DESCRIPTION</code>.</li>
+<li>(a) Complete el código asociado a dicha funcionalidad, tanto en el código java como en la definición del layout asociado a la actividad en cuestión. Considere implementados los métodos getNombre y getFecha. Ha de implementar completamente cualquier otro método auxiliar que considere necesario. Nota: la clave esperada por la intención de crear un evento para la descripción del mismo es <code>CalendarContract.Events.DESCRIPTION</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
