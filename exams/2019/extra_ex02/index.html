@@ -1678,6 +1678,8 @@
       
         
       
+        
+      
     
     
     
@@ -1814,6 +1816,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../pract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen 2019 — Prácticas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../extra/" class="md-nav__link">
         
   
@@ -1918,13 +1948,151 @@
         <span class="md-tag">complejidad</span>
       
     
+      
+      
+      
+      
+        <span class="md-tag">grafos</span>
+      
+    
   </nav>
 
 
 
   <h1>Extra ex02</h1>
 
+<p>Se debe realizar un algoritmo para etiquetar con un número todos los nodos de un grafo cumpliendo las siguientes condiciones:
+    - 1. Dos nodos adyacentes no pueden tener el mismo número.
+    - 2. Sobre el grafo pasado como parámetro, el algoritmo debe asignar el número mínimo que pueda a todos los nodos, cumpliendo la condición del punto 1, y devolver el número máximo utilizado para etiquetar todos los nodos. (Ver ejemplos).
+    - 3. Se considera que todos los enlaces son bidireccionales y se han creado con el siguiente método:
+    <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addLink2D</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span>
+</code></pre></div>
+    que añade a un grafo un enlace entre el nodo a y el b, y otro enlace entre b y a. Todos los enlaces tiene peso w = 1.
+    - 4. Se usará el modelo de los ejercicios de prácticas 1 y 2, donde tenemos la clase Graph que contiene objetos de la clase Node para definir los vértices (nodos), y objetos de la clase Link para definir los arcos (enlaces.)</p>
+<p>Notas: Una posible solución trivial podría ser hacer un for con un índice y asignar ese índice a cada nodo. Esta solución no sería válida porque, aunque cumple el punto 2, no cumple el punto 3. Para asignar valores a los nodos se recomienda usar una estructura del estilo Map<Node, Integer>, donde la clave (key) es el Node que queremos etiquetar y el valor (value) es el Integer con el valor etiquetado.</p>
+<p>Ejemplos:</p>
+<p><img alt="" src="../extra/extra_ex02.png" /></p>
+<ul>
+<li>(a) (4 puntos) Diseñe el algoritmo con la siguiente signatura. Nota: Puede (debe) desarrollar métodos auxiliares si lo necesita para facilitar la implementación del algoritmo.
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">getMinimunInt</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// a rellenar por el alumno</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Método para conseguir una lista con todos enteros de los nodos vecinos a uno dado.</span>
+<span class="cm"> * Si el vecino no tiene un entero asignado, no se devuelve nada.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param g Grafo del que se quiere realizar los cálculos</span>
+<span class="cm"> * @param myNode Nodo del cual se quiere obtener todos los vecinos</span>
+<span class="cm"> * @param ints Mapa con los enteros de todos los nodos</span>
+<span class="cm"> * @return Lista de los colores de los vecinos</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getNeighborsInts</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="n">myNode</span><span class="p">,</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ints</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">neighborsInts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Link</span><span class="w"> </span><span class="n">link</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="na">getLinks</span><span class="p">(</span><span class="n">myNode</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Node</span><span class="w"> </span><span class="n">dst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="na">getNode</span><span class="p">(</span><span class="n">link</span><span class="p">.</span><span class="na">getDst</span><span class="p">());</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dst</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Integer</span><span class="w"> </span><span class="n">intDst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ints</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">dst</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">intDst</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">neighborsInts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">intDst</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">neighborsInts</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Algoritmo para conseguir el entero mínimo de una lista de Integers dada.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Ejemplos:</span>
+<span class="cm"> * &lt;1,2,3&gt;  -&gt; devuelve 0</span>
+<span class="cm"> * &lt;0,1,3&gt;  -&gt; devuelve 2</span>
+<span class="cm"> * &lt;0,1,2&gt;  -&gt; devuelve 3</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param neighborsInts lista con enteros</span>
+<span class="cm"> * @return entero mínimo que no está en la lista</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMinimunInt</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">neighborsInts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">myInteger</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">neighborsInts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">myInteger</span><span class="p">.</span><span class="na">intValue</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">found</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Algoritmo para conseguir el entero mayor (máximo) de un mapa.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param ints mapa con los nodos y el entero asignado</span>
+<span class="cm"> * @return entero máximo del mapa</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMaxIntInGraph</span><span class="p">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ints</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MIN_VALUE</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">myInteger</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ints</span><span class="p">.</span><span class="na">values</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">myInteger</span><span class="p">.</span><span class="na">intValue</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">maxValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">maxValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myInteger</span><span class="p">.</span><span class="na">intValue</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">maxValue</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Algoritmo para conseguir el entero mínimo para etiquetar un grafo</span>
+<span class="cm"> * siguiendo las reglas del coloreado de grafos.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param g grafo que describe el problema</span>
+<span class="cm"> * @return entero mínimo necesario para etiquetar el grafo</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMinimunInt</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Estructura para guardar los enteros asignados a cada nodo</span>
+<span class="w">    </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Recorremos todos los nodos del grafo</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Node</span><span class="w"> </span><span class="n">myNode</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="na">getNodes</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// Obtenemos los enteros de los vecinos</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">neighborsInts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNeighborsInts</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">myNode</span><span class="p">,</span><span class="w"> </span><span class="n">ints</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Calculamos el entero mínimo no usado</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">minimunInt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getMinimunInt</span><span class="p">(</span><span class="n">neighborsInts</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Asignamos el entero al nodo</span>
+<span class="w">        </span><span class="n">ints</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">myNode</span><span class="p">,</span><span class="w"> </span><span class="n">minimunInt</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Obtenemos el entero máximo usado en el grafo</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxIntInGraph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getMaxIntInGraph</span><span class="p">(</span><span class="n">ints</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">maxIntInGraph</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (1 punto) ¿Cuál es la complejidad de dicho algoritmo? (Razone su respuesta)</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>La solución dependerá de la respuesta a la pregunta (a).</p>
+</details>
 
 
 

@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../p2/">
+        <link rel="prev" href="../pract/">
       
       
         <link rel="next" href="../../2021/exam/">
@@ -1719,6 +1719,8 @@
       
         
       
+        
+      
     
     
     
@@ -1855,6 +1857,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../pract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen 2019 — Prácticas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1933,6 +1963,39 @@
     <span class="md-ellipsis">
       
         Problema 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 5
       
     </span>
   </a>
@@ -2039,6 +2102,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#problema-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 5
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2058,7 +2154,445 @@
 
 <h1 id="examen-20xx-extraordinario">Examen 20XX — Extraordinario</h1>
 <h2 id="problema-1">Problema 1</h2>
+<p>Una empresa de telecomunicaciones necesita gestionar una tabla de abonados con sus números de línea correspondientes. Para ello utiliza una clase Java denominada TablaAbonados con la interfaz que se especifica a continuación:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TablaAbonados</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">    * Registrar una nueva línea</span>
+<span class="cm">    * @param numero línea</span>
+<span class="cm">    * @param abonado apellidos, nombre</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">insertar</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">numero</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">abonado</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">    * Eliminar el registro de una línea</span>
+<span class="cm">    * @param numero de línea</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">eliminar</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">numero</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">    * Apellidos y nombre del titular de una línea</span>
+<span class="cm">    * @param numero de línea</span>
+<span class="cm">    * @return apellidos, nombre</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">abonado</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">numero</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="p">}</span>
+</code></pre></div>
+Las operaciones insertar y abonado se ejecutan muchas veces al día, y la operación eliminar se ejecuta con menos frecuencia. Para implementar la tabla se utiliza internamente una tabla hash con listas.</p>
+<p>Nota: no escriba código, sólo indique qué algoritmos habría que utilizar</p>
+<ul>
+<li>(a) (1 punto) Explique razonadamente qué parámetros se deben tomar como clave y valor, respectivamente, en la tabla hash.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Un número de línea permite identificarla de forma unívoca, mientras que los abonados se pueden repetir, por ejemplo, si un abonado tiene varios números. Por tanto, se debe usar el número como clave y el abonado como valor en la tabla</p>
+</details>
+<ul>
+<li>(b) (1 punto) Si el número máximo de abonados de empresa se puede estimar en 1 000 000, aproximadamente, indique razonadamente cuál sería el número mínimo de ranuras (slots) de la tabla hash para obtener un comportamiento eficiente.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Para mantener la complejidad O (1) en las operaciones con la tabla hash, el número k de ranuras debe ser significativamente superior al número de claves, N. Por ejemplo, si se quiere mantener la carga de la tabla por debajo del 50 % harían falta 2 000 000 de ranuras</p>
+</details>
+<ul>
+<li>(c) (1,5 puntos) Indique cuál sería la complejidad que se puede esperar de las operaciones de la tabla para el caso anterior, justificando la respuesta.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Para una tabla hash con listas y una carga reducida, el tiempo de acceso para las operaciones de la tabla sería t = th + top ≈ constante. Por tanto, para N grande se puede suponer t ∈ O (1).</p>
+</details>
+<ul>
+<li>(d)  (1,5 puntos) Una vez al trimestre la empresa debe entregar a la administración, a efectos fiscales, una lista de abonados ordenada alfabéticamente. Para ello se añade a la clase anterior un nuevo método:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">listaAbonados</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+</code></pre></div>
+que genera la lista a partir del contenido de la tabla hash. Explique, justificando la respuesta, cómo se podría generar esta y cuál sería la complejidad de la operación listaAbonados (1,5 puntos).</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Para obtener la lista ordenada hay que efectuar las siguientes operaciones:
+    - Obtener una lista con todos los elementos de la tabla hash. Para ello hay que recorrer toda la tabla, y por tanto esta operación tiene complejidad lineal, O (N).
+    - Ordenar la lista. Si se usa un algoritmo de ordenación eficiente, como QuickSort o MergeSort, la complejidad de esta operación es, en promedio, O (N log N).</p>
+<p>Por tanto, la complejidad total de la operación será O(N) + O(N log N) ≈ O (N log N)</p>
+</details>
 <h2 id="problema-2">Problema 2</h2>
+<p>Se debe realizar un algoritmo para etiquetar con un número todos los nodos de un grafo cumpliendo las siguientes condiciones:
+    - 1. Dos nodos adyacentes no pueden tener el mismo número.
+    - 2. Sobre el grafo pasado como parámetro, el algoritmo debe asignar el número mínimo que pueda a todos los nodos, cumpliendo la condición del punto 1, y devolver el número máximo utilizado para etiquetar todos los nodos. (Ver ejemplos).
+    - 3. Se considera que todos los enlaces son bidireccionales y se han creado con el siguiente método:
+    <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addLink2D</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span>
+</code></pre></div>
+    que añade a un grafo un enlace entre el nodo a y el b, y otro enlace entre b y a. Todos los enlaces tiene peso w = 1.
+    - 4. Se usará el modelo de los ejercicios de prácticas 1 y 2, donde tenemos la clase Graph que contiene objetos de la clase Node para definir los vértices (nodos), y objetos de la clase Link para definir los arcos (enlaces.)</p>
+<p>Notas: Una posible solución trivial podría ser hacer un for con un índice y asignar ese índice a cada nodo. Esta solución no sería válida porque, aunque cumple el punto 2, no cumple el punto 3. Para asignar valores a los nodos se recomienda usar una estructura del estilo Map<Node, Integer>, donde la clave (key) es el Node que queremos etiquetar y el valor (value) es el Integer con el valor etiquetado.</p>
+<p>Ejemplos:</p>
+<p><img alt="" src="extra_ex02.png" /></p>
+<ul>
+<li>(a) (4 puntos) Diseñe el algoritmo con la siguiente signatura. Nota: Puede (debe) desarrollar métodos auxiliares si lo necesita para facilitar la implementación del algoritmo.
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">getMinimunInt</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// a rellenar por el alumno</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Método para conseguir una lista con todos enteros de los nodos vecinos a uno dado.</span>
+<span class="cm"> * Si el vecino no tiene un entero asignado, no se devuelve nada.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param g Grafo del que se quiere realizar los cálculos</span>
+<span class="cm"> * @param myNode Nodo del cual se quiere obtener todos los vecinos</span>
+<span class="cm"> * @param ints Mapa con los enteros de todos los nodos</span>
+<span class="cm"> * @return Lista de los colores de los vecinos</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getNeighborsInts</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="n">myNode</span><span class="p">,</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ints</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">neighborsInts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Link</span><span class="w"> </span><span class="n">link</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="na">getLinks</span><span class="p">(</span><span class="n">myNode</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Node</span><span class="w"> </span><span class="n">dst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="na">getNode</span><span class="p">(</span><span class="n">link</span><span class="p">.</span><span class="na">getDst</span><span class="p">());</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dst</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Integer</span><span class="w"> </span><span class="n">intDst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ints</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">dst</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">intDst</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">neighborsInts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">intDst</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">neighborsInts</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Algoritmo para conseguir el entero mínimo de una lista de Integers dada.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Ejemplos:</span>
+<span class="cm"> * &lt;1,2,3&gt;  -&gt; devuelve 0</span>
+<span class="cm"> * &lt;0,1,3&gt;  -&gt; devuelve 2</span>
+<span class="cm"> * &lt;0,1,2&gt;  -&gt; devuelve 3</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param neighborsInts lista con enteros</span>
+<span class="cm"> * @return entero mínimo que no está en la lista</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMinimunInt</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">neighborsInts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">myInteger</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">neighborsInts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">myInteger</span><span class="p">.</span><span class="na">intValue</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">found</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Algoritmo para conseguir el entero mayor (máximo) de un mapa.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param ints mapa con los nodos y el entero asignado</span>
+<span class="cm"> * @return entero máximo del mapa</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMaxIntInGraph</span><span class="p">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ints</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MIN_VALUE</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">myInteger</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ints</span><span class="p">.</span><span class="na">values</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">myInteger</span><span class="p">.</span><span class="na">intValue</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">maxValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">maxValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myInteger</span><span class="p">.</span><span class="na">intValue</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">maxValue</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Algoritmo para conseguir el entero mínimo para etiquetar un grafo</span>
+<span class="cm"> * siguiendo las reglas del coloreado de grafos.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param g grafo que describe el problema</span>
+<span class="cm"> * @return entero mínimo necesario para etiquetar el grafo</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMinimunInt</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Estructura para guardar los enteros asignados a cada nodo</span>
+<span class="w">    </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Recorremos todos los nodos del grafo</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Node</span><span class="w"> </span><span class="n">myNode</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="na">getNodes</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// Obtenemos los enteros de los vecinos</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">neighborsInts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNeighborsInts</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">myNode</span><span class="p">,</span><span class="w"> </span><span class="n">ints</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Calculamos el entero mínimo no usado</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">minimunInt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getMinimunInt</span><span class="p">(</span><span class="n">neighborsInts</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Asignamos el entero al nodo</span>
+<span class="w">        </span><span class="n">ints</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">myNode</span><span class="p">,</span><span class="w"> </span><span class="n">minimunInt</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Obtenemos el entero máximo usado en el grafo</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxIntInGraph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getMaxIntInGraph</span><span class="p">(</span><span class="n">ints</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">maxIntInGraph</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (1 punto) ¿Cuál es la complejidad de dicho algoritmo? (Razone su respuesta)</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>La solución dependerá de la respuesta a la pregunta (a).</p>
+</details>
+<h2 id="problema-3">Problema 3</h2>
+<p>Se quiere desarrollar un sistema de gestión de eventos. Este sistema está compuesto por un conjunto de productores y consumidores. Los productores ponen eventos en el sistema. Los consumidores recogen eventos del sistema para procesarlos.
+- (a) Desarrolle el monitor EventManager con el siguiente esquema (Nota: el método getEvents tiene más peso en la calificación que el resto del código):
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EventManager</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Número máximo de eventos que se pueden almacenar</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_PENDING_EVENTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">    * Añadir un evento para procesar. Si el número de eventos pendientes de procesar</span>
+<span class="cm">    * es igual al máximo, la hebra que llama se bloquea hasta que haya hueco</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">putEvent</span><span class="w"> </span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">    * Recuperar eventos para su procesamiento. Este método admite que se soliciten</span>
+<span class="cm">    * uno o dos eventos. El método deberá devolver un array con un número de eventos</span>
+<span class="cm">    * igual a la solicitud. Las hebras que solicitan dos eventos tienen preferencia.</span>
+<span class="cm">    * Si hay hebras bloqueadas y hay eventos suficientes, hay que desbloquear a las que</span>
+<span class="cm">    * hayan solicitado dos eventos. Si no hay suficientes eventos pendientes para cada</span>
+<span class="cm">    * tipo, se bloquea la hebra que llama hasta que haya suficientes.</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">Event</span><span class="o">[]</span><span class="w"> </span><span class="nf">getEvents</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">nEventos</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EventManager</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Número máximo de eventos que se pueden almacenar</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_PENDING_EVENTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Número de hebras que han solicitado dos eventos</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nTwoEvents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Lista de eventos añadidos y no recuperados</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">EventManager</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">MAX_PENDING_EVENTS</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">    * Añadir un evento para procesar. Si el número de eventos pendientes</span>
+<span class="cm">    * de procesar es igual al máximo, la hebra que</span>
+<span class="cm">    * llama se bloquea hasta que haya hueco</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">putEvent</span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MAX_PENDING_EVENTS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">buffer</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">    * Recuperar eventos para su procesamiento. Este método admite que se soliciten</span>
+<span class="cm">    * uno o dos eventos. El método deberá devolver un array con un número de eventos</span>
+<span class="cm">    * igual a la solicitud. Las hebras que solicitan dos eventos tienen más urgencia.</span>
+<span class="cm">    * Si hay hebras bloqueadas y hay eventos suficientes, hay que desbloquear a las que</span>
+<span class="cm">    * hayan solicitado dos eventos. Si no hay suficientes eventos pendientes para cada</span>
+<span class="cm">    * tipo, se bloquea a la hebra que llama hasta que haya suficientes.</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="n">Event</span><span class="o">[]</span><span class="w"> </span><span class="nf">getEvent</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">nEvents</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Event</span><span class="o">[]</span><span class="w"> </span><span class="n">events</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nEvents</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">nTwoEvents</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">nEvents</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">                </span><span class="p">(</span><span class="n">nEvents</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">nTwoEvents</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">                </span><span class="p">(</span><span class="n">buffer</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nEvents</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">nTwoEvents</span><span class="o">--</span><span class="p">;</span>
+<span class="w">            </span><span class="n">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Event</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+<span class="w">            </span><span class="n">events</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">            </span><span class="n">events</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Event</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+<span class="w">            </span><span class="n">events</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">events</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h2 id="problema-4">Problema 4</h2>
+<p>A continuación se muestra el método getEvent de una versión alternativa de un gestor de eventos con prioridades, al que acceden concurrentemente varias hebras.
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Event</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EventInformation</span><span class="w"> </span><span class="n">info</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EventPriority</span><span class="w"> </span><span class="n">priority</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// getters &amp; setters</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">EventPriority</span><span class="w"> </span><span class="p">{</span><span class="n">High</span><span class="p">,</span><span class="w"> </span><span class="n">Low</span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PriorityEventManager</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_PENDING_EVENTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">PriorityEventManager</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">MAX_PENDING_EVENTS</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">putEvent</span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">anEvent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// implementación pendiente</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="nf">getEvent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span><span class="w"> </span><span class="n">aux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Event</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Copiar los elementos de list y guardarlos en aux</span>
+<span class="w">        </span><span class="n">aux</span><span class="p">.</span><span class="na">addAll</span><span class="p">(</span><span class="n">list</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">aux</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">aux</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">getPriority</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EventPriority</span><span class="p">.</span><span class="na">High</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">                </span><span class="n">aux</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aux</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aux</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">event</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>(a) (2,5 puntos) Razone si esta solución es correcta y, en caso contrario, describa los errores que contiene.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Esta solución es incorrecta en un programa concurrente. Cuando se ejecuta GetEvent se hace una copia de list a aux. Esta variable es local en cada instancia del método, por lo que sólo se puede cambiar al ejecutar la hebra que ha invocado este método. Eso quiere decir que si varias hebras han invocado a GetEvent, cada una tiene una variable aux local.</p>
+<p>Si la lista aux está vacía, por tanto, su tamaño es cero. En consecuencia, la hebra se quedará bloqueada en el wait y nunca volverá a ejecutarse, por que ninguna otra hebra podrá cambiar el valor de la variable aux local.</p>
+<p>Además, en el caso de que esta hebra se ejecutara, también hay varios errores en el código. Por ejemplo, cuando actualiza el valor de list machaca su versión actual.</p>
+</details>
+<h2 id="problema-5">Problema 5</h2>
+<p>Se desea desarrollar una aplicación llamada Tiempo Perdido, cuya funcionalidad es comparar el tiempo en segundos que la aplicación ha estado completamente visible con un valor introducido por el usuario. Para ello se ha diseñado la siguiente interfaz gráfica:</p>
+<p><img alt="" src="extra_ex05.png" /></p>
+<p>En ella se han emplazado los siguientes elementos:
+    - Un EditText con id: etNumber e inputType: number. Este último atributo solo permite al usuario introducir números enteros no negativos.
+    - Un TextView con id: tvResult donde se muestra el resultado de la comparación.
+        - Si el valor introducido por el usuario coincide con el tiempo en segundos que la aplicación ha estado completamente visible indica “¡correcto!”.
+        - Si el usuario introduce un valor mayor indica “Te has pasado por X segundos” donde X es la diferencia entre el valor introducido y el correcto.
+        - Si el usuario introduce un valor menor indica “Te has quedado corto por X segundos” donde X es la diferencia entre el valor introducido y el correcto.
+    - Un botón con id: bComprobar que lanza la comprobación. Si al pulsar el botón etNumber no contiene un número no negativo se ha de lanzar un mensaje de alerta al usuario.</p>
+<p>Para la implementación nos apoyaremos en la clase Chrono que ofrece los siguientes métodos:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Chrono</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">time</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Chrono</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Arranca el cronómetro</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startChrono</span><span class="w"> </span><span class="p">(){</span><span class="err">…</span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Para el cronómetro</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">stopChrono</span><span class="w"> </span><span class="p">(){</span><span class="err">…</span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Reinicia el cronómetro a 0</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">resetChrono</span><span class="w"> </span><span class="p">(){</span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;}</span>
+<span class="w">    </span><span class="c1">// Devuelve el valor del cronómetro en segundos</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">currentTime</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="n">time</span><span class="p">;}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>(a) (3 puntos) Complete la clase para implementar la funcionalidad descrita.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="n">Chrono</span><span class="w"> </span><span class="n">chrono</span><span class="p">;</span>
+<span class="w">    </span><span class="n">EditText</span><span class="w"> </span><span class="n">input</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TextView</span><span class="w"> </span><span class="n">output</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Button</span><span class="w"> </span><span class="n">check</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">chrono</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Chrono</span><span class="p">();</span>
+<span class="w">        </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">etNumber</span><span class="p">);</span>
+<span class="w">        </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">tvResult</span><span class="p">);</span>
+<span class="w">        </span><span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">bComprobar</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">check</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">st</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">();</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">st</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span>
+<span class="w">                        </span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span>
+<span class="w">                        </span><span class="s">&quot;Introduce un número entero positivo&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span>
+<span class="w">                    </span><span class="p">).</span><span class="na">show</span><span class="p">();</span>
+<span class="w">                    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="n">Integer</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">st</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="kt">int</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">intValue</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">chrono</span><span class="p">.</span><span class="na">currentTime</span><span class="p">();</span>
+
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">output</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&quot;¡Correcto!&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">output</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&quot;Te has pasado por &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; segundos.&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">output</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&quot;Te has quedado corto por &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">diff</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; segundos.&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onResume</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onResume</span><span class="p">();</span>
+<span class="w">        </span><span class="n">chrono</span><span class="p">.</span><span class="na">startChrono</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onStop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onStop</span><span class="p">();</span>
+<span class="w">        </span><span class="n">chrono</span><span class="p">.</span><span class="na">stopChrono</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 
