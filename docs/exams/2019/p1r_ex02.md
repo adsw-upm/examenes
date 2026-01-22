@@ -3,7 +3,7 @@ id: ex-2019-02
 year: 2019
 exam: parcial 1 recuperacion
 tags:
- - complejidad
+ - ???
 ---
 
 La solución debe presentarse en Java y comentando lo que hace el código. Alternativamente se puede presentar la solución en pseudocódigo.
@@ -115,17 +115,17 @@ Ejemplos:
     // Devuelve true si lo ha eliminado
     // Devuelve false si no lo ha eliminado
     public boolean removeValor(int valor) {
-    
+
         // Si el primer elemento es null, no podemos eliminar nada
         if (this.primerElemento == null)
             return false;
-    
+
         // Buscamos el elemento anterior al que queremos eliminar
         Elemento anterior = searchAnterior(valor);
-    
+
         // Si no hay anterior, el elemento a eliminar podría ser el primero
         if (anterior == null) {
-        
+
             // Se trata del primer elemento
             if (this.primerElemento.getValor() == valor) {
                 this.primerElemento = this.primerElemento.getSiguiente();
@@ -136,10 +136,10 @@ Ejemplos:
                 return false;
             }
         }
-    
+
         // Si la eliminación se hace en medio de la lista
         else if (anterior.getSiguiente() != null) {
-        
+
             // Si el siguiente es el que queremos eliminar
             if (anterior.getSiguiente().getValor() == valor) {
                 Elemento elementoCentralAEliminar = anterior.getSiguiente();
@@ -153,7 +153,7 @@ Ejemplos:
                 return false;
             }
         }
-    
+
         // Si se intenta eliminar al final sin coincidencia
         else {
             return false;
