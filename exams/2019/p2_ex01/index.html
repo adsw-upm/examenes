@@ -1793,7 +1793,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 2
+    Examen 2019 — Parcial 2
   
 
     
@@ -1915,7 +1915,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">monitores</span>
       
     
   </nav>
@@ -1924,7 +1924,171 @@
 
   <h1>P2 ex01</h1>
 
+<p>Se quiere desarrollar un sistema de gestión de eventos. Este sistema está compuesto por un conjunto de productores y consumidores. Los productores ponen eventos con una prioridad asociada en el sistema. Los consumidores recogen eventos del sistema para procesarlos.</p>
+<p>Los eventos se representan con la clase Event definida como sigue (no hay que desarrollarla):
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Event</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EventInformation</span><span class="w"> </span><span class="n">info</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EventPriority</span><span class="w"> </span><span class="n">priority</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// getters &amp; setters</span>
+<span class="p">}</span>
+</code></pre></div>
+EventInformation indica la información asociada al evento. No es necesario conocer los detalles de esta clase, ni desarrollarla. </p>
+<p>EventPriority indica la prioridad del evento, definida como sigue:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">EventPriority</span><span class="w"> </span><span class="p">{</span><span class="n">High</span><span class="p">,</span><span class="w"> </span><span class="n">Low</span><span class="p">}</span>
+</code></pre></div></p>
+<p>Dado el siguiente esquema:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EventManager</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Número máximo de eventos de cada nivel de prioridad que se pueden almacenar</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_PENDING_EVENTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="cm">/** Añadir un evento para procesar. Si el número de eventos pendientes</span>
+<span class="cm">    * con la prioridad correspondiente es igual al máximo, la hebra que</span>
+<span class="cm">    * llama se bloquea hasta que haya hueco</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">putEvent</span><span class="w"> </span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">anEvent</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">    </span><span class="cm">/** Recuperar un evento para su procesamiento. Devuelve un evento de prioridad High</span>
+<span class="cm">    * si lo hay, si no un evento de prioridad Low, y si tampoco hay ninguno se bloquea</span>
+<span class="cm">    * la hebra que llama hasta que haya alguno.</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="nf">getEvent</span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">    </span><span class="cm">/** Número total de eventos pendientes de procesamiento. */</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPendingEvents</span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<ul>
+<li>(a) (4,5 puntos) Desarrolle el monitor EventManager. Se puede utilizar el siguiente esquema:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Buffer</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Event</span><span class="o">[]</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">in</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Buffer</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Event</span><span class="o">[</span><span class="n">size</span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="n">I</span>
+<span class="w">        </span><span class="n">in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="w"> </span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">b</span><span class="o">[</span><span class="n">in</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">        </span><span class="n">in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">count</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="nf">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Event</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boOut</span><span class="o">]</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">out</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">count</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getCount</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;}</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorEventos</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MaxPendingEvents</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Buffer</span><span class="w"> </span><span class="n">highPriority</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Buffer</span><span class="w"> </span><span class="n">lowPriority</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">GestorEventos</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">MaxPendingEvents</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">MaxPendingEvents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaxPendingEvents</span><span class="p">;</span>
+<span class="w">        </span><span class="n">highPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Buffer</span><span class="p">(</span><span class="n">MaxPendingEvents</span><span class="p">);</span>
+<span class="w">        </span><span class="n">lowPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Buffer</span><span class="p">(</span><span class="n">MaxPendingEvents</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">PutEvent</span><span class="p">(</span><span class="n">Event</span><span class="w"> </span><span class="n">anEvent</span><span class="p">)</span><span class="w"> </span>
+<span class="w">            </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">anEvent</span><span class="p">.</span><span class="na">getPriority</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EventPriority</span><span class="p">.</span><span class="na">High</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">highPriority</span><span class="p">.</span><span class="na">GetCount</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MaxPendingEvents</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">highPriority</span><span class="p">.</span><span class="na">Put</span><span class="p">(</span><span class="n">anEvent</span><span class="p">);</span>
+
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">lowPriority</span><span class="p">.</span><span class="na">GetCount</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MaxPendingEvents</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">lowPriority</span><span class="p">.</span><span class="na">Put</span><span class="p">(</span><span class="n">anEvent</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="nf">GetEvent</span><span class="p">()</span><span class="w"> </span>
+<span class="w">            </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">highPriority</span><span class="p">.</span><span class="na">GetCount</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">               </span><span class="n">lowPriority</span><span class="p">.</span><span class="na">GetCount</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">highPriority</span><span class="p">.</span><span class="na">GetCount</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">highPriority</span><span class="p">.</span><span class="na">Get</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">lowPriority</span><span class="p">.</span><span class="na">Get</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetPendingEvents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">lowPriority</span><span class="p">.</span><span class="na">GetCount</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">highPriority</span><span class="p">.</span><span class="na">GetCount</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<p>Suponiendo que el tiempo de proceso de los consumidores es mayor que el de los productores, puede ocurrir que las colas de eventos pendientes se mantengan llenas durante un tiempo prolongado y, por tanto, se bloqueen los productores.</p>
+<ul>
+<li>(b) (2,5 puntos) Para corregir este problema, se pide desarrollar una clase ThreadManager que cree hebras consumidoras cuando el número de eventos pendientes sea mayor al 90 % del número máximo de eventos. Esta clase responde al
+siguiente esquema:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ThreadManager</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DELAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"> </span><span class="c1">//intervalo de comprobación (ms)</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">);</span>
+<span class="w">            </span><span class="c1">// comprobar si el número de eventos pendientes es mayor que el 90% del máximo</span>
+<span class="w">            </span><span class="c1">// en ese caso, crear una nueva hebra de clase Consumer</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<p>La clase Consumer responde al esquema siguiente y no es necesario desarrollarla:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Consumer</span>
+<span class="w">    </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="nf">Consumer</span><span class="p">(...)</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ThreadManager</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">DELAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10000</span><span class="p">;</span><span class="w"> </span><span class="c1">// intervalo de comprobación (ms)</span>
+<span class="w">        </span><span class="n">Consumer</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Obtener un gestor. No se había que hacer</span>
+<span class="w">        </span><span class="n">GestorEventos</span><span class="w"> </span><span class="n">gestor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">            </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">);</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gestor</span><span class="p">.</span><span class="na">GetPendingEvents</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">gestor</span><span class="p">.</span><span class="na">MAX_PENDING_EVENTS</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.9</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Consumer</span><span class="w"> </span><span class="n">consumer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Consumer</span><span class="p">(</span><span class="n">gestor</span><span class="p">);</span>
+<span class="w">                </span><span class="n">consumer</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 

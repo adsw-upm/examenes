@@ -1793,7 +1793,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 2
+    Examen 2019 — Parcial 2
   
 
     
@@ -1915,7 +1915,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">???</span>
       
     
   </nav>
@@ -1924,7 +1924,47 @@
 
   <h1>P2 ex02</h1>
 
+<p>Se desea programar una aplicación llamada ParApp, que recibiendo una entrada de texto del usuario indique si su tamaño es par o impar. Para ello, recibimos una interfaz gráfica ya diseñada que incluye:
+    - Un EditText con id “etEntrada”
+    - Un TextView con id “tvResultado”
+    - Un botón con id “bComprobar”</p>
+<p>Cuando el usuario pulsa el botón se ha de comprobar el tamaño de la cadena de texto introducida en el campo de entrada de texto. Pueden darse 3 situaciones:
+    - Si el tamaño de texto es 0, se ha de lanzar un aviso al usuario para que introduzca una cadena de texto.
+    - Si el tamaño es par, el campo de texto de salida se actualiza con el siguiente mensaje: “El texto introducido tiene un tamaño par” seguido del tamaño de la cadena entre paréntesis. Ej: (6).
+    - Si el tamaño es impar, el campo de texto de salida se actualiza con el siguiente mensaje: “El texto introducido tiene un tamaño impar” seguido del tamaño de la cadena entre paréntesis. Ej: (5).</p>
+<ul>
+<li>(a) (0,5 puntos) ¿Mediante qué atributo asociaría la ejecución de un método Java cuando el botón es pulsado por el usuario?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="n">onClick</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (0,5 puntos)</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">CompruebaParidad</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">V</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="n">EditText</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">etEntrada</span><span class="p">);</span>
+<span class="w">    </span><span class="n">TextView</span><span class="w"> </span><span class="n">tv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">tvResultado</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">et</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">().</span><span class="na">length</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">len</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Introduzca texto&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span>
+<span class="w">        </span><span class="n">tv</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">len</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tv</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&quot;Es par (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tv</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&quot;Es impar (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 
