@@ -1765,7 +1765,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 1 Recuperación
+    Examen 2019 — Parcial 1 Recuperación
   
 
     
@@ -1924,7 +1924,180 @@
 
   <h1>P1r ex02</h1>
 
+<p>La solución debe presentarse en Java y comentando lo que hace el código. Alternativamente se puede presentar la solución en pseudocódigo.</p>
+<p>Se debe implementar los tres métodos principales de una clase llamada ListaEnlazadaOrdenada: añadirValor, eliminarValor y buscarElementoAnterior.</p>
+<p>El objetivo de dicha clase consiste en mantener un conjunto de objetos de la clase Elemento ordenados de menor a mayor. La clase ListaEnlazadaOrdenada solo tendrá un variable de clase que será el primer objeto Elemento.</p>
+<p>La lista debe mantenerse ordenada en todo momento.</p>
+<p>La clase Elemento está implementada y podemos utilizarla según la descripción de métodos que se muestran a continuación:
+<div class="highlight"><pre><span></span><code><span class="n">Elemento</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span>
+<span class="n">Elemento</span><span class="w"> </span><span class="nf">getSiguiente</span><span class="p">()</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setSiguiente</span><span class="w"> </span><span class="p">(</span><span class="n">Elemento</span><span class="w"> </span><span class="n">siguiente</span><span class="p">)</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">getValor</span><span class="p">()</span>
+</code></pre></div>
+La clase Elemento almacena un entero que pasamos en el método constructor. Además, guarda un enlace al siguiente objeto de la clase Elemento que le sucede. El constructor inicializa el enlace al siguiente objeto Elemento
+a null.</p>
+<p>La clase ListaEnlazadaOrdenada deberá usar los métodos setSiguiente y getSiguiente para mantener el orden entre los objetos de la clase Elemento. Si no hubiera siguiente elemento entonces el valor para el siguiente será
+null.</p>
+<p>Descripción de los métodos que deberá implementar de la clase ListaEnlazadaOrdenada:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Elemento</span><span class="w"> </span><span class="nf">buscarElementoAnterior</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+</code></pre></div>
+<p>Se recomienda empezar por este método ya que va a resultar muy útil para la realización de los métodos añadirValor y eliminarValor.</p>
+<p>Este método busca y devuelve un objeto Elemento en la ListaEnlazadaOrdenada. La lista está ordenada de menor a mayor, por lo tanto, el Elemento que devuelve debe ser el que tenga el valor más pequeño al que se pasa por parámetro en el parámetro valor.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">añadirValor</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+</code></pre></div>
+<p>Este método debe añadir un objeto Elemento nuevo que contenga el entero valor que se pasa por parámetro. Se debe mantener el orden. Se pueden añadir varios elementos con el mismo valor.</p>
+<p>Devuelve true cuando se ha podido añadir el objeto Elemento con el valor que se pasa por parámetro.</p>
+<p>Devuelve false cuando NO se ha podido añadir el objeto Elemento con el valor que se pasa por parámetro.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">eliminarValor</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+</code></pre></div>
+<p>Este método debe eliminar un objeto Elemento que contenga el entero valor que se pasa por parámetro al método. Después de eliminar el Elemento debe garantizar que se mantenga el orden de la lista.</p>
+<p>Devuelve true cuando se ha podido eliminar el objeto Elemento con el valor que se pasa por parámetro.</p>
+<p>Devuelve false cuando NO se ha podido eliminar el objeto Elemento con el valor que se pasa por parámetro.</p>
+<p>Notas: No se pueden utilizar estructuras de datos adicionales como Listas, ArrayList, HashSet, Maps, Diccionarios, etc. Solo las clases Elemento y ListaEnlazadaOrdenada. No se trata de un array, por lo tanto, no se pueden hacer accesos del tipo miLista[posicion] o miLista[14].</p>
+<p>Ejemplos:</p>
+<p><img alt="" src="../p1r/p1r_ex02-1.png" /></p>
+<p><img alt="" src="../p1r/p1r_ex02-2.png" /></p>
+<ul>
+<li>(a) (1,5 puntos) Implementar el método <code>public boolean añadirValor (int valor)</code> de la clase ListaEnlazadaOrdenada.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">addValor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="c1">// Creamos el elemento que queremos insertar</span>
+<span class="w">    </span><span class="n">Elemento</span><span class="w"> </span><span class="n">elementoNuevo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Elemento</span><span class="p">(</span><span class="n">valor</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Si la lista está vacía</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">primerElemento</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">primerElemento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elementoNuevo</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Buscamos el elemento anterior al punto de inserción</span>
+<span class="w">    </span><span class="n">Elemento</span><span class="w"> </span><span class="n">anterior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">searchAnterior</span><span class="p">(</span><span class="n">valor</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Si no hay anterior, se inserta en la cabeza de la lista</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">anterior</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">elementoNuevo</span><span class="p">.</span><span class="na">setSiguiente</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">primerElemento</span><span class="p">);</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">primerElemento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elementoNuevo</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Si la inserción se hace en medio de la lista</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">anterior</span><span class="p">.</span><span class="na">getSiguiente</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Elemento</span><span class="w"> </span><span class="n">elementoCentral</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">anterior</span><span class="p">.</span><span class="na">getSiguiente</span><span class="p">();</span>
+<span class="w">        </span><span class="n">elementoNuevo</span><span class="p">.</span><span class="na">setSiguiente</span><span class="p">(</span><span class="n">elementoCentral</span><span class="p">);</span>
+<span class="w">        </span><span class="n">anterior</span><span class="p">.</span><span class="na">setSiguiente</span><span class="p">(</span><span class="n">elementoNuevo</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Si la inserción se hace al final de la lista</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">anterior</span><span class="p">.</span><span class="na">setSiguiente</span><span class="p">(</span><span class="n">elementoNuevo</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (1,5 puntos) Implementar el método <code>public boolean eliminarValor (int valor)</code> de la clase ListaEnlazadaOrdenada.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// Método para eliminar el valor que nos mandan como parámetro</span>
+<span class="c1">// Devuelve true si lo ha eliminado</span>
+<span class="c1">// Devuelve false si no lo ha eliminado</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">removeValor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Si el primer elemento es null, no podemos eliminar nada</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">primerElemento</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Buscamos el elemento anterior al que queremos eliminar</span>
+<span class="w">    </span><span class="n">Elemento</span><span class="w"> </span><span class="n">anterior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">searchAnterior</span><span class="p">(</span><span class="n">valor</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Si no hay anterior, el elemento a eliminar podría ser el primero</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">anterior</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// Se trata del primer elemento</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">primerElemento</span><span class="p">.</span><span class="na">getValor</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">primerElemento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">primerElemento</span><span class="p">.</span><span class="na">getSiguiente</span><span class="p">();</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// No es el primer elemento</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Si la eliminación se hace en medio de la lista</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">anterior</span><span class="p">.</span><span class="na">getSiguiente</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// Si el siguiente es el que queremos eliminar</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">anterior</span><span class="p">.</span><span class="na">getSiguiente</span><span class="p">().</span><span class="na">getValor</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Elemento</span><span class="w"> </span><span class="n">elementoCentralAEliminar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">anterior</span><span class="p">.</span><span class="na">getSiguiente</span><span class="p">();</span>
+<span class="w">            </span><span class="n">Elemento</span><span class="w"> </span><span class="n">elementoSiguiente</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                    </span><span class="n">elementoCentralAEliminar</span><span class="p">.</span><span class="na">getSiguiente</span><span class="p">();</span>
+<span class="w">            </span><span class="n">anterior</span><span class="p">.</span><span class="na">setSiguiente</span><span class="p">(</span><span class="n">elementoSiguiente</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// El siguiente no es el que queremos eliminar</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Si se intenta eliminar al final sin coincidencia</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(c) (2 puntos) Implementar el método <code>private Elemento buscarElementoAnterior (int valor)</code> de la clase ListaEnlazadaOrdenada.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// Método para buscar el elemento anterior. Nos va a servir para poder</span>
+<span class="c1">// implementar el resto de métodos</span>
+<span class="c1">// Devuelve null si no hay primerElemento, o si donde hay que insertar es al inicio.</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">Elemento</span><span class="w"> </span><span class="nf">searchAnterior</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Si la lista está vacía no hay anterior, se devuelve null</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">primerElemento</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Inicializamos dos variables para la búsqueda de la posición:</span>
+<span class="w">    </span><span class="c1">// - elementoIterador: recorre la lista</span>
+<span class="w">    </span><span class="c1">// - anterior: será el elemento que devolveremos</span>
+<span class="w">    </span><span class="n">Elemento</span><span class="w"> </span><span class="n">elementoIterador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primerElemento</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Elemento</span><span class="w"> </span><span class="n">anterior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Usamos un bucle while(true) porque siempre habrá al menos una iteración</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// Si el valor a insertar es mayor que el valor del iterador</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">valor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">elementoIterador</span><span class="p">.</span><span class="na">getValor</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">            </span><span class="c1">// Si no es el último elemento, avanzamos</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">elementoIterador</span><span class="p">.</span><span class="na">getSiguiente</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">anterior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elementoIterador</span><span class="p">;</span>
+<span class="w">                </span><span class="n">elementoIterador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elementoIterador</span><span class="p">.</span><span class="na">getSiguiente</span><span class="p">();</span>
+
+<span class="w">            </span><span class="c1">// Si el siguiente es null, se inserta al final</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">elementoIterador</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Si el valor a insertar es menor o igual, devolvemos el anterior</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">anterior</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 
