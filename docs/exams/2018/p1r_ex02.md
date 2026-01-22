@@ -5,6 +5,7 @@ exam: parcial 1 recuperacion
 tags:
  - grafos
 ---
+
 Se dispone de la clase Graph, con los métodos que se indican a continuación:
 ```java
 public void addNode(Node)
