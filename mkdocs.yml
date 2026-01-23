@@ -75,4 +75,9 @@ nav:
       - exams/2019/p2.md
       - exams/2019/pract.md
       - exams/2019/extra.md
-    - "2021": exams/2021/exam.md
+    - "2021":
+      - exams/2021/p1.md
+      - exams/2021/p1r.md
+      - exams/2021/p2.md
+      - exams/2021/pract.md
+      - exams/2021/extra.md
