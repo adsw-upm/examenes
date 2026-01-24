@@ -2275,7 +2275,201 @@
 
 <h1 id="examen-20xx-parcial-1-recuperacion">Examen 20XX — Parcial 1 Recuperación</h1>
 <h2 id="problema-1">Problema 1</h2>
+<p>Se quiere desarrollar un programa que analice un documento de texto y calcule el n!mero de veces que aparece cada palabra (String). El resultado es una lista de ContadorPalabra, que es una clase que se muestra a continuación:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ContadorPalabra</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span><span class="w"> </span><span class="c1">// Nombre en el documento</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">contador</span><span class="p">;</span><span class="w"> </span><span class="c1">//Núm. de veces que aparece</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// Están disponibles los getters y setters</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>En una fase inicial del programa, se crean dos hebras que analizan una mitad del documento. El resultado de cada hebra es una lista (java.util.List<ContadorPalabra>), con el contador de cada palabra de la mitad correspondiente. Los elementos de cada lista est"n ordenados por el atributo nombre de cada ContadorPalabra.</p>
+<p>En este ejercicio, se quiere desarrollar un m#todo para agregar las
+dos listas generadas de cada mitad. Se pide:</p>
+<ul>
+<li>(a) (1,5 puntos) Desarrolle el m#todo Menor, que recibe dos listas ordenadas y retorna el ContadorPalabra con la menor palabra en cualquiera de las dos mitades. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">ContadorPalabra</span><span class="w"> </span><span class="nf">Menor</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ag1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ag2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">ContadorPalabra</span><span class="w"> </span><span class="nf">Menor</span><span class="p">(</span>
+<span class="w">        </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ag1</span><span class="p">,</span>
+<span class="w">        </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ag2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="n">ContadorPalabra</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ag1</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ContadorPalabra</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ag2</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ag1</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">ag1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ag2</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ag2</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">ag2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ag1</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="na">getNombre</span><span class="p">().</span><span class="na">compareTo</span><span class="p">(</span><span class="n">p2</span><span class="p">.</span><span class="na">getNombre</span><span class="p">())</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ag1</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ag2</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (3,5 puntos) Desarrolle el m#todo Agregar, que recibe dos listas y retorna una lista ordenada que agregue los objetos PalabraContador de los parámetros de entrada. En concreto, calcula el valor de cada palabra en cada mitad en el documento. Este m#todo puede usar Menor, pero no es obligatorio. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Agregar</span><span class="p">(</span>
+<span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ag1</span><span class="p">,</span>
+<span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ag2</span><span class="p">))</span>
+<span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>y</p>
+<p>Ejemplo: Los dos parámetros de entrada de Agregar o Menor podrían ser:
+<div class="highlight"><pre><span></span><code><span class="n">Ag1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">adiós</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">bueno</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">hola</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">malo</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+<span class="n">Ag2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">adiós</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">bueno</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">malo</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></p>
+<p>La salida del método agregar sería:
+<div class="highlight"><pre><span></span><code><span class="n">agregar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">adiós</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">bueno</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">hola</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">malo</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></p>
+<p>A continuación se muestran algunos m#todos relevantes de la colección List.</p>
+<p><img alt="" src="p1r_ex01.png" /></p>
+<details class="note">
+<summary>Mostrar solución</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Agregar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ContadorPalabra</span><span class="w"> </span><span class="n">min</span><span class="p">;</span>
+<span class="w">    </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="w"> </span><span class="n">agregado</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">ArrayList</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">ag1</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">ag2</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Menor</span><span class="p">(</span><span class="n">ag1</span><span class="p">,</span><span class="w"> </span><span class="n">ag2</span><span class="p">);</span>
+<span class="w">        </span><span class="n">ContadorPalabra</span><span class="w"> </span><span class="n">aux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ag1</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">min</span><span class="p">.</span><span class="na">getNombre</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ag1</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="na">getNombre</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aux</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">aux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ag1</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ag2</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">min</span><span class="p">.</span><span class="na">getNombre</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ag2</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="na">getNombre</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aux</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">aux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ag2</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">aux</span><span class="p">.</span><span class="na">setContador</span><span class="p">(</span>
+<span class="w">                        </span><span class="n">aux</span><span class="p">.</span><span class="na">getContador</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ag2</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="na">getContador</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">);</span>
+<span class="w">                    </span><span class="n">ag2</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">agregado</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">aux</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">agregado</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="problema-2">Problema 2</h2>
+<p>Se quiere desarrollar un sistema para calcular de forma eficiente las notas medias en la UPM a diferentes niveles. Nos interesan las notas medias a nivel de asignatura, a nivel de Escuela, y a nivel de Universidad. Se quiere que cada vez que se publique la nota de una asignatura se recalculen las medias a nivel de Escuela y Universidad, sin realizar operaciones innecesarias.</p>
+<p>Para ello, utilizaremos una estructura de "rbol de 3 niveles:
+    - El nodo ra<span class="arithmatex">\(z es la universidad (UPM).
+    - El nodo ra\)</span>z (UPM) tiene un hijo por cada escuela (p.e., ETSIT, ETSAM).
+    - Cada escuela tiene un hijo por cada asignatura que se imparte en esa escuela (p.e., ADSW, CORE).
+    - Cada nodo tiene una referencia a todos sus hijos (this.hijos), y a su nodo padre (this.padre, que ser" null para el nodo ra$z).</p>
+<p>Inicialmente se propone una estrategia de carga ansiosa (eager loading), en la que cada vez que se actualiza una nota de una asignatura se actualizan las medias de todos los nodos necesarios.</p>
+<p>Se considera que actualizar un nodo es necesario cuando alguno de sus descendientes ha sido modificado desde el !ltimo c"lculo.</p>
+<p>Cada Nodo tiene los siguientes atributos:</p>
+<p><img alt="" src="p1r_ex01.png" /></p>
+<p>Sea E el n!mero de escuelas, y A el n!mero de asignaturas, suponiendo que la distribuci%n de asignaturas por escuela es uniforme, se pide:
+- (a) (2,5 puntos) Implementar los algoritmos para modificar y recuperar la nota media de un nodo para la estrategia de carga ansiosa, utilizando las siguientes firmas:
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">setNota</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">nota</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">peso</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// a rellenar por el alumno }</span>
+<span class="kt">float</span><span class="w"> </span><span class="nf">getNota</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// a rellenar por el alumno }</span>
+</code></pre></div></p>
+<details class="note">
+<summary>Mostra solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="nf">getNota</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">nota</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* </span>
+<span class="cm"> * Actualiza la nota de este nodo y recalcula los antecesores.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setNota</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">nota</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">peso</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Se podría añadir lógica para solo modificar la nota</span>
+<span class="w">    </span><span class="c1">// de las Asignaturas, no del resto de nodos.</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">peso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">peso</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nota</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">padre</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">recalcular</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">padre</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">recalcular</span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">raiz</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">media</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">peso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">hijo</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">raiz</span><span class="p">.</span><span class="na">hijos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">media</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">hijo</span><span class="p">.</span><span class="na">peso</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">hijo</span><span class="p">.</span><span class="na">nota</span><span class="p">;</span>
+<span class="w">        </span><span class="n">peso</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">hijo</span><span class="p">.</span><span class="na">peso</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">media</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">media</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">peso</span><span class="p">;</span>
+<span class="w">    </span><span class="n">raiz</span><span class="p">.</span><span class="na">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">media</span><span class="p">;</span>
+<span class="w">    </span><span class="n">raiz</span><span class="p">.</span><span class="na">peso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">peso</span><span class="p">;</span>
+<span class="w">    </span><span class="n">raiz</span><span class="p">.</span><span class="na">actualizado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">raiz</span><span class="p">.</span><span class="na">padre</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">recalcular</span><span class="p">(</span><span class="n">raiz</span><span class="p">.</span><span class="na">padre</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>En el enunciado no se especifica el rol del peso, as$ que se dan por v"lidas las soluciones que asumen el mismo peso para todos los nodos.</p>
+</details>
+<ul>
+<li>(b) (0,5 puntos) Los algoritmos implementados, &amp;son recursivos o iterativos?.</li>
+</ul>
+<details class="note">
+<summary>Mostra solución</summary>
+<p>La implementaci!n de setNota se basa en el m#todo calcular, que es recursivo. Se podr$a implementar de manera iterativa.</p>
+</details>
+<ul>
+<li>(c) (0,5 puntos) Estimar la complejidad de modificar la nota de 1 sola asignatura, y de modificar todas las asignaturas, en funci%n de A y E.</li>
+</ul>
+<details class="note">
+<summary>Mostra solución</summary>
+<p>Al actualizar una asignatura, se debe recalcular la nota de la escuela, y luego de la universidad. Habr" A/E asignaturas por escuela (distribuci%n uniforme). Por tanto:
+O(setNota() = O(A/E + E)
+O(setNotatodas) = O(A * (A/E + E))
+Por completitud, la complejidad de consultar una nota es constante (ya se calcula en el setNota).</p>
+</details>
+<p>Para mejorar el rendimiento, se propone comparar la estrategia anterior con otra de carga perezosa (lazy loading), en la que s%lo se actualizan las notas necesarias al acceder a una nota desactualizada.</p>
+<ul>
+<li>(d) (0,5 puntos) Estime la complejidad de modificar 1 sola asignatura, y de modificar todas las asignaturas, para el caso de carga perezosa, en funci%n de A y E.</li>
+</ul>
+<details class="note">
+<summary>Mostra solución</summary>
+<p>Con carga perezosa, cuando se modifica una nota se marcan los nodos superiores al nodo a actualizar como desactualizados. Esa operaci%n para cada asignatura depende s%lo del n!mero de niveles (en este caso, 3). Por tanto:</p>
+<p>O(setNota() = O(1)</p>
+<p>O(setNotatodas) = O(A) // Es decir, A * O(setNota1)</p>
+<p>Aunque no se especifica en el enunciado, la complejidad de getNota(UPM) para esta estrategia tras haber modificado 1 o TODAS las notas, ser$a:</p>
+<p>O(getNota1(UPM)) = O((A/E) + E) // S%lo recalcula una de las ramas del "rbol.</p>
+<p>O(getNotatodas) = O(A + E) // Recalcula todos los nodos</p>
+</details>
+<ul>
+<li>(e) (1 punto) En lugar de tener 3 niveles (universidad, escuela, asignatura), se modifica el "rbol para que sea un "rbol binario perfectamente balanceado (cada nodo padre tiene exactamente 2 hijos). Calcule la complejidad de acceder a la nota UPM para el caso de carga perezosa tras cambiar una sola asignatura, en funci%n de A.</li>
+</ul>
+<details class="note">
+<summary>Mostra solución</summary>
+<p>Como hemos visto en el anterior apartado, la diferencia es que en un caso recalcula una rama, y en el otro recalcula el %rbol entero.</p>
+<p>En este caso, tendremos que calcular el n&amp;mero de niveles. Al tratarse de un %rbol binario, con un n&amp;mero de hojas A, el n&amp;mero de niveles ser% log2(A).</p>
+<p>El n&amp;mero total de nodos ser% la suma de nodos en cada uno de los niveles:</p>
+<p>N = A + A/2 + A/4 + ' 1 ~= 2*A</p>
+<p>O(getNota1(UPM)) = O(log(A)) // En cada nodo se suman los dos nodos inferiores</p>
+<p>O(getNotatodas) = O(N) = O(A)</p>
+</details>
 
 
 
