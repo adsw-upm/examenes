@@ -80,41 +80,41 @@ A continuación se muestran algunos m#todos relevantes de la colección List.
 ![](./p1r/p1r_ex01.png)
 
 ??? note "Mostrar solución"
-```java
-public java.util.List<ContadorPalabra> Agregar() {
-    ContadorPalabra min;
-    java.util.List<ContadorPalabra> agregado =
-        new java.util.ArrayList<ContadorPalabra>();
-
-    while ((ag1.size() != 0) || (ag2.size() != 0)) {
-        min = Menor(ag1, ag2);
-        ContadorPalabra aux = null;
-
-        if (ag1.size() > 0) {
-            if (min.getNombre() == ag1.get(0).getNombre()) {
-                if (aux == null) {
-                    aux = ag1.remove(0);
+    ```java
+    public java.util.List<ContadorPalabra> Agregar() {
+        ContadorPalabra min;
+        java.util.List<ContadorPalabra> agregado =
+            new java.util.ArrayList<ContadorPalabra>();
+    
+        while ((ag1.size() != 0) || (ag2.size() != 0)) {
+            min = Menor(ag1, ag2);
+            ContadorPalabra aux = null;
+    
+            if (ag1.size() > 0) {
+                if (min.getNombre() == ag1.get(0).getNombre()) {
+                    if (aux == null) {
+                        aux = ag1.remove(0);
+                    }
                 }
             }
-        }
-
-        if (ag2.size() > 0) {
-            if (min.getNombre() == ag2.get(0).getNombre()) {
-                if (aux == null) {
-                    aux = ag2.remove(0);
-                } else {
-                    aux.setContador(
-                        aux.getContador() + ag2.get(0).getContador()
-                    );
-                    ag2.remove(0);
+    
+            if (ag2.size() > 0) {
+                if (min.getNombre() == ag2.get(0).getNombre()) {
+                    if (aux == null) {
+                        aux = ag2.remove(0);
+                    } else {
+                        aux.setContador(
+                            aux.getContador() + ag2.get(0).getContador()
+                        );
+                        ag2.remove(0);
+                    }
                 }
             }
+    
+            agregado.add(aux);
         }
-
-        agregado.add(aux);
+        return agregado;
     }
-    return agregado;
-}
-```
+    ```
 
 
