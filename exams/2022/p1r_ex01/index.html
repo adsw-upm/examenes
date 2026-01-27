@@ -2191,7 +2191,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 1 Recuperación
+    Examen 2022 — Parcial 1 Recuperación
   
 
     
@@ -2322,7 +2322,73 @@
 
   <h1>P1r ex01</h1>
 
+<p>Utilizando el modelo de datos de la práctica 2 donde un vértice representaba un actor y una arista representa la película en la que han colaborado ambos actores. Se disponen las clases GraphLoader, Movie y DijkstraSP que podemos utilizar para resolver el problema. Y en el campo EdgeWeightedDigraph g de la clase GraphLoader tenemos ya cargado el grafo de actores y películas. Según el siguiente diagrama de clases:</p>
+<p><img alt="" src="../p1r/p1r_ex01.png" /></p>
+<p><img alt="" src="../placeholder.jpg" /></p>
+<p>Se pide:
+- (a) (1 punto) Desarrolle el método obtenerIndiceMayor: Recibe un array de enteros y devuelve un int con el índice de la posición con el valor mayor. En caso de empate, se puede devolver cualquiera de los n índices que empatan: public int obtenerIndiceMayor(int[] array)</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">obtenerIndiceMayor</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">array</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// null or empty</span>
 
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">largest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">largest</span><span class="o">]</span><span class="p">)</span>
+<span class="w">            </span><span class="n">largest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">largest</span><span class="p">;</span><span class="w"> </span><span class="c1">// position of the first largest found</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (2 punto) El algoritmo Dijkstra calcula el árbol de caminos más cortos desde un nodo. El constructor calcula este algoritmo y proporciona un método (pathTo) para obtener el camino mínimo desde el origen. Se pide desarrollar el método actorCentralDesdeOrigen que retorna un array, cuyo tamaño es el número de vértices (en el grafo) y sus valores son el número de veces que aparece el vértice en cualquier camino: public int[] actorCentralDesdeOrigen(int origen)</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="nf">actorCentralDesdeOrigen</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">origen</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">btw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="k">this</span><span class="p">.</span><span class="na">g</span><span class="p">.</span><span class="na">V</span><span class="p">()</span><span class="o">]</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">origen</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">destino</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">g</span><span class="p">.</span><span class="na">V</span><span class="p">();</span><span class="w"> </span><span class="n">destino</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">origen</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">destino</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="na">pathTo</span><span class="p">(</span><span class="n">destino</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">DirectedEdge</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="na">pathTo</span><span class="p">(</span><span class="n">destino</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">to</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">destino</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">btw</span><span class="o">[</span><span class="n">e</span><span class="p">.</span><span class="na">to</span><span class="p">()</span><span class="o">]++</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">btw</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(c) (2 punto) Desarrolle el método que retorne el actor más central del grafo. Para ello, hay que calcular el actor más central entre los árboles de caminos de los vértices del grafo: public String actorCentral()</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">actorCentral</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">btw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="k">this</span><span class="p">.</span><span class="na">g</span><span class="p">.</span><span class="na">V</span><span class="p">()</span><span class="o">]</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">origen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">origen</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">g</span><span class="p">.</span><span class="na">V</span><span class="p">();</span><span class="w"> </span><span class="n">origen</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DijkstraSP</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DijkstraSP</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">g</span><span class="p">,</span><span class="w"> </span><span class="n">origen</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">aux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">actorCentralDesdeOrigen</span><span class="p">(</span><span class="n">origen</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">g</span><span class="p">.</span><span class="na">V</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// corregido inicialización de i</span>
+<span class="w">            </span><span class="n">btw</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">aux</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">actor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obtenerIndiceMayor</span><span class="p">(</span><span class="n">btw</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">actorsMapInverted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">getActorsMapInverted</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">actorsMapInverted</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">actor</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<p>Nota: es muy aconsejable desarrollar estos métodos en el mismo orden y desarrollar el tercer método usando los
+dos anteriores.</p>
 
 
 

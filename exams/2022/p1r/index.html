@@ -23,7 +23,7 @@
     
     
       
-        <title>Examen 20XX — Parcial 1 Recuperación - Catálogo ejercicios años anteriores</title>
+        <title>Examen 2022 — Parcial 1 Recuperación - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#examen-20xx-parcial-1-recuperacion" class="md-skip">
+        <a href="#examen-2022-parcial-1-recuperacion" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Examen 20XX — Parcial 1 Recuperación
+              Examen 2022 — Parcial 1 Recuperación
             
           </span>
         </div>
@@ -2250,7 +2250,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 1 Recuperación
+    Examen 2022 — Parcial 1 Recuperación
   
 
     
@@ -2268,7 +2268,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 1 Recuperación
+    Examen 2022 — Parcial 1 Recuperación
   
 
     
@@ -2460,9 +2460,203 @@
 
 
 
-<h1 id="examen-20xx-parcial-1-recuperacion">Examen 20XX — Parcial 1 Recuperación</h1>
+<h1 id="examen-2022-parcial-1-recuperacion">Examen 2022 — Parcial 1 Recuperación</h1>
 <h2 id="problema-1">Problema 1</h2>
+<p>Utilizando el modelo de datos de la práctica 2 donde un vértice representaba un actor y una arista representa la película en la que han colaborado ambos actores. Se disponen las clases GraphLoader, Movie y DijkstraSP que podemos utilizar para resolver el problema. Y en el campo EdgeWeightedDigraph g de la clase GraphLoader tenemos ya cargado el grafo de actores y películas. Según el siguiente diagrama de clases:</p>
+<p><img alt="" src="p1r_ex01.png" /></p>
+<p><img alt="" src="../placeholder.jpg" /></p>
+<p>Se pide:
+- (a) (1 punto) Desarrolle el método obtenerIndiceMayor: Recibe un array de enteros y devuelve un int con el índice de la posición con el valor mayor. En caso de empate, se puede devolver cualquiera de los n índices que empatan: public int obtenerIndiceMayor(int[] array)</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">obtenerIndiceMayor</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">array</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// null or empty</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">largest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">largest</span><span class="o">]</span><span class="p">)</span>
+<span class="w">            </span><span class="n">largest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">largest</span><span class="p">;</span><span class="w"> </span><span class="c1">// position of the first largest found</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (2 punto) El algoritmo Dijkstra calcula el árbol de caminos más cortos desde un nodo. El constructor calcula este algoritmo y proporciona un método (pathTo) para obtener el camino mínimo desde el origen. Se pide desarrollar el método actorCentralDesdeOrigen que retorna un array, cuyo tamaño es el número de vértices (en el grafo) y sus valores son el número de veces que aparece el vértice en cualquier camino: public int[] actorCentralDesdeOrigen(int origen)</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="nf">actorCentralDesdeOrigen</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">origen</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">btw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="k">this</span><span class="p">.</span><span class="na">g</span><span class="p">.</span><span class="na">V</span><span class="p">()</span><span class="o">]</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">origen</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">destino</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">g</span><span class="p">.</span><span class="na">V</span><span class="p">();</span><span class="w"> </span><span class="n">destino</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">origen</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">destino</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="na">pathTo</span><span class="p">(</span><span class="n">destino</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">DirectedEdge</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="na">pathTo</span><span class="p">(</span><span class="n">destino</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">to</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">destino</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">btw</span><span class="o">[</span><span class="n">e</span><span class="p">.</span><span class="na">to</span><span class="p">()</span><span class="o">]++</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">btw</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(c) (2 punto) Desarrolle el método que retorne el actor más central del grafo. Para ello, hay que calcular el actor más central entre los árboles de caminos de los vértices del grafo: public String actorCentral()</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">actorCentral</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">btw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="k">this</span><span class="p">.</span><span class="na">g</span><span class="p">.</span><span class="na">V</span><span class="p">()</span><span class="o">]</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">origen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">origen</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">g</span><span class="p">.</span><span class="na">V</span><span class="p">();</span><span class="w"> </span><span class="n">origen</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DijkstraSP</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DijkstraSP</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">g</span><span class="p">,</span><span class="w"> </span><span class="n">origen</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">aux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">actorCentralDesdeOrigen</span><span class="p">(</span><span class="n">origen</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">g</span><span class="p">.</span><span class="na">V</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// corregido inicialización de i</span>
+<span class="w">            </span><span class="n">btw</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">aux</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">actor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obtenerIndiceMayor</span><span class="p">(</span><span class="n">btw</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">actorsMapInverted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">getActorsMapInverted</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">actorsMapInverted</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">actor</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<p>Nota: es muy aconsejable desarrollar estos métodos en el mismo orden y desarrollar el tercer método usando los
+dos anteriores.</p>
 <h2 id="problema-2">Problema 2</h2>
+<p>Se dispone de un array de números enteros, que incluye n secuencias repetidas de números ordenados ascendentemente del 1 al m. Por ejemplo, si m es 8, y n es 4, el contenido del array será
+[1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8]. Se ha ordenado el array (en sentido ascendente) con los algoritmos que se muestran posteriormente. En algunas respuestas hay que contestar cantidades de ejecución de código, basado en los valores genéricos de n y m. En este caso, se pueden contestar las cantidades aproximadas como n2.m, n.log m o n.m2):</p>
+<ul>
+<li>(a) (1 punto) Ordenación por intercambio (burbuja): ¿Cuántas comparaciones (en la línea 6) de número hacemos? Una implementación del algoritmo sería:</li>
+</ul>
+<p>Intercambio:
+<div class="highlight"><pre><span></span><code><span class="mo">01</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">02</span><span class="w">     </span><span class="kt">boolean</span><span class="w"> </span><span class="n">changed</span><span class="p">;</span>
+<span class="mo">03</span><span class="w">     </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">04</span><span class="w">         </span><span class="n">changed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="mo">05</span><span class="w">         </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">06</span><span class="w">             </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">07</span><span class="w">                 </span><span class="n">swap</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="mi">08</span><span class="w">                 </span><span class="n">changed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="mi">09</span><span class="w">             </span><span class="p">}</span>
+<span class="mi">10</span><span class="w">         </span><span class="p">}</span>
+<span class="mi">11</span><span class="w">     </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">changed</span><span class="p">);</span>
+<span class="mi">12</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Número de comparaciones: (n x m - 1) x ((m-1)x(n-1)+1). El bucle interior for se ejecuta siempre m x n – 1 veces (la longitud del array menos una vez). El bucle while va haciendo desplazamientos para todos los números de la secuencia, menos los 1 (m-1), y desplaza todas las secuencias menos la última que ya estará ordenada al final (n-1), el algoritmo necesita una última ejecución de for para comprobar que todo está ordenado.</p>
+</details>
+<ul>
+<li>(b) (1 punto) Ordenación por selección: ¿Cuántas comparaciones de número se ejecutan en el algoritmo mostrado al
+ordenar un array?</li>
+</ul>
+<p>Selección:
+<div class="highlight"><pre><span></span><code><span class="mo">01</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">02</span><span class="w">     </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">03</span><span class="w">         </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
+<span class="mo">04</span><span class="w">         </span><span class="n">swap</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">);</span>
+<span class="mo">05</span><span class="w">    </span><span class="p">}</span>
+<span class="mo">06</span><span class="w"> </span><span class="p">}</span>
+<span class="mo">07</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mi">08</span><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="mi">09</span><span class="w">     </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="mi">10</span><span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">data</span><span class="o">[</span><span class="n">m</span><span class="o">]</span><span class="p">)</span>
+<span class="mi">11</span><span class="w">             </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="mi">12</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<span class="mi">13</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Número de comparaciones: (n x m) x (1 + n x m) / 2. El algoritmo de selección ejecuta la primera vez el método min para valores de 0 a data.length-1, el siguiente para 1 a data.length-1, el siguiente de 2 a data.length-1, y el último de data.length-2 a data.length-2. Eso es el sumatorio de n=1 a data.length-1, que es la expresión dada.</p>
+</details>
+<ul>
+<li>(c) (1 punto) Ordenación por mergesort: ¿Cuántas ejecuciones del cuerpo de la sentencia while (línea 10)se ejecutan al ordenar un array?. A continuación, se muestra una implementación de este algoritmo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="mo">01</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">02</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">datos</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="mo">03</span><span class="w">         </span><span class="k">return</span><span class="p">;</span>
+<span class="mo">04</span><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="mo">05</span><span class="w">     </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">izq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">copyOfRange</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">);</span>
+<span class="mo">06</span><span class="w">     </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">der</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">copyOfRange</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">datos</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
+<span class="mo">07</span><span class="w">     </span><span class="n">sort</span><span class="p">(</span><span class="n">izq</span><span class="p">);</span>
+<span class="mi">08</span><span class="w">     </span><span class="n">sort</span><span class="p">(</span><span class="n">der</span><span class="p">);</span>
+<span class="mi">09</span><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">dest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="mi">10</span><span class="w">     </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">izq</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">der</span><span class="p">.</span><span class="na">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mi">11</span><span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">der</span><span class="p">.</span><span class="na">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mi">12</span><span class="w">             </span><span class="n">datos</span><span class="o">[</span><span class="n">dest</span><span class="o">++]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">izq</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span><span class="p">;</span>
+<span class="mi">13</span><span class="w">             </span><span class="k">continue</span><span class="p">;</span>
+<span class="mi">14</span><span class="w">         </span><span class="p">}</span>
+<span class="mi">15</span><span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">izq</span><span class="p">.</span><span class="na">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mi">16</span><span class="w">             </span><span class="n">datos</span><span class="o">[</span><span class="n">dest</span><span class="o">++]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">der</span><span class="o">[</span><span class="n">d</span><span class="o">++]</span><span class="p">;</span>
+<span class="mi">17</span><span class="w">             </span><span class="k">continue</span><span class="p">;</span>
+<span class="mi">18</span><span class="w">         </span><span class="p">}</span>
+<span class="mi">19</span><span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">izq</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">der</span><span class="o">[</span><span class="n">d</span><span class="o">]</span><span class="p">)</span>
+<span class="mi">20</span><span class="w">             </span><span class="n">datos</span><span class="o">[</span><span class="n">dest</span><span class="o">++]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">izq</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span><span class="p">;</span>
+<span class="mi">21</span><span class="w">         </span><span class="k">else</span>
+<span class="mi">22</span><span class="w">             </span><span class="n">datos</span><span class="o">[</span><span class="n">dest</span><span class="o">++]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">der</span><span class="o">[</span><span class="n">d</span><span class="o">++]</span><span class="p">;</span>
+<span class="mi">23</span><span class="w">     </span><span class="p">}</span>
+<span class="mi">24</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>NOTA: El siguiente método es estático en la clase Arrays. Copia el rango especificado del array original en un array nuevo.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="n">copyOfRange</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">original</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">to</span><span class="p">)</span>
+</code></pre></div>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Número de comparaciones: (m x n) log2 (n x m) La complejidad de mergesort es siempre igual y el número de vueltas del bucle while depende de las multiplicidades de m x n de 2. Pero siempre será un valor aproximadamente el dado.</p>
+</details>
+<ul>
+<li>(d) (1,5 puntos) Se quiere desarrollar el método secuenciasRepetidas que recibe un array de enteros y devuelve un valor lógico, que indica si el contenido del array es una secuencia correcta, como se describe en este enunciado; antes de retornar, el método actualiza dos atributos m y n con los valores de m y n descritos en este enunciado.
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">secuenciasRepetidas</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+Las secuencias deben aparecer completas (por ejemplo, [1,2,3,1,2] devolverá falso; n y m son números mayores o iguales a 1, pero la secuencia puede ser única (por ejemplo, si n = 1, m = 3, [1,2,3] devuelve verdadero; si n= 1 y m=1, [1] devuelve verdadero); las secuencias empiezan por 1 y la diferencia entre términos es 1. La puntuación de la pregunta será mayor para soluciones más eficientes, y menor para las soluciones más ineficientes.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">secuenciasRepetidas</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">data</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">[</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">m</span><span class="p">)</span>
+<span class="w">        </span><span class="n">m</span><span class="o">++</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">m</span><span class="o">--</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="o">[</span><span class="n">m</span><span class="o">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+<span class="w">        </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(e) (0,5 puntos) Calcular la complejidad del algoritmo implementado en el apartado 4).</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>La complejidad de esta implementación es lineal. O(n) donde n=data.length. O bien el bucle de la línea 6 recorre todo el array y el método termina, o el bucle de la línea 16 termina de recorrer el array, o en algún momento anterior el método detecta que el patrón buscado no se encuentra en el array y el método termina.</p>
+</details>
 
 
 
