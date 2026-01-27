@@ -2129,7 +2129,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">hebras</span>
       
     
   </nav>
@@ -2138,126 +2138,163 @@
 
   <h1>P2 ex02</h1>
 
-<p>La pr!ctica 4 inclu<span class="arithmatex">\(a un conjunto de trenes que se mov\)</span>an de forma concurrente en su l$nea de metro, con bastantes simplificaciones respecto a la realidad. Una de ellas es que no se controlaba que varios trenes puedan estar cargando/descargando pasajeros de forma simult!nea en un mismo anden.</p>
-<p>Se ha modificado el m#todo irA (el m#todo que simulaba la entrada/salida en estaciones y en los tramos de l<span class="arithmatex">\(nea) para evitar que m!s de un tren pueda estar ocupando un and#n de la misma l\)</span>nea y sentido, al mismo tiempo. Antes de entrar en la estaci"n el tren pide permiso para entrar, indicando por qu# l<span class="arithmatex">\(nea se mueve y su sentido. En el metro de Madrid, cada l\)</span>nea de metro tiene un and#n en cada sentido en todas las estaciones por las que pasa, que no comparte con ninguna otra l<span class="arithmatex">\(nea. El c"digo del m#todo irA queda de la siguiente forma (con simplificaciones). Se han insertado 2 l\)</span>neas de c"digo (8 y 11): una para solicitar la entrada en la estaci"n antes de entrar y otra para indicar que un tren abandona el and#n de la estaci"n.</p>
-<p>El atributo estacion de la clase Tren representa la %ltima estaci"n a la que ha llegado el tren. Para que este c"digo funcione, la clase Estaci"n debe implementar los m#todos permisoEntrada y salidaEstacion. Se puede modificar el constructor de Estaci"n si fuera necesario.</p>
-<div class="highlight"><pre><span></span><code><span class="mo">01</span><span class="w">  </span><span class="n">TrayectoLineaMetro</span><span class="w"> </span><span class="n">tr</span><span class="o">=</span><span class="n">linea</span><span class="p">.</span><span class="na">getSecuenciaMovimientos</span><span class="p">(</span><span class="n">origen</span><span class="p">,</span><span class="n">destino</span><span class="p">,</span><span class="n">ida</span><span class="p">);</span>
-<span class="mo">02</span><span class="w">  </span><span class="n">pasos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">estacion</span><span class="p">);</span>
-<span class="mo">03</span><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">tr</span><span class="p">.</span><span class="na">finMovimiento</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="mo">04</span><span class="w">     </span><span class="n">Tramo</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="n">tr</span><span class="p">.</span><span class="na">siguienteMovimiento</span><span class="p">();</span>
-<span class="mo">05</span><span class="w">     </span><span class="n">linea</span><span class="p">.</span><span class="na">getMapa</span><span class="p">().</span><span class="na">mueve</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
-<span class="mo">06</span><span class="w">     </span><span class="n">pasos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">hasta</span><span class="p">());</span>
-<span class="mo">07</span><span class="w">     </span><span class="n">estacion</span><span class="o">=</span><span class="n">c</span><span class="p">.</span><span class="na">hasta</span><span class="p">();</span>
-<span class="mi">08</span><span class="w">     </span><span class="n">estacion</span><span class="p">.</span><span class="na">permisoEntrada</span><span class="p">(</span><span class="n">linea</span><span class="p">,</span><span class="n">ida</span><span class="p">);</span>
-<span class="mi">09</span><span class="w">     </span><span class="n">linea</span><span class="p">.</span><span class="na">getMapa</span><span class="p">().</span><span class="na">entraEnEstacion</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
-<span class="mi">10</span><span class="w">     </span><span class="n">linea</span><span class="p">.</span><span class="na">getMapa</span><span class="p">().</span><span class="na">desembarca</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">hasta</span><span class="p">());</span>
-<span class="mi">11</span><span class="w">     </span><span class="n">estacion</span><span class="p">.</span><span class="na">salidaEstacion</span><span class="p">(</span><span class="n">linea</span><span class="p">,</span><span class="n">ida</span><span class="p">);</span>
-<span class="mi">12</span><span class="w">  </span><span class="p">}</span>
-<span class="mi">13</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pasos</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">destino</span><span class="p">))</span>
-<span class="mi">14</span><span class="w">     </span><span class="n">pasos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">destino</span><span class="p">);</span>
-</code></pre></div>
-<ul>
-<li>(a) (1 Punto) Incluir atributos en la clase Estacion que permitan saber los andenes de las l$neas que pasan por esa estaci"n que est!n ocupados. Si es necesario modificar el constructor para inicializar esos atributos, se debe hacer en esta sub-pregunta.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// Constructor: id: identificador de estación, posición de la estación en el mapa,</span>
-<span class="c1">// tiempo de espera en los andenes, nombre de la estación</span>
-<span class="kd">public</span><span class="w"> </span><span class="nf">Estacion</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">posicion</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<p>Se desea implementar un sistema que simule un conjunto de jugadores de un equipo de f!tbol americano, que est"n sedientos, y una persona que actuar" como aguador. Cada jugador se encargar" peri$dicamente de extraer un vaso de una lista de vasos compartida, y de llenarlo de agua de una botella tambi#n compartida. El aguador comprobar" continuamente que haya disponibles vasos y agua en la botella, rellenando ambos en caso contrario. Tanto los jugadores como el aguador tienen que poder trabajar de forma concurrente.</p>
+<p>Se incluye la implementaci$n de las clases necesarias, adem"s del m#todo ExtraordinarioP2.main, que permite probar el programa con 20 jugadores y un aguador. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
 
-<span class="c1">// Indica cuando un tren que circula por la Linea l y sentido ida o vuelta, quiere entrar en la estación</span>
-<span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">permisoEntrada</span><span class="p">(</span><span class="n">LineaMetro</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ExtraordinarioP2</span><span class="w"> </span><span class="p">{</span>
 
-<span class="c1">// Indica cuando un tren que circula por la Linea l y sentido ida o vuelta, abandona la estación</span>
-<span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">salidaEstacion</span><span class="p">(</span><span class="n">LineaMetro</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>Con esta soluci"n hacemos lo que nos piden en el ejercicio: no mas de un tren est! descargando en un anden al mismo tiempo.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">andenes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Set</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Botella</span><span class="w"> </span><span class="n">botella</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Botella</span><span class="p">();</span>
+<span class="w">        </span><span class="n">botella</span><span class="p">.</span><span class="na">litros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 
-<span class="kd">public</span><span class="w"> </span><span class="nf">EstacionS</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">posicion</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Vaso</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vasos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Vaso</span><span class="o">&gt;</span><span class="p">();</span>
 
-<span class="c1">// Indica cuando un tren que circula por la Linea l y sentido ida o vuelta,</span>
-<span class="c1">// quiere entrar en la estación</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">permisoEntrada</span><span class="p">(</span><span class="n">LineaMetro</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">l</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">l</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="w">        </span><span class="n">Aguador</span><span class="w"> </span><span class="n">aguador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Aguador</span><span class="p">(</span><span class="n">botella</span><span class="p">,</span><span class="w"> </span><span class="n">vasos</span><span class="p">);</span>
+<span class="w">        </span><span class="n">aguador</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
 
-<span class="c1">// Indica cuando un tren que circula por la Linea l y sentido ida o vuelta,</span>
-<span class="c1">// abandona la estación</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">salidaEstacion</span><span class="p">(</span><span class="n">LineaMetro</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">l</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;No podemos salir de un anden si no estamos dentro&quot;</span>
-<span class="w">        </span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">l</span><span class="p">);</span>
-<span class="w">    </span><span class="n">notifyAll</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div>
-</details>
-<ul>
-<li>(b) (2 puntos) Implementar el m#todo permisoEntrada (incluida la cabecera) para que no m!s de un tren pueda estar ocupando un and#n en la estaci"n.</li>
-</ul>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>Con esta soluci"n vamos un poco mas alla de lo que nos piden en el ejercicio: no solo evitamos que varios trenes est#n descargando en un and#n, sino que adem!s los trenes no podr!n adelantarse entre ellos, cuando llegan a una estaci"n para descargar.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;&gt;[]</span><span class="w"> </span><span class="n">andenes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Map</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
-
-<span class="kd">public</span><span class="w"> </span><span class="nf">Estacion</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">posicion</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;&gt;</span><span class="p">();</span>
-<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;&gt;</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="c1">// Indica cuando un tren que circula por la Linea l y sentido ida o vuelta,</span>
-<span class="c1">// quiere entrar en la estación</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">permisoEntrada</span><span class="p">(</span><span class="n">LineaMetro</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;</span><span class="p">());</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">l</span><span class="p">).</span><span class="na">add</span><span class="p">(</span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">());</span>
-
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">l</span><span class="p">).</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Jugador</span><span class="w"> </span><span class="n">jugador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Jugador</span><span class="p">(</span><span class="n">botella</span><span class="p">,</span><span class="w"> </span><span class="n">vasos</span><span class="p">);</span>
+<span class="w">            </span><span class="n">jugador</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Vaso</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="n">capacidad</span><span class="p">;</span>
 
-<span class="c1">// Indica cuando un tren que circula por la Linea l y sentido ida o vuelta,</span>
-<span class="c1">// abandona la estación</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">salidaEstacion</span><span class="p">(</span><span class="n">LineaMetro</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">l</span><span class="p">).</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;El tren que no esta en el anden no puede salir de la estacion&quot;</span>
-<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Vaso</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">capacidad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">capacidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">capacidad</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">l</span><span class="p">).</span><span class="na">remove</span><span class="p">(</span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">());</span>
-<span class="w">    </span><span class="n">notifyAll</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-</details>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Botella</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="n">litros</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">Aguador</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Botella</span><span class="w"> </span><span class="n">botella</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Vaso</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vasos</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Aguador</span><span class="p">(</span><span class="n">Botella</span><span class="w"> </span><span class="n">botella</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Vaso</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vasos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">botella</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">botella</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">vasos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vasos</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/*</span>
+<span class="cm">     * El aguador rellena la botella de agua, y pone vasos nuevos.</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">synchronized</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">botella</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">botella</span><span class="p">.</span><span class="na">litros</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Aguador rellena botella&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="na">botella</span><span class="p">.</span><span class="na">litros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="kd">synchronized</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">vasos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">vasos</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">this</span><span class="p">.</span><span class="na">vasos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Vaso</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Aguador añade vaso&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">Jugador</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Botella</span><span class="w"> </span><span class="n">botella</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Vaso</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vasos</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Jugador</span><span class="p">(</span><span class="n">Botella</span><span class="w"> </span><span class="n">botella</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Vaso</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vasos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">botella</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">botella</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">vasos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vasos</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/*</span>
+<span class="cm">     * Cada jugador extrae un vaso, lo llena de agua y bebe.</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Vaso</span><span class="w"> </span><span class="n">vaso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Jugador intenta beber&quot;</span><span class="p">);</span>
+
+<span class="w">                </span><span class="kd">synchronized</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">vasos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">vasos</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">vaso</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">vaso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">vasos</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Jugador ha cogido vaso&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="kd">synchronized</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">botella</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">botella</span><span class="p">.</span><span class="na">litros</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">vaso</span><span class="p">.</span><span class="na">capacidad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="na">botella</span><span class="p">.</span><span class="na">litros</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">vaso</span><span class="p">.</span><span class="na">capacidad</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Jugador ha bebido&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="c1">// Tira el vaso</span>
+<span class="w">                </span><span class="n">vaso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="w">                </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">6000</span><span class="p">);</span>
+
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Nota: Se recuerda que un bloque synchronized se asocia al objeto en el parámetro. Se garantiza exclusión mutua entre los bloques sincronizados que se invocan con el mismo objeto.</p>
 <ul>
-<li>(c) (2 puntos) Implementar el m#todo salidaEstacion (incluida la cabecera) que libera el and#n y permite a otro tren que est! esperando ocupar el and#n.</li>
+<li>(a) (2 puntos) 'Existe alg!n problema de acceso concurrente en esta implementaci$n?. Si es as&amp;, 'de qu# tipo es?.
+Justifique su respuesta.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Vacío</p>
+<p>Sí existe. Hay bloqueo exclusivo de los recursos, con espera, y en orden inverso: Aguador bloquea botella y luego vasos, mientras que Jugador bloquea los vasos primero.</p>
 </details>
-<p>Nota: Los par!metros que se pasan al invocar un m#todo son correctos. No es necesario validarlos. No hay ninguna restricci"n en la estructura de datos que se use en una soluci"n.</p>
+<ul>
+<li>(b) (1 punto) 'C$mo solucionar&amp;a el problema?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>La solución más sencilla es invertir el orden del bloqueo en Aguador o en Jugador. Analizando el código vemos que no se necesita bloquear sobre ambos recursos a la vez, así que una mejor solución sería separar las dos regiones críticas: primero bloquear vasos, acabar el bloque, y luego bloquear la botella (o viceversa).</p>
+</details>
+<ul>
+<li>(c) (1 punto) Los vasos tienen una capacidad de 1 litro. Sin modificar la implementaci$n de Jugador, 'cu"l es el n!mero m"ximo de jugadores que podr&amp;an beber por minuto?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Nos piden el máximo, con lo que usaremos el caso mejor. Para que un jugador pueda beber, tiene que haber bloqueado los vasos (500ms de espera) y luego la botella (1000ms). Ese es el mínimo tiempo necesario por jugador, y durante el cual los recursos están bloqueados. El tiempo de espera tras beber no afecta, porque se puede aumentar el número de jugadores.</p>
+<p>Por tanto, el número máximo de jugadores sería 60s/ (1.5s/1 jugador) = 40 jugadores.</p>
+<p>Para este máximo, hemos supuesto que el tiempo de procesamiento (bloqueo) por el aguador, el de las operaciones básicas y el consumido por los cambios de contexto son despreciables.</p>
+<p>Se podría aumentar el número de jugadores por minuto separando los dos bloques synchronized (ver respuesta anterior), de forma que el tiempo de espera se reparta entre los dos elementos. De esa forma, el primer jugador tardaría 1.5s en beber, pero los siguientes podrían tardar sólo 1s (la espera sobre los vasos puede darse a la vez que la espera sobre la botella). En ese caso, en el primer minuto podría haber 59 jugadores, y 60 en los siguientes.</p>
+<p>Si se considera que NO se puede aumentar el número de jugadores en ExtraordinarioP2, el número máximo sería 20 (es el número de jugadores que añadimos), que podrían llegar a beber 2 veces en ese minuto (20 jugadores tardan 30 segundos en completar, que es menor que el tiempo de espera post-bebida).</p>
+</details>
+<ul>
+<li>(d) (1 punto) Si se desease sustituir los bloques sincronizados por m#todos sincronizados, 'en qu# clase o clases los implementar&amp;a?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Los métodos sincronizados aplican un bloqueo sobre el objeto al que pertenecen. Por tanto, estos métodos deben estar definidos sobre un objeto común a todas las hebras. Esto descarta Jugador y Aguador. En este caso, el único objeto compartido es Botella. Para bloquear sobre la lista de vasos, habría que crear una clase que represente la lista.</p>
+</details>
 
 
 
