@@ -1,5 +1,5 @@
 ---
-year: 20XX
+year: 2022
 exam: parcial 1 recuperacion
 exercises:
   - p1r_ex01.md
@@ -7,7 +7,7 @@ exercises:
 ---
 
 
-# Examen 20XX — Parcial 1 Recuperación
+# Examen 2022 — Parcial 1 Recuperación
 
 ## Problema 1
 {{ include("p1r_ex01.md") }}
