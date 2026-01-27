@@ -14,7 +14,7 @@ Se pide desarrollar dos métodos, descritos en el cuadro adjunto:
 
 - (b) (3 puntos) numeroVecesUsadoArco: genera un diccionario (Map<Edge, Integer>) con el número de veces que aparece cada arco en la lista de caminos del parámetro de entrada.
 
-![](./extra/placeholder.jpg)
+![](./placeholder.jpg)
 
 Nota: En la implementación de estos métodos, se gestionan listas de arcos. No es necesario conocer, ni gestionar los vértices conectados en los caminos incluidos en la lista de entrada.
 

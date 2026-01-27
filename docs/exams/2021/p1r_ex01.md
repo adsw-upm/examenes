@@ -62,8 +62,6 @@ java.util.List<ContadorPalabra> ag2))
 { . . . }
 ```
 
-y
-
 Ejemplo: Los dos parámetros de entrada de Agregar o Menor podrían ser:
 ```java
 Ag1 = { [“adiós”, 3], [“bueno”, 1], [“hola”, 2], [“malo”, 4] }
