@@ -2335,7 +2335,151 @@
 - Un arco modela una transacci"n. Su peso representa la cantidad transferida.
 </code></pre>
 <p>Una transferencia (la clase Transfer) se modela mediante los identificadores del banco origen y del banco destino, la cantidad, el nombre del ordenante y el nombre del beneficiario. Adem#s, se quiere relacionar cada arco del grafo con la informaci"n de su transferencia asociada. </p>
-<p><img alt="" src="../placeholder.jpg" /></p>
+<p>menorCamino</p>
+<pre><code>public java.util.List&lt;Edge&gt; menorCamino(java.util.List&lt;java.util.List&lt;Edge&gt;&gt; listaCaminos)
+</code></pre>
+<p><em>Seleccionar el camino con el menor coste total.</em></p>
+<ul>
+<li><em>Parameters:</em><ul>
+<li>listaCaminos - una lista de caminos del grafo del sistema entre dos vértices.</li>
+</ul>
+</li>
+<li><em>Returns:</em><ul>
+<li>La respuesta es un camino que sea el mínimo de la lista recibida. Si hubieran varios caminos mínimos con el mismo coste, se puede retornar cualquiera de ellos.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>numeroVecesUsadoArco</p>
+<pre><code>public java.util.Map&lt;Edge, java.lang.Integer&gt; numeroVecesUsadoArco(java.util.List&lt;java.util.List&lt;Edge&gt;&gt; listaCaminos)
+</code></pre>
+<p><em>Determinar cuántas veces aparece cada arco en una lista de caminos</em></p>
+<ul>
+<li><em>Parameters:</em><ul>
+<li>listaCaminos - una lista de caminos del grafo del sistema entre dos vértices.</li>
+</ul>
+</li>
+<li><em>Returns:</em><ul>
+<li>devuelve un diccionario, en el que la clave es un arco y el valor un entero que representa el número de veces que el arco aparece en el parámetro de entrada.</li>
+</ul>
+</li>
+</ul>
+<p>Edge</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;"><em>compareTo(Edge that)</em></td>
+<td style="text-align: left;">Compares two edges by weight.</td>
+</tr>
+<tr>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;"><em>either()</em></td>
+<td style="text-align: left;">Returns either endpoint of this edge.</td>
+</tr>
+<tr>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;"><em>other(int vertex)</em></td>
+<td style="text-align: left;">Returns the endpoint of this edge that is different from the given vertex.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><em>weight()</em></td>
+<td style="text-align: left;">Returns the weight of this edge.</td>
+</tr>
+</tbody>
+</table>
+<p>List</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">boolean</td>
+<td style="text-align: left;"><em>add(E e)</em></td>
+<td style="text-align: left;">Appends the specified element to the end of this list (optional operation).</td>
+</tr>
+<tr>
+<td style="text-align: left;">boolean</td>
+<td style="text-align: left;"><em>contains(Object o)</em></td>
+<td style="text-align: left;">Returns true if this list contains the specified element.</td>
+</tr>
+<tr>
+<td style="text-align: left;">E</td>
+<td style="text-align: left;"><em>get(int index)</em></td>
+<td style="text-align: left;">Returns the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td style="text-align: left;">boolean</td>
+<td style="text-align: left;"><em>isEmpty()</em></td>
+<td style="text-align: left;">Returns true if this list contains no elements.</td>
+</tr>
+<tr>
+<td style="text-align: left;">E</td>
+<td style="text-align: left;"><em>remove(int index)</em></td>
+<td style="text-align: left;">Removes the element at the specified position in this list (optional operation).</td>
+</tr>
+<tr>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;"><em>size()</em></td>
+<td style="text-align: left;">Returns the number of elements in this list.</td>
+</tr>
+</tbody>
+</table>
+<p>Map</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">boolean</td>
+<td style="text-align: left;"><em>containsKey(Object key)</em></td>
+<td style="text-align: left;">Returns true if this map contains a mapping for the specified key.</td>
+</tr>
+<tr>
+<td style="text-align: left;">V</td>
+<td style="text-align: left;"><em>get(Object key)</em></td>
+<td style="text-align: left;">Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.</td>
+</tr>
+<tr>
+<td style="text-align: left;">boolean</td>
+<td style="text-align: left;"><em>isEmpty()</em></td>
+<td style="text-align: left;">Returns true if this map contains no key-value mappings.</td>
+</tr>
+<tr>
+<td style="text-align: left;">V</td>
+<td style="text-align: left;"><em>put(K key, V value)</em></td>
+<td style="text-align: left;">Associates the specified value with the specified key in this map.</td>
+</tr>
+<tr>
+<td style="text-align: left;">V</td>
+<td style="text-align: left;"><em>remove(Object key)</em></td>
+<td style="text-align: left;">Removes the mapping for the specified key from this map if present.</td>
+</tr>
+<tr>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;"><em>size()</em></td>
+<td style="text-align: left;">Returns the number of key-value mappings in this map.</td>
+</tr>
+</tbody>
+</table>
 <p>Se pide:</p>
 <ul>
 <li>(a) (1,5 puntos) Proponga un atributo de una clase adecuada para relacionar un arco con su transferencia asociada y desarrolle el m$todo ponerTransfer para mantener esta relaci"n e integrar la transferencia en el grafo. </li>
