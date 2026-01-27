@@ -2219,7 +2219,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 2
+    Examen 2022 — Parcial 2
   
 
     
@@ -2313,7 +2313,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">hebras</span>
       
     
   </nav>
@@ -2322,7 +2322,77 @@
 
   <h1>P2 ex01</h1>
 
+<p>Se dispone un puente elevado para autom!viles. Se quiere desarrollar un sistema de seguridad que impide que hayan m"s de 10 veh#culos simult"neamente en el puente y con un peso total mayor que 15.000 Kg.</p>
+<p>Cuando un veh#culo quiere entrar en el puente, ejecuta el m<span class="arithmatex">\(todo entrarPuente y cuando lo abandona, ejecuta el m\)</span>todo salirPuente. Las ambulancias tienen que invocar el m$todo entrarPuenteAmbulancia para tener prioridad en el acceso.</p>
+<ul>
+<li>(a) (1,5 puntos) Desarrolle el monitor con las restricciones indicadas como se muestra en la plantilla que se muestra a
+continuaci!n. NOTA: El par"metro peso en cada m$todo se refiere al peso del veh#culo. No es imprescindible proporcionar una soluci!n sin hambruna. Si lo hubiera se deber#a indicarlo y justificarlo.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorPuenteSeguro</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pesoMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nVehiculosMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span>
 
+<span class="w">    </span><span class="cm">/*</span>
+<span class="cm">     * Un vehículo invoca este método para entrar en el puente. Se bloquea para no exceder en</span>
+<span class="cm">     * el número de vehículos, el peso total en el puente o si hay ambulancias esperando.</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarPuente</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">peso</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span>
+
+<span class="w">    </span><span class="cm">/*</span>
+<span class="cm">     * Una ambulancia invoca este método para entrar en el puente. Se bloquea para no exceder en</span>
+<span class="cm">     * el número de vehículos o el peso total en el puente.</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarPuenteAmbulanica</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">peso</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span>
+
+<span class="w">    </span><span class="cm">/*</span>
+<span class="cm">     * Los vehículos invocan este método cuando van a salir del puente</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">salirPuente</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">peso</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>A continuaci!n, se propone una soluci!n al enunciado, que satisface los requisitos de sincronizaci!n condicional generales planteados. Adem"s, se asegura que no van a ocurrir interbloqueos.</p>
+<p>Esta soluci!n no evita la hambruna. Si continuamente intentan a entrar ambulancia, podr#a ocurrir que ning%n coche podr#a acceder. Igualmente, los veh#culos con poco peso tienen m"s probabilidad de entrar al puente que los veh#culos con mayor peso. En situaciones desfavorables, podr#a ocurrir la hambruna para los veh#culos m"s pesados.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">es.upm.dit.adsw.puente_limitado</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PuenteSeguro</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pesoEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nVehiculos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nAmbulanciasEsperando</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pesoMaximo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nVehiculosMaximo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarPuente</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">peso</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">peso</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pesoEnPuente</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">pesoMaximo</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">               </span><span class="p">(</span><span class="n">nVehiculos</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">nVehiculosMaximo</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">               </span><span class="p">(</span><span class="n">nAmbulanciasEsperando</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">pesoEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pesoEnPuente</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">peso</span><span class="p">;</span>
+<span class="w">        </span><span class="n">nVehiculos</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarPuenteAmbulancia</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">peso</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">nAmbulanciasEsperando</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">peso</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pesoEnPuente</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">pesoMaximo</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">               </span><span class="p">(</span><span class="n">nVehiculos</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">nVehiculosMaximo</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">nAmbulanciasEsperando</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="n">pesoEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pesoEnPuente</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">peso</span><span class="p">;</span>
+<span class="w">        </span><span class="n">nVehiculos</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">salirPuente</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">peso</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">pesoEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pesoEnPuente</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">peso</span><span class="p">;</span>
+<span class="w">        </span><span class="n">nVehiculos</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 
