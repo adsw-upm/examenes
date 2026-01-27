@@ -23,7 +23,7 @@
     
     
       
-        <title>Examen 20XX — Parcial 2 - Catálogo ejercicios años anteriores</title>
+        <title>Examen 2021 — Parcial 2 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#examen-20xx-parcial-2" class="md-skip">
+        <a href="#examen-2021-parcial-2" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Examen 20XX — Parcial 2
+              Examen 2021 — Parcial 2
             
           </span>
         </div>
@@ -2063,7 +2063,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 2
+    Examen 2021 — Parcial 2
   
 
     
@@ -2081,7 +2081,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 2
+    Examen 2021 — Parcial 2
   
 
     
@@ -2273,9 +2273,259 @@
 
 
 
-<h1 id="examen-20xx-parcial-2">Examen 20XX — Parcial 2</h1>
+<h1 id="examen-2021-parcial-2">Examen 2021 — Parcial 2</h1>
 <h2 id="problema-1">Problema 1</h2>
+<p>El problema de los lectores/escritores est! planteado con un conjunto de hebras que comparten datos. Una parte de estas hebras (lectores) s"lo leen los datos, mientras que el resto (escritores) leen y escriben. Varios lectores pueden acceder simult!neamente a los datos compartidos, pero se debe evitar que mientras un escritor est# accediendo a los datos acceda a ellos otra hebra de cualquier tipo.</p>
+<p>Las hebras correctas deben solicitar permiso para acceder los datos con empiezaLeer (lectores) o empiezaEscribir (escritores). Al terminar de usar los datos compartidos deben invocar a terminaLeer (lectores) o terminaEscribir (escritores). El acceso a los datos compartidos se hace fuera de este monitor. Si este protocolo para acceder a estos m#todos se satisface, se garantiza los requisitos del problema.</p>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void</td>
+<td>empiezaEscribir()</td>
+<td>Método que invoca una hebra escritora antes de comenzar a escribir</td>
+</tr>
+<tr>
+<td>void</td>
+<td>empiezaLeer()</td>
+<td>Método que invoca una hebra lectora antes de comenzar a leer</td>
+</tr>
+<tr>
+<td>void</td>
+<td>terminaEscribir()</td>
+<td>Método que invoca una hebra escritora al terminar de escribir</td>
+</tr>
+<tr>
+<td>void</td>
+<td>terminaLeer()</td>
+<td>Método que invoca una hebra lectora al terminar de leer</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>(a) (2,5 puntos) Sup"ngase que en este sistema hay dos instancias de los datos compartidos: D1 y D2. Algunas hebras escritoras tienen que acceder con exclusi"n mutua simult!neamente a D1 y D2, para cambiar los datos con coherencia. Es imprescindible hacerlo de esta forma. Justifique si en este supuesto podr$a producir interbloqueos.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Si se analizan las condiciones de Coffman:
+    - 1. Exclusi"n mutua: es as<span class="arithmatex">\(, por el enunciado del problema
+    - 2. Tener y esperar: en los ejercicios que se han hecho, se usa este esquema. (se podr\)</span>a haber propuesto una implementaci"n alternativa)
+    - 3. Sin expulsi"n: al igual que en le caso anterior, no hay explusi"n. Se podr$a proporcionar una alternativa.
+    - 4. Espera circular: en el enunciado, se indica que hay dos instancias para acceder a los datos y no se especifica en el orden en el que se pueda hacer. Por tanto, puede que haya espera circular, como se muestra a continuaci"n. En este caso, E1 intenta coger D1 y D2, y E2 intenta coger en el otro orden</p>
+<p><img alt="" src="p2_ex01.png" /></p>
+<p>Se cumplan las cuatro condiciones, por lo que puede ocurrir un interbloqueo.</p>
+</details>
+<ul>
+<li>(b) (2,5 puntos) A continuaci"n, se muestra una posible soluci"n al problema de los lectores/escritores. Analice este c"digo y justifique si es correcto. En caso contrario, indique los cambios necesarios para que este c"digo fuera una soluci"n correcta.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorLE2</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">nLectores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">empiezaLeer</span><span class="p">()</span>
+<span class="w">            </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">nLectores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bloqueoEscritor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="n">nLectores</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">empiezaEscribir</span><span class="p">()</span>
+<span class="w">            </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">bloqueoLector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">terminaLeer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">nLectores</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">terminaEscribir</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>El c"digo es incorrecto. Hay que hacer los siguientes cambios:
+    - Los atributos tienen que ser privados
+    - Los m#todos wait, tienen que estar en un bloque while
+    - La declaraci"n nLectores en el m#todo empiezaLeer no tiene sentido
+    - En el m#todo terminaLeer s"lo hay asignar true a bloqueoLector cuando no hay lectores.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorLE</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nLectores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">empiezaLeer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idLector</span><span class="p">)</span>
+<span class="w">            </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">nLectores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">bloqueoEscritor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="n">nLectores</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">empiezaEscribir</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idEscritor</span><span class="p">)</span>
+<span class="w">            </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">bloqueoLector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">terminaLeer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idLector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">nLectores</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nLectores</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">            </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">terminaEscribir</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idEscritor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">nEscritores</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 <h2 id="problema-2">Problema 2</h2>
+<p>La pr!ctica 4 inclu<span class="arithmatex">\(a un conjunto de trenes que se mov\)</span>an de forma concurrente en su l$nea de metro, con bastantes simplificaciones respecto a la realidad. Una de ellas es que no se controlaba que varios trenes puedan estar cargando/descargando pasajeros de forma simult!nea en un mismo anden.</p>
+<p>Se ha modificado el m#todo irA (el m#todo que simulaba la entrada/salida en estaciones y en los tramos de l<span class="arithmatex">\(nea) para evitar que m!s de un tren pueda estar ocupando un and#n de la misma l\)</span>nea y sentido, al mismo tiempo. Antes de entrar en la estaci"n el tren pide permiso para entrar, indicando por qu# l<span class="arithmatex">\(nea se mueve y su sentido. En el metro de Madrid, cada l\)</span>nea de metro tiene un and#n en cada sentido en todas las estaciones por las que pasa, que no comparte con ninguna otra l<span class="arithmatex">\(nea. El c"digo del m#todo irA queda de la siguiente forma (con simplificaciones). Se han insertado 2 l\)</span>neas de c"digo (8 y 11): una para solicitar la entrada en la estaci"n antes de entrar y otra para indicar que un tren abandona el and#n de la estaci"n.</p>
+<p>El atributo estacion de la clase Tren representa la %ltima estaci"n a la que ha llegado el tren. Para que este c"digo funcione, la clase Estaci"n debe implementar los m#todos permisoEntrada y salidaEstacion. Se puede modificar el constructor de Estaci"n si fuera necesario.</p>
+<div class="highlight"><pre><span></span><code><span class="mo">01</span><span class="w">  </span><span class="n">TrayectoLineaMetro</span><span class="w"> </span><span class="n">tr</span><span class="o">=</span><span class="n">linea</span><span class="p">.</span><span class="na">getSecuenciaMovimientos</span><span class="p">(</span><span class="n">origen</span><span class="p">,</span><span class="n">destino</span><span class="p">,</span><span class="n">ida</span><span class="p">);</span>
+<span class="mo">02</span><span class="w">  </span><span class="n">pasos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">estacion</span><span class="p">);</span>
+<span class="mo">03</span><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">tr</span><span class="p">.</span><span class="na">finMovimiento</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">04</span><span class="w">     </span><span class="n">Tramo</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="n">tr</span><span class="p">.</span><span class="na">siguienteMovimiento</span><span class="p">();</span>
+<span class="mo">05</span><span class="w">     </span><span class="n">linea</span><span class="p">.</span><span class="na">getMapa</span><span class="p">().</span><span class="na">mueve</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="mo">06</span><span class="w">     </span><span class="n">pasos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">hasta</span><span class="p">());</span>
+<span class="mo">07</span><span class="w">     </span><span class="n">estacion</span><span class="o">=</span><span class="n">c</span><span class="p">.</span><span class="na">hasta</span><span class="p">();</span>
+<span class="mi">08</span><span class="w">     </span><span class="n">estacion</span><span class="p">.</span><span class="na">permisoEntrada</span><span class="p">(</span><span class="n">linea</span><span class="p">,</span><span class="n">ida</span><span class="p">);</span>
+<span class="mi">09</span><span class="w">     </span><span class="n">linea</span><span class="p">.</span><span class="na">getMapa</span><span class="p">().</span><span class="na">entraEnEstacion</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="mi">10</span><span class="w">     </span><span class="n">linea</span><span class="p">.</span><span class="na">getMapa</span><span class="p">().</span><span class="na">desembarca</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">hasta</span><span class="p">());</span>
+<span class="mi">11</span><span class="w">     </span><span class="n">estacion</span><span class="p">.</span><span class="na">salidaEstacion</span><span class="p">(</span><span class="n">linea</span><span class="p">,</span><span class="n">ida</span><span class="p">);</span>
+<span class="mi">12</span><span class="w">  </span><span class="p">}</span>
+<span class="mi">13</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pasos</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">destino</span><span class="p">))</span>
+<span class="mi">14</span><span class="w">     </span><span class="n">pasos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">destino</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>(a) (1 Punto) Incluir atributos en la clase Estacion que permitan saber los andenes de las l$neas que pasan por esa estaci"n que est!n ocupados. Si es necesario modificar el constructor para inicializar esos atributos, se debe hacer en esta sub-pregunta.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// Constructor: id: identificador de estación, posición de la estación en el mapa,</span>
+<span class="c1">// tiempo de espera en los andenes, nombre de la estación</span>
+<span class="kd">public</span><span class="w"> </span><span class="nf">Estacion</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">posicion</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">// Indica cuando un tren que circula por la Linea l y sentido ida o vuelta, quiere entrar en la estación</span>
+<span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">permisoEntrada</span><span class="p">(</span><span class="n">LineaMetro</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">// Indica cuando un tren que circula por la Linea l y sentido ida o vuelta, abandona la estación</span>
+<span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">salidaEstacion</span><span class="p">(</span><span class="n">LineaMetro</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Con esta soluci"n hacemos lo que nos piden en el ejercicio: no mas de un tren est! descargando en un anden al mismo tiempo.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">andenes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Set</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="nf">EstacionS</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">posicion</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Indica cuando un tren que circula por la Linea l y sentido ida o vuelta,</span>
+<span class="c1">// quiere entrar en la estación</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">permisoEntrada</span><span class="p">(</span><span class="n">LineaMetro</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">l</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">l</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Indica cuando un tren que circula por la Linea l y sentido ida o vuelta,</span>
+<span class="c1">// abandona la estación</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">salidaEstacion</span><span class="p">(</span><span class="n">LineaMetro</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">l</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;No podemos salir de un anden si no estamos dentro&quot;</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">l</span><span class="p">);</span>
+<span class="w">    </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (2 puntos) Implementar el m#todo permisoEntrada (incluida la cabecera) para que no m!s de un tren pueda estar ocupando un and#n en la estaci"n.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Con esta soluci"n vamos un poco mas alla de lo que nos piden en el ejercicio: no solo evitamos que varios trenes est#n descargando en un and#n, sino que adem!s los trenes no podr!n adelantarse entre ellos, cuando llegan a una estaci"n para descargar.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;&gt;[]</span><span class="w"> </span><span class="n">andenes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Map</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="nf">Estacion</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">posicion</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Indica cuando un tren que circula por la Linea l y sentido ida o vuelta,</span>
+<span class="c1">// quiere entrar en la estación</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">permisoEntrada</span><span class="p">(</span><span class="n">LineaMetro</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">l</span><span class="p">).</span><span class="na">add</span><span class="p">(</span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">());</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">l</span><span class="p">).</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Indica cuando un tren que circula por la Linea l y sentido ida o vuelta,</span>
+<span class="c1">// abandona la estación</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">salidaEstacion</span><span class="p">(</span><span class="n">LineaMetro</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">l</span><span class="p">).</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;El tren que no esta en el anden no puede salir de la estacion&quot;</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">andenes</span><span class="o">[</span><span class="n">ida</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">l</span><span class="p">).</span><span class="na">remove</span><span class="p">(</span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">());</span>
+<span class="w">    </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(c) (2 puntos) Implementar el m#todo salidaEstacion (incluida la cabecera) que libera el and#n y permite a otro tren que est! esperando ocupar el and#n.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Vacío</p>
+</details>
+<p>Nota: Los par!metros que se pasan al invocar un m#todo son correctos. No es necesario validarlos. No hay ninguna restricci"n en la estructura de datos que se use en una soluci"n.</p>
 
 
 

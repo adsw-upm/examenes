@@ -2007,7 +2007,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 2
+    Examen 2021 — Parcial 2
   
 
     
@@ -2129,7 +2129,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">hebras</span>
       
     
   </nav>
@@ -2138,7 +2138,136 @@
 
   <h1>P2 ex01</h1>
 
+<p>El problema de los lectores/escritores est! planteado con un conjunto de hebras que comparten datos. Una parte de estas hebras (lectores) s"lo leen los datos, mientras que el resto (escritores) leen y escriben. Varios lectores pueden acceder simult!neamente a los datos compartidos, pero se debe evitar que mientras un escritor est# accediendo a los datos acceda a ellos otra hebra de cualquier tipo.</p>
+<p>Las hebras correctas deben solicitar permiso para acceder los datos con empiezaLeer (lectores) o empiezaEscribir (escritores). Al terminar de usar los datos compartidos deben invocar a terminaLeer (lectores) o terminaEscribir (escritores). El acceso a los datos compartidos se hace fuera de este monitor. Si este protocolo para acceder a estos m#todos se satisface, se garantiza los requisitos del problema.</p>
+<table>
+<thead>
+<tr>
+<th>Modifier and Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void</td>
+<td>empiezaEscribir()</td>
+<td>Método que invoca una hebra escritora antes de comenzar a escribir</td>
+</tr>
+<tr>
+<td>void</td>
+<td>empiezaLeer()</td>
+<td>Método que invoca una hebra lectora antes de comenzar a leer</td>
+</tr>
+<tr>
+<td>void</td>
+<td>terminaEscribir()</td>
+<td>Método que invoca una hebra escritora al terminar de escribir</td>
+</tr>
+<tr>
+<td>void</td>
+<td>terminaLeer()</td>
+<td>Método que invoca una hebra lectora al terminar de leer</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>(a) (2,5 puntos) Sup"ngase que en este sistema hay dos instancias de los datos compartidos: D1 y D2. Algunas hebras escritoras tienen que acceder con exclusi"n mutua simult!neamente a D1 y D2, para cambiar los datos con coherencia. Es imprescindible hacerlo de esta forma. Justifique si en este supuesto podr$a producir interbloqueos.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Si se analizan las condiciones de Coffman:
+    - 1. Exclusi"n mutua: es as<span class="arithmatex">\(, por el enunciado del problema
+    - 2. Tener y esperar: en los ejercicios que se han hecho, se usa este esquema. (se podr\)</span>a haber propuesto una implementaci"n alternativa)
+    - 3. Sin expulsi"n: al igual que en le caso anterior, no hay explusi"n. Se podr$a proporcionar una alternativa.
+    - 4. Espera circular: en el enunciado, se indica que hay dos instancias para acceder a los datos y no se especifica en el orden en el que se pueda hacer. Por tanto, puede que haya espera circular, como se muestra a continuaci"n. En este caso, E1 intenta coger D1 y D2, y E2 intenta coger en el otro orden</p>
+<p><img alt="" src="../p2/p2_ex01.png" /></p>
+<p>Se cumplan las cuatro condiciones, por lo que puede ocurrir un interbloqueo.</p>
+</details>
+<ul>
+<li>(b) (2,5 puntos) A continuaci"n, se muestra una posible soluci"n al problema de los lectores/escritores. Analice este c"digo y justifique si es correcto. En caso contrario, indique los cambios necesarios para que este c"digo fuera una soluci"n correcta.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorLE2</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">nLectores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">empiezaLeer</span><span class="p">()</span>
+<span class="w">            </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">nLectores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bloqueoEscritor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="n">nLectores</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">empiezaEscribir</span><span class="p">()</span>
+<span class="w">            </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">bloqueoLector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">terminaLeer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">nLectores</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">terminaEscribir</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>El c"digo es incorrecto. Hay que hacer los siguientes cambios:
+    - Los atributos tienen que ser privados
+    - Los m#todos wait, tienen que estar en un bloque while
+    - La declaraci"n nLectores en el m#todo empiezaLeer no tiene sentido
+    - En el m#todo terminaLeer s"lo hay asignar true a bloqueoLector cuando no hay lectores.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorLE</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nLectores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">empiezaLeer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idLector</span><span class="p">)</span>
+<span class="w">            </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">nLectores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">bloqueoEscritor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="n">nLectores</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">empiezaEscribir</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idEscritor</span><span class="p">)</span>
+<span class="w">            </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">bloqueoLector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">terminaLeer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idLector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">nLectores</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nLectores</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">            </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">terminaEscribir</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idEscritor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">nEscritores</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 
