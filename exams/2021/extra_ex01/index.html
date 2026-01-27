@@ -2063,7 +2063,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Extraordinario
+    Examen 2021 — Extraordinario
   
 
     
@@ -2129,7 +2129,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">grafos</span>
       
     
   </nav>
@@ -2138,7 +2138,73 @@
 
   <h1>Extra ex01</h1>
 
+<p>Un sistema real se describe como un grafo no dirigido. Los arcos o aristas (edge) tienen un coste o peso mayor que cero. Un camino es una secuencia de arcos que conectan dos nodos o vértices. Un camino se representa mediante una lista (List<Edge>). En este sistema, interesa agrupar a todos los posibles caminos entre dos nodos concretos, que se representa mediante una lista de caminos (List<List\<Edge>>).</p>
+<p>Se pide desarrollar dos métodos, descritos en el cuadro adjunto:</p>
+<ul>
+<li>
+<p>(a) (2 puntos) menorCamino selecciona el camino mínimo (el de menor coste total) de una lista de caminos. Se aconseja (no obligatorio) desarrollar un método que reciba como entrada un camino y retorne el peso total del camino.</p>
+</li>
+<li>
+<p>(b) (3 puntos) numeroVecesUsadoArco: genera un diccionario (Map<Edge, Integer>) con el número de veces que aparece cada arco en la lista de caminos del parámetro de entrada.</p>
+</li>
+</ul>
+<p><img alt="" src="../extra/placeholder.jpg" /></p>
+<p>Nota: En la implementación de estos métodos, se gestionan listas de arcos. No es necesario conocer, ni gestionar los vértices conectados en los caminos incluidos en la lista de entrada.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">pesoCamino</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span><span class="w"> </span><span class="n">camino</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">distancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Edge</span><span class="w"> </span><span class="n">arco</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">camino</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">distancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">distancia</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">arco</span><span class="p">.</span><span class="na">weight</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">distancia</span><span class="p">;</span>
+<span class="p">}</span>
 
+<span class="cm">/**</span>
+<span class="cm"> * Seleccionar el camino con el menor coste total.</span>
+<span class="cm"> * @param listaCaminos una lista de caminos del grafo del sistema entre dos vértices.</span>
+<span class="cm"> * @return La respuesta es un camino que sea el mínimo de la lista recibida.</span>
+<span class="cm"> * Si hubieran varios caminos mínimos con el mismo coste, se puede retornar</span>
+<span class="cm"> * cualquiera de ellos.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">menorCamino</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">listaCaminos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span><span class="w"> </span><span class="n">menorCamino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">menorPeso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Double</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span><span class="w"> </span><span class="n">camino</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">listaCaminos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">aux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pesoCamino</span><span class="p">(</span><span class="n">camino</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">menorCamino</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">aux</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">menorPeso</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">menorPeso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aux</span><span class="p">;</span>
+<span class="w">            </span><span class="n">menorCamino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">camino</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">menorCamino</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Determinar cuántas veces aparece cada arco en una lista de caminos</span>
+<span class="cm"> * @param listaCaminos una lista de caminos del grafo del sistema entre dos vértices.</span>
+<span class="cm"> * @return devuelve un diccionario, en el que la clave es un arco y el valor un</span>
+<span class="cm"> * entero que representa el número de veces que el arco aparece en el parámetro de entrada.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Edge</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">numeroVecesUsadoArco</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">listaCaminos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Diccionario</span>
+<span class="w">    </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Edge</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">diccionario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Edge</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span><span class="w"> </span><span class="n">camino</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">listaCaminos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Edge</span><span class="w"> </span><span class="n">arco</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">camino</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diccionario</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">arco</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">aux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diccionario</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">arco</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">                </span><span class="n">diccionario</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">arco</span><span class="p">,</span><span class="w"> </span><span class="n">aux</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">diccionario</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">arco</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">diccionario</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 

@@ -21,7 +21,7 @@
     
     
       
-        <title>Examen 20XX — Extraordinario - Catálogo ejercicios años anteriores</title>
+        <title>Examen 2021 — Extraordinario - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#examen-20xx-extraordinario" class="md-skip">
+        <a href="#examen-2021-extraordinario" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Examen 20XX — Extraordinario
+              Examen 2021 — Extraordinario
             
           </span>
         </div>
@@ -2117,7 +2117,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Extraordinario
+    Examen 2021 — Extraordinario
   
 
     
@@ -2135,7 +2135,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Extraordinario
+    Examen 2021 — Extraordinario
   
 
     
@@ -2271,9 +2271,178 @@
 
 
 
-<h1 id="examen-20xx-extraordinario">Examen 20XX — Extraordinario</h1>
+<h1 id="examen-2021-extraordinario">Examen 2021 — Extraordinario</h1>
 <h2 id="problema-1">Problema 1</h2>
+<p>Un sistema real se describe como un grafo no dirigido. Los arcos o aristas (edge) tienen un coste o peso mayor que cero. Un camino es una secuencia de arcos que conectan dos nodos o vértices. Un camino se representa mediante una lista (List<Edge>). En este sistema, interesa agrupar a todos los posibles caminos entre dos nodos concretos, que se representa mediante una lista de caminos (List<List\<Edge>>).</p>
+<p>Se pide desarrollar dos métodos, descritos en el cuadro adjunto:</p>
+<ul>
+<li>
+<p>(a) (2 puntos) menorCamino selecciona el camino mínimo (el de menor coste total) de una lista de caminos. Se aconseja (no obligatorio) desarrollar un método que reciba como entrada un camino y retorne el peso total del camino.</p>
+</li>
+<li>
+<p>(b) (3 puntos) numeroVecesUsadoArco: genera un diccionario (Map<Edge, Integer>) con el número de veces que aparece cada arco en la lista de caminos del parámetro de entrada.</p>
+</li>
+</ul>
+<p><img alt="" src="placeholder.jpg" /></p>
+<p>Nota: En la implementación de estos métodos, se gestionan listas de arcos. No es necesario conocer, ni gestionar los vértices conectados en los caminos incluidos en la lista de entrada.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">pesoCamino</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span><span class="w"> </span><span class="n">camino</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">distancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Edge</span><span class="w"> </span><span class="n">arco</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">camino</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">distancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">distancia</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">arco</span><span class="p">.</span><span class="na">weight</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">distancia</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Seleccionar el camino con el menor coste total.</span>
+<span class="cm"> * @param listaCaminos una lista de caminos del grafo del sistema entre dos vértices.</span>
+<span class="cm"> * @return La respuesta es un camino que sea el mínimo de la lista recibida.</span>
+<span class="cm"> * Si hubieran varios caminos mínimos con el mismo coste, se puede retornar</span>
+<span class="cm"> * cualquiera de ellos.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">menorCamino</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">listaCaminos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span><span class="w"> </span><span class="n">menorCamino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">menorPeso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Double</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span><span class="w"> </span><span class="n">camino</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">listaCaminos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">aux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pesoCamino</span><span class="p">(</span><span class="n">camino</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">menorCamino</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">aux</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">menorPeso</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">menorPeso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aux</span><span class="p">;</span>
+<span class="w">            </span><span class="n">menorCamino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">camino</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">menorCamino</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Determinar cuántas veces aparece cada arco en una lista de caminos</span>
+<span class="cm"> * @param listaCaminos una lista de caminos del grafo del sistema entre dos vértices.</span>
+<span class="cm"> * @return devuelve un diccionario, en el que la clave es un arco y el valor un</span>
+<span class="cm"> * entero que representa el número de veces que el arco aparece en el parámetro de entrada.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Edge</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">numeroVecesUsadoArco</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">listaCaminos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Diccionario</span>
+<span class="w">    </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Edge</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">diccionario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Edge</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span><span class="w"> </span><span class="n">camino</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">listaCaminos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Edge</span><span class="w"> </span><span class="n">arco</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">camino</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diccionario</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">arco</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">aux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diccionario</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">arco</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">                </span><span class="n">diccionario</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">arco</span><span class="p">,</span><span class="w"> </span><span class="n">aux</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">diccionario</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">arco</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">diccionario</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 <h2 id="problema-2">Problema 2</h2>
+<p>Se quiere evaluar tres algoritmos que calculan cuántas veces aparecen los números en un rango de valores enteros en otra secuencia de enteros representada en un array desordenado y sin valores repetidos. Los tres algoritmos retornan los mismos valores y son correctos. La signatura de los tres algoritmos es:
+buscar(int[] buscados, int inicio, int fin), donde: buscados es el array de enteros e inicio y fin (inicio &lt;= fin) determinan el rango de enteros a buscar.</p>
+<p>Por ejemplo: buscados = [1, 9, 4, 5, -3, 8, 7]; inicio = 5, fin = 7. Entonces, habría que contar el número de veces que aparecen los enteros de la secuencia: 5, 6, 7. El resultado será: 2, ya que el 5 aparece una vez, el 6 no aparece y el 7 aparece una vez. </p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">buscar1</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">buscados</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fin</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">encontrados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ordenaOptimo</span><span class="p">(</span><span class="n">buscados</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">unNumero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inicio</span><span class="p">;</span><span class="w"> </span><span class="n">unNumero</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">fin</span><span class="p">;</span><span class="w"> </span><span class="n">unNumero</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">busquedaBinaria</span><span class="p">(</span><span class="n">buscados</span><span class="p">,</span><span class="w"> </span><span class="n">unNumero</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">encontrados</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">encontrados</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">buscar2</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">buscados</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fin</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">encontrados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">unNumero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inicio</span><span class="p">;</span><span class="w"> </span><span class="n">unNumero</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">fin</span><span class="p">;</span><span class="w"> </span><span class="n">unNumero</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">buscados</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buscados</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">unNumero</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">encontrados</span><span class="o">++</span><span class="p">;</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">encontrados</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">buscar3</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">buscados</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fin</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">encontrados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ordenaOptimo</span><span class="p">(</span><span class="n">buscados</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">principio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buscaMasCercano</span><span class="p">(</span><span class="n">buscados</span><span class="p">,</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">final_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buscaMasCercano</span><span class="p">(</span><span class="n">buscados</span><span class="p">,</span><span class="w"> </span><span class="n">fin</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">dif</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">final_</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">principio</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">principio</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">buscados</span><span class="o">[</span><span class="n">final_</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">        </span><span class="p">(</span><span class="n">principio</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">buscados</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">inicio</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">buscados</span><span class="o">[</span><span class="n">principio</span><span class="o">]</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">dif</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">principio</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">final_</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">buscados</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">            </span><span class="n">inicio</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">buscados</span><span class="o">[</span><span class="n">principio</span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">buscados</span><span class="o">[</span><span class="n">final_</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">dif</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">principio</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">final_</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">buscados</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">            </span><span class="n">inicio</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">buscados</span><span class="o">[</span><span class="n">principio</span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">buscados</span><span class="o">[</span><span class="n">final_</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">dif</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dif</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Se describen algunos aspectos sobre los métodos auxiliares del código.
+    - ordenaOptimo: implementa un algoritmo de ordenación del array en orden ascendente, y tiene una complejidad n log n (donde n es el tamaño del array que recibe como parámetro). Al completar este método, el array de entrada estará ordenado.
+    - busquedaBinaria: implementa un algoritmo de búsqueda binaria, de un entero, en un array ordenado; devuelve la posición del número en el array, o -1 si no se encuentra en el array.
+    - buscaMasCercano: en un array ordenado, busca la posición cuyo valor es el más próximo al segundo parámetro. La implementación de este método emplea un algoritmo de búsqueda binaria de complejidad log n.
+    - En el método buscar2, se supone que el número de veces que se ejecuta el segundo bucle es N/2.</p>
+<p>¿Cuál de los tres algoritmos se debería utilizar en los siguientes casos? Justifique cada caso, para cada algoritmo, indicando la complejidad del algoritmo. N es el número de elementos en el array y M es el número de elementos en la secuencia de búsqueda (fin – inicio + 1).</p>
+<ul>
+<li>(a) (1,5 puntos) M = 2 y N es número muy grande.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>La complejidad del método buscar1 es:
+N log N ; esto es ordenarOptimo
+M log N ; esto es el bucle for
+La complejidad depende de los valores N y M</p>
+<p>La complejidad del método buscar2 es: M N/2</p>
+<p>La complejidad del método buscar3 es:
+N log N ; esto es ordenarOptimo
+2 log N ; esto la complejidad de ejecución 2 veces de buscaMasCercano
+La complejidad es N log N</p>
+</details>
+<ul>
+<li>(b) (1,5 puntos) M = N, ambos números grandes. </li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Caso 1. M = 2.
+La complejidad de burcar1 es N log N
+La complejidad de buscar2 es N
+La complejidad de buscar3 es N log N</p>
+<p>Es mejor algoritmo buscar2</p>
+<p>Caso 2. M = N
+La complejidad de buscar1 es N log N
+La complejidad de buscar2 es N2/2
+La complejidad de buscar3 es N log N
+Es mejor algoritmo buscar1 o buscar3</p>
+<p>Caso 3. M &gt;&gt; N
+La complejidad de buscar1 es M log N
+La complejidad de buscar2 es M*N/2
+La complejidad de buscar3 es N log N
+Es mejor el algoritmo buscar3</p>
+</details>
+<ul>
+<li>(c) (2 puntos) M es bastante más grande que N, y ambos son grandes.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Vacío</p>
+</details>
 
 
 
