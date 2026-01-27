@@ -1,5 +1,5 @@
 ---
-year: 20XX
+year: 2022
 exam: extraordinario
 exercises:
   - extra_ex01.md
@@ -7,7 +7,7 @@ exercises:
 ---
 
 
-# Examen 20XX — Extraordinario
+# Examen 2022 — Extraordinario
 
 ## Problema 1
 {{ include("extra_ex01.md") }}
