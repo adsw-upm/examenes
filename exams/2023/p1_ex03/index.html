@@ -2346,7 +2346,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 2022 — Parcial 1
+    Examen 2023 — Parcial 1
   
 
     
@@ -2499,6 +2499,39 @@
 <p>(1 punto) Si en vez de un árbol binario, se guardaran las <code>IP</code> en un array ordenado, ¿Qué complejidad tendría el método desarrollado en el apartado 2? Razone su respuesta. No es necesario escribir el código, pero puede utilizarse como apoyo a la justificación de la respuesta.</p>
 </li>
 </ol>
+<details class="note">
+<summary>Mostrar solución</summary>
+<ol>
+<li>Una posible solución es
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">IP</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">primero</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">primero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">primero</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">primero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">segundo</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">segundo</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">segundo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">segundo</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">tercero</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">tercero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">tercero</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">tercero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">cuarto</span><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">cuarto</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">cuarto</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">cuarto</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></li>
+</ol>
+<p>2.
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">ipsEnRango</span><span class="p">(</span><span class="n">IP</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="kd">final</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">ipsEnRango</span><span class="p">(</span><span class="n">raiz</span><span class="p">,</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="kd">final</span><span class="p">);</span>
+<span class="w"> </span><span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">ipsEnRango</span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodo</span><span class="p">,</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="kd">final</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">ip</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">ip</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">end</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="o">+</span><span class="n">ipsEnRango</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">hijoIzquierdo</span><span class="p">)</span><span class="o">+</span><span class="n">ipsEnRango</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">hijoDerecho</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ipsEnRango</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">hijoIzquierdo</span><span class="p">)</span><span class="o">+</span><span class="n">ipsEnRango</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">hijoDerecho</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+3. Para comprobar que nodos forman parte del rango debemos recorrer todas las partes del árbol que pudieran pertenecer al rango, haciendo que la complejidad sea O(n).
+4. Si contamos con un array ordenado, la complejidad será O(log(n)). Utilizando búsqueda binaria podemos obtener las posiciones en el array del primer y último elemento que pertenecen al rango y después simplemente restarlas para obtener cuantos elementos hay entre ambas.</p>
+</details>
 
 
 
