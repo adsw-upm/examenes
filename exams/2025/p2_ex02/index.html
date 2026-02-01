@@ -2527,7 +2527,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 2
+    Examen 2025 — Parcial 2
   
 
     
@@ -2621,7 +2621,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">grafos</span>
       
     
   </nav>
@@ -2630,7 +2630,104 @@
 
   <h1>P2 ex02</h1>
 
+<p>En las prácticas de la asignatura se ha trabajado con un grafo creado a partir de un archivo que contiene un histórico de partidas de ajedrez. En el grafo cada nodo representa un estado del tablero de ajedrez. Dos nodos están conectados por una arista dirigida si en el archivo de partidas aparece alguna jugada que lleva del tablero que representa el primer nodo al tablero que representa el segundo nodo. El peso de cada arista representa el número de veces que esa jugada aparece en el archivo de partidas. El modelo de datos utilizado para representar el grafo es el siguiente:</p>
+<p><img alt="" height="10cm" src="img/grafo.png" /></p>
+<p>Una de las peculiaridades de este grafo es que puede contener ciclos, y esto dificulta la aplicación de algunos algoritmos. El primer objetivo de este ejercicio es diseñar e implementar un algoritmo que borre el mínimo número de aristas necesarias para eliminar todos los ciclos. Para ello, se puede ignorar la direccionalidad de las aristas, es decir, se puede considerar que el grafo es no dirigido. Eliminaremos los ciclos de forma que se sigan manteniendo las jugadas más repetidas, es decir, las de mayor peso.</p>
+<ul>
+<li>(a) (3 puntos) Implementar el método <code>public void eliminarCiclos()</code> para la clase <code>GrafoPartidas</code> que borra del grafo el mínimo número de aristas para eliminar todos los ciclos. </li>
+</ul>
+<p>Al no tener en cuenta la direccionalidad de las aristas, la solución obtenida puede contener nodos que no son alcanzables desde el tablero inicial del ajedrez. </p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Una posible solución para el método <code>eliminarCiclos()</code> basada en el algoritmo de Prim (o Jarnik) es la siguiente:</p>
+<div class="numberLines highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">eliminarCiclos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Nodo</span><span class="w"> </span><span class="n">inicio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Tablero</span><span class="p">.</span><span class="na">tableroBasico</span><span class="p">());</span><span class="w"> </span>
+<span class="w">  </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Nodo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visitados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">  </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Enlace</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nuevosEnlaces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">  </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Enlace</span><span class="o">&gt;</span><span class="w"> </span><span class="n">porVisitar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">inicio</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">());</span>
+<span class="w">  </span><span class="n">visitados</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">inicio</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">porVisitar</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Enlace</span><span class="w"> </span><span class="n">mejor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxPeso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MIN_VALUE</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Enlace</span><span class="w"> </span><span class="n">enlace</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">porVisitar</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">enlace</span><span class="p">.</span><span class="na">getPeso</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">maxPeso</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">maxPeso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">enlace</span><span class="p">.</span><span class="na">getPeso</span><span class="p">();</span>
+<span class="w">        </span><span class="n">mejor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">enlace</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">porVisitar</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">mejor</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodoA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mejor</span><span class="p">.</span><span class="na">getOrigen</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodoB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mejor</span><span class="p">.</span><span class="na">getDestino</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">visitados</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">nodoA</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">visitados</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">nodoB</span><span class="p">))</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">    </span><span class="n">nuevosEnlaces</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">mejor</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nuevo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">visitados</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">nodoA</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">nodoB</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodoA</span><span class="p">;</span>
+<span class="w">    </span><span class="n">visitados</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">nuevo</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Enlace</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nuevo</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Nodo</span><span class="w"> </span><span class="n">otro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getOtro</span><span class="p">(</span><span class="n">nuevo</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visitados</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">otro</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">porVisitar</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="na">enlaces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nuevosEnlaces</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodo</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodos</span><span class="p">.</span><span class="na">values</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Enlace</span><span class="o">&gt;</span><span class="w"> </span><span class="n">filtrados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Enlace</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodo</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nuevosEnlaces</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">e</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">filtrados</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">nodo</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">().</span><span class="na">clear</span><span class="p">();</span>
+<span class="w">    </span><span class="n">nodo</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">().</span><span class="na">addAll</span><span class="p">(</span><span class="n">filtrados</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Si se utilizan estructuras de datos adecuadas, como un <code>PriorityQueue</code> para los enlaces, se puede optimizar aún más el proceso de selección del enlace con mayor peso.</p>
+</details>
+<ul>
+<li>(b) (2 puntos) Implementar el método <code>public void eliminarNodosInalcanzables()</code> para la clase <code>GrafoPartidas</code> que elimina del grafo todos los nodos que no son alcanzables desde el tablero inicial del ajedrez.</li>
+</ul>
+<p>Nota: en ambos apartados se eliminarán elementos del grafo, y cuando esto suceda, se deben eliminar todas las referencias a esos elementos. Por ejemplo, si se elimina un nodo, se deben eliminar todas las aristas que lo referencian. O si se elimina una arista, habrá que eliminarla tanto del conjunto de aristas del grafo como de todos los nodos que la referencian.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Una posible solución para el método <code>eliminarNodosInalcanzables()</code> es la siguiente (tanto BFS como Dijkstra son adecuados para este propósito):</p>
+<div class="numberLines highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">eliminarNodosInalcanzables</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Nodo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visitados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Stack</span><span class="o">&lt;</span><span class="n">Nodo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pila</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Stack</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Nodo</span><span class="w"> </span><span class="n">inicio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Tablero</span><span class="p">.</span><span class="na">tableroBasico</span><span class="p">());</span>
+<span class="w">    </span><span class="n">pila</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">inicio</span><span class="p">);</span>
+<span class="w">    </span><span class="n">visitados</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">inicio</span><span class="p">);</span>
 
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pila</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pila</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Enlace</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodo</span><span class="p">.</span><span class="na">getEnlacesSalientes</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Nodo</span><span class="w"> </span><span class="n">otro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getDestino</span><span class="p">();</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visitados</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">otro</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">visitados</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">otro</span><span class="p">);</span>
+<span class="w">                </span><span class="n">pila</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">otro</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Tablero</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nodosAEliminar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Map</span><span class="p">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Tablero</span><span class="p">,</span><span class="w"> </span><span class="n">Nodo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodos</span><span class="p">.</span><span class="na">entrySet</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visitados</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">entry</span><span class="p">.</span><span class="na">getValue</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">nodosAEliminar</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">entry</span><span class="p">.</span><span class="na">getKey</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Tablero</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodosAEliminar</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Enlace</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodo</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">enlaces</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Nodo</span><span class="w"> </span><span class="n">otro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getOtro</span><span class="p">(</span><span class="n">nodo</span><span class="p">);</span>
+<span class="w">            </span><span class="n">otro</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">().</span><span class="na">remove</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">nodos</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 

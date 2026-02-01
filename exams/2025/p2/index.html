@@ -23,7 +23,7 @@
     
     
       
-        <title>Examen 20XX — Parcial 2 - Catálogo ejercicios años anteriores</title>
+        <title>Examen 2025 — Parcial 2 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#examen-20xx-parcial-2" class="md-skip">
+        <a href="#examen-2025-parcial-2" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Examen 20XX — Parcial 2
+              Examen 2025 — Parcial 2
             
           </span>
         </div>
@@ -2592,7 +2592,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 2
+    Examen 2025 — Parcial 2
   
 
     
@@ -2610,7 +2610,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Parcial 2
+    Examen 2025 — Parcial 2
   
 
     
@@ -2774,9 +2774,267 @@
 
 
 
-<h1 id="examen-20xx-parcial-2">Examen 20XX — Parcial 2</h1>
+<h1 id="examen-2025-parcial-2">Examen 2025 — Parcial 2</h1>
 <h2 id="problema-1">Problema 1</h2>
+<p>Se quiere simular un sistema de impresión con una impresora a la que varios usuarios pueden pedir impresiones.
+Los usuarios pueden pedir imprimir un texto (una cadena de caracteres).
+La impresora debe imprimir un texto solo cuando no esté ocupada, y siempre debe dar prioridad al texto más corto.
+Los usuarios se modelan como hebras independientes.</p>
+<p>Se proporciona el siguiente diagrama de clases como referencia, y se pide:</p>
+<div class="highlight"><pre><span></span><code>\begin{minipage}[thp]{12cm}
+</code></pre></div>
+<ul>
+<li>(a) (1 punto) Implementar la clase <code>Usuario</code>, que será una hebra con un nombre, un texto a imprimir y una referencia a la impresora, y su única labor es imprimir el texto dado en la impresora.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="numberLines highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Usuario</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">Impresora</span><span class="w"> </span><span class="n">impresora</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">texto</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">Usuario</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">Impresora</span><span class="w"> </span><span class="n">impresora</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">texto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">impresora</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">impresora</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">texto</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">impresora</span><span class="p">.</span><span class="na">imprimir</span><span class="p">(</span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (2 puntos) Implementa una clase <code>Impresora</code> que contenga un método <code>imprimir</code> que asegure que:<ul>
+<li>Solo se permite imprimir un texto en cada momento</li>
+<li>Los textos se imprimen a una velocidad de un carácter por milisegundo. Para simular la impresión, se debe usar el método <code>Thread.sleep(long millis)</code>, que puede lanzar excepciones del tipo <code>InterruptedException</code>.</li>
+<li>Una vez comienza la impresión de un texto, no se podrá empezar con otro hasta haberlo terminado</li>
+<li>Si varias hebras intentan imprimir, los textos más cortos tendrán prioridad</li>
+<li>Se guarda un registro (<code>registro</code>) de <strong>todos</strong> los caracteres impresos hasta el momento por la impresora</li>
+<li>Se debe mostrar por consola un mensaje en los siguientes momentos: 1) cuando un usuario intenta imprimir; 2) tras imprimir cada carácter; y 3) cuando se ha terminado de imprimir un texto completo. Los mensajes deben contener el nombre de la hebra que ha realizado la acción.</li>
+</ul>
+</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Se acepta como válida la siguiente solución:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Impresora</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cola</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">registro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">imprimiendo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">imprimir</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">usuario</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">usuario</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; quiere imprimir: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">texto</span><span class="p">);</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cola</span><span class="p">.</span><span class="na">size</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">cola</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="na">lengt</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">texto</span><span class="p">.</span><span class="na">length</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="n">pos</span><span class="o">++</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">cola</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">texto</span><span class="p">);</span>
+
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">imprimiendo</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cola</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">texto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="n">imprimiendo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cola</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">usuario</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; empieza a imprimir: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">texto</span><span class="p">);</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">texto</span><span class="p">.</span><span class="na">length</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">usuario</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; imprime: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">texto</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="w">                </span><span class="n">registro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">registro</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">texto</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">                </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="w">                </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">imprimiendo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">usuario</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; termina de imprimir&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<p>No obstante, la solución correcta incluiría liberar el cerrojo durante el <code>sleep</code>.
+Por ejemplo:</p>
+<div class="numberLines highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Impresora</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cola</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">imprimiendo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">registro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">imprimir</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">usuario</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ponerEnCola</span><span class="p">(</span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">usuario</span><span class="p">);</span>
+<span class="w">    </span><span class="n">intentarImprimir</span><span class="p">(</span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">usuario</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">texto</span><span class="p">.</span><span class="na">length</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">usuario</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; imprime: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">texto</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="w">      </span><span class="n">registro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">registro</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">texto</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">      </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="w">      </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">dejarDeImprimir</span><span class="p">(</span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">usuario</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ponerEnCola</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">usuario</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">usuario</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; quiere imprimir: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">texto</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; [ &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">texto</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; caracteres]&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cola</span><span class="p">.</span><span class="na">size</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">cola</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">pos</span><span class="p">).</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">texto</span><span class="p">.</span><span class="na">length</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="n">pos</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">cola</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">texto</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">intentarImprimir</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">usuario</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">imprimiendo</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">cola</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="na">equals</span><span class="p">(</span><span class="n">texto</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">cola</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">imprimiendo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">usuario</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; empieza a imprimir: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">texto</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">dejarDeImprimir</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">usuario</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">usuario</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; termina de imprimir&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">imprimiendo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(c) (1 punto) Implementa el método <code>main</code> para que sirva de prueba rápida la implementación (<code>smoketest</code>). Se deben crear al menos 4 usuarios que impriman textos diferentes en la misma impresora, y mostrar un texto al finalizar todas las impresiones.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="numberLines highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Impresora</span><span class="w"> </span><span class="n">impresora</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Impresora</span><span class="p">();</span>
+<span class="w">    </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">textos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;hola\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;buenos días\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;adiós\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sí\n&quot;</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="n">Usuario</span><span class="o">[]</span><span class="w"> </span><span class="n">usuarios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Usuario</span><span class="o">[</span><span class="n">textos</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">textos</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">usuarios</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Usuario</span><span class="p">(</span><span class="s">&quot;Usuario &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="p">)(</span><span class="sc">&#39;A&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="n">impresora</span><span class="p">,</span><span class="w"> </span><span class="n">textos</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Usuario</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">usuarios</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">u</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Usuario</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">usuarios</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">u</span><span class="p">.</span><span class="na">join</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Todos los trabajos han terminado. Texto final: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">impresora</span><span class="p">.</span><span class="na">registro</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(d) (1 punto) Explica qué modificaciones se podrían realizar en el código para que una impresora permita imprimir a 2 usuarios a la vez.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Habría que cambiar el flag de imprimiendo para que fuera un entero con el número de usuarios imprimiendo en ese momento. También habría que sacar el <code>sleep</code> de la zona crítica. De lo contrario, mientras una hebra está imprimiendo el resto quedarían bloqueadas.</p>
+</details>
+<p><img alt="" src="img/impresora.png" width="6cm" /></p>
 <h2 id="problema-2">Problema 2</h2>
+<p>En las prácticas de la asignatura se ha trabajado con un grafo creado a partir de un archivo que contiene un histórico de partidas de ajedrez. En el grafo cada nodo representa un estado del tablero de ajedrez. Dos nodos están conectados por una arista dirigida si en el archivo de partidas aparece alguna jugada que lleva del tablero que representa el primer nodo al tablero que representa el segundo nodo. El peso de cada arista representa el número de veces que esa jugada aparece en el archivo de partidas. El modelo de datos utilizado para representar el grafo es el siguiente:</p>
+<p><img alt="" height="10cm" src="img/grafo.png" /></p>
+<p>Una de las peculiaridades de este grafo es que puede contener ciclos, y esto dificulta la aplicación de algunos algoritmos. El primer objetivo de este ejercicio es diseñar e implementar un algoritmo que borre el mínimo número de aristas necesarias para eliminar todos los ciclos. Para ello, se puede ignorar la direccionalidad de las aristas, es decir, se puede considerar que el grafo es no dirigido. Eliminaremos los ciclos de forma que se sigan manteniendo las jugadas más repetidas, es decir, las de mayor peso.</p>
+<ul>
+<li>(a) (3 puntos) Implementar el método <code>public void eliminarCiclos()</code> para la clase <code>GrafoPartidas</code> que borra del grafo el mínimo número de aristas para eliminar todos los ciclos. </li>
+</ul>
+<p>Al no tener en cuenta la direccionalidad de las aristas, la solución obtenida puede contener nodos que no son alcanzables desde el tablero inicial del ajedrez. </p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Una posible solución para el método <code>eliminarCiclos()</code> basada en el algoritmo de Prim (o Jarnik) es la siguiente:</p>
+<div class="numberLines highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">eliminarCiclos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Nodo</span><span class="w"> </span><span class="n">inicio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Tablero</span><span class="p">.</span><span class="na">tableroBasico</span><span class="p">());</span><span class="w"> </span>
+<span class="w">  </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Nodo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visitados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">  </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Enlace</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nuevosEnlaces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">  </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Enlace</span><span class="o">&gt;</span><span class="w"> </span><span class="n">porVisitar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">inicio</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">());</span>
+<span class="w">  </span><span class="n">visitados</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">inicio</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">porVisitar</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Enlace</span><span class="w"> </span><span class="n">mejor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxPeso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MIN_VALUE</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Enlace</span><span class="w"> </span><span class="n">enlace</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">porVisitar</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">enlace</span><span class="p">.</span><span class="na">getPeso</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">maxPeso</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">maxPeso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">enlace</span><span class="p">.</span><span class="na">getPeso</span><span class="p">();</span>
+<span class="w">        </span><span class="n">mejor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">enlace</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">porVisitar</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">mejor</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodoA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mejor</span><span class="p">.</span><span class="na">getOrigen</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodoB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mejor</span><span class="p">.</span><span class="na">getDestino</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">visitados</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">nodoA</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">visitados</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">nodoB</span><span class="p">))</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">    </span><span class="n">nuevosEnlaces</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">mejor</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nuevo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">visitados</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">nodoA</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">nodoB</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodoA</span><span class="p">;</span>
+<span class="w">    </span><span class="n">visitados</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">nuevo</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Enlace</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nuevo</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Nodo</span><span class="w"> </span><span class="n">otro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getOtro</span><span class="p">(</span><span class="n">nuevo</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visitados</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">otro</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">porVisitar</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="na">enlaces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nuevosEnlaces</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodo</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodos</span><span class="p">.</span><span class="na">values</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Enlace</span><span class="o">&gt;</span><span class="w"> </span><span class="n">filtrados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Enlace</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodo</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nuevosEnlaces</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">e</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">filtrados</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">nodo</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">().</span><span class="na">clear</span><span class="p">();</span>
+<span class="w">    </span><span class="n">nodo</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">().</span><span class="na">addAll</span><span class="p">(</span><span class="n">filtrados</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Si se utilizan estructuras de datos adecuadas, como un <code>PriorityQueue</code> para los enlaces, se puede optimizar aún más el proceso de selección del enlace con mayor peso.</p>
+</details>
+<ul>
+<li>(b) (2 puntos) Implementar el método <code>public void eliminarNodosInalcanzables()</code> para la clase <code>GrafoPartidas</code> que elimina del grafo todos los nodos que no son alcanzables desde el tablero inicial del ajedrez.</li>
+</ul>
+<p>Nota: en ambos apartados se eliminarán elementos del grafo, y cuando esto suceda, se deben eliminar todas las referencias a esos elementos. Por ejemplo, si se elimina un nodo, se deben eliminar todas las aristas que lo referencian. O si se elimina una arista, habrá que eliminarla tanto del conjunto de aristas del grafo como de todos los nodos que la referencian.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Una posible solución para el método <code>eliminarNodosInalcanzables()</code> es la siguiente (tanto BFS como Dijkstra son adecuados para este propósito):</p>
+<div class="numberLines highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">eliminarNodosInalcanzables</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Nodo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visitados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Stack</span><span class="o">&lt;</span><span class="n">Nodo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pila</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Stack</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Nodo</span><span class="w"> </span><span class="n">inicio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Tablero</span><span class="p">.</span><span class="na">tableroBasico</span><span class="p">());</span>
+<span class="w">    </span><span class="n">pila</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">inicio</span><span class="p">);</span>
+<span class="w">    </span><span class="n">visitados</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">inicio</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pila</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pila</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Enlace</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodo</span><span class="p">.</span><span class="na">getEnlacesSalientes</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Nodo</span><span class="w"> </span><span class="n">otro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getDestino</span><span class="p">();</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visitados</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">otro</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">visitados</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">otro</span><span class="p">);</span>
+<span class="w">                </span><span class="n">pila</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">otro</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Tablero</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nodosAEliminar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Map</span><span class="p">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Tablero</span><span class="p">,</span><span class="w"> </span><span class="n">Nodo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodos</span><span class="p">.</span><span class="na">entrySet</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visitados</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">entry</span><span class="p">.</span><span class="na">getValue</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">nodosAEliminar</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">entry</span><span class="p">.</span><span class="na">getKey</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Tablero</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodosAEliminar</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Enlace</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodo</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">enlaces</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Nodo</span><span class="w"> </span><span class="n">otro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getOtro</span><span class="p">(</span><span class="n">nodo</span><span class="p">);</span>
+<span class="w">            </span><span class="n">otro</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">().</span><span class="na">remove</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">nodos</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 
