@@ -59,6 +59,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#ejemplo" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2412,6 +2417,8 @@
       
         
       
+        
+      
     
     
     
@@ -2548,6 +2555,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../pract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen 2025 — Prácticas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../extra/" class="md-nav__link">
         
   
@@ -2602,6 +2637,25 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2630,7 +2684,154 @@
 
   <h1>Extra ex02</h1>
 
+<p>La multiplicación de números enteros grandes es costosa para los ordenadores, por lo que existen técnicas como el algoritmo de Karatsuba que hacen más eficiente este cálculo. El <strong>algoritmo de Karatsuba</strong> utiliza la técnica de divide y vencerás. Se basa en dividir los números a multiplicar en partes más pequeñas (más sencillas de manejar), operar sobre ellas y luego combinar los resultados para obtener el producto final. Por simplicidad, se asume que todas las operaciones se realizan con variables de tipo <code>int</code>.</p>
+<p>Dados dos números enteros <span class="arithmatex">\(x\)</span> e <span class="arithmatex">\(y\)</span>, se pueden representar como:
+\vspace{-0.2cm}
+\begin{equation<em>}
+x = a \cdot 10^n + b \hspace{3cm} y = c \cdot 10^n + d
+\end{equation</em>}
+\vspace{-0.2cm}
+donde <span class="arithmatex">\(a\)</span>, <span class="arithmatex">\(b\)</span>, <span class="arithmatex">\(c\)</span> y <span class="arithmatex">\(d\)</span> son enteros, y <span class="arithmatex">\(2n\)</span> es el número total de dígitos que tienen tanto <span class="arithmatex">\(x\)</span> como <span class="arithmatex">\(y\)</span>.</p>
+<p>El algoritmo de Karatsuba nos indica que:
+\vspace{-0.2cm}
+\begin{equation<em>}
+x \cdot y = ac \cdot 10^{2n} + (ad + bc) \cdot 10^n + bd
+\end{equation</em>}
+\vspace{-0.2cm}
+Esto se puede reescribir como:
+\vspace{-0.2cm}
+\begin{equation<em>}
+x \cdot y = z_1 \cdot 10^{2n} + z_2 \cdot 10^n + z_3
+\end{equation</em>}
+\vspace{-0.2cm}
+donde\footnotemark: <span class="arithmatex">\(z_1 = ac\)</span>, <span class="arithmatex">\(z_3 = bd\)</span>, <span class="arithmatex">\(z_2 = (a + b)(c + d) - z_1 - z_3\)</span></p>
+<p>\footnotetext{No es necesario para resolver el ejercicio. Para obtener <span class="arithmatex">\(z_2\)</span>, partimos de la identidad <span class="arithmatex">\((a + b)(c + d) = ac + ad + bc + bd = z_1 + ad + bc + z_3\)</span>. Despejando, <span class="arithmatex">\(ad + bc = (a + b)(c + d) - z_1 - z_3\)</span>, por tanto, <span class="arithmatex">\(z_2 = ad + bc = (a + b)(c + d) - z_1 - z_3\)</span>.}</p>
+<p>Así, en lugar de realizar 4 multiplicaciones (<span class="arithmatex">\(ac\)</span>, <span class="arithmatex">\(ad\)</span>, <span class="arithmatex">\(bc\)</span>, y <span class="arithmatex">\(bd\)</span>), solo se hacen 3 multiplicaciones (<span class="arithmatex">\(z_1\)</span>, <span class="arithmatex">\(z_3\)</span>, y <span class="arithmatex">\((a+b)(c+d)\)</span>) y algunas operaciones más rápidas como sumas y restas. Esta idea se puede aplicar de forma recursiva, hasta que se multipliquen únicamente números de un solo dígito.</p>
+<h2 id="ejemplo">Ejemplo</h2>
+<p>Supongamos que se desea multiplicar los números <span class="arithmatex">\(x = 56341032\)</span> e <span class="arithmatex">\(y = 72916764\)</span>. Primero, se dividen ambos números en dos partes:</p>
+<ul>
+<li><span class="arithmatex">\(x = 56341032 = 5634 \cdot 10^4 + 1032 \Rightarrow a = 5634,\, b = 1032\)</span></li>
+<li><span class="arithmatex">\(y = 72916764 = 7291 \cdot 10^4 + 6764 \Rightarrow c = 7291,\, d = 6764\)</span></li>
+</ul>
+<p>Entonces, aplicamos la fórmula anterior:</p>
+<ul>
+<li><span class="arithmatex">\(z_1 = ac = 5634 \cdot 7291\)</span></li>
+<li><span class="arithmatex">\(z_3 = bd = 1032 \cdot 6764\)</span></li>
+<li><span class="arithmatex">\(z_2 = (a + b)(c + d) - z_1 - z_3 = (5634 + 1032)(7291 + 6764) - z_1 - z_3 = 6666 \cdot 14055 - z_1 - z_3\)</span></li>
+</ul>
+<p>Finalmente, el resultado se obtiene como:
+\vspace{-0.2cm}
+\begin{equation<em>}
+x \cdot y = z_1 \cdot 10^8 + z_2 \cdot 10^4 + z_3
+\end{equation</em>}
+\vspace{-0.2cm}
+Para calcular <span class="arithmatex">\(z_1\)</span>, <span class="arithmatex">\(z_2\)</span> y <span class="arithmatex">\(z_3\)</span>, se aplicaría recursivamente el algoritmo de Karatsuba a las parejas:
+\vspace{-0.1cm}
+\begin{equation<em>}
+(5634, 7291)\hspace{2cm}(1032, 6764)\hspace{2cm}(6666, 14055)
+\end{equation</em>}
+\vspace{-1.0cm}</p>
+<p>\subsection*{Preguntas}</p>
+<ul>
+<li>(a) (1 punto) Razone cómo se aplicaría este algoritmo para multiplicar los números 34 y 78. ¿Cuántas veces debería llamarse al método <code>karatsuba(int x, int y)</code> y con qué parámetros?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Para multiplicar los números 34 y 78 utilizando el algoritmo de Karatsuba, primero dividimos ambos números en dos partes:
+\begin{itemize}
+  \item <span class="arithmatex">\(x = 34 = 3 \cdot 10 + 4 \Rightarrow a = 3, b = 4\)</span>
+  \item <span class="arithmatex">\(y = 78 = 7 \cdot 10 + 8 \Rightarrow c = 7, d = 8\)</span>
+\end{itemize}
+Calculamos:
+\begin{itemize}
+  \item <span class="arithmatex">\(z_1 = ac = 3 \cdot 7 \Rightarrow karatsuba(3,7) = 21\)</span> 
+  \item <span class="arithmatex">\(z_3 = bd = 4 \cdot 8 \Rightarrow karatsuba(4,8) = 32\)</span>
+  \item <span class="arithmatex">\(z_2 = (a+b)(c+d) - z_1 - z_3 = (3 + 4)(7 + 8) - z_1 - z_3 = 7 \cdot 15 - z_1 - z_3 \Rightarrow karatsuba(7,15) = 105\)</span>
+\end{itemize}</p>
+<p>Expandiendo <code>karatsuba(7,15)</code>:
+\begin{itemize}
+  \item <span class="arithmatex">\(x = 7 = 0 \cdot 10 + 7 \Rightarrow a = 0, b = 7\)</span>
+  \item <span class="arithmatex">\(y = 15 = 1 \cdot 10 + 5 \Rightarrow c = 1, d = 5\)</span>
+  \item <span class="arithmatex">\(z_1 = ac = 0 \cdot 1 \Rightarrow karatsuba(0,1) = 0\)</span> 
+  \item <span class="arithmatex">\(z_3 = bd = 7 \cdot 5 \Rightarrow karatsuba(7,5) = 35\)</span> 
+  \item <span class="arithmatex">\(z_2 = (a+b)(c+d) - z_1 - z_3 = (0 + 7)(1 + 5) - z_1 - z_3 = 7 \cdot 6 - z_1 - z_3 \Rightarrow karatsuba(7,6) = 42\)</span> 
+\end{itemize}</p>
+<p>Con esto ya contestaríamos a la pregunta ya que tenemos todas las llamadas recursivas a <code>karatsuba</code>:</p>
+<div class="arithmatex">\[\begin{center}
+\texttt{karatsuba(34,78)} \hspace{1cm} \texttt{karatsuba(3,7)} \hspace{1cm} \texttt{karatsuba(4,8)} \hspace{1cm} \texttt{karatsuba(7,15)}\\
+\texttt{karatsuba(0,1)} \hspace{1cm} \texttt{karatsuba(7,5)} \hspace{1cm} \texttt{karatsuba(7,6)}
+\end{center}\]</div>
+<p>En total, se llama al método <code>karatsuba</code> 7 veces, la original más 6 llamadas recursivas.</p>
+<p>Si queremos completar el cálculo (no se pide en el ejercicio), reconstruimos primero karatsuba(7,15) como:</p>
+<ul>
+<li><span class="arithmatex">\(z_2 = 42 - 35 = 7\)</span></li>
+<li><span class="arithmatex">\(7 \cdot 15 = z_1\cdot 100 + z_2 \cdot 10 + z_3 = 0 \cdot 100 + 7 \cdot 10 + 35 = 0 + 70 + 35 = 105\)</span></li>
+</ul>
+<p>Finalmente, reconstruimos el resultado de la multiplicación original:</p>
+<ul>
+<li><span class="arithmatex">\(z_2 = 105 - 21 - 32 = 52\)</span></li>
+<li><span class="arithmatex">\(34 \cdot 78 = z_1 \cdot 100 + z_2 \cdot 10 + z_3 = 21 \cdot 100 + 52 \cdot 10 + 32 = 2100 + 520 + 32 = 2652\)</span></li>
+</ul>
+</details>
+<ul>
+<li>
+<p>(b) (2 puntos) Realice una implementación del algoritmo de Karatsuba en Java. Para ello, implemente un método <code>karatsuba</code> que reciba como parámetros dos números enteros <code>x</code> e <code>y</code> y devuelva el resultado de la multiplicación utilizando dicho algoritmo. La cabecera del método es <code>public int karatsuba(int x, int y)</code>.
+El método <strong>no puede realizar multiplicaciones de números de más de un dígito</strong> y todas las multiplicaciones se realizan utilizando el algoritmo de Karatsuba. Se asume que los números <code>x</code> e <code>y</code>, con los que se invoca inicialmente el método, tendrán el mismo número de dígitos. Suponga que existen los siguientes métodos auxiliares:</p>
+</li>
+<li>
+<p><code>static int[] splitint(int num, int digitos)</code> que recibe un número entero <code>num</code> y un número de dígitos. El método parte el número <code>num</code> en dos partes de <code>digitos</code> dígitos cada una y devuelve un array con las dos partes. Por ejemplo, si <code>num = 12345678</code> y <code>digitos = 4</code>, el método devolverá el array <code>[1234, 5678]</code>. El método rellena con ceros a la izquierda si es necesario. Si <code>num = 123</code> y <code>digitos = 2</code>, el método devolverá el array <code>[01, 23]</code>.</p>
+</li>
+<li><code>static int length(int num)</code> que recibe un número entero <code>num</code> y devuelve el número de dígitos que tiene. Por ejemplo, si <code>num = 12345</code>, el método devolverá <code>5</code>.</li>
+<li><code>static int pow10(int num, int exp)</code> que recibe un número entero <code>num</code> y un exponente <code>exp</code>, y devuelve como resultado <code>num</code> con <code>exp</code> ceros a la izquierda. Por ejemplo, si <code>num = 123</code> y <code>exp = 2</code>, el método devolverá <code>12300</code>.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Implementación en Java:</p>
+<div class="numberLines highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">karatsuba</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Redondeamos hacia arriba para dividir en dos partes</span>
+
+<span class="w">  </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">xParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">splitint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">yParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">splitint</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xParts</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xParts</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yParts</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yParts</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">z1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">karatsuba</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">z3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">karatsuba</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">z2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">karatsuba</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">z1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">z3</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">z1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pow10</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pow10</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z3</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(c) (2 puntos) En este tipo de algoritmos recursivos, es común que se realicen múltiples llamadas al mismo método con los mismos parámetros. Una forma de optimizar estos algoritmos es añadir una cache para evitar estos cálculos repetidos. Esto significa que, si se llama al método <code>karatsuba</code> con los mismos parámetros que en una llamada anterior, se devolverá el resultado ya calculado en lugar de volver a calcularlo. Sin repetir el código del método del apartado anterior, indique que modificaciones haría para implementar esta cache. </li>
+</ul>
+<p><strong>Nota</strong>: No es necesario preocuparse por posibles desbordamientos del tipo <code>int</code>. Se asume que los casos de prueba no excederán su límite.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Para implementar una cache, se puede utilizar un <code>Map</code> para almacenar los resultados ya calculados. Aquí está la modificación del método <code>karatsuba</code>:</p>
+<div class="numberLines highlight"><pre><span></span><code><span class="w">  </span><span class="c1">// Fuera del método</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">karatsuba</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cache</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">key</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">cache</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// el resto del código es igual al anterior</span>
+
+<span class="w">    </span><span class="n">cache</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 

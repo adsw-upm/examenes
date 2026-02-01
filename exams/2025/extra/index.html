@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../p2/">
+        <link rel="prev" href="../pract/">
       
       
       
@@ -2463,6 +2463,8 @@
       
         
       
+        
+      
     
     
     
@@ -2599,6 +2601,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../pract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen 2025 — Prácticas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -2683,6 +2713,61 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 5
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 6
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2755,6 +2840,61 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 5
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 6
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2774,7 +2914,529 @@
 
 <h1 id="examen-20xx-extraordinario">Examen 20XX — Extraordinario</h1>
 <h2 id="problema-1">Problema 1</h2>
+<p>Se quiere desarrollar un algoritmo al que llamaremos <em>split sort</em>.
+Este algoritmo es similar a la fase de <em>merge</em> en <em>merge sort</em>.
+Se parte de dos arrays <code>a</code> y <code>b</code>, de igual tamaño, sin elementos repetidos y ya ordenados de menor a mayor.
+A diferencia de <em>merge</em>, nuestro <em>split sort</em> funciona en el sitio (<em>in place</em>).
+Tras aplicar el algoritmo:</p>
+<ul>
+<li>Los menores elementos deben quedar en <code>a</code></li>
+<li>Los mayores elementos deben quedar en <code>b</code></li>
+<li>Tanto <code>a</code> como <code>b</code> siguen estando ordenados correctamente</li>
+<li>El conjunto de números (es decir, números contenidos en <code>a</code> o <code>b</code>) siguen siendo los mismos</li>
+</ul>
+<p>Por ejemplo, si partimos de <code>a = [1, 3, 5, 7]; b = [2, 4, 6, 8]</code>, el resultado sería <code>a = [1, 2, 3, 4]; b = [5, 6, 7, 8]</code>.</p>
+<p>Se pide:</p>
+<ul>
+<li>(a) (0.5 puntos) Describir al menos 5 casos en los que probar este código y el resultado esperado. Se valorará que los casos sean distintos y representativos.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Casos de prueba para el método <code>splitSort</code>:</p>
+<ul>
+<li>Caso 1: <code>a = [1, 3, 5, 7]</code>, <code>b = [2, 4, 6, 8]</code> → Resultado esperado: <code>a = [1, 2, 3, 4]</code>, <code>b = [5, 6, 7, 8]</code></li>
+<li>Caso 2: <code>a = [10, 20, 30]</code>, <code>b = [15, 25, 35]</code> → Resultado esperado: <code>a = [10, 15, 20]</code>, <code>b = [25, 30, 35]</code></li>
+<li>Caso 3: <code>a = [5, 10]</code>, <code>b = [1, 2]</code> → Resultado esperado: <code>a = [1, 2]</code>, <code>b = [5, 10]</code></li>
+<li>Caso 4: <code>a = [1000, 2000]</code>, <code>b = [1500, 2500]</code> → Resultado esperado: <code>a = [1000, 1500]</code>, <code>b = [2000, 2500]</code></li>
+<li>Caso 5: <code>a = [3]</code>, <code>b = [4]</code> → Resultado esperado: <code>a = [3]</code>, <code>b = [4]</code></li>
+</ul>
+</details>
+<ul>
+<li>
+<p>(b) (4 puntos) Desarrollar el código del método <code>void splitSort(int[] a, int[] b)</code>. Se valorará:</p>
+<ul>
+<li>Que los arrays contengan los mismos elementos al final</li>
+<li>Que <code>a</code> contenga los elementos menores y <code>b</code> los mayores</li>
+<li>Que ambos arrays estén ordenados al terminar</li>
+<li>No se permite crear nuevos arrays ni listas. Solo pueden modificarse <code>a</code> y <code>b</code>.</li>
+</ul>
+</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Una posible implementación del método <code>splitSort</code> en Java:
+<div class="numberLines highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">splitSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// Intercambiar a[i] con el menor de b</span>
+<span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
+<span class="w">      </span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+<span class="w">      </span><span class="n">b</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
+
+<span class="w">      </span><span class="c1">// Reordenar b (insertion sort para mantenerlo ordenado)</span>
+<span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="o">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">aux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">;</span>
+<span class="w">        </span><span class="n">b</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="o">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+<span class="w">        </span><span class="n">b</span><span class="o">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aux</span><span class="p">;</span>
+<span class="w">        </span><span class="n">j</span><span class="o">++</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</details>
+<ul>
+<li>(c) (0.5 puntos) Escribir el código necesario para probar el método <code>splitSort</code> en al menos 1 caso. </li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="numberLines highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testTodosMenoresEnB</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">};</span>
+<span class="w">  </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+<span class="w">  </span><span class="n">Ejercicio4</span><span class="p">.</span><span class="na">splitSort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">  </span><span class="n">assertSortedSplit</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">},</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">},</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testYaOrdenado</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+<span class="w">  </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">};</span>
+<span class="w">  </span><span class="n">Ejercicio4</span><span class="p">.</span><span class="na">splitSort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">  </span><span class="n">assertSortedSplit</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">},</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">},</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 <h2 id="problema-2">Problema 2</h2>
+<p>La multiplicación de números enteros grandes es costosa para los ordenadores, por lo que existen técnicas como el algoritmo de Karatsuba que hacen más eficiente este cálculo. El <strong>algoritmo de Karatsuba</strong> utiliza la técnica de divide y vencerás. Se basa en dividir los números a multiplicar en partes más pequeñas (más sencillas de manejar), operar sobre ellas y luego combinar los resultados para obtener el producto final. Por simplicidad, se asume que todas las operaciones se realizan con variables de tipo <code>int</code>.</p>
+<p>Dados dos números enteros <span class="arithmatex">\(x\)</span> e <span class="arithmatex">\(y\)</span>, se pueden representar como:
+\vspace{-0.2cm}
+\begin{equation<em>}
+x = a \cdot 10^n + b \hspace{3cm} y = c \cdot 10^n + d
+\end{equation</em>}
+\vspace{-0.2cm}
+donde <span class="arithmatex">\(a\)</span>, <span class="arithmatex">\(b\)</span>, <span class="arithmatex">\(c\)</span> y <span class="arithmatex">\(d\)</span> son enteros, y <span class="arithmatex">\(2n\)</span> es el número total de dígitos que tienen tanto <span class="arithmatex">\(x\)</span> como <span class="arithmatex">\(y\)</span>.</p>
+<p>El algoritmo de Karatsuba nos indica que:
+\vspace{-0.2cm}
+\begin{equation<em>}
+x \cdot y = ac \cdot 10^{2n} + (ad + bc) \cdot 10^n + bd
+\end{equation</em>}
+\vspace{-0.2cm}
+Esto se puede reescribir como:
+\vspace{-0.2cm}
+\begin{equation<em>}
+x \cdot y = z_1 \cdot 10^{2n} + z_2 \cdot 10^n + z_3
+\end{equation</em>}
+\vspace{-0.2cm}
+donde\footnotemark: <span class="arithmatex">\(z_1 = ac\)</span>, <span class="arithmatex">\(z_3 = bd\)</span>, <span class="arithmatex">\(z_2 = (a + b)(c + d) - z_1 - z_3\)</span></p>
+<p>\footnotetext{No es necesario para resolver el ejercicio. Para obtener <span class="arithmatex">\(z_2\)</span>, partimos de la identidad <span class="arithmatex">\((a + b)(c + d) = ac + ad + bc + bd = z_1 + ad + bc + z_3\)</span>. Despejando, <span class="arithmatex">\(ad + bc = (a + b)(c + d) - z_1 - z_3\)</span>, por tanto, <span class="arithmatex">\(z_2 = ad + bc = (a + b)(c + d) - z_1 - z_3\)</span>.}</p>
+<p>Así, en lugar de realizar 4 multiplicaciones (<span class="arithmatex">\(ac\)</span>, <span class="arithmatex">\(ad\)</span>, <span class="arithmatex">\(bc\)</span>, y <span class="arithmatex">\(bd\)</span>), solo se hacen 3 multiplicaciones (<span class="arithmatex">\(z_1\)</span>, <span class="arithmatex">\(z_3\)</span>, y <span class="arithmatex">\((a+b)(c+d)\)</span>) y algunas operaciones más rápidas como sumas y restas. Esta idea se puede aplicar de forma recursiva, hasta que se multipliquen únicamente números de un solo dígito.</p>
+<h2 id="ejemplo">Ejemplo</h2>
+<p>Supongamos que se desea multiplicar los números <span class="arithmatex">\(x = 56341032\)</span> e <span class="arithmatex">\(y = 72916764\)</span>. Primero, se dividen ambos números en dos partes:</p>
+<ul>
+<li><span class="arithmatex">\(x = 56341032 = 5634 \cdot 10^4 + 1032 \Rightarrow a = 5634,\, b = 1032\)</span></li>
+<li><span class="arithmatex">\(y = 72916764 = 7291 \cdot 10^4 + 6764 \Rightarrow c = 7291,\, d = 6764\)</span></li>
+</ul>
+<p>Entonces, aplicamos la fórmula anterior:</p>
+<ul>
+<li><span class="arithmatex">\(z_1 = ac = 5634 \cdot 7291\)</span></li>
+<li><span class="arithmatex">\(z_3 = bd = 1032 \cdot 6764\)</span></li>
+<li><span class="arithmatex">\(z_2 = (a + b)(c + d) - z_1 - z_3 = (5634 + 1032)(7291 + 6764) - z_1 - z_3 = 6666 \cdot 14055 - z_1 - z_3\)</span></li>
+</ul>
+<p>Finalmente, el resultado se obtiene como:
+\vspace{-0.2cm}
+\begin{equation<em>}
+x \cdot y = z_1 \cdot 10^8 + z_2 \cdot 10^4 + z_3
+\end{equation</em>}
+\vspace{-0.2cm}
+Para calcular <span class="arithmatex">\(z_1\)</span>, <span class="arithmatex">\(z_2\)</span> y <span class="arithmatex">\(z_3\)</span>, se aplicaría recursivamente el algoritmo de Karatsuba a las parejas:
+\vspace{-0.1cm}
+\begin{equation<em>}
+(5634, 7291)\hspace{2cm}(1032, 6764)\hspace{2cm}(6666, 14055)
+\end{equation</em>}
+\vspace{-1.0cm}</p>
+<p>\subsection*{Preguntas}</p>
+<ul>
+<li>(a) (1 punto) Razone cómo se aplicaría este algoritmo para multiplicar los números 34 y 78. ¿Cuántas veces debería llamarse al método <code>karatsuba(int x, int y)</code> y con qué parámetros?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Para multiplicar los números 34 y 78 utilizando el algoritmo de Karatsuba, primero dividimos ambos números en dos partes:
+\begin{itemize}
+  \item <span class="arithmatex">\(x = 34 = 3 \cdot 10 + 4 \Rightarrow a = 3, b = 4\)</span>
+  \item <span class="arithmatex">\(y = 78 = 7 \cdot 10 + 8 \Rightarrow c = 7, d = 8\)</span>
+\end{itemize}
+Calculamos:
+\begin{itemize}
+  \item <span class="arithmatex">\(z_1 = ac = 3 \cdot 7 \Rightarrow karatsuba(3,7) = 21\)</span> 
+  \item <span class="arithmatex">\(z_3 = bd = 4 \cdot 8 \Rightarrow karatsuba(4,8) = 32\)</span>
+  \item <span class="arithmatex">\(z_2 = (a+b)(c+d) - z_1 - z_3 = (3 + 4)(7 + 8) - z_1 - z_3 = 7 \cdot 15 - z_1 - z_3 \Rightarrow karatsuba(7,15) = 105\)</span>
+\end{itemize}</p>
+<p>Expandiendo <code>karatsuba(7,15)</code>:
+\begin{itemize}
+  \item <span class="arithmatex">\(x = 7 = 0 \cdot 10 + 7 \Rightarrow a = 0, b = 7\)</span>
+  \item <span class="arithmatex">\(y = 15 = 1 \cdot 10 + 5 \Rightarrow c = 1, d = 5\)</span>
+  \item <span class="arithmatex">\(z_1 = ac = 0 \cdot 1 \Rightarrow karatsuba(0,1) = 0\)</span> 
+  \item <span class="arithmatex">\(z_3 = bd = 7 \cdot 5 \Rightarrow karatsuba(7,5) = 35\)</span> 
+  \item <span class="arithmatex">\(z_2 = (a+b)(c+d) - z_1 - z_3 = (0 + 7)(1 + 5) - z_1 - z_3 = 7 \cdot 6 - z_1 - z_3 \Rightarrow karatsuba(7,6) = 42\)</span> 
+\end{itemize}</p>
+<p>Con esto ya contestaríamos a la pregunta ya que tenemos todas las llamadas recursivas a <code>karatsuba</code>:</p>
+<div class="arithmatex">\[\begin{center}
+\texttt{karatsuba(34,78)} \hspace{1cm} \texttt{karatsuba(3,7)} \hspace{1cm} \texttt{karatsuba(4,8)} \hspace{1cm} \texttt{karatsuba(7,15)}\\
+\texttt{karatsuba(0,1)} \hspace{1cm} \texttt{karatsuba(7,5)} \hspace{1cm} \texttt{karatsuba(7,6)}
+\end{center}\]</div>
+<p>En total, se llama al método <code>karatsuba</code> 7 veces, la original más 6 llamadas recursivas.</p>
+<p>Si queremos completar el cálculo (no se pide en el ejercicio), reconstruimos primero karatsuba(7,15) como:</p>
+<ul>
+<li><span class="arithmatex">\(z_2 = 42 - 35 = 7\)</span></li>
+<li><span class="arithmatex">\(7 \cdot 15 = z_1\cdot 100 + z_2 \cdot 10 + z_3 = 0 \cdot 100 + 7 \cdot 10 + 35 = 0 + 70 + 35 = 105\)</span></li>
+</ul>
+<p>Finalmente, reconstruimos el resultado de la multiplicación original:</p>
+<ul>
+<li><span class="arithmatex">\(z_2 = 105 - 21 - 32 = 52\)</span></li>
+<li><span class="arithmatex">\(34 \cdot 78 = z_1 \cdot 100 + z_2 \cdot 10 + z_3 = 21 \cdot 100 + 52 \cdot 10 + 32 = 2100 + 520 + 32 = 2652\)</span></li>
+</ul>
+</details>
+<ul>
+<li>
+<p>(b) (2 puntos) Realice una implementación del algoritmo de Karatsuba en Java. Para ello, implemente un método <code>karatsuba</code> que reciba como parámetros dos números enteros <code>x</code> e <code>y</code> y devuelva el resultado de la multiplicación utilizando dicho algoritmo. La cabecera del método es <code>public int karatsuba(int x, int y)</code>.
+El método <strong>no puede realizar multiplicaciones de números de más de un dígito</strong> y todas las multiplicaciones se realizan utilizando el algoritmo de Karatsuba. Se asume que los números <code>x</code> e <code>y</code>, con los que se invoca inicialmente el método, tendrán el mismo número de dígitos. Suponga que existen los siguientes métodos auxiliares:</p>
+</li>
+<li>
+<p><code>static int[] splitint(int num, int digitos)</code> que recibe un número entero <code>num</code> y un número de dígitos. El método parte el número <code>num</code> en dos partes de <code>digitos</code> dígitos cada una y devuelve un array con las dos partes. Por ejemplo, si <code>num = 12345678</code> y <code>digitos = 4</code>, el método devolverá el array <code>[1234, 5678]</code>. El método rellena con ceros a la izquierda si es necesario. Si <code>num = 123</code> y <code>digitos = 2</code>, el método devolverá el array <code>[01, 23]</code>.</p>
+</li>
+<li><code>static int length(int num)</code> que recibe un número entero <code>num</code> y devuelve el número de dígitos que tiene. Por ejemplo, si <code>num = 12345</code>, el método devolverá <code>5</code>.</li>
+<li><code>static int pow10(int num, int exp)</code> que recibe un número entero <code>num</code> y un exponente <code>exp</code>, y devuelve como resultado <code>num</code> con <code>exp</code> ceros a la izquierda. Por ejemplo, si <code>num = 123</code> y <code>exp = 2</code>, el método devolverá <code>12300</code>.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Implementación en Java:</p>
+<div class="numberLines highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">karatsuba</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Redondeamos hacia arriba para dividir en dos partes</span>
+
+<span class="w">  </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">xParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">splitint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">yParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">splitint</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xParts</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xParts</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yParts</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yParts</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">z1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">karatsuba</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">z3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">karatsuba</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">z2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">karatsuba</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">z1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">z3</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">z1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pow10</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pow10</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z3</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(c) (2 puntos) En este tipo de algoritmos recursivos, es común que se realicen múltiples llamadas al mismo método con los mismos parámetros. Una forma de optimizar estos algoritmos es añadir una cache para evitar estos cálculos repetidos. Esto significa que, si se llama al método <code>karatsuba</code> con los mismos parámetros que en una llamada anterior, se devolverá el resultado ya calculado en lugar de volver a calcularlo. Sin repetir el código del método del apartado anterior, indique que modificaciones haría para implementar esta cache. </li>
+</ul>
+<p><strong>Nota</strong>: No es necesario preocuparse por posibles desbordamientos del tipo <code>int</code>. Se asume que los casos de prueba no excederán su límite.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Para implementar una cache, se puede utilizar un <code>Map</code> para almacenar los resultados ya calculados. Aquí está la modificación del método <code>karatsuba</code>:</p>
+<div class="numberLines highlight"><pre><span></span><code><span class="w">  </span><span class="c1">// Fuera del método</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">karatsuba</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cache</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">key</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">cache</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// el resto del código es igual al anterior</span>
+
+<span class="w">    </span><span class="n">cache</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div>
+</details>
+<h2 id="problema-3">Problema 3</h2>
+<p>Tres hebras Java de dos tipos diferentes, tipos A y B, entran en una sala para intercambiar tokens. Las hebras de tipo A solo salen de la sala cuando han intercambiado tokens con las dos hebras de tipo B, y las hebras de tipo B intercambian un solo token, cada una, con la hebra de tipo A. Las tres hebras no salen de la sala mientras que todas no han intercambiado sus tokens, y cuando las tres han intercambiado deben salir de la sala y más adelante volver a entrar para iniciar nuevos intercambios. Las hebras solo empiezan a intercambiar tokens cuando están las tres en la sala.</p>
+<ul>
+<li>(a) (5 puntos) Desarrollar un monitor Java que represente la ejecución de las hebras en la sala. En esta implementación, para que una hebra B salga de la sala, la hebra A con la que intercambian token debe haber intercambiado con dos hebras de tipo B. Mientras las 3 hebras están realizando el intercambio, ninguna otra hebra puede entrar en la sala. El monitor Java de la sala debe implementar el siguiente interfaz Java:</li>
+</ul>
+<div class="numberLines highlight"><pre><span></span><code><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">ISalaTokens</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Entrada en la sala de la hebra A. Entra con 2 tokens y el resultado es un array </span>
+<span class="w">    </span><span class="c1">// con los dos tokens que le dan las hebras B</span>
+<span class="w">    </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="nf">entraA</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">token1</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">token2</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Entrada en la sala de las hebras B con 1 token cada una y el resultado es el token</span>
+<span class="w">    </span><span class="c1">// que le ha dado la hebra A</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">entraB</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">token</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="p">;</span><span class="w">    </span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Podemos suponer que el código de las hebras es el siguiente:
+<div class="highlight"><pre><span></span><code>\noindent
+\begin{minipage}[t]{0.48\linewidth}
+\raggedright
+\begin{lstlisting}[
+  language=Java,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray}\itshape,
+  stringstyle=\color{red},
+  identifierstyle=\color{black},
+  basicstyle=\ttfamily\small,
+  frame=single,
+  breaklines=true
+]
+// Hebra de tipo A
+private Set&lt;String&gt; colec=new HashSet&lt;String&gt;();
+private ISalaTokens sala;
+private String[] tokens = new String[2]; 
+public void run() {
+  while (true) {
+    tokens=buscarTokensA();
+    if (!colec.contains(tokens[0]) &amp;&amp; 
+        !colec.contains(tokens[1]))
+      tokens=sala.entraA(tokens[0],tokens[1]);
+    colec.add(tokens[0]); colec.add(tokens[1]);
+  }
+}
+\end{lstlisting}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\raggedleft
+\begin{lstlisting}[
+  language=Java,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray}\itshape,
+  stringstyle=\color{red},
+  identifierstyle=\color{black},
+  basicstyle=\ttfamily\small,
+  frame=single,
+  breaklines=true
+]
+// Hebra de tipo B
+private Set&lt;String&gt; colec=new HashSet&lt;String&gt;();
+private ISalaTokens sala;
+private String token=null;
+public void run() {
+  while (true) {
+    token=buscarTokenB();
+    if (!colec.contains(token))
+      token=sala.entraB(token);
+    colec.add(token);
+  }
+}
+\end{lstlisting}
+\end{minipage}%
+</code></pre></div></p>
+<p><strong>Nota:</strong> Suponga que los métodos <code>buscarTokensA</code> y <code>buscarTokenB</code> están implementados y devuelven los tokens necesarios para el intercambio.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="numberLines highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SalaTokens</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ISalaTokens</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">esperandoA</span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">esperandoB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">tokensB</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">tokensA</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">aPreparado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numBesperaA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="nf">entraA</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">token1</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">token2</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">esperandoA</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">esperandoB</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">aPreparado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="n">tokensA</span><span class="o">[</span><span class="mi">0</span><span class="o">]=</span><span class="n">token1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">tokensA</span><span class="o">[</span><span class="mi">1</span><span class="o">]=</span><span class="n">token2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">numBesperaA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">numBesperaA</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">tokens</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+<span class="w">        </span><span class="n">tokens</span><span class="o">[</span><span class="mi">0</span><span class="o">]=</span><span class="n">tokensB</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="n">tokens</span><span class="o">[</span><span class="mi">1</span><span class="o">]=</span><span class="n">tokensB</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+
+<span class="w">        </span><span class="n">aPreparado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tokens</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">entraB</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">token</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">esperandoB</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">aPreparado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">        </span><span class="n">tokensB</span><span class="o">[</span><span class="n">id</span><span class="o">=</span><span class="n">numBesperaA</span><span class="o">++]=</span><span class="n">token</span><span class="p">;</span>
+<span class="w">        </span><span class="n">esperandoB</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="n">notifyAll</span><span class="p">();</span>
+
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">aPreparado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tokensA</span><span class="o">[</span><span class="n">id</span><span class="o">]</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h2 id="problema-4">Problema 4</h2>
+<p>Se dispone de un grafo no dirigido que relaciona ciudades y las personas que han viajado entre ellas.</p>
+<ul>
+<li><strong>Nodo</strong> representa a una ciudad.</li>
+<li><strong>Arista</strong> representa a una persona que ha realizado un viaje entre dos ciudades.</li>
+</ul>
+<p>En el grafo no existe más de una arista entre las mismas dos ciudades con la misma persona.</p>
+<p>\FloatBarrier
+\noindent
+\begin{center}
+\includegraphics[width=\textwidth]{diagram.pdf}
+\end{center}
+\FloatBarrier</p>
+<ul>
+<li>(a) (5 puntos) Se pide implementar el siguiente método:</li>
+</ul>
+<div class="numberLines highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Devuelve una lista con todas las ciudades que ha visitado la persona cuyo</span>
+<span class="cm"> * nombre se pasa por parámetro.</span>
+<span class="cm"> * El resultado no debe contener ciudades repetidas.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param nombre Nombre de la persona de la que se quiere saber qué ciudades ha visitado.</span>
+<span class="cm"> * @param grafo Grafo no dirigido que modela los viajes.</span>
+<span class="cm"> * @return Lista de nombres de ciudades visitadas (sin repeticiones).</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">ciudadesDePersona</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">GrafoNoDirigido</span><span class="w"> </span><span class="n">grafo</span><span class="p">)</span>
+</code></pre></div>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="numberLines highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Set</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CiudadesDePersona</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Genera una lista de las ciudades que ha visitado la persona indicada,</span>
+<span class="cm">     * sin ciudades repetidas.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param nombre nombre de la persona</span>
+<span class="cm">     * @param grafo  grafo de ciudades y viajes</span>
+<span class="cm">     * @return lista (sin repeticiones) de ciudades visitadas</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">ciudadesDePersona</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">GrafoNoDirigido</span><span class="w"> </span><span class="n">grafo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">listaCiudades</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Nodo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nodos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grafo</span><span class="p">.</span><span class="na">getNodos</span><span class="p">();</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodo</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">EnlaceNoDirigido</span><span class="w"> </span><span class="n">enlace</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodo</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">enlace</span><span class="p">.</span><span class="na">getPersona</span><span class="p">().</span><span class="na">getNombre</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="cm">/* Añadimos ambas ciudades del viaje */</span>
+<span class="w">                    </span><span class="n">addCiudad</span><span class="p">(</span><span class="n">enlace</span><span class="p">.</span><span class="na">getUno</span><span class="p">(),</span><span class="w"> </span><span class="n">listaCiudades</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">addCiudad</span><span class="p">(</span><span class="n">enlace</span><span class="p">.</span><span class="na">getOtro</span><span class="p">(</span><span class="n">enlace</span><span class="p">.</span><span class="na">getUno</span><span class="p">()),</span><span class="w"> </span><span class="n">listaCiudades</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">listaCiudades</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/** Añade la ciudad del nodo si todavía no está en la lista. */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addCiudad</span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodo</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">ciudad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodo</span><span class="p">.</span><span class="na">getCiudad</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">lista</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">ciudad</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">lista</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">ciudad</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h2 id="problema-5">Problema 5</h2>
+<ul>
+<li>(a) (6 puntos) Desarrolle un método que permita saber cual es la pieza (el tipo de pieza) que se usa en el movimiento más utilizado como apertura de las blancas (primera pieza que mueven) en el conjunto de partidas cargadas. De la misma manera, desarrolle un método que permita saber cual es el movimiento más utilizado como apertura de las negras (primera pieza que mueven) en contestación a la apertura de las blancas más utilizada.
+Consejo: piense qué piezas se pueden mover al inicio de una partida de ajedrez.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Métodos a incluir en la clase <code>AnalizadorGrafos</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">TipoPieza</span><span class="w"> </span><span class="nf">getAperturaBlancas</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodoBasico</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Tablero</span><span class="p">.</span><span class="na">getTableroBasico</span><span class="p">());</span>
+<span class="w">  </span><span class="n">Enlace</span><span class="w"> </span><span class="n">enlaceMayorPeso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obtenerEnlaceMayorPeso</span><span class="p">(</span><span class="n">nodoBasico</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Tablero</span><span class="w"> </span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">enlaceMayorPeso</span><span class="p">.</span><span class="na">getDestino</span><span class="p">().</span><span class="na">getTablero</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">detectarTipoPiezaMovida</span><span class="p">(</span><span class="n">destino</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">);</span><span class="w"> </span><span class="c1">// Fila 7 para peones blancos</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="n">TipoPieza</span><span class="w"> </span><span class="nf">getAperturaNegras</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodoBasico</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Tablero</span><span class="p">.</span><span class="na">getTableroBasico</span><span class="p">());</span>
+<span class="w">  </span><span class="n">Enlace</span><span class="w"> </span><span class="n">primerEnlace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obtenerEnlaceMayorPeso</span><span class="p">(</span><span class="n">nodoBasico</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodoDestino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">primerEnlace</span><span class="p">.</span><span class="na">getDestino</span><span class="p">();</span>
+<span class="w">  </span><span class="n">Enlace</span><span class="w"> </span><span class="n">segundoEnlace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obtenerEnlaceMayorPeso</span><span class="p">(</span><span class="n">nodoDestino</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Tablero</span><span class="w"> </span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">segundoEnlace</span><span class="p">.</span><span class="na">getDestino</span><span class="p">().</span><span class="na">getTablero</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">detectarTipoPiezaMovida</span><span class="p">(</span><span class="n">destino</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// Fila 2 para peones negros</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="n">Enlace</span><span class="w"> </span><span class="nf">obtenerEnlaceMayorPeso</span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Enlace</span><span class="w"> </span><span class="n">enlaceMayorPeso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Enlace</span><span class="w"> </span><span class="n">enlace</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nodo</span><span class="p">.</span><span class="na">getEnlaces</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">enlaceMayorPeso</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">enlace</span><span class="p">.</span><span class="na">getPeso</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">enlaceMayorPeso</span><span class="p">.</span><span class="na">getPeso</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">enlaceMayorPeso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">enlace</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">enlaceMayorPeso</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="n">TipoPieza</span><span class="w"> </span><span class="nf">detectarTipoPiezaMovida</span><span class="p">(</span><span class="n">Tablero</span><span class="w"> </span><span class="n">tablero</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fila</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Pieza</span><span class="w"> </span><span class="n">matriz</span><span class="o">[][]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tablero</span><span class="p">.</span><span class="na">getMatrizPiezas</span><span class="p">();</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Pieza</span><span class="w"> </span><span class="n">pieza</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matriz</span><span class="o">[</span><span class="n">fila</span><span class="o">][</span><span class="n">col</span><span class="o">]</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pieza</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">TipoPieza</span><span class="p">.</span><span class="na">PEON</span><span class="p">;</span><span class="w"> </span><span class="c1">// Si falta algun peón, se habrá movido</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">TipoPieza</span><span class="p">.</span><span class="na">CABALLO</span><span class="p">;</span><span class="w"> </span><span class="c1">// Si están todos, será un caballo</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h2 id="problema-6">Problema 6</h2>
+<ul>
+<li>(a) (4 puntos) Modifique el código de sus prácticas para que las hebras resuelvan primero las tareas (TareaCamino) que tengan un camino más corto.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Modificaciones necesarias:
+<strong>1. En la clase <code>TareaCamino</code>:</strong>
+- Implementar la interfaz <code>Comparable&lt;TareaCamino&gt;</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">TareaCamino</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">TareaCamino</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodoAVisitar</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Nodo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">caminoRecorrido</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">TareaCamino</span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodoAVisitar</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Nodo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">caminoRecorrido</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">nodoAVisitar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodoAVisitar</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">caminoRecorrido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">caminoRecorrido</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">TareaCamino</span><span class="w"> </span><span class="n">otra</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">caminoRecorrido</span><span class="p">.</span><span class="na">size</span><span class="p">(),</span><span class="w"> </span>
+<span class="w">                              </span><span class="n">otra</span><span class="p">.</span><span class="na">caminoRecorrido</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>2. En el método <code>getTarea()</code> de <code>PoolHebras</code>:</strong>
+- Ordenar la lista antes de extraer la tarea</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="n">TareaCamino</span><span class="w"> </span><span class="nf">getTarea</span><span class="p">(</span><span class="n">HebraWorker</span><span class="w"> </span><span class="n">hw</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">tareas</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">hw</span><span class="p">.</span><span class="na">keepWorking</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">wait</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">hw</span><span class="p">.</span><span class="na">keepWorking</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Ordenar tareas por longitud de camino antes de extraer</span>
+<span class="w">    </span><span class="n">Collections</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">tareas</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tareas</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 
