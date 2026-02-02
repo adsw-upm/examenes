@@ -7,7 +7,7 @@ exercises:
 ---
 
 
-# Examen 20XX — Extraordinario
+# Examen 2025 — Extraordinario
 
 ## Problema 1
 {{ include("extra_ex01.md") }}
