@@ -128,7 +128,7 @@ def define_env(env):
             output.append(f"\n*{len(exercises)} ejercicio(s)*\n")
             
             # Sort exercises by year and exam
-            exercises.sort(key=lambda x: (x['year'], x['exam']))
+            exercises.sort(key=lambda x: (str(x['year']), str(x['exam'])))
             
             # Create table
             output.append("| Ejercicio | Año | Examen |")
