@@ -2606,7 +2606,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 20XX — Extraordinario
+    Examen 2025 — Extraordinario
   
 
     
@@ -2672,7 +2672,7 @@
 
 <h1 id="macro-rendering-error"><em>Macro Rendering Error</em></h1>
 <p><em>File</em>: <code>tags.md</code></p>
-<p><em>TypeError</em>: '&lt;' not supported between instances of 'str' and 'int'</p>
+<p><em>TypeError</em>: '&lt;' not supported between instances of 'int' and 'str'</p>
 <div class="highlight"><pre><span></span><code>Traceback (most recent call last):
   File &quot;/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/mkdocs_macros/plugin.py&quot;, line 703, in render
     return md_template.render(**page_variables)
@@ -2686,7 +2686,7 @@
   File &quot;/home/runner/work/examenes/examenes/main.py&quot;, line 131, in generate_tags_list
     exercises.sort(key=lambda x: (x[&#39;year&#39;], x[&#39;exam&#39;]))
     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: &#39;&lt;&#39; not supported between instances of &#39;str&#39; and &#39;int&#39;
+TypeError: &#39;&lt;&#39; not supported between instances of &#39;int&#39; and &#39;str&#39;
 </code></pre></div>
 
 
