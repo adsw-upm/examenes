@@ -27,7 +27,3 @@ exercises:
 
 ## Problema 5
 {{ include("pract_ex05.md") }}
-
-## Problema 6
-{{ include("pract_ex06.md") }}
-
