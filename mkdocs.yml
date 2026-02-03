@@ -89,6 +89,12 @@ nav:
     - "2023":
       - exams/2023/p1.md
       - exams/2023/p2.md
+    - "2024":
+      - exams/2024/p1.md
+#      - exams/2024/p1r.md
+#      - exams/2024/p2.md
+#      - exams/2024/pract.md
+#      - exams/2024/extra.md
     - "2025":
       - exams/2025/p1.md
       - exams/2025/p1r.md
