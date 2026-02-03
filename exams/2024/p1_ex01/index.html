@@ -348,6 +348,8 @@
       
         
       
+        
+      
     
     
     
@@ -2406,14 +2408,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2437,7 +2431,7 @@
   <span class="md-ellipsis">
     
   
-    2025
+    2024
   
 
     
@@ -2450,6 +2444,106 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2024
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen 2024 — Parcial 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2025
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_13">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2660,7 +2754,130 @@
 
   <h1>P1 ex01</h1>
 
+<p>Dada la clase FraseCelebre, que se utiliza para almacenar información sobre frases célebres, incluyendo el año en que se dijo la frase, el autor de la frase, y la frase en sí. Se debe desarrollar el código necesario para que sus objetos puedan ser ordenados. El criterio de ordenación es, primero se debe ordenar por año de más actual a más antigua y segundo por orden alfabético del nombre del autor.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FraseCelebre</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="c1">// Atributos de la clase</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">anio</span><span class="p">;</span><span class="w">        </span><span class="c1">// Año en que se dijo la frase</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">autor</span><span class="p">;</span><span class="w">    </span><span class="c1">// Autor de la frase</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">frase</span><span class="p">;</span><span class="w">    </span><span class="c1">// La frase célebre</span>
+
+<span class="w">    </span><span class="c1">// Constructor de la clase</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">FraseCelebre</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">anio</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">autor</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">frase</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">anio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">anio</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">autor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">autor</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">frase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frase</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Métodos getters y setters para los atributos</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Se pide:
+- (a) (2 puntos) Modifique, añade o desarrolle el código necesario para que tras la ejecución del siguiente código de ejemplo se muestre por consola las frases célebres ordenadas con el criterio de ordenación indicado. </p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FraseCelebre</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">FraseCelebre</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Atributos de la clase, getters y setters</span>
+<span class="w">    </span><span class="p">...</span>
+
+<span class="w">    </span><span class="c1">// Método compareTo para comparar objetos FraseCelebre</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">FraseCelebre</span><span class="w"> </span><span class="n">otraFrase</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// Primero compara por año</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">comparacionAnio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">anio</span><span class="p">,</span><span class="w"> </span><span class="n">otraFrase</span><span class="p">.</span><span class="na">anio</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Se devuelve el valor negado para que el orden sea de más moderna a más antigua</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">comparacionAnio</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">comparacionAnio</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Segundo criterio: se compara por el nombre del autor</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">autor</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">otraFrase</span><span class="p">.</span><span class="na">autor</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (2 puntos) Desarrolle el método public static String calcularModaDeAutores(ArrayList<FraseCelebre> array), que recibe como parámetro un ArrayList de objetos FraseCelebre y calcule la moda de los autores de las frases célebres del ArrayList. La moda se define como el valor que más se repite en un conjunto de datos. En caso de que haya más de un autor tenga la máxima frecuencia, el método puede retornar cualquiera de ellos.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">FraseCelebre</span><span class="o">&gt;</span><span class="w"> </span><span class="n">frases</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">frases</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FraseCelebre</span><span class="p">(</span>
+<span class="w">            </span><span class="mi">1942</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Pablo Picasso&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;La inspiración existe, pero tiene que encontrarte trabajando.&quot;</span>
+<span class="w">    </span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">frases</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FraseCelebre</span><span class="p">(</span>
+<span class="w">            </span><span class="mi">1993</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Stephen King&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;El talento es más barato que la sal. Lo que separa al talentoso del exitoso es un montón de trabajo duro.&quot;</span>
+<span class="w">    </span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">frases</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FraseCelebre</span><span class="p">(</span>
+<span class="w">            </span><span class="mi">1870</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Thomas A. Edison&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;El genio es un 1% inspiración y un 99% transpiración.&quot;</span>
+<span class="w">    </span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">frases</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FraseCelebre</span><span class="p">(</span>
+<span class="w">            </span><span class="mi">1963</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Rosa Parks&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Nunca debes tener miedo de lo que haces cuando es lo correcto.&quot;</span>
+<span class="w">    </span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">frases</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FraseCelebre</span><span class="p">(</span>
+<span class="w">            </span><span class="mi">1963</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Rosa Parks&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Para traer el cambio, debes no tener miedo de tomar el primer paso. Nosotros mostraremos el camino con un acto de coraje.&quot;</span>
+<span class="w">    </span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">Collections</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">frases</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">FraseCelebre</span><span class="w"> </span><span class="n">frase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">frases</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">frase</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// Método para calcular la moda de los autores</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">calcularModaDeAutores</span><span class="p">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">FraseCelebre</span><span class="o">&gt;</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">frecuenciaAutores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxFrecuencia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">moda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">FraseCelebre</span><span class="w"> </span><span class="n">frase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">autor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frase</span><span class="p">.</span><span class="na">getAutor</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">nuevaFrecuencia</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Verificamos si el mapa ya contiene el autor</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">frecuenciaAutores</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">autor</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Si el autor ya está en el mapa, incrementamos su frecuencia</span>
+<span class="w">            </span><span class="n">nuevaFrecuencia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frecuenciaAutores</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">autor</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Si el autor no está en el mapa, su frecuencia es 1</span>
+<span class="w">            </span><span class="n">nuevaFrecuencia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">frecuenciaAutores</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">autor</span><span class="p">,</span><span class="w"> </span><span class="n">nuevaFrecuencia</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Actualizamos la moda si se supera la frecuencia máxima</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nuevaFrecuencia</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">maxFrecuencia</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">maxFrecuencia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nuevaFrecuencia</span><span class="p">;</span>
+<span class="w">            </span><span class="n">moda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">autor</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">moda</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 

@@ -348,6 +348,8 @@
       
         
       
+        
+      
     
     
     
@@ -2406,14 +2408,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2437,7 +2431,7 @@
   <span class="md-ellipsis">
     
   
-    2025
+    2024
   
 
     
@@ -2450,6 +2444,106 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2024
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen 2024 — Parcial 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2025
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_13">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2660,7 +2754,155 @@
 
   <h1>P1 ex02</h1>
 
+<p>Se disponen las siguientes clases que representan árboles de búsqueda binaria:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Nodo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">clave</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Nodo</span><span class="w"> </span><span class="n">iz</span><span class="p">,</span><span class="w"> </span><span class="n">der</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
 
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BST</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Nodo</span><span class="w"> </span><span class="n">raiz</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Este método calcula el número de nodos que tienen un valor</span>
+<span class="cm">     * igual al parámetro dado.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param unValor El valor para el cálculo</span>
+<span class="cm">     * @return El número de nodos que tengan un valor igual al parámetro</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaValores</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">unValor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Este método calcula el número de nodos cuya clave está incluida</span>
+<span class="cm">     * en el rango proporcionado por los parámetros.</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param minClave Número menor en el rango</span>
+<span class="cm">     * @param maxClave Número mayor en el rango</span>
+<span class="cm">     * @return El número de nodos cuya clave está en el rango</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaClaves</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">minClave</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxClave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">m</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">m</span><span class="p">(</span><span class="n">raiz</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">m</span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nodo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">(</span><span class="n">nodo</span><span class="p">.</span><span class="na">iz</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">(</span><span class="n">nodo</span><span class="p">.</span><span class="na">der</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Nota: En relación a los métodos solicitados en las preguntas (a), (b), y (c):
+    - En la evaluación de estas preguntas, se tendrá en cuenta la complejidad de la solución elegida. En la calificación, se valorará la complejidad de la solución propuesta.
+    - No se puede cambiar la signatura de estas clases. Si son necesarios métodos auxiliares podrán incluirse métodos o atributos adicionales, pero habrá que mantener su signatura.</p>
+<p>Se puede suponer que los árboles que soportan estas clases son árboles equilibrados. Se pide:
+- (a) (1,5 puntos) Implemente el método cuentaValores, según la especificación descrito en el código mostrado.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaValores</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">unValor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cuentaValores</span><span class="p">(</span><span class="n">raiz</span><span class="p">,</span><span class="w"> </span><span class="n">unValor</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaValores</span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">unValor</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">valor</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">unValor</span><span class="p">)</span>
+<span class="w">        </span><span class="n">num</span><span class="o">++</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuentaValores</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">iz</span><span class="p">,</span><span class="w"> </span><span class="n">unValor</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
+<span class="w">    </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuentaValores</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">der</span><span class="p">,</span><span class="w"> </span><span class="n">unValor</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(b) (0,5 puntos) Calcule la complejidad de la solución implementada de la clase cuentaValores. </li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>La complejidad de esta implementación es N, donde N es el número de elementos del árbol. La implementación recorre el árbol con un algoritmo de pre-orden. Hay que recorrer el árbol entero porque los valores pueden estar ubicados en cualquier parte del árbol.</p>
+</details>
+<p>-(c) (2 puntos) Implemente el método cuentaClaves. cuentaClaves devuelve el número de nodos que tiene como clave una clave mayor que minClave y menor que maxClave.</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaClaves</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">minClave</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxClave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cuentaClaves</span><span class="p">(</span><span class="n">raiz</span><span class="p">,</span><span class="w"> </span><span class="n">minClave</span><span class="p">,</span><span class="w"> </span><span class="n">maxClave</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaClaves</span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">minClave</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxClave</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">clave</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">minClave</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">clave</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxClave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">num</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuentaClaves</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">iz</span><span class="p">,</span><span class="w"> </span><span class="n">minClave</span><span class="p">,</span><span class="w"> </span><span class="n">maxClave</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
+<span class="w">        </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuentaClaves</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">der</span><span class="p">,</span><span class="w"> </span><span class="n">minClave</span><span class="p">,</span><span class="w"> </span><span class="n">maxClave</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">clave</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">minClave</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cuentaClaves</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">der</span><span class="p">,</span><span class="w"> </span><span class="n">minClave</span><span class="p">,</span><span class="w"> </span><span class="n">maxClave</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">clave</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">maxClave</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cuentaClaves</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">iz</span><span class="p">,</span><span class="w"> </span><span class="n">minClave</span><span class="p">,</span><span class="w"> </span><span class="n">maxClave</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<ul>
+<li>(d) (1 punto) ¿Cuál es la funcionalidad del método m? </li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>El método m es una implementación del método size de Diccionario. Esta implementación cuenta el número de elementos del árbol, recorriendo todo el árbol.</p>
+</details>
+<ul>
+<li>(e) (0,5 puntos) ¿Cuál es la complejidad del método m? </li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Es un algoritmo de complejidad N. Suponiendo que el árbol es equilibrado, la función de recurrencia de el algoritmo que se utiliza es:</p>
+<p>T(n)=O(1)+T(n-1/2)+T(n-1/2)=O(1)+T(n-1)=O(n)</p>
+</details>
+<ul>
+<li>(f) (0,5 puntos) ¿Qué tipo de función es la implementación del método m? <ul>
+<li>
+<ol>
+<li>Una función pre-orden</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Una función en-orden</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Una función post-orden</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>La implementación es una función de post-orden. Primero recorre el sub-árbol izquierdo, después el derecho, y finalmente la función de visita es sumar l1 y los valores devueltos por el recorrido de la izquierda y la derecha.</p>
+</details>
 
 
 
