@@ -3136,25 +3136,13 @@
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isZonaExclusiva</span><span class="p">()</span>
 </code></pre></div>
 <p>El comportamiento de las piezas del juego es así:</p>
-<ul>
-<li>
-<p>Cuando un jugador intenta pasar a una celda exclusiva:</p>
-<ul>
-<li>si la zona exclusiva está vacía, entra;</li>
-<li>si está ocupada, debe buscar otra celda.</li>
-</ul>
-</li>
-<li>
-<p>Cuando un marciano intenta pasar a una celda exclusiva:</p>
-<ul>
-<li>si la zona exclusiva está vacía, entra;</li>
-<li>si está ocupada, espera a que se libere.</li>
-</ul>
-</li>
-<li>
+<p>Cuando un jugador intenta pasar a una celda exclusiva:
+    - si la zona exclusiva está vacía, entra;
+    - si está ocupada, debe buscar otra celda.</p>
+<p>Cuando un marciano intenta pasar a una celda exclusiva:
+    - si la zona exclusiva está vacía, entra;
+    - si está ocupada, espera a que se libere.</p>
 <p>Tanto marcianos como jugador, cuando salen de la zona exclusiva hacia una celda que no lo es, liberan a los marcianos que pudieran estar esperando.</p>
-</li>
-</ul>
 <p>Sugerencia: se recomienda disponer de un campo</p>
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">ocupado</span><span class="p">;</span>
 </code></pre></div>
