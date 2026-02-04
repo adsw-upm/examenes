@@ -10,7 +10,39 @@ Utilizando el modelo de datos de la práctica 2 donde un vértice representaba u
 
 ![](./p1r/p1r_ex01.png)
 
-![](./placeholder.jpg)
+### Class EdgeWeightedDigraph
+
+| Tipo                   | Método                    | Descripción                                                   |
+| ---------------------- | ------------------------- | ------------------------------------------------------------- |
+| void                   | `addEdge(DirectedEdge e)` | Adds the directed edge to this edge-weighted digraph.         |
+| Iterable<DirectedEdge> | `adj(int v)`              | Returns the directed edges incident from vertex v.            |
+| int                    | `E()`                     | Returns the number of edges in this edge-weighted digraph.    |
+| Iterable<DirectedEdge> | `edges()`                 | Returns all directed edges in this edge-weighted digraph.     |
+| int                    | `V()`                     | Returns the number of vertices in this edge-weighted digraph. |
+
+---
+
+### Class DijkstraSP
+
+| Constructor                                | Descripción                                                                                                   |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| `DijkstraSP(EdgeWeightedDigraph G, int s)` | Computes a shortest-paths tree from the source vertex s to every other vertex in the edge-weighted digraph G. |
+
+| Tipo                   | Método          | Descripción                                                                 |
+| ---------------------- | --------------- | --------------------------------------------------------------------------- |
+| double                 | `distTo(int v)` | Returns the length of a shortest path from the source vertex s to vertex v. |
+| Iterable<DirectedEdge> | `pathTo(int v)` | Returns a shortest path from the source vertex s to vertex v.               |
+
+---
+
+### Class DirectedEdge 
+
+| Tipo   | Método     | Descripción                                   |
+| ------ | ---------- | --------------------------------------------- |
+| int    | `from()`   | Returns the tail vertex of the directed edge. |
+| int    | `to()`     | Returns the head vertex of the directed edge. |
+| double | `weight()` | Returns the weight of the directed edge.      |
+
 
 Se pide:
 - (a) (1 punto) Desarrolle el método obtenerIndiceMayor: Recibe un array de enteros y devuelve un int con el índice de la posición con el valor mayor. En caso de empate, se puede devolver cualquiera de los n índices que empatan: public int obtenerIndiceMayor(int[] array)
