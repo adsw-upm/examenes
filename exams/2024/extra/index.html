@@ -3153,7 +3153,36 @@
 <h2 id="problema-2">Problema 2</h2>
 <p>En este problema se trabajará con una tabla hash que almacena los nombres de los alumnos de un curso y sus respectivas notas. La tabla hash funciona con direccionamiento abierto. La resolución de las colisiones se realizará mediante el método de la exploración cuadrática. Esto significa que si al insertar un elemento en la tabla hash se produce una colisión, se elegirá una nueva posición mediante la fórmula (posicion + i^2) % tabla.length, donde i es el número de intentos de reubicación en la tabla y la operación % es el módulo que devuelve el resto de la división.</p>
 <p>Se proporciona el siguiente código que realiza la acción de insertar un elemento en la tabla hash:</p>
-<p><img alt="" src="../placeholder.jpg" /></p>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * El método insertar trata de añadir un elemento a la tabla hash.</span>
+<span class="cm"> * Si al calcular la posición de insercción se produce una colisión, busca una</span>
+<span class="cm"> * nueva posición mediante exploración cuadrática.</span>
+<span class="cm"> * Si ya existía un elemento con la misma clave, actualiza su valor.</span>
+<span class="cm"> * Si no se puede insertar un elemento porque la tabla está llena, devolverá false.</span>
+<span class="cm"> * @param alumno Elemento que se insertará</span>
+<span class="cm"> * @return true si se ha podido insertar el elemento en la tabla</span>
+<span class="cm"> */</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">insertar</span><span class="p">(</span><span class="n">ElementoDeTabla</span><span class="w"> </span><span class="n">alumno</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hash</span><span class="p">(</span><span class="n">alumno</span><span class="p">.</span><span class="na">getNombre</span><span class="p">());</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">intento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">intento</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tabla</span><span class="p">.</span><span class="na">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">posicionPrueba</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">intento</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">intento</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">tabla</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tabla</span><span class="o">[</span><span class="n">posicionPrueba</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">tabla</span><span class="o">[</span><span class="n">posicionPrueba</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alumno</span><span class="p">;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tabla</span><span class="o">[</span><span class="n">posicionPrueba</span><span class="o">]</span><span class="p">.</span><span class="na">getNombre</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="n">alumno</span><span class="p">.</span><span class="na">getNombre</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">tabla</span><span class="o">[</span><span class="n">posicionPrueba</span><span class="o">]</span><span class="p">.</span><span class="na">setNota</span><span class="p">(</span><span class="n">alumno</span><span class="p">.</span><span class="na">getNota</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">intento</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><img alt="" src="extra_ex02-1.png" /></p>
 <p>Se pide:
 - (a) (1 punto) Suponga que se tiene una tabla hash como la descrita de tamaño 7. Inserte los siguientes elementos en la tabla hash en el orden que se presentan. Muestre el estado de la tabla después de cada inserción.</p>
