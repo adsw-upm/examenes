@@ -3027,17 +3027,12 @@
 <li>(a) (2,5 puntos) Dada una matriz de enteros de tamaño <span class="arithmatex">\(N×N\)</span>, desarrolle un algoritmo de orden <span class="arithmatex">\(O(N^2)\)</span> para averiguar si un valor <span class="arithmatex">\(K\)</span> está presente o no en la matriz. Razone el orden de complejidad del algoritmo desarrollado.</li>
 </ul>
 <p>Ejemplo:
-|---|-----|-----|-----|-----|
 | 84|   32|  -13|   33|   13|
 |---|-----|-----|-----|-----|
 | 7 |   82|   93|   89|  -23|
-|---|-----|-----|-----|-----|
 | 31|  -24|  -28|   57|  -93|
-|---|-----|-----|-----|-----|
 | 86|  -71|  -44|   75|  -12|
-|---|-----|-----|-----|-----|
-|-10|  -18|   53|   24|   78|
-|---|-----|-----|-----|-----|</p>
+|-10|  -18|   53|   24|   78|</p>
 <div class="highlight"><pre><span></span><code><span class="n">busca</span><span class="p">(</span><span class="n">matriz</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="n">busca</span><span class="p">(</span><span class="n">matriz</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 </code></pre></div>
@@ -3092,17 +3087,47 @@ En cuanto a la complejidad, es un bucle que hace <span class="arithmatex">\(N\)<
 <li>(b) (2,5 puntos) Se pide calcular la complejidad temporal del algoritmo, razonando el resultado.</li>
 </ul>
 <p>Ejemplo:</p>
-<p>|---|-----|-----|-----|-----|
-|-93|  -71|  -28|  -18|    7|
-|---|-----|-----|-----|-----|
-|-44|  -24|  -13|   13|   33|
-|---|-----|-----|-----|-----|
-|-23|  -12|   24|   53|   78|
-|---|-----|-----|-----|-----|
-|-10|   31|   57|   82|   86|
-|---|-----|-----|-----|-----|
-| 32|   75|   84|   89|   93|
-|---|-----|-----|-----|-----|</p>
+<table>
+<thead>
+<tr>
+<th>-93</th>
+<th>-71</th>
+<th>-28</th>
+<th>-18</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-44</td>
+<td>-24</td>
+<td>-13</td>
+<td>13</td>
+<td>33</td>
+</tr>
+<tr>
+<td>-23</td>
+<td>-12</td>
+<td>24</td>
+<td>53</td>
+<td>78</td>
+</tr>
+<tr>
+<td>-10</td>
+<td>31</td>
+<td>57</td>
+<td>82</td>
+<td>86</td>
+</tr>
+<tr>
+<td>32</td>
+<td>75</td>
+<td>84</td>
+<td>89</td>
+<td>93</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code><span class="n">busca</span><span class="p">(</span><span class="n">matriz</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="n">busca</span><span class="p">(</span><span class="n">matriz</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 </code></pre></div>
