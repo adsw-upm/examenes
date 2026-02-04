@@ -59,11 +59,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#a-3-puntos" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -2851,25 +2846,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-3-puntos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. (3 puntos)
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2905,9 +2881,10 @@
 
   <h1>Ex02</h1>
 
-<h2 id="a-3-puntos">A. (3 puntos)</h2>
-<p>Sea un puente con capacidad para un vehículo y dos accesos: norte y sur. En caso de que haya vehículos intentando entrar por los dos accesos, debe entrar un vehículo por el extremo en el que haya más esperando (si el número de vehículos esperando en cada extremo es el mismo, no es necesario imponer un orden). En el caso de que intente entrar una ambulancia, tendrá prioridad sobre el resto de vehículos. No es necesario considerar el caso en que dos ambulancias intenten acceder simultáneamente al puente. 
-Se  pide  desarrollar  una  clase  monitor  GestorPuente  que  gestione  el  acceso  al  puente,  según  la especificación  previa.  Los  métodos  de  esta  clase  no  retornan  valores.  El  esqueleto  de  la  clase  es  el siguiente:</p>
+<p>Sea un puente con capacidad para un vehículo y dos accesos: norte y sur. En caso de que haya vehículos intentando entrar por los dos accesos, debe entrar un vehículo por el extremo en el que haya más esperando (si el número de vehículos esperando en cada extremo es el mismo, no es necesario imponer un orden). En el caso de que intente entrar una ambulancia, tendrá prioridad sobre el resto de vehículos. No es necesario considerar el caso en que dos ambulancias intenten acceder simultáneamente al puente. </p>
+<ul>
+<li>(a) (3 puntos) Se  pide  desarrollar  una  clase  monitor  <code>GestorPuente</code>  que  gestione  el  acceso  al  puente,  según  la especificación  previa.  Los  métodos  de  esta  clase  no  retornan  valores.  El  esqueleto  de  la  clase  es  el siguiente:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorPuente</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarNorte</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...}</span>
 <span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarSur</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...}</span>
@@ -2920,7 +2897,6 @@ Se  pide  desarrollar  una  clase  monitor  GestorPuente  que  gestione  el  acc
 <p>Una posible solución es:
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">es.upm.dit.adsw.puenteTurnoEspera</span><span class="p">;</span>
 <span class="cm">/**</span>
-<span class="cm">* @author Alejandro Alonso</span>
 <span class="cm">* Monitor que gestiona la entrada a un puente de coches</span>
 <span class="cm">* por sus dos extremos (norte y sur). Dentro el puente sólo puede</span>
 <span class="cm">* haber un coche. Si hay coches esperando en sus dos extremos, entra</span>

@@ -59,11 +59,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#a-15-puntos" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -2855,36 +2850,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-15-puntos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. (1.5 puntos)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#b-15-puntos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        B. (1.5 puntos)
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2922,21 +2887,20 @@
 
   <h1>Ex01</h1>
 
-<h2 id="a-15-puntos">A. (1.5 puntos)</h2>
-<p>Se pide escribir un algoritmo de ordenación con la siguiente interfaz</p>
-<p><div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="nf">ordena</span><span class="p">(</span><span class="kt">long</span><span class="o">[]</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span>
+<ul>
+<li>(a) (1,5 puntos) Se pide escribir un algoritmo de ordenación con la siguiente interfaz</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="nf">ordena</span><span class="p">(</span><span class="kt">long</span><span class="o">[]</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span>
 </code></pre></div>
-de tal forma que los datos de entrada no se modifican y el método devuelve un array que contiene en qué posición debería ir del dato correspondiente para estar en orden ascendente. Por ejemplo:
+<p>de tal forma que los datos de entrada no se modifican y el método devuelve un array que contiene en qué posición debería ir del dato correspondiente para estar en orden ascendente. Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code>datos:   [8, 42, 46, 24, 29, 7]
 indices: [1,  4,  5,  2,  3, 0]
 </code></pre></div>
-que se lee como que</p>
-<ul>
-<li>datos[0] se ordenaría en la posición 1</li>
-<li>datos[1] se ordenaría en la posición 4</li>
-<li>datos[2] se ordenaría en la posición 5</li>
-<li>etc.</li>
-</ul>
+<p>que se lee como que
+    - datos[0] se ordenaría en la posición 1
+    - datos[1] se ordenaría en la posición 4
+    - datos[2] se ordenaría en la posición 5
+    - etc.</p>
 <p>NOTA: Si hubiera 2 datos de igual valor, da igual cual de ellos va antes o después. Elija lo que le sea más cómodo.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2959,14 +2923,15 @@ que se lee como que</p>
 <span class="p">}</span>
 </code></pre></div></p>
 </details>
-<h2 id="b-15-puntos">B. (1.5 puntos)</h2>
-<p>Estime la complejidad del  algoritmo  del  punto anterior,  contando  el  número  de  comparaciones entre datos (enteros <code>long</code>) que hay que hacer en el caso peor.</p>
+<ul>
+<li>(b) (1,5 puntos) Estime la complejidad del  algoritmo  del  punto anterior,  contando  el  número  de  comparaciones entre datos (enteros <code>long</code>) que hay que hacer en el caso peor.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Hay 2 bucles, uno dentro del otro.
-El bucle exterior se hace <span class="arithmatex">\(N\)</span> veces.
-En el bucle interior, la primera vez se hacen <span class="arithmatex">\(N-1\)</span> comparaciones; la segunda vez, <span class="arithmatex">\(N-2\)</span>; la tercera <span class="arithmatex">\(N-3\)</span>, etc. 
-En total <span class="arithmatex">\((N-1) + (N-2) + ... + 1 \leftarrow \mathcal{O}(N^2)\)</span></p>
+<p>Hay 2 bucles, uno dentro del otro.</p>
+<p>El bucle exterior se hace <span class="arithmatex">\(N\)</span> veces.</p>
+<p>En el bucle interior, la primera vez se hacen <span class="arithmatex">\(N-1\)</span> comparaciones; la segunda vez, <span class="arithmatex">\(N-2\)</span>; la tercera <span class="arithmatex">\(N-3\)</span>, etc. </p>
+<p>En total <span class="arithmatex">\((N-1) + (N-2) + ... + 1 \leftarrow \mathcal{O}(N^2)\)</span></p>
 </details>
 
 
