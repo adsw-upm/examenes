@@ -19,7 +19,7 @@
     
     
       
-        <title>Extra02 - Catálogo ejercicios años anteriores</title>
+        <title>Ex03 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -89,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Extra02
+              Ex03
             
           </span>
         </div>
@@ -527,7 +527,7 @@
   <span class="md-ellipsis">
     
   
-    Macro Rendering Error
+    Examen 2012 — Final
   
 
     
@@ -2859,9 +2859,239 @@
                 
                   
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">actividades</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">android</span>
+      
+    
+  </nav>
 
 
-  <h1>Extra02</h1>
+
+  <h1>Ex03</h1>
+
+<p>Tenemos una aplicación de Android que calcula la nota de ADSW como se muestra a continuación.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Figura de la aplicación" src="../extra/img-004.png" /></td>
+<td><img alt="Figura de la aplicación" src="../extra/img-005.png" /></td>
+</tr>
+<tr>
+<td><img alt="Figura de la aplicación" src="../extra/img-002.png" /></td>
+<td><img alt="Figura de la aplicación" src="../extra/img-003.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Como hemos visto, la aplicación consta de dos pantallas, un formulario inicial (<code>NotaMediaActivity</code>) y  una pantalla que muestra  una foto y  el resultado (<code>ResultadoActivity</code>). Ambas clases están en el paquete <code>es.upm.dit.adsw</code>.</p>
+<p>El cálculo de  la nota media se realiza de la siguiente forma:
+    - Sólo se hace media si ambas notas  son mayores o iguales a 4. 
+    - La nota es 0.6 <span class="arithmatex">\(\cdot\)</span> * nota de de examen + 0.4 * nota de trabajo</p>
+<ul>
+<li>
+<p>(a) (1 punto) Complete el código del fichero de manifiesto del listado 1 para que la aplicación muestre la pantalla inicial (formulario) y pueda pasar a la segunda de resultado con la media.</p>
+</li>
+<li>
+<p>(b)(2 puntos) Programe la actividad <code>NotaMediaActivity</code>. Debe tener en cuenta:</p>
+<ul>
+<li>Si el usuario no rellena un campo o introduce un valor no numérico, debe mostrar un mensaje indicándole que debe introducir valores numéricos (use un <code>Toast</code>).</li>
+<li>La actividad <code>ResultadoActivity</code> espera recibir una intención con dos parámetros extra: <ul>
+<li>un primer parámetro de tipo boolean denominado <code>aprobado</code> (<code>true</code> si cumple umbrales y media &gt; = 5; <code>false</code> en caso contrario)</li>
+<li>un segundo parámetro de tipo <code>String</code> denominado <code>valor</code> (contiene un mensaje indicando qué umbral no se ha superado si no se puede hacer la media, o bien el valor de la nota media).</li>
+</ul>
+</li>
+<li>Los listados 2 y 3 le proporcionan información del layout de <code>NotaMediaActivity</code> y las cadenas string.xml de la aplicación.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>Listado 1. Código de AndroidManifest.xml
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;manifest</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<span class="w">    </span><span class="na">package=</span><span class="s">&quot;COMPLETAR POR EL ALUMMNO&quot;</span><span class="w"> </span><span class="err">&lt;!--</span><span class="w"> </span><span class="err">COMPLETAR</span><span class="w"> </span><span class="err">--</span><span class="nt">&gt;</span>
+<span class="w">    </span>android:versionCode=&quot;1&quot;
+<span class="w">    </span>android:versionName=&quot;1.0&quot;<span class="w"> </span>&gt;
+<span class="w">    </span><span class="nt">&lt;uses-sdk</span><span class="w"> </span><span class="na">android:minSdkVersion=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;application</span>
+<span class="w">        </span><span class="na">android:icon=</span><span class="s">&quot;@drawable/ic_launcher&quot;</span>
+<span class="w">        </span><span class="na">android:label=</span><span class="s">&quot;@string/app_name&quot;</span><span class="w"> </span>
+<span class="w">     </span><span class="nt">&gt;</span>
+<span class="w">       </span><span class="cm">&lt;!-- COMPLETAR POR EL ALUMNO --&gt;</span>
+<span class="nt">&lt;/manifest&gt;</span>
+</code></pre></div></p>
+<p>Listado 2.  Código de layout/ notamedia_final.xml
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;TableLayout</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<span class="w">    </span><span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+<span class="w">    </span><span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span><span class="w"> </span>
+<span class="w">    </span><span class="na">android:background=</span><span class="s">&quot;@drawable/notebook&quot;</span>
+<span class="w">    </span><span class="na">android:paddingLeft=</span><span class="s">&quot;40dp&quot;</span>
+<span class="w">    </span><span class="na">android:paddingRight=</span><span class="s">&quot;5dp&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;TableRow&gt;</span>
+<span class="w">        </span><span class="nt">&lt;TextView</span>
+<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:text=</span><span class="s">&quot;@string/nota_examen&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;EditText</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/editText_examen_final&quot;</span>
+<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:ems=</span><span class="s">&quot;10&quot;</span>
+<span class="w">            </span><span class="na">android:inputType=</span><span class="s">&quot;number|numberDecimal&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;requestFocus</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/EditText&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/TableRow&gt;</span>
+<span class="w">    </span><span class="nt">&lt;TableRow&gt;</span>
+<span class="w">        </span><span class="nt">&lt;TextView</span>
+<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:text=</span><span class="s">&quot;@string/nota_trabajo&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;EditText</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/editText_trabajo_final&quot;</span>
+<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:ems=</span><span class="s">&quot;10&quot;</span>
+<span class="w">            </span><span class="na">android:inputType=</span><span class="s">&quot;number|numberDecimal&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/EditText&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/TableRow&gt;</span>
+<span class="w">    </span><span class="nt">&lt;TableRow</span>
+<span class="w">        </span><span class="na">android:gravity=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Button</span>
+<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/button_calcular&quot;</span>
+<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+<span class="w">            </span><span class="na">android:text=</span><span class="s">&quot;@string/calcular&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/TableRow&gt;</span>
+<span class="nt">&lt;/TableLayout&gt;</span>
+</code></pre></div></p>
+<p>Listado 3. Código de values/strings.xml
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;resources&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;app_name&quot;</span><span class="nt">&gt;</span>NotaMediaADSW<span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nota_trabajo&quot;</span><span class="nt">&gt;</span>Nota<span class="w"> </span>trabajo<span class="w"> </span>final<span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nota_examen&quot;</span><span class="nt">&gt;</span>Nota<span class="w"> </span>examen<span class="w"> </span>final<span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nota_media&quot;</span><span class="nt">&gt;</span>Nota<span class="w"> </span>media<span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;calcular&quot;</span><span class="nt">&gt;</span>Calcular<span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;error_numero&quot;</span><span class="nt">&gt;</span>Los<span class="w"> </span>campos<span class="w"> </span>deben<span class="w"> </span>ser<span class="w"> </span>numéricos<span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;umbral_trabajo&quot;</span><span class="nt">&gt;</span>No<span class="w"> </span>has<span class="w"> </span>superado<span class="w"> </span>el<span class="w"> </span>umbral<span class="w"> </span>de<span class="w"> </span>4.0<span class="w"> </span>en<span class="w"> </span>la<span class="w"> </span>práctica<span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;umbral_examen&quot;</span><span class="nt">&gt;</span>No<span class="w"> </span>has<span class="w"> </span>superado<span class="w"> </span>el<span class="w"> </span>umbral<span class="w"> </span>de<span class="w"> </span>4.0<span class="w"> </span>en<span class="w"> </span>el<span class="w"> </span>examen<span class="nt">&lt;/string&gt;</span><span class="w">        </span>
+<span class="w">     </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;enhorabuena&quot;</span><span class="nt">&gt;</span>Enhorabuena,<span class="w"> </span>que<span class="w"> </span>pases<span class="w"> </span>un<span class="w"> </span>buen<span class="w"> </span>verano.<span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;julio&quot;</span><span class="nt">&gt;</span>Hay<span class="w"> </span>otra<span class="w"> </span>oportunidad<span class="w"> </span>en<span class="w"> </span>julio.<span class="w"> </span><span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nota&quot;</span><span class="nt">&gt;</span>La<span class="w"> </span>nota<span class="w"> </span>es<span class="w"> </span><span class="nt">&lt;/string&gt;</span>
+<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;problema_nota&quot;</span><span class="nt">&gt;</span>Hay<span class="w"> </span>un<span class="w"> </span>problema<span class="w"> </span>para<span class="w"> </span>mostrar<span class="w"> </span>la<span class="w"> </span>nota<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;/resources&gt;</span>
+</code></pre></div></p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Una posible solución es:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;manifest</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<span class="w">    </span><span class="na">package=</span><span class="s">&quot;es.upm.dit.adsw&quot;</span>
+<span class="w">    </span><span class="na">android:versionCode=</span><span class="s">&quot;1&quot;</span>
+<span class="w">    </span><span class="na">android:versionName=</span><span class="s">&quot;1.0&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;uses-sdk</span><span class="w"> </span><span class="na">android:minSdkVersion=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;application</span>
+<span class="w">        </span><span class="na">android:icon=</span><span class="s">&quot;@drawable/ic_launcher&quot;</span>
+<span class="w">        </span><span class="na">android:label=</span><span class="s">&quot;@string/app_name&quot;</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;activity</span>
+<span class="w">            </span><span class="na">android:name=</span><span class="s">&quot;.NotaMediaActivity&quot;</span>
+<span class="w">            </span><span class="na">android:label=</span><span class="s">&quot;@string/app_name&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;intent-filter&gt;</span>
+<span class="w">                </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">android:name=</span><span class="s">&quot;android.intent.action.MAIN&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;category</span><span class="w"> </span><span class="na">android:name=</span><span class="s">&quot;android.intent.category.LAUNCHER&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/intent-filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/activity&gt;</span>
+<span class="w">        </span><span class="nt">&lt;activity</span>
+<span class="w">            </span><span class="na">android:name=</span><span class="s">&quot;.ResultadoActivity&quot;</span>
+<span class="w">            </span><span class="na">android:label=</span><span class="s">&quot;@string/app_name&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/application&gt;</span>
+<span class="nt">&lt;/manifest&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NotaMediaActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Activity</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">APROBADO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;nota&quot;</span><span class="p">;</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">VALOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;valor&quot;</span><span class="p">;</span>
+<span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">TAG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NotaMediaActivity</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getSimpleName</span><span class="p">();</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">EditText</span><span class="w"> </span><span class="n">editNotaFinal</span><span class="p">;</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">EditText</span><span class="w"> </span><span class="n">editTrabajoFinal</span><span class="p">;</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">Button</span><span class="w"> </span><span class="n">buttonGuardar</span><span class="p">;</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onCreate&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+<span class="w">    </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">notamedia_final</span><span class="p">);</span>
+<span class="w">    </span><span class="n">editNotaFinal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditText</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">editText_examen_final</span><span class="p">);</span>
+<span class="w">    </span><span class="n">editTrabajoFinal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditText</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">editText_trabajo_final</span><span class="p">);</span>
+<span class="w">    </span><span class="n">buttonGuardar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">button_calcular</span><span class="p">);</span>
+<span class="w">    </span><span class="n">buttonGuardar</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ProcesaMedia</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProcesaMedia</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">OnClickListener</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">notaFinal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Float</span><span class="p">.</span><span class="na">parseFloat</span><span class="p">(</span><span class="n">editNotaFinal</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">());</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">notaTrabajo</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="n">Float</span><span class="p">.</span><span class="na">parseFloat</span><span class="p">(</span><span class="n">editTrabajoFinal</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">());</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">notaFinal</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">notaFinal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">notaTrabajo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">notaTrabajo</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Toast</span>
+<span class="w">            </span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">getApplication</span><span class="p">(),</span><span class="w"> </span><span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">error_numero</span><span class="p">),</span>
+<span class="w">                </span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_LONG</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">show</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">media</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">0.6f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">notaFinal</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mf">0.4f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">notaTrabajo</span><span class="p">);</span>
+<span class="w">        </span><span class="n">DecimalFormat</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DecimalFormat</span><span class="p">(</span><span class="s">&quot;#.##&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">mediaString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">media</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">aprobado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">notaTrabajo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">notaFinal</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">aprobado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">notaTrabajo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">valor</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">umbral_trabajo</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">notaFinal</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">valor</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">umbral_examen</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">valor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mediaString</span><span class="p">;</span>
+<span class="w">        </span><span class="n">aprobado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">media</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span><span class="n">getApplication</span><span class="p">(),</span><span class="w"> </span><span class="n">ResultadoActivity</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="w">        </span><span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">APROBADO</span><span class="p">,</span><span class="w"> </span><span class="n">aprobado</span><span class="p">);</span>
+<span class="w">        </span><span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">VALOR</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Nota &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">aprobado</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">valor</span><span class="p">);</span>
+<span class="w">        </span><span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">NumberFormatException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Toast</span>
+<span class="w">            </span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">getApplication</span><span class="p">(),</span><span class="w"> </span><span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">error_numero</span><span class="p">),</span>
+<span class="w">                </span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_LONG</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">show</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 
 
 
@@ -2869,7 +3099,8 @@
 
 
 
-
+  
+  
 
 
 
