@@ -3121,11 +3121,11 @@ El algoritmo es de complejidad <span class="arithmatex">\(O(n)\)</span> porque e
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div>
 El algoritmo es de complejidad <span class="arithmatex">\(O(log n)\)</span> porque es un esquema de división sucesiva. Más desarrollado:</p>
-<pre><code>- Al principio, $h$ puede estar entre $O$ y $N-1$;
+<pre><code>Al principio, $h$ puede estar entre $O$ y $N-1$;
 
-- Tras 1 paso, $h$ puede estar entre $(O y N/2)$ o entre $(N/2 y N)$; es decir, hemos reducido las opciones a la mitad $(N/2)$;
+Tras 1 paso, $h$ puede estar entre $(O y N/2)$ o entre $(N/2 y N)$; es decir, hemos reducido las opciones a la mitad $(N/2)$;
 
-- Tras $k$ pasos, el rango es $N/2^k$; de forma que el rango se reduce a 1 ($h$ encontrado) cuando $1 \leq N/2^k \rightarrow k=log_{2} (N) \subset O(log N)$.
+Tras $k$ pasos, el rango es $N/2^k$; de forma que el rango se reduce a 1 ($h$ encontrado) cuando $1 \leq N/2^k \rightarrow k=log_{2} (N) \subset O(log N)$.
 </code></pre>
 </details>
 <h2 id="problema-2">Problema 2</h2>
