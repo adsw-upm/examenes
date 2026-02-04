@@ -2874,7 +2874,7 @@
 
   <h1>P1 ex01</h1>
 
-<p>A continuación se describe el método cuantasVeces de la clase P1. No programe la clase P1.
+<p>A continuación se describe el método <code>cuantasVeces</code> de la clase <code>P1</code>. No programe la clase <code>P1</code>.
 <div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm"> * Determina cuántas veces aparece número en la lista de enteros</span>
 <span class="cm"> * @param lista lista de enteros en que buscamos</span>
@@ -2885,7 +2885,7 @@
 <span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuantasVeces</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="n">lista</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numero</span><span class="p">)</span>
 </code></pre></div></p>
 <ul>
-<li>(2 puntos) Programe una versión iterativa del método cuantasVeces. ¿Encuentra alguna similitud de esta versión iterativa con algún algoritmo conocido, con cuál? </li>
+<li>(2 puntos) Programe una versión iterativa del método <code>cuantasVeces</code>. ¿Encuentra alguna similitud de esta versión iterativa con algún algoritmo conocido, con cuál? </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2899,15 +2899,14 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(3 puntos) Programe una versión recursiva del método cuantasVeces. .
-<em>Pista</em>: puede utilizar un método auxiliar privado (que será el recursivo) para recorrer  el  array  de forma  recursiva,  comparando  en  cada  recursión  un  elemento  del  array.  Por  ejemplo,  podría  programar  y llamar a un método privado como el que sigue: 
+<li>(3 puntos) Programe una versión recursiva del método <code>cuantasVeces</code>. <em>Pista</em>: puede utilizar un método auxiliar privado (que será el recursivo) para recorrer  el  array  de forma  recursiva,  comparando  en  cada  recursión  un  elemento  del  array.  Por  ejemplo,  podría  programar  y llamar a un método privado como el que sigue: 
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuantasVeces</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="n">lista</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numero</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">indice</span><span class="p">).</span><span class="w"> </span>
 </code></pre></div>
 El parámetro indice es el índice para recorrer el array de forma recursiva.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>El método cuantasVeces invoca el método auxiliar.
+<p>El método <code>cuantasVeces</code> invoca el método auxiliar.
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuantasVecesRecursivo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="n">lista</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numero</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cuantasVeces</span><span class="p">(</span><span class="n">lista</span><span class="p">,</span><span class="w"> </span><span class="n">numero</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>

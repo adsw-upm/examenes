@@ -3023,7 +3023,7 @@
 
 <h1 id="examen-2012-parcial-1">Examen 2012 — Parcial 1</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>A continuación se describe el método cuantasVeces de la clase P1. No programe la clase P1.
+<p>A continuación se describe el método <code>cuantasVeces</code> de la clase <code>P1</code>. No programe la clase <code>P1</code>.
 <div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm"> * Determina cuántas veces aparece número en la lista de enteros</span>
 <span class="cm"> * @param lista lista de enteros en que buscamos</span>
@@ -3034,7 +3034,7 @@
 <span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuantasVeces</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="n">lista</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numero</span><span class="p">)</span>
 </code></pre></div></p>
 <ul>
-<li>(2 puntos) Programe una versión iterativa del método cuantasVeces. ¿Encuentra alguna similitud de esta versión iterativa con algún algoritmo conocido, con cuál? </li>
+<li>(2 puntos) Programe una versión iterativa del método <code>cuantasVeces</code>. ¿Encuentra alguna similitud de esta versión iterativa con algún algoritmo conocido, con cuál? </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3048,15 +3048,14 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(3 puntos) Programe una versión recursiva del método cuantasVeces. .
-<em>Pista</em>: puede utilizar un método auxiliar privado (que será el recursivo) para recorrer  el  array  de forma  recursiva,  comparando  en  cada  recursión  un  elemento  del  array.  Por  ejemplo,  podría  programar  y llamar a un método privado como el que sigue: 
+<li>(3 puntos) Programe una versión recursiva del método <code>cuantasVeces</code>. <em>Pista</em>: puede utilizar un método auxiliar privado (que será el recursivo) para recorrer  el  array  de forma  recursiva,  comparando  en  cada  recursión  un  elemento  del  array.  Por  ejemplo,  podría  programar  y llamar a un método privado como el que sigue: 
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuantasVeces</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="n">lista</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numero</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">indice</span><span class="p">).</span><span class="w"> </span>
 </code></pre></div>
 El parámetro indice es el índice para recorrer el array de forma recursiva.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>El método cuantasVeces invoca el método auxiliar.
+<p>El método <code>cuantasVeces</code> invoca el método auxiliar.
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuantasVecesRecursivo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="n">lista</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numero</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cuantasVeces</span><span class="p">(</span><span class="n">lista</span><span class="p">,</span><span class="w"> </span><span class="n">numero</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
@@ -3094,40 +3093,45 @@ Se puede probar, por ejemplo, con:
 </code></pre></div></p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<h1 id="problema-2-5-puntos">Problema 2 (5 puntos)</h1>
 <p>Dado el siguiente algoritmo de ordenación:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="kt">long</span><span class="o">[]</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">datos</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">datos</span><span class="o">[</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">datos</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="o">[</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
-<span class="w">            </span><span class="n">j</span><span class="o">--</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">datos</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="mo">01</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="kt">long</span><span class="o">[]</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">02</span><span class="w">     </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">datos</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">03</span><span class="w">         </span><span class="kt">long</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
+<span class="mo">04</span><span class="w">         </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="mo">05</span><span class="w">         </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">datos</span><span class="o">[</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">06</span><span class="w">             </span><span class="n">datos</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="o">[</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+<span class="mo">07</span><span class="w">             </span><span class="n">j</span><span class="o">--</span><span class="p">;</span>
+<span class="mi">08</span><span class="w">         </span><span class="p">}</span>
+<span class="mi">09</span><span class="w">         </span><span class="n">datos</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="mi">10</span><span class="w">     </span><span class="p">}</span>
+<span class="mi">11</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<hr />
-<h2 id="05-puntos-indique-el-nombre-del-algoritmo">(0.5 puntos) Indique el nombre del algoritmo</h2>
+<ul>
+<li>(a) (0.5 puntos) Indique el nombre del algoritmo.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Se trata del algoritmo de ordenación por inserción.</p>
 </details>
-<hr />
-<h2 id="3-puntos-indique-que-cambios-haria-en-el-codigo-indicando-el-numero-de-linea-para-conseguir-que-el-metodo-devolviera-el-numero-de-veces-que-compara-dos-elementos-del-array">(3 puntos) Indique qué cambios haría en el código, indicando el número de línea, para conseguir que el método devolviera el número de veces que compara dos elementos del array.</h2>
+<ul>
+<li>(b) (3 puntos) Indique qué cambios haría en el código, indicando el número de línea, para conseguir que el método devolviera el número de veces que compara dos elementos del array.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>La comparación se efectúa al comprobar la condición del bucle en la línea <code>5</code>.
-El cuerpo del bucle se ejecuta si <code>j &gt; 0</code> <strong>y además</strong> <code>x &lt; datos[j - 1]</code>.
+El cuerpo del bucle se ejecuta si <code>j &gt; 0</code> y además <code>x &lt; datos[j - 1]</code>.
 Por tanto, en ese caso se ha efectuado una comparación entre <code>x</code> y un elemento del array.</p>
 <p>Sin embargo, si el bucle no se ejecuta puede ser por dos causas:</p>
 <ol>
-<li><code>j == 0</code>, en cuyo caso <strong>no</strong> se llega a efectuar la comparación, ya que el operador <code>&amp;&amp;</code> no evalúa el segundo término.  </li>
-<li><code>j &gt; 0</code> y <code>x &gt;= datos[j - 1]</code>, en cuyo caso <strong>sí</strong> se efectúa la comparación.</li>
+<li>
+<p><code>j == 0</code>, en cuyo caso no se llega a efectuar la comparación, ya que el operador <code>&amp;&amp;</code> no evalúa el segundo término.  </p>
+</li>
+<li>
+<p><code>j &gt; 0</code> y <code>x &gt;= datos[j - 1]</code>, en cuyo caso sí se efectúa la comparación.</p>
+</li>
 </ol>
-<p>Para contar correctamente las comparaciones, hay que desdoblar la condición del bucle.<br />
-Una forma de hacerlo es:</p>
+<p>Para contar correctamente las comparaciones, hay que desdoblar la condición del bucle.  </p>
+<p>Una forma de hacerlo es:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="kt">long</span><span class="o">[]</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">numeroComparaciones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">datos</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3149,13 +3153,13 @@ Una forma de hacerlo es:</p>
 </code></pre></div>
 <p>Líneas modificadas:</p>
 <ul>
-<li><strong>Línea 1</strong> sustituida por:</li>
+<li>Línea 1 sustituida por:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="kt">long</span><span class="o">[]</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">numeroComparaciones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </code></pre></div>
 <ul>
-<li><strong>Líneas 5–8</strong> sustituidas por:</li>
+<li>Líneas 5–8 sustituidas por:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="o">++</span><span class="n">numeroComparaciones</span><span class="p">;</span>
@@ -3195,10 +3199,12 @@ Una forma de hacerlo es:</p>
 </code></pre></div>
 </details>
 <hr />
-<h2 id="15-puntos-programe-una-prueba-en-junit3-de-la-modificacion-realizada-en-el-apartado-b-para-el-caso-3-1-2">(1.5 puntos) Programe una prueba en JUnit3 de la modificación realizada en el apartado b), para el caso <code>{3, 1, 2}</code>.</h2>
+<ul>
+<li>(c) (1.5 puntos) Programe una prueba en JUnit3 de la modificación realizada en el apartado (b), para el caso <code>{3, 1, 2}</code>.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>En este caso se efectúan <strong>3 comparaciones</strong>. La prueba es:</p>
+<p>En este caso se efectúan 3 comparaciones. La prueba es:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">long</span><span class="o">[]</span><span class="w"> </span><span class="n">datos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">};</span>
 <span class="w">    </span><span class="n">P2</span><span class="w"> </span><span class="n">algoritmo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">P2</span><span class="p">();</span>
