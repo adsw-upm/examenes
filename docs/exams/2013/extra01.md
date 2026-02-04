@@ -73,22 +73,22 @@ Si el árbol contiene los valores (1,3,4,6,10,14), obtendremos
     
     - Sumas:
     
-    1. `nodo == null`$\rightarrow T(n) = 0$
+        1. `nodo == null`$\rightarrow T(n) = 0$
     
-    2. `nodo.valor == x`$\rightarrow T(n) = 1 + T(n/2)$
+        2. `nodo.valor == x`$\rightarrow T(n) = 1 + T(n/2)$
     
-    3. `nodo.valor < x`$\rightarrow T(n) = 2 + 2T(n/2)$
+        3. `nodo.valor < x`$\rightarrow T(n) = 2 + 2T(n/2)$
     
-    4. `nodo.valor > x`$\rightarrow T(n) = T(n/2)$
+        4. `nodo.valor > x`$\rightarrow T(n) = T(n/2)$
     
     - Llamadas recursivas:
     
-    1. `nodo == null`$\rightarrow T(n) = 0$
+        1. `nodo == null`$\rightarrow T(n) = 0$
     
-    2. `nodo.valor == x`$\rightarrow T(n) = 1 + T(n/2)$
+        2. `nodo.valor == x`$\rightarrow T(n) = 1 + T(n/2)$
     
-    3. `nodo.valor < x`$\rightarrow T(n) = 1 + 2T(n/2)$
+        3. `nodo.valor < x`$\rightarrow T(n) = 1 + 2T(n/2)$
 
-    4. `nodo.valor > x`$\rightarrow T(n) = T(n/2)$
+        4. `nodo.valor > x`$\rightarrow T(n) = T(n/2)$
 
     Suponiendo que el caso 3 es el más frecuente, $T(n) ≈ 1 + 2T(n/2)$ que es lineal, $O(n)$.
