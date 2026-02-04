@@ -2971,13 +2971,10 @@ El algoritmo es de complejidad <span class="arithmatex">\(O(n)\)</span> porque e
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">busca</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div>
-El algoritmo es de complejidad <span class="arithmatex">\(O(log n)\)</span> porque es un esquema de división sucesiva. Más desarrollado:</p>
-<pre><code>Al principio, $h$ puede estar entre $O$ y $N-1$;
-
-Tras 1 paso, $h$ puede estar entre $(O y N/2)$ o entre $(N/2 y N)$; es decir, hemos reducido las opciones a la mitad $(N/2)$;
-
-Tras $k$ pasos, el rango es $N/2^k$; de forma que el rango se reduce a 1 ($h$ encontrado) cuando $1 \leq N/2^k \rightarrow k=log_{2} (N) \subset O(log N)$.
-</code></pre>
+El algoritmo es de complejidad <span class="arithmatex">\(O(log n)\)</span> porque es un esquema de división sucesiva. Más desarrollado:
+    * Al principio, <span class="arithmatex">\(h\)</span> puede estar entre <span class="arithmatex">\(O\)</span> y <span class="arithmatex">\(N-1\)</span>;
+    * Tras 1 paso, <span class="arithmatex">\(h\)</span> puede estar entre <span class="arithmatex">\((O y N/2)\)</span> o entre <span class="arithmatex">\((N/2 y N)\)</span>; es decir, hemos reducido las opciones a la mitad <span class="arithmatex">\((N/2)\)</span>;
+    * Tras <span class="arithmatex">\(k\)</span> pasos, el rango es <span class="arithmatex">\(N/2^k\)</span>; de forma que el rango se reduce a 1 (<span class="arithmatex">\(h\)</span> encontrado) cuando <span class="arithmatex">\(1 \leq N/2^k \rightarrow k=log_{2} (N) \subset O(log N)\)</span>.</p>
 </details>
 
 
