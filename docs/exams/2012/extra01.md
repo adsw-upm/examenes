@@ -121,13 +121,15 @@ Se pide:
 ??? note "Mostrar solución"
     - Caso peor: el comportamiento es equivalente a quicksort cuando siempre se elige un pivote pésimo. La partición genera tamaños $1$ y $n-1$, por lo que el coste es:
 
-    $n + (n-1) + (n-2) + \dots + 1 = O(n^2)$
+        $n + (n-1) + (n-2) + \dots + 1 = O(n^2)$
 
     - Caso medio: cada paso divide el array aproximadamente por la mitad, y solo se sigue por la parte donde está la mediana:
 
-    $n + \frac{n}{2} + \frac{n}{4} + \frac{n}{8} + \dots = 2n = O(n)$
+        $n + \frac{n}{2} + \frac{n}{4} + \frac{n}{8} + \dots = 2n = O(n)$
 
     Por tanto:
+
     - Caso peor: $O(n^2)$
+
     - Caso medio: $O(n)$
     
