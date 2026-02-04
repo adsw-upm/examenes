@@ -2884,7 +2884,155 @@
 <p>(b) (3 puntos) numeroVecesUsadoArco: genera un diccionario (Map<Edge, Integer>) con el número de veces que aparece cada arco en la lista de caminos del parámetro de entrada.</p>
 </li>
 </ul>
-<p><img alt="" src="../placeholder.jpg" /></p>
+<table>
+<thead>
+<tr>
+<th><strong>menorCamino</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public java.util.List&lt;Edge&gt; menorCamino (java.util.List&lt;java.util.List&lt;Edge&gt;&gt; listaCaminos)</code></td>
+</tr>
+<tr>
+<td>Seleccionar el camino con el menor coste total.</td>
+</tr>
+<tr>
+<td><strong>Parameters</strong></td>
+</tr>
+<tr>
+<td>listaCaminos - una lista de caminos del grafo del sistema entre dos vértices.</td>
+</tr>
+<tr>
+<td><strong>Returns</strong></td>
+</tr>
+<tr>
+<td>La respuesta es un camino que sea el mínimo de la lista recibida. Si hubieran varios caminos mínimos con el mismo coste, se puede retornar cualquiera de ellos.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>numeroVecesUsadoArco</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public java.util.Map&lt;Edge,java.lang.Integer&gt; numeroVecesUsadoArco (java.util.List&lt;java.util.List&lt;Edge&gt;&gt; listaCaminos)</code></td>
+</tr>
+<tr>
+<td>Determinta cuántas veces aparece cada arco en una lista de caminos</td>
+</tr>
+<tr>
+<td>Parameters</td>
+</tr>
+<tr>
+<td>listaCaminos - una lista de caminos del grafo del sistema entre dos vértices.</td>
+</tr>
+<tr>
+<td>Returns</td>
+</tr>
+<tr>
+<td>Devuelve un diccionario, en el que la clave es un arco y el valor un entero que representa el número de veces que el arco aparece en el parámetro de entrada.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<table>
+<thead>
+<tr>
+<th><strong>Edge</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int compareTo(Edge that)</code></td>
+<td>Compares two edges by weight.</td>
+</tr>
+<tr>
+<td><code>int either()</code></td>
+<td>Returns either endpoint of this edge.</td>
+</tr>
+<tr>
+<td><code>int other(int vertex)</code></td>
+<td>Returns the endpoint of this edge that is different from the given vertex.</td>
+</tr>
+<tr>
+<td><code>Double weight()</code></td>
+<td>Returns the weight of this edge.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>List</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean add(E e)</code></td>
+<td>Appends the specified element to the end of this list (optional operation).</td>
+</tr>
+<tr>
+<td><code>boolean contains(Object o)</code></td>
+<td>Returns true if this list contains the specified element.</td>
+</tr>
+<tr>
+<td><code>E get(int index)</code></td>
+<td>Returns the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td><code>boolean isEmpty()</code></td>
+<td>Returns true if this list contains no elements.</td>
+</tr>
+<tr>
+<td><code>E remove(int index)</code></td>
+<td>Removes the element at the specified position in this list (optional operation).</td>
+</tr>
+<tr>
+<td><code>int size()</code></td>
+<td>Returns the number of elements in this list.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Map</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean containsKey(Object key)</code></td>
+<td>Returns true if this map contains a mapping for the specified key.</td>
+</tr>
+<tr>
+<td><code>V get(Object key)</code></td>
+<td>Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.</td>
+</tr>
+<tr>
+<td><code>boolean isEmpty()</code></td>
+<td>Returns true if this map contains no key-value mappings.</td>
+</tr>
+<tr>
+<td><code>V put(K key, V value)</code></td>
+<td>Associates the specified value with the specified key in this map.</td>
+</tr>
+<tr>
+<td><code>V remove(Object key)</code></td>
+<td>Removes the mapping for the specified key from this map if present.</td>
+</tr>
+<tr>
+<td><code>int size()</code></td>
+<td>Returns the number of key-value mappings in this map.</td>
+</tr>
+</tbody>
+</table>
 <p>Nota: En la implementación de estos métodos, se gestionan listas de arcos. No es necesario conocer, ni gestionar los vértices conectados en los caminos incluidos en la lista de entrada.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
