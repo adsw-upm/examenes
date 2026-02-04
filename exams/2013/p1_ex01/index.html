@@ -2907,10 +2907,10 @@
 </table>
 <p>Supondremos que todos los datos del array son distintos.</p>
 <ul>
-<li>(a) (1,5 puntos) Dados un array y el desplazamiento <span class="arithmatex">\( h \)</span>, desarrolle un algoritmo de complejidad O(1) que devuelva el número mayor conociendo el array y el desplazamiento:
+<li>(a) (1,5 puntos) Dados un array y el desplazamiento <span class="arithmatex">\( h \)</span>, desarrolle un algoritmo de complejidad <span class="arithmatex">\(O(1)\)</span> que devuelva el número mayor conociendo el array y el desplazamiento:
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor1</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">)</span>
 </code></pre></div>
-Demuestre que el algoritmo es efectivamente de complejidad O(1).</li>
+Demuestre que el algoritmo es efectivamente de complejidad <span class="arithmatex">\(O(1)\)</span>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2919,13 +2919,13 @@ Demuestre que el algoritmo es efectivamente de complejidad O(1).</li>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-El algoritmo es de complejidad O(1) porque el número de pasos del algoritmo es independiente de n.</p>
+El algoritmo es de complejidad <span class="arithmatex">\(O(1)\)</span> porque el número de pasos del algoritmo es independiente de <span class="arithmatex">\(n\)</span>.</p>
 </details>
 <ul>
-<li>(b) (1,5 puntos) Desarrolle un algoritmo de complejidad O(n) que devuelva el número mayor conociendo el array, pero sin saber el desplazamiento:
+<li>(b) (1,5 puntos) Desarrolle un algoritmo de complejidad <span class="arithmatex">\(O(n)\)</span> que devuelva el número mayor conociendo el array, pero sin saber el desplazamiento:
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor2</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span>
 </code></pre></div>
-Demuestre que el algoritmo es de complejidad O(n)</li>
+Demuestre que el algoritmo es de complejidad <span class="arithmatex">\(O(n)\)</span>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2939,17 +2939,17 @@ Demuestre que el algoritmo es de complejidad O(n)</li>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">mayor</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-El algoritmo es de complejidad O(n) porque es un bucle que se ejecuta n veces.</p>
+El algoritmo es de complejidad <span class="arithmatex">\(O(n)\)</span> porque es un bucle que se ejecuta <span class="arithmatex">\(n\)</span> veces.</p>
 </details>
 <ul>
-<li>(c) (2 puntos) Desarrolle un algoritmo de complejidad O(log n) que devuelva el número mayor conociendo el array, pero sin conocer el desplazamiento:
+<li>(c) (2 puntos) Desarrolle un algoritmo de complejidad <span class="arithmatex">\(O(log n)\)</span> que devuelva el número mayor conociendo el array, pero sin conocer el desplazamiento:
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor3</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span>
 </code></pre></div></li>
 </ul>
 <p>Pista:</p>
-<p>Hay que usar el algoritmo del apartado a) probando con diferentes valores de h. Para un valor de h:
-- Sabemos que es el correcto si el número siguiente es menor que <code>array[h]</code>.
-- Sabemos si hay que aumentar o disminuir h comparando <code>array[h]</code> con <code>array[0]</code>.</p>
+<p>Hay que usar el algoritmo del apartado (a) probando con diferentes valores de <span class="arithmatex">\(h\)</span>. Para un valor de <span class="arithmatex">\(h\)</span>:
+    - Sabemos que es el correcto si el número siguiente es menor que <code>array[h]</code>.
+    - Sabemos si hay que aumentar o disminuir <span class="arithmatex">\(h\)</span> comparando <code>array[h]</code> con <code>array[0]</code>.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>La siguiente solución utiliza un método auxiliar, <code>busca</code>:</p>
@@ -2971,10 +2971,10 @@ El algoritmo es de complejidad O(n) porque es un bucle que se ejecuta n veces.</
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">busca</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div>
-El algoritmo es de complejidad O(log n) porque es un esquema de división sucesiva. Más desarrollado:
-- Al principio, h puede estar entre O y N-1
-- Tras 1 paso, h puede estar entre (O y N/2) o entre (N/2 y N); es decir, hemos reducido las opciones a la mitad (N/2)
-- Tras k pasos, el rango es N/2<sup>k</sup>; de forma que el rango se reduce a 1 (h encontrado) cuando 1 &lt;= N/2<sup>k</sup> -&gt; k=log(N)1 &lt;= N / 2^k  ➜  k = log₂(N) ⊂ O(log N)</p>
+El algoritmo es de complejidad <span class="arithmatex">\(O(log n)\)</span> porque es un esquema de división sucesiva. Más desarrollado:
+    - Al principio, <span class="arithmatex">\(h\)</span> puede estar entre <span class="arithmatex">\(O\)</span> y <span class="arithmatex">\(N-1\)</span>;
+    - Tras 1 paso, <span class="arithmatex">\(h\)</span> puede estar entre <span class="arithmatex">\((O y N/2)\)</span> o entre <span class="arithmatex">\((N/2 y N)\)</span>; es decir, hemos reducido las opciones a la mitad <span class="arithmatex">\((N/2)\)</span>;
+    - Tras <span class="arithmatex">\(k\)</span> pasos, el rango es <span class="arithmatex">\(N/2^k\)</span>; de forma que el rango se reduce a 1 (<span class="arithmatex">\(h\)</span> encontrado) cuando <span class="arithmatex">\(1 \leq N/2^k \rightarrow k=log(N)\)</span>;  cuando <span class="arithmatex">\(1 \leq N/2^k \rightarrow k = log_2 (N) ⊂ O(log N)\)</span></p>
 </details>
 
 
