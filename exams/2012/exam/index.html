@@ -23,7 +23,7 @@
     
     
       
-        <title>Examen 2012 — Final - Catálogo ejercicios años anteriores</title>
+        <title>Macro Rendering Error - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#examen-2012-final" class="md-skip">
+        <a href="#macro-rendering-error" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Examen 2012 — Final
+              Macro Rendering Error
             
           </span>
         </div>
@@ -561,7 +561,7 @@
   <span class="md-ellipsis">
     
   
-    Examen 2012 — Final
+    Macro Rendering Error
   
 
     
@@ -2938,355 +2938,23 @@
 
 
 
-<h1 id="examen-2012-final">Examen 2012 — Final</h1>
-<h1 id="ejercicio-1">Ejercicio 1</h1>
-<ul>
-<li>(a) (1,5 puntos) Se pide escribir un algoritmo de ordenación con la siguiente interfaz</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="nf">ordena</span><span class="p">(</span><span class="kt">long</span><span class="o">[]</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span>
+<h1 id="macro-rendering-error"><em>Macro Rendering Error</em></h1>
+<p><em>File</em>: <code>exams/2012/exam.md</code></p>
+<p><em>FileNotFoundError</em>: include: file not found: ex02.md</p>
+<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
+  File &quot;/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/mkdocs_macros/plugin.py&quot;, line 703, in render
+    return md_template.render(**page_variables)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File &quot;/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/jinja2/environment.py&quot;, line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File &quot;/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/jinja2/environment.py&quot;, line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File &quot;&lt;template&gt;&quot;, line 9, in top-level template code
+  File &quot;/home/runner/work/examenes/examenes/main.py&quot;, line 42, in include
+    raise FileNotFoundError(f&quot;include: file not found: {path}&quot;)
+FileNotFoundError: include: file not found: ex02.md
 </code></pre></div>
-<p>de tal forma que los datos de entrada no se modifican y el método devuelve un array que contiene en qué posición debería ir del dato correspondiente para estar en orden ascendente. Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code>datos:   [8, 42, 46, 24, 29, 7]
-indices: [1,  4,  5,  2,  3, 0]
-</code></pre></div>
-<p>que se lee como que
-    - datos[0] se ordenaría en la posición 1
-    - datos[1] se ordenaría en la posición 4
-    - datos[2] se ordenaría en la posición 5
-    - etc.</p>
-<p>NOTA: Si hubiera 2 datos de igual valor, da igual cual de ellos va antes o después. Elija lo que le sea más cómodo.</p>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>Una posible solución es:
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="kt">long</span><span class="o">[]</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">indices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">datos</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Arrays</span><span class="p">.</span><span class="na">fill</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">indices</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">iMenor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="n">menor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Long</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">datos</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">indices</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">datos</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">menor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">iMenor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
-<span class="w">                </span><span class="n">menor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">indices</span><span class="o">[</span><span class="n">iMenor</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">indices</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></p>
-</details>
-<ul>
-<li>(b) (1,5 puntos) Estime la complejidad del  algoritmo  del  punto anterior,  contando  el  número  de  comparaciones entre datos (enteros <code>long</code>) que hay que hacer en el caso peor.</li>
-</ul>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>Hay 2 bucles, uno dentro del otro.</p>
-<p>El bucle exterior se hace <span class="arithmatex">\(N\)</span> veces.</p>
-<p>En el bucle interior, la primera vez se hacen <span class="arithmatex">\(N-1\)</span> comparaciones; la segunda vez, <span class="arithmatex">\(N-2\)</span>; la tercera <span class="arithmatex">\(N-3\)</span>, etc. </p>
-<p>En total <span class="arithmatex">\((N-1) + (N-2) + ... + 1 \leftarrow \mathcal{O}(N^2)\)</span></p>
-</details>
-<h1 id="ejercicio-2">Ejercicio 2</h1>
-<p>Sea un puente con capacidad para un vehículo y dos accesos: norte y sur. En caso de que haya vehículos intentando entrar por los dos accesos, debe entrar un vehículo por el extremo en el que haya más esperando (si el número de vehículos esperando en cada extremo es el mismo, no es necesario imponer un orden). En el caso de que intente entrar una ambulancia, tendrá prioridad sobre el resto de vehículos. No es necesario considerar el caso en que dos ambulancias intenten acceder simultáneamente al puente. </p>
-<ul>
-<li>(a) (3 puntos) Se  pide  desarrollar  una  clase  monitor  <code>GestorPuente</code>  que  gestione  el  acceso  al  puente,  según  la especificación  previa.  Los  métodos  de  esta  clase  no  retornan  valores.  El  esqueleto  de  la  clase  es  el siguiente:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorPuente</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarNorte</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...}</span>
-<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarSur</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...}</span>
-<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarAmbulancia</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...}</span>
-<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">salirPuente</span><span class="p">(){...}</span>
-<span class="p">}</span>
-</code></pre></div>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>Una posible solución es:
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">es.upm.dit.adsw.puenteTurnoEspera</span><span class="p">;</span>
-<span class="cm">/**</span>
-<span class="cm">* Monitor que gestiona la entrada a un puente de coches</span>
-<span class="cm">* por sus dos extremos (norte y sur). Dentro el puente sólo puede</span>
-<span class="cm">* haber un coche. Si hay coches esperando en sus dos extremos, entra</span>
-<span class="cm">* uno por el extremos con más coches esperando. Si intenta entrar una</span>
-<span class="cm">* ambulancia, tendrá prioridad. No pueden intentar dos ambulancias</span>
-<span class="cm">* simultaneamente.</span>
-<span class="cm">*/</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorPuente</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// monitor</span>
-<span class="cm">/**</span>
-<span class="cm">* Indica si hay un coche dentro del puente</span>
-<span class="cm">*/</span>
-<span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="cm">/**</span>
-<span class="cm">* Indica el número de coches que están esperando</span>
-<span class="cm">*  para entrar en el puente por el Norte</span>
-<span class="cm">*/</span>
-<span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nCochesNorte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/**</span>
-<span class="cm">* Indica el número de coches que están esperando</span>
-<span class="cm">*  para entrar en el puente por el Sur</span>
-<span class="cm">*/</span>
-<span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nCochesSur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/**</span>
-<span class="cm">    Indica si hay una ambulancia esperando.</span>
-
-<span class="cm">*/</span>
-<span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="cm">/**</span>
-<span class="cm">* Método que ejecutan los coches que quiere entrar por el norte.</span>
-<span class="cm">*  El coche entrará en el puente cuando esté vacío, no haya más</span>
-<span class="cm">*  coches esperando en el sur y no haya ambulancias.</span>
-<span class="cm">*/</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarNorte</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">nCochesNorte</span><span class="o">++</span><span class="p">;</span>
-<span class="w">    </span><span class="o">!!</span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">nCochesNorte</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nCochesSur</span><span class="p">)</span>
-<span class="w">        </span><span class="n">wait</span><span class="p">();</span>
-<span class="w">    </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">    </span><span class="n">nCochesNorte</span><span class="o">--</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="cm">/**</span>
-<span class="cm">* Método que ejecutan los coches que quiere entrar por el sur.</span>
-<span class="cm">* El coche entrará en el puente cuando esté vacío, no haya más</span>
-<span class="cm">* coches esperando en el sur y no haya ambulancias.</span>
-<span class="cm">*/</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarSur</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">nCochesSur</span><span class="o">++</span><span class="p">;</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">nCochesSur</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nCochesNorte</span><span class="p">)</span>
-<span class="w">    </span><span class="n">wait</span><span class="p">();</span>
-<span class="w">    </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">    </span><span class="n">nCochesSur</span><span class="o">--</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cm">/**</span>
-<span class="cm">* Método que ejecutan las ambulancias</span>
-<span class="cm">*/</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrarAmbulancia</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">hayCocheEnPuente</span><span class="p">)</span><span class="w"> </span><span class="n">wait</span><span class="p">();</span>
-<span class="w">    </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">    </span><span class="n">hayAmbulancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="cm">/**</span>
-<span class="cm">* Método que invoca un coche que está en el puente al salir de él.</span>
-<span class="cm">*/</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">salirPuente</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">hayCocheEnPuente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">    </span><span class="n">notifyAll</span><span class="p">();</span>
-<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></p>
-</details>
-<h1 id="ejercicio-3">Ejercicio 3</h1>
-<p>Tenemos una aplicación de Android que calcula la nota de ADSW como se muestra a continuación.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img alt="Figura de la aplicación" src="../extra/img-004.png" /></td>
-<td><img alt="Figura de la aplicación" src="../extra/img-005.png" /></td>
-</tr>
-<tr>
-<td><img alt="Figura de la aplicación" src="../extra/img-002.png" /></td>
-<td><img alt="Figura de la aplicación" src="../extra/img-003.png" /></td>
-</tr>
-</tbody>
-</table>
-<p>Como hemos visto, la aplicación consta de dos pantallas, un formulario inicial (<code>NotaMediaActivity</code>) y  una pantalla que muestra  una foto y  el resultado (<code>ResultadoActivity</code>). Ambas clases están en el paquete <code>es.upm.dit.adsw</code>.</p>
-<p>El cálculo de  la nota media se realiza de la siguiente forma:
-    - Sólo se hace media si ambas notas  son mayores o iguales a 4. 
-    - La nota es 0.6 <span class="arithmatex">\(\cdot\)</span> * nota de de examen + 0.4 * nota de trabajo</p>
-<ul>
-<li>
-<p>(a) (1 punto) Complete el código del fichero de manifiesto del listado 1 para que la aplicación muestre la pantalla inicial (formulario) y pueda pasar a la segunda de resultado con la media.</p>
-</li>
-<li>
-<p>(b)(2 puntos) Programe la actividad <code>NotaMediaActivity</code>. Debe tener en cuenta:</p>
-<ul>
-<li>Si el usuario no rellena un campo o introduce un valor no numérico, debe mostrar un mensaje indicándole que debe introducir valores numéricos (use un <code>Toast</code>).</li>
-<li>La actividad <code>ResultadoActivity</code> espera recibir una intención con dos parámetros extra: <ul>
-<li>un primer parámetro de tipo boolean denominado <code>aprobado</code> (<code>true</code> si cumple umbrales y media &gt; = 5; <code>false</code> en caso contrario)</li>
-<li>un segundo parámetro de tipo <code>String</code> denominado <code>valor</code> (contiene un mensaje indicando qué umbral no se ha superado si no se puede hacer la media, o bien el valor de la nota media).</li>
-</ul>
-</li>
-<li>Los listados 2 y 3 le proporcionan información del layout de <code>NotaMediaActivity</code> y las cadenas string.xml de la aplicación.</li>
-</ul>
-</li>
-</ul>
-<hr />
-<p>Listado 1. Código de AndroidManifest.xml
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-<span class="nt">&lt;manifest</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
-<span class="w">    </span><span class="na">package=</span><span class="s">&quot;COMPLETAR POR EL ALUMMNO&quot;</span><span class="w"> </span><span class="err">&lt;!--</span><span class="w"> </span><span class="err">COMPLETAR</span><span class="w"> </span><span class="err">--</span><span class="nt">&gt;</span>
-<span class="w">    </span>android:versionCode=&quot;1&quot;
-<span class="w">    </span>android:versionName=&quot;1.0&quot;<span class="w"> </span>&gt;
-<span class="w">    </span><span class="nt">&lt;uses-sdk</span><span class="w"> </span><span class="na">android:minSdkVersion=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;application</span>
-<span class="w">        </span><span class="na">android:icon=</span><span class="s">&quot;@drawable/ic_launcher&quot;</span>
-<span class="w">        </span><span class="na">android:label=</span><span class="s">&quot;@string/app_name&quot;</span><span class="w"> </span>
-<span class="w">     </span><span class="nt">&gt;</span>
-<span class="w">       </span><span class="cm">&lt;!-- COMPLETAR POR EL ALUMNO --&gt;</span>
-<span class="nt">&lt;/manifest&gt;</span>
-</code></pre></div></p>
-<p>Listado 2.  Código de layout/ notamedia_final.xml
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-<span class="nt">&lt;TableLayout</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
-<span class="w">    </span><span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
-<span class="w">    </span><span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="na">android:background=</span><span class="s">&quot;@drawable/notebook&quot;</span>
-<span class="w">    </span><span class="na">android:paddingLeft=</span><span class="s">&quot;40dp&quot;</span>
-<span class="w">    </span><span class="na">android:paddingRight=</span><span class="s">&quot;5dp&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;TableRow&gt;</span>
-<span class="w">        </span><span class="nt">&lt;TextView</span>
-<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
-<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
-<span class="w">            </span><span class="na">android:text=</span><span class="s">&quot;@string/nota_examen&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;EditText</span>
-<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/editText_examen_final&quot;</span>
-<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
-<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
-<span class="w">            </span><span class="na">android:ems=</span><span class="s">&quot;10&quot;</span>
-<span class="w">            </span><span class="na">android:inputType=</span><span class="s">&quot;number|numberDecimal&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;requestFocus</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/EditText&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/TableRow&gt;</span>
-<span class="w">    </span><span class="nt">&lt;TableRow&gt;</span>
-<span class="w">        </span><span class="nt">&lt;TextView</span>
-<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
-<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
-<span class="w">            </span><span class="na">android:text=</span><span class="s">&quot;@string/nota_trabajo&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;EditText</span>
-<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/editText_trabajo_final&quot;</span>
-<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
-<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
-<span class="w">            </span><span class="na">android:ems=</span><span class="s">&quot;10&quot;</span>
-<span class="w">            </span><span class="na">android:inputType=</span><span class="s">&quot;number|numberDecimal&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/EditText&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/TableRow&gt;</span>
-<span class="w">    </span><span class="nt">&lt;TableRow</span>
-<span class="w">        </span><span class="na">android:gravity=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;Button</span>
-<span class="w">            </span><span class="na">android:id=</span><span class="s">&quot;@+id/button_calcular&quot;</span>
-<span class="w">            </span><span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
-<span class="w">            </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
-<span class="w">            </span><span class="na">android:text=</span><span class="s">&quot;@string/calcular&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/TableRow&gt;</span>
-<span class="nt">&lt;/TableLayout&gt;</span>
-</code></pre></div></p>
-<p>Listado 3. Código de values/strings.xml
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-<span class="nt">&lt;resources&gt;</span>
-<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;app_name&quot;</span><span class="nt">&gt;</span>NotaMediaADSW<span class="nt">&lt;/string&gt;</span>
-<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nota_trabajo&quot;</span><span class="nt">&gt;</span>Nota<span class="w"> </span>trabajo<span class="w"> </span>final<span class="nt">&lt;/string&gt;</span>
-<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nota_examen&quot;</span><span class="nt">&gt;</span>Nota<span class="w"> </span>examen<span class="w"> </span>final<span class="nt">&lt;/string&gt;</span>
-<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nota_media&quot;</span><span class="nt">&gt;</span>Nota<span class="w"> </span>media<span class="nt">&lt;/string&gt;</span>
-<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;calcular&quot;</span><span class="nt">&gt;</span>Calcular<span class="nt">&lt;/string&gt;</span>
-<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;error_numero&quot;</span><span class="nt">&gt;</span>Los<span class="w"> </span>campos<span class="w"> </span>deben<span class="w"> </span>ser<span class="w"> </span>numéricos<span class="nt">&lt;/string&gt;</span>
-<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;umbral_trabajo&quot;</span><span class="nt">&gt;</span>No<span class="w"> </span>has<span class="w"> </span>superado<span class="w"> </span>el<span class="w"> </span>umbral<span class="w"> </span>de<span class="w"> </span>4.0<span class="w"> </span>en<span class="w"> </span>la<span class="w"> </span>práctica<span class="nt">&lt;/string&gt;</span>
-<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;umbral_examen&quot;</span><span class="nt">&gt;</span>No<span class="w"> </span>has<span class="w"> </span>superado<span class="w"> </span>el<span class="w"> </span>umbral<span class="w"> </span>de<span class="w"> </span>4.0<span class="w"> </span>en<span class="w"> </span>el<span class="w"> </span>examen<span class="nt">&lt;/string&gt;</span><span class="w">        </span>
-<span class="w">     </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;enhorabuena&quot;</span><span class="nt">&gt;</span>Enhorabuena,<span class="w"> </span>que<span class="w"> </span>pases<span class="w"> </span>un<span class="w"> </span>buen<span class="w"> </span>verano.<span class="nt">&lt;/string&gt;</span>
-<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;julio&quot;</span><span class="nt">&gt;</span>Hay<span class="w"> </span>otra<span class="w"> </span>oportunidad<span class="w"> </span>en<span class="w"> </span>julio.<span class="w"> </span><span class="nt">&lt;/string&gt;</span>
-<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nota&quot;</span><span class="nt">&gt;</span>La<span class="w"> </span>nota<span class="w"> </span>es<span class="w"> </span><span class="nt">&lt;/string&gt;</span>
-<span class="w">    </span><span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;problema_nota&quot;</span><span class="nt">&gt;</span>Hay<span class="w"> </span>un<span class="w"> </span>problema<span class="w"> </span>para<span class="w"> </span>mostrar<span class="w"> </span>la<span class="w"> </span>nota<span class="nt">&lt;/string&gt;</span>
-<span class="nt">&lt;/resources&gt;</span>
-</code></pre></div></p>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>Una posible solución es:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-<span class="nt">&lt;manifest</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
-<span class="w">    </span><span class="na">package=</span><span class="s">&quot;es.upm.dit.adsw&quot;</span>
-<span class="w">    </span><span class="na">android:versionCode=</span><span class="s">&quot;1&quot;</span>
-<span class="w">    </span><span class="na">android:versionName=</span><span class="s">&quot;1.0&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;uses-sdk</span><span class="w"> </span><span class="na">android:minSdkVersion=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;application</span>
-<span class="w">        </span><span class="na">android:icon=</span><span class="s">&quot;@drawable/ic_launcher&quot;</span>
-<span class="w">        </span><span class="na">android:label=</span><span class="s">&quot;@string/app_name&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;activity</span>
-<span class="w">            </span><span class="na">android:name=</span><span class="s">&quot;.NotaMediaActivity&quot;</span>
-<span class="w">            </span><span class="na">android:label=</span><span class="s">&quot;@string/app_name&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;intent-filter&gt;</span>
-<span class="w">                </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">android:name=</span><span class="s">&quot;android.intent.action.MAIN&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">                </span><span class="nt">&lt;category</span><span class="w"> </span><span class="na">android:name=</span><span class="s">&quot;android.intent.category.LAUNCHER&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">            </span><span class="nt">&lt;/intent-filter&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/activity&gt;</span>
-<span class="w">        </span><span class="nt">&lt;activity</span>
-<span class="w">            </span><span class="na">android:name=</span><span class="s">&quot;.ResultadoActivity&quot;</span>
-<span class="w">            </span><span class="na">android:label=</span><span class="s">&quot;@string/app_name&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/application&gt;</span>
-<span class="nt">&lt;/manifest&gt;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NotaMediaActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Activity</span><span class="w"> </span><span class="p">{</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">APROBADO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;nota&quot;</span><span class="p">;</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">VALOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;valor&quot;</span><span class="p">;</span>
-<span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">TAG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NotaMediaActivity</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getSimpleName</span><span class="p">();</span>
-<span class="kd">private</span><span class="w"> </span><span class="n">EditText</span><span class="w"> </span><span class="n">editNotaFinal</span><span class="p">;</span>
-<span class="kd">private</span><span class="w"> </span><span class="n">EditText</span><span class="w"> </span><span class="n">editTrabajoFinal</span><span class="p">;</span>
-<span class="kd">private</span><span class="w"> </span><span class="n">Button</span><span class="w"> </span><span class="n">buttonGuardar</span><span class="p">;</span>
-
-<span class="nd">@Override</span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onCreate&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
-<span class="w">    </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">notamedia_final</span><span class="p">);</span>
-<span class="w">    </span><span class="n">editNotaFinal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditText</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">editText_examen_final</span><span class="p">);</span>
-<span class="w">    </span><span class="n">editTrabajoFinal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditText</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">editText_trabajo_final</span><span class="p">);</span>
-<span class="w">    </span><span class="n">buttonGuardar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">button_calcular</span><span class="p">);</span>
-<span class="w">    </span><span class="n">buttonGuardar</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ProcesaMedia</span><span class="p">());</span>
-<span class="p">}</span>
-
-<span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProcesaMedia</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">OnClickListener</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">notaFinal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Float</span><span class="p">.</span><span class="na">parseFloat</span><span class="p">(</span><span class="n">editNotaFinal</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">());</span>
-<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">notaTrabajo</span><span class="w"> </span><span class="o">=</span>
-<span class="w">            </span><span class="n">Float</span><span class="p">.</span><span class="na">parseFloat</span><span class="p">(</span><span class="n">editTrabajoFinal</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">());</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">notaFinal</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">notaFinal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">notaTrabajo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">            </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">notaTrabajo</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Toast</span>
-<span class="w">            </span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">getApplication</span><span class="p">(),</span><span class="w"> </span><span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">error_numero</span><span class="p">),</span>
-<span class="w">                </span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_LONG</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="na">show</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">media</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">0.6f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">notaFinal</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mf">0.4f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">notaTrabajo</span><span class="p">);</span>
-<span class="w">        </span><span class="n">DecimalFormat</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DecimalFormat</span><span class="p">(</span><span class="s">&quot;#.##&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">mediaString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">media</span><span class="p">);</span>
-<span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">aprobado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">notaTrabajo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">notaFinal</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">aprobado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">notaTrabajo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">valor</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">umbral_trabajo</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">notaFinal</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">valor</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">umbral_examen</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">valor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mediaString</span><span class="p">;</span>
-<span class="w">        </span><span class="n">aprobado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">media</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span><span class="n">getApplication</span><span class="p">(),</span><span class="w"> </span><span class="n">ResultadoActivity</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-<span class="w">        </span><span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">APROBADO</span><span class="p">,</span><span class="w"> </span><span class="n">aprobado</span><span class="p">);</span>
-<span class="w">        </span><span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">VALOR</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Nota &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">aprobado</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">valor</span><span class="p">);</span>
-<span class="w">        </span><span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">NumberFormatException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Toast</span>
-<span class="w">            </span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">getApplication</span><span class="p">(),</span><span class="w"> </span><span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">error_numero</span><span class="p">),</span>
-<span class="w">                </span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_LONG</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="na">show</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-</details>
 
 
 
