@@ -2932,16 +2932,11 @@ Por tanto, en ese caso se ha efectuado una comparación entre <code>x</code> y u
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">numeroComparaciones</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Líneas modificadas:</p>
-<ul>
-<li>Línea 1 sustituida por:</li>
-</ul>
+<p>Con respecto a las modificaciones tenemos que la línea 1 es sustituida por:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="kt">long</span><span class="o">[]</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">numeroComparaciones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </code></pre></div>
-<ul>
-<li>Líneas 5–8 sustituidas por:</li>
-</ul>
+<p>Las líneas 5–8 son sustituidas por:</p>
 <div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="o">++</span><span class="n">numeroComparaciones</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">datos</span><span class="o">[</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2952,9 +2947,7 @@ Por tanto, en ese caso se ha efectuado una comparación entre <code>x</code> y u
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<ul>
-<li>Después de la línea 10 se añade:</li>
-</ul>
+<p>Y después de la línea 10 se añade:</p>
 <div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="n">numeroComparaciones</span><span class="p">;</span>
 </code></pre></div>
 <p>Otra solución alternativa con una variable auxiliar:</p>
