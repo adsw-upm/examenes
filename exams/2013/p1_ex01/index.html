@@ -2953,7 +2953,7 @@ El algoritmo es de complejidad <span class="arithmatex">\(O(n)\)</span> porque e
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>La siguiente solución utiliza un método auxiliar, <code>busca</code>:</p>
-<p><div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor3</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getMayor3</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">busca</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">array</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -2971,7 +2971,7 @@ El algoritmo es de complejidad <span class="arithmatex">\(O(n)\)</span> porque e
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">busca</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div>
-El algoritmo es de complejidad <span class="arithmatex">\(O(log n)\)</span> porque es un esquema de división sucesiva. Más desarrollado:</p>
+<p>El algoritmo es de complejidad <span class="arithmatex">\(O(log n)\)</span> porque es un esquema de división sucesiva. Más desarrollado:</p>
 <pre><code>1. Al principio, $h$ puede estar entre $O$ y $N-1$;
 
 2. Tras 1 paso, $h$ puede estar entre $(O y N/2)$ o entre $(N/2 y N)$; es decir, hemos reducido las opciones a la mitad $(N/2)$;
