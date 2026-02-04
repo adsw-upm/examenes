@@ -10,7 +10,37 @@ En este problema se trabajará con una tabla hash que almacena los nombres de lo
 
 Se proporciona el siguiente código que realiza la acción de insertar un elemento en la tabla hash:
 
-![](./placeholder.jpg)
+```java
+/**
+ * El método insertar trata de añadir un elemento a la tabla hash.
+ * Si al calcular la posición de insercción se produce una colisión, busca una
+ * nueva posición mediante exploración cuadrática.
+ * Si ya existía un elemento con la misma clave, actualiza su valor.
+ * Si no se puede insertar un elemento porque la tabla está llena, devolverá false.
+ * @param alumno Elemento que se insertará
+ * @return true si se ha podido insertar el elemento en la tabla
+ */
+ 
+public boolean insertar(ElementoDeTabla alumno) {
+    int pos = hash(alumno.getNombre());
+    int intento = 0;
+    while (intento < tabla.length) {
+        int posicionPrueba = (pos + intento * intento) % tabla.length;
+        if (tabla[posicionPrueba] == null) {
+            tabla[posicionPrueba] = alumno;
+            return true;
+        }
+        else if (tabla[posicionPrueba].getNombre().equals(alumno.getNombre())) {
+            tabla[posicionPrueba].setNota(alumno.getNota());
+            return true;
+        }
+        else {
+            intento++;
+        }
+    }
+    return false;
+}
+```
 
 ![](./extra/extra_ex02-1.png)
 
