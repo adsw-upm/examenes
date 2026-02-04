@@ -102,7 +102,7 @@ busca(matriz, 50) -> false;
 ```
 
 ??? note "Mostrar solución"
-    Un problema de tamaño $X = N^2$ se parte en 2 subproblemas de tamaño $(X/2)$. Esto hace $k$ veces, siendo $ X/2^k = 1 \Rightarrow k = \log_2(X)$.
+    Un problema de tamaño $X = N^2$ se parte en 2 subproblemas de tamaño $(X/2)$. Esto hace $k$ veces, siendo $X/2^k = 1 \Rightarrow k = \log_2(X)$.
     
     En la primera ronda hay 1 comparación
 
