@@ -3007,7 +3007,7 @@ El algoritmo usa la propiedad del árbol binario de búsqueda de que todos los n
 <ul>
 <li>
 <p>Sumas:</p>
-</li>
+<ol>
 <li>
 <p><code>nodo == null</code><span class="arithmatex">\(\rightarrow T(n) = 0\)</span></p>
 </li>
@@ -3020,9 +3020,11 @@ El algoritmo usa la propiedad del árbol binario de búsqueda de que todos los n
 <li>
 <p><code>nodo.valor &gt; x</code><span class="arithmatex">\(\rightarrow T(n) = T(n/2)\)</span></p>
 </li>
+</ol>
+</li>
 <li>
 <p>Llamadas recursivas:</p>
-</li>
+<ol>
 <li>
 <p><code>nodo == null</code><span class="arithmatex">\(\rightarrow T(n) = 0\)</span></p>
 </li>
@@ -3034,6 +3036,8 @@ El algoritmo usa la propiedad del árbol binario de búsqueda de que todos los n
 </li>
 <li>
 <p><code>nodo.valor &gt; x</code><span class="arithmatex">\(\rightarrow T(n) = T(n/2)\)</span></p>
+</li>
+</ol>
 </li>
 </ul>
 <p>Suponiendo que el caso 3 es el más frecuente, <span class="arithmatex">\(T(n) ≈ 1 + 2T(n/2)\)</span> que es lineal, <span class="arithmatex">\(O(n)\)</span>.</p>
