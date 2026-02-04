@@ -59,11 +59,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#a-2-puntos" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -2851,25 +2846,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-2-puntos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. (2 puntos)
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2889,7 +2865,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">hebras</span>
       
     
   </nav>
@@ -2898,8 +2874,7 @@
 
   <h1>P2 ex01</h1>
 
-<h2 id="a-2-puntos">A. (2 puntos)</h2>
-<p>Sean las dos clases siguientes, con dos implementaciones de un método que intercambia el valor de dos variables. Explique, justificando la respuesta, si estas implementaciones son adecuadas para ser invocadas concurrentemente por un conjunto de hebras (threads).
+<p>Sean las dos clases siguientes, con dos implementaciones de un método que intercambia el valor de dos variables. </p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Swap1</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">aux</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">swap</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2915,11 +2890,14 @@
 <span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aux</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div>
+<ul>
+<li>(a) (2 puntos) Explique, justificando la respuesta, si estas implementaciones son adecuadas para ser invocadas concurrentemente por un conjunto de hebras (threads).</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Cuando varias hebras comparten un objeto de la clase Swap1 pueden utilizar simultáneamente la variable aux al invocar el método swap. Por tanto, swap debería ser un método sincronizado, y esta implementación es inadecuada para usarla en un contexto concurrente, ya que se pueden producir condiciones de carrera en el acceso a aux.</p>
-<p>Por el contrario, en Swap2 la variable aux es local al método swap, y cada hebra que lo invoca usa su propia copia de aux. Por tanto, no hay variables compartidas y no es necesario que swap sea sincronizado. Esta implementación puede usarse sin problemas en un contexto concurrente.</p>
+<p>Cuando varias hebras comparten un objeto de la clase <code>Swap1</code> pueden utilizar simultáneamente la variable <code>aux</code> al invocar el método <code>swap</code>. Por tanto, <code>swap</code> debería ser un método sincronizado, y esta implementación es inadecuada para usarla en un contexto concurrente, ya que se pueden producir condiciones de carrera en el acceso a <code>aux</code>.</p>
+<p>Por el contrario, en <code>Swap2</code> la variable <code>aux</code> es local al método <code>swap</code>, y cada hebra que lo invoca usa su propia copia de <code>aux</code>. Por tanto, no hay variables compartidas y no es necesario que swap sea sincronizado. Esta implementación puede usarse sin problemas en un contexto concurrente.</p>
 </details>
 
 

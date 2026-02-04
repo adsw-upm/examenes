@@ -59,11 +59,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#a-4-puntos" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -2851,25 +2846,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-4-puntos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. (4 puntos)
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2898,34 +2874,34 @@
 
   <h1>P2 ex03</h1>
 
-<h2 id="a-4-puntos">A. (4 puntos)</h2>
-<p>Modifique la clase <code>Monitor.java</code> de la práctica 1 donde se han definido una serie de celdas como zona exclusiva en la que sólo puede haber una pieza dentro (o un marciano, o un jugador). Por ejemplo,</p>
-<p><img alt="Figura de zona exclusiva" src="../p2/img-002.png" /></p>
+<ul>
+<li>(a) (4 puntos) Modifique la clase <code>Monitor.java</code> de la práctica 1 donde se han definido una serie de celdas como zona exclusiva en la que sólo puede haber una pieza dentro (o un marciano, o un jugador). Por ejemplo,</li>
+</ul>
+<p align="center">
+    <img src="./p2/img-002.png">
+</p>
+
 <p>Suponga que las celdas tienen un método:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isZonaExclusiva</span><span class="p">()</span>
 </code></pre></div>
 <p>El comportamiento de las piezas del juego es así:</p>
 <ul>
 <li>
-<p>Cuando un <strong>jugador</strong> intenta pasar a una celda exclusiva:</p>
+<p>Cuando un jugador intenta pasar a una celda exclusiva:</p>
+<ul>
+<li>si la zona exclusiva está vacía, entra;</li>
+<li>si está ocupada, debe buscar otra celda.</li>
+</ul>
 </li>
 <li>
-<p>si la zona exclusiva está vacía, entra;</p>
+<p>Cuando un marciano intenta pasar a una celda exclusiva:</p>
+<ul>
+<li>si la zona exclusiva está vacía, entra;</li>
+<li>si está ocupada, espera a que se libere.</li>
+</ul>
 </li>
 <li>
-<p>si está ocupada, debe buscar otra celda.</p>
-</li>
-<li>
-<p>Cuando un <strong>marciano</strong> intenta pasar a una celda exclusiva:</p>
-</li>
-<li>
-<p>si la zona exclusiva está vacía, entra;</p>
-</li>
-<li>
-<p>si está ocupada, espera a que se libere.</p>
-</li>
-<li>
-<p>Tanto marcianos como jugador, cuando <strong>salen</strong> de la zona exclusiva hacia una celda que no lo es, liberan a los marcianos que pudieran estar esperando.</p>
+<p>Tanto marcianos como jugador, cuando salen de la zona exclusiva hacia una celda que no lo es, liberan a los marcianos que pudieran estar esperando.</p>
 </li>
 </ul>
 <p>Sugerencia: se recomienda disponer de un campo</p>

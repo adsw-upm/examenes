@@ -59,11 +59,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#a-4-puntos" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -2851,25 +2846,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-4-puntos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. (4 puntos)
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2889,7 +2865,7 @@
       
       
       
-        <span class="md-tag">complejidad</span>
+        <span class="md-tag">hebras</span>
       
     
   </nav>
@@ -2898,8 +2874,9 @@
 
   <h1>P2 ex02</h1>
 
-<h2 id="a-4-puntos">A. (4 puntos)</h2>
-<p>Escriba una clase con un contador interno, que se incrementa cada vez que se invoca el método <code>siguiente()</code>. La clase debe poderse utilizar en un programa concurrente. Además, la clase proporciona otros dos métodos, <code>esperarPar()</code> y <code>esperarImpar()</code>, que hacen que la hebra (thread) que los invoca se quede bloqueada hasta que el valor del contador sea par o impar, respectivamente.</p>
+<ul>
+<li>(a) (4 puntos) Escriba una clase con un contador interno, que se incrementa cada vez que se invoca el método <code>siguiente()</code>. La clase debe poderse utilizar en un programa concurrente. Además, la clase proporciona otros dos métodos, <code>esperarPar()</code> y <code>esperarImpar()</code>, que hacen que la hebra (thread) que los invoca se quede bloqueada hasta que el valor del contador sea par o impar, respectivamente.</li>
+</ul>
 <p>Se supone que el intervalo entre dos invocaciones consecutivas de <code>siguiente()</code> es suficiente para que todas las hebras que estuvieran bloqueadas puedan continuar.</p>
 <p>El esquema de la clase es el siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Secuenciador</span><span class="w">  </span><span class="p">{</span>
@@ -2915,7 +2892,6 @@
 <span class="w">    </span><span class="c1">// suspende la ejecución de la hebra hasta que el valor sea impar</span>
 <span class="p">}</span>
 </code></pre></div>
-<hr />
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Los métodos deben ser todos sincronizados. Además, se deben incluir esperas condicionales en <code>esperarPar</code> y <code>esperarImpar</code>. Como el único método que modifica el valor del contador es <code>siguiente</code>, el aviso (<code>notifyAll</code>) para que las hebras bloqueadas vuelvan a comprobar la condición debe estar en este método.</p>

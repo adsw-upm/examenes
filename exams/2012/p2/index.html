@@ -586,17 +586,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#a-2-puntos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. (2 puntos)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#problema-2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -608,32 +597,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#a-4-puntos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. (4 puntos)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#problema-3" class="md-nav__link">
     <span class="md-ellipsis">
       
         Problema 3
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#a-4-puntos_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. (4 puntos)
       
     </span>
   </a>
@@ -3038,17 +3005,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#a-2-puntos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. (2 puntos)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#problema-2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3060,32 +3016,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#a-4-puntos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. (4 puntos)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#problema-3" class="md-nav__link">
     <span class="md-ellipsis">
       
         Problema 3
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#a-4-puntos_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A. (4 puntos)
       
     </span>
   </a>
@@ -3111,8 +3045,7 @@
 
 <h1 id="examen-2012-parcial-2">Examen 2012 — Parcial 2</h1>
 <h2 id="problema-1">Problema 1</h2>
-<h2 id="a-2-puntos">A. (2 puntos)</h2>
-<p>Sean las dos clases siguientes, con dos implementaciones de un método que intercambia el valor de dos variables. Explique, justificando la respuesta, si estas implementaciones son adecuadas para ser invocadas concurrentemente por un conjunto de hebras (threads).
+<p>Sean las dos clases siguientes, con dos implementaciones de un método que intercambia el valor de dos variables. </p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Swap1</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">aux</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">swap</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3128,15 +3061,19 @@
 <span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aux</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div>
+<ul>
+<li>(a) (2 puntos) Explique, justificando la respuesta, si estas implementaciones son adecuadas para ser invocadas concurrentemente por un conjunto de hebras (threads).</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Cuando varias hebras comparten un objeto de la clase Swap1 pueden utilizar simultáneamente la variable aux al invocar el método swap. Por tanto, swap debería ser un método sincronizado, y esta implementación es inadecuada para usarla en un contexto concurrente, ya que se pueden producir condiciones de carrera en el acceso a aux.</p>
-<p>Por el contrario, en Swap2 la variable aux es local al método swap, y cada hebra que lo invoca usa su propia copia de aux. Por tanto, no hay variables compartidas y no es necesario que swap sea sincronizado. Esta implementación puede usarse sin problemas en un contexto concurrente.</p>
+<p>Cuando varias hebras comparten un objeto de la clase <code>Swap1</code> pueden utilizar simultáneamente la variable <code>aux</code> al invocar el método <code>swap</code>. Por tanto, <code>swap</code> debería ser un método sincronizado, y esta implementación es inadecuada para usarla en un contexto concurrente, ya que se pueden producir condiciones de carrera en el acceso a <code>aux</code>.</p>
+<p>Por el contrario, en <code>Swap2</code> la variable <code>aux</code> es local al método <code>swap</code>, y cada hebra que lo invoca usa su propia copia de <code>aux</code>. Por tanto, no hay variables compartidas y no es necesario que swap sea sincronizado. Esta implementación puede usarse sin problemas en un contexto concurrente.</p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<h2 id="a-4-puntos">A. (4 puntos)</h2>
-<p>Escriba una clase con un contador interno, que se incrementa cada vez que se invoca el método <code>siguiente()</code>. La clase debe poderse utilizar en un programa concurrente. Además, la clase proporciona otros dos métodos, <code>esperarPar()</code> y <code>esperarImpar()</code>, que hacen que la hebra (thread) que los invoca se quede bloqueada hasta que el valor del contador sea par o impar, respectivamente.</p>
+<ul>
+<li>(a) (4 puntos) Escriba una clase con un contador interno, que se incrementa cada vez que se invoca el método <code>siguiente()</code>. La clase debe poderse utilizar en un programa concurrente. Además, la clase proporciona otros dos métodos, <code>esperarPar()</code> y <code>esperarImpar()</code>, que hacen que la hebra (thread) que los invoca se quede bloqueada hasta que el valor del contador sea par o impar, respectivamente.</li>
+</ul>
 <p>Se supone que el intervalo entre dos invocaciones consecutivas de <code>siguiente()</code> es suficiente para que todas las hebras que estuvieran bloqueadas puedan continuar.</p>
 <p>El esquema de la clase es el siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Secuenciador</span><span class="w">  </span><span class="p">{</span>
@@ -3152,7 +3089,6 @@
 <span class="w">    </span><span class="c1">// suspende la ejecución de la hebra hasta que el valor sea impar</span>
 <span class="p">}</span>
 </code></pre></div>
-<hr />
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Los métodos deben ser todos sincronizados. Además, se deben incluir esperas condicionales en <code>esperarPar</code> y <code>esperarImpar</code>. Como el único método que modifica el valor del contador es <code>siguiente</code>, el aviso (<code>notifyAll</code>) para que las hebras bloqueadas vuelvan a comprobar la condición debe estar en este método.</p>
@@ -3189,34 +3125,34 @@
 </code></pre></div>
 </details>
 <h2 id="problema-3">Problema 3</h2>
-<h2 id="a-4-puntos_1">A. (4 puntos)</h2>
-<p>Modifique la clase <code>Monitor.java</code> de la práctica 1 donde se han definido una serie de celdas como zona exclusiva en la que sólo puede haber una pieza dentro (o un marciano, o un jugador). Por ejemplo,</p>
-<p><img alt="Figura de zona exclusiva" src="img-002.png" /></p>
+<ul>
+<li>(a) (4 puntos) Modifique la clase <code>Monitor.java</code> de la práctica 1 donde se han definido una serie de celdas como zona exclusiva en la que sólo puede haber una pieza dentro (o un marciano, o un jugador). Por ejemplo,</li>
+</ul>
+<p align="center">
+    <img src="./p2/img-002.png">
+</p>
+
 <p>Suponga que las celdas tienen un método:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isZonaExclusiva</span><span class="p">()</span>
 </code></pre></div>
 <p>El comportamiento de las piezas del juego es así:</p>
 <ul>
 <li>
-<p>Cuando un <strong>jugador</strong> intenta pasar a una celda exclusiva:</p>
+<p>Cuando un jugador intenta pasar a una celda exclusiva:</p>
+<ul>
+<li>si la zona exclusiva está vacía, entra;</li>
+<li>si está ocupada, debe buscar otra celda.</li>
+</ul>
 </li>
 <li>
-<p>si la zona exclusiva está vacía, entra;</p>
+<p>Cuando un marciano intenta pasar a una celda exclusiva:</p>
+<ul>
+<li>si la zona exclusiva está vacía, entra;</li>
+<li>si está ocupada, espera a que se libere.</li>
+</ul>
 </li>
 <li>
-<p>si está ocupada, debe buscar otra celda.</p>
-</li>
-<li>
-<p>Cuando un <strong>marciano</strong> intenta pasar a una celda exclusiva:</p>
-</li>
-<li>
-<p>si la zona exclusiva está vacía, entra;</p>
-</li>
-<li>
-<p>si está ocupada, espera a que se libere.</p>
-</li>
-<li>
-<p>Tanto marcianos como jugador, cuando <strong>salen</strong> de la zona exclusiva hacia una celda que no lo es, liberan a los marcianos que pudieran estar esperando.</p>
+<p>Tanto marcianos como jugador, cuando salen de la zona exclusiva hacia una celda que no lo es, liberan a los marcianos que pudieran estar esperando.</p>
 </li>
 </ul>
 <p>Sugerencia: se recomienda disponer de un campo</p>
