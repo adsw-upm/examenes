@@ -2927,59 +2927,57 @@
 </code></pre></div>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Se indican los cambios sobre el código original</p>
-<p><div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Activity</span><span class="w"> </span><span class="n">ListActivity</span><span class="w"> </span><span class="p">{</span>
-</code></pre></div>
-~~<code>public class MainActivity extends Activity ListActivity {</code>~~
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">LANZA_A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">LANZA_B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<p>Se indican los cambios sobre el código original
+<pre><code>
+<del>public class MainActivity extends Activity ListActivity {</del>
+public class MainActivity extends Activity ListActivity {
+    public static final int LANZA_A = 0;
+    public static final int LANZA_B = 1;</p>
+<pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    String[] acciones = {"lanzar", "terminar"};
+    setListAdapter(new ArrayAdapter&lt;String&gt;(
+            this,
+            android.R.layout.simple_list_item_1,
+            acciones));
+}
 
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
-<span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
-<span class="w">        </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">acciones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;lanzar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;terminar&quot;</span><span class="p">};</span>
-<span class="w">        </span><span class="n">setListAdapter</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span>
-<span class="w">                </span><span class="k">this</span><span class="p">,</span>
-<span class="w">                </span><span class="n">android</span><span class="p">.</span><span class="na">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">simple_list_item_1</span><span class="p">,</span>
-<span class="w">                </span><span class="n">acciones</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
+private void lanza() {
+    Intent lanzaA = new Intent(this, ActivityA.class);
+    startActivityForResult(lanzaA, LANZA_A);
 
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">lanza</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Intent</span><span class="w"> </span><span class="n">lanzaA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">ActivityA</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-<span class="w">        </span><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">lanzaA</span><span class="p">,</span><span class="w"> </span><span class="n">LANZA_A</span><span class="p">);</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="o">~~</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">lanzaA</span><span class="p">,</span><span class="w"> </span><span class="n">LANZA_A</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RESULT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="o">~~</span>
-<span class="w">            </span><span class="o">~~</span><span class="n">Intent</span><span class="w"> </span><span class="n">lanzaB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">ActivityB</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="o">~~</span>
-<span class="w">            </span><span class="o">~~</span><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">lanzaB</span><span class="p">,</span><span class="w"> </span><span class="n">LANZA_B</span><span class="p">);</span><span class="o">~~</span>
-<span class="w">        </span><span class="o">~~</span><span class="p">}</span><span class="o">~~</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">}</span>
+    &lt;del&gt;if (startActivityForResult(lanzaA, LANZA_A) == RESULT_OK) {&lt;/del&gt;
+        &lt;del&gt;Intent lanzaB = new Intent(this, ActivityB.class);&lt;/del&gt;
+        &lt;del&gt;startActivityForResult(lanzaB, LANZA_B);&lt;/del&gt;
+    &lt;del&gt;}&lt;/del&gt;
+}
 
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onActivityResult</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">requestCode</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">resultCode</span><span class="p">,</span><span class="w"> </span><span class="n">Intent</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">requestCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">LANZA_A</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">resultCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RESULT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">Intent</span><span class="w"> </span><span class="n">lanzaB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">ActivityB</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-<span class="w">                </span><span class="n">startActivity</span><span class="p">(</span><span class="n">lanzaB</span><span class="p">);</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == LANZA_A) {
+        if (resultCode == RESULT_OK) {
+            Intent lanzaB = new Intent(this, ActivityB.class);
+            startActivity(lanzaB);
+        }
+    }
+}
 
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onListItemClick</span><span class="p">(</span><span class="n">ListView</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onListItemClick</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
-<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">position</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">lanza</span><span class="p">();</span><span class="w"> </span><span class="k">break</span><span class="p">;}</span>
-<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">finish</span><span class="p">();</span><span class="w"> </span><span class="k">break</span><span class="p">;}</span>
-<span class="w">            </span><span class="k">default</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="o">~~</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="o">~~</span><span class="w">    </span><span class="c1">// Las actividades en Android siguen un ciclo de vida,</span>
-<span class="w">            </span><span class="o">~~</span><span class="n">onCreate</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="o">~~</span><span class="w">                         </span><span class="c1">// no tienen main</span>
-<span class="w">        </span><span class="o">~~</span><span class="p">}</span><span class="o">~~</span>
-<span class="w">    </span><span class="p">}</span>
-</code></pre></div></p>
+@Override
+public void onListItemClick(ListView l, View v, int position, long id) {
+    super.onListItemClick(l, v, position, id);
+    switch (position) {
+        case 0: {lanza(); break;}
+        case 1: {finish(); break;}
+        default: { }
+        }
+    }
+    &lt;del&gt;public static void main(String[] args) {&lt;/del&gt;    // Las actividades en Android siguen un ciclo de vida,
+        &lt;del&gt;onCreate(this);&lt;/del&gt;                         // no tienen main
+    &lt;del&gt;}&lt;/del&gt;
+}
+</code></pre>
+<p></code></pre></p>
 </details>
 
 
