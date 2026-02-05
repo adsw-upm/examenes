@@ -62,12 +62,9 @@ public class MainActivity extends Activity {
 
 ??? note "Mostrar solución"
     Se indican los cambios sobre el código original
-
-    ```java
+    <pre><code>
+    <del>public class MainActivity extends Activity ListActivity {</del>
     public class MainActivity extends Activity ListActivity {
-    ```
-    ~~`public class MainActivity extends Activity ListActivity {`~~
-    ```java
         public static final int LANZA_A = 0;
         public static final int LANZA_B = 1;
 
@@ -85,14 +82,11 @@ public class MainActivity extends Activity {
         private void lanza() {
             Intent lanzaA = new Intent(this, ActivityA.class);
             startActivityForResult(lanzaA, LANZA_A);
-    ```
-    ```java
-            ~~if (startActivityForResult(lanzaA, LANZA_A) == RESULT_OK) {~~
-                ~~Intent lanzaB = new Intent(this, ActivityB.class);~~
-                ~~startActivityForResult(lanzaB, LANZA_B);~~
-            ~~}~~
-    ```
-    ```java
+
+            <del>if (startActivityForResult(lanzaA, LANZA_A) == RESULT_OK) {</del>
+                <del>Intent lanzaB = new Intent(this, ActivityB.class);</del>
+                <del>startActivityForResult(lanzaB, LANZA_B);</del>
+            <del>}</del>
         }
 
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -113,10 +107,8 @@ public class MainActivity extends Activity {
                 default: { }
                 }
             }
-    ```
-    ```java
-            ~~public static void main(String[] args) {~~    // Las actividades en Android siguen un ciclo de vida,
-                ~~onCreate(this);~~                         // no tienen main
-            ~~}~~
+            <del>public static void main(String[] args) {</del>    // Las actividades en Android siguen un ciclo de vida,
+                <del>onCreate(this);</del>                         // no tienen main
+            <del>}</del>
         }
-    ```
+    </code></pre>
