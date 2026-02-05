@@ -66,9 +66,7 @@ public class MainActivity extends Activity {
     ```java
     public class MainActivity extends Activity ListActivity {
     ```
-    ```java
-    ~~public class MainActivity extends Activity ListActivity {~~
-    ```
+    `~~public class MainActivity extends Activity ListActivity {~~`
     ```java
         public static final int LANZA_A = 0;
         public static final int LANZA_B = 1;
