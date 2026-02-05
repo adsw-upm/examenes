@@ -13,102 +13,76 @@ Si el usuario pulsa *lanzar*, se lanza la actividad `ActivityA`, que devuelve co
 Mire la solución que se proporciona a continuación e indique si es correcta o no. En caso de tener fallos, indique qué fallos hay y cómo se corrigen.
 
 ```java
-public class MainActivity extends Activity {
-
-    public static final int LANZA_A = 0;
-    public static final int LANZA_B = 1;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        String[] acciones = {"lanzar", "terminar"};
-        setListAdapter(new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                acciones));
-    }
-
-    private void lanza() {
-        Intent lanzaA = new Intent(this, ActivityA.class);
-        if (startActivityForResult(lanzaA, LANZA_A) == RESULT_OK) {
-            Intent lanzaB = new Intent(this, ActivityB.class);
-            startActivityForResult(lanzaB, LANZA_B);
-        }
-    }
-
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-        switch (position) {
-            case 0: {
-                lanza();
-                break;
-            }
-            case 1: {
-                finish();
-                break;
-            }
-            default: { }
-        }
-    }
-
-    public static void main(String[] args) {
-        onCreate(this);
-    }
-}
+01 public class MainActivity extends Activity {
+02 
+03     public static final int LANZA_A = 0;
+04     public static final int LANZA_B = 1;
+05
+06     @Override
+07     protected void onCreate(Bundle savedInstanceState) {
+08         super.onCreate(savedInstanceState);
+09         setContentView(R.layout.activity_main);
+10
+11         String[] acciones = {"lanzar", "terminar"};
+12         setListAdapter(new ArrayAdapter<String>(
+13                 this,
+14                 android.R.layout.simple_list_item_1,
+15                 acciones));
+16     }
+17
+18     private void lanza() {
+19         Intent lanzaA = new Intent(this, ActivityA.class);
+20         if (startActivityForResult(lanzaA, LANZA_A) == RESULT_OK) {
+21             Intent lanzaB = new Intent(this, ActivityB.class);
+22             startActivityForResult(lanzaB, LANZA_B);
+23         }
+24     }
+25
+26     @Override
+27     public void onListItemClick(ListView l, View v, int position, long id) {
+28         super.onListItemClick(l, v, position, id);
+29         switch (position) {
+30             case 0: {
+31                 lanza();
+32                 break;
+33             }
+34             case 1: {
+35                 finish();
+36                 break;
+37             }
+38             default: { }
+39         }
+40     }
+41
+42     public static void main(String[] args) {
+43         onCreate(this);
+44     }
+45 }
 ```
 
 ??? note "Mostrar solución"
-    Se indican los cambios sobre el código original
-    <pre><code>
-    <del>public class MainActivity extends Activity ListActivity {</del>
-    public class MainActivity extends Activity ListActivity {
-        public static final int LANZA_A = 0;
-        public static final int LANZA_B = 1;
+    La línea 01 se reescribe para que quede como sigue:
+    ```java
+    public class MainActivity extends ListActivity {
+    ```
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            String[] acciones = {"lanzar", "terminar"};
-            setListAdapter(new ArrayAdapter<String>(
-                    this,
-                    android.R.layout.simple_list_item_1,
-                    acciones));
-        }
+    Después de la línea 19 se añade:
+    ```java
+    startActivityForResult(lanzaA, LANZA_A);
+    ```
+    
+    Las líneas 20 a 23 se borran.
 
-        private void lanza() {
-            Intent lanzaA = new Intent(this, ActivityA.class);
-            startActivityForResult(lanzaA, LANZA_A);
-
-            <del>if (startActivityForResult(lanzaA, LANZA_A) == RESULT_OK) {</del>
-                <del>Intent lanzaB = new Intent(this, ActivityB.class);</del>
-                <del>startActivityForResult(lanzaB, LANZA_B);</del>
-            <del>}</del>
-        }
-
-        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            if (requestCode == LANZA_A) {
+    Después de la línea 24 se añade:
+    ```java
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == LANZA_A) {
                 if (resultCode == RESULT_OK) {
-                    Intent lanzaB = new Intent(this, ActivityB.class);
-                    startActivity(lanzaB);
+                        Intent lanzaB = new Intent(this, ActivityB.class);
+                        startActivity(lanzaB);
                 }
-            }
         }
+    }
+    ```
 
-        @Override
-        public void onListItemClick(ListView l, View v, int position, long id) {
-            super.onListItemClick(l, v, position, id);
-            switch (position) {
-                case 0: {lanza(); break;}
-                case 1: {finish(); break;}
-                default: { }
-                }
-            }
-            <del>public static void main(String[] args) {</del>    // Las actividades en Android siguen un ciclo de vida,
-                <del>onCreate(this);</del>                         // no tienen main
-            <del>}</del>
-        }
-    </code></pre>
+    Las líneas  y 42 a  44 se borran.
