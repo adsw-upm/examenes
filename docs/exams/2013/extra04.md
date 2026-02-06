@@ -47,7 +47,7 @@ NOTA: Limítese a hacer los cambios necesarios. No es necesario volver a escribi
         super.onListItemClick(l, v, position, id);
         Cursor c = notasCursor;
         c.moveToPosition(position);
-    
+        // Código nuevo
         Nota nota = getNota(c);
         if ((nota != null) && (nota.isCifrado())) {
             new Cifrar().execute(
@@ -57,11 +57,11 @@ NOTA: Limítese a hacer los cambios necesarios. No es necesario volver a escribi
                 id + ""
             );
         }
+        // Fin del código nuevo
         startActivityForResult(intent, MODIFICA_NOTA);
     }
-    ```
     
-    ```java
+    // Código nuevo
     private class Cifrar extends AsyncTask<String, Integer, Nota> {
     
         private final String CLAVE = new String("miclave");
@@ -71,7 +71,8 @@ NOTA: Limítese a hacer los cambios necesarios. No es necesario volver a escribi
         @Override
         protected void onPreExecute() {
         }
-    
+    // Fin del código nuevo
+
         // Método de descifrado (no se modifica)
         private String descifra(String texto, String clave) {
             // Código existente que almacena el texto
@@ -80,7 +81,8 @@ NOTA: Limítese a hacer los cambios necesarios. No es necesario volver a escribi
             publishProgress(i);
             return buffer.toString();
         }
-    
+
+    // Código nuevo
         // Ejecución en segundo plano
         @Override
         protected Nota doInBackground(String... params) {
@@ -129,5 +131,6 @@ NOTA: Limítese a hacer los cambios necesarios. No es necesario volver a escribi
             cursorAdapter.notifyDataSetChanged();
             actualizaLista();
         }
+    // Fin del código nuevo
     }
     ```
