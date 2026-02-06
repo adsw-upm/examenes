@@ -11,7 +11,9 @@ En un museo se exhibe un cortometraje de corta duración repetidamente, con un b
 - (a) (5 puntos) Escriba una clase Monitor que controle el acceso a la sala. Cada visitante es modelado como una hebra, que invoca el método `accederASala()` del Monitor cuando desea ver la proyección. Además hay otra hebra, Proyector, que periódicamente invoca el método `comienzaProyección()` y, tras la finalización de la proyección, invoca el método `terminaProyección()`.
 
 El monitor debe permitir acceso a la Sala a las hebras `Visitante` siempre que:
+    
     * No se sobrepase la capacidad de la sala;
+    
     * No haya comenzado la proyección.
 
 Cuando la proyección termine, se debe permitir que los visitantes que estaban esperando accedan a la sala. Se entiende que TODOS los asistentes a una proyección salen de la sala al terminar la proyección.
@@ -53,22 +55,22 @@ public class Proyector extends Thread
     private int N= 10;
     private int numVisitantes;
     private boolean proyectando;
-    
+
     Monitor() {
         numVisitantes= 0;
         proyectando= false;
     }
-    
+
     public synchronized void comienzaProyeccion() {
         proyectando= true;
     }
-    
+
     public synchronized void terminaProyeccion() {
         proyectando= false;
         numVisitantes= 0;
         notifyAll();
     }
-    
+
     public synchronized void accederASala() {
         while ( proyectando || numVisitantes >= N)
         {
