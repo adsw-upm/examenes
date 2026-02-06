@@ -2883,9 +2883,9 @@
 <details class="note">
 <summary>mostrar solución</summary>
 <p>Debemos añadir un campo puntos. Se puede añadir en Escenario o en Jugador.</p>
-<ol>
+<ul>
 <li>Jugador</li>
-</ol>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">puntos</span><span class="p">;</span>
 <span class="p">...</span>
 <span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPuntos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">puntos</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
@@ -2896,9 +2896,9 @@
 <span class="w">    </span><span class="n">puntos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<ol>
+<ul>
 <li>Terreno, método move</li>
-</ol>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="n">Casilla</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="n">Movil</span><span class="w"> </span><span class="n">movil</span><span class="p">,</span><span class="w"> </span><span class="n">Direccion</span><span class="w"> </span><span class="n">direccion</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">origen</span><span class="p">.</span><span class="na">setMovil</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 <span class="w">    </span><span class="n">destino</span><span class="p">.</span><span class="na">setMovil</span><span class="p">(</span><span class="n">movil</span><span class="p">);</span>
@@ -2907,16 +2907,18 @@
 <span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
-<ol>
+<ul>
 <li>
 <p><code>MyDbAdapter</code></p>
-<p>3.1. En <code>DatabaseHelper</code>, debemos cambiar el String para crear la tabla, añadiendo una columna:</p>
+<ul>
+<li>En <code>DatabaseHelper</code>, debemos cambiar el String para crear la tabla, añadiendo una columna:</li>
+</ul>
 </li>
-</ol>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">TABLE_FOTOS</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
 <span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">moviles</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">casillas</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="nb">date</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">puntos</span><span class="w"> </span><span class="nb">INT</span><span class="p">);</span>
 </code></pre></div>
-<pre><code>3.2. `inserfFoto()`
+<pre><code>- `inserfFoto()`
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">COL_PUNTOS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;puntos&quot;</span><span class="p">;</span>
 
@@ -2932,9 +2934,9 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">TABLE_FOTOS</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<ol>
+<ul>
 <li><code>DbLoadActivity</code></li>
-</ol>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DbLoadActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ListActivity</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">TAG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">“</span><span class="n">DbLoadActivity</span><span class="s">&quot;;</span>
 
