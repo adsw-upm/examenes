@@ -2899,18 +2899,36 @@
 <li>(a) (3,5 puntos) Implementación del método <code>esConexo()</code>. Este método ha de comprobar que desde cualquier casilla del terreno se puede alcanzar cualquier otra casilla.</li>
 </ul>
 <p>Sugerencia: Se propone el siguiente algoritmo para determinar si un terreno tiene casillas conexas.</p>
+<ul>
+<li>
 <p>Se define un conjunto de casillas visitadas (ya analizadas alguna vez) y una lista de casillas pendientes (aún no analizadas).</p>
+</li>
+<li>
 <p>Se elige una casilla inicial, por ejemplo (0,0), y se añade a la lista de pendientes.</p>
-<p>Mientras haya casillas pendientes:
-  1. Se saca una casilla de la lista de pendientes.
-  2. Se añade la casilla al conjunto de visitadas.
-  3. Para cada dirección:
-     * Si existe una casilla adyacente accesible (no separada por una pared)
-     * Y no ha sido visitada, se añade a la lista de pendientes.</p>
-<p>Cuando ya no hay casillas pendientes:
-  * O bien se han visitado todas las casillas
-  * O existen zonas aisladas que no se han podido alcanzar</p>
-<p>Si el tamaño del conjunto de visitadas coincide con el número total de casillas (N^2), entonces el terreno es conexo.</p>
+</li>
+<li>
+<p>Mientras haya casillas pendientes:</p>
+</li>
+<li>Se saca una casilla de la lista de pendientes.</li>
+<li>Se añade la casilla al conjunto de visitadas.</li>
+<li>
+<p>Para cada dirección:</p>
+<ul>
+<li>Si existe una casilla adyacente accesible (no separada por una pared)</li>
+<li>Y no ha sido visitada, se añade a la lista de pendientes.</li>
+</ul>
+</li>
+<li>
+<p>Cuando ya no hay casillas pendientes:</p>
+</li>
+<li>O bien se han visitado todas las casillas</li>
+<li>
+<p>O existen zonas aisladas que no se han podido alcanzar</p>
+</li>
+<li>
+<p>Si el tamaño del conjunto de visitadas coincide con el número total de casillas <span class="arithmatex">\((N^2)\)</span>, entonces el terreno es conexo.</p>
+</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Una posible implementación del método <code>esConexo()</code> es la siguiente:</p>
@@ -2946,12 +2964,10 @@
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Dado que el algoritmo recorre, en el peor de los casos, todas las casillas del terreno, la complejidad básica será:</p>
-<p>[
-O(N^2) \times (\text{complejidad de las operaciones})
-]</p>
-<p>Las operaciones básicas (comparaciones, asignaciones, accesos simples) tienen complejidad O(1).</p>
-<p>El acceso a las estructuras de datos depende de su implementación. En el caso de<code>HashSet</code> las operaciones de inserción, borrado y búsqueda tienen complejidad O(1) de forma habitual. En el caso de <code>ArrayList</code>n la operación <code>remove(0)</code> implica desplazar todos los elementos restantes, por lo que su complejidad es O(N).</p>
-<p>Por lo tanto, para el primer caso tenemos que el algoritmo es O(N²) y para el segundo O(N³).</p>
+<p><span class="arithmatex">\(O(N^2) \times (\text{complejidad de las operaciones})\)</span></p>
+<p>Las operaciones básicas (comparaciones, asignaciones, accesos simples) tienen complejidad <span class="arithmatex">\(O(1)\)</span>.</p>
+<p>El acceso a las estructuras de datos depende de su implementación. En el caso de<code>HashSet</code> las operaciones de inserción, borrado y búsqueda tienen complejidad <span class="arithmatex">\(O(1)\)</span> de forma habitual. En el caso de <code>ArrayList</code>n la operación <code>remove(0)</code> implica desplazar todos los elementos restantes, por lo que su complejidad es <span class="arithmatex">\(O(N)\)</span>.</p>
+<p>Por lo tanto, para el primer caso tenemos que el algoritmo es <span class="arithmatex">\(O(N^2)\)</span> y para el segundo <span class="arithmatex">\(O(N^3)\)</span>.</p>
 </details>
 
 
