@@ -3023,14 +3023,14 @@
 
 <h1 id="examen-2014-parcial-1-recuperacion">Examen 2014 — Parcial 1 Recuperación</h1>
 <h2 id="problema-1">Problema 1</h2>
-<ul>
-<li>(a) (5 puntos) Se llama montón (<em>heap</em>) a un <em>array</em> de valores enteros en el que, representado como un árbol binario, todo nodo es mayor o igual que culaquiera de sus dos hijos (si existen):</li>
-</ul>
-<p><img alt="" src="./p1/p1r_ex1.png" /></p>
+<p>Se llama montón (<em>heap</em>) a un <em>array</em> de valores enteros en el que, representado como un árbol binario, todo nodo es mayor o igual que culaquiera de sus dos hijos (si existen):</p>
+<p><img alt="" src="p1r_ex01.png" /></p>
 <p>Se ve que para todo nodo representado en la posición <code>i</code> de un array su hijo izquierdo se encuentra en la posición <code>2·i + 1</code> y su hijo derecho se encuentra en la posición <code>2·i + 2</code>.</p>
 <p>Así pues, para ordenar de mayor a menor un conjunto de valores enteros, basta con colocarlos primero como un montón, y después ir extrayendo sucesivamente el primer valor del array (la raíz principal), y a continuación recuperar el montón de los elementos restantes, hasta que no quede ningún elemento.</p>
 <p>Para recuperar el montón de los restantes elementos cuando se extrae el primer elemento de la tabla, basta con colocar en su lugar el último, y a continuación hacer descender éste en el árbol iterativamente, si resulta necesario, hasta el nivel donde no sea menor que ninguno de sus dos (posibles) descendientes. Detrás se puede ver el código de esta operación, aunque no resulta necesario en absoluto consultarlo, si se ha entendido correctamente este párrafo.</p>
-<p>Sabiendo que la operación de construir un montón a partir de un array de enteros cualquiera tiene una complejidad del orden de n ∗ log(n), se pide encontrar y justificar la complejidad del algoritmo completo de ordenación descrito</p>
+<ul>
+<li>(a) (5 puntos) Sabiendo que la operación de construir un montón a partir de un array de enteros cualquiera tiene una complejidad del orden de <span class="arithmatex">\(n ∗ log(n)\)</span>, se pide encontrar y justificar la complejidad del algoritmo completo de ordenación descrito a continuación:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="nf">montonOrdenado</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">monton</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">monton</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
 
@@ -3083,8 +3083,8 @@
 </code></pre></div>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>En la extracción de los valores en orden (descendente) del <em>array</em>, para cada uno de ellos hay que hacer descender en el árbol la nueva raiz, hasta que encuentre un lugar apropiado para que se siga cumpliendo la condición de <em>heap</em>. Y como el árbol está siempre equilibrado, este descenso será, como mucho, de longitud log(n).</p>
-<p>Como, por otra parte, esta operación ha de realizarse para cada uno de los valores del array, la complejidad de la extracción ordenada de los n valores será de orden n·log(n). Con lo que se tiene una complejidad para el algoritmo de ordenación completo (creación del heap original más extracción ordenada de todos sus valores) de orden n·log(n) + n·log(n). Expresión que, según las reglas de combinación de órdenes de complejidad, equivale simplemente a n·log(n).</p>
+<p>En la extracción de los valores en orden (descendente) del <em>array</em>, para cada uno de ellos hay que hacer descender en el árbol la nueva raiz, hasta que encuentre un lugar apropiado para que se siga cumpliendo la condición de <em>heap</em>. Y como el árbol está siempre equilibrado, este descenso será, como mucho, de longitud <span class="arithmatex">\(log(n)\)</span>.</p>
+<p>Como, por otra parte, esta operación ha de realizarse para cada uno de los valores del array, la complejidad de la extracción ordenada de los n valores será de orden <span class="arithmatex">\(n*log(n)\)</span>. Con lo que se tiene una complejidad para el algoritmo de ordenación completo (creación del heap original más extracción ordenada de todos sus valores) de orden <span class="arithmatex">\(n*log(n) + n*log(n)\)</span>. Expresión que, según las reglas de combinación de órdenes de complejidad, equivale simplemente a <span class="arithmatex">\(n*log(n)\)</span>.</p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
 <ul>
