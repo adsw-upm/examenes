@@ -3023,13 +3023,12 @@
 
 <h1 id="examen-2014-parcial-2">Examen 2014 — Parcial 2</h1>
 <h2 id="problema-1">Problema 1</h2>
+<p>En la práctica 2 (Pacman en Android) deseamos añadir una nueva funcionalidad: que los jugadores ganen puntos. Consideraremos que cada escenario tiene sólo un jugador. El jugador ganará 1 punto cada vez que se mueva y avance una casilla.</p>
+<p>Además, deseamos que al guardar una partida en la base de datos se almacene la puntuación, y que se recupere cuando se carga la partida. Al cargar una partida almacenada, se desea que <code>DbLoadActivity</code> muestre una lista de las partidas guardadas, mostrando en cada fila el nombre de la partida y los puntos obtenidos.</p>
 <ul>
-<li>(a) (5 puntos) En la práctica 2 (Pacman en Android) deseamos añadir una nueva funcionalidad: que los jugadores ganen puntos. Consideraremos que cada escenario tiene sólo un jugador. El jugador ganará 1 punto
-cada vez que se mueva y avance una casilla.</li>
+<li>(a) (5 puntos) Indique qué clases de la práctica debe modificar y cómo. Incluya exclusivamente las modificaciones realizadas. No hace falta que escriba completas las cabeceras de los métodos. En caso de que tenga varias alternativas, justifique y discuta su respuesta. </li>
 </ul>
-<p>Además, deseamos que al guardar una partida en la base de datos se almacene la puntuación, y que se recupere cuando se carga la partida. Al cargar una partida almacenada, se desea que DbLoadActivity muestre una lista de las partidas guardadas, mostrando en cada fila el nombre de la partida y los puntos obtenidos.</p>
-<p>Se pide: indique qué clases de la práctica debe modificar y cómo. Incluya exclusivamente las modificaciones realizadas. No hace falta que escriba completas las cabeceras de los métodos. En caso de que tenga varias alternativas, justifique y discuta su respuesta. </p>
-<p>Nota. En MyDbAdapter, basta con que indique las modificaciones necesarias para crear la tabla e insertar una nueva partida.</p>
+<p>Nota: En <code>MyDbAdapter</code>, basta con que indique las modificaciones necesarias para crear la tabla e insertar una nueva partida.</p>
 <details class="note">
 <summary>mostrar solución</summary>
 <p>Debemos añadir un campo puntos. Se puede añadir en Escenario o en Jugador.</p>
@@ -3058,13 +3057,16 @@ cada vez que se mueva y avance una casilla.</li>
 <span class="p">}</span>
 </code></pre></div>
 <ol>
-<li>MyDbAdapter</li>
+<li>
+<p><code>MyDbAdapter</code></p>
+<p>3.1. En <code>DatabaseHelper</code>, debemos cambiar el String para crear la tabla, añadiendo una columna:</p>
+</li>
 </ol>
-<p>3.1. En DatabaseHelper, debemos cambiar el String para crear la tabla, añadiendo una columna:</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">TABLE_FOTOS</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
 <span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">moviles</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">casillas</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="nb">date</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">puntos</span><span class="w"> </span><span class="nb">INT</span><span class="p">);</span>
 </code></pre></div>
-<p>3.2. inserfFoto()</p>
+<pre><code>3.2. `inserfFoto()`
+</code></pre>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">COL_PUNTOS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;puntos&quot;</span><span class="p">;</span>
 
 <span class="kd">public</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">insertFoto</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3080,7 +3082,7 @@ cada vez que se mueva y avance una casilla.</li>
 <span class="p">}</span>
 </code></pre></div>
 <ol>
-<li>DbLoadActivity</li>
+<li><code>DbLoadActivity</code></li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DbLoadActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ListActivity</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">TAG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">“</span><span class="n">DbLoadActivity</span><span class="s">&quot;;</span>
