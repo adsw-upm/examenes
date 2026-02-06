@@ -12,9 +12,9 @@ En un museo se exhibe un cortometraje de corta duración repetidamente, con un b
 
 El monitor debe permitir acceso a la Sala a las hebras `Visitante` siempre que:
     
-    * No se sobrepase la capacidad de la sala;
+    - No se sobrepase la capacidad de la sala;
     
-    * No haya comenzado la proyección.
+    - No haya comenzado la proyección.
 
 Cuando la proyección termine, se debe permitir que los visitantes que estaban esperando accedan a la sala. Se entiende que TODOS los asistentes a una proyección salen de la sala al terminar la proyección.
 
