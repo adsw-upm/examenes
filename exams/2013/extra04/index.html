@@ -2910,7 +2910,7 @@
 <span class="w">    </span><span class="kd">super</span><span class="p">.</span><span class="na">onListItemClick</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
 <span class="w">    </span><span class="n">Cursor</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">notasCursor</span><span class="p">;</span>
 <span class="w">    </span><span class="n">c</span><span class="p">.</span><span class="na">moveToPosition</span><span class="p">(</span><span class="n">position</span><span class="p">);</span>
-
+<span class="w">    </span><span class="c1">// Código nuevo</span>
 <span class="w">    </span><span class="n">Nota</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNota</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">nota</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">nota</span><span class="p">.</span><span class="na">isCifrado</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">Cifrar</span><span class="p">().</span><span class="na">execute</span><span class="p">(</span>
@@ -2920,10 +2920,12 @@
 <span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 <span class="w">        </span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Fin del código nuevo</span>
 <span class="w">    </span><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span><span class="w"> </span><span class="n">MODIFICA_NOTA</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cifrar</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">Nota</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="c1">// Código nuevo</span>
+<span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cifrar</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">Nota</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">CLAVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="s">&quot;miclave&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
@@ -2932,6 +2934,7 @@
 <span class="w">    </span><span class="nd">@Override</span>
 <span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onPreExecute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="c1">// Fin del código nuevo</span>
 
 <span class="w">    </span><span class="c1">// Método de descifrado (no se modifica)</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">descifra</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2942,6 +2945,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="c1">// Código nuevo</span>
 <span class="w">    </span><span class="c1">// Ejecución en segundo plano</span>
 <span class="w">    </span><span class="nd">@Override</span>
 <span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">Nota</span><span class="w"> </span><span class="nf">doInBackground</span><span class="p">(</span><span class="n">String</span><span class="p">...</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2990,8 +2994,9 @@
 <span class="w">        </span><span class="n">cursorAdapter</span><span class="p">.</span><span class="na">notifyDataSetChanged</span><span class="p">();</span>
 <span class="w">        </span><span class="n">actualizaLista</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="c1">// Fin del código nuevo</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></p>
 </details>
 
 
