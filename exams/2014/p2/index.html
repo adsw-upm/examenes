@@ -3105,7 +3105,7 @@
 <h2 id="problema-2">Problema 2</h2>
 <p>Conteste a las siguientes preguntas:</p>
 <ul>
-<li>(a) (1,5 puntos) En un layout existe un widget de tipo EditText con id “telefono”. Escribir el código que extrae lo tecleado por el usuario en el widget y genera una traza con el contenido.</li>
+<li>(a) (1,5 puntos) En un layout existe un widget de tipo <code>EditText</code> con id <em>telefono</em>. Escribir el código que extrae lo tecleado por el usuario en el widget y genera una traza con el contenido.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3115,7 +3115,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (1,5 puntos) Estando en una actividad se desea pasar a otra actividad llamada PantallaActivity. Escribir el código necesario para lanzar esta actividad pasándole un parámetro entero llamado “n”.</li>
+<li>(b) (1,5 puntos) Estando en una actividad se desea pasar a otra actividad llamada <code>PantallaActivity</code>. Escribir el código necesario para lanzar esta actividad pasándole un parámetro entero llamado <em>n</em>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3125,14 +3125,19 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2 puntos) Necesitamos enviar un mensaje (String M) a una larga lista de destinatarios cuyas direcciones de email tenemos en una lista de direcciones <code>List&lt;Email&gt;</code>. Tenemos un método para enviar un correo:</li>
+<li>(c) (2 puntos) Necesitamos enviar un mensaje (<code>String M</code>) a una larga lista de destinatarios cuyas direcciones de email tenemos en una lista de direcciones <code>List&lt;Email&gt;</code>. Tenemos un método para enviar un correo:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span><span class="n">Email</span><span class="w"> </span><span class="n">direccion</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">mensaje</span><span class="p">)</span>
 </code></pre></div>
-<p>Como este método puede ser lento, usaremos una AsyncTask para el envío a la lista. Suponga que llamamos al método execute() pasándole como parámetro la String M. Escriba la cabecera y
-cuerpo del método de la AsyncTask que se ejecuta en otra hebra (thread) de forma que ocurra lo siguiente:
-    - cada vez que termina el envío de un mensaje, se lanza un Toast en la UI-thread con un mensaje que pone el email y el boolean que ha devuelto el método send()
-    - el resultado final es el tiempo transcurrido en la hebra asíncrona en milisegundos (un entero largo)</p>
+<p>Como este método puede ser lento, usaremos una <code>AsyncTask</code> para el envío a la lista. Suponga que llamamos al método execute() pasándole como parámetro la <code>String M</code>. Escriba la cabecera y cuerpo del método de la <code>AsyncTask</code> que se ejecuta en otra hebra (thread) de forma que ocurra lo siguiente:</p>
+<ul>
+<li>
+<p>Cada vez que termina el envío de un mensaje, se lanza un <code>Toast</code> en la <code>UI-thread</code> con un mensaje que pone el email y el boolean que ha devuelto el método <code>send()</code>.</p>
+</li>
+<li>
+<p>El resultado final es el tiempo transcurrido en la hebra asíncrona en milisegundos (un entero largo).</p>
+</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Correo</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -3158,7 +3163,7 @@ cuerpo del método de la AsyncTask que se ejecuta en otra hebra (thread) de form
 <span class="s">    protected void onPostExecute(Long result) {...} // en la UIThread</span>
 <span class="s">}</span>
 </code></pre></div>
-<p>Sólo se da el código del método doInBackground, dado que los otros métodos se ejecutan en la UIThread. En particular, los Toast que se mencionan en el enunciado se lanzan desde los métodos     onProgressUpdate y onPostExecute, que se ejecutan en la hebra principal (UIThread).</p>
+<p>Sólo se da el código del método <code>doInBackground</code>, dado que los otros métodos se ejecutan en la <code>UIThread</code>. En particular, los <code>Toast</code> que se mencionan en el enunciado se lanzan desde los métodos <code>onProgressUpdate</code> y <code>onPostExecute</code>, que se ejecutan en la hebra principal (<code>UIThread</code>).</p>
 </details>
 
 
