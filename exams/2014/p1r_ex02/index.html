@@ -2879,10 +2879,14 @@
 <li>(a) (5 puntos) Escriba una clase Monitor que controle el acceso a la sala. Cada visitante es modelado como una hebra, que invoca el método <code>accederASala()</code> del Monitor cuando desea ver la proyección. Además hay otra hebra, Proyector, que periódicamente invoca el método <code>comienzaProyección()</code> y, tras la finalización de la proyección, invoca el método <code>terminaProyección()</code>.</li>
 </ul>
 <p>El monitor debe permitir acceso a la Sala a las hebras <code>Visitante</code> siempre que:</p>
-<pre><code>- No se sobrepase la capacidad de la sala;
-
-- No haya comenzado la proyección.
-</code></pre>
+<ul>
+<li>
+<p>No se sobrepase la capacidad de la sala;</p>
+</li>
+<li>
+<p>No haya comenzado la proyección.</p>
+</li>
+</ul>
 <p>Cuando la proyección termine, se debe permitir que los visitantes que estaban esperando accedan a la sala. Se entiende que TODOS los asistentes a una proyección salen de la sala al terminar la proyección.</p>
 <p>SE PIDE EXCLUSIVAMENTE EL CÓDIGO DEL MONITOR. NO ESCRIBA EL CÓDIGO DE VISITANTE.</p>
 <p>A continuación se incluye el código del Proyector:</p>
