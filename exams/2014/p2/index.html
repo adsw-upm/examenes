@@ -3057,18 +3057,14 @@
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>
-<p><code>MyDbAdapter</code></p>
-<ul>
-<li>En <code>DatabaseHelper</code>, debemos cambiar el String para crear la tabla, añadiendo una columna:</li>
-</ul>
-</li>
+<li>Dentro de <code>MyDbAdapter</code>, en <code>DatabaseHelper</code>, debemos cambiar el String para crear la tabla, añadiendo una columna:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">TABLE_FOTOS</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
 <span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">moviles</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">casillas</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="nb">date</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">puntos</span><span class="w"> </span><span class="nb">INT</span><span class="p">);</span>
 </code></pre></div>
-<pre><code>- `inserfFoto()`
-</code></pre>
+<ul>
+<li>También dentro de <code>MyDbAdapter</code>, modificamos <code>inserfFoto()</code>:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">COL_PUNTOS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;puntos&quot;</span><span class="p">;</span>
 
 <span class="kd">public</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">insertFoto</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
