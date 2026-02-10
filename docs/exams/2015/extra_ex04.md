@@ -6,7 +6,7 @@ tags:
  - android
 ---
 
-Se pretende realizar una aplicación Android que gestione los gastos de un usuario. Cada vez que se realiza un gasto, el usuario puede introducir la cantidad gastada (“Importe”, campo numérico real) y en qué se lo ha gastado (“Concepto”, de tipo texto). Estos registros se guardarán en una base de datos sqlite, con una única tabla. La aplicación mostrará los registros existentes mediante una ListActivity. 
+Se pretende realizar una aplicación Android que gestione los gastos de un usuario. Cada vez que se realiza un gasto, el usuario puede introducir la cantidad gastada (`Importe`, campo numérico real) y en qué se lo ha gastado (`Concepto`, de tipo texto). Estos registros se guardarán en una base de datos sqlite, con una única tabla. La aplicación mostrará los registros existentes mediante una `ListActivity`. 
 
 La aplicación dispone de un menú con dos opciones, “Añadir” y “Acerca de”. La especificación del menú es la siguiente:
 
@@ -44,7 +44,7 @@ public class DatabaseHelper {
 }
 ```
 
-- (a) (1 punto) Escriba una sentencia SQL que devuelva todos los registros de la base de datos cuyo importe supere el valor de 50,00.
+- (a) (1 punto) Escriba una sentencia SQL que devuelva todos los registros de la base de datos cuyo importe supere el valor de `50,00`.
 
 ??? note "Mostrar solución"
     ```SQL
@@ -52,12 +52,13 @@ public class DatabaseHelper {
     ```
 
 
-- (b) (1 punto) Sobreescriba el método adecuado de ListActivity para implementar el siguiente comportamiento:
+- (b) (1 punto) Sobreescriba el método adecuado de `ListActivity` para implementar el siguiente comportamiento:
 
-    - 1) la opción “Acerca de” muestra un Toast con el nombre del autor del código (usted);
-    - 2) la opción “Añadir” se lance otra actividad llamada “AnadirGastoActivity” que ya está implementada.
+    - 1) la opción “Acerca de” muestra un `Toast` con el nombre del autor del código (usted);
+    - 2) la opción “Añadir” se lance otra actividad llamada `AnadirGastoActivity` que ya está implementada.
 
-    Tenga en cuenta que “AnadirGastoActivity” devolverá un Intent con los datos del usuario.
+    Tenga en cuenta que `AnadirGastoActivity` devolverá un `Intent` con los datos del usuario.
+
 
 ??? note "Mostrar solución"
     ```java
@@ -89,24 +90,24 @@ public class DatabaseHelper {
     }
     ```
 
-- (c) (1 punto) ¿Qué métodos relativos al ciclo de vida de las actividades ListActivity y AnadirGastoActivity se ejecutan desde que se selecciona la opción “Añadir” del menú hasta que se vuelve a mostrar la lista de gasto? Escriba sólo el nombre del método y la actividad a la que pertenece, y el orden adecuado.
+- (c) (1 punto) ¿Qué métodos relativos al ciclo de vida de las actividades `ListActivity` y `AnadirGastoActivity` se ejecutan desde que se selecciona la opción “Añadir” del menú hasta que se vuelve a mostrar la lista de gasto? Escriba sólo el nombre del método y la actividad a la que pertenece, y el orden adecuado.
 
 ??? note "Mostrar solución"
     | Método      | Actividad           |
     | ----------- | ------------------- |
-    | onPause()   | ListActivity        |
-    | onCreate()  | AnadirGastoActivity |
-    | onStart()   | AnadirGastoActivity |
-    | onResume()  | AnadirGastoActivity |
-    | onStop()    | AnadirGastoActivity |
-    | onPause()   | AnadirGastoActivity |
-    | onRestart() | ListActivity        |
-    | onStart()   | ListActivity        |
-    | onResume()  | ListActivity        |
-    | onStop()    | AnadirGastoActivity |
+    | `onPause()`   | `ListActivity        `|
+    | `onCreate()`  | `AnadirGastoActivity `|
+    | `onStart()`   | `AnadirGastoActivity `|
+    | `onResume()`  | `AnadirGastoActivity `|
+    | `onStop()`    | `AnadirGastoActivity `|
+    | `onPause()`   | `AnadirGastoActivity `|
+    | `onRestart()` | `ListActivity        `|
+    | `onStart()`   | `ListActivity        `|
+    | `onResume()`  | `ListActivity        `|
+    | `onStop()`    | `AnadirGastoActivity `|
 
 
-- (d) (1 punto) Escriba un método de la clase DatabaseHelper que añada un nuevo registro a la base de datos. La información del Concepto y del Importe se pasará como parámetros del método.
+- (d) (1 punto) Escriba un método de la clase `DatabaseHelper` que añada un nuevo registro a la base de datos. La información del `Concepto` y del `Importe` se pasará como parámetros del método.
 
 ??? note "Mostrar solución"
     ```java
@@ -121,7 +122,7 @@ public class DatabaseHelper {
     ```
 
 
-- (e) (1 punto) Escriba una especificación de layout adecuada que se pueda utilizar en la actividad “AnadirGastoActivity”. Además de los campos de información, dispondrá de un botón “Guardar” y otro “Cancelar” (sólo hay que poner los botones). 
+- (e) (1 punto) Escriba una especificación de layout adecuada que se pueda utilizar en la actividad `AnadirGastoActivity`. Además de los campos de información, dispondrá de un botón “Guardar” y otro “Cancelar” (sólo hay que poner los botones). 
 
 ??? note "Mostrar solución"
     ```XML

@@ -10,10 +10,10 @@ Se tiene un sistema con dos hebras (H1 y H2) que acceden continuamente a un recu
 
 ![](./p1r/p1r_ex02.png)
 
-- (a) (4 puntos) Se pide desarrollar el monitor (GestorCiclosAcceso) para sincronizar las hebras según el comportamiento descrito. El monitor debe proporcionar las siguientes operaciones:
-    - ... void accederH1(): Este método lo invoca la hebra H1 para solicitar acceso al recurso compartido.
-    - ... void accederH2(): Este método lo invoca la hebra H2 para solicitar acceso al recurso compartido.
-    - ... void liberar(): Este método lo invocan las hebras para liberar el recurso compartido.
+- (a) (4 puntos) Se pide desarrollar el monitor `(GestorCiclosAcceso)` para sincronizar las hebras según el comportamiento descrito. El monitor debe proporcionar las siguientes operaciones:
+    - `... void accederH1()`: Este método lo invoca la hebra H1 para solicitar acceso al recurso compartido.
+    - `... void accederH2()`: Este método lo invoca la hebra H2 para solicitar acceso al recurso compartido.
+    - `... void liberar()`: Este método lo invocan las hebras para liberar el recurso compartido.
 
 ??? note "Mostrar solución"
     ```java
@@ -86,6 +86,7 @@ Se tiene un sistema con dos hebras (H1 y H2) que acceden continuamente a un recu
         }
     }
     ```
+
     Otra posible implementación, que utiliza máquinas de estados, es la siguiente:
     
     ```java

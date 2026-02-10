@@ -86,18 +86,23 @@ int[] getLIS(int[] x) {
 }
 ```
 
-- (a) (4 puntos) Se pide calcular su complejidad en función del tamaño N de la secuencia de entrada, razonando la solución.
+- (a) (4 puntos) Se pide calcular su complejidad en función del tamaño $N$ de la secuencia de entrada, razonando la solución.
 
 ??? note "Mostrar solución"
-    La iniciación de los arrays "len" y "pred" es de complejidad lineal, pues se visitan todos sus elementos una sola vez, y su longitud es n.
+    La iniciación de los arrays `len` y `pred` es de complejidad lineal, pues se visitan todos sus elementos una sola vez, y su longitud es $n$.
 
-    A continuación hay un bucle doble anidado, cuyo cuerpo, de complejidad constante, se ejecuta 1 + 2 + 3 + ... + n-1 veces, es decir, un total de n/2*(n-1) veces. Por lo que su complejidad es cuadrática.
+    A continuación hay un bucle doble anidado, cuyo cuerpo, de complejidad constante, se ejecuta $1 + 2 + 3 + ... + n-1$ veces, es decir, un total de $n/2*(n-1)$ veces. Por lo que su complejidad es cuadrática.
 
     Al final hay dos bucles simples con cuerpo de complejidad constante y número de vueltas de orden n, que tienen pues complejidad lineal.
 
     Sumando todas las complejidades individuales según su regla (el resultado es el término de mayor complejidad), la complejidad del algoritmo descrito resulta ser cuadrática. En términos formales:
-    C(for.for) = O(1+2+3+...+(n-1)) = O(n/2 * (n-1)) = O(n^2 / 2) - O(n/2) = O(n^2)
-    C(LIS) = C(arrays.fill) + C(Arrays.fill) + C(for.for) + C(for) + C(for)
-    = O(n) + O(n) + C(for.for) + O(n) + O(n/k)
-    = O(n) + O(n) + O(n^2) + O(n) + O(n)
-    = O(n^2).
+
+    $C(for.for) = O(1+2+3+...+(n-1)) = O(n/2 * (n-1)) = O(n^2 / 2) - O(n/2) = O(n^2)$
+
+    $C(LIS) = C(arrays.fill) + C(Arrays.fill) + C(for.for) + C(for) + C(for)$
+
+    $= O(n) + O(n) + C(for.for) + O(n) + O(n/k)$
+
+    $= O(n) + O(n) + O(n^2) + O(n) + O(n)$
+
+    $= O(n^2)$.

@@ -47,19 +47,19 @@ int[] lis(int[] x) {
 }
 ```
 
-- (a) (4 puntos) Se pide calcular su complejidad en función de tamaño N de la secuencia de entrada, razonando la solución. NOTA: A efectos del examen se valorará más el razonamiento que el resultado final.
+- (a) (4 puntos) Se pide calcular su complejidad en función de tamaño $N$ de la secuencia de entrada, razonando la solución. NOTA: A efectos del examen se valorará más el razonamiento que el resultado final.
 
 ??? note "Mostrar solución"
-    Al principio hay un doble bucle anidado, siendo el bucle externo de complejidad lineal, mientras que el bucle interno es en principio de complejidad logarítmica, ya que hace búsqueda dicotómica en un intervalo de tamaño no mayor que n.  Visto en más detalle, el bucle interno empieza con un intervalo de una unidad y aumenta su tamaño como mucho en una unidad más en cada vuelta al bucle externo (algunas vueltas se incrementa en una unidad y algunas vueltas no se incrementa).  Así pues, su tiempo de ejecución estará acotado por una constante que multiplica a (log 1 + log 2 ... log n), lo cual es igual a log(1*2*...n), es decir, log(n!). Cantidad que puede acotarse también por log(n^n), es decir, n*log(n) (aplicando la fórmula de Stirling se obtiene un valor mas aproximado, (n*log n - n), pero del mismo orden de complejidad). Es decir, el bucle doble tiene complejidad lineal logarítmica. Y a continuación del bucle doble anidado hay un bucle simple que es de complejidad lineal.
+    Al principio hay un doble bucle anidado, siendo el bucle externo de complejidad lineal, mientras que el bucle interno es en principio de complejidad logarítmica, ya que hace búsqueda dicotómica en un intervalo de tamaño no mayor que $n$.  Visto en más detalle, el bucle interno empieza con un intervalo de una unidad y aumenta su tamaño como mucho en una unidad más en cada vuelta al bucle externo (algunas vueltas se incrementa en una unidad y algunas vueltas no se incrementa).  Así pues, su tiempo de ejecución estará acotado por una constante que multiplica a $(log 1 + log 2 ... log n)$, lo cual es igual a $log(1*2*...n)$, es decir, $log(n!)$. Cantidad que puede acotarse también por $log(n^n)$, es decir, $n*log(n)$ (aplicando la fórmula de Stirling se obtiene un valor mas aproximado, $(n*log n - n)$, pero del mismo orden de complejidad). Es decir, el bucle doble tiene complejidad lineal logarítmica. Y a continuación del bucle doble anidado hay un bucle simple que es de complejidad lineal.
 
     Sumando todas las complejidades individuales según su regla (el resultado es el término de mayor complejidad), la complejidad del algoritmo descrito resulta ser lineal logarítmica. En términos formales: 
 
-    C(for.while) = O(log 1 + log 2 ... log n) = O(log(1*2*...n)) = O(log(n!)) = O(n*log n)
+    $C(for.while) = O(log 1 + log 2 ... log n) = O(log(1*2*...n)) = O(log(n!)) = O(n*log n)$
 
-    C(lis) =
+    $C(lis) =$
 
-    = C(for.while) + C(for)
+    $= C(for.while) + C(for)$
 
-    = O(n*log n) + O(n)
+    $= O(n*log n) + O(n)$
 
-    = O(n*log n)
+    $= O(n*log n)$
