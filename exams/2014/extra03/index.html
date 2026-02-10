@@ -2876,13 +2876,13 @@
 
 <p>Sobre el proyecto del pacman, deseamos mover funcionalidad del menú a botones:</p>
 <p><img alt="" src="../extra/extra_03.png" /></p>
-<p>Se pide:</p>
+<p>Se pide, siendo la respuesta razonada, incluyendo código java y especificaciones en XML, aunque no sea necesario que la sintaxis de java y xml sea perfectamente correcta:</p>
 <ul>
 <li>(a) (1 punto) ¿Qué cambios hay que hacer para poner botones? Indique ficheros java y ficheros de recursos que hay que modificar y en qué consiste la modificación.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>a) Hay que añadir una fila de botones en res / layout / main.xml</p>
+<p>Hay que añadir una fila de botones en <code>res/layout/main.xml</code></p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;LinearLayout</span>
 <span class="w">    </span><span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
 <span class="w">    </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
@@ -2910,7 +2910,7 @@
 <span class="w">        </span><span class="na">android:text=</span><span class="s">&quot;depredador&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/LinearLayout&gt;</span>
 </code></pre></div>
-<p>b) Hay que asociar la funcionalidad a cada botón en MainActivity.java</p>
+<p>Hay que asociar la funcionalidad a cada botón en <code>MainActivity.java</code></p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">clic</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Escenario</span><span class="w"> </span><span class="n">escenario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Escenario</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
 <span class="w">    </span><span class="k">switch</span><span class="p">(</span><span class="n">view</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -2926,11 +2926,16 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Si se van a eliminar las entradas del menú, hay que revisar los R.id que desaparecen, ajustando los
-identificadores que se usan en cada parte del código.</p>
+<p>Si se van a eliminar las entradas del menú, hay que revisar los <code>R.id</code> que desaparecen, ajustando los identificadores que se usan en cada parte del código.</p>
 <p>NOTA: Hay otras formas de hacerlo:</p>
-<p>• En el layout: identificando cada botón por un onClick() específico</p>
-<p>• En java, en onCreate(): localizando los botones y asociándoles la funcionalidad. Por ejemplo</p>
+<ul>
+<li>
+<p>En el layout: identificando cada botón por un <code>onClick()</code> específico.</p>
+</li>
+<li>
+<p>En java, en <code>onCreate()</code>: localizando los botones y asociándoles la funcionalidad. Por ejemplo:</p>
+</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="n">Button</span><span class="w"> </span><span class="n">bv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">boton_reset</span><span class="p">);</span>
 <span class="n">bv</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nd">@Override</span>
@@ -2940,8 +2945,9 @@ identificadores que se usan en cada parte del código.</p>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>• En java, hacemos que la clase MainActivity implemente OnClickListener y escribimos el
-método onClick() en la clase principal y la asociamos a cada botón</p>
+<ul>
+<li>En java, hacemos que la clase <code>MainActivity</code> implemente <code>OnClickListener</code> y escribimos el método <code>onClick()</code> en la clase principal y la asociamos a cada botón:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">OnClickListener</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// en onCreate():</span>
@@ -2971,41 +2977,43 @@ método onClick() en la clase principal y la asociamos a cada botón</p>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>a) Hay que eliminar las entradas de res / menu / main.xml</p>
-<div class="highlight"><pre><span></span><code>~~<span class="nt">&lt;item</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:id=</span><span class="s">&quot;@+id/button_reset&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:icon=</span><span class="s">&quot;@drawable/fantasma_rojo&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:showAsAction=</span><span class="s">&quot;ifRoom&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:title=</span><span class="s">&quot;@string/button_reset&quot;</span><span class="nt">/&gt;</span>~~
+<p>Hay que eliminar las entradas de <code>res/menu/main.xml</code> que se muestran a continuación:</p>
+<p><div class="highlight"><pre><span></span><code><span class="nt">&lt;item</span>
+<span class="w">    </span><span class="na">android:id=</span><span class="s">&quot;@+id/button_reset&quot;</span>
+<span class="w">    </span><span class="na">android:icon=</span><span class="s">&quot;@drawable/fantasma_rojo&quot;</span>
+<span class="w">    </span><span class="na">android:showAsAction=</span><span class="s">&quot;ifRoom&quot;</span>
+<span class="w">    </span><span class="na">android:title=</span><span class="s">&quot;@string/button_reset&quot;</span><span class="nt">/&gt;</span>
 
-~~<span class="nt">&lt;item</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:id=</span><span class="s">&quot;@+id/fantasma00&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:icon=</span><span class="s">&quot;@drawable/fantasma_rojo&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:showAsAction=</span><span class="s">&quot;ifRoom&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:title=</span><span class="s">&quot;@string/fantasma00&quot;</span><span class="nt">/&gt;</span>~~
+<span class="nt">&lt;item</span>
+<span class="w">    </span><span class="na">android:id=</span><span class="s">&quot;@+id/fantasma00&quot;</span>
+<span class="w">    </span><span class="na">android:icon=</span><span class="s">&quot;@drawable/fantasma_rojo&quot;</span>
+<span class="w">    </span><span class="na">android:showAsAction=</span><span class="s">&quot;ifRoom&quot;</span>
+<span class="w">    </span><span class="na">android:title=</span><span class="s">&quot;@string/fantasma00&quot;</span><span class="nt">/&gt;</span>
 
-~~<span class="nt">&lt;item</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:id=</span><span class="s">&quot;@+id/depredador&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:icon=</span><span class="s">&quot;@drawable/anibal&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:showAsAction=</span><span class="s">&quot;ifRoom&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:title=</span><span class="s">&quot;@string/depredador&quot;</span><span class="nt">/&gt;</span>~~
+<span class="nt">&lt;item</span>
+<span class="w">    </span><span class="na">android:id=</span><span class="s">&quot;@+id/depredador&quot;</span>
+<span class="w">    </span><span class="na">android:icon=</span><span class="s">&quot;@drawable/anibal&quot;</span>
+<span class="w">    </span><span class="na">android:showAsAction=</span><span class="s">&quot;ifRoom&quot;</span>
+<span class="w">    </span><span class="na">android:title=</span><span class="s">&quot;@string/depredador&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-<p>b) Hay que eliminar la funcionalidad de la clase MainActivity</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">onOptionsItemSelected</span><span class="p">(</span><span class="n">MenuItem</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Escenario</span><span class="w"> </span><span class="n">escenario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Escenario</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
-<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">getItemId</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="o">~~</span><span class="k">case</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">button_reset</span><span class="p">:</span><span class="o">~~</span>
-<span class="w">            </span><span class="o">~~</span><span class="n">escenario</span><span class="p">.</span><span class="na">restart</span><span class="p">();</span><span class="o">~~</span>
-<span class="w">            </span><span class="o">~~</span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="o">~~</span>
-<span class="w">    </span><span class="o">~~</span><span class="p">}</span><span class="o">~~</span>
-<span class="w">    </span><span class="o">~~</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">escenario</span><span class="p">.</span><span class="na">addMovil</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">getItemId</span><span class="p">()))</span><span class="o">~~</span>
-<span class="w">        </span><span class="o">~~</span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="o">~~</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">onOptionsItemSelected</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
-<span class="p">}</span>
+</del></p>
+<p>Hay que eliminar la funcionalidad de la clase <code>MainActivity</code>:</p>
+<p>De:
+<div class="highlight"><pre><span></span><code><span class="mo">01</span><span class="w"> </span><span class="nd">@Override</span>
+<span class="mo">02</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">onOptionsItemSelected</span><span class="p">(</span><span class="n">MenuItem</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">03</span><span class="w">     </span><span class="n">Escenario</span><span class="w"> </span><span class="n">escenario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Escenario</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
+<span class="mo">04</span><span class="w">     </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">getItemId</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">05</span><span class="w">         </span><span class="k">case</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">button_reset</span><span class="p">:</span>
+<span class="mo">06</span><span class="w">             </span><span class="n">escenario</span><span class="p">.</span><span class="na">restart</span><span class="p">();</span>
+<span class="mo">07</span><span class="w">             </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="mi">08</span><span class="w">     </span><span class="p">}</span>
+<span class="mi">09</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">escenario</span><span class="p">.</span><span class="na">addMovil</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">getItemId</span><span class="p">()))</span>
+<span class="mi">10</span><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="mi">11</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">onOptionsItemSelected</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="mi">12</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p>OJO: hemos eliminado la facilidad de añadir nuevos fantasmas sin más que añadirlos en la
-especificación xml del menú.</p>
+Se eliminan las líneas 05 a 10.</p>
+<p>OJO: hemos eliminado la facilidad de añadir nuevos fantasmas sin más que añadirlos en la especificación xml del menú.</p>
 </details>
 <ul>
 <li>(c) (0,5 puntos) ¿Podemos mantener ambos? Es decir, la misma funcionalidad accesible por menú y por botón.</li>
@@ -3014,7 +3022,6 @@ especificación xml del menú.</p>
 <summary>Mostrar solución</summary>
 <p>Sí. Se pueden añadir los botones y dejar el código para el menú. La misma función se puede realizar de 2 formas: por botón y por menú.</p>
 </details>
-<p>La respuesta debe ser razonada, incluyendo código java y especificaciones en XML, aunque no es necesario que la sintaxis de java y xml sea perfectamente correcta.</p>
 
 
 

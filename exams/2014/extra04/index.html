@@ -2919,19 +2919,16 @@ onResume()
 <p>los métodos que hay que programar son:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">onPreExecute</span><span class="p">()</span>
 </code></pre></div>
-<p>Se ejecuta en la UIThread, cuando se llama a execute(). Sirve para iniciar la tarea antes de
-empezar a ejecutar doInbackground.</p>
+<p>Se ejecuta en la <code>UIThread</code>, cuando se llama a <code>execute()</code>. Sirve para iniciar la tarea antes de empezar a ejecutar <code>doInbackground</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">Result</span><span class="w"> </span><span class="nf">doInBackground</span><span class="p">(</span><span class="n">Params</span><span class="err">…</span><span class="p">)</span>
 </code></pre></div>
-<p>Se ejecuta en la hebra auxiliar. Es equivalente a run() en las threads normales. Params son
-los parámetros que se le pasan al arrancar la tarea.</p>
+<p>Se ejecuta en la hebra auxiliar. Es equivalente a <code>run()</code> en las threads normales. <code>Params</code> son los parámetros que se le pasan al arrancar la tarea.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">onProgressUpdate</span><span class="w"> </span><span class="p">(</span><span class="n">Progress</span><span class="err">…</span><span class="p">)</span>
 </code></pre></div>
-<p>Se ejecuta en la UIThread cada vez que se llama a publishProgress(Progress…) desde el
-cuerpo de doInBackground.</p>
+<p>Se ejecuta en la <code>UIThread</code> cada vez que se llama a <code>publishProgress(Progress…)</code> desde el cuerpo de <code>doInBackground</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">onPostExecute</span><span class="w"> </span><span class="p">(</span><span class="n">Result</span><span class="p">)</span>
 </code></pre></div>
-<p>Se ejecuta en la UIThread cuando termina doInBackground (con return Result).</p>
+<p>Se ejecuta en la <code>UIThread</code> cuando termina <code>doInBackground</code> (con <code>return Result</code>).</p>
 </details>
 
 

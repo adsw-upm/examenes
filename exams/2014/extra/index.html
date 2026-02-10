@@ -3067,26 +3067,33 @@
 
 <h1 id="examen-2014-extraordinario">Examen 2014 — Extraordinario</h1>
 <h2 id="problema-1">Problema 1</h2>
+<p>En una matriz de valores enteros de dos dimensiones, se dice que un elemento es un pico si es mayor o igual que sus cuatro vecinos en vertical y horizontal (o sus tres vecinos, en el caso de que se encuentre en el borde de la matriz, o sus dos vecinos si está en una esquina).</p>
+<p>Para encontrar un pico en una matriz de <span class="arithmatex">\(N\)</span> filas por <span class="arithmatex">\(M\)</span> columnas (se puede demostrar que siempre existe al menos uno) se puede utilizar el siguiente algoritmo:</p>
+<ol>
+    <li> Si $M$ es igual a 1, encontrar el mayor valor de esa columna, y devolverlo como resultado. </li>
+
+    <li> En otro caso, encontrar el mayor valor en la columna central de la matriz. </li>
+
+    <li> Si ese valor es mayor o igual que sus vecinos derecho e izquierdo (si existen), devolverlo como resultado. </li>
+
+    <li> En otro caso, si ese valor es menor que su vecino izquierdo (si existe), continuar el mismo algoritmo con la mitad izquierda de la matriz. Y si no es así, continuar el mismo algoritmo con la mitad derecha de la matriz (quitando la columna central en ambos casos). </li>
+</ol>
+
 <ul>
-<li>(a) (2,5 puntos) En una matriz de valores enteros de dos dimensiones, se dice que un elemento es un pico si es mayor o igual que sus cuatro vecinos en vertical y horizontal (o sus tres vecinos, en el caso de que se encuentre en el borde de la matriz, o sus dos vecinos si está en una esquina).</li>
+<li>(a) (2,5 puntos) Se pide indicar razonadamente cuál es la complejidad del algoritmo descrito, en términos de <span class="arithmatex">\(N\)</span> y <span class="arithmatex">\(M\)</span>.</li>
 </ul>
-<p>Para encontrar un pico en una matriz de N filas por M columnas (se puede demostrar que siempre existe al menos uno) se puede utilizar el siguiente algoritmo:
-    1. Si M es igual a 1, encontrar el mayor valor de esa columna, y devolverlo como resultado.
-    2. En otro caso, encontrar el mayor valor en la columna central de la matriz.
-    3. Si ese valor es mayor o igual que sus vecinos derecho e izquierdo (si existen), devolverlo como resultado.
-    4. En otro caso, si ese valor es menor que su vecino izquierdo (si existe), continuar el mismo algoritmo con la mitad izquierda de la matriz. Y si no es así, continuar el mismo algoritmo con la mitad derecha de la matriz (quitando la columna central en ambos casos).</p>
-<p>Se pide indicar razonadamente cuál es la complejidad del algoritmo descrito, en términos de N y M.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La búsqueda del mayor valor en una columna de N enteros tiene complejidad N, ya que todos los valores de la columna han de ser comprobados, y las operaciones a realizar con cada uno de ellos son de complejidad constante. </p>
-<p>Por otra parte, en el peor caso habrá que hacer esa búsqueda tantas veces como se puedan dividir iterativamente en dos partes iguales las M columnas, para llegar al final a una sola. Es decir, logaritmo en base dos de M veces. Por tanto, la complejidad total del algoritmo es N*log(M).</p>
+<p>La búsqueda del mayor valor en una columna de <span class="arithmatex">\(N\)</span> enteros tiene complejidad <span class="arithmatex">\(N\)</span>, ya que todos los valores de la columna han de ser comprobados, y las operaciones a realizar con cada uno de ellos son de complejidad constante. </p>
+<p>Por otra parte, en el peor caso habrá que hacer esa búsqueda tantas veces como se puedan dividir iterativamente en dos partes iguales las <span class="arithmatex">\(M\)</span> columnas, para llegar al final a una sola. Es decir, logaritmo en base dos de <span class="arithmatex">\(M\)</span> veces. Por tanto, la complejidad total del algoritmo es <span class="arithmatex">\(N*log(M)\)</span>.</p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
 <p>Un sistema de gestión de un almacén de piezas está compuesto por un conjunto de productores y de consumidores, que se modelan mediante hebras. Las hebras productoras añaden piezas, mientras que las consumidoras las solicitan y retiran.</p>
-<p>Se pide diseñar un monitor GestorPiezas que gestione las interacciones de estas hebras, cuya interfaz está formada por los siguientes métodos:
-    … void solicitarPiezas (int cantidadPiezas): este método lo invocan las hebras consumidoras cuando quieren solicitar una cantidad de piezas determinada. Si hay piezas suficientes, se le proporcionan inmediatamente (se actualiza el número de piezas almacenadas). Si no las hay, se bloquea la hebra hasta que haya suficientes. En este caso, hay que bloquear al resto de hebras consumidoras hasta que se satisfaga la petición pendiente.</p>
-<pre><code>… void agregarPiezas (int cantidadPiezas): este método lo invocan las hebras productoras para añadir piezas al almacén. La cantidad de piezas que se pueden almacenar es ilimitada.
-</code></pre>
+<ul>
+<li>(a) (2,5 puntos) Se pide diseñar un monitor <code>GestorPiezas</code> que gestione las interacciones de estas hebras, cuya interfaz está formada por los siguientes métodos:</li>
+</ul>
+<p><code>… void solicitarPiezas (int cantidadPiezas)</code>: este método lo invocan las hebras consumidoras cuando quieren solicitar una cantidad de piezas determinada. Si hay piezas suficientes, se le proporcionan inmediatamente (se actualiza el número de piezas almacenadas). Si no las hay, se bloquea la hebra hasta que haya suficientes. En este caso, hay que bloquear al resto de hebras consumidoras hasta que se satisfaga la petición pendiente.</p>
+<p><code>… void agregarPiezas (int cantidadPiezas)</code>: este método lo invocan las hebras productoras para añadir piezas al almacén. La cantidad de piezas que se pueden almacenar es ilimitada.</p>
 <p>Nota: el número de piezas debe ser positivo en todos los casos.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3115,13 +3122,13 @@
 <h2 id="problema-3">Problema 3</h2>
 <p>Sobre el proyecto del pacman, deseamos mover funcionalidad del menú a botones:</p>
 <p><img alt="" src="extra_03.png" /></p>
-<p>Se pide:</p>
+<p>Se pide, siendo la respuesta razonada, incluyendo código java y especificaciones en XML, aunque no sea necesario que la sintaxis de java y xml sea perfectamente correcta:</p>
 <ul>
 <li>(a) (1 punto) ¿Qué cambios hay que hacer para poner botones? Indique ficheros java y ficheros de recursos que hay que modificar y en qué consiste la modificación.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>a) Hay que añadir una fila de botones en res / layout / main.xml</p>
+<p>Hay que añadir una fila de botones en <code>res/layout/main.xml</code></p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;LinearLayout</span>
 <span class="w">    </span><span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
 <span class="w">    </span><span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
@@ -3149,7 +3156,7 @@
 <span class="w">        </span><span class="na">android:text=</span><span class="s">&quot;depredador&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/LinearLayout&gt;</span>
 </code></pre></div>
-<p>b) Hay que asociar la funcionalidad a cada botón en MainActivity.java</p>
+<p>Hay que asociar la funcionalidad a cada botón en <code>MainActivity.java</code></p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">clic</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">view</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Escenario</span><span class="w"> </span><span class="n">escenario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Escenario</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
 <span class="w">    </span><span class="k">switch</span><span class="p">(</span><span class="n">view</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -3165,11 +3172,16 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Si se van a eliminar las entradas del menú, hay que revisar los R.id que desaparecen, ajustando los
-identificadores que se usan en cada parte del código.</p>
+<p>Si se van a eliminar las entradas del menú, hay que revisar los <code>R.id</code> que desaparecen, ajustando los identificadores que se usan en cada parte del código.</p>
 <p>NOTA: Hay otras formas de hacerlo:</p>
-<p>• En el layout: identificando cada botón por un onClick() específico</p>
-<p>• En java, en onCreate(): localizando los botones y asociándoles la funcionalidad. Por ejemplo</p>
+<ul>
+<li>
+<p>En el layout: identificando cada botón por un <code>onClick()</code> específico.</p>
+</li>
+<li>
+<p>En java, en <code>onCreate()</code>: localizando los botones y asociándoles la funcionalidad. Por ejemplo:</p>
+</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="n">Button</span><span class="w"> </span><span class="n">bv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">boton_reset</span><span class="p">);</span>
 <span class="n">bv</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nd">@Override</span>
@@ -3179,8 +3191,9 @@ identificadores que se usan en cada parte del código.</p>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>• En java, hacemos que la clase MainActivity implemente OnClickListener y escribimos el
-método onClick() en la clase principal y la asociamos a cada botón</p>
+<ul>
+<li>En java, hacemos que la clase <code>MainActivity</code> implemente <code>OnClickListener</code> y escribimos el método <code>onClick()</code> en la clase principal y la asociamos a cada botón:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">OnClickListener</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// en onCreate():</span>
@@ -3210,41 +3223,43 @@ método onClick() en la clase principal y la asociamos a cada botón</p>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>a) Hay que eliminar las entradas de res / menu / main.xml</p>
-<div class="highlight"><pre><span></span><code>~~<span class="nt">&lt;item</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:id=</span><span class="s">&quot;@+id/button_reset&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:icon=</span><span class="s">&quot;@drawable/fantasma_rojo&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:showAsAction=</span><span class="s">&quot;ifRoom&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:title=</span><span class="s">&quot;@string/button_reset&quot;</span><span class="nt">/&gt;</span>~~
+<p>Hay que eliminar las entradas de <code>res/menu/main.xml</code> que se muestran a continuación:</p>
+<p><div class="highlight"><pre><span></span><code><span class="nt">&lt;item</span>
+<span class="w">    </span><span class="na">android:id=</span><span class="s">&quot;@+id/button_reset&quot;</span>
+<span class="w">    </span><span class="na">android:icon=</span><span class="s">&quot;@drawable/fantasma_rojo&quot;</span>
+<span class="w">    </span><span class="na">android:showAsAction=</span><span class="s">&quot;ifRoom&quot;</span>
+<span class="w">    </span><span class="na">android:title=</span><span class="s">&quot;@string/button_reset&quot;</span><span class="nt">/&gt;</span>
 
-~~<span class="nt">&lt;item</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:id=</span><span class="s">&quot;@+id/fantasma00&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:icon=</span><span class="s">&quot;@drawable/fantasma_rojo&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:showAsAction=</span><span class="s">&quot;ifRoom&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:title=</span><span class="s">&quot;@string/fantasma00&quot;</span><span class="nt">/&gt;</span>~~
+<span class="nt">&lt;item</span>
+<span class="w">    </span><span class="na">android:id=</span><span class="s">&quot;@+id/fantasma00&quot;</span>
+<span class="w">    </span><span class="na">android:icon=</span><span class="s">&quot;@drawable/fantasma_rojo&quot;</span>
+<span class="w">    </span><span class="na">android:showAsAction=</span><span class="s">&quot;ifRoom&quot;</span>
+<span class="w">    </span><span class="na">android:title=</span><span class="s">&quot;@string/fantasma00&quot;</span><span class="nt">/&gt;</span>
 
-~~<span class="nt">&lt;item</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:id=</span><span class="s">&quot;@+id/depredador&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:icon=</span><span class="s">&quot;@drawable/anibal&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:showAsAction=</span><span class="s">&quot;ifRoom&quot;</span><span class="err">~~</span>
-<span class="w">    </span><span class="err">~~</span><span class="na">android:title=</span><span class="s">&quot;@string/depredador&quot;</span><span class="nt">/&gt;</span>~~
+<span class="nt">&lt;item</span>
+<span class="w">    </span><span class="na">android:id=</span><span class="s">&quot;@+id/depredador&quot;</span>
+<span class="w">    </span><span class="na">android:icon=</span><span class="s">&quot;@drawable/anibal&quot;</span>
+<span class="w">    </span><span class="na">android:showAsAction=</span><span class="s">&quot;ifRoom&quot;</span>
+<span class="w">    </span><span class="na">android:title=</span><span class="s">&quot;@string/depredador&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-<p>b) Hay que eliminar la funcionalidad de la clase MainActivity</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">onOptionsItemSelected</span><span class="p">(</span><span class="n">MenuItem</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Escenario</span><span class="w"> </span><span class="n">escenario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Escenario</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
-<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">getItemId</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="o">~~</span><span class="k">case</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">button_reset</span><span class="p">:</span><span class="o">~~</span>
-<span class="w">            </span><span class="o">~~</span><span class="n">escenario</span><span class="p">.</span><span class="na">restart</span><span class="p">();</span><span class="o">~~</span>
-<span class="w">            </span><span class="o">~~</span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="o">~~</span>
-<span class="w">    </span><span class="o">~~</span><span class="p">}</span><span class="o">~~</span>
-<span class="w">    </span><span class="o">~~</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">escenario</span><span class="p">.</span><span class="na">addMovil</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">getItemId</span><span class="p">()))</span><span class="o">~~</span>
-<span class="w">        </span><span class="o">~~</span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="o">~~</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">onOptionsItemSelected</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
-<span class="p">}</span>
+</del></p>
+<p>Hay que eliminar la funcionalidad de la clase <code>MainActivity</code>:</p>
+<p>De:
+<div class="highlight"><pre><span></span><code><span class="mo">01</span><span class="w"> </span><span class="nd">@Override</span>
+<span class="mo">02</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">onOptionsItemSelected</span><span class="p">(</span><span class="n">MenuItem</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">03</span><span class="w">     </span><span class="n">Escenario</span><span class="w"> </span><span class="n">escenario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Escenario</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
+<span class="mo">04</span><span class="w">     </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">getItemId</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="mo">05</span><span class="w">         </span><span class="k">case</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">button_reset</span><span class="p">:</span>
+<span class="mo">06</span><span class="w">             </span><span class="n">escenario</span><span class="p">.</span><span class="na">restart</span><span class="p">();</span>
+<span class="mo">07</span><span class="w">             </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="mi">08</span><span class="w">     </span><span class="p">}</span>
+<span class="mi">09</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">escenario</span><span class="p">.</span><span class="na">addMovil</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">getItemId</span><span class="p">()))</span>
+<span class="mi">10</span><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="mi">11</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">onOptionsItemSelected</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="mi">12</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p>OJO: hemos eliminado la facilidad de añadir nuevos fantasmas sin más que añadirlos en la
-especificación xml del menú.</p>
+Se eliminan las líneas 05 a 10.</p>
+<p>OJO: hemos eliminado la facilidad de añadir nuevos fantasmas sin más que añadirlos en la especificación xml del menú.</p>
 </details>
 <ul>
 <li>(c) (0,5 puntos) ¿Podemos mantener ambos? Es decir, la misma funcionalidad accesible por menú y por botón.</li>
@@ -3253,7 +3268,6 @@ especificación xml del menú.</p>
 <summary>Mostrar solución</summary>
 <p>Sí. Se pueden añadir los botones y dejar el código para el menú. La misma función se puede realizar de 2 formas: por botón y por menú.</p>
 </details>
-<p>La respuesta debe ser razonada, incluyendo código java y especificaciones en XML, aunque no es necesario que la sintaxis de java y xml sea perfectamente correcta.</p>
 <h2 id="problema-4">Problema 4</h2>
 <ul>
 <li>(a) (0,8 puntos) Una aplicación Android llamada APP está ejecutándose y dispone del foco (interactúa con el usuario). Supongamos que se recibe una llamada telefónica, el usuario la atiende y luego cuelga. ¿Cuáles son los métodos del ciclo de vida de APP llamados?</li>
@@ -3300,19 +3314,16 @@ onResume()
 <p>los métodos que hay que programar son:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">onPreExecute</span><span class="p">()</span>
 </code></pre></div>
-<p>Se ejecuta en la UIThread, cuando se llama a execute(). Sirve para iniciar la tarea antes de
-empezar a ejecutar doInbackground.</p>
+<p>Se ejecuta en la <code>UIThread</code>, cuando se llama a <code>execute()</code>. Sirve para iniciar la tarea antes de empezar a ejecutar <code>doInbackground</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">Result</span><span class="w"> </span><span class="nf">doInBackground</span><span class="p">(</span><span class="n">Params</span><span class="err">…</span><span class="p">)</span>
 </code></pre></div>
-<p>Se ejecuta en la hebra auxiliar. Es equivalente a run() en las threads normales. Params son
-los parámetros que se le pasan al arrancar la tarea.</p>
+<p>Se ejecuta en la hebra auxiliar. Es equivalente a <code>run()</code> en las threads normales. <code>Params</code> son los parámetros que se le pasan al arrancar la tarea.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">onProgressUpdate</span><span class="w"> </span><span class="p">(</span><span class="n">Progress</span><span class="err">…</span><span class="p">)</span>
 </code></pre></div>
-<p>Se ejecuta en la UIThread cada vez que se llama a publishProgress(Progress…) desde el
-cuerpo de doInBackground.</p>
+<p>Se ejecuta en la <code>UIThread</code> cada vez que se llama a <code>publishProgress(Progress…)</code> desde el cuerpo de <code>doInBackground</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">onPostExecute</span><span class="w"> </span><span class="p">(</span><span class="n">Result</span><span class="p">)</span>
 </code></pre></div>
-<p>Se ejecuta en la UIThread cuando termina doInBackground (con return Result).</p>
+<p>Se ejecuta en la <code>UIThread</code> cuando termina <code>doInBackground</code> (con <code>return Result</code>).</p>
 </details>
 
 

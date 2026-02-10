@@ -2874,19 +2874,25 @@
 
   <h1>Extra01</h1>
 
+<p>En una matriz de valores enteros de dos dimensiones, se dice que un elemento es un pico si es mayor o igual que sus cuatro vecinos en vertical y horizontal (o sus tres vecinos, en el caso de que se encuentre en el borde de la matriz, o sus dos vecinos si está en una esquina).</p>
+<p>Para encontrar un pico en una matriz de <span class="arithmatex">\(N\)</span> filas por <span class="arithmatex">\(M\)</span> columnas (se puede demostrar que siempre existe al menos uno) se puede utilizar el siguiente algoritmo:</p>
+<ol>
+    <li> Si $M$ es igual a 1, encontrar el mayor valor de esa columna, y devolverlo como resultado. </li>
+
+    <li> En otro caso, encontrar el mayor valor en la columna central de la matriz. </li>
+
+    <li> Si ese valor es mayor o igual que sus vecinos derecho e izquierdo (si existen), devolverlo como resultado. </li>
+
+    <li> En otro caso, si ese valor es menor que su vecino izquierdo (si existe), continuar el mismo algoritmo con la mitad izquierda de la matriz. Y si no es así, continuar el mismo algoritmo con la mitad derecha de la matriz (quitando la columna central en ambos casos). </li>
+</ol>
+
 <ul>
-<li>(a) (2,5 puntos) En una matriz de valores enteros de dos dimensiones, se dice que un elemento es un pico si es mayor o igual que sus cuatro vecinos en vertical y horizontal (o sus tres vecinos, en el caso de que se encuentre en el borde de la matriz, o sus dos vecinos si está en una esquina).</li>
+<li>(a) (2,5 puntos) Se pide indicar razonadamente cuál es la complejidad del algoritmo descrito, en términos de <span class="arithmatex">\(N\)</span> y <span class="arithmatex">\(M\)</span>.</li>
 </ul>
-<p>Para encontrar un pico en una matriz de N filas por M columnas (se puede demostrar que siempre existe al menos uno) se puede utilizar el siguiente algoritmo:
-    1. Si M es igual a 1, encontrar el mayor valor de esa columna, y devolverlo como resultado.
-    2. En otro caso, encontrar el mayor valor en la columna central de la matriz.
-    3. Si ese valor es mayor o igual que sus vecinos derecho e izquierdo (si existen), devolverlo como resultado.
-    4. En otro caso, si ese valor es menor que su vecino izquierdo (si existe), continuar el mismo algoritmo con la mitad izquierda de la matriz. Y si no es así, continuar el mismo algoritmo con la mitad derecha de la matriz (quitando la columna central en ambos casos).</p>
-<p>Se pide indicar razonadamente cuál es la complejidad del algoritmo descrito, en términos de N y M.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La búsqueda del mayor valor en una columna de N enteros tiene complejidad N, ya que todos los valores de la columna han de ser comprobados, y las operaciones a realizar con cada uno de ellos son de complejidad constante. </p>
-<p>Por otra parte, en el peor caso habrá que hacer esa búsqueda tantas veces como se puedan dividir iterativamente en dos partes iguales las M columnas, para llegar al final a una sola. Es decir, logaritmo en base dos de M veces. Por tanto, la complejidad total del algoritmo es N*log(M).</p>
+<p>La búsqueda del mayor valor en una columna de <span class="arithmatex">\(N\)</span> enteros tiene complejidad <span class="arithmatex">\(N\)</span>, ya que todos los valores de la columna han de ser comprobados, y las operaciones a realizar con cada uno de ellos son de complejidad constante. </p>
+<p>Por otra parte, en el peor caso habrá que hacer esa búsqueda tantas veces como se puedan dividir iterativamente en dos partes iguales las <span class="arithmatex">\(M\)</span> columnas, para llegar al final a una sola. Es decir, logaritmo en base dos de <span class="arithmatex">\(M\)</span> veces. Por tanto, la complejidad total del algoritmo es <span class="arithmatex">\(N*log(M)\)</span>.</p>
 </details>
 
 
