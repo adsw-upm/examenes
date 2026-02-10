@@ -61,27 +61,24 @@ tags:
     void onPreExecute()
     ```
     
-    Se ejecuta en la UIThread, cuando se llama a execute(). Sirve para iniciar la tarea antes de
-    empezar a ejecutar doInbackground.
+    Se ejecuta en la `UIThread`, cuando se llama a `execute()`. Sirve para iniciar la tarea antes de empezar a ejecutar `doInbackground`.
     
     ```java
     Result doInBackground(Params…)
     ```
     
-    Se ejecuta en la hebra auxiliar. Es equivalente a run() en las threads normales. Params son
-    los parámetros que se le pasan al arrancar la tarea.
+    Se ejecuta en la hebra auxiliar. Es equivalente a `run()` en las threads normales. `Params` son los parámetros que se le pasan al arrancar la tarea.
     
     ```java
     void onProgressUpdate (Progress…)
     ```
     
-    Se ejecuta en la UIThread cada vez que se llama a publishProgress(Progress…) desde el
-    cuerpo de doInBackground.
+    Se ejecuta en la `UIThread` cada vez que se llama a `publishProgress(Progress…)` desde el cuerpo de `doInBackground`.
     
     ```java
     void onPostExecute (Result)
     ```
     
-    Se ejecuta en la UIThread cuando termina doInBackground (con return Result).
+    Se ejecuta en la `UIThread` cuando termina `doInBackground` (con `return Result`).
     
     

@@ -10,12 +10,12 @@ Sobre el proyecto del pacman, deseamos mover funcionalidad del menú a botones:
 
 ![](./extra/extra_03.png)
 
-Se pide:
+Se pide, siendo la respuesta razonada, incluyendo código java y especificaciones en XML, aunque no sea necesario que la sintaxis de java y xml sea perfectamente correcta:
 
 - (a) (1 punto) ¿Qué cambios hay que hacer para poner botones? Indique ficheros java y ficheros de recursos que hay que modificar y en qué consiste la modificación.
 
 ??? note "Mostrar solución"
-    a) Hay que añadir una fila de botones en res / layout / main.xml
+    Hay que añadir una fila de botones en `res/layout/main.xml`
 
     ```xml
     <LinearLayout
@@ -46,7 +46,7 @@ Se pide:
     </LinearLayout>
     ```
 
-    b) Hay que asociar la funcionalidad a cada botón en MainActivity.java
+    Hay que asociar la funcionalidad a cada botón en `MainActivity.java`
 
     ```java
     public void clic(View view) {
@@ -65,14 +65,13 @@ Se pide:
     }
     ```
 
-    Si se van a eliminar las entradas del menú, hay que revisar los R.id que desaparecen, ajustando los
-    identificadores que se usan en cada parte del código.
+    Si se van a eliminar las entradas del menú, hay que revisar los `R.id` que desaparecen, ajustando los identificadores que se usan en cada parte del código.
 
     NOTA: Hay otras formas de hacerlo:
 
-    • En el layout: identificando cada botón por un onClick() específico
+    - En el layout: identificando cada botón por un `onClick()` específico.
 
-    • En java, en onCreate(): localizando los botones y asociándoles la funcionalidad. Por ejemplo
+    - En java, en `onCreate()`: localizando los botones y asociándoles la funcionalidad. Por ejemplo:
 
     ```java
     Button bv = (Button) findViewById(R.id.boton_reset);
@@ -85,8 +84,7 @@ Se pide:
     });
     ```
 
-    • En java, hacemos que la clase MainActivity implemente OnClickListener y escribimos el
-    método onClick() en la clase principal y la asociamos a cada botón
+    - En java, hacemos que la clase `MainActivity` implemente `OnClickListener` y escribimos el método `onClick()` en la clase principal y la asociamos a cada botón:
 
     ```java
     public class MainActivity extends … implements OnClickListener {
@@ -116,47 +114,49 @@ Se pide:
 - (b) (1 punto) ¿Qué cambios hay que hacer para eliminar entradas del menú? Indique ficheros java y ficheros de recursos que hay que modificar y en qué consiste la modificación.
 
 ??? note "Mostrar solución"
-    a) Hay que eliminar las entradas de res / menu / main.xml
+    Hay que eliminar las entradas de `res/menu/main.xml` que se muestran a continuación:
 
     ```xml
-    ~~<item~~
-        ~~android:id="@+id/button_reset"~~
-        ~~android:icon="@drawable/fantasma_rojo"~~
-        ~~android:showAsAction="ifRoom"~~
-        ~~android:title="@string/button_reset"/>~~
+    <item
+        android:id="@+id/button_reset"
+        android:icon="@drawable/fantasma_rojo"
+        android:showAsAction="ifRoom"
+        android:title="@string/button_reset"/>
 
-    ~~<item~~
-        ~~android:id="@+id/fantasma00"~~
-        ~~android:icon="@drawable/fantasma_rojo"~~
-        ~~android:showAsAction="ifRoom"~~
-        ~~android:title="@string/fantasma00"/>~~
+    <item
+        android:id="@+id/fantasma00"
+        android:icon="@drawable/fantasma_rojo"
+        android:showAsAction="ifRoom"
+        android:title="@string/fantasma00"/>
 
-    ~~<item~~
-        ~~android:id="@+id/depredador"~~
-        ~~android:icon="@drawable/anibal"~~
-        ~~android:showAsAction="ifRoom"~~
-        ~~android:title="@string/depredador"/>~~
+    <item
+        android:id="@+id/depredador"
+        android:icon="@drawable/anibal"
+        android:showAsAction="ifRoom"
+        android:title="@string/depredador"/>
     ```
+    </del>
 
-    b) Hay que eliminar la funcionalidad de la clase MainActivity
+    Hay que eliminar la funcionalidad de la clase `MainActivity`:
 
+    De:
     ```java
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Escenario escenario = Escenario.getInstance();
-        switch (item.getItemId()) {
-            ~~case R.id.button_reset:~~
-                ~~escenario.restart();~~
-                ~~return true;~~
-        ~~}~~
-        ~~if (escenario.addMovil(this, item.getItemId()))~~
-            ~~return true;~~
-        return super.onOptionsItemSelected(item);
-    }
+    01 @Override
+    02 public boolean onOptionsItemSelected(MenuItem item) {
+    03     Escenario escenario = Escenario.getInstance();
+    04     switch (item.getItemId()) {
+    05         case R.id.button_reset:
+    06             escenario.restart();
+    07             return true;
+    08     }
+    09     if (escenario.addMovil(this, item.getItemId()))
+    10         return true;
+    11     return super.onOptionsItemSelected(item);
+    12 }
     ```
+    Se eliminan las líneas 05 a 10.
 
-    OJO: hemos eliminado la facilidad de añadir nuevos fantasmas sin más que añadirlos en la
-    especificación xml del menú.
+    OJO: hemos eliminado la facilidad de añadir nuevos fantasmas sin más que añadirlos en la especificación xml del menú.
 
 
 - (c) (0,5 puntos) ¿Podemos mantener ambos? Es decir, la misma funcionalidad accesible por menú y por botón.
@@ -164,4 +164,3 @@ Se pide:
 ??? note "Mostrar solución"
     Sí. Se pueden añadir los botones y dejar el código para el menú. La misma función se puede realizar de 2 formas: por botón y por menú.
 
-La respuesta debe ser razonada, incluyendo código java y especificaciones en XML, aunque no es necesario que la sintaxis de java y xml sea perfectamente correcta.
