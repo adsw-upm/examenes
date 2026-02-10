@@ -2874,8 +2874,7 @@
 
   <h1>P2 ex01</h1>
 
-<p>Se pretende desarrollar una aplicación para Android de gestión de una colección de libros. La información de los libros se almacena en una Base de Datos sqlite. Una ListActivity muestra información de los libros
-almacenados.</p>
+<p>Se pretende desarrollar una aplicación para Android de gestión de una colección de libros. La información de los libros se almacena en una Base de Datos sqlite. Una <code>ListActivity</code> muestra información de los libros almacenados.</p>
 <p>De los libros se almacena la siguiente información: Autor, Título, Año de publicación. Los dos primeros campos serán textuales, el último será un número. La Bases de Datos constará de una única tabla que
 contenga esta información.</p>
 <ul>
@@ -2903,7 +2902,7 @@ contenga esta información.</p>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(b) (1 punto) Escriba un método de la clase DatabaseHelper que devuelva un Cursor con la información de todos los libros. La cabecera del método será: public Cursor selectAll() { … }. Si necesita atributos adicionales, declárelos correctamente. No duplique las declaraciones de la pregunta anterior.</li>
+<li>(b) (1 punto) Escriba un método de la clase <code>DatabaseHelper</code> que devuelva un Cursor con la información de todos los libros. La cabecera del método será: <code>public Cursor selectAll() { … }</code>. Si necesita atributos adicionales, declárelos correctamente. No duplique las declaraciones de la pregunta anterior.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2914,7 +2913,7 @@ contenga esta información.</p>
 <span class="p">}</span>
 </code></pre></div>
 </details>
-<p>Se pretende disponer de una actividad ListaLibrosActivity, que herede de ListActivity, según el siguiente esquema:</p>
+<p>Se pretende disponer de una actividad <code>ListaLibrosActivity</code>, que herede de <code>ListActivity</code>, según el siguiente esquema:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ListaLibrosActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ListActivity</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">DatabaseHelper</span><span class="w"> </span><span class="n">dbHelper</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">SimpleCursorAdapter</span><span class="w"> </span><span class="n">cursorAdapter</span><span class="p">;</span>
@@ -2922,7 +2921,7 @@ contenga esta información.</p>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(c) (2 puntos) Se pretende que dicha actividad reaccione de forma que cuando el usuario pulse sobre un registro mostrado en el ListView, se lance otra actividad, llamada “EditarLibroActivity”, que ya está ya implementada. A la actividad “EditarLibroActivity” se le ha de pasar toda la información del libro seleccionado. Escriba el código necesario para implementar este comportamiento. </li>
+<li>(c) (2 puntos) Se pretende que dicha actividad reaccione de forma que cuando el usuario pulse sobre un registro mostrado en el ListView, se lance otra actividad, llamada <code>EditarLibroActivity</code>, que ya está ya implementada. A la actividad <code>EditarLibroActivity</code> se le ha de pasar toda la información del libro seleccionado. Escriba el código necesario para implementar este comportamiento. </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2941,12 +2940,13 @@ contenga esta información.</p>
 </code></pre></div>
 </details>
 <ul>
-<li>(d) (1 punto) Se desea guardar la base de datos de forma automática, cuando la aplicación sea interrumpida por otra ACTIVIDAD (por ejemplo, una llamada de teléfono o pulsar el botón de aplicaciones). Cuando se vuelva a la
+<li>(d) (1 punto) Se desea guardar la base de datos de forma automática, cuando la aplicación sea interrumpida por otra <code>ACTIVIDAD</code> (por ejemplo, una llamada de teléfono o pulsar el botón de aplicaciones). Cuando se vuelva a la
 aplicación, se debe cargar la base de datos. ¿Qué métodos han de sobrecargarse relativos al ciclo de vida de la actividad principal? Ponga SÓLO el nombre de los métodos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>sol a) onStart() – onStop() sol b) onResume() – onPause()</p>
+<p>a) onStart() – onStop() </p>
+<p>b) onResume() – onPause()</p>
 </details>
 
 

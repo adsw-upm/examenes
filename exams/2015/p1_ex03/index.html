@@ -2875,13 +2875,13 @@
   <h1>P1 ex03</h1>
 
 <ul>
-<li>(a) (1 punto) Describa dos casos posibles de error significativamente diferentes para detectar errores de la clase Paredes del alumno en el borde del tablero (concretamente en la casilla (0, 0)) y prográmelos con JUnit.</li>
+<li>(a) (1 punto) Describa dos casos posibles de error significativamente diferentes para detectar errores de la clase Paredes del alumno en el borde del tablero (concretamente en la casilla <code>(0, 0)</code>) y prográmelos con JUnit.</li>
 </ul>
 <details class="note">
 <summary>Mostar solución</summary>
-<p>Suponiendo que partimos de la casilla c = (0,0), dos ejemplos de casos de error podrían ser: </p>
-<p>1) Poner una pared hacia el OESTE. La pared no se añade. 
-2) Obtener la posible pared hacia el SUR. El resultado debe ser null. </p>
+<p>Suponiendo que partimos de la casilla <code>c = (0,0)</code>, dos ejemplos de casos de error podrían ser: </p>
+<p>1) Poner una pared hacia el <code>OESTE</code>. La pared no se añade. </p>
+<p>2) Obtener la posible pared hacia el <code>SUR</code>. El resultado debe ser <code>null</code>. </p>
 <p>Y los casos de prueba correspondientes podrían ser:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Terreno</span><span class="w"> </span><span class="n">terreno</span><span class="w"> </span><span class="err">…</span><span class="w"> </span>
 <span class="kd">private</span><span class="w"> </span><span class="n">Paredes</span><span class="w"> </span><span class="n">paredes</span><span class="w"> </span><span class="err">…</span>
@@ -2902,7 +2902,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (1 punto) Escriba el método necesario para que un fantasma empiece moviéndose hacia el NORTE hasta que choca con una pared; cuando choca intenta moverse al ESTE hasta que choca con una pared; y así sucesivamente, rotando 90º a la derecha cada vez que choca. Si no puede desplazarse a ninguna de las casillas circundantes, deja pasar esta vez y espera al siguiente ciclo.</li>
+<li>(b) (1 punto) Escriba el método necesario para que un fantasma empiece moviéndose hacia el <code>NORTE</code> hasta que choca con una pared; cuando choca intenta moverse al <code>ESTE</code> hasta que choca con una pared; y así sucesivamente, rotando 90º a la derecha cada vez que choca. Si no puede desplazarse a ninguna de las casillas circundantes, deja pasar esta vez y espera al siguiente ciclo.</li>
 </ul>
 <details class="note">
 <summary>Mostar solución</summary>

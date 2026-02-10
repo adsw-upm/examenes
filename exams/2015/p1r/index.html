@@ -3118,34 +3118,34 @@
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(a) (4 puntos) Se pide calcular su complejidad en función del tamaño N de la secuencia de entrada, razonando la solución.</li>
+<li>(a) (4 puntos) Se pide calcular su complejidad en función del tamaño <span class="arithmatex">\(N\)</span> de la secuencia de entrada, razonando la solución.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La iniciación de los arrays "len" y "pred" es de complejidad lineal, pues se visitan todos sus elementos una sola vez, y su longitud es n.</p>
-<p>A continuación hay un bucle doble anidado, cuyo cuerpo, de complejidad constante, se ejecuta 1 + 2 + 3 + ... + n-1 veces, es decir, un total de n/2*(n-1) veces. Por lo que su complejidad es cuadrática.</p>
+<p>La iniciación de los arrays <code>len</code> y <code>pred</code> es de complejidad lineal, pues se visitan todos sus elementos una sola vez, y su longitud es <span class="arithmatex">\(n\)</span>.</p>
+<p>A continuación hay un bucle doble anidado, cuyo cuerpo, de complejidad constante, se ejecuta <span class="arithmatex">\(1 + 2 + 3 + ... + n-1\)</span> veces, es decir, un total de <span class="arithmatex">\(n/2*(n-1)\)</span> veces. Por lo que su complejidad es cuadrática.</p>
 <p>Al final hay dos bucles simples con cuerpo de complejidad constante y número de vueltas de orden n, que tienen pues complejidad lineal.</p>
-<p>Sumando todas las complejidades individuales según su regla (el resultado es el término de mayor complejidad), la complejidad del algoritmo descrito resulta ser cuadrática. En términos formales:
-C(for.for) = O(1+2+3+...+(n-1)) = O(n/2 * (n-1)) = O(n^2 / 2) - O(n/2) = O(n^2)
-C(LIS) = C(arrays.fill) + C(Arrays.fill) + C(for.for) + C(for) + C(for)
-= O(n) + O(n) + C(for.for) + O(n) + O(n/k)
-= O(n) + O(n) + O(n^2) + O(n) + O(n)
-= O(n^2).</p>
+<p>Sumando todas las complejidades individuales según su regla (el resultado es el término de mayor complejidad), la complejidad del algoritmo descrito resulta ser cuadrática. En términos formales:</p>
+<p><span class="arithmatex">\(C(for.for) = O(1+2+3+...+(n-1)) = O(n/2 * (n-1)) = O(n^2 / 2) - O(n/2) = O(n^2)\)</span></p>
+<p><span class="arithmatex">\(C(LIS) = C(arrays.fill) + C(Arrays.fill) + C(for.for) + C(for) + C(for)\)</span></p>
+<p><span class="arithmatex">\(= O(n) + O(n) + C(for.for) + O(n) + O(n/k)\)</span></p>
+<p><span class="arithmatex">\(= O(n) + O(n) + O(n^2) + O(n) + O(n)\)</span></p>
+<p><span class="arithmatex">\(= O(n^2)\)</span>.</p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
 <p>Se tiene un sistema con dos hebras (H1 y H2) que acceden continuamente a un recurso compartido, que se debe usar con exclusión mutua. Para que el sistema funcione correctamente las hebras tienen que acceder según el siguiente patrón, que se  debe repetir cíclicamente: H1, H1, H2, H1, H2, como se ve en la figura siguiente:</p>
 <p><img alt="" src="p1r_ex02.png" /></p>
 <ul>
-<li>(a) (4 puntos) Se pide desarrollar el monitor (GestorCiclosAcceso) para sincronizar las hebras según el comportamiento descrito. El monitor debe proporcionar las siguientes operaciones:<ul>
-<li>... void accederH1(): Este método lo invoca la hebra H1 para solicitar acceso al recurso compartido.</li>
-<li>... void accederH2(): Este método lo invoca la hebra H2 para solicitar acceso al recurso compartido.</li>
-<li>... void liberar(): Este método lo invocan las hebras para liberar el recurso compartido.</li>
+<li>(a) (4 puntos) Se pide desarrollar el monitor <code>(GestorCiclosAcceso)</code> para sincronizar las hebras según el comportamiento descrito. El monitor debe proporcionar las siguientes operaciones:<ul>
+<li><code>... void accederH1()</code>: Este método lo invoca la hebra H1 para solicitar acceso al recurso compartido.</li>
+<li><code>... void accederH2()</code>: Este método lo invoca la hebra H2 para solicitar acceso al recurso compartido.</li>
+<li><code>... void liberar()</code>: Este método lo invocan las hebras para liberar el recurso compartido.</li>
 </ul>
 </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p><div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorCiclosAcceso</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorCiclosAcceso</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">turnoH1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nAccesoH1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nAccesoCicloH1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
@@ -3214,7 +3214,7 @@ C(LIS) = C(arrays.fill) + C(Arrays.fill) + C(for.for) + C(for) + C(for)
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-Otra posible implementación, que utiliza máquinas de estados, es la siguiente:</p>
+<p>Otra posible implementación, que utiliza máquinas de estados, es la siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorCiclosAcceso2</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// estado 0 - espera H1</span>
 <span class="w">    </span><span class="c1">// estado 1 - espera H1</span>
@@ -3265,14 +3265,14 @@ Otra posible implementación, que utiliza máquinas de estados, es la siguiente:
 <p>Dado el siguiente terreno de prueba y la situación del jugador y el depredador que se muestra:</p>
 <p><img alt="" src="p1r_ex03.png" /></p>
 <ul>
-<li>(a) (1 punto) Describa un caso posible de error para detectar errores del método primerPaso de la clase Depredador del alumno y prográmelo con JUnit.</li>
+<li>(a) (1 punto) Describa un caso posible de error para detectar errores del método <code>primerPaso</code> de la clase <code>Depredador</code> del alumno y prográmelo con JUnit.</li>
 </ul>
 <details class="note">
 <summary>Mostar solución</summary>
 <p>Suponemos que la variable terreno se refiere al terreno creado con la configuración de la figura, y que la variable depredador se refiere al depredador situado en el terreno anterior.</p>
-<p>El primer paso de la ruta más corta desde la casilla donde está el depredador (1,1) y la del jugador (3,2) es la casilla (1,0). Para comprobar que el funcionamiento del método primerPaso() es correcto, pues, basta con probar la siguiente aserción</p>
-<p>assertEquals(terreno.getCasilla(1,0),</p>
-<p>depredador.primerPaso(terreno.getCasilla(1,1),terreno.getCasilla(3,2)))</p>
+<p>El primer paso de la ruta más corta desde la casilla donde está el depredador <code>(1,1)</code> y la del jugador <code>(3,2)</code> es la casilla <code>(1,0)</code>. Para comprobar que el funcionamiento del método <code>primerPaso()</code> es correcto, pues, basta con probar la siguiente aserción</p>
+<p><code>assertEquals(terreno.getCasilla(1,0)</code>,</p>
+<p><code>depredador.primerPaso(terreno.getCasilla(1,1),terreno.getCasilla(3,2)))</code></p>
 </details>
 <ul>
 <li>(b) (1 punto) Escriba un caso de prueba para comprobar si el número de paredes en el terreno es igual a 10 (los bordes no cuentan), utilizando métodos públicos de las clases del proyecto.</li>
@@ -3280,7 +3280,8 @@ Otra posible implementación, que utiliza máquinas de estados, es la siguiente:
 <details class="note">
 <summary>Mostar solución</summary>
 <p>Para comprobar el número de paredes basta hacer
-    assertEquals(10, terreno.getparedes().size()</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">assertEquals</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getparedes</span><span class="p">().</span><span class="na">size</span><span class="p">()</span>
+</code></pre></div></p>
 </details>
 
 

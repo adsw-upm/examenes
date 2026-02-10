@@ -3126,25 +3126,25 @@
 <span class="p">}</span>
 </code></pre></div></p>
 <ul>
-<li>(a) (4 puntos) Se pide calcular su complejidad en función de tamaño N de la secuencia de entrada, razonando la solución. NOTA: A efectos del examen se valorará más el razonamiento que el resultado final.</li>
+<li>(a) (4 puntos) Se pide calcular su complejidad en función de tamaño <span class="arithmatex">\(N\)</span> de la secuencia de entrada, razonando la solución. NOTA: A efectos del examen se valorará más el razonamiento que el resultado final.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Al principio hay un doble bucle anidado, siendo el bucle externo de complejidad lineal, mientras que el bucle interno es en principio de complejidad logarítmica, ya que hace búsqueda dicotómica en un intervalo de tamaño no mayor que n.  Visto en más detalle, el bucle interno empieza con un intervalo de una unidad y aumenta su tamaño como mucho en una unidad más en cada vuelta al bucle externo (algunas vueltas se incrementa en una unidad y algunas vueltas no se incrementa).  Así pues, su tiempo de ejecución estará acotado por una constante que multiplica a (log 1 + log 2 ... log n), lo cual es igual a log(1<em>2</em>...n), es decir, log(n!). Cantidad que puede acotarse también por log(n^n), es decir, n<em>log(n) (aplicando la fórmula de Stirling se obtiene un valor mas aproximado, (n</em>log n - n), pero del mismo orden de complejidad). Es decir, el bucle doble tiene complejidad lineal logarítmica. Y a continuación del bucle doble anidado hay un bucle simple que es de complejidad lineal.</p>
+<p>Al principio hay un doble bucle anidado, siendo el bucle externo de complejidad lineal, mientras que el bucle interno es en principio de complejidad logarítmica, ya que hace búsqueda dicotómica en un intervalo de tamaño no mayor que <span class="arithmatex">\(n\)</span>.  Visto en más detalle, el bucle interno empieza con un intervalo de una unidad y aumenta su tamaño como mucho en una unidad más en cada vuelta al bucle externo (algunas vueltas se incrementa en una unidad y algunas vueltas no se incrementa).  Así pues, su tiempo de ejecución estará acotado por una constante que multiplica a <span class="arithmatex">\((log 1 + log 2 ... log n)\)</span>, lo cual es igual a <span class="arithmatex">\(log(1*2*...n)\)</span>, es decir, <span class="arithmatex">\(log(n!)\)</span>. Cantidad que puede acotarse también por <span class="arithmatex">\(log(n^n)\)</span>, es decir, <span class="arithmatex">\(n*log(n)\)</span> (aplicando la fórmula de Stirling se obtiene un valor mas aproximado, <span class="arithmatex">\((n*log n - n)\)</span>, pero del mismo orden de complejidad). Es decir, el bucle doble tiene complejidad lineal logarítmica. Y a continuación del bucle doble anidado hay un bucle simple que es de complejidad lineal.</p>
 <p>Sumando todas las complejidades individuales según su regla (el resultado es el término de mayor complejidad), la complejidad del algoritmo descrito resulta ser lineal logarítmica. En términos formales: </p>
-<p>C(for.while) = O(log 1 + log 2 ... log n) = O(log(1<em>2</em>...n)) = O(log(n!)) = O(n*log n)</p>
-<p>C(lis) =</p>
-<p>= C(for.while) + C(for)</p>
-<p>= O(n*log n) + O(n)</p>
-<p>= O(n*log n)</p>
+<p><span class="arithmatex">\(C(for.while) = O(log 1 + log 2 ... log n) = O(log(1*2*...n)) = O(log(n!)) = O(n*log n)\)</span></p>
+<p><span class="arithmatex">\(C(lis) =\)</span></p>
+<p><span class="arithmatex">\(= C(for.while) + C(for)\)</span></p>
+<p><span class="arithmatex">\(= O(n*log n) + O(n)\)</span></p>
+<p><span class="arithmatex">\(= O(n*log n)\)</span></p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
 <p>Un sistema está compuesto por un conjunto de hebras que deben acceder a un recurso compartido con exclusión mutua. Estas hebras se dividen en dos grupos: H1 y H2. Las hebras del grupo H2 acceden al recurso con prioridad respecto a las del grupo H1. Es decir, las hebras H1 no pueden acceder al recurso si hay alguna hebra H2 esperando. Además, las hebras del grupo H1 deben acceder al recurso en el mismo orden en el que lo han solicitado.</p>
 <ul>
-<li>(a) (4 puntos) Se pide desarrollar el monitor GestorRecurso que gestione el acceso al recurso, de acuerdo a las características descritas. El monitor deberá tener tres operaciones:<ul>
-<li>… solicitarRecursoH1(): Este método lo invocan las hebras del grupo H1 para solicitar acceso al recurso.</li>
-<li>… solicitarRecursoH2(): Este método lo invocan las hebras del grupo H2 para solicitar acceso al recurso.</li>
-<li>… liberarRecurso(): Este método lo invocan las hebras de los dos grupos para liberar el recurso.</li>
+<li>(a) (4 puntos) Se pide desarrollar el monitor <code>GestorRecurso</code> que gestione el acceso al recurso, de acuerdo a las características descritas. El monitor deberá tener tres operaciones:<ul>
+<li><code>… solicitarRecursoH1()</code>: Este método lo invocan las hebras del grupo H1 para solicitar acceso al recurso.</li>
+<li><code>… solicitarRecursoH2()</code>: Este método lo invocan las hebras del grupo H2 para solicitar acceso al recurso.</li>
+<li><code>… liberarRecurso()</code>: Este método lo invocan las hebras de los dos grupos para liberar el recurso.</li>
 </ul>
 </li>
 </ul>
@@ -3184,26 +3184,30 @@
 </details>
 <h2 id="problema-3">Problema 3</h2>
 <ul>
-<li>(a) (2 puntos) En el pacman presentado como proyecto 1, queremos modificar el comportamiento del Fantasma00 de forma que evite acercarse a los Depredadores. Los Depredadores no saben nada del asco que suscitan. Suponga que nos facilitan un método en Terreno que nos dice si hay un depredador a menos de 3 casillas de distancia de la que pasamos como argumento:</li>
+<li>
+<p>(a) (2 puntos) En el pacman presentado como proyecto 1, queremos modificar el comportamiento del <code>Fantasma00</code> de forma que evite acercarse a los <code>Depredadores</code>. Los <code>Depredadores</code> no saben nada del asco que suscitan. Suponga que nos facilitan un método en <code>Terreno</code> que nos dice si hay un depredador a menos de 3 casillas de distancia de la que pasamos como argumento:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">hayDepredador</span><span class="p">(</span><span class="n">Casilla</span><span class="w"> </span><span class="n">casilla</span><span class="p">)</span>
+</code></pre></div></p>
+<ul>
+<li>¿Podemos hacerlo en el método <code>run()</code> de <code>Fantasma00</code>? Razone si sí o si no.</li>
+<li>¿Podemos hacerlo en el método <code>puedoMoverme()</code> de <code>Fantasma00</code>? Razone si sí o si no.</li>
+<li>Si cree que se puede hacer de ambas maneras, indique ventajas e inconvenientes de una y otra opción</li>
 </ul>
-<p>public synchronized boolean hayDepredador(Casilla casilla)</p>
-<pre><code>- ¿Podemos hacerlo en el método run() de Fantasma00?Razone si sí o si no.
-- ¿Podemos hacerlo en el método puedoMoverme() de Fantasma00? Razone si sí o si no.
-- Si cree que se puede hacer de ambas maneras, indique ventajas e inconvenientes de una y otra opción
-</code></pre>
+</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<ul>
-<li>Sí se puede en run().</li>
-<li>Se puede optimizar el movimiento huyendo del depredador (moviendo en dirección opuesta).</li>
-<li>Se ejecuta fuera de la zona crítica y el depredador y demás fantasmas se pueden mover mientras estamos eligiendo a dónde ir.</li>
-<li>Sí se puede en puedoMoverme().</li>
-<li>Sólo podemos hacer que el fantasma espere, sin moverse.</li>
+<ol>
+<li>Sí se puede en <code>run()</code>;</li>
+<li>Se puede optimizar el movimiento huyendo del depredador (moviendo en dirección opuesta);</li>
+<li>Se ejecuta fuera de la zona crítica y el depredador y demás fantasmas se pueden mover mientras estamos eligiendo a dónde ir;</li>
+<li>Sí se puede en <code>puedoMoverme()</code>;</li>
+<li>Sólo podemos hacer que el fantasma espere, sin moverse;</li>
 <li>se ejecuta dentro de la zona crítica de forma que el depredador y todos los fantasmas están quietos mientras tomamos la decisión.</li>
-</ul>
+</ol>
 </details>
 <h2 id="problema-4">Problema 4</h2>
-<p>Se pretende realizar una aplicación Android que gestione los gastos de un usuario. Cada vez que se realiza un gasto, el usuario puede introducir la cantidad gastada (“Importe”, campo numérico real) y en qué se lo ha gastado (“Concepto”, de tipo texto). Estos registros se guardarán en una base de datos sqlite, con una única tabla. La aplicación mostrará los registros existentes mediante una ListActivity. </p>
+<p>Se pretende realizar una aplicación Android que gestione los gastos de un usuario. Cada vez que se realiza un gasto, el usuario puede introducir la cantidad gastada (<code>Importe</code>, campo numérico real) y en qué se lo ha gastado (<code>Concepto</code>, de tipo texto). Estos registros se guardarán en una base de datos sqlite, con una única tabla. La aplicación mostrará los registros existentes mediante una <code>ListActivity</code>. </p>
 <p>La aplicación dispone de un menú con dos opciones, “Añadir” y “Acerca de”. La especificación del menú es la siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;menu</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
@@ -3231,7 +3235,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(a) (1 punto) Escriba una sentencia SQL que devuelva todos los registros de la base de datos cuyo importe supere el valor de 50,00.</li>
+<li>(a) (1 punto) Escriba una sentencia SQL que devuelva todos los registros de la base de datos cuyo importe supere el valor de <code>50,00</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3240,12 +3244,12 @@
 </details>
 <ul>
 <li>
-<p>(b) (1 punto) Sobreescriba el método adecuado de ListActivity para implementar el siguiente comportamiento:</p>
+<p>(b) (1 punto) Sobreescriba el método adecuado de <code>ListActivity</code> para implementar el siguiente comportamiento:</p>
 <ul>
-<li>1) la opción “Acerca de” muestra un Toast con el nombre del autor del código (usted);</li>
-<li>2) la opción “Añadir” se lance otra actividad llamada “AnadirGastoActivity” que ya está implementada.</li>
+<li>1) la opción “Acerca de” muestra un <code>Toast</code> con el nombre del autor del código (usted);</li>
+<li>2) la opción “Añadir” se lance otra actividad llamada <code>AnadirGastoActivity</code> que ya está implementada.</li>
 </ul>
-<p>Tenga en cuenta que “AnadirGastoActivity” devolverá un Intent con los datos del usuario.</p>
+<p>Tenga en cuenta que <code>AnadirGastoActivity</code> devolverá un <code>Intent</code> con los datos del usuario.</p>
 </li>
 </ul>
 <details class="note">
@@ -3279,7 +3283,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (1 punto) ¿Qué métodos relativos al ciclo de vida de las actividades ListActivity y AnadirGastoActivity se ejecutan desde que se selecciona la opción “Añadir” del menú hasta que se vuelve a mostrar la lista de gasto? Escriba sólo el nombre del método y la actividad a la que pertenece, y el orden adecuado.</li>
+<li>(c) (1 punto) ¿Qué métodos relativos al ciclo de vida de las actividades <code>ListActivity</code> y <code>AnadirGastoActivity</code> se ejecutan desde que se selecciona la opción “Añadir” del menú hasta que se vuelve a mostrar la lista de gasto? Escriba sólo el nombre del método y la actividad a la que pertenece, y el orden adecuado.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3292,50 +3296,50 @@
 </thead>
 <tbody>
 <tr>
-<td>onPause()</td>
-<td>ListActivity</td>
+<td><code>onPause()</code></td>
+<td><code>ListActivity</code></td>
 </tr>
 <tr>
-<td>onCreate()</td>
-<td>AnadirGastoActivity</td>
+<td><code>onCreate()</code></td>
+<td><code>AnadirGastoActivity</code></td>
 </tr>
 <tr>
-<td>onStart()</td>
-<td>AnadirGastoActivity</td>
+<td><code>onStart()</code></td>
+<td><code>AnadirGastoActivity</code></td>
 </tr>
 <tr>
-<td>onResume()</td>
-<td>AnadirGastoActivity</td>
+<td><code>onResume()</code></td>
+<td><code>AnadirGastoActivity</code></td>
 </tr>
 <tr>
-<td>onStop()</td>
-<td>AnadirGastoActivity</td>
+<td><code>onStop()</code></td>
+<td><code>AnadirGastoActivity</code></td>
 </tr>
 <tr>
-<td>onPause()</td>
-<td>AnadirGastoActivity</td>
+<td><code>onPause()</code></td>
+<td><code>AnadirGastoActivity</code></td>
 </tr>
 <tr>
-<td>onRestart()</td>
-<td>ListActivity</td>
+<td><code>onRestart()</code></td>
+<td><code>ListActivity</code></td>
 </tr>
 <tr>
-<td>onStart()</td>
-<td>ListActivity</td>
+<td><code>onStart()</code></td>
+<td><code>ListActivity</code></td>
 </tr>
 <tr>
-<td>onResume()</td>
-<td>ListActivity</td>
+<td><code>onResume()</code></td>
+<td><code>ListActivity</code></td>
 </tr>
 <tr>
-<td>onStop()</td>
-<td>AnadirGastoActivity</td>
+<td><code>onStop()</code></td>
+<td><code>AnadirGastoActivity</code></td>
 </tr>
 </tbody>
 </table>
 </details>
 <ul>
-<li>(d) (1 punto) Escriba un método de la clase DatabaseHelper que añada un nuevo registro a la base de datos. La información del Concepto y del Importe se pasará como parámetros del método.</li>
+<li>(d) (1 punto) Escriba un método de la clase <code>DatabaseHelper</code> que añada un nuevo registro a la base de datos. La información del <code>Concepto</code> y del <code>Importe</code> se pasará como parámetros del método.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3350,7 +3354,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(e) (1 punto) Escriba una especificación de layout adecuada que se pueda utilizar en la actividad “AnadirGastoActivity”. Además de los campos de información, dispondrá de un botón “Guardar” y otro “Cancelar” (sólo hay que poner los botones). </li>
+<li>(e) (1 punto) Escriba una especificación de layout adecuada que se pueda utilizar en la actividad <code>AnadirGastoActivity</code>. Además de los campos de información, dispondrá de un botón “Guardar” y otro “Cancelar” (sólo hay que poner los botones). </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3412,24 +3416,26 @@
 </details>
 <h2 id="problema-5">Problema 5</h2>
 <ul>
-<li>(a) (2 puntos) El proyecto 2 se basa en una adaptación del proyecto 1. Seleccione la respuesta o respuestas correctas en la hoja de respuestas. Las respuestas incorrectas restan.<ul>
 <li>
-<ol>
-<li>La clase Terreno se adapta al ciclo de vida de Android</li>
-<li>I. No sería imprescindible realizar esta adaptación; simplemente la aplicación seguiría usando recursos cuando no está en primer plano.</li>
-<li>II. Si no hacemos la adaptación, tendremos interbloqueos.</li>
-<li>III. Los móviles se congelan en onPause() y se descongelan en onResume().</li>
-<li>IV. Los móviles se resucitan en onCreate()</li>
-</ol>
+<p>(a) (2 puntos) El proyecto 2 se basa en una adaptación del proyecto 1. Seleccione la respuesta o respuestas correctas en la hoja de respuestas. Las respuestas incorrectas restan.</p>
+<ul>
+<li>
+<p>(1) La clase <code>Terreno</code> se adapta al ciclo de vida de Android:</p>
+<ul>
+<li>(I) No sería imprescindible realizar esta adaptación; simplemente la aplicación seguiría usando recursos cuando no está en primer plano;    </li>
+<li>(II) Si no hacemos la adaptación, tendremos interbloqueos;</li>
+<li>(III) Los móviles se congelan en <code>onPause()</code> y se descongelan en <code>onResume()</code>;</li>
+<li>(IV) Los móviles se resucitan en <code>onCreate()</code>.</li>
+</ul>
 </li>
 <li>
-<ol>
-<li>Las clases que extienden Movil (p.ej. Jugador, Estatua, Depredador, …)</li>
-<li>I. Deben implementar restart() porque es un método abstracto en Movil</li>
-<li>II. Si además implementan Runnable, deben crear en restart() una hebra (new Thread()) y llamar a start() en la hebra creada</li>
-<li>III. Si ademá s implementan Runnable, deben crear en pause() una hebra (new Thread()) y llamar a pause() en la hebra creada</li>
-<li>IV. Siempre que extienden Movil deben implementar Runnable</li>
-</ol>
+<p>(2) Las clases que extienden <code>Movil</code> (p.ej. <code>Jugador</code>, <code>Estatua</code>, <code>Depredador</code>, …)</p>
+<ul>
+<li>(I) Deben implementar <code>restart()</code> porque es un método abstracto en <code>Movil</code>;</li>
+<li>(II) Si además implementan <code>Runnable</code>, deben crear en <code>restart()</code> una hebra (<code>new Thread()</code>) y llamar a <code>start()</code> en la hebra creada;</li>
+<li>(III) Si ademá s implementan Runnable, deben crear en pause() una hebra (<code>new Thread()</code>) y llamar a <code>pause()</code> en la hebra creada;</li>
+<li>(IV) Siempre que extienden <code>Movil</code> deben implementar <code>Runnable</code>.</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -3438,10 +3444,10 @@
 <summary>Mostrar solución</summary>
 <ul>
 <li>
-<p>En 1 la opción correcta es III.</p>
+<p>En (1) la opción correcta es (III);</p>
 </li>
 <li>
-<p>En 2 las opciones correctas son III y IV.</p>
+<p>En (2) las opciones correctas son (III) y (IV).</p>
 </li>
 </ul>
 </details>

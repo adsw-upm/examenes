@@ -2947,19 +2947,19 @@
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(a) (4 puntos) Se pide calcular su complejidad en función del tamaño N de la secuencia de entrada, razonando la solución.</li>
+<li>(a) (4 puntos) Se pide calcular su complejidad en función del tamaño <span class="arithmatex">\(N\)</span> de la secuencia de entrada, razonando la solución.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La iniciación de los arrays "len" y "pred" es de complejidad lineal, pues se visitan todos sus elementos una sola vez, y su longitud es n.</p>
-<p>A continuación hay un bucle doble anidado, cuyo cuerpo, de complejidad constante, se ejecuta 1 + 2 + 3 + ... + n-1 veces, es decir, un total de n/2*(n-1) veces. Por lo que su complejidad es cuadrática.</p>
+<p>La iniciación de los arrays <code>len</code> y <code>pred</code> es de complejidad lineal, pues se visitan todos sus elementos una sola vez, y su longitud es <span class="arithmatex">\(n\)</span>.</p>
+<p>A continuación hay un bucle doble anidado, cuyo cuerpo, de complejidad constante, se ejecuta <span class="arithmatex">\(1 + 2 + 3 + ... + n-1\)</span> veces, es decir, un total de <span class="arithmatex">\(n/2*(n-1)\)</span> veces. Por lo que su complejidad es cuadrática.</p>
 <p>Al final hay dos bucles simples con cuerpo de complejidad constante y número de vueltas de orden n, que tienen pues complejidad lineal.</p>
-<p>Sumando todas las complejidades individuales según su regla (el resultado es el término de mayor complejidad), la complejidad del algoritmo descrito resulta ser cuadrática. En términos formales:
-C(for.for) = O(1+2+3+...+(n-1)) = O(n/2 * (n-1)) = O(n^2 / 2) - O(n/2) = O(n^2)
-C(LIS) = C(arrays.fill) + C(Arrays.fill) + C(for.for) + C(for) + C(for)
-= O(n) + O(n) + C(for.for) + O(n) + O(n/k)
-= O(n) + O(n) + O(n^2) + O(n) + O(n)
-= O(n^2).</p>
+<p>Sumando todas las complejidades individuales según su regla (el resultado es el término de mayor complejidad), la complejidad del algoritmo descrito resulta ser cuadrática. En términos formales:</p>
+<p><span class="arithmatex">\(C(for.for) = O(1+2+3+...+(n-1)) = O(n/2 * (n-1)) = O(n^2 / 2) - O(n/2) = O(n^2)\)</span></p>
+<p><span class="arithmatex">\(C(LIS) = C(arrays.fill) + C(Arrays.fill) + C(for.for) + C(for) + C(for)\)</span></p>
+<p><span class="arithmatex">\(= O(n) + O(n) + C(for.for) + O(n) + O(n/k)\)</span></p>
+<p><span class="arithmatex">\(= O(n) + O(n) + O(n^2) + O(n) + O(n)\)</span></p>
+<p><span class="arithmatex">\(= O(n^2)\)</span>.</p>
 </details>
 
 

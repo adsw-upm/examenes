@@ -3045,9 +3045,7 @@
 
 <h1 id="examen-2015-parcial-1">Examen 2015 — Parcial 1</h1>
 <h2 id="problema-1">Problema 1</h2>
-<ul>
-<li>(a) (5 puntos) Como medida de similitud (o diferencia) entre dos documentos dados, representados como ficheros de texto, compañías como Google utilizan el concepto de “distancia” (o su contrario, “proximidad”) entre dos documentos, según el algoritmo que se describe a continuación. </li>
-</ul>
+<p>Como medida de similitud (o diferencia) entre dos documentos dados, representados como ficheros de texto, compañías como Google utilizan el concepto de “distancia” (o su contrario, “proximidad”) entre dos documentos, según el algoritmo que se describe a continuación. </p>
 <p>Se descomponen los dos ficheros de texto en palabras y, para cada uno de los dos ficheros, se construye un vector ordenado con tantos componentes como palabras diferentes hay entre los dos ficheros, siendo el valor de cada elemento el número de veces que la palabra en cuestión se repite en el fichero de texto dado. En especial, si una determinada palabra existe en un fichero pero no en el otro, el valor correspondiente para el segundo vector, 
 es cero. Por ejemplo, </p>
 <table>
@@ -3083,21 +3081,21 @@ es cero. Por ejemplo, </p>
 </table>
 <p>La palabra ‘árbol’ aparece 5 veces en el fichero 1 y 7 veces en el 2. La palabra ‘barco’ no aparece en el fichero 2. La palabra ‘zapatiesta’ no aparece en el fichero 1.</p>
 <p>A continuación se realiza el producto escalar de los dos vectores que, una vez dividido por el producto del número total de palabras que hay en cada uno de los dos textos, nos da como resultado la medida de proximidad entre los dos documentos dados. </p>
-<p>Suponiendo que los dos documentos a comparar tienen una longitud similar, digamos N caracteres, y que la longitud máxima de una palabra en español es K, se pide dar la complejidad del algoritmo descrito en términos de N, a base de justificar la complejidad de cada una de las partes de las que se compone (el algoritmo). </p>
-<p>NOTA: Si no puede justificar la complejidad del algoritmo de ordenación, considere que es O(NlogN).</p>
+<ul>
+<li>(a) (5 puntos) Suponiendo que los dos documentos a comparar tienen una longitud similar, digamos <span class="arithmatex">\(N\)</span> caracteres, y que la longitud máxima de una palabra en español es <span class="arithmatex">\(K\)</span>, se pide dar la complejidad del algoritmo descrito en términos de <span class="arithmatex">\(N\)</span>, a base de justificar la complejidad de cada una de las partes de las que se compone (el algoritmo). </li>
+</ul>
+<p>NOTA: Si no puede justificar la complejidad del algoritmo de ordenación, considere que es <span class="arithmatex">\(O(NlogN)\)</span>.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La extracción de las palabras se realiza iterando dentro de un simple bucle a lo largo de cada uno de los dos textos, lo cual da una complejidad lineal, es decir, O(N). </p>
-<p>Cada vez que en el bucle anterior se encuentra una palabra, se consultan y actualizan dos HashMap, cuyas operaciones son en todo caso de orden constante, y se hacen un número máximo de ellas finito (y pequeño) por cada palabra encontrada, por lo que la fase anterior no ve modificada su complejidad de O(N). </p>
-<p>A continuación han de construirse los dos vectores ordenados a partir de los valores que están desordenados en los HashMap, lo cual nos dicen que tiene una complejidad de O(N*logN). </p>
-<p>Por último, el cálculo del producto escalar es otro bucle simple, repetido tantas veces como palabras diferentes hay, de una multiplicación (complejidad constante) más una suma (también complejidad constante), lo cual da una complejidad para el producto escalar de O(N). La división posterior, siendo una sola y de complejidad constante, no cambia la complejidad de esta fase.  </p>
+<p>La extracción de las palabras se realiza iterando dentro de un simple bucle a lo largo de cada uno de los dos textos, lo cual da una complejidad lineal, es decir, <span class="arithmatex">\(O(N)\)</span>. </p>
+<p>Cada vez que en el bucle anterior se encuentra una palabra, se consultan y actualizan dos HashMap, cuyas operaciones son en todo caso de orden constante, y se hacen un número máximo de ellas finito (y pequeño) por cada palabra encontrada, por lo que la fase anterior no ve modificada su complejidad de <span class="arithmatex">\(O(N)\)</span>. </p>
+<p>A continuación han de construirse los dos vectores ordenados a partir de los valores que están desordenados en los HashMap, lo cual nos dicen que tiene una complejidad de <span class="arithmatex">\(O(N*logN)\)</span>. </p>
+<p>Por último, el cálculo del producto escalar es otro bucle simple, repetido tantas veces como palabras diferentes hay, de una multiplicación (complejidad constante) más una suma (también complejidad constante), lo cual da una complejidad para el producto escalar de <span class="arithmatex">\(O(N)\)</span>. La división posterior, siendo una sola y de complejidad constante, no cambia la complejidad de esta fase.  </p>
 <p>Asi pues, la complejidad total será, sumando las de cada una de sus tres fases, </p>
-<p>O(N) + O(N<em>logN) + O(N), lo cual se reduce, simplemente, a O(N</em>logN).</p>
+<p><span class="arithmatex">\(O(N) + O(N*logN) + O(N)\)</span>, lo cual se reduce, simplemente, a <span class="arithmatex">\(O(N*logN)\)</span>.</p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<ul>
-<li>(a) (4 puntos) Se pretende sincronizar la fabricación en una línea de ensamblado de mesas. Hay varios fabricantes de patas, que las depositan en una línea con un límite de capacidad MAX_NUM_PATAS. Cuando se llena, los fabricantes dejan de producir patas hasta que haya hueco libre. Hay varios fabricantes de tableros, que depositan en otra línea de capacidad limitada MAX_NUM_TABLEROS. Por último, hay varios ensambladores de mesas: cada uno coge cuatro patas y un tablero y ensambla una mesa. </li>
-</ul>
+<p>Se pretende sincronizar la fabricación en una línea de ensamblado de mesas. Hay varios fabricantes de patas, que las depositan en una línea con un límite de capacidad <code>MAX_NUM_PATAS</code>. Cuando se llena, los fabricantes dejan de producir patas hasta que haya hueco libre. Hay varios fabricantes de tableros, que depositan en otra línea de capacidad limitada <code>MAX_NUM_TABLEROS</code>. Por último, hay varios ensambladores de mesas: cada uno coge cuatro patas y un tablero y ensambla una mesa. </p>
 <p>Se trata de escribir en Java un monitor que sincronice estos tres sistemas, de forma que la producción se detenga cuando se alcanza la capacidad máxima de almacenamiento (de patas o tableros independientemente) y sistema de ensamblaje no avance si le faltan piezas para hacer una nueva mesa. </p>
 <p>NO ESCRIBA NINGÚN CÓDIGO para los subsistemas de producción y ensamblaje. </p>
 <p>El sincronizador responde al siguiente esquema:
@@ -3108,8 +3106,10 @@ es cero. Por ejemplo, </p>
 <span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">cogePatasyTablero</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span><span class="w">   </span><span class="c1">// lo invoca el ensamblador de mesas </span>
 <span class="w">    </span><span class="p">...</span><span class="w"> </span>
 <span class="p">}</span><span class="w"> </span>
-</code></pre></div>
-Se pide: Desarrollar el código completo del monitor sincronizador.</p>
+</code></pre></div></p>
+<ul>
+<li>(a) (4 puntos) Se pide: Desarrollar el código completo del monitor sincronizador.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Una posible implementación es:
@@ -3161,13 +3161,13 @@ Se pide: Desarrollar el código completo del monitor sincronizador.</p>
 </details>
 <h2 id="problema-3">Problema 3</h2>
 <ul>
-<li>(a) (1 punto) Describa dos casos posibles de error significativamente diferentes para detectar errores de la clase Paredes del alumno en el borde del tablero (concretamente en la casilla (0, 0)) y prográmelos con JUnit.</li>
+<li>(a) (1 punto) Describa dos casos posibles de error significativamente diferentes para detectar errores de la clase Paredes del alumno en el borde del tablero (concretamente en la casilla <code>(0, 0)</code>) y prográmelos con JUnit.</li>
 </ul>
 <details class="note">
 <summary>Mostar solución</summary>
-<p>Suponiendo que partimos de la casilla c = (0,0), dos ejemplos de casos de error podrían ser: </p>
-<p>1) Poner una pared hacia el OESTE. La pared no se añade. 
-2) Obtener la posible pared hacia el SUR. El resultado debe ser null. </p>
+<p>Suponiendo que partimos de la casilla <code>c = (0,0)</code>, dos ejemplos de casos de error podrían ser: </p>
+<p>1) Poner una pared hacia el <code>OESTE</code>. La pared no se añade. </p>
+<p>2) Obtener la posible pared hacia el <code>SUR</code>. El resultado debe ser <code>null</code>. </p>
 <p>Y los casos de prueba correspondientes podrían ser:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Terreno</span><span class="w"> </span><span class="n">terreno</span><span class="w"> </span><span class="err">…</span><span class="w"> </span>
 <span class="kd">private</span><span class="w"> </span><span class="n">Paredes</span><span class="w"> </span><span class="n">paredes</span><span class="w"> </span><span class="err">…</span>
@@ -3188,7 +3188,7 @@ Se pide: Desarrollar el código completo del monitor sincronizador.</p>
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (1 punto) Escriba el método necesario para que un fantasma empiece moviéndose hacia el NORTE hasta que choca con una pared; cuando choca intenta moverse al ESTE hasta que choca con una pared; y así sucesivamente, rotando 90º a la derecha cada vez que choca. Si no puede desplazarse a ninguna de las casillas circundantes, deja pasar esta vez y espera al siguiente ciclo.</li>
+<li>(b) (1 punto) Escriba el método necesario para que un fantasma empiece moviéndose hacia el <code>NORTE</code> hasta que choca con una pared; cuando choca intenta moverse al <code>ESTE</code> hasta que choca con una pared; y así sucesivamente, rotando 90º a la derecha cada vez que choca. Si no puede desplazarse a ninguna de las casillas circundantes, deja pasar esta vez y espera al siguiente ciclo.</li>
 </ul>
 <details class="note">
 <summary>Mostar solución</summary>

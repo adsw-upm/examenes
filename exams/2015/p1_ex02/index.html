@@ -2874,9 +2874,7 @@
 
   <h1>P1 ex02</h1>
 
-<ul>
-<li>(a) (4 puntos) Se pretende sincronizar la fabricación en una línea de ensamblado de mesas. Hay varios fabricantes de patas, que las depositan en una línea con un límite de capacidad MAX_NUM_PATAS. Cuando se llena, los fabricantes dejan de producir patas hasta que haya hueco libre. Hay varios fabricantes de tableros, que depositan en otra línea de capacidad limitada MAX_NUM_TABLEROS. Por último, hay varios ensambladores de mesas: cada uno coge cuatro patas y un tablero y ensambla una mesa. </li>
-</ul>
+<p>Se pretende sincronizar la fabricación en una línea de ensamblado de mesas. Hay varios fabricantes de patas, que las depositan en una línea con un límite de capacidad <code>MAX_NUM_PATAS</code>. Cuando se llena, los fabricantes dejan de producir patas hasta que haya hueco libre. Hay varios fabricantes de tableros, que depositan en otra línea de capacidad limitada <code>MAX_NUM_TABLEROS</code>. Por último, hay varios ensambladores de mesas: cada uno coge cuatro patas y un tablero y ensambla una mesa. </p>
 <p>Se trata de escribir en Java un monitor que sincronice estos tres sistemas, de forma que la producción se detenga cuando se alcanza la capacidad máxima de almacenamiento (de patas o tableros independientemente) y sistema de ensamblaje no avance si le faltan piezas para hacer una nueva mesa. </p>
 <p>NO ESCRIBA NINGÚN CÓDIGO para los subsistemas de producción y ensamblaje. </p>
 <p>El sincronizador responde al siguiente esquema:
@@ -2887,8 +2885,10 @@
 <span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">cogePatasyTablero</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{...}</span><span class="w">   </span><span class="c1">// lo invoca el ensamblador de mesas </span>
 <span class="w">    </span><span class="p">...</span><span class="w"> </span>
 <span class="p">}</span><span class="w"> </span>
-</code></pre></div>
-Se pide: Desarrollar el código completo del monitor sincronizador.</p>
+</code></pre></div></p>
+<ul>
+<li>(a) (4 puntos) Se pide: Desarrollar el código completo del monitor sincronizador.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Una posible implementación es:

@@ -2877,26 +2877,31 @@
 <p>En el Juego del Pacman para Android tenemos un tablero de 8x8:</p>
 <p><img alt="" src="../p2/p2_02.png" /></p>
 <ul>
-<li>(a) (1 punto) Indique las coordinadas (x,y) que debe pasar a juego.pon(terreno.getCasilla(x.y), 0) para poner un Patito (con identificador 0) en la casilla con un círculo azul (objetivo) situada en el extremo superior derecho.</li>
+<li>(a) (1 punto) Indique las coordinadas <code>(x,y)</code> que debe pasar a <code>juego.pon(terreno.getCasilla(x.y), 0)</code> para poner un Patito (con identificador <code>0</code>) en la casilla con un círculo azul (objetivo) situada en el extremo superior derecho.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>X = 7, Y = 7</p>
+<p><code>X = 7, Y = 7</code></p>
 </details>
 <ul>
-<li>(b) (1 punto) Suponga que tenemos un gestor de eventos táctiles onTouch(View v, MotionEvent event). Si pulsamos en el objetivo (círculo azul situado en el extremo superior derecho), ¿qué valores nos darán x e y si se calculan como sigue? int x = (int) event.getX() / lado1; int y = (int) event.getY() / lado1</li>
+<li>(b) (1 punto) Suponga que tenemos un gestor de eventos táctiles <code>onTouch(View v, MotionEvent event)</code>. Si pulsamos en el objetivo (círculo azul situado en el extremo superior derecho), ¿qué valores nos darán <code>x</code> e <code>y</code> si se calculan como sigue? </li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getX</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getY</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span>
+</code></pre></div>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>X = 7, Y = 0</p>
+<p><code>X = 7, Y = 0</code></p>
 </details>
-<p>Deseamos cambiar el comportamiento del gestor de eventos táctiles, de forma que el jugador ya no se mueva con el dedo. Queremos que al poner el dedo en una posición, aparezca un Patito si la casilla está vacía. El id de Patito registrado en Juego es 0. Además, queremos que muestre:
-    - una traza informativa (info) al pulsar en la pantalla. Ej. “Pulso en (3, 4)”
-    - una traza de depuración (debug) cuando pone el patito. Ej. “Patito puesto en (3, 4)”
-    - una traza de depuración si no coincide la posición al poner y quitar el dedo, porque ha realizado algún movimiento. Ej. “No coinciden poner y quitar dedo”
-    - una traza de advertencia (warn) si ya hay algún móvil en esa posición. “Patito no puesto ya hay otro móvil”.</p>
+<p>Deseamos cambiar el comportamiento del gestor de eventos táctiles, de forma que el jugador ya no se mueva con el dedo. Queremos que al poner el dedo en una posición, aparezca un Patito si la casilla está vacía. El id de Patito registrado en Juego es 0. Además, queremos que muestre:</p>
+<ol>
+    <li> Una traza informativa (<code>info</code>) al pulsar en la pantalla. Ej. “Pulso en (3, 4)”; </li>
+    <li> Una traza de depuración (<code>debug</code>) cuando pone el patito. Ej. “Patito puesto en (3, 4)”; </li>
+    <li> Una traza de depuración si no coincide la posición al poner y quitar el dedo, porque ha realizado algún movimiento. Ej. “No coinciden poner y quitar dedo”; </li>
+    <li> Una traza de advertencia (<code>warn</code>) si ya hay algún móvil en esa posición. “Patito no puesto ya hay otro móvil”. </li>
+</ol>
+
 <ul>
-<li>(c) (3 puntos) Complete el código del método onTouch() que se da en la hoja de respuestas.</li>
+<li>(c) (3 puntos) Complete el código del método <code>onTouch()</code> que se da en la hoja de respuestas.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>

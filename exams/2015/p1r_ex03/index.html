@@ -2877,14 +2877,14 @@
 <p>Dado el siguiente terreno de prueba y la situación del jugador y el depredador que se muestra:</p>
 <p><img alt="" src="../p1r/p1r_ex03.png" /></p>
 <ul>
-<li>(a) (1 punto) Describa un caso posible de error para detectar errores del método primerPaso de la clase Depredador del alumno y prográmelo con JUnit.</li>
+<li>(a) (1 punto) Describa un caso posible de error para detectar errores del método <code>primerPaso</code> de la clase <code>Depredador</code> del alumno y prográmelo con JUnit.</li>
 </ul>
 <details class="note">
 <summary>Mostar solución</summary>
 <p>Suponemos que la variable terreno se refiere al terreno creado con la configuración de la figura, y que la variable depredador se refiere al depredador situado en el terreno anterior.</p>
-<p>El primer paso de la ruta más corta desde la casilla donde está el depredador (1,1) y la del jugador (3,2) es la casilla (1,0). Para comprobar que el funcionamiento del método primerPaso() es correcto, pues, basta con probar la siguiente aserción</p>
-<p>assertEquals(terreno.getCasilla(1,0),</p>
-<p>depredador.primerPaso(terreno.getCasilla(1,1),terreno.getCasilla(3,2)))</p>
+<p>El primer paso de la ruta más corta desde la casilla donde está el depredador <code>(1,1)</code> y la del jugador <code>(3,2)</code> es la casilla <code>(1,0)</code>. Para comprobar que el funcionamiento del método <code>primerPaso()</code> es correcto, pues, basta con probar la siguiente aserción</p>
+<p><code>assertEquals(terreno.getCasilla(1,0)</code>,</p>
+<p><code>depredador.primerPaso(terreno.getCasilla(1,1),terreno.getCasilla(3,2)))</code></p>
 </details>
 <ul>
 <li>(b) (1 punto) Escriba un caso de prueba para comprobar si el número de paredes en el terreno es igual a 10 (los bordes no cuentan), utilizando métodos públicos de las clases del proyecto.</li>
@@ -2892,7 +2892,8 @@
 <details class="note">
 <summary>Mostar solución</summary>
 <p>Para comprobar el número de paredes basta hacer
-    assertEquals(10, terreno.getparedes().size()</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">assertEquals</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">terreno</span><span class="p">.</span><span class="na">getparedes</span><span class="p">().</span><span class="na">size</span><span class="p">()</span>
+</code></pre></div></p>
 </details>
 
 

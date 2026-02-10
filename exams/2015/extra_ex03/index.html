@@ -2875,23 +2875,27 @@
   <h1>Extra ex03</h1>
 
 <ul>
-<li>(a) (2 puntos) En el pacman presentado como proyecto 1, queremos modificar el comportamiento del Fantasma00 de forma que evite acercarse a los Depredadores. Los Depredadores no saben nada del asco que suscitan. Suponga que nos facilitan un método en Terreno que nos dice si hay un depredador a menos de 3 casillas de distancia de la que pasamos como argumento:</li>
+<li>
+<p>(a) (2 puntos) En el pacman presentado como proyecto 1, queremos modificar el comportamiento del <code>Fantasma00</code> de forma que evite acercarse a los <code>Depredadores</code>. Los <code>Depredadores</code> no saben nada del asco que suscitan. Suponga que nos facilitan un método en <code>Terreno</code> que nos dice si hay un depredador a menos de 3 casillas de distancia de la que pasamos como argumento:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">hayDepredador</span><span class="p">(</span><span class="n">Casilla</span><span class="w"> </span><span class="n">casilla</span><span class="p">)</span>
+</code></pre></div></p>
+<ul>
+<li>¿Podemos hacerlo en el método <code>run()</code> de <code>Fantasma00</code>? Razone si sí o si no.</li>
+<li>¿Podemos hacerlo en el método <code>puedoMoverme()</code> de <code>Fantasma00</code>? Razone si sí o si no.</li>
+<li>Si cree que se puede hacer de ambas maneras, indique ventajas e inconvenientes de una y otra opción</li>
 </ul>
-<p>public synchronized boolean hayDepredador(Casilla casilla)</p>
-<pre><code>- ¿Podemos hacerlo en el método run() de Fantasma00?Razone si sí o si no.
-- ¿Podemos hacerlo en el método puedoMoverme() de Fantasma00? Razone si sí o si no.
-- Si cree que se puede hacer de ambas maneras, indique ventajas e inconvenientes de una y otra opción
-</code></pre>
+</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<ul>
-<li>Sí se puede en run().</li>
-<li>Se puede optimizar el movimiento huyendo del depredador (moviendo en dirección opuesta).</li>
-<li>Se ejecuta fuera de la zona crítica y el depredador y demás fantasmas se pueden mover mientras estamos eligiendo a dónde ir.</li>
-<li>Sí se puede en puedoMoverme().</li>
-<li>Sólo podemos hacer que el fantasma espere, sin moverse.</li>
+<ol>
+<li>Sí se puede en <code>run()</code>;</li>
+<li>Se puede optimizar el movimiento huyendo del depredador (moviendo en dirección opuesta);</li>
+<li>Se ejecuta fuera de la zona crítica y el depredador y demás fantasmas se pueden mover mientras estamos eligiendo a dónde ir;</li>
+<li>Sí se puede en <code>puedoMoverme()</code>;</li>
+<li>Sólo podemos hacer que el fantasma espere, sin moverse;</li>
 <li>se ejecuta dentro de la zona crítica de forma que el depredador y todos los fantasmas están quietos mientras tomamos la decisión.</li>
-</ul>
+</ol>
 </details>
 
 

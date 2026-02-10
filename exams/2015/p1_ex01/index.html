@@ -2874,9 +2874,7 @@
 
   <h1>P1 ex01</h1>
 
-<ul>
-<li>(a) (5 puntos) Como medida de similitud (o diferencia) entre dos documentos dados, representados como ficheros de texto, compañías como Google utilizan el concepto de “distancia” (o su contrario, “proximidad”) entre dos documentos, según el algoritmo que se describe a continuación. </li>
-</ul>
+<p>Como medida de similitud (o diferencia) entre dos documentos dados, representados como ficheros de texto, compañías como Google utilizan el concepto de “distancia” (o su contrario, “proximidad”) entre dos documentos, según el algoritmo que se describe a continuación. </p>
 <p>Se descomponen los dos ficheros de texto en palabras y, para cada uno de los dos ficheros, se construye un vector ordenado con tantos componentes como palabras diferentes hay entre los dos ficheros, siendo el valor de cada elemento el número de veces que la palabra en cuestión se repite en el fichero de texto dado. En especial, si una determinada palabra existe en un fichero pero no en el otro, el valor correspondiente para el segundo vector, 
 es cero. Por ejemplo, </p>
 <table>
@@ -2912,16 +2910,18 @@ es cero. Por ejemplo, </p>
 </table>
 <p>La palabra ‘árbol’ aparece 5 veces en el fichero 1 y 7 veces en el 2. La palabra ‘barco’ no aparece en el fichero 2. La palabra ‘zapatiesta’ no aparece en el fichero 1.</p>
 <p>A continuación se realiza el producto escalar de los dos vectores que, una vez dividido por el producto del número total de palabras que hay en cada uno de los dos textos, nos da como resultado la medida de proximidad entre los dos documentos dados. </p>
-<p>Suponiendo que los dos documentos a comparar tienen una longitud similar, digamos N caracteres, y que la longitud máxima de una palabra en español es K, se pide dar la complejidad del algoritmo descrito en términos de N, a base de justificar la complejidad de cada una de las partes de las que se compone (el algoritmo). </p>
-<p>NOTA: Si no puede justificar la complejidad del algoritmo de ordenación, considere que es O(NlogN).</p>
+<ul>
+<li>(a) (5 puntos) Suponiendo que los dos documentos a comparar tienen una longitud similar, digamos <span class="arithmatex">\(N\)</span> caracteres, y que la longitud máxima de una palabra en español es <span class="arithmatex">\(K\)</span>, se pide dar la complejidad del algoritmo descrito en términos de <span class="arithmatex">\(N\)</span>, a base de justificar la complejidad de cada una de las partes de las que se compone (el algoritmo). </li>
+</ul>
+<p>NOTA: Si no puede justificar la complejidad del algoritmo de ordenación, considere que es <span class="arithmatex">\(O(NlogN)\)</span>.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La extracción de las palabras se realiza iterando dentro de un simple bucle a lo largo de cada uno de los dos textos, lo cual da una complejidad lineal, es decir, O(N). </p>
-<p>Cada vez que en el bucle anterior se encuentra una palabra, se consultan y actualizan dos HashMap, cuyas operaciones son en todo caso de orden constante, y se hacen un número máximo de ellas finito (y pequeño) por cada palabra encontrada, por lo que la fase anterior no ve modificada su complejidad de O(N). </p>
-<p>A continuación han de construirse los dos vectores ordenados a partir de los valores que están desordenados en los HashMap, lo cual nos dicen que tiene una complejidad de O(N*logN). </p>
-<p>Por último, el cálculo del producto escalar es otro bucle simple, repetido tantas veces como palabras diferentes hay, de una multiplicación (complejidad constante) más una suma (también complejidad constante), lo cual da una complejidad para el producto escalar de O(N). La división posterior, siendo una sola y de complejidad constante, no cambia la complejidad de esta fase.  </p>
+<p>La extracción de las palabras se realiza iterando dentro de un simple bucle a lo largo de cada uno de los dos textos, lo cual da una complejidad lineal, es decir, <span class="arithmatex">\(O(N)\)</span>. </p>
+<p>Cada vez que en el bucle anterior se encuentra una palabra, se consultan y actualizan dos HashMap, cuyas operaciones son en todo caso de orden constante, y se hacen un número máximo de ellas finito (y pequeño) por cada palabra encontrada, por lo que la fase anterior no ve modificada su complejidad de <span class="arithmatex">\(O(N)\)</span>. </p>
+<p>A continuación han de construirse los dos vectores ordenados a partir de los valores que están desordenados en los HashMap, lo cual nos dicen que tiene una complejidad de <span class="arithmatex">\(O(N*logN)\)</span>. </p>
+<p>Por último, el cálculo del producto escalar es otro bucle simple, repetido tantas veces como palabras diferentes hay, de una multiplicación (complejidad constante) más una suma (también complejidad constante), lo cual da una complejidad para el producto escalar de <span class="arithmatex">\(O(N)\)</span>. La división posterior, siendo una sola y de complejidad constante, no cambia la complejidad de esta fase.  </p>
 <p>Asi pues, la complejidad total será, sumando las de cada una de sus tres fases, </p>
-<p>O(N) + O(N<em>logN) + O(N), lo cual se reduce, simplemente, a O(N</em>logN).</p>
+<p><span class="arithmatex">\(O(N) + O(N*logN) + O(N)\)</span>, lo cual se reduce, simplemente, a <span class="arithmatex">\(O(N*logN)\)</span>.</p>
 </details>
 
 

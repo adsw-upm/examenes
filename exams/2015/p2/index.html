@@ -3023,8 +3023,7 @@
 
 <h1 id="examen-2015-parcial-2">Examen 2015 — Parcial 2</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>Se pretende desarrollar una aplicación para Android de gestión de una colección de libros. La información de los libros se almacena en una Base de Datos sqlite. Una ListActivity muestra información de los libros
-almacenados.</p>
+<p>Se pretende desarrollar una aplicación para Android de gestión de una colección de libros. La información de los libros se almacena en una Base de Datos sqlite. Una <code>ListActivity</code> muestra información de los libros almacenados.</p>
 <p>De los libros se almacena la siguiente información: Autor, Título, Año de publicación. Los dos primeros campos serán textuales, el último será un número. La Bases de Datos constará de una única tabla que
 contenga esta información.</p>
 <ul>
@@ -3052,7 +3051,7 @@ contenga esta información.</p>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(b) (1 punto) Escriba un método de la clase DatabaseHelper que devuelva un Cursor con la información de todos los libros. La cabecera del método será: public Cursor selectAll() { … }. Si necesita atributos adicionales, declárelos correctamente. No duplique las declaraciones de la pregunta anterior.</li>
+<li>(b) (1 punto) Escriba un método de la clase <code>DatabaseHelper</code> que devuelva un Cursor con la información de todos los libros. La cabecera del método será: <code>public Cursor selectAll() { … }</code>. Si necesita atributos adicionales, declárelos correctamente. No duplique las declaraciones de la pregunta anterior.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3063,7 +3062,7 @@ contenga esta información.</p>
 <span class="p">}</span>
 </code></pre></div>
 </details>
-<p>Se pretende disponer de una actividad ListaLibrosActivity, que herede de ListActivity, según el siguiente esquema:</p>
+<p>Se pretende disponer de una actividad <code>ListaLibrosActivity</code>, que herede de <code>ListActivity</code>, según el siguiente esquema:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ListaLibrosActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ListActivity</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">DatabaseHelper</span><span class="w"> </span><span class="n">dbHelper</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">SimpleCursorAdapter</span><span class="w"> </span><span class="n">cursorAdapter</span><span class="p">;</span>
@@ -3071,7 +3070,7 @@ contenga esta información.</p>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(c) (2 puntos) Se pretende que dicha actividad reaccione de forma que cuando el usuario pulse sobre un registro mostrado en el ListView, se lance otra actividad, llamada “EditarLibroActivity”, que ya está ya implementada. A la actividad “EditarLibroActivity” se le ha de pasar toda la información del libro seleccionado. Escriba el código necesario para implementar este comportamiento. </li>
+<li>(c) (2 puntos) Se pretende que dicha actividad reaccione de forma que cuando el usuario pulse sobre un registro mostrado en el ListView, se lance otra actividad, llamada <code>EditarLibroActivity</code>, que ya está ya implementada. A la actividad <code>EditarLibroActivity</code> se le ha de pasar toda la información del libro seleccionado. Escriba el código necesario para implementar este comportamiento. </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3090,37 +3089,43 @@ contenga esta información.</p>
 </code></pre></div>
 </details>
 <ul>
-<li>(d) (1 punto) Se desea guardar la base de datos de forma automática, cuando la aplicación sea interrumpida por otra ACTIVIDAD (por ejemplo, una llamada de teléfono o pulsar el botón de aplicaciones). Cuando se vuelva a la
+<li>(d) (1 punto) Se desea guardar la base de datos de forma automática, cuando la aplicación sea interrumpida por otra <code>ACTIVIDAD</code> (por ejemplo, una llamada de teléfono o pulsar el botón de aplicaciones). Cuando se vuelva a la
 aplicación, se debe cargar la base de datos. ¿Qué métodos han de sobrecargarse relativos al ciclo de vida de la actividad principal? Ponga SÓLO el nombre de los métodos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>sol a) onStart() – onStop() sol b) onResume() – onPause()</p>
+<p>a) onStart() – onStop() </p>
+<p>b) onResume() – onPause()</p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
 <p>En el Juego del Pacman para Android tenemos un tablero de 8x8:</p>
 <p><img alt="" src="p2_02.png" /></p>
 <ul>
-<li>(a) (1 punto) Indique las coordinadas (x,y) que debe pasar a juego.pon(terreno.getCasilla(x.y), 0) para poner un Patito (con identificador 0) en la casilla con un círculo azul (objetivo) situada en el extremo superior derecho.</li>
+<li>(a) (1 punto) Indique las coordinadas <code>(x,y)</code> que debe pasar a <code>juego.pon(terreno.getCasilla(x.y), 0)</code> para poner un Patito (con identificador <code>0</code>) en la casilla con un círculo azul (objetivo) situada en el extremo superior derecho.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>X = 7, Y = 7</p>
+<p><code>X = 7, Y = 7</code></p>
 </details>
 <ul>
-<li>(b) (1 punto) Suponga que tenemos un gestor de eventos táctiles onTouch(View v, MotionEvent event). Si pulsamos en el objetivo (círculo azul situado en el extremo superior derecho), ¿qué valores nos darán x e y si se calculan como sigue? int x = (int) event.getX() / lado1; int y = (int) event.getY() / lado1</li>
+<li>(b) (1 punto) Suponga que tenemos un gestor de eventos táctiles <code>onTouch(View v, MotionEvent event)</code>. Si pulsamos en el objetivo (círculo azul situado en el extremo superior derecho), ¿qué valores nos darán <code>x</code> e <code>y</code> si se calculan como sigue? </li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getX</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getY</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lado1</span>
+</code></pre></div>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>X = 7, Y = 0</p>
+<p><code>X = 7, Y = 0</code></p>
 </details>
-<p>Deseamos cambiar el comportamiento del gestor de eventos táctiles, de forma que el jugador ya no se mueva con el dedo. Queremos que al poner el dedo en una posición, aparezca un Patito si la casilla está vacía. El id de Patito registrado en Juego es 0. Además, queremos que muestre:
-    - una traza informativa (info) al pulsar en la pantalla. Ej. “Pulso en (3, 4)”
-    - una traza de depuración (debug) cuando pone el patito. Ej. “Patito puesto en (3, 4)”
-    - una traza de depuración si no coincide la posición al poner y quitar el dedo, porque ha realizado algún movimiento. Ej. “No coinciden poner y quitar dedo”
-    - una traza de advertencia (warn) si ya hay algún móvil en esa posición. “Patito no puesto ya hay otro móvil”.</p>
+<p>Deseamos cambiar el comportamiento del gestor de eventos táctiles, de forma que el jugador ya no se mueva con el dedo. Queremos que al poner el dedo en una posición, aparezca un Patito si la casilla está vacía. El id de Patito registrado en Juego es 0. Además, queremos que muestre:</p>
+<ol>
+    <li> Una traza informativa (<code>info</code>) al pulsar en la pantalla. Ej. “Pulso en (3, 4)”; </li>
+    <li> Una traza de depuración (<code>debug</code>) cuando pone el patito. Ej. “Patito puesto en (3, 4)”; </li>
+    <li> Una traza de depuración si no coincide la posición al poner y quitar el dedo, porque ha realizado algún movimiento. Ej. “No coinciden poner y quitar dedo”; </li>
+    <li> Una traza de advertencia (<code>warn</code>) si ya hay algún móvil en esa posición. “Patito no puesto ya hay otro móvil”. </li>
+</ol>
+
 <ul>
-<li>(c) (3 puntos) Complete el código del método onTouch() que se da en la hoja de respuestas.</li>
+<li>(c) (3 puntos) Complete el código del método <code>onTouch()</code> que se da en la hoja de respuestas.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>

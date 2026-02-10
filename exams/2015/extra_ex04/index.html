@@ -2874,7 +2874,7 @@
 
   <h1>Extra ex04</h1>
 
-<p>Se pretende realizar una aplicación Android que gestione los gastos de un usuario. Cada vez que se realiza un gasto, el usuario puede introducir la cantidad gastada (“Importe”, campo numérico real) y en qué se lo ha gastado (“Concepto”, de tipo texto). Estos registros se guardarán en una base de datos sqlite, con una única tabla. La aplicación mostrará los registros existentes mediante una ListActivity. </p>
+<p>Se pretende realizar una aplicación Android que gestione los gastos de un usuario. Cada vez que se realiza un gasto, el usuario puede introducir la cantidad gastada (<code>Importe</code>, campo numérico real) y en qué se lo ha gastado (<code>Concepto</code>, de tipo texto). Estos registros se guardarán en una base de datos sqlite, con una única tabla. La aplicación mostrará los registros existentes mediante una <code>ListActivity</code>. </p>
 <p>La aplicación dispone de un menú con dos opciones, “Añadir” y “Acerca de”. La especificación del menú es la siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;menu</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
@@ -2902,7 +2902,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(a) (1 punto) Escriba una sentencia SQL que devuelva todos los registros de la base de datos cuyo importe supere el valor de 50,00.</li>
+<li>(a) (1 punto) Escriba una sentencia SQL que devuelva todos los registros de la base de datos cuyo importe supere el valor de <code>50,00</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2911,12 +2911,12 @@
 </details>
 <ul>
 <li>
-<p>(b) (1 punto) Sobreescriba el método adecuado de ListActivity para implementar el siguiente comportamiento:</p>
+<p>(b) (1 punto) Sobreescriba el método adecuado de <code>ListActivity</code> para implementar el siguiente comportamiento:</p>
 <ul>
-<li>1) la opción “Acerca de” muestra un Toast con el nombre del autor del código (usted);</li>
-<li>2) la opción “Añadir” se lance otra actividad llamada “AnadirGastoActivity” que ya está implementada.</li>
+<li>1) la opción “Acerca de” muestra un <code>Toast</code> con el nombre del autor del código (usted);</li>
+<li>2) la opción “Añadir” se lance otra actividad llamada <code>AnadirGastoActivity</code> que ya está implementada.</li>
 </ul>
-<p>Tenga en cuenta que “AnadirGastoActivity” devolverá un Intent con los datos del usuario.</p>
+<p>Tenga en cuenta que <code>AnadirGastoActivity</code> devolverá un <code>Intent</code> con los datos del usuario.</p>
 </li>
 </ul>
 <details class="note">
@@ -2950,7 +2950,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (1 punto) ¿Qué métodos relativos al ciclo de vida de las actividades ListActivity y AnadirGastoActivity se ejecutan desde que se selecciona la opción “Añadir” del menú hasta que se vuelve a mostrar la lista de gasto? Escriba sólo el nombre del método y la actividad a la que pertenece, y el orden adecuado.</li>
+<li>(c) (1 punto) ¿Qué métodos relativos al ciclo de vida de las actividades <code>ListActivity</code> y <code>AnadirGastoActivity</code> se ejecutan desde que se selecciona la opción “Añadir” del menú hasta que se vuelve a mostrar la lista de gasto? Escriba sólo el nombre del método y la actividad a la que pertenece, y el orden adecuado.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2963,50 +2963,50 @@
 </thead>
 <tbody>
 <tr>
-<td>onPause()</td>
-<td>ListActivity</td>
+<td><code>onPause()</code></td>
+<td><code>ListActivity</code></td>
 </tr>
 <tr>
-<td>onCreate()</td>
-<td>AnadirGastoActivity</td>
+<td><code>onCreate()</code></td>
+<td><code>AnadirGastoActivity</code></td>
 </tr>
 <tr>
-<td>onStart()</td>
-<td>AnadirGastoActivity</td>
+<td><code>onStart()</code></td>
+<td><code>AnadirGastoActivity</code></td>
 </tr>
 <tr>
-<td>onResume()</td>
-<td>AnadirGastoActivity</td>
+<td><code>onResume()</code></td>
+<td><code>AnadirGastoActivity</code></td>
 </tr>
 <tr>
-<td>onStop()</td>
-<td>AnadirGastoActivity</td>
+<td><code>onStop()</code></td>
+<td><code>AnadirGastoActivity</code></td>
 </tr>
 <tr>
-<td>onPause()</td>
-<td>AnadirGastoActivity</td>
+<td><code>onPause()</code></td>
+<td><code>AnadirGastoActivity</code></td>
 </tr>
 <tr>
-<td>onRestart()</td>
-<td>ListActivity</td>
+<td><code>onRestart()</code></td>
+<td><code>ListActivity</code></td>
 </tr>
 <tr>
-<td>onStart()</td>
-<td>ListActivity</td>
+<td><code>onStart()</code></td>
+<td><code>ListActivity</code></td>
 </tr>
 <tr>
-<td>onResume()</td>
-<td>ListActivity</td>
+<td><code>onResume()</code></td>
+<td><code>ListActivity</code></td>
 </tr>
 <tr>
-<td>onStop()</td>
-<td>AnadirGastoActivity</td>
+<td><code>onStop()</code></td>
+<td><code>AnadirGastoActivity</code></td>
 </tr>
 </tbody>
 </table>
 </details>
 <ul>
-<li>(d) (1 punto) Escriba un método de la clase DatabaseHelper que añada un nuevo registro a la base de datos. La información del Concepto y del Importe se pasará como parámetros del método.</li>
+<li>(d) (1 punto) Escriba un método de la clase <code>DatabaseHelper</code> que añada un nuevo registro a la base de datos. La información del <code>Concepto</code> y del <code>Importe</code> se pasará como parámetros del método.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3021,7 +3021,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(e) (1 punto) Escriba una especificación de layout adecuada que se pueda utilizar en la actividad “AnadirGastoActivity”. Además de los campos de información, dispondrá de un botón “Guardar” y otro “Cancelar” (sólo hay que poner los botones). </li>
+<li>(e) (1 punto) Escriba una especificación de layout adecuada que se pueda utilizar en la actividad <code>AnadirGastoActivity</code>. Además de los campos de información, dispondrá de un botón “Guardar” y otro “Cancelar” (sólo hay que poner los botones). </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>

@@ -2875,24 +2875,26 @@
   <h1>Extra ex05</h1>
 
 <ul>
-<li>(a) (2 puntos) El proyecto 2 se basa en una adaptación del proyecto 1. Seleccione la respuesta o respuestas correctas en la hoja de respuestas. Las respuestas incorrectas restan.<ul>
 <li>
-<ol>
-<li>La clase Terreno se adapta al ciclo de vida de Android</li>
-<li>I. No sería imprescindible realizar esta adaptación; simplemente la aplicación seguiría usando recursos cuando no está en primer plano.</li>
-<li>II. Si no hacemos la adaptación, tendremos interbloqueos.</li>
-<li>III. Los móviles se congelan en onPause() y se descongelan en onResume().</li>
-<li>IV. Los móviles se resucitan en onCreate()</li>
-</ol>
+<p>(a) (2 puntos) El proyecto 2 se basa en una adaptación del proyecto 1. Seleccione la respuesta o respuestas correctas en la hoja de respuestas. Las respuestas incorrectas restan.</p>
+<ul>
+<li>
+<p>(1) La clase <code>Terreno</code> se adapta al ciclo de vida de Android:</p>
+<ul>
+<li>(I) No sería imprescindible realizar esta adaptación; simplemente la aplicación seguiría usando recursos cuando no está en primer plano;    </li>
+<li>(II) Si no hacemos la adaptación, tendremos interbloqueos;</li>
+<li>(III) Los móviles se congelan en <code>onPause()</code> y se descongelan en <code>onResume()</code>;</li>
+<li>(IV) Los móviles se resucitan en <code>onCreate()</code>.</li>
+</ul>
 </li>
 <li>
-<ol>
-<li>Las clases que extienden Movil (p.ej. Jugador, Estatua, Depredador, …)</li>
-<li>I. Deben implementar restart() porque es un método abstracto en Movil</li>
-<li>II. Si además implementan Runnable, deben crear en restart() una hebra (new Thread()) y llamar a start() en la hebra creada</li>
-<li>III. Si ademá s implementan Runnable, deben crear en pause() una hebra (new Thread()) y llamar a pause() en la hebra creada</li>
-<li>IV. Siempre que extienden Movil deben implementar Runnable</li>
-</ol>
+<p>(2) Las clases que extienden <code>Movil</code> (p.ej. <code>Jugador</code>, <code>Estatua</code>, <code>Depredador</code>, …)</p>
+<ul>
+<li>(I) Deben implementar <code>restart()</code> porque es un método abstracto en <code>Movil</code>;</li>
+<li>(II) Si además implementan <code>Runnable</code>, deben crear en <code>restart()</code> una hebra (<code>new Thread()</code>) y llamar a <code>start()</code> en la hebra creada;</li>
+<li>(III) Si ademá s implementan Runnable, deben crear en pause() una hebra (<code>new Thread()</code>) y llamar a <code>pause()</code> en la hebra creada;</li>
+<li>(IV) Siempre que extienden <code>Movil</code> deben implementar <code>Runnable</code>.</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -2901,10 +2903,10 @@
 <summary>Mostrar solución</summary>
 <ul>
 <li>
-<p>En 1 la opción correcta es III.</p>
+<p>En (1) la opción correcta es (III);</p>
 </li>
 <li>
-<p>En 2 las opciones correctas son III y IV.</p>
+<p>En (2) las opciones correctas son (III) y (IV).</p>
 </li>
 </ul>
 </details>
