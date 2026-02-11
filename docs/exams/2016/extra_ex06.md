@@ -6,15 +6,15 @@ tags:
  - ???
 ---
 
-Se quiere construir un diccionario donde las claves son Object que no se pueden comparar entre sí. Los valores también son Object de java. Para ello se ha decidido programar un árbol binario de búsqueda, usando el hash de la clave como criterio para optar por el subárbol izquierdo o el derecho.
+Se quiere construir un diccionario donde las claves son `Object` que no se pueden comparar entre sí. Los valores también son `Object` de Java. Para ello se ha decidido programar un árbol binario de búsqueda, usando el hash de la clave como criterio para optar por el subárbol izquierdo o el derecho.
 
-Se pide programar una clase BST_Object que incorpore el método
+Se pide programar una clase `BST_Object` que incorpore el método
 ```java
 void put(Object clave, Object valor)
 ```
 que inserta un valor asociado a la clave; si la clave ya existía, se reemplaza el antiguo valor por el nuevo 
 
-- (a) (1 punto) Programe los campos, el constructor y el método put(). No es necesario que programe más métodos.
+- (a) (1 punto) Programe los campos, el constructor y el método `put()`. No es necesario que programe más métodos.
 
 ??? note "Mostrar solución"
     ```java

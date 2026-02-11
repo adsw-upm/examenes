@@ -6,7 +6,7 @@ tags:
  - complejidad
 ---
 
-Queremos programar una clase Conjunto usando internamente una tabla hash con lista de desbordamiento. Se pide programar los siguientes métodos:
+Queremos programar una clase `Conjunto` usando internamente una tabla hash con lista de desbordamiento. Se pide programar los siguientes métodos:
 
 ```java
 void add(Object x)
@@ -22,7 +22,7 @@ void remove(Object x)
 
 Razone la complejidad de dichos métodos.
 
-No se aceptará como solución recurrir a la clase Map o a la clase Set de la biblioteca de java.
+No se aceptará como solución recurrir a la clase `Map` o a la clase `Set` de la biblioteca de Java.
 
 - (a) (2,1 puntos) Escribir el código de los métodos mencionados.
 
@@ -66,6 +66,6 @@ No se aceptará como solución recurrir a la clase Map o a la clase Set de la bi
 - (b) (1,4 puntos) Razonar la complejidad de los métodos.
 
 ??? note "Mostrar solución"
-    La complejidad de add() es O(1) sobre el supuesto de que la tabla de direccionamiento está dimensionada holgadamente; si no, sería la complejidad de la lista de desbordamiento.
+    La complejidad de `add()` es $O(1)$ sobre el supuesto de que la tabla de direccionamiento está dimensionada holgadamente; si no, sería la complejidad de la lista de desbordamiento.
 
-    La complejidad de remove() y contains() es la misma.
+    La complejidad de `remove()` y `contains()` es la misma.

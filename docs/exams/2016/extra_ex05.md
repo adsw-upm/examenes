@@ -6,11 +6,11 @@ tags:
  - android
 ---
 
-Se pretende realizar una aplicación Android que gestione las notas obtenidas por cada estudiante. En la primera pantalla, se pide el login y password al estudiante, con los cuales se puede acceder a un servidor que contiene las notas. Cuando las notas se han descargado, se presenta una pantalla en la que se muestra un listado con cada asignatura disponible y su calificación.
+Se pretende realizar una aplicación Android que gestione las notas obtenidas por cada estudiante. En la primera pantalla, se pide el 'login' y 'password' al estudiante, con los cuales se puede acceder a un servidor que contiene las notas. Cuando las notas se han descargado, se presenta una pantalla en la que se muestra un listado con cada asignatura disponible y su calificación.
 
-- (a) (1,25 puntos) Escriba una especificación de layout adecuada para la actividad principal. Este layout debe permitir introducir una cadena de login, una de password, y debe disponer de un botón para proceder a la descarga de las notas.
+- (a) (1,25 puntos) Escriba una especificación de `layout` adecuada para la actividad principal. Este `layout` debe permitir introducir una cadena de 'login', una de 'password', y debe disponer de un botón para proceder a la descarga de las notas.
 
-Nota: Si lo desea, para evitar que se vea la password puede usar 
+Nota: Si lo desea, para evitar que se vea la 'password' puede usar 
 ```java 
 android:inputType="textPassword".
 ```
@@ -68,11 +68,12 @@ android:inputType="textPassword".
 
     </LinearLayout>
     ```
-Se dispone de la siguiente clase auxiliar, denominada BajarNotasAsyncTask, con la siguiente cabecera:
+Se dispone de la siguiente clase auxiliar, denominada `BajarNotasAsyncTask`, con la siguiente cabecera:
 ```java
 private class BajarNotaAsyncTask extends AsyncTask<String, Void, Void> { ... }
 ```
-(b) (1,25 puntos) Escriba el código adecuado para que al pulsar el botón de la actividad principal, comience la descarga de las notas. Nota: NO CODIFIQUE la clase BajarNotasAsyncTask.
+
+(b) (1,25 puntos) Escriba el código adecuado para que al pulsar el botón de la actividad principal, comience la descarga de las notas. Nota: NO CODIFIQUE la clase `BajarNotasAsyncTask`.
 
 ??? note "Mostrar solución"
     ```java
@@ -118,9 +119,9 @@ class ListaNotasSingleton {
 }
 ```
 
-La ejecución de BajarNotasAsyncTask añade en el singleton ListaNotasSingleton las notas obtenidas hasta el momento por el alumno.
+La ejecución de `BajarNotasAsyncTask` añade en el singleton `ListaNotasSingleton` las notas obtenidas hasta el momento por el alumno.
 
-- (c) (1,25 puntos) Sobreescriba el método adecuado de la clase BajarNotasAsyncTask de forma que, una vez bajadas las notas, se arranque una actividad denominada NotasListActivity.
+- (c) (1,25 puntos) Sobreescriba el método adecuado de la clase `BajarNotasAsyncTask` de forma que, una vez bajadas las notas, se arranque una actividad denominada `NotasListActivity`.
 
 ??? note "Mostrar solución"
     ```java
@@ -132,9 +133,9 @@ La ejecución de BajarNotasAsyncTask añade en el singleton ListaNotasSingleton 
     }
     ```
 
-La actividad NotasListActivity presenta un layout denominado “activity_notas_list.xml”, en el cual está definido un widget ListView con identificador “@+id/listaNotas”. Además, se dispone de un layout para cada fila, denominado “nota_item_row.xml” y una clase adaptadora de la lista de notas denominada “NotasArrayAdapter”.
+La actividad `NotasListActivity` presenta un `layout` denominado “activity_notas_list.xml”, en el cual está definido un widget `ListView` con identificador “@+id/listaNotas”. Además, se dispone de un `layout` para cada fila, denominado “nota_item_row.xml” y una clase adaptadora de la lista de notas denominada `NotasArrayAdapter`.
 
-- (d) (1,25 puntos) Programe el método onCreate de la clase NotasListActivity
+- (d) (1,25 puntos) Programe el método `onCreate` de la clase `NotasListActivity`
 
 ??? note "Mostrar solución"
     ```java

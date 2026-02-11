@@ -6,9 +6,9 @@ tags:
  - monitores
 ---
 
-En un sistema de comunicaciones hay un almacén con capacidad para N mensajes, con N comprendido entre MIN = 16 y MAX = 1024. Hay un cierto número de hebras (emisores) que almacenan mensajes en el almacén, y otras (receptores), que extraen mensajes de él. No se pueden almacenar mensajes si el almacén está lleno, ni se pueden extraer si está vacío.
+En un sistema de comunicaciones hay un almacén con capacidad para `N` mensajes, con `N` comprendido entre `MIN = 16` y `MAX = 1024`. Hay un cierto número de hebras (emisores) que almacenan mensajes en el almacén, y otras (receptores), que extraen mensajes de él. No se pueden almacenar mensajes si el almacén está lleno, ni se pueden extraer si está vacío.
 
-El almacén se crea con capacidad MIN. Una hebra supervisora comprueba periódicamente su ocupación (número de mensajes almacenados), llamando al método adjust (ver esquema). Si la ocupación es mayor del 80 % de su capacidad, duplica la capacidad del almacén, siempre que sea posible sin sobrepasar el valor MAX. Si había emisores esperando por falta de espacio se les debe dar la oportunidad de enviar sus mensajes lo antes posible. Por otra parte, si la ocupación del almacén es menor que el 20 % de su capacidad, el supervisor reduce la capacidad a la mitad (pero nunca por debajo de MIN).
+El almacén se crea con capacidad `MIN`. Una hebra supervisora comprueba periódicamente su ocupación (número de mensajes almacenados), llamando al método `adjust` (ver esquema). Si la ocupación es mayor del 80% de su capacidad, duplica la capacidad del almacén, siempre que sea posible sin sobrepasar el valor `MAX`. Si había emisores esperando por falta de espacio se les debe dar la oportunidad de enviar sus mensajes lo antes posible. Por otra parte, si la ocupación del almacén es menor que el 20% de su capacidad, el supervisor reduce la capacidad a la mitad (pero nunca por debajo de `MIN`).
 
 - (a) (5 puntos) Escriba una clase monitor que cumpla las condiciones anteriores, según el esquema que se da a continuación.
 
@@ -73,7 +73,7 @@ public class Store {
 }
 ```
 
-NOTA: Suponga que está definida la clase Message que se utiliza en este esquema.
+NOTA: Suponga que está definida la clase `Message` que se utiliza en este esquema.
 
 ??? note "Mostrar solución"
     ```java

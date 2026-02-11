@@ -19,10 +19,10 @@ int mayoria (int []v) throws exception
 ??? note "Mostrar solución" 
     Hay varias posibles soluciones:
     
-    1. hacer un histograma, eligiendo el valor mayor según se cuenta
-    2. ordenar el array y contar repeticiones sucesivas
+    1. Hacer un histograma, eligiendo el valor mayor según se cuenta;
+    2. Ordenar el array y contar repeticiones sucesivas.
     
-    Se incluye la solución 1, almacenando el histograma en un Map. Una posible solución es:
+    Se incluye la solución 1, almacenando el histograma en un `Map`. Una posible solución es:
     ```java
     public static int mayoria(int[] v) throws Exception {
         if (v == null || v.length == 0)
@@ -53,27 +53,28 @@ Se desea calcular la complejidad del método del apartado anterior. Se pide:
 - (b) (1 punto) ¿Cuál es la ecuación de recurrencia?
 
 ??? note "Mostrar solución" 
-    T(n) = T(n-1) +c si n > 1
+    $T(n) = T(n-1) + c$ si $n > 1$
 
-    T(0) = d
+    $T(0) = d$
 
 
-(c) (1 punto) Determinar su complejidad.
+- (c) (1 punto) Determinar su complejidad.
 
 ??? note "Mostrar solución" 
     Se puede resolver la ecuación de (b) o razonar de la siguiente forma:
 
-    Las instrucciones sencillas (if, asignaciones, acceso al array) son constantes O(1).
+    Las instrucciones sencillas (`if`, asignaciones, acceso al array) son constantes $O(1)$.
 
-    El acceso al Map (get y put) podemos considerarlo también constante en condiciones adecuadas de carga.
+    El acceso al `Map` (`get` y `put`) podemos considerarlo también constante en condiciones adecuadas de carga.
 
-    Sólo el bucle for depende de n, procesando cada elemento una única vez, ergo es de complejidad O(n).
+    Sólo el bucle for depende de $n$, procesando cada elemento una única vez, ergo es de complejidad $O(n)$.
     
-    Como O(1) ⊆ O(n), el resultado es que el algoritmo es de complejidad O(n).
+    Como $O(1) \subset O(n)$, el resultado es que el algoritmo es de complejidad $O(n)$.
 
     Comentarios adicionales:
-    - no puede existir un algoritmo mejor que O(n) porque al menos hay que ver cada elemento una vez.
-    - se puede tener un algoritmo O(n2) si con un for vamos viendo cada elemento, y para cada elemento contamos el número de repeticiones recorriendo el array (for dentro de for).
-    - el O(n log n) se obtiene en varias circunstancias:
+
+    - No puede existir un algoritmo mejor que $O(n)$ porque al menos hay que ver cada elemento una vez;
+    - Se puede tener un algoritmo $O(n^2)$ si con un `for` vamos viendo cada elemento, y para cada elemento contamos el número de repeticiones recorriendo el array (`for` dentro de `for`);
+    - el $O(n log n)$ se obtiene en varias circunstancias:
         - suponiendo un algoritmo de ordenación de esa complejidad.
         - usando un árbol binario de búsqueda para almacenar el histograma.

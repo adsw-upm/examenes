@@ -6,18 +6,18 @@ tags:
  - android
 ---
 
-En una aplicación Android, se dispone de la clase RssRetrieveTask, que descarga asíncronamente una serie de noticias de una fuente seleccionada, con la siguiente cabecera:
+En una aplicación Android, se dispone de la clase `RssRetrieveTask`, que descarga asíncronamente una serie de noticias de una fuente seleccionada, con la siguiente cabecera:
 ```java
 private class RssRetrieveTask extends AsyncTask<String, Void, Void> { ... }
 ```
-donde el primer parámetro es una lista de Strings, la primera de las cuales es el URL de la fuente RSS de noticias, y el resto son palabras de filtrado.
+donde el primer parámetro es una lista de `Strings`, la primera de las cuales es el URL de la fuente RSS de noticias, y el resto son palabras de filtrado.
 
-En el layout de la actividad principal se ha definido un botón con identificador "@+id/boton_leer", y se pretende que, al pulsar el botón, se active la tarea asíncrona RssRetrieveTask. 
+En el `layout` de la actividad principal se ha definido un botón con identificador "@+id/boton_leer", y se pretende que, al pulsar el botón, se active la tarea asíncrona `RssRetrieveTask`. 
 
 - (a) (1 punto) Escriba el código adecuado que atienda a la pulsación del botón de forma que se active esta tarea.
 
 ??? note "Mostrar solución"
-    En el método onCreate se añaden las siguientes líneas:
+    En el método `onCreate` se añaden las siguientes líneas:
     ```java
     Button readButton = (Button) findViewById(R.id.read_button);
     readButton.setOnClickListener(new ReadOnClickListener() {
@@ -39,6 +39,8 @@ En el layout de la actividad principal se ha definido un botón con identificado
         }
     });
     ```
-    Nota 1: se admiten las otras dos formas de asignar un método al listener de un button.
-    
-    Nota 2: las sentencias “Log” y “Toast” son absolutamente opcionales y no influyen en la nota
+
+    Notas: 
+
+    * Se admiten las otras dos formas de asignar un método al `listener` de un `button`;
+    * Nota 2: las sentencias `Log` y `Toast` son absolutamente opcionales y no influyen en la nota.

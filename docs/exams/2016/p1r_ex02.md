@@ -6,7 +6,7 @@ tags:
  - ???
 ---
 
-Una aplicación móvil registra la actividad de un senderista. Cuando empieza una caminata, la aplicación guarda la fecha (de comienzo del paseo) y una lista de coordenadas en el plano (x, y), obtenidas cada segundo. Cuando el senderista termina su actividad, la aplicación manda a un servidor la siguiente información: nombre completo del senderista (String), fecha de comienzo de la actividad (Date) y la lista de coordenadas recorridas.
+Una aplicación móvil registra la actividad de un senderista. Cuando empieza una caminata, la aplicación guarda la fecha (de comienzo del paseo) y una lista de coordenadas en el plano `(x, y)`, obtenidas cada segundo. Cuando el senderista termina su actividad, la aplicación manda a un servidor la siguiente información: nombre completo del senderista (`String`), fecha de comienzo de la actividad (`Date`) y la lista de coordenadas recorridas.
 
 El servidor, escrito en Java, guarda para cada senderista, todas las rutas que haya recorrido. Para ello, dispone de un diccionario donde la clave es el nombre del senderista y el valor es una lista de todas las rutas recorridas por
 dicho senderista.
@@ -77,7 +77,7 @@ public class Ruta {
     ```
 
 
-- (b) (1 punto) Codificar un método de la clase Ruta que calcule la longitud total del recorrido (método longitud de la clase Ruta).
+- (b) (1 punto) Codificar un método de la clase `Ruta` que calcule la longitud total del recorrido (método longitud de la clase `Ruta`).
 
 ??? note "Mostrar solución" 
     ```java
@@ -100,10 +100,10 @@ public class Ruta {
     ```
 
 
-- (c) (2 puntos) Codificar un método de la clase Servidor que determine qué senderista ha recorrido más distancia en total, sumando todas sus rutas (método campeon de la clase Servidor). En caso de empate, puede devolver cualquiera.
+- (c) (2 puntos) Codificar un método de la clase `Servidor` que determine qué senderista ha recorrido más distancia en total, sumando todas sus rutas (método `campeon` de la clase `Servidor`). En caso de empate, puede devolver cualquiera.
 
 ??? note "Mostrar solución" 
-    campeón usa un método auxiliar para averiguar la la suma de longitudes de las rutas de un usuario:
+    `campeon` usa un método auxiliar para averiguar la la suma de longitudes de las rutas de un usuario:
     ```java
     public String campeon() {
         String champ = null;

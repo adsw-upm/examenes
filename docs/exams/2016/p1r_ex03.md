@@ -24,9 +24,10 @@ class Gestor {
 }
 ```
 
-- (a) (1,5 puntos) Complete la clase Gestor, teniendo en cuenta que debe poder recibir llamadas concurrentes de clientes y dependientes.
+- (a) (1,5 puntos) Complete la clase `Gestor`, teniendo en cuenta que debe poder recibir llamadas concurrentes de clientes y dependientes.
 
 ??? note "Mostrar solución"
+    ```java
     public class Gestor {
         private int turno = 0;
         private int actual = 0;
@@ -48,23 +49,27 @@ class Gestor {
             return actual;
         }
     }
+    ```
 
 
-- (b) (1,5 puntos) Escriba el código de una clase Cliente que defina una hebra (thread) que efectúe las siguientes operaciones: 
-    – Pide turno
-    – Cada 10 s consulta el turno actual
-    – Si faltan menos de 5 turnos hace BIP()
-    – Si le toca el turno hace BIP(); BIP();
-    – Si se ha pasado el turno termina la ejecución de la hebra
+- (b) (1,5 puntos) Escriba el código de una clase `Cliente` que defina una hebra (`thread`) que efectúe las siguientes operaciones: 
+
+<ol>
+<li> Pide turno; </li>
+<li> Cada 10s consulta el turno actual; </li>
+<li> Si faltan menos de 5 turnos hace `BIP()`; </li>
+<li> Si le toca el turno hace `BIP(); BIP();`; </li>
+<li> Si se ha pasado el turno termina la ejecución de la hebra. </li>
+</ol>
 
 NOTAS:
-1. Suponga que el método BIP() está disponible directamente en la plataforma de ejecución
-2. El método avanzaTurno no debe incrementar el número de turno más allá del último número emitido. Por
-ejemplo, si el último número devuelto por getTurno es el 41, el método avanzaTurno puede llegar a 42,
-pero no puede avanzar a 43.
-3. Los métodos de Gestor devuelven el control inmediatamente, sin esperas.
+
+* Suponga que el método `BIP()` está disponible directamente en la plataforma de ejecución
+* El método `avanzaTurno` no debe incrementar el número de turno más allá del último número emitido. Por ejemplo, si el último número devuelto por `getTurno` es el `41`, el método `avanzaTurno` puede llegar a `42`, pero no puede avanzar a `43`.
+* Los métodos de `Gestor` devuelven el control inmediatamente, sin esperas.
 
 ??? note "Mostrar solución"
+    ```java
     public class Cliente extends Thread {
         private Gestor gestor;
     
@@ -96,4 +101,4 @@ pero no puede avanzar a 43.
             } while (turno > actual);
         }
     }
-    
+    ```
