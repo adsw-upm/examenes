@@ -2874,7 +2874,7 @@
 
   <h1>Extra ex02</h1>
 
-<p>Se pide programar un método que determine si existen dos elementos de un array de enteros que sumen un cierto valor K.</p>
+<p>Se pide programar un método que determine si existen dos elementos de un array de enteros que sumen un cierto valor <code>K</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">datos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span>
 </code></pre></div>
 <p>Ejemplos:</p>
@@ -2882,15 +2882,14 @@
 <span class="nf">check</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">8</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="n">à</span><span class="w"> </span><span class="n">TRUE</span>
 </code></pre></div>
 <p>Razone la complejidad en tiempo de ejecución de dicho método.</p>
-<p>Sugerencia. Para conseguir un algoritmo O(N) puede meter los datos del array en un conjunto (similar al propuesto en la primera pregunta).</p>
+<p>Sugerencia. Para conseguir un algoritmo <span class="arithmatex">\(O(N)\)</span> puede meter los datos del array en un conjunto (similar al propuesto en la primera pregunta).</p>
 <ul>
-<li>(a) (3,5) Implemente el método y razone su complejidad. La complejidad del método ha de ser O(N), en cualquier otro caso, solo se podrá optar a la mitad de los puntos.</li>
+<li>(a) (3,5) Implemente el método y razone su complejidad. La complejidad del método ha de ser <span class="arithmatex">\(O(N)\)</span>, en cualquier otro caso, solo se podrá optar a la mitad de los puntos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La solución óptima es:
-<div class="highlight"><pre><span></span><code><span class="c1">// O(n)</span>
-<span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">check1</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<p>La solución óptima, con complejidad <span class="arithmatex">\(O(n)\)</span> es:
+<div class="highlight"><pre><span></span><code><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">check1</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">set</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">K</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">v</span><span class="p">))</span>
@@ -2900,10 +2899,12 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-O(N) porque se trata de un bucle que recorre los elementos del array y, dentro del bucle, las operaciones contains() y add() son O(1).</p>
-<p>Soluciones alternativas con otra complejidad son:
-<div class="highlight"><pre><span></span><code><span class="c1">// O(n log n)</span>
-<span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">check2</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+El orden de complejidad es <span class="arithmatex">\(O(N)\)</span> porque se trata de un bucle que recorre los elementos del array y, dentro del bucle, las operaciones <code>contains()</code> y <code>add()</code> son <span class="arithmatex">\(O(1)\)</span>.</p>
+<p>Soluciones alternativas con otros órdenes de complejidad son:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(O(n log n)\)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">check2</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">mdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
 <span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">arraycopy</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">mdata</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
 
@@ -2924,8 +2925,10 @@ O(N) porque se trata de un bucle que recorre los elementos del array y, dentro d
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="c1">// O(n^2)</span>
-<span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">check3</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</li>
+<li>
+<p><span class="arithmatex">\(O(n^2)\)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">check3</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">data</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">K</span><span class="p">)</span>
@@ -2934,7 +2937,9 @@ O(N) porque se trata de un bucle que recorre los elementos del array y, dentro d
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></p>
+</li>
+</ul>
 </details>
 
 

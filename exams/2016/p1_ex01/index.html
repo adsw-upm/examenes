@@ -2874,8 +2874,8 @@
 
   <h1>P1 ex01</h1>
 
-<p>Queremos desplegar un conjunto de sensores de contaminación en Madrid. Cada sensor S está en unas coordenadas (x, y) medidas en metros en una cuadrícula centrada en la Puerta del Sol, yendo el eje X de oeste a este y el eje Y de sur a norte.</p>
-<p>Los sensores son frágiles y pueden fallar. Pero no queremos quedarnos sin datos, así que se les facilita la capacidad de que puedan mandar sus mediciones a otro sensor, que debe estar a una distancia menor que d0 metros.</p>
+<p>Queremos desplegar un conjunto de sensores de contaminación en Madrid. Cada sensor <code>S</code> está en unas coordenadas <code>(x, y)</code> medidas en metros en una cuadrícula centrada en la Puerta del Sol, yendo el eje X de oeste a este y el eje Y de sur a norte.</p>
+<p>Los sensores son frágiles y pueden fallar. Pero no queremos quedarnos sin datos, así que se les facilita la capacidad de que puedan mandar sus mediciones a otro sensor, que debe estar a una distancia menor que <code>d0</code> metros.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Sensor</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
@@ -2894,7 +2894,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(a) (3,5 puntos) Dada una lista con todos los sensores, escriba un método que cargue un diccionario donde cada sensor está asociado a una lista con los sensores que están a su alcance (a menos de d0 metros). Nótese que si el sensor A está dentro del alcance de B, también está B dentro del alcance de A. Razone la complejidad de este método:
+<li>(a) (3,5 puntos) Dada una lista con todos los sensores, escriba un método que cargue un diccionario donde cada sensor está asociado a una lista con los sensores que están a su alcance (a menos de <code>d0</code> metros). Nótese que si el sensor <code>A</code> está dentro del alcance de <code>B</code>, también está <code>B</code> dentro del alcance de A. Razone la complejidad de este método:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Red</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Diccionario</span><span class="w"> </span><span class="n">diccionario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="err">…</span>
 
@@ -2921,7 +2921,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Para usar un diccionario como el del ejercicio 3, hay que cambiar CV y la implementación de la misma manera:</p>
+<p>Para usar un diccionario como el del ejercicio 3, hay que cambiar <code>CV</code> y la implementación de la misma manera:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">CVExamen</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">Sensor</span><span class="w"> </span><span class="n">clave</span><span class="p">;</span>
 <span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">valor</span><span class="p">;</span>
@@ -2941,11 +2941,117 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>Complejidad.</p>
-<p>Siendo N el número de sensores, tenemos un bucle exterior que se hace N veces. Cada pasada por el bucle incluye:
-- bucle interior: N veces, de complejidad O(n).
-- diccionario.put(), donde lacomplejidad,  si el número de ranuras es sensiblemente superior a N es O(1), si no es O(n).</p>
-<p>El total es, por tanto O(n) + … = O(n)</p>
-<p>Y la operación total de carga N × O(n) -&gt; O(n2)</p>
+<p>Siendo <span class="arithmatex">\(N\)</span> el número de sensores, tenemos un bucle exterior que se hace <span class="arithmatex">\(N\)</span> veces. Cada pasada por el bucle incluye:</p>
+<ul>
+<li>
+<p>bucle interior: <span class="arithmatex">\(N\)</span> veces, de complejidad <span class="arithmatex">\(O(n)\)</span>.</p>
+</li>
+<li>
+<p><code>diccionario.put()</code>, donde lacomplejidad,  si el número de ranuras es sensiblemente superior a <span class="arithmatex">\(N\)</span> es <span class="arithmatex">\(O(1)\)</span>, si no es <span class="arithmatex">\(O(n)\)</span>.</p>
+</li>
+</ul>
+<p>El total es, por tanto <span class="arithmatex">\(O(n) + … = O(n)\)</span></p>
+<p>Y la operación total de carga <span class="arithmatex">\(N × O(n) \rightarrow O(n2)\)</span></p>
+</details>
+<ul>
+<li>(b) (3,5 puntos) Escriba un método para crear un diccionario que, para cada sensor <code>S</code>, contenga el conjunto de sensores a los que mandará regularmente una copia de sus medidas. Sabiendo que los sensores de destino podrían verse saturados, decidimos que, de todos los sensores a nuestro alcance, los datos se envían a los <code>F</code> sensores que a su vez tengan menos sensores a su alcance.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">Diccionario</span><span class="w"> </span><span class="nf">cercanos</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span>
+</code></pre></div>
+<p>El algoritmo es como sigue:</p>
+<ol>
+<li>
+<p>Para cada sensor <code>S</code> obtenemos la lista de nodos a distancia alcanzable (pregunta (a));</p>
+</li>
+<li>
+<p>Ordenamos la lista en función del número de sensores al alcance de cada sensor;</p>
+</li>
+<li>
+<p>Nos quedamos con los F primeros sensores en una nueva lista;</p>
+</li>
+<li>
+<p>Asociamos la nueva lista a S en el diccionario de resultado.</p>
+</li>
+</ol>
+<p>NOTAS:</p>
+<ul>
+<li>Como Diccionario, puede adaptar su diccionario del ejercicio 3 de clase, o usar la biblioteca de java;</li>
+<li>Como algoritmo de ordenación, elija uno de los presentados en clase, adaptando el código al caso;</li>
+<li>Puede usar métodos auxiliares si lo cree oportuno. Privados, por supuesto.</li>
+</ul>
+<p>Razone la complejidad de su código</p>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Probablemente, el número de sensores dentro del alcance sea un número pequeño. En ese caso la ordenación se realiza sobre pocos sensores y nos vale cualquier algoritmo de ordenación.</p>
+<p>En la solución que sigue se recurre al algoritmo de inserción.</p>
+<p>Usando la biblioteca de Java:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">cercanos</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Sensor</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">diccionario</span><span class="p">.</span><span class="na">keySet</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getListaOrdenadaSensores</span><span class="p">(</span><span class="n">sensor</span><span class="p">);</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">min</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">list1</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="n">list2</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">list1</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+
+<span class="w">        </span><span class="n">resultado</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">sensor</span><span class="p">,</span><span class="w"> </span><span class="n">list2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getListaOrdenadaSensores</span><span class="p">(</span><span class="n">Sensor</span><span class="w"> </span><span class="n">sensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diccionario</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">sensor</span><span class="p">);</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">list0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">sort</span><span class="p">(</span><span class="n">list1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">list1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// inserción</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">list</span><span class="p">.</span><span class="na">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">inserta</span><span class="p">(</span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// inserta sensor en datos, entre 0 y z-1</span>
+<span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">inserta</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">datos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">Sensor</span><span class="w"> </span><span class="n">sensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">compareTo</span><span class="p">(</span><span class="n">sensor</span><span class="p">,</span><span class="w"> </span><span class="n">datos</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">j</span><span class="o">--</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">datos</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">sensor</span><span class="p">);</span>
+<span class="w">        </span><span class="n">datos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">sensor</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">Sensor</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">Sensor</span><span class="w"> </span><span class="n">s2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diccionario</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">s1</span><span class="p">).</span><span class="na">size</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diccionario</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">s2</span><span class="p">).</span><span class="na">size</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">size2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">size1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Con respecto a la complejidad, hay que revisar <span class="arithmatex">\(N\)</span> sensores.</p>
+<p>Para cada sensor hay que localizar su lista de sensores en el diccionario: <code>get()</code>.</p>
+<p>Si el número de ranuras es sensiblemente superior a <span class="arithmatex">\(N\)</span>, la complejidad es <span class="arithmatex">\(O(1)\)</span>. De lo contrario, será <span class="arithmatex">\(O(n)\)</span>.</p>
+<p>Seguimos en el supuesto de que esta operación es <span class="arithmatex">\(O(1)\)</span>.</p>
+<p>Cada lista, de <span class="arithmatex">\(X\)</span> elementos, hay que ordenarla. Si usamos un algoritmo de inserción como el de arriba, por término medio será la ordenación de un array de <span class="arithmatex">\(x\)</span> elementos: <span class="arithmatex">\(O(x2)\)</span>:</p>
+<ol>
+<li>
+<p>Podemos pensar que <span class="arithmatex">\(X\)</span> sea constante, independientemente de <span class="arithmatex">\(N\)</span>, en cuyo caso la ordenación será de tiempo constante, <span class="arithmatex">\(O(1)\)</span>;</p>
+</li>
+<li>
+<p>Podemos pensar que <span class="arithmatex">\(X\)</span> sea proporcional a <span class="arithmatex">\(N\)</span>, en cuyo caso la ordenación será una proporción de <span class="arithmatex">\(N\)</span>: <span class="arithmatex">\(O(n2)\)</span>.</p>
+</li>
+</ol>
+<p>Nos quedamos con <span class="arithmatex">\(f\)</span> elementos: <span class="arithmatex">\(O(1)\)</span>.</p>
+<p>Y hacemos una operación <code>put()</code> en el diccionario de salida.</p>
+<p>Si el número de ranuras es sensiblemente superior a <span class="arithmatex">\(N\)</span>, la complejidad es <span class="arithmatex">\(O(1)\)</span>. De lo contrario, será <span class="arithmatex">\(O(n)\)</span>.</p>
+<p>Seguimos en el supuesto de que esta operación es <span class="arithmatex">\(O(1)\)</span>.</p>
+<p>En el caso 1, el total es <span class="arithmatex">\(N × (O(1) + O(1) + O(1) + O(1)) \rightarrow N × O(1) \rightarrow O(n)\)</span>.</p>
+<p>En el caso 2, el total es <span class="arithmatex">\(N × (O(1) + O(n2) + O(1) + O(1)) \rightarrow N × O(n2) \rightarrow O(n3)\)</span>.</p>
+<p>Resumiendo, si el número de sensores dentro del alcance es independiente de <span class="arithmatex">\(N\)</span>, la complejidad es <span class="arithmatex">\(O(n)\)</span>. Si el número de sensores dentro del alcance es proporcional a <span class="arithmatex">\(N\)</span>, la complejidad depende del algoritmo de ordenación.</p>
 </details>
 
 

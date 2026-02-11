@@ -2875,36 +2875,22 @@
   <h1>P2 ex02</h1>
 
 <p>Queremos ampliar la práctica 7-8 de forma que junto con el detalle de cada noticia, cada usuario pueda valorarla o hacer un comentario. No necesita el código de la práctica para realizar este problema.</p>
-<p>A continuación se le muestra una secuencia del uso de la nueva pantalla. El usuario parte de DetailActivity, donde ve la noticia (título y descripción) y aparecen los comentarios y la puntuación vacíos, junto con dos botones
-(Comentar y Puntuar).</p>
-<p>Si pincha en Comentar, va a la segunda pantalla (ComentarActivity), donde rellena el comentario y puede dar a Guardar o Cancelar. En ambos casos volverá a DetailActivity. En la imagen se muestra cómo ha pulsado Guardar y se muestra el comentario que el usuario ha introducido en DetailActivity.</p>
+<p>A continuación se le muestra una secuencia del uso de la nueva pantalla. El usuario parte de <code>DetailActivity</code>, donde ve la noticia (título y descripción) y aparecen los comentarios y la puntuación vacíos, junto con dos botones
+('Comentar' y 'Puntuar').</p>
+<p>Si pincha en 'Comentar', va a la segunda pantalla (<code>ComentarActivity</code>), donde rellena el comentario y puede dar a 'Guardar' o 'Cancelar'. En ambos casos volverá a <code>DetailActivity</code>. En la imagen se muestra cómo ha pulsado 'Guardar' y se muestra el comentario que el usuario ha introducido en <code>DetailActivity</code>.</p>
 <p><img alt="" src="../p2/p2_ex02-1.png" /></p>
-<p>A continuación, suponemos que el usuario da a Puntuar, en que introduce una puntación, y tiene las mismas opciones que en ComentarActivity. Suponemos que ha pulsado Guardar y vuelve a DetailActivity, donde se muestra la puntación asignada.</p>
+<p>A continuación, suponemos que el usuario da a 'Puntuar', en que introduce una puntación, y tiene las mismas opciones que en <code>ComentarActivity</code>. Suponemos que ha pulsado 'Guardar' y vuelve a <code>DetailActivity</code>, donde se muestra la puntación asignada.</p>
 <p><img alt="" src="../p2/p2_ex02-2.png" /></p>
 <ul>
-<li>(a) (5 puntos) Se pide:<ul>
-<li>Programe el código necesario para que DetailActivity tenga el nuevo botón Comentar y realice la funcionalidad descrita cuando se pincha en dicho botón:<ul>
-<li>
-<ol>
-<li>Muestre una pantalla ComentarActivity.</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>Si el usuario pulsa Guardar en dicha pantalla, se vuelve a DetailActivity y se muestra el comentario escrito en la pantalla, junto con la traza informativa “Nuevo comentario”.</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>Si el usuario pulsa Cancelar en dicha pantalla, se vuelve a DetailActivity y se muestra un Toast y una traza informativa con el contenido “El usuario no ha hecho comentarios”.</li>
-</ol>
-</li>
+<li>(a) (5 puntos) Se pide que programe el código necesario para que <code>DetailActivity</code> tenga el nuevo botón 'Comentar' y realice la funcionalidad descrita cuando se pincha en dicho botón:</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Nota: Suponga que están programados ya todos los layouts, así como las clases ComentarActivity y PuntuarActivity. Use las variables que necesite indicando dónde estarían definidas.</p>
+<ol>
+<li> Muestre una pantalla `ComentarActivity`; </li>
+<li> Si el usuario pulsa 'Guardar' en dicha pantalla, se vuelve a `DetailActivity` y se muestra el comentario escrito en la pantalla, junto con la traza informativa “Nuevo comentario”; </li>
+<li> Si el usuario pulsa 'Cancelar' en dicha pantalla, se vuelve a `DetailActivity` y se muestra un `Toast` y una traza informativa con el contenido “El usuario no ha hecho comentarios”. </li>
+</ol>
+
+<p>Nota: Suponga que están programados ya todos los <code>layouts</code>, así como las clases <code>ComentarActivity</code> y <code>PuntuarActivity</code>. Use las variables que necesite indicando dónde estarían definidas.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DetailActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span>

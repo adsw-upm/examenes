@@ -2874,17 +2874,17 @@
 
   <h1>Extra ex07</h1>
 
-<p>En una aplicación Android, se dispone de la clase RssRetrieveTask, que descarga asíncronamente una serie de noticias de una fuente seleccionada, con la siguiente cabecera:
+<p>En una aplicación Android, se dispone de la clase <code>RssRetrieveTask</code>, que descarga asíncronamente una serie de noticias de una fuente seleccionada, con la siguiente cabecera:
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RssRetrieveTask</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Void</span><span class="p">,</span><span class="w"> </span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-donde el primer parámetro es una lista de Strings, la primera de las cuales es el URL de la fuente RSS de noticias, y el resto son palabras de filtrado.</p>
-<p>En el layout de la actividad principal se ha definido un botón con identificador "@+id/boton_leer", y se pretende que, al pulsar el botón, se active la tarea asíncrona RssRetrieveTask. </p>
+donde el primer parámetro es una lista de <code>Strings</code>, la primera de las cuales es el URL de la fuente RSS de noticias, y el resto son palabras de filtrado.</p>
+<p>En el <code>layout</code> de la actividad principal se ha definido un botón con identificador "@+id/boton_leer", y se pretende que, al pulsar el botón, se active la tarea asíncrona <code>RssRetrieveTask</code>. </p>
 <ul>
 <li>(a) (1 punto) Escriba el código adecuado que atienda a la pulsación del botón de forma que se active esta tarea.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>En el método onCreate se añaden las siguientes líneas:
+<p>En el método <code>onCreate</code> se añaden las siguientes líneas:
 <div class="highlight"><pre><span></span><code><span class="n">Button</span><span class="w"> </span><span class="n">readButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">read_button</span><span class="p">);</span>
 <span class="n">readButton</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ReadOnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nd">@Override</span>
@@ -2904,9 +2904,12 @@ donde el primer parámetro es una lista de Strings, la primera de las cuales es 
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div>
-Nota 1: se admiten las otras dos formas de asignar un método al listener de un button.</p>
-<p>Nota 2: las sentencias “Log” y “Toast” son absolutamente opcionales y no influyen en la nota</p>
+</code></pre></div></p>
+<p>Notas: </p>
+<ul>
+<li>Se admiten las otras dos formas de asignar un método al <code>listener</code> de un <code>button</code>;</li>
+<li>Nota 2: las sentencias <code>Log</code> y <code>Toast</code> son absolutamente opcionales y no influyen en la nota.</li>
+</ul>
 </details>
 
 

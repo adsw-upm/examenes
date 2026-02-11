@@ -3057,10 +3057,10 @@ una excepción. La cabecera del método debe ser:</li>
 <summary>Mostrar solución</summary>
 <p>Hay varias posibles soluciones:</p>
 <ol>
-<li>hacer un histograma, eligiendo el valor mayor según se cuenta</li>
-<li>ordenar el array y contar repeticiones sucesivas</li>
+<li>Hacer un histograma, eligiendo el valor mayor según se cuenta;</li>
+<li>Ordenar el array y contar repeticiones sucesivas.</li>
 </ol>
-<p>Se incluye la solución 1, almacenando el histograma en un Map. Una posible solución es:
+<p>Se incluye la solución 1, almacenando el histograma en un <code>Map</code>. Una posible solución es:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">mayoria</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;mayoria: invalid argument&quot;</span><span class="p">);</span>
@@ -3089,26 +3089,32 @@ una excepción. La cabecera del método debe ser:</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>T(n) = T(n-1) +c si n &gt; 1</p>
-<p>T(0) = d</p>
+<p><span class="arithmatex">\(T(n) = T(n-1) + c\)</span> si <span class="arithmatex">\(n &gt; 1\)</span></p>
+<p><span class="arithmatex">\(T(0) = d\)</span></p>
 </details>
-<p>(c) (1 punto) Determinar su complejidad.</p>
+<ul>
+<li>(c) (1 punto) Determinar su complejidad.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Se puede resolver la ecuación de (b) o razonar de la siguiente forma:</p>
-<p>Las instrucciones sencillas (if, asignaciones, acceso al array) son constantes O(1).</p>
-<p>El acceso al Map (get y put) podemos considerarlo también constante en condiciones adecuadas de carga.</p>
-<p>Sólo el bucle for depende de n, procesando cada elemento una única vez, ergo es de complejidad O(n).</p>
-<p>Como O(1) ⊆ O(n), el resultado es que el algoritmo es de complejidad O(n).</p>
-<p>Comentarios adicionales:
-- no puede existir un algoritmo mejor que O(n) porque al menos hay que ver cada elemento una vez.
-- se puede tener un algoritmo O(n2) si con un for vamos viendo cada elemento, y para cada elemento contamos el número de repeticiones recorriendo el array (for dentro de for).
-- el O(n log n) se obtiene en varias circunstancias:
-    - suponiendo un algoritmo de ordenación de esa complejidad.
-    - usando un árbol binario de búsqueda para almacenar el histograma.</p>
+<p>Las instrucciones sencillas (<code>if</code>, asignaciones, acceso al array) son constantes <span class="arithmatex">\(O(1)\)</span>.</p>
+<p>El acceso al <code>Map</code> (<code>get</code> y <code>put</code>) podemos considerarlo también constante en condiciones adecuadas de carga.</p>
+<p>Sólo el bucle for depende de <span class="arithmatex">\(n\)</span>, procesando cada elemento una única vez, ergo es de complejidad <span class="arithmatex">\(O(n)\)</span>.</p>
+<p>Como <span class="arithmatex">\(O(1) \subset O(n)\)</span>, el resultado es que el algoritmo es de complejidad <span class="arithmatex">\(O(n)\)</span>.</p>
+<p>Comentarios adicionales:</p>
+<ul>
+<li>No puede existir un algoritmo mejor que <span class="arithmatex">\(O(n)\)</span> porque al menos hay que ver cada elemento una vez;</li>
+<li>Se puede tener un algoritmo <span class="arithmatex">\(O(n^2)\)</span> si con un <code>for</code> vamos viendo cada elemento, y para cada elemento contamos el número de repeticiones recorriendo el array (<code>for</code> dentro de <code>for</code>);</li>
+<li>el <span class="arithmatex">\(O(n log n)\)</span> se obtiene en varias circunstancias:<ul>
+<li>suponiendo un algoritmo de ordenación de esa complejidad.</li>
+<li>usando un árbol binario de búsqueda para almacenar el histograma.</li>
+</ul>
+</li>
+</ul>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>Una aplicación móvil registra la actividad de un senderista. Cuando empieza una caminata, la aplicación guarda la fecha (de comienzo del paseo) y una lista de coordenadas en el plano (x, y), obtenidas cada segundo. Cuando el senderista termina su actividad, la aplicación manda a un servidor la siguiente información: nombre completo del senderista (String), fecha de comienzo de la actividad (Date) y la lista de coordenadas recorridas.</p>
+<p>Una aplicación móvil registra la actividad de un senderista. Cuando empieza una caminata, la aplicación guarda la fecha (de comienzo del paseo) y una lista de coordenadas en el plano <code>(x, y)</code>, obtenidas cada segundo. Cuando el senderista termina su actividad, la aplicación manda a un servidor la siguiente información: nombre completo del senderista (<code>String</code>), fecha de comienzo de la actividad (<code>Date</code>) y la lista de coordenadas recorridas.</p>
 <p>El servidor, escrito en Java, guarda para cada senderista, todas las rutas que haya recorrido. Para ello, dispone de un diccionario donde la clave es el nombre del senderista y el valor es una lista de todas las rutas recorridas por
 dicho senderista.</p>
 <p>Se dispone de las siguientes declaraciones:</p>
@@ -3175,7 +3181,7 @@ dicho senderista.</p>
 </code></pre></div></p>
 </details>
 <ul>
-<li>(b) (1 punto) Codificar un método de la clase Ruta que calcule la longitud total del recorrido (método longitud de la clase Ruta).</li>
+<li>(b) (1 punto) Codificar un método de la clase <code>Ruta</code> que calcule la longitud total del recorrido (método longitud de la clase <code>Ruta</code>).</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3198,11 +3204,11 @@ dicho senderista.</p>
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2 puntos) Codificar un método de la clase Servidor que determine qué senderista ha recorrido más distancia en total, sumando todas sus rutas (método campeon de la clase Servidor). En caso de empate, puede devolver cualquiera.</li>
+<li>(c) (2 puntos) Codificar un método de la clase <code>Servidor</code> que determine qué senderista ha recorrido más distancia en total, sumando todas sus rutas (método <code>campeon</code> de la clase <code>Servidor</code>). En caso de empate, puede devolver cualquiera.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>campeón usa un método auxiliar para averiguar la la suma de longitudes de las rutas de un usuario:
+<p><code>campeon</code> usa un método auxiliar para averiguar la la suma de longitudes de las rutas de un usuario:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">campeon</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">champ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">maxLong</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
@@ -3245,79 +3251,84 @@ unos botones que hay en los mostradores, hacen avanzar el turno actual.</p>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(a) (1,5 puntos) Complete la clase Gestor, teniendo en cuenta que debe poder recibir llamadas concurrentes de clientes y dependientes.</li>
+<li>(a) (1,5 puntos) Complete la clase <code>Gestor</code>, teniendo en cuenta que debe poder recibir llamadas concurrentes de clientes y dependientes.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>public class Gestor {
-    private int turno = 0;
-    private int actual = 0;</p>
-<pre><code>// devuelve turnos correlativos 1, 2, 3, ...
-public synchronized int getTurno() {
-    turno++;
-    return turno;
-}
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Gestor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">turno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">actual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-// avanza el turno al número siguiente
-public synchronized void avanzaTurno() {
-    if (actual &lt;= turno)
-        actual++;
-}
+<span class="w">    </span><span class="c1">// devuelve turnos correlativos 1, 2, 3, ...</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getTurno</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">turno</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">turno</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-// dice en qué turno estamos
-public synchronized int getActual() {
-    return actual;
-}
-</code></pre>
-<p>}</p>
+<span class="w">    </span><span class="c1">// avanza el turno al número siguiente</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">avanzaTurno</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">actual</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">turno</span><span class="p">)</span>
+<span class="w">            </span><span class="n">actual</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// dice en qué turno estamos</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getActual</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">actual</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 </details>
 <ul>
-<li>(b) (1,5 puntos) Escriba el código de una clase Cliente que defina una hebra (thread) que efectúe las siguientes operaciones: 
-    – Pide turno
-    – Cada 10 s consulta el turno actual
-    – Si faltan menos de 5 turnos hace BIP()
-    – Si le toca el turno hace BIP(); BIP();
-    – Si se ha pasado el turno termina la ejecución de la hebra</li>
+<li>(b) (1,5 puntos) Escriba el código de una clase <code>Cliente</code> que defina una hebra (<code>thread</code>) que efectúe las siguientes operaciones: </li>
 </ul>
-<p>NOTAS:
-1. Suponga que el método BIP() está disponible directamente en la plataforma de ejecución
-2. El método avanzaTurno no debe incrementar el número de turno más allá del último número emitido. Por
-ejemplo, si el último número devuelto por getTurno es el 41, el método avanzaTurno puede llegar a 42,
-pero no puede avanzar a 43.
-3. Los métodos de Gestor devuelven el control inmediatamente, sin esperas.</p>
+<ol>
+<li> Pide turno; </li>
+<li> Cada 10s consulta el turno actual; </li>
+<li> Si faltan menos de 5 turnos hace `BIP()`; </li>
+<li> Si le toca el turno hace `BIP(); BIP();`; </li>
+<li> Si se ha pasado el turno termina la ejecución de la hebra. </li>
+</ol>
+
+<p>NOTAS:</p>
+<ul>
+<li>Suponga que el método <code>BIP()</code> está disponible directamente en la plataforma de ejecución</li>
+<li>El método <code>avanzaTurno</code> no debe incrementar el número de turno más allá del último número emitido. Por ejemplo, si el último número devuelto por <code>getTurno</code> es el <code>41</code>, el método <code>avanzaTurno</code> puede llegar a <code>42</code>, pero no puede avanzar a <code>43</code>.</li>
+<li>Los métodos de <code>Gestor</code> devuelven el control inmediatamente, sin esperas.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>public class Cliente extends Thread {
-    private Gestor gestor;</p>
-<pre><code>public Cliente(int id, Gestor gestor) {
-    this.gestor = gestor;
-}
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cliente</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Gestor</span><span class="w"> </span><span class="n">gestor</span><span class="p">;</span>
 
-@Override
-public void run() {
-    int turno = gestor.getTurno();
-    int actual;
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Cliente</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Gestor</span><span class="w"> </span><span class="n">gestor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">gestor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gestor</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-    do {
-        actual = gestor.getActual();
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">turno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gestor</span><span class="p">.</span><span class="na">getTurno</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">actual</span><span class="p">;</span>
 
-        if (turno - actual &lt; 5)
-            BIP();
+<span class="w">        </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">actual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gestor</span><span class="p">.</span><span class="na">getActual</span><span class="p">();</span>
 
-        if (actual == turno) {
-            BIP();
-            break;
-        }
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">turno</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">actual</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="w">                </span><span class="n">BIP</span><span class="p">();</span>
 
-        try {
-            sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">actual</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">turno</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">BIP</span><span class="p">();</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
 
-    } while (turno &gt; actual);
-}
-</code></pre>
-<p>}</p>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">sleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">turno</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">actual</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 </details>
 
 

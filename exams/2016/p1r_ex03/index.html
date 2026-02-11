@@ -2889,79 +2889,84 @@ unos botones que hay en los mostradores, hacen avanzar el turno actual.</p>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(a) (1,5 puntos) Complete la clase Gestor, teniendo en cuenta que debe poder recibir llamadas concurrentes de clientes y dependientes.</li>
+<li>(a) (1,5 puntos) Complete la clase <code>Gestor</code>, teniendo en cuenta que debe poder recibir llamadas concurrentes de clientes y dependientes.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>public class Gestor {
-    private int turno = 0;
-    private int actual = 0;</p>
-<pre><code>// devuelve turnos correlativos 1, 2, 3, ...
-public synchronized int getTurno() {
-    turno++;
-    return turno;
-}
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Gestor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">turno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">actual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-// avanza el turno al número siguiente
-public synchronized void avanzaTurno() {
-    if (actual &lt;= turno)
-        actual++;
-}
+<span class="w">    </span><span class="c1">// devuelve turnos correlativos 1, 2, 3, ...</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getTurno</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">turno</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">turno</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-// dice en qué turno estamos
-public synchronized int getActual() {
-    return actual;
-}
-</code></pre>
-<p>}</p>
+<span class="w">    </span><span class="c1">// avanza el turno al número siguiente</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">avanzaTurno</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">actual</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">turno</span><span class="p">)</span>
+<span class="w">            </span><span class="n">actual</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// dice en qué turno estamos</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getActual</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">actual</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 </details>
 <ul>
-<li>(b) (1,5 puntos) Escriba el código de una clase Cliente que defina una hebra (thread) que efectúe las siguientes operaciones: 
-    – Pide turno
-    – Cada 10 s consulta el turno actual
-    – Si faltan menos de 5 turnos hace BIP()
-    – Si le toca el turno hace BIP(); BIP();
-    – Si se ha pasado el turno termina la ejecución de la hebra</li>
+<li>(b) (1,5 puntos) Escriba el código de una clase <code>Cliente</code> que defina una hebra (<code>thread</code>) que efectúe las siguientes operaciones: </li>
 </ul>
-<p>NOTAS:
-1. Suponga que el método BIP() está disponible directamente en la plataforma de ejecución
-2. El método avanzaTurno no debe incrementar el número de turno más allá del último número emitido. Por
-ejemplo, si el último número devuelto por getTurno es el 41, el método avanzaTurno puede llegar a 42,
-pero no puede avanzar a 43.
-3. Los métodos de Gestor devuelven el control inmediatamente, sin esperas.</p>
+<ol>
+<li> Pide turno; </li>
+<li> Cada 10s consulta el turno actual; </li>
+<li> Si faltan menos de 5 turnos hace `BIP()`; </li>
+<li> Si le toca el turno hace `BIP(); BIP();`; </li>
+<li> Si se ha pasado el turno termina la ejecución de la hebra. </li>
+</ol>
+
+<p>NOTAS:</p>
+<ul>
+<li>Suponga que el método <code>BIP()</code> está disponible directamente en la plataforma de ejecución</li>
+<li>El método <code>avanzaTurno</code> no debe incrementar el número de turno más allá del último número emitido. Por ejemplo, si el último número devuelto por <code>getTurno</code> es el <code>41</code>, el método <code>avanzaTurno</code> puede llegar a <code>42</code>, pero no puede avanzar a <code>43</code>.</li>
+<li>Los métodos de <code>Gestor</code> devuelven el control inmediatamente, sin esperas.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>public class Cliente extends Thread {
-    private Gestor gestor;</p>
-<pre><code>public Cliente(int id, Gestor gestor) {
-    this.gestor = gestor;
-}
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cliente</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Gestor</span><span class="w"> </span><span class="n">gestor</span><span class="p">;</span>
 
-@Override
-public void run() {
-    int turno = gestor.getTurno();
-    int actual;
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Cliente</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Gestor</span><span class="w"> </span><span class="n">gestor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">gestor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gestor</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-    do {
-        actual = gestor.getActual();
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">turno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gestor</span><span class="p">.</span><span class="na">getTurno</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">actual</span><span class="p">;</span>
 
-        if (turno - actual &lt; 5)
-            BIP();
+<span class="w">        </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">actual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gestor</span><span class="p">.</span><span class="na">getActual</span><span class="p">();</span>
 
-        if (actual == turno) {
-            BIP();
-            break;
-        }
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">turno</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">actual</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="w">                </span><span class="n">BIP</span><span class="p">();</span>
 
-        try {
-            sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">actual</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">turno</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">BIP</span><span class="p">();</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
 
-    } while (turno &gt; actual);
-}
-</code></pre>
-<p>}</p>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">sleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">turno</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">actual</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 </details>
 
 

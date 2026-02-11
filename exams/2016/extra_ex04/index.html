@@ -2874,8 +2874,8 @@
 
   <h1>Extra ex04</h1>
 
-<p>En un sistema de comunicaciones hay un almacén con capacidad para N mensajes, con N comprendido entre MIN = 16 y MAX = 1024. Hay un cierto número de hebras (emisores) que almacenan mensajes en el almacén, y otras (receptores), que extraen mensajes de él. No se pueden almacenar mensajes si el almacén está lleno, ni se pueden extraer si está vacío.</p>
-<p>El almacén se crea con capacidad MIN. Una hebra supervisora comprueba periódicamente su ocupación (número de mensajes almacenados), llamando al método adjust (ver esquema). Si la ocupación es mayor del 80 % de su capacidad, duplica la capacidad del almacén, siempre que sea posible sin sobrepasar el valor MAX. Si había emisores esperando por falta de espacio se les debe dar la oportunidad de enviar sus mensajes lo antes posible. Por otra parte, si la ocupación del almacén es menor que el 20 % de su capacidad, el supervisor reduce la capacidad a la mitad (pero nunca por debajo de MIN).</p>
+<p>En un sistema de comunicaciones hay un almacén con capacidad para <code>N</code> mensajes, con <code>N</code> comprendido entre <code>MIN = 16</code> y <code>MAX = 1024</code>. Hay un cierto número de hebras (emisores) que almacenan mensajes en el almacén, y otras (receptores), que extraen mensajes de él. No se pueden almacenar mensajes si el almacén está lleno, ni se pueden extraer si está vacío.</p>
+<p>El almacén se crea con capacidad <code>MIN</code>. Una hebra supervisora comprueba periódicamente su ocupación (número de mensajes almacenados), llamando al método <code>adjust</code> (ver esquema). Si la ocupación es mayor del 80% de su capacidad, duplica la capacidad del almacén, siempre que sea posible sin sobrepasar el valor <code>MAX</code>. Si había emisores esperando por falta de espacio se les debe dar la oportunidad de enviar sus mensajes lo antes posible. Por otra parte, si la ocupación del almacén es menor que el 20% de su capacidad, el supervisor reduce la capacidad a la mitad (pero nunca por debajo de <code>MIN</code>).</p>
 <ul>
 <li>(a) (5 puntos) Escriba una clase monitor que cumpla las condiciones anteriores, según el esquema que se da a continuación.</li>
 </ul>
@@ -2938,7 +2938,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>NOTA: Suponga que está definida la clase Message que se utiliza en este esquema.</p>
+<p>NOTA: Suponga que está definida la clase <code>Message</code> que se utiliza en este esquema.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Store</span><span class="w"> </span><span class="p">{</span>

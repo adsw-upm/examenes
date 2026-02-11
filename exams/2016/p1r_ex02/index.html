@@ -2874,7 +2874,7 @@
 
   <h1>P1r ex02</h1>
 
-<p>Una aplicación móvil registra la actividad de un senderista. Cuando empieza una caminata, la aplicación guarda la fecha (de comienzo del paseo) y una lista de coordenadas en el plano (x, y), obtenidas cada segundo. Cuando el senderista termina su actividad, la aplicación manda a un servidor la siguiente información: nombre completo del senderista (String), fecha de comienzo de la actividad (Date) y la lista de coordenadas recorridas.</p>
+<p>Una aplicación móvil registra la actividad de un senderista. Cuando empieza una caminata, la aplicación guarda la fecha (de comienzo del paseo) y una lista de coordenadas en el plano <code>(x, y)</code>, obtenidas cada segundo. Cuando el senderista termina su actividad, la aplicación manda a un servidor la siguiente información: nombre completo del senderista (<code>String</code>), fecha de comienzo de la actividad (<code>Date</code>) y la lista de coordenadas recorridas.</p>
 <p>El servidor, escrito en Java, guarda para cada senderista, todas las rutas que haya recorrido. Para ello, dispone de un diccionario donde la clave es el nombre del senderista y el valor es una lista de todas las rutas recorridas por
 dicho senderista.</p>
 <p>Se dispone de las siguientes declaraciones:</p>
@@ -2941,7 +2941,7 @@ dicho senderista.</p>
 </code></pre></div></p>
 </details>
 <ul>
-<li>(b) (1 punto) Codificar un método de la clase Ruta que calcule la longitud total del recorrido (método longitud de la clase Ruta).</li>
+<li>(b) (1 punto) Codificar un método de la clase <code>Ruta</code> que calcule la longitud total del recorrido (método longitud de la clase <code>Ruta</code>).</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2964,11 +2964,11 @@ dicho senderista.</p>
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2 puntos) Codificar un método de la clase Servidor que determine qué senderista ha recorrido más distancia en total, sumando todas sus rutas (método campeon de la clase Servidor). En caso de empate, puede devolver cualquiera.</li>
+<li>(c) (2 puntos) Codificar un método de la clase <code>Servidor</code> que determine qué senderista ha recorrido más distancia en total, sumando todas sus rutas (método <code>campeon</code> de la clase <code>Servidor</code>). En caso de empate, puede devolver cualquiera.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>campeón usa un método auxiliar para averiguar la la suma de longitudes de las rutas de un usuario:
+<p><code>campeon</code> usa un método auxiliar para averiguar la la suma de longitudes de las rutas de un usuario:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">campeon</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">champ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">maxLong</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>

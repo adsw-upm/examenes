@@ -2874,11 +2874,11 @@
 
   <h1>Extra ex05</h1>
 
-<p>Se pretende realizar una aplicación Android que gestione las notas obtenidas por cada estudiante. En la primera pantalla, se pide el login y password al estudiante, con los cuales se puede acceder a un servidor que contiene las notas. Cuando las notas se han descargado, se presenta una pantalla en la que se muestra un listado con cada asignatura disponible y su calificación.</p>
+<p>Se pretende realizar una aplicación Android que gestione las notas obtenidas por cada estudiante. En la primera pantalla, se pide el 'login' y 'password' al estudiante, con los cuales se puede acceder a un servidor que contiene las notas. Cuando las notas se han descargado, se presenta una pantalla en la que se muestra un listado con cada asignatura disponible y su calificación.</p>
 <ul>
-<li>(a) (1,25 puntos) Escriba una especificación de layout adecuada para la actividad principal. Este layout debe permitir introducir una cadena de login, una de password, y debe disponer de un botón para proceder a la descarga de las notas.</li>
+<li>(a) (1,25 puntos) Escriba una especificación de <code>layout</code> adecuada para la actividad principal. Este <code>layout</code> debe permitir introducir una cadena de 'login', una de 'password', y debe disponer de un botón para proceder a la descarga de las notas.</li>
 </ul>
-<p>Nota: Si lo desea, para evitar que se vea la password puede usar 
+<p>Nota: Si lo desea, para evitar que se vea la 'password' puede usar 
 <div class="highlight"><pre><span></span><code><span class="nl">android</span><span class="p">:</span><span class="n">inputType</span><span class="o">=</span><span class="s">&quot;textPassword&quot;</span><span class="p">.</span>
 </code></pre></div></p>
 <details class="note">
@@ -2935,10 +2935,10 @@
 <span class="nt">&lt;/LinearLayout&gt;</span>
 </code></pre></div>
 </details>
-<p>Se dispone de la siguiente clase auxiliar, denominada BajarNotasAsyncTask, con la siguiente cabecera:
+<p>Se dispone de la siguiente clase auxiliar, denominada <code>BajarNotasAsyncTask</code>, con la siguiente cabecera:
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BajarNotaAsyncTask</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Void</span><span class="p">,</span><span class="w"> </span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-(b) (1,25 puntos) Escriba el código adecuado para que al pulsar el botón de la actividad principal, comience la descarga de las notas. Nota: NO CODIFIQUE la clase BajarNotasAsyncTask.</p>
+</code></pre></div></p>
+<p>(b) (1,25 puntos) Escriba el código adecuado para que al pulsar el botón de la actividad principal, comience la descarga de las notas. Nota: NO CODIFIQUE la clase <code>BajarNotasAsyncTask</code>.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="n">Button</span><span class="w"> </span><span class="n">descargar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">descargar</span><span class="p">);</span>
@@ -2981,9 +2981,9 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<p>La ejecución de BajarNotasAsyncTask añade en el singleton ListaNotasSingleton las notas obtenidas hasta el momento por el alumno.</p>
+<p>La ejecución de <code>BajarNotasAsyncTask</code> añade en el singleton <code>ListaNotasSingleton</code> las notas obtenidas hasta el momento por el alumno.</p>
 <ul>
-<li>(c) (1,25 puntos) Sobreescriba el método adecuado de la clase BajarNotasAsyncTask de forma que, una vez bajadas las notas, se arranque una actividad denominada NotasListActivity.</li>
+<li>(c) (1,25 puntos) Sobreescriba el método adecuado de la clase <code>BajarNotasAsyncTask</code> de forma que, una vez bajadas las notas, se arranque una actividad denominada <code>NotasListActivity</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2995,9 +2995,9 @@
 <span class="p">}</span>
 </code></pre></div>
 </details>
-<p>La actividad NotasListActivity presenta un layout denominado “activity_notas_list.xml”, en el cual está definido un widget ListView con identificador “@+id/listaNotas”. Además, se dispone de un layout para cada fila, denominado “nota_item_row.xml” y una clase adaptadora de la lista de notas denominada “NotasArrayAdapter”.</p>
+<p>La actividad <code>NotasListActivity</code> presenta un <code>layout</code> denominado “activity_notas_list.xml”, en el cual está definido un widget <code>ListView</code> con identificador “@+id/listaNotas”. Además, se dispone de un <code>layout</code> para cada fila, denominado “nota_item_row.xml” y una clase adaptadora de la lista de notas denominada <code>NotasArrayAdapter</code>.</p>
 <ul>
-<li>(d) (1,25 puntos) Programe el método onCreate de la clase NotasListActivity</li>
+<li>(d) (1,25 puntos) Programe el método <code>onCreate</code> de la clase <code>NotasListActivity</code></li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>

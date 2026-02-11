@@ -2886,10 +2886,10 @@ una excepción. La cabecera del método debe ser:</li>
 <summary>Mostrar solución</summary>
 <p>Hay varias posibles soluciones:</p>
 <ol>
-<li>hacer un histograma, eligiendo el valor mayor según se cuenta</li>
-<li>ordenar el array y contar repeticiones sucesivas</li>
+<li>Hacer un histograma, eligiendo el valor mayor según se cuenta;</li>
+<li>Ordenar el array y contar repeticiones sucesivas.</li>
 </ol>
-<p>Se incluye la solución 1, almacenando el histograma en un Map. Una posible solución es:
+<p>Se incluye la solución 1, almacenando el histograma en un <code>Map</code>. Una posible solución es:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">mayoria</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;mayoria: invalid argument&quot;</span><span class="p">);</span>
@@ -2918,23 +2918,29 @@ una excepción. La cabecera del método debe ser:</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>T(n) = T(n-1) +c si n &gt; 1</p>
-<p>T(0) = d</p>
+<p><span class="arithmatex">\(T(n) = T(n-1) + c\)</span> si <span class="arithmatex">\(n &gt; 1\)</span></p>
+<p><span class="arithmatex">\(T(0) = d\)</span></p>
 </details>
-<p>(c) (1 punto) Determinar su complejidad.</p>
+<ul>
+<li>(c) (1 punto) Determinar su complejidad.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Se puede resolver la ecuación de (b) o razonar de la siguiente forma:</p>
-<p>Las instrucciones sencillas (if, asignaciones, acceso al array) son constantes O(1).</p>
-<p>El acceso al Map (get y put) podemos considerarlo también constante en condiciones adecuadas de carga.</p>
-<p>Sólo el bucle for depende de n, procesando cada elemento una única vez, ergo es de complejidad O(n).</p>
-<p>Como O(1) ⊆ O(n), el resultado es que el algoritmo es de complejidad O(n).</p>
-<p>Comentarios adicionales:
-- no puede existir un algoritmo mejor que O(n) porque al menos hay que ver cada elemento una vez.
-- se puede tener un algoritmo O(n2) si con un for vamos viendo cada elemento, y para cada elemento contamos el número de repeticiones recorriendo el array (for dentro de for).
-- el O(n log n) se obtiene en varias circunstancias:
-    - suponiendo un algoritmo de ordenación de esa complejidad.
-    - usando un árbol binario de búsqueda para almacenar el histograma.</p>
+<p>Las instrucciones sencillas (<code>if</code>, asignaciones, acceso al array) son constantes <span class="arithmatex">\(O(1)\)</span>.</p>
+<p>El acceso al <code>Map</code> (<code>get</code> y <code>put</code>) podemos considerarlo también constante en condiciones adecuadas de carga.</p>
+<p>Sólo el bucle for depende de <span class="arithmatex">\(n\)</span>, procesando cada elemento una única vez, ergo es de complejidad <span class="arithmatex">\(O(n)\)</span>.</p>
+<p>Como <span class="arithmatex">\(O(1) \subset O(n)\)</span>, el resultado es que el algoritmo es de complejidad <span class="arithmatex">\(O(n)\)</span>.</p>
+<p>Comentarios adicionales:</p>
+<ul>
+<li>No puede existir un algoritmo mejor que <span class="arithmatex">\(O(n)\)</span> porque al menos hay que ver cada elemento una vez;</li>
+<li>Se puede tener un algoritmo <span class="arithmatex">\(O(n^2)\)</span> si con un <code>for</code> vamos viendo cada elemento, y para cada elemento contamos el número de repeticiones recorriendo el array (<code>for</code> dentro de <code>for</code>);</li>
+<li>el <span class="arithmatex">\(O(n log n)\)</span> se obtiene en varias circunstancias:<ul>
+<li>suponiendo un algoritmo de ordenación de esa complejidad.</li>
+<li>usando un árbol binario de búsqueda para almacenar el histograma.</li>
+</ul>
+</li>
+</ul>
 </details>
 
 

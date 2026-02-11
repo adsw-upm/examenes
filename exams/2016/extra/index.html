@@ -3133,7 +3133,7 @@
 
 <h1 id="examen-2016-extraordinario">Examen 2016 — Extraordinario</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>Queremos programar una clase Conjunto usando internamente una tabla hash con lista de desbordamiento. Se pide programar los siguientes métodos:</p>
+<p>Queremos programar una clase <code>Conjunto</code> usando internamente una tabla hash con lista de desbordamiento. Se pide programar los siguientes métodos:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
@@ -3141,7 +3141,7 @@
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
 </code></pre></div>
 <p>Razone la complejidad de dichos métodos.</p>
-<p>No se aceptará como solución recurrir a la clase Map o a la clase Set de la biblioteca de java.</p>
+<p>No se aceptará como solución recurrir a la clase <code>Map</code> o a la clase <code>Set</code> de la biblioteca de Java.</p>
 <ul>
 <li>(a) (2,1 puntos) Escribir el código de los métodos mencionados.</li>
 </ul>
@@ -3187,11 +3187,11 @@
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La complejidad de add() es O(1) sobre el supuesto de que la tabla de direccionamiento está dimensionada holgadamente; si no, sería la complejidad de la lista de desbordamiento.</p>
-<p>La complejidad de remove() y contains() es la misma.</p>
+<p>La complejidad de <code>add()</code> es <span class="arithmatex">\(O(1)\)</span> sobre el supuesto de que la tabla de direccionamiento está dimensionada holgadamente; si no, sería la complejidad de la lista de desbordamiento.</p>
+<p>La complejidad de <code>remove()</code> y <code>contains()</code> es la misma.</p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>Se pide programar un método que determine si existen dos elementos de un array de enteros que sumen un cierto valor K.</p>
+<p>Se pide programar un método que determine si existen dos elementos de un array de enteros que sumen un cierto valor <code>K</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">datos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span>
 </code></pre></div>
 <p>Ejemplos:</p>
@@ -3199,15 +3199,14 @@
 <span class="nf">check</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">8</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="n">à</span><span class="w"> </span><span class="n">TRUE</span>
 </code></pre></div>
 <p>Razone la complejidad en tiempo de ejecución de dicho método.</p>
-<p>Sugerencia. Para conseguir un algoritmo O(N) puede meter los datos del array en un conjunto (similar al propuesto en la primera pregunta).</p>
+<p>Sugerencia. Para conseguir un algoritmo <span class="arithmatex">\(O(N)\)</span> puede meter los datos del array en un conjunto (similar al propuesto en la primera pregunta).</p>
 <ul>
-<li>(a) (3,5) Implemente el método y razone su complejidad. La complejidad del método ha de ser O(N), en cualquier otro caso, solo se podrá optar a la mitad de los puntos.</li>
+<li>(a) (3,5) Implemente el método y razone su complejidad. La complejidad del método ha de ser <span class="arithmatex">\(O(N)\)</span>, en cualquier otro caso, solo se podrá optar a la mitad de los puntos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La solución óptima es:
-<div class="highlight"><pre><span></span><code><span class="c1">// O(n)</span>
-<span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">check1</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<p>La solución óptima, con complejidad <span class="arithmatex">\(O(n)\)</span> es:
+<div class="highlight"><pre><span></span><code><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">check1</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">set</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">K</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">v</span><span class="p">))</span>
@@ -3217,10 +3216,12 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-O(N) porque se trata de un bucle que recorre los elementos del array y, dentro del bucle, las operaciones contains() y add() son O(1).</p>
-<p>Soluciones alternativas con otra complejidad son:
-<div class="highlight"><pre><span></span><code><span class="c1">// O(n log n)</span>
-<span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">check2</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+El orden de complejidad es <span class="arithmatex">\(O(N)\)</span> porque se trata de un bucle que recorre los elementos del array y, dentro del bucle, las operaciones <code>contains()</code> y <code>add()</code> son <span class="arithmatex">\(O(1)\)</span>.</p>
+<p>Soluciones alternativas con otros órdenes de complejidad son:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(O(n log n)\)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">check2</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">mdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
 <span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">arraycopy</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">mdata</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
 
@@ -3241,8 +3242,10 @@ O(N) porque se trata de un bucle que recorre los elementos del array y, dentro d
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="c1">// O(n^2)</span>
-<span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">check3</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</li>
+<li>
+<p><span class="arithmatex">\(O(n^2)\)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">check3</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">data</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">K</span><span class="p">)</span>
@@ -3251,11 +3254,13 @@ O(N) porque se trata de un bucle que recorre los elementos del array y, dentro d
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></p>
+</li>
+</ul>
 </details>
 <h2 id="problema-3">Problema 3</h2>
 <p>En un programa de supervisión y control de una central térmica, existen un conjunto de hebras que toman la temperatura del vapor en distintos puntos de la caldera regularmente y la almacenan junto con la hora de la medida, para que posteriormente otro conjunto de hebras pueda leer la última temperatura y hora medidas y realizar cálculos con ellas. Y se desea que cada una de las hebras del primer conjunto almacene la temperatura y hora medidas con exclusión mutua de todas las demás hebras, pero que cualquier número de hebras del segundo tipo pueda estar leyendo esos valores al mismo tiempo.</p>
-<p>Para solucionar el problema se propone usar un solo objeto, bien de la clase GestorHoraTemperatura, o bien de la clase GestorHoraTemperatura2.</p>
+<p>Para solucionar el problema se propone usar un solo objeto, bien de la clase <code>GestorHoraTemperatura</code>, o bien de la clase <code>GestorHoraTemperatura2</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorHoraTemperatura</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">HoraTemperatura</span><span class="w"> </span><span class="n">ht</span><span class="p">;</span>
 
@@ -3300,12 +3305,12 @@ O(N) porque se trata de un bucle que recorre los elementos del array y, dentro d
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Ninguna de las dos soluciones propuestas es correcta. En la primera de ellas, los procesos que escriben la temperatura y la hora (llamémosles "escritores") lo hacen en exclusión mutua entre ellos, lo cual es correcto, y los procesos que leen los valores (llamémosles "lectores") pueden estar cualquier número de ellos leyendo al mismo tiempo (al no estar el método de lectura sincronizado). Lo cual también coincide con lo que se desea.</p>
-<p>El problema de esta (seudo) solución, sin embargo, es que también cualquier número de lectores pueden estar leyendo al mismo tiempo que un escritor escribe, lo cual es desde luego un comportamiento incorrecto.</p>
+<p>El problema de esta (pseudo)solución, sin embargo, es que también cualquier número de lectores pueden estar leyendo al mismo tiempo que un escritor escribe, lo cual es desde luego un comportamiento incorrecto.</p>
 <p>En la segunda solución propuesta, los lectores no pueden leer al mismo tiempo, ya que el método correspondiente está sincronizado. Lo cual está en contra de lo deseado. Además, al ser ahora la operación que hace la lectura un método de clase (estático), su exclusión mutua estará gobernada por el cerrojo de la clase, que es independiente de los cerrojos de los objetos de la clase, con lo que no ejecutará con exclusión mutua del otro método, el de escritura. Es decir, que puede haber un lector leyendo al mismo tiempo que un escritor escribiendo, lo cual es desde luego un comportamiento incorrecto. </p>
 </details>
 <h2 id="problema-4">Problema 4</h2>
-<p>En un sistema de comunicaciones hay un almacén con capacidad para N mensajes, con N comprendido entre MIN = 16 y MAX = 1024. Hay un cierto número de hebras (emisores) que almacenan mensajes en el almacén, y otras (receptores), que extraen mensajes de él. No se pueden almacenar mensajes si el almacén está lleno, ni se pueden extraer si está vacío.</p>
-<p>El almacén se crea con capacidad MIN. Una hebra supervisora comprueba periódicamente su ocupación (número de mensajes almacenados), llamando al método adjust (ver esquema). Si la ocupación es mayor del 80 % de su capacidad, duplica la capacidad del almacén, siempre que sea posible sin sobrepasar el valor MAX. Si había emisores esperando por falta de espacio se les debe dar la oportunidad de enviar sus mensajes lo antes posible. Por otra parte, si la ocupación del almacén es menor que el 20 % de su capacidad, el supervisor reduce la capacidad a la mitad (pero nunca por debajo de MIN).</p>
+<p>En un sistema de comunicaciones hay un almacén con capacidad para <code>N</code> mensajes, con <code>N</code> comprendido entre <code>MIN = 16</code> y <code>MAX = 1024</code>. Hay un cierto número de hebras (emisores) que almacenan mensajes en el almacén, y otras (receptores), que extraen mensajes de él. No se pueden almacenar mensajes si el almacén está lleno, ni se pueden extraer si está vacío.</p>
+<p>El almacén se crea con capacidad <code>MIN</code>. Una hebra supervisora comprueba periódicamente su ocupación (número de mensajes almacenados), llamando al método <code>adjust</code> (ver esquema). Si la ocupación es mayor del 80% de su capacidad, duplica la capacidad del almacén, siempre que sea posible sin sobrepasar el valor <code>MAX</code>. Si había emisores esperando por falta de espacio se les debe dar la oportunidad de enviar sus mensajes lo antes posible. Por otra parte, si la ocupación del almacén es menor que el 20% de su capacidad, el supervisor reduce la capacidad a la mitad (pero nunca por debajo de <code>MIN</code>).</p>
 <ul>
 <li>(a) (5 puntos) Escriba una clase monitor que cumpla las condiciones anteriores, según el esquema que se da a continuación.</li>
 </ul>
@@ -3368,7 +3373,7 @@ O(N) porque se trata de un bucle que recorre los elementos del array y, dentro d
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>NOTA: Suponga que está definida la clase Message que se utiliza en este esquema.</p>
+<p>NOTA: Suponga que está definida la clase <code>Message</code> que se utiliza en este esquema.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Store</span><span class="w"> </span><span class="p">{</span>
@@ -3421,11 +3426,11 @@ O(N) porque se trata de un bucle que recorre los elementos del array y, dentro d
 </code></pre></div>
 </details>
 <h2 id="problema-5">Problema 5</h2>
-<p>Se pretende realizar una aplicación Android que gestione las notas obtenidas por cada estudiante. En la primera pantalla, se pide el login y password al estudiante, con los cuales se puede acceder a un servidor que contiene las notas. Cuando las notas se han descargado, se presenta una pantalla en la que se muestra un listado con cada asignatura disponible y su calificación.</p>
+<p>Se pretende realizar una aplicación Android que gestione las notas obtenidas por cada estudiante. En la primera pantalla, se pide el 'login' y 'password' al estudiante, con los cuales se puede acceder a un servidor que contiene las notas. Cuando las notas se han descargado, se presenta una pantalla en la que se muestra un listado con cada asignatura disponible y su calificación.</p>
 <ul>
-<li>(a) (1,25 puntos) Escriba una especificación de layout adecuada para la actividad principal. Este layout debe permitir introducir una cadena de login, una de password, y debe disponer de un botón para proceder a la descarga de las notas.</li>
+<li>(a) (1,25 puntos) Escriba una especificación de <code>layout</code> adecuada para la actividad principal. Este <code>layout</code> debe permitir introducir una cadena de 'login', una de 'password', y debe disponer de un botón para proceder a la descarga de las notas.</li>
 </ul>
-<p>Nota: Si lo desea, para evitar que se vea la password puede usar 
+<p>Nota: Si lo desea, para evitar que se vea la 'password' puede usar 
 <div class="highlight"><pre><span></span><code><span class="nl">android</span><span class="p">:</span><span class="n">inputType</span><span class="o">=</span><span class="s">&quot;textPassword&quot;</span><span class="p">.</span>
 </code></pre></div></p>
 <details class="note">
@@ -3482,10 +3487,10 @@ O(N) porque se trata de un bucle que recorre los elementos del array y, dentro d
 <span class="nt">&lt;/LinearLayout&gt;</span>
 </code></pre></div>
 </details>
-<p>Se dispone de la siguiente clase auxiliar, denominada BajarNotasAsyncTask, con la siguiente cabecera:
+<p>Se dispone de la siguiente clase auxiliar, denominada <code>BajarNotasAsyncTask</code>, con la siguiente cabecera:
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BajarNotaAsyncTask</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Void</span><span class="p">,</span><span class="w"> </span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-(b) (1,25 puntos) Escriba el código adecuado para que al pulsar el botón de la actividad principal, comience la descarga de las notas. Nota: NO CODIFIQUE la clase BajarNotasAsyncTask.</p>
+</code></pre></div></p>
+<p>(b) (1,25 puntos) Escriba el código adecuado para que al pulsar el botón de la actividad principal, comience la descarga de las notas. Nota: NO CODIFIQUE la clase <code>BajarNotasAsyncTask</code>.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="n">Button</span><span class="w"> </span><span class="n">descargar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">descargar</span><span class="p">);</span>
@@ -3528,9 +3533,9 @@ O(N) porque se trata de un bucle que recorre los elementos del array y, dentro d
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<p>La ejecución de BajarNotasAsyncTask añade en el singleton ListaNotasSingleton las notas obtenidas hasta el momento por el alumno.</p>
+<p>La ejecución de <code>BajarNotasAsyncTask</code> añade en el singleton <code>ListaNotasSingleton</code> las notas obtenidas hasta el momento por el alumno.</p>
 <ul>
-<li>(c) (1,25 puntos) Sobreescriba el método adecuado de la clase BajarNotasAsyncTask de forma que, una vez bajadas las notas, se arranque una actividad denominada NotasListActivity.</li>
+<li>(c) (1,25 puntos) Sobreescriba el método adecuado de la clase <code>BajarNotasAsyncTask</code> de forma que, una vez bajadas las notas, se arranque una actividad denominada <code>NotasListActivity</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3542,9 +3547,9 @@ O(N) porque se trata de un bucle que recorre los elementos del array y, dentro d
 <span class="p">}</span>
 </code></pre></div>
 </details>
-<p>La actividad NotasListActivity presenta un layout denominado “activity_notas_list.xml”, en el cual está definido un widget ListView con identificador “@+id/listaNotas”. Además, se dispone de un layout para cada fila, denominado “nota_item_row.xml” y una clase adaptadora de la lista de notas denominada “NotasArrayAdapter”.</p>
+<p>La actividad <code>NotasListActivity</code> presenta un <code>layout</code> denominado “activity_notas_list.xml”, en el cual está definido un widget <code>ListView</code> con identificador “@+id/listaNotas”. Además, se dispone de un <code>layout</code> para cada fila, denominado “nota_item_row.xml” y una clase adaptadora de la lista de notas denominada <code>NotasArrayAdapter</code>.</p>
 <ul>
-<li>(d) (1,25 puntos) Programe el método onCreate de la clase NotasListActivity</li>
+<li>(d) (1,25 puntos) Programe el método <code>onCreate</code> de la clase <code>NotasListActivity</code></li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3568,13 +3573,13 @@ O(N) porque se trata de un bucle que recorre los elementos del array y, dentro d
 </code></pre></div>
 </details>
 <h2 id="problema-6">Problema 6</h2>
-<p>Se quiere construir un diccionario donde las claves son Object que no se pueden comparar entre sí. Los valores también son Object de java. Para ello se ha decidido programar un árbol binario de búsqueda, usando el hash de la clave como criterio para optar por el subárbol izquierdo o el derecho.</p>
-<p>Se pide programar una clase BST_Object que incorpore el método
+<p>Se quiere construir un diccionario donde las claves son <code>Object</code> que no se pueden comparar entre sí. Los valores también son <code>Object</code> de Java. Para ello se ha decidido programar un árbol binario de búsqueda, usando el hash de la clave como criterio para optar por el subárbol izquierdo o el derecho.</p>
+<p>Se pide programar una clase <code>BST_Object</code> que incorpore el método
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">clave</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span>
 </code></pre></div>
 que inserta un valor asociado a la clave; si la clave ya existía, se reemplaza el antiguo valor por el nuevo </p>
 <ul>
-<li>(a) (1 punto) Programe los campos, el constructor y el método put(). No es necesario que programe más métodos.</li>
+<li>(a) (1 punto) Programe los campos, el constructor y el método <code>put()</code>. No es necesario que programe más métodos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3617,17 +3622,17 @@ que inserta un valor asociado a la clave; si la clave ya existía, se reemplaza 
 </code></pre></div>
 </details>
 <h2 id="problema-7">Problema 7</h2>
-<p>En una aplicación Android, se dispone de la clase RssRetrieveTask, que descarga asíncronamente una serie de noticias de una fuente seleccionada, con la siguiente cabecera:
+<p>En una aplicación Android, se dispone de la clase <code>RssRetrieveTask</code>, que descarga asíncronamente una serie de noticias de una fuente seleccionada, con la siguiente cabecera:
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RssRetrieveTask</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Void</span><span class="p">,</span><span class="w"> </span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-donde el primer parámetro es una lista de Strings, la primera de las cuales es el URL de la fuente RSS de noticias, y el resto son palabras de filtrado.</p>
-<p>En el layout de la actividad principal se ha definido un botón con identificador "@+id/boton_leer", y se pretende que, al pulsar el botón, se active la tarea asíncrona RssRetrieveTask. </p>
+donde el primer parámetro es una lista de <code>Strings</code>, la primera de las cuales es el URL de la fuente RSS de noticias, y el resto son palabras de filtrado.</p>
+<p>En el <code>layout</code> de la actividad principal se ha definido un botón con identificador "@+id/boton_leer", y se pretende que, al pulsar el botón, se active la tarea asíncrona <code>RssRetrieveTask</code>. </p>
 <ul>
 <li>(a) (1 punto) Escriba el código adecuado que atienda a la pulsación del botón de forma que se active esta tarea.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>En el método onCreate se añaden las siguientes líneas:
+<p>En el método <code>onCreate</code> se añaden las siguientes líneas:
 <div class="highlight"><pre><span></span><code><span class="n">Button</span><span class="w"> </span><span class="n">readButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">read_button</span><span class="p">);</span>
 <span class="n">readButton</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ReadOnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nd">@Override</span>
@@ -3647,9 +3652,12 @@ donde el primer parámetro es una lista de Strings, la primera de las cuales es 
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div>
-Nota 1: se admiten las otras dos formas de asignar un método al listener de un button.</p>
-<p>Nota 2: las sentencias “Log” y “Toast” son absolutamente opcionales y no influyen en la nota</p>
+</code></pre></div></p>
+<p>Notas: </p>
+<ul>
+<li>Se admiten las otras dos formas de asignar un método al <code>listener</code> de un <code>button</code>;</li>
+<li>Nota 2: las sentencias <code>Log</code> y <code>Toast</code> son absolutamente opcionales y no influyen en la nota.</li>
+</ul>
 </details>
 
 
