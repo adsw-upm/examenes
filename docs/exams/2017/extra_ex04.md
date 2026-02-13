@@ -6,15 +6,15 @@ tags:
  - android
 ---
 
-Se dispone de una aplicación Android para la consulta de notas por parte de los alumnos. La aplicación consta de dos pantallas, denominadas MainActivity y ResultActivity.
+Se dispone de una aplicación Android para la consulta de notas por parte de los alumnos. La aplicación consta de dos pantallas, denominadas `MainActivity` y `ResultActivity`.
 
-En la primera pantalla (MainActivity), el usuario introduce su identificación (nombre y apellidos) y el código numérico de la asignatura a consultar. Dispone de un botón con el texto “Consultar” que, al pulsarse, pasa a la segunda pantalla ResultActivity, mediante un Intent con la información de identificación del alumno y el código de la asignatura. La primera pantalla dispone de un layout en el que se dispone de dos EditText, uno para el nombre y otro para el código, mas el botón para realizar la consulta.
+En la primera pantalla (`MainActivity`), el usuario introduce su identificación (nombre y apellidos) y el código numérico de la asignatura a consultar. Dispone de un botón con el texto 'Consultar' que, al pulsarse, pasa a la segunda pantalla `ResultActivity`, mediante un `Intent` con la información de identificación del alumno y el código de la asignatura. La primera pantalla dispone de un `layout` en el que se dispone de dos `EditText`, uno para el nombre y otro para el código, mas el botón para realizar la consulta.
 
-En la segunda pantalla (ResultActivity), se consultará la base de datos de notas y se presentará la nota obtenida.
+En la segunda pantalla (`ResultActivity`), se consultará la base de datos de notas y se presentará la nota obtenida.
 
 Esta pantalla no es de nuestro interés.
 
-- (a) (1 punto) Completar el código del método onCreate de la clase MainActivity.
+- (a) (1 punto) Completar el código del método `onCreat`e de la clase `MainActivity`.
 
 ??? note "Mostrar solución"
     ```java
@@ -52,7 +52,7 @@ Esta pantalla no es de nuestro interés.
     ```
 
 
-- (b) (1 punto) Indicar los métodos del ciclo de vida que se invocarán de la actividad MainActivity y ResultActivity en el orden correcto.
+- (b) (1 punto) Indicar los métodos del ciclo de vida que se invocarán de la actividad `MainActivity` y `ResultActivity` en el orden correcto.
 
 ??? note "Mostrar solución"
     ```java

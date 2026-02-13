@@ -3,7 +3,7 @@ id: ex-2017-01
 year: 2017
 exam: extraordinario
 tags:
- - ???
+ - hebras
 ---
 
 Varios ingenieros utilizan una base de datos para almacenar informes. Para ello disponen de una aplicación que permite almacenar un informe o recuperar un informe anterior. El acceso a los datos se organiza mediante una clase de Java que responde al esquema siguiente esquema:
@@ -17,9 +17,9 @@ public class Datos {
 }
 ```
 
-Las aplicaciones se ejecutan concurrentemente, y llaman a guardar o a consultar antes de realizar una secuencia de operaciones de almacenar o recuperar informes, respectivamente. Cuando han terminado de realizar estas operaciones llaman a terminar. Puede haber varias aplicaciones consultando informes a la vez, pero no consultando y guardando, ni varias guardando a la vez.
+Las aplicaciones se ejecutan concurrentemente, y llaman a `guardar` o a `consultar` antes de realizar una secuencia de operaciones de almacenar o recuperar informes, respectivamente. Cuando han terminado de realizar estas operaciones llaman a `terminar`. Puede haber varias aplicaciones consultando informes a la vez, pero no consultando y guardando, ni varias guardando a la vez.
 
-Los objetos de la clase Ingeniero son hebras que ejecutan repetidamente el siguiente código:
+Los objetos de la clase `Ingeniero` son hebras que ejecutan repetidamente el siguiente código:
 
 ```java
 datos.guardar(clave);
@@ -39,7 +39,7 @@ for (int i = 1; i <= ndoc; i++) {
 datos.terminar(clave);
 ```
 
-- (a) (4 puntos) Complete el código de la clase Datos de forma que se cumplan las condiciones del enunciado.
+- (a) (4 puntos) Complete el código de la clase `Datos` de forma que se cumplan las condiciones del enunciado.
 
 ??? note "Mostrar solución"
     ```java
@@ -75,7 +75,7 @@ datos.terminar(clave);
     ```
 
 
-- (b) (2 puntos) Escriba el código de una posible implementación de la clase Ingeniero para consultar datos.
+- (b) (2 puntos) Escriba el código de una posible implementación de la clase `Ingeniero` para consultar datos.
 
 
 ??? note "Mostrar solución"
@@ -99,8 +99,8 @@ datos.terminar(clave);
     ```
 
 
-- (c) (2 puntos) Analice si puede haber problemas de inanición (starvation) en el acceso a los datos y, si es así, ponga algún ejemplo (sin resolverlo).
+- (c) (2 puntos) Analice si puede haber problemas de inanición (*starvation*) en el acceso a los datos y, si es así, ponga algún ejemplo (sin resolverlo).
 
 ??? note "Mostrar solución"
-    Como en el problema original, la solución dada puede dar lugar a inanición de los ingenieros que guardan informes. Por ejemplo, sin entran varios a consultar y antes de que terminen entran otros nuevos, esta situación se puede prolongar indefinidamente, no dejando acceder nunca a otros ingenieros que deseen guardar informes. Las solución es establecer turnos para dar prioridad, alternativamente, a los que guardan (escritores) y a los que consultan (lectores)
+    Como en el problema original, la solución dada puede dar lugar a inanición de los ingenieros que guardan informes. Por ejemplo, sin entran varios a consultar y antes de que terminen entran otros nuevos, esta situación se puede prolongar indefinidamente, no dejando acceder nunca a otros ingenieros que deseen guardar informes. Las solución es establecer turnos para dar prioridad, alternativamente, a los que guardan (escritores) y a los que consultan (lectores).
 

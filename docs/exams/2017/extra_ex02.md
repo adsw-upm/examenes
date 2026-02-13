@@ -6,7 +6,7 @@ tags:
  - complejidad
 ---
 
-La clase RegistroDatos, permite almacenar los datos producidos por un conjunto de sensores. Los datos producidos por los sensores se envían como objetos de la clase Dato, cuya estructura se muestra a continuación:
+La clase `RegistroDatos` permite almacenar los datos producidos por un conjunto de sensores. Los datos producidos por los sensores se envían como objetos de la clase `Dato`, cuya estructura se muestra a continuación:
 
 ```java
 public class Dato implements Comparable<Dato> {
@@ -18,9 +18,9 @@ public class Dato implements Comparable<Dato> {
 }
 ```
 
-La clase RegistroDatos guarda los datos recibidos en un array (private List<Dato> []datos). Cada dato se guarda en la posición del array que se obtiene aplicando el método hashCode de la clase String al identificador único del sensor que ha producido el dato y adaptando el resultado al tamaño del array datos. 
+La clase `RegistroDatos` guarda los datos recibidos en un array `(private List<Dato> []datos)`. Cada dato se guarda en la posición del array que se obtiene aplicando el método `hashCode` de la clase `String` al identificador único del sensor que ha producido el dato y adaptando el resultado al tamaño del array datos. 
 
-Además, se lleva una cuenta del número de datos que ha generado cada sensor, mediante el atributo cuentaDatos (private Map <String, Registro> cuentaDatos), usando como clave el identificador único del sensor que ha producido el dato y como valor un objeto de la clase Registro, cuya estructura se muestra a continuación:
+Además, se lleva una cuenta del número de datos que ha generado cada sensor, mediante el atributo `cuentaDatos` (`private Map <String, Registro> cuentaDatos`), usando como clave el identificador único del sensor que ha producido el dato y como valor un objeto de la clase `Registro`, cuya estructura se muestra a continuación:
 
 ```java
 public class Registro implements Comparable<Registro> {
@@ -31,7 +31,7 @@ public class Registro implements Comparable<Registro> {
 }
 ```
 
-- (a) (5 puntos) Se pide completar los métodos Constructor, put, getDatos, size y countAbove de la clase RegistroDatos. El esqueleto de la se muestra a continuación:
+- (a) (5 puntos) Se pide completar los métodos `Constructor`, `put`, `getDatos`, `size` y `countAbove` de la clase `RegistroDatos`. El esqueleto de la se muestra a continuación:
 
 ```java
 public class RegistroDatos {
