@@ -3023,7 +3023,7 @@
 
 <h1 id="examen-2017-parcial-2">Examen 2017 — Parcial 2</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>Se quiere desarrollar un sistema compuesto de dos conjuntos de hebras. Un conjunto de hebras (editoras) producen contenidos sobre un tema y los envían a un monitor, Gestor. Otro conjunto de hebras (suscriptoras) reciben los contenidos publicados sobre los temas a los que se suscriben. Las hebras editoras y suscriptoras utilizan los siguientes métodos del gestor para sincronizarse:</p>
+<p>Se quiere desarrollar un sistema compuesto de dos conjuntos de hebras. Un conjunto de hebras (editoras) producen contenidos sobre un tema y los envían a un monitor, <code>Gestor</code>. Otro conjunto de hebras (suscriptoras) reciben los contenidos publicados sobre los temas a los que se suscriben. Las hebras editoras y suscriptoras utilizan los siguientes métodos del gestor para sincronizarse:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Gestor</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">...</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enviarContenido</span><span class="w"> </span><span class="p">(</span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">,</span><span class="w"> </span><span class="n">Contenido</span><span class="w"> </span><span class="n">unContenido</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
@@ -3064,7 +3064,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(a) (1 punto) Escriba el código de una clase que defina hebras suscriptoras. Cada hebra ejecuta un bucle N_VECES (una constante). En cada ciclo genera un tema aleatorio (ver más abajo) e invoca el gestor para recibir mensajes de ese tema. Al recibir un mensaje, invoca un método privado de la clase, procesarContenido(Contenido c), que no hay que implementar. Finalmente, se bloquea durante un tiempo aleatorio (puede usar el método nap.random()).</li>
+<li>(a) (1 punto) Escriba el código de una clase que defina hebras suscriptoras. Cada hebra ejecuta un bucle <code>N_VECES</code> (una constante). En cada ciclo genera un tema aleatorio (ver más abajo) e invoca el gestor para recibir mensajes de ese tema. Al recibir un mensaje, invoca un método privado de la clase, <code>procesarContenido(Contenido c)</code>, que no hay que implementar. Finalmente, se bloquea durante un tiempo aleatorio (puede usar el método <code>nap.random()</code>).</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3122,32 +3122,31 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2 puntos) Escriba el código de una clase con un programa principal (main) que arranque N_EDITORAS hebras editoras y N_SUSCRIPTORAS hebras suscriptoras, y cree el gestor de contenidos.</li>
+<li>(c) (2 puntos) Escriba el código de una clase con un programa principal (<code>main</code>) que arranque <code>N_EDITORAS</code> hebras editoras y <code>N_SUSCRIPTORAS</code> hebras suscriptoras, y cree el gestor de contenidos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>```java
-public class PruebaGestor {</p>
-<pre><code>public static void main(String[] args) {
-    final int N_EDITORAS = 10;
-    final int N_SUSCRIPTORAS = 10;
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PruebaGestor</span><span class="w"> </span><span class="p">{</span>
 
-    Gestor gestor = new Gestor();
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N_EDITORAS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N_SUSCRIPTORAS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
 
-    for (int i = 0; i &lt; N_EDITORAS; i++) {
-        new Editora(gestor, i).start();
-    }
+<span class="w">        </span><span class="n">Gestor</span><span class="w"> </span><span class="n">gestor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Gestor</span><span class="p">();</span>
 
-    for (int i = 0; i &lt; N_SUSCRIPTORAS; i++) {
-        new Suscriptora(gestor, i).start();
-    }
-}
-</code></pre>
-<p>}</p>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N_EDITORAS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">Editora</span><span class="p">(</span><span class="n">gestor</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">).</span><span class="na">start</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N_SUSCRIPTORAS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">Suscriptora</span><span class="p">(</span><span class="n">gestor</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">).</span><span class="na">start</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 </details>
-<p>```</p>
 <ul>
-<li>(d) (4 puntos) Completar la clase Gestor de forma que se comporte como un monitor, con lo necesario para sincronizar las hebras de las dos clases citadas. La implementación de los métodos del gestor debe cumplir la siguiente especificación:</li>
+<li>(d) (4 puntos) Completar la clase <code>Gestor</code> de forma que se comporte como un monitor, con lo necesario para sincronizar las hebras de las dos clases citadas. La implementación de los métodos del gestor debe cumplir la siguiente especificación:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">...</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enviarContenido</span><span class="p">(</span><span class="n">Contenido</span><span class="w"> </span><span class="n">unContenido</span><span class="p">,</span><span class="w"> </span><span class="n">Tema</span><span class="w"> </span><span class="n">unTema</span><span class="p">)</span>
 </code></pre></div>
@@ -3186,15 +3185,15 @@ public class PruebaGestor {</p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
 <p>Tras numerosos e infructuosos intentos, España ha vuelto a ganar el festival de Eurovisión. Como país organizador, debe desarrollar una aplicación móvil para facilitar el televoto. Su misión es completar el código de la aplicación que se detalla a continuación.</p>
-<p>La aplicación consta de dos pantallas: MainActivity y VotacionActivity, como se ilustra en la figura.</p>
-<p>En la primera pantalla, el usuario introduce su país (p.ej. España) y puede elegir entre votar o listar canciones (esta última utilidad no es misión suya). Una vez escrito el país del usuario, si pincha en el botón Votación, pasa a la segunda pantalla VotacionActivity.</p>
-<p>En la segunda pantalla, VotacionActivity, el usuario puede realizar dos acciones. La primera es indicar a qué país vota (p.ej. Italia) y cuántos puntos le da (p.ej. 10), y pulsar el botón Votar. La segunda sería no realizar la votación (pulsando el botón Cancelar). Si el usuario pulsa el botón Votar, vuelve a la primera pantalla, y se muestra en un mensaje la votación realizada.</p>
+<p>La aplicación consta de dos pantallas: <code>MainActivity</code> y <code>VotacionActivity</code>, como se ilustra en la figura.</p>
+<p>En la primera pantalla, el usuario introduce su país (p.ej. España) y puede elegir entre votar o listar canciones (esta última utilidad no es misión suya). Una vez escrito el país del usuario, si pincha en el botón 'Votación', pasa a la segunda pantalla <code>VotacionActivity</code>.</p>
+<p>En la segunda pantalla, <code>VotacionActivity</code>, el usuario puede realizar dos acciones. La primera es indicar a qué país vota (p.ej. Italia) y cuántos puntos le da (p.ej. 10), y pulsar el botón 'Votar'. La segunda sería no realizar la votación (pulsando el botón 'Cancelar'). Si el usuario pulsa el botón 'Votar', vuelve a la primera pantalla, y se muestra en un mensaje la votación realizada.</p>
 <p><img alt="" src="p2_ex02.png" /></p>
 <ul>
-<li>(a) (2 puntos) Se pide que complete el código proporcionado en esta hoja de respuestas. Tenga que cuenta que sólo se entregará una hoja. Pase a esta hoja el código justo antes de entregar para evitar equivocaciones.</li>
+<li>(a) (2 puntos) Se pide que complete el código proporcionado en esta hoja de respuestas. Tenga que cuenta que sólo se entregará una hoja.</li>
 </ul>
-<p>Tal como se indica en la figura, de la Actividad MainActivity se pasa a VotacionActivity pasando la clave “country_voting” y el valor String introducido. De la segunda pantalla VotacionActivity, si el usuario pulsa en Votación, pasa a MainActivity pasándole los datos “country_voting” (valor String inicial recibido), “country_voted” (String del país votado) y “votes” (entero de los puntos).</p>
-<p>Debe completar cómo MainActivity pasa a VotacionActivity y cómo recibe estos valores. No tenga en cuenta casos anómalos (un valor no está relleno o no se ha pasado un valor entre actividades)</p>
+<p>Tal como se indica en la figura, de la <code>Actividad</code> <code>MainActivity</code> se pasa a <code>VotacionActivity</code> pasando la clave <code>country_voting</code> y el valor <code>String</code> introducido. De la segunda pantalla <code>VotacionActivity</code>, si el usuario pulsa en 'Votación', pasa a <code>MainActivity</code> pasándole los datos <code>country_voting</code> (valor <code>String</code> inicial recibido), <code>country_voted</code> (<code>String</code> del país votado) y <code>votes</code> (entero de los puntos).</p>
+<p>Debe completar cómo <code>MainActivity</code> pasa a <code>VotacionActivity</code> y cómo recibe estos valores. No tenga en cuenta casos anómalos (un valor no está relleno o no se ha pasado un valor entre actividades)</p>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span>
