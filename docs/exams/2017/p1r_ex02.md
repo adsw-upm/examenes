@@ -1,41 +1,38 @@
 ---
 id: ex-2017-01
 year: 2017
-exam: parcial 1
+exam: parcial 1 recuperacion
 tags:
  - complejidad
 ---
 
-Sabiendo que el tiempo de ejecución de la función f es constante y el de g es lineal con respecto a n.
 
-- (a) (1,65 puntos) Razone la complejidad de: 
-```java
-for (int i = 1; i < n; i++) {
-    f(i);   
-};
-```
+Un ayuntamiento tiene una base de datos de 20.000 matrículas. Sobre estos datos el número de consultas es abrumadoramente superior al número de altas o bajas, por lo que solo nos preocuparemos por las consultas. Tenemos varias opciones para su implementación:
+<ol>
+<li> Un array ordenado, de 20.000 elementos; </li>
+<li> Una tabla hash de con direccionamiento abierto (resolución interna de colisiones, sondeo por lista), de  20.000 posiciones; </li>
+<li> Una tabla hash con listas de desbordamiento y 8.192 (2^13) posiciones; </li>
+<li> Un árbol binario de búsqueda (BST). </li>
+</ol>
+
+
+- (a) (2,5 puntos) Para cada opción, indique los pros y los contras y elija razonadamente la estructura de datos que recomienda para el ayuntamiento. Debe argumentar en términos de espacio ocupado en memoria y del tiempo de búsqueda.
 
 ??? note "Mostrar solución"
-    El bucle se ejecuta n veces, y el tiempo de ejecución de f es constante, por lo que la complejidad es n*O(1) = O(n).
+    1. Pro: Ocupa la memoria imprescindible, sin nada extra; Tiempo $O(log n)$.
 
+    2. Pro: Ocupa la memoria imprescindible y un poco más si se guardan los hashes; Contra: El tiempo de acceso se dispara al llegar al 100% de ocupación y es inviable.
+    
+    3. Contra: Ocupa memoria para los datos, para la tabla de acceso y para las listas de desbordamiento; Pro: El tiempo de acceso probable es $O(1)$, si los hashes se distribuyen uniformemente y las listas tienen una longitud acotada a unas pocas matrículas (menos de una docena); Contra: Aunque en el improbable caso peor sería $O(n)$.
+    
+    4. Contra: Ocupa memoria para los datos y para los enlaces entre nodos; Pro: Velocidad de acceso probable $O(log n)$; Contra: Aunque en el improbable caso peor sería $O(n)$.
 
-- (b) (1,65 puntos) Razone la complejidad de: 
-```java
-for (int i = 1; i < n; i++) {
-    g(i);
-};
-```
-??? note "Mostrar solución"
-    Este bucle se ejecuta n veces, pero ahora el tiempo de ejecución de g es lineal respecto a n. Por tanto, la complejidad es N*O(N) = O(n2).
+    Óptimo:
 
+    - por memoria ocupada: (1) Array ordenado;
+    - por tiempo (probable) de acceso: (3) Tabla hash.
+    
+    Si la memoria no es un problema para 20.000 datos, la decisión se tomaría por tiempo de acceso: tabla hash (3).
+    
+    Si la memoria es la principal limitación, la mejor opción es el array ordenado (1).
 
-- (c) (1,65 puntos) Rrazone la complejidad de: 
-```java
-for (int i = 1; i < n; i++) {
-    for (int j = 1; j < i; j*=2) {
-        f(j);
-    };
-};
-```
-??? note "Mostrar solución"
-    El bucle exterior se ejecuta n veces, y el bucle interior se ejecuta log i veces. El tiempo de ejecución de f es constante, como antes. Por tanto la complejidad es O (N log N).

@@ -14,3 +14,6 @@ exercises:
 
 ## Problema 2
 {{ include("p1r_ex02.md") }}
+
+## Problema 3
+{{ include("p1r_ex03.md") }}
