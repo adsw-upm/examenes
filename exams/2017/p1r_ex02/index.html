@@ -2874,41 +2874,40 @@
 
   <h1>P1r ex02</h1>
 
-<p>Sabiendo que el tiempo de ejecución de la función f es constante y el de g es lineal con respecto a n.</p>
+<p>Un ayuntamiento tiene una base de datos de 20.000 matrículas. Sobre estos datos el número de consultas es abrumadoramente superior al número de altas o bajas, por lo que solo nos preocuparemos por las consultas. Tenemos varias opciones para su implementación:</p>
+<ol>
+<li> Un array ordenado, de 20.000 elementos; </li>
+<li> Una tabla hash de con direccionamiento abierto (resolución interna de colisiones, sondeo por lista), de  20.000 posiciones; </li>
+<li> Una tabla hash con listas de desbordamiento y 8.192 (2^13) posiciones; </li>
+<li> Un árbol binario de búsqueda (BST). </li>
+</ol>
+
 <ul>
-<li>(a) (1,65 puntos) Razone la complejidad de: 
-<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">   </span>
-<span class="p">};</span>
-</code></pre></div></li>
+<li>(a) (2,5 puntos) Para cada opción, indique los pros y los contras y elija razonadamente la estructura de datos que recomienda para el ayuntamiento. Debe argumentar en términos de espacio ocupado en memoria y del tiempo de búsqueda.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>El bucle se ejecuta n veces, y el tiempo de ejecución de f es constante, por lo que la complejidad es n*O(1) = O(n).</p>
-</details>
+<ol>
+<li>
+<p>Pro: Ocupa la memoria imprescindible, sin nada extra; Tiempo <span class="arithmatex">\(O(log n)\)</span>.</p>
+</li>
+<li>
+<p>Pro: Ocupa la memoria imprescindible y un poco más si se guardan los hashes; Contra: El tiempo de acceso se dispara al llegar al 100% de ocupación y es inviable.</p>
+</li>
+<li>
+<p>Contra: Ocupa memoria para los datos, para la tabla de acceso y para las listas de desbordamiento; Pro: El tiempo de acceso probable es <span class="arithmatex">\(O(1)\)</span>, si los hashes se distribuyen uniformemente y las listas tienen una longitud acotada a unas pocas matrículas (menos de una docena); Contra: Aunque en el improbable caso peor sería <span class="arithmatex">\(O(n)\)</span>.</p>
+</li>
+<li>
+<p>Contra: Ocupa memoria para los datos y para los enlaces entre nodos; Pro: Velocidad de acceso probable <span class="arithmatex">\(O(log n)\)</span>; Contra: Aunque en el improbable caso peor sería <span class="arithmatex">\(O(n)\)</span>.</p>
+</li>
+</ol>
+<p>Óptimo:</p>
 <ul>
-<li>(b) (1,65 puntos) Razone la complejidad de: 
-<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">g</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-<span class="p">};</span>
-</code></pre></div></li>
+<li>por memoria ocupada: (1) Array ordenado;</li>
+<li>por tiempo (probable) de acceso: (3) Tabla hash.</li>
 </ul>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>Este bucle se ejecuta n veces, pero ahora el tiempo de ejecución de g es lineal respecto a n. Por tanto, la complejidad es N*O(N) = O(n2).</p>
-</details>
-<ul>
-<li>(c) (1,65 puntos) Rrazone la complejidad de: 
-<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">*=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">f</span><span class="p">(</span><span class="n">j</span><span class="p">);</span>
-<span class="w">    </span><span class="p">};</span>
-<span class="p">};</span>
-</code></pre></div></li>
-</ul>
-<details class="note">
-<summary>Mostrar solución</summary>
-<p>El bucle exterior se ejecuta n veces, y el bucle interior se ejecuta log i veces. El tiempo de ejecución de f es constante, como antes. Por tanto la complejidad es O (N log N).</p>
+<p>Si la memoria no es un problema para 20.000 datos, la decisión se tomaría por tiempo de acceso: tabla hash (3).</p>
+<p>Si la memoria es la principal limitación, la mejor opción es el array ordenado (1).</p>
 </details>
 
 
