@@ -2874,30 +2874,50 @@
 
   <h1>P1 ex01</h1>
 
-<p>En un proyecto se necesita programar una clase que represente un conjunto de palabras (String), sin que haya duplicados almacenados. Con este fin se realizan dos fases: fase 1 de carga de todas las palabras, con un método</p>
-<p>public void put (String palabra)</p>
-<p>y fase 2 de consulta, con un método</p>
-<p>boolean get (String palabra)</p>
-<p>que devuelve TRUE si, y solo si, la palabra dada como parámetro está en el diccionario.</p>
-<p>Se proponen varias opciones:
-    - 1) Las palabras se meten en un array, una tras otra; al acabar la fase 1, el array se ordena y se eliminan los duplicados, pasando a la fase 2 donde se usa el array sin duplicados.
-    - 2) Las palabras se meten en un diccionario implementado con una tabla hash, de forma que solo hay que almacenar la clave (es decir la palabra); si la clave está en el diccionario, get() devuelve TRUE.
-    - 3) Se combinan las opciones anteriores: las palabras (1) se meten en un array, (2) se ordena el array, (3) se eliminan duplicados, (4) los datos del array se cargan en un diccionario implementado con una tabla hash y (5) el método get() devuelve TRUE si, y solo si, la palabra está en el diccionario.</p>
+<p>En un proyecto se necesita programar una clase que represente un conjunto de palabras (<code>String</code>), sin que haya duplicados almacenados. Con este fin se realizan dos fases:</p>
+<ol>
+<li>
+<p><strong>fase 1</strong> de carga de todas las palabras, con un método:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">palabra</span><span class="p">)</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>fase 2</strong> de consulta, con un método:
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="nf">get</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">palabra</span><span class="p">)</span>
+</code></pre></div>
+que devuelve <code>TRUE</code> si, y solo si, la palabra dada como parámetro está en el diccionario.</p>
+</li>
+</ol>
+<p>Se proponen varias opciones:</p>
+<ol>
+<li> Las palabras se meten en un array, una tras otra; al acabar la **fase 1**, el array se ordena y se eliminan los duplicados, pasando a la **fase 2** donde se usa el array sin duplicados. </li>
+
+<li> Las palabras se meten en un diccionario implementado con una tabla hash, de forma que solo hay que almacenar la clave (es decir la palabra); si la clave está en el diccionario, `get()` devuelve `TRUE`. </li>
+
+<li> Se combinan las opciones anteriores: las palabras (1) se meten en un array, (2) se ordena el array, (3) se eliminan duplicados, (4) los datos del array se cargan en un diccionario implementado con una tabla hash y (5) el método `get()` devuelve `TRUE` si, y solo si, la palabra está en el diccionario. </li>
+</ol>
+
 <ul>
-<li>(a) (2,5 puntos) Razone la complejidad de los métodos put() y get() en cada una de las opciones propuestos.</li>
+<li>(a) (2,5 puntos) Razone la complejidad de los métodos <code>put()</code> y <code>get()</code> en cada una de las opciones propuestos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>1)Fase 1: O(insertar al final del array n veces) + O(ordenar) + O(borrar duplicados) = O(n) + O(nlogn) + O(n)</p>
-<p>= O(nlog n).</p>
-<p>Fase 2: O(búsqueda array ordenado) = O(logn)</p>
-<p>2) Fase 1: O(insertar n veces) = O(n)</p>
-<p>Fase 2: O(1)</p>
-<p>3) Fase 1 = a) + O(transferir array→ hash) = O(nlogn) + O(n) = O(nlogn)</p>
-<p>Fase 2 = O(1)</p>
+<ol>
+<li><strong>Fase 1</strong>: <span class="arithmatex">\(O(\)</span>insertar al final del array <span class="arithmatex">\(n\)</span> veces<span class="arithmatex">\() + O(\)</span>ordenar<span class="arithmatex">\() + O(\)</span>borrar duplicados<span class="arithmatex">\() = O(n) + O(nlogn) + O(n)\)</span></li>
+</ol>
+<p><span class="arithmatex">\(= O(nlog n)\)</span></p>
+<p><strong>Fase 2</strong>: <span class="arithmatex">\(O(\)</span>búsqueda array ordenado<span class="arithmatex">\() = O(logn)\)</span></p>
+<ol>
+<li><strong>Fase 1</strong>: <span class="arithmatex">\(O(\)</span>insertar <span class="arithmatex">\(n\)</span> veces<span class="arithmatex">\() = O(n)\)</span></li>
+</ol>
+<p><strong>Fase 2</strong>: <span class="arithmatex">\(O(1)\)</span></p>
+<ol>
+<li><strong>Fase 1</strong> <span class="arithmatex">\(= (1) + O(\)</span>transferir array <span class="arithmatex">\(\rightarrow\)</span> hash<span class="arithmatex">\() = O(nlogn) + O(n) = O(nlogn)\)</span></li>
+</ol>
+<p><strong>Fase 2</strong> <span class="arithmatex">\(= O(1)\)</span></p>
 </details>
 <ul>
-<li>(b) (2,5 puntos) Escriba el método public void put(String palabra) modificando el método public void put(String clave, String valor) del ejercicio 2 para que tenga la funcionalidad solicitada, usando internamente una tabla hash. Puede utilizar como base el código que aparece a continuación, rellenando los espacios que se indican.</li>
+<li>(b) (2,5 puntos) Escriba el método <code>public void put(String palabra)</code> modificando el método <code>public void put(String clave, String valor)</code> del ejercicio 2 para que tenga la funcionalidad solicitada, usando internamente una tabla hash. Puede utilizar como base el código que aparece a continuación, rellenando los espacios que se indican.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HashListas</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">slots</span><span class="p">;</span><span class="w"> </span><span class="c1">// slots de la tabla Hash</span>
