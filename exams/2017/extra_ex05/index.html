@@ -2875,53 +2875,52 @@
   <h1>Extra ex05</h1>
 
 <ul>
-<li>(a) (?? puntos) ¿A qué orden de complejidad se debería aproximar la gráfica de tiempo de ejecución para los métodos de
-ordenación por inserción y mezcla (merge sort ) ?</li>
+<li>(a) (?? puntos) ¿A qué orden de complejidad se debería aproximar la gráfica de tiempo de ejecución para los métodos de ordenación por inserción y mezcla (<em>merge sort</em>)?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Inserción: O(n2); Mezcla: O(n·log n).</p>
+<p>Inserción: <span class="arithmatex">\(O(n^2)\)</span>; Mezcla: <span class="arithmatex">\(O(n·log n)\)</span>.</p>
 </details>
 <ul>
-<li>(b) (?? puntos) La clase HashListas implementa tablas hash con listas de desbordamiento. En ella se define el método
+<li>(b) (?? puntos) La clase <code>HashListas</code> implementa tablas hash con listas de desbordamiento. En ella se define el método
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">){...}</span>
 </code></pre></div>
 ¿Para qué se usa este método?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Para calcular la posición del array que contiene la lista donde se almacena (o se podría almacenar) el elemento de clave s.</p>
+<p>Para calcular la posición del array que contiene la lista donde se almacena (o se podría almacenar) el elemento de clave <code>s</code>.</p>
 </details>
 <ul>
-<li>(c) (?? puntos) En este ejercicio se usa un diccionario para almacenar palabras de un texto y el número de veces que aparecen. Una de las operaciones que se efectúan consiste en imprimir una lista con las n palabras más (o menos) usadas (método getTop()). En el ejercicio esto se implementa copiando los valores del diccionario a un array, que se ordena según el criterio elegido. Cuando se dice que esto se hace con “evaluación perezosa”, ¿qué significa esta expresión?</li>
+<li>(c) (?? puntos) En este ejercicio se usa un diccionario para almacenar palabras de un texto y el número de veces que aparecen. Una de las operaciones que se efectúan consiste en imprimir una lista con las n palabras más (o menos) usadas (método <code>getTop()</code>). En el ejercicio esto se implementa copiando los valores del diccionario a un array, que se ordena según el criterio elegido. Cuando se dice que esto se hace con “evaluación perezosa”, ¿qué significa esta expresión?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Que el array no se ordena hasta que es necesario, es decir hasta que se llama a getTop o a countBelow.</p>
+<p>Que el array no se ordena hasta que es necesario, es decir hasta que se llama a <code>getTop</code> o a <code>countBelow</code>.</p>
 </details>
 <ul>
-<li>(d) (?? puntos) En este ejercicio se usa una cola de paquetes que se puede implementar como un array o una lista. La cola está incluida en una clase, TsRouter, que tiene dos métodos públicos, send y get, que respectivamente añaden y recuperan paquetes de la cola. ¿Tienen que ser sincronizados estos métodos? ¿Por qué?</li>
+<li>(d) (?? puntos) En este ejercicio se usa una cola de paquetes que se puede implementar como un array o una lista. La cola está incluida en una clase, <code>TsRouter</code>, que tiene dos métodos públicos, <code>send</code> y <code>get</code>, que respectivamente añaden y recuperan paquetes de la cola. ¿Tienen que ser sincronizados estos métodos? ¿Por qué?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Sí, porque acceden a la cola, que es un objeto compartido por todas las hebras.</p>
 </details>
 <ul>
-<li>(e) (?? puntos) En este ejercicio se utiliza sincronización de lectores y escritores para acceder a una estructura de datos compartida, la lista de manzanas del juego de la serpiente, encapsulada en la clase AppleListMonitor. ¿Qué cambios habría que hacer en esta clase para cambiar la sincronización de lectores y escritores por exclusión mutua?</li>
+<li>(e) (?? puntos) En este ejercicio se utiliza sincronización de lectores y escritores para acceder a una estructura de datos compartida, la lista de manzanas del juego de la serpiente, encapsulada en la clase <code>AppleListMonitor</code>. ¿Qué cambios habría que hacer en esta clase para cambiar la sincronización de lectores y escritores por exclusión mutua?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Bastaría con suprimir las referencias a monitor.openReading / monitor.closeReading y a monitor.openWriting / monitor.closeWriting y hacer sincronizados todos los métodos de AppleListMonitor.</p>
+<p>Bastaría con suprimir las referencias a <code>monitor.openReading</code> / <code>monitor.closeReading</code> y a <code>monitor.openWriting</code> / <code>monitor.closeWriting</code> y hacer sincronizados todos los métodos de <code>AppleListMonitor</code>.</p>
 </details>
 <ul>
-<li>(f) (?? puntos) En este ejercicio se utiliza un widget de tipo Button para lanzar el cálculo del índice de masa corporal. ¿Cómo se especifica qué método hay que ejecutar cuando se pulsa el botón?</li>
+<li>(f) (?? puntos) En este ejercicio se utiliza un <em>widget</em> de tipo <code>Button</code> para lanzar el cálculo del índice de masa corporal. ¿Cómo se especifica qué método hay que ejecutar cuando se pulsa el botón?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Se puede hacer de dos maneras: poniendo un atributo
 <div class="highlight"><pre><span></span><code><span class="nl">Android</span><span class="p">:</span><span class="n">onClick</span><span class="o">=</span><span class="err">”</span><span class="n">método</span><span class="err">”</span>
 </code></pre></div>
-en el layout correspondiente, o bien en Java, implementando la interfaz OnClickListener:
+en el <code>layout</code> correspondiente, o bien en Java, implementando la interfaz <code>OnClickListener</code>:
 <div class="highlight"><pre><span></span><code><span class="n">button</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nd">@Override</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>

@@ -2865,7 +2865,7 @@
       
       
       
-        <span class="md-tag">???</span>
+        <span class="md-tag">hebras</span>
       
     
   </nav>
@@ -2882,8 +2882,8 @@
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">terminar</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Las aplicaciones se ejecutan concurrentemente, y llaman a guardar o a consultar antes de realizar una secuencia de operaciones de almacenar o recuperar informes, respectivamente. Cuando han terminado de realizar estas operaciones llaman a terminar. Puede haber varias aplicaciones consultando informes a la vez, pero no consultando y guardando, ni varias guardando a la vez.</p>
-<p>Los objetos de la clase Ingeniero son hebras que ejecutan repetidamente el siguiente código:</p>
+<p>Las aplicaciones se ejecutan concurrentemente, y llaman a <code>guardar</code> o a <code>consultar</code> antes de realizar una secuencia de operaciones de almacenar o recuperar informes, respectivamente. Cuando han terminado de realizar estas operaciones llaman a <code>terminar</code>. Puede haber varias aplicaciones consultando informes a la vez, pero no consultando y guardando, ni varias guardando a la vez.</p>
+<p>Los objetos de la clase <code>Ingeniero</code> son hebras que ejecutan repetidamente el siguiente código:</p>
 <div class="highlight"><pre><span></span><code><span class="n">datos</span><span class="p">.</span><span class="na">guardar</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">ndoc</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// generar informe y almacenarlo en la base de datos</span>
@@ -2898,7 +2898,7 @@
 <span class="n">datos</span><span class="p">.</span><span class="na">terminar</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
 </code></pre></div>
 <ul>
-<li>(a) (4 puntos) Complete el código de la clase Datos de forma que se cumplan las condiciones del enunciado.</li>
+<li>(a) (4 puntos) Complete el código de la clase <code>Datos</code> de forma que se cumplan las condiciones del enunciado.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2934,7 +2934,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2 puntos) Escriba el código de una posible implementación de la clase Ingeniero para consultar datos.</li>
+<li>(b) (2 puntos) Escriba el código de una posible implementación de la clase <code>Ingeniero</code> para consultar datos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2957,11 +2957,11 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2 puntos) Analice si puede haber problemas de inanición (starvation) en el acceso a los datos y, si es así, ponga algún ejemplo (sin resolverlo).</li>
+<li>(c) (2 puntos) Analice si puede haber problemas de inanición (<em>starvation</em>) en el acceso a los datos y, si es así, ponga algún ejemplo (sin resolverlo).</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Como en el problema original, la solución dada puede dar lugar a inanición de los ingenieros que guardan informes. Por ejemplo, sin entran varios a consultar y antes de que terminen entran otros nuevos, esta situación se puede prolongar indefinidamente, no dejando acceder nunca a otros ingenieros que deseen guardar informes. Las solución es establecer turnos para dar prioridad, alternativamente, a los que guardan (escritores) y a los que consultan (lectores)</p>
+<p>Como en el problema original, la solución dada puede dar lugar a inanición de los ingenieros que guardan informes. Por ejemplo, sin entran varios a consultar y antes de que terminen entran otros nuevos, esta situación se puede prolongar indefinidamente, no dejando acceder nunca a otros ingenieros que deseen guardar informes. Las solución es establecer turnos para dar prioridad, alternativamente, a los que guardan (escritores) y a los que consultan (lectores).</p>
 </details>
 
 

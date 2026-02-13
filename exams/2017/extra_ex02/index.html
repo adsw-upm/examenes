@@ -2874,7 +2874,7 @@
 
   <h1>Extra ex02</h1>
 
-<p>La clase RegistroDatos, permite almacenar los datos producidos por un conjunto de sensores. Los datos producidos por los sensores se envían como objetos de la clase Dato, cuya estructura se muestra a continuación:</p>
+<p>La clase <code>RegistroDatos</code> permite almacenar los datos producidos por un conjunto de sensores. Los datos producidos por los sensores se envían como objetos de la clase <code>Dato</code>, cuya estructura se muestra a continuación:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Dato</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Dato</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">   </span><span class="c1">// Identificador único del sensor que ha generado el dato</span>
@@ -2883,8 +2883,8 @@
 <span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="c1">//Contiene constructor, getters, y setters</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>La clase RegistroDatos guarda los datos recibidos en un array (private List<Dato> []datos). Cada dato se guarda en la posición del array que se obtiene aplicando el método hashCode de la clase String al identificador único del sensor que ha producido el dato y adaptando el resultado al tamaño del array datos. </p>
-<p>Además, se lleva una cuenta del número de datos que ha generado cada sensor, mediante el atributo cuentaDatos (private Map <String, Registro> cuentaDatos), usando como clave el identificador único del sensor que ha producido el dato y como valor un objeto de la clase Registro, cuya estructura se muestra a continuación:</p>
+<p>La clase <code>RegistroDatos</code> guarda los datos recibidos en un array <code>(private List&lt;Dato&gt; []datos)</code>. Cada dato se guarda en la posición del array que se obtiene aplicando el método <code>hashCode</code> de la clase <code>String</code> al identificador único del sensor que ha producido el dato y adaptando el resultado al tamaño del array datos. </p>
+<p>Además, se lleva una cuenta del número de datos que ha generado cada sensor, mediante el atributo <code>cuentaDatos</code> (<code>private Map &lt;String, Registro&gt; cuentaDatos</code>), usando como clave el identificador único del sensor que ha producido el dato y como valor un objeto de la clase <code>Registro</code>, cuya estructura se muestra a continuación:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Registro</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Registro</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">;</span><span class="w"> </span><span class="c1">// Identificador único del sensor</span>
@@ -2893,7 +2893,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(a) (5 puntos) Se pide completar los métodos Constructor, put, getDatos, size y countAbove de la clase RegistroDatos. El esqueleto de la se muestra a continuación:</li>
+<li>(a) (5 puntos) Se pide completar los métodos <code>Constructor</code>, <code>put</code>, <code>getDatos</code>, <code>size</code> y <code>countAbove</code> de la clase <code>RegistroDatos</code>. El esqueleto de la se muestra a continuación:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RegistroDatos</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Dato</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">datos</span><span class="p">;</span>

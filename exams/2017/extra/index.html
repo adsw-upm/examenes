@@ -3096,18 +3096,32 @@
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Se supone declarada una clase, llamémosla Contadores, con cuatro atributos enteros de valor inicial cero, que se van a usar para contar del número de cada tipo de base que hay, desde el principio del genoma hasta un punto dado. Y se supone también que tenemos un array, llamémosle ultimas300, que mantiene el valor de los cuatro contadores para cada uno de los últimos 300 puntos del genoma que hemos visitado, según lo exploramos desde el principio hasta el final de su cadena de bases.</p>
-<p>El algoritmo es:
-    1) Ir leyendo de un fichero el genoma base a base desde el principio hasta su posición 299, actualizando los contadores de ultimas300 en las posiciones 0-298.
-    2) Leer la siguiente base del genoma, incrementar el contador correspondiente a esa base en la última posición actualizada del array en una unidad, y guardar los cuatro valores actuales en la siguiente posición de ultimas300, manejando este array de manera circular (la posición siguiente a la 299 es la cero).
-    3) Restar de los cuatro contadores actuales los contadores que están en el array 299 posiciones antes (de manera circular también). Si uno de esos cuatro valores es menor que 60 (=300/4*0.8), hemos encontrado un gen y lo imprimimos.
-    4) Si aún quedan bases por leer en el genoma, volvemos al punto 2). En otro caso, hemos acabado el algoritmo.</p>
-<p>La complejidad en espacio es constante, pues el tamaño de ultimas300 es fijo, no depende del tamaño del genoma. En cuanto a la complejidad en tiempo, la parte 1) es también constante, ya que tampoco depende del tamaño del genoma. Mientras que las partes 2), 3) y 4) se ejecutan una vez por cada base del genoma (exceptuando las 299 primeras, valor constante). Y como resulta que esas tres partes tienen una complejidad constante, se tiene:</p>
-<p>C1 + C2<em>O(n-299) + C3</em>O(n-299) + C4<em>O(n-299) = (C1 - 299</em>(C2+C3+C4)) + (C2+C3+C4)<em>O(n) = C5 + C6</em>O(n) = C6*O(n) = O(n)</p>
+<p>Se supone declarada una clase, llamémosla <code>Contadores</code>, con cuatro atributos enteros de valor inicial cero, que se van a usar para contar del número de cada tipo de base que hay, desde el principio del genoma hasta un punto dado. Y se supone también que tenemos un array, llamémosle <code>ultimas300</code>, que mantiene el valor de los cuatro contadores para cada uno de los últimos 300 puntos del genoma que hemos visitado, según lo exploramos desde el principio hasta el final de su cadena de bases.</p>
+<p>El algoritmo es:</p>
+<ol>
+<li>
+<p>Ir leyendo de un fichero el genoma base a base desde el principio hasta su posición 299, actualizando los contadores de <code>ultimas300</code> en las posiciones 0-298.</p>
+</li>
+<li>
+<p>Leer la siguiente base del genoma, incrementar el contador correspondiente a esa base en la última posición actualizada del array en una unidad, y guardar los cuatro valores actuales en la siguiente posición de <code>ultimas300</code>, manejando este array de manera circular (la posición siguiente a la 299 es la cero).</p>
+</li>
+<li>
+<p>Restar de los cuatro contadores actuales los contadores que están en el array 299 posiciones antes (de manera circular también). Si uno de esos cuatro valores es menor que 60 (=300/4*0.8), hemos encontrado un gen y lo imprimimos.</p>
+</li>
+<li>
+<p>Si aún quedan bases por leer en el genoma, volvemos al punto (2). En otro caso, hemos acabado el algoritmo.</p>
+</li>
+</ol>
+<p>La complejidad en espacio es constante, pues el tamaño de <code>ultimas300</code> es fijo, no depende del tamaño del genoma. En cuanto a la complejidad en tiempo, la parte (1) es también constante, ya que tampoco depende del tamaño del genoma. Mientras que las partes (2), (3) y (4) se ejecutan una vez por cada base del genoma (exceptuando las 299 primeras, valor constante). Y como resulta que esas tres partes tienen una complejidad constante, se tiene:</p>
+<p><span class="arithmatex">\(C1 + C2*O(n-299) + C3*O(n-299) + C4*O(n-299)\)</span></p>
+<p><span class="arithmatex">\(= (C1 - 299*(C2+C3+C4)) + (C2+C3+C4)*O(n)\)</span></p>
+<p><span class="arithmatex">\(= C5 + C6*O(n)\)</span> </p>
+<p><span class="arithmatex">\(= C6*O(n)\)</span> </p>
+<p><span class="arithmatex">\(= O(n)\)</span></p>
 <p>Es decir, el algoritmo tiene una complejidad lineal en el tiempo.</p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>La clase RegistroDatos, permite almacenar los datos producidos por un conjunto de sensores. Los datos producidos por los sensores se envían como objetos de la clase Dato, cuya estructura se muestra a continuación:</p>
+<p>La clase <code>RegistroDatos</code> permite almacenar los datos producidos por un conjunto de sensores. Los datos producidos por los sensores se envían como objetos de la clase <code>Dato</code>, cuya estructura se muestra a continuación:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Dato</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Dato</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">   </span><span class="c1">// Identificador único del sensor que ha generado el dato</span>
@@ -3116,8 +3130,8 @@
 <span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="c1">//Contiene constructor, getters, y setters</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>La clase RegistroDatos guarda los datos recibidos en un array (private List<Dato> []datos). Cada dato se guarda en la posición del array que se obtiene aplicando el método hashCode de la clase String al identificador único del sensor que ha producido el dato y adaptando el resultado al tamaño del array datos. </p>
-<p>Además, se lleva una cuenta del número de datos que ha generado cada sensor, mediante el atributo cuentaDatos (private Map <String, Registro> cuentaDatos), usando como clave el identificador único del sensor que ha producido el dato y como valor un objeto de la clase Registro, cuya estructura se muestra a continuación:</p>
+<p>La clase <code>RegistroDatos</code> guarda los datos recibidos en un array <code>(private List&lt;Dato&gt; []datos)</code>. Cada dato se guarda en la posición del array que se obtiene aplicando el método <code>hashCode</code> de la clase <code>String</code> al identificador único del sensor que ha producido el dato y adaptando el resultado al tamaño del array datos. </p>
+<p>Además, se lleva una cuenta del número de datos que ha generado cada sensor, mediante el atributo <code>cuentaDatos</code> (<code>private Map &lt;String, Registro&gt; cuentaDatos</code>), usando como clave el identificador único del sensor que ha producido el dato y como valor un objeto de la clase <code>Registro</code>, cuya estructura se muestra a continuación:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Registro</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Registro</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">;</span><span class="w"> </span><span class="c1">// Identificador único del sensor</span>
@@ -3126,7 +3140,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(a) (5 puntos) Se pide completar los métodos Constructor, put, getDatos, size y countAbove de la clase RegistroDatos. El esqueleto de la se muestra a continuación:</li>
+<li>(a) (5 puntos) Se pide completar los métodos <code>Constructor</code>, <code>put</code>, <code>getDatos</code>, <code>size</code> y <code>countAbove</code> de la clase <code>RegistroDatos</code>. El esqueleto de la se muestra a continuación:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RegistroDatos</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Dato</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">datos</span><span class="p">;</span>
@@ -3274,8 +3288,8 @@
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">terminar</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Las aplicaciones se ejecutan concurrentemente, y llaman a guardar o a consultar antes de realizar una secuencia de operaciones de almacenar o recuperar informes, respectivamente. Cuando han terminado de realizar estas operaciones llaman a terminar. Puede haber varias aplicaciones consultando informes a la vez, pero no consultando y guardando, ni varias guardando a la vez.</p>
-<p>Los objetos de la clase Ingeniero son hebras que ejecutan repetidamente el siguiente código:</p>
+<p>Las aplicaciones se ejecutan concurrentemente, y llaman a <code>guardar</code> o a <code>consultar</code> antes de realizar una secuencia de operaciones de almacenar o recuperar informes, respectivamente. Cuando han terminado de realizar estas operaciones llaman a <code>terminar</code>. Puede haber varias aplicaciones consultando informes a la vez, pero no consultando y guardando, ni varias guardando a la vez.</p>
+<p>Los objetos de la clase <code>Ingeniero</code> son hebras que ejecutan repetidamente el siguiente código:</p>
 <div class="highlight"><pre><span></span><code><span class="n">datos</span><span class="p">.</span><span class="na">guardar</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">ndoc</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// generar informe y almacenarlo en la base de datos</span>
@@ -3290,7 +3304,7 @@
 <span class="n">datos</span><span class="p">.</span><span class="na">terminar</span><span class="p">(</span><span class="n">clave</span><span class="p">);</span>
 </code></pre></div>
 <ul>
-<li>(a) (4 puntos) Complete el código de la clase Datos de forma que se cumplan las condiciones del enunciado.</li>
+<li>(a) (4 puntos) Complete el código de la clase <code>Datos</code> de forma que se cumplan las condiciones del enunciado.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3326,7 +3340,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2 puntos) Escriba el código de una posible implementación de la clase Ingeniero para consultar datos.</li>
+<li>(b) (2 puntos) Escriba el código de una posible implementación de la clase <code>Ingeniero</code> para consultar datos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3349,19 +3363,19 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2 puntos) Analice si puede haber problemas de inanición (starvation) en el acceso a los datos y, si es así, ponga algún ejemplo (sin resolverlo).</li>
+<li>(c) (2 puntos) Analice si puede haber problemas de inanición (<em>starvation</em>) en el acceso a los datos y, si es así, ponga algún ejemplo (sin resolverlo).</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Como en el problema original, la solución dada puede dar lugar a inanición de los ingenieros que guardan informes. Por ejemplo, sin entran varios a consultar y antes de que terminen entran otros nuevos, esta situación se puede prolongar indefinidamente, no dejando acceder nunca a otros ingenieros que deseen guardar informes. Las solución es establecer turnos para dar prioridad, alternativamente, a los que guardan (escritores) y a los que consultan (lectores)</p>
+<p>Como en el problema original, la solución dada puede dar lugar a inanición de los ingenieros que guardan informes. Por ejemplo, sin entran varios a consultar y antes de que terminen entran otros nuevos, esta situación se puede prolongar indefinidamente, no dejando acceder nunca a otros ingenieros que deseen guardar informes. Las solución es establecer turnos para dar prioridad, alternativamente, a los que guardan (escritores) y a los que consultan (lectores).</p>
 </details>
 <h2 id="problema-4">Problema 4</h2>
-<p>Se dispone de una aplicación Android para la consulta de notas por parte de los alumnos. La aplicación consta de dos pantallas, denominadas MainActivity y ResultActivity.</p>
-<p>En la primera pantalla (MainActivity), el usuario introduce su identificación (nombre y apellidos) y el código numérico de la asignatura a consultar. Dispone de un botón con el texto “Consultar” que, al pulsarse, pasa a la segunda pantalla ResultActivity, mediante un Intent con la información de identificación del alumno y el código de la asignatura. La primera pantalla dispone de un layout en el que se dispone de dos EditText, uno para el nombre y otro para el código, mas el botón para realizar la consulta.</p>
-<p>En la segunda pantalla (ResultActivity), se consultará la base de datos de notas y se presentará la nota obtenida.</p>
+<p>Se dispone de una aplicación Android para la consulta de notas por parte de los alumnos. La aplicación consta de dos pantallas, denominadas <code>MainActivity</code> y <code>ResultActivity</code>.</p>
+<p>En la primera pantalla (<code>MainActivity</code>), el usuario introduce su identificación (nombre y apellidos) y el código numérico de la asignatura a consultar. Dispone de un botón con el texto 'Consultar' que, al pulsarse, pasa a la segunda pantalla <code>ResultActivity</code>, mediante un <code>Intent</code> con la información de identificación del alumno y el código de la asignatura. La primera pantalla dispone de un <code>layout</code> en el que se dispone de dos <code>EditText</code>, uno para el nombre y otro para el código, mas el botón para realizar la consulta.</p>
+<p>En la segunda pantalla (<code>ResultActivity</code>), se consultará la base de datos de notas y se presentará la nota obtenida.</p>
 <p>Esta pantalla no es de nuestro interés.</p>
 <ul>
-<li>(a) (1 punto) Completar el código del método onCreate de la clase MainActivity.</li>
+<li>(a) (1 punto) Completar el código del método <code>onCreat</code>e de la clase <code>MainActivity</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3399,7 +3413,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (1 punto) Indicar los métodos del ciclo de vida que se invocarán de la actividad MainActivity y ResultActivity en el orden correcto.</li>
+<li>(b) (1 punto) Indicar los métodos del ciclo de vida que se invocarán de la actividad <code>MainActivity</code> y <code>ResultActivity</code> en el orden correcto.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3414,53 +3428,52 @@
 </details>
 <h2 id="problema-5">Problema 5</h2>
 <ul>
-<li>(a) (?? puntos) ¿A qué orden de complejidad se debería aproximar la gráfica de tiempo de ejecución para los métodos de
-ordenación por inserción y mezcla (merge sort ) ?</li>
+<li>(a) (?? puntos) ¿A qué orden de complejidad se debería aproximar la gráfica de tiempo de ejecución para los métodos de ordenación por inserción y mezcla (<em>merge sort</em>)?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Inserción: O(n2); Mezcla: O(n·log n).</p>
+<p>Inserción: <span class="arithmatex">\(O(n^2)\)</span>; Mezcla: <span class="arithmatex">\(O(n·log n)\)</span>.</p>
 </details>
 <ul>
-<li>(b) (?? puntos) La clase HashListas implementa tablas hash con listas de desbordamiento. En ella se define el método
+<li>(b) (?? puntos) La clase <code>HashListas</code> implementa tablas hash con listas de desbordamiento. En ella se define el método
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">){...}</span>
 </code></pre></div>
 ¿Para qué se usa este método?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Para calcular la posición del array que contiene la lista donde se almacena (o se podría almacenar) el elemento de clave s.</p>
+<p>Para calcular la posición del array que contiene la lista donde se almacena (o se podría almacenar) el elemento de clave <code>s</code>.</p>
 </details>
 <ul>
-<li>(c) (?? puntos) En este ejercicio se usa un diccionario para almacenar palabras de un texto y el número de veces que aparecen. Una de las operaciones que se efectúan consiste en imprimir una lista con las n palabras más (o menos) usadas (método getTop()). En el ejercicio esto se implementa copiando los valores del diccionario a un array, que se ordena según el criterio elegido. Cuando se dice que esto se hace con “evaluación perezosa”, ¿qué significa esta expresión?</li>
+<li>(c) (?? puntos) En este ejercicio se usa un diccionario para almacenar palabras de un texto y el número de veces que aparecen. Una de las operaciones que se efectúan consiste en imprimir una lista con las n palabras más (o menos) usadas (método <code>getTop()</code>). En el ejercicio esto se implementa copiando los valores del diccionario a un array, que se ordena según el criterio elegido. Cuando se dice que esto se hace con “evaluación perezosa”, ¿qué significa esta expresión?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Que el array no se ordena hasta que es necesario, es decir hasta que se llama a getTop o a countBelow.</p>
+<p>Que el array no se ordena hasta que es necesario, es decir hasta que se llama a <code>getTop</code> o a <code>countBelow</code>.</p>
 </details>
 <ul>
-<li>(d) (?? puntos) En este ejercicio se usa una cola de paquetes que se puede implementar como un array o una lista. La cola está incluida en una clase, TsRouter, que tiene dos métodos públicos, send y get, que respectivamente añaden y recuperan paquetes de la cola. ¿Tienen que ser sincronizados estos métodos? ¿Por qué?</li>
+<li>(d) (?? puntos) En este ejercicio se usa una cola de paquetes que se puede implementar como un array o una lista. La cola está incluida en una clase, <code>TsRouter</code>, que tiene dos métodos públicos, <code>send</code> y <code>get</code>, que respectivamente añaden y recuperan paquetes de la cola. ¿Tienen que ser sincronizados estos métodos? ¿Por qué?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Sí, porque acceden a la cola, que es un objeto compartido por todas las hebras.</p>
 </details>
 <ul>
-<li>(e) (?? puntos) En este ejercicio se utiliza sincronización de lectores y escritores para acceder a una estructura de datos compartida, la lista de manzanas del juego de la serpiente, encapsulada en la clase AppleListMonitor. ¿Qué cambios habría que hacer en esta clase para cambiar la sincronización de lectores y escritores por exclusión mutua?</li>
+<li>(e) (?? puntos) En este ejercicio se utiliza sincronización de lectores y escritores para acceder a una estructura de datos compartida, la lista de manzanas del juego de la serpiente, encapsulada en la clase <code>AppleListMonitor</code>. ¿Qué cambios habría que hacer en esta clase para cambiar la sincronización de lectores y escritores por exclusión mutua?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Bastaría con suprimir las referencias a monitor.openReading / monitor.closeReading y a monitor.openWriting / monitor.closeWriting y hacer sincronizados todos los métodos de AppleListMonitor.</p>
+<p>Bastaría con suprimir las referencias a <code>monitor.openReading</code> / <code>monitor.closeReading</code> y a <code>monitor.openWriting</code> / <code>monitor.closeWriting</code> y hacer sincronizados todos los métodos de <code>AppleListMonitor</code>.</p>
 </details>
 <ul>
-<li>(f) (?? puntos) En este ejercicio se utiliza un widget de tipo Button para lanzar el cálculo del índice de masa corporal. ¿Cómo se especifica qué método hay que ejecutar cuando se pulsa el botón?</li>
+<li>(f) (?? puntos) En este ejercicio se utiliza un <em>widget</em> de tipo <code>Button</code> para lanzar el cálculo del índice de masa corporal. ¿Cómo se especifica qué método hay que ejecutar cuando se pulsa el botón?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Se puede hacer de dos maneras: poniendo un atributo
 <div class="highlight"><pre><span></span><code><span class="nl">Android</span><span class="p">:</span><span class="n">onClick</span><span class="o">=</span><span class="err">”</span><span class="n">método</span><span class="err">”</span>
 </code></pre></div>
-en el layout correspondiente, o bien en Java, implementando la interfaz OnClickListener:
+en el <code>layout</code> correspondiente, o bien en Java, implementando la interfaz <code>OnClickListener</code>:
 <div class="highlight"><pre><span></span><code><span class="n">button</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OnClickListener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nd">@Override</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onClick</span><span class="p">(</span><span class="n">View</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
