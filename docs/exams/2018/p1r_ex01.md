@@ -6,51 +6,52 @@ tags:
  - complejidad
 ---
 
-Dado un conjunto P de puntos en un plano de 2 dimensiones, necesitamos calcular el subconjunto de P tal que una banda elástica alrededor de ellos no deja a ningún punto fuera.
+Dado un conjunto `P` de puntos en un plano de 2 dimensiones, necesitamos calcular el subconjunto de `P` tal que una banda elástica alrededor de ellos no deja a ningún punto fuera.
 
-En geometría, a este subconjunto se le denomina envolvente convexa (convex hull). Una de sus propiedades es que si enumeramos los puntos según las agujas del reloj (L1, L2, …, Ln) todos los pares de segmentos consecutivos van girando hacia la derecha. Por ejemplo, L1-L2 está girado a la derecha en comparación con L0-L1.
+En geometría, a este subconjunto se le denomina envolvente convexa (*convex hull*). Una de sus propiedades es que si enumeramos los puntos según las agujas del reloj (`L1, L2, ..., Ln`) todos los pares de segmentos consecutivos van girando hacia la derecha. Por ejemplo, `L1-L2` está girado a la derecha en comparación con `L0-L1`.
 
 En Internet hemos encontrado este algoritmo (Andrew, 1979) que divide el problema en 2 partes. Calcula la envolvente superior, luego la inferior, y las une.
 
-El algoritmo es como sigue para un conjunto de N puntos:
-    - 1. Se ordenan los puntos P en orden creciente de coordenada X y, si tienen el mismo X, en orden creciente de coordenada Y.
-    - 2. Se prepara una lista UPPER con los 2 primeros puntos, L0 y L1
-    - 3. Para i entre 2 y N,
-        - I. se añade Li a la lista UPPER
-        - II. mientras los 3 últimos puntos en la lista UPPER hagan un giro a la izquierda, se elimina el punto intermedio de esos 3
-    - 4. Se prepara una lista LOWER con los 2 últimos puntos L(n-1), L(n-2)
-    - 5. Para i entre N-3 y 0, descendiendo,
-        - I. se añade Li a la lista LOWER
-        - II. mientras los 3 últimos puntos en la lista LOWER hagan un giro a la izquierda, se elimina el punto intermedio de esos 3
-    - 6. Se concatenan las listas UPPER y LOWER prescindiendo de los puntos finales de cada una
+El algoritmo es como sigue para un conjunto de `N` puntos:
 
-Suponga que disponemos de un método auxiliar que, dados 3 puntos, nos dice si los segmentos AB y BC hacen un giro a la izquierda: 
+1. Se ordenan los puntos `P` en orden creciente de coordenada `X` y, si tienen el mismo `X`, en orden creciente de coordenada `Y`;
+2. Se prepara una lista `UPPER` con los 2 primeros puntos, `L0` y `L1`;
+3. Para `i` entre `2` y `N`:
+    1. Se añade `Li` a la lista `UPPER`;
+    2. Mientras los 3 últimos puntos en la lista `UPPER` hagan un giro a la izquierda, se elimina el punto intermedio de esos 3.
+4. Se prepara una lista `LOWER` con los 2 últimos puntos `L(n-1), L(n-2)`;
+5. Para `i` entre `N-3` y `0`, descendiendo:
+    1. Se añade `Li` a la lista `LOWER`;
+    2. Mientras los 3 últimos puntos en la lista `LOWER` hagan un giro a la izquierda, se elimina el punto intermedio de esos 3.
+6. Se concatenan las listas `UPPER` y `LOWER` prescindiendo de los puntos finales de cada una.
+
+Suponga que disponemos de un método auxiliar que, dados 3 puntos, nos dice si los segmentos `AB` y `BC` hacen un giro a la izquierda: 
 ```java
 boolean giroIzquierda(Punto A, Punto B, Punto C)
 ```
 
-- (a) (5 puntos) Calcular la complejidad del algoritmo en función del tamaño N del conjunto de puntos P.
+- (a) (5 puntos) Calcular la complejidad del algoritmo en función del tamaño `N` del conjunto de puntos `P`.
 
 ??? note "Mostrar solución"
-    El método auxiliar, giroIzquierda(), trabaja sobre 3 puntos A, B y C y es por tanto independiente del tamaño N del conjunto de puntos. Su complejidad es O(1).
+    El método auxiliar, `giroIzquierda()`, trabaja sobre 3 puntos `A`, `B`, y `C` y es por tanto independiente del tamaño `N` del conjunto de puntos. Su complejidad es $O(1)$.
     
-    El algoritmo principal ordena una lista de N puntos. La comparación entre 2 puntos A y B es independiente del número de puntos, y por tanto es de complejidad O(1). El algoritmo de ordenación introduce su propia complejidad que se puede estimar en O(n log n) si escogemos un buen algoritmo como puede ser el merge sort.
+    El algoritmo principal ordena una lista de `N` puntos. La comparación entre 2 puntos `A` y `B` es independiente del número de puntos, y por tanto es de complejidad $O(1)$. El algoritmo de ordenación introduce su propia complejidad que se puede estimar en $O(n log n)$ si escogemos un buen algoritmo como puede ser el *merge sort*.
     
     El algoritmo global:
     
-    | Paso | Descripción           | Complejidad |
+    | Paso | Descripción          | Complejidad |
     |-----:|----------------------|-------------|
-    | 1    | Ordenación            | O(n log n)  |
-    | 2    | new list UPPER        | O(1)        |
-    | 3    | bucle 2..N            | O(n) (*)    |
-    | 4    | new list LOWER        | O(1)        |
-    | 5    | bucle 2..N            | O(n) (*)    |
-    | 6    | concatena             | O(n)        |
-    | TOTAL|                      | O(n log n)  |
+    | 1    | Ordenación           | $O(n log n)$|
+    | 2    | `new list UPPER`     | $O(1)$      |
+    | 3    | bucle `2..N`         | $O(n)$(*)   |
+    | 4    | `new list LOWER`     | $O(1)$      |
+    | 5    | bucle `2..N`         | $O(n)$(*)   |
+    | 6    | concatena            | $O(n)$      |
+    | TOTAL|                      | $O(n log n)$|
     
-    (*) En principio parece un bucle de N veces sobre una lista que va creciendo hasta N; resultando en N^2. Pero ocurre que cada pasada por el bucle elimina un elemento de la lista y o la lista es larga y el while termina pronto, o al revés. En resumen, que por una razón u otra no pasamos de O(n). En otras palabras, la combinación FOR-WHILE recorre exactamente N puntos, bien conservando cada punto o eliminándolo.
+    (*) En principio parece un bucle de `N` veces sobre una lista que va creciendo hasta `N`; resultando en $n^2$. Pero ocurre que cada pasada por el bucle elimina un elemento de la lista y o la lista es larga y el `while` termina pronto, o al revés. En resumen, que por una razón u otra no pasamos de $O(n)$. En otras palabras, la combinación `FOR-WHILE` recorre exactamente `N` puntos, bien conservando cada punto o eliminándolo.
     
-    Por otra parte, la operación remove(penúltimo) es independiente del tamaño de la lista y, por tanto, de O(1)
+    Por otra parte, la operación `remove(penúltimo)` es independiente del tamaño de la lista y, por tanto, de $O(1)$.
     
     Codificación en Java:
     ```java

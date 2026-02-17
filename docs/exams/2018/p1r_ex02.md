@@ -6,7 +6,7 @@ tags:
  - grafos
 ---
 
-Se dispone de la clase Graph, con los métodos que se indican a continuación:
+Se dispone de la clase `Graph`, con los métodos que se indican a continuación:
 ```java
 public void addNode(Node)
 public vois addLink(Link)
@@ -19,9 +19,9 @@ public Link getLink(Node, Node)
 public int getWeight(List<Node>)
 ```
 
-Un algoritmo alternativo a BFS y Dijkstra para recorrer un grafo es el algoritmo DFS (Depth First Search). El recorrido en profundidad se produce de tal forma que partiendo de un nodo se procesa el primero de los nodos alcanzables desde él mediante un Link, después el segundo y así sucesivamente todos los nodos que se pueden alcanzar con un solo Link. Para procesar cada uno de los nodos se utiliza el mismo procedimiento, siempre teniendo en cuenta que, al ser un grafo, no pasemos dos veces por el mismo nodo. En definitiva, se trata del recorrido en pre-orden usado para los árboles binarios BST.
+Un algoritmo alternativo a BFS y Dijkstra para recorrer un grafo es el algoritmo DFS (*Depth First Search*). El recorrido en profundidad se produce de tal forma que partiendo de un nodo se procesa el primero de los nodos alcanzables desde él mediante un `Link`, después el segundo y así sucesivamente todos los nodos que se pueden alcanzar con un solo `Link`. Para procesar cada uno de los nodos se utiliza el mismo procedimiento, siempre teniendo en cuenta que, al ser un grafo, no pasemos dos veces por el mismo nodo. En definitiva, se trata del recorrido en pre-orden usado para los árboles binarios BST.
 
-Se muestra a continuación un ejemplo del orden de recorrido de DFS sobre un árbol para ver si desde el nodo “A” se puede alcanzar el nodo destino “J”:
+Se muestra a continuación un ejemplo del orden de recorrido de DFS sobre un árbol para ver si desde el nodo `A` se puede alcanzar el nodo destino `J`:
 
 ![](./p1r/p1r_ex02.png)
 
@@ -36,7 +36,7 @@ Una de las formas de implementar DFS en un grafo es mediante un método recursiv
 6       llamamos recursivamente DFS(v)
 ```
 
-- (a) (5 puntos) Codificar el algoritmo ListaNodos que devuelve todos los nodos alcanzables desde un determinado nodo src. Los nodos alcanzables desde un nodo son todos aquellos a los que se puede llegar desde ese nodo siguiendo una secuencia de enlaces (Link) definidos en el grafo. En el caso del grafo del ejemplo anterior, desde el nodo C serían alcanzables: <C,E,I,J,F,K,L> y desde el nodo D: <D, G, H>. Tenga en cuenta que en un caso real pudiera haber bucles al tratarse de un grafo. Se valorará con 2 puntos el uso de la clase Set para aumentar la velocidad del método ListaNodos, si además se justifica adecuadamente la mejora producida por su utilización.
+- (a) (5 puntos) Codificar el algoritmo `ListaNodos` que devuelve todos los nodos alcanzables desde un determinado nodo `src`. Los nodos alcanzables desde un nodo son todos aquellos a los que se puede llegar desde ese nodo siguiendo una secuencia de enlaces (`Link`) definidos en el grafo. En el caso del grafo del ejemplo anterior, desde el nodo `C` serían alcanzables: `<C,E,I,J,F,K,L>` y desde el nodo `D`: `<D,G,H>`. Tenga en cuenta que en un caso real pudiera haber bucles al tratarse de un grafo. Se valorará con 2 puntos el uso de la clase `Set` para aumentar la velocidad del método `ListaNodos`, si además se justifica adecuadamente la mejora producida por su utilización.
 
 ??? note "Mostrar solución"
     ```java
@@ -81,6 +81,6 @@ Una de las formas de implementar DFS en un grafo es mediante un método recursiv
     }
     ```
 
-    El uso de Set para controlar la lista de visitados permite mejorar el algoritmo frente a List, ya que la búsqueda en listas no
-    está tan optimizada como en Set.
+    El uso de `Set` para controlar la lista de visitados permite mejorar el algoritmo frente a `List`, ya que la búsqueda en listas no
+    está tan optimizada como en `Set`.
 
