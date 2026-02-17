@@ -8,18 +8,19 @@ tags:
 
 Vamos a trabajar el algoritmo del huevo. Sirve para modelar algoritmos de búsqueda rápida cuando las pruebas son destructivas, reemplazando a la búsqueda binaria en un array.
 
-Tenemos N huevos y un edificio de H pisos. Queremos saber el piso más alto desde el que podemos dejar caer el huevo sin que se rompa. Con las siguientes suposiciones:
-    - Un huevo que sobrevive a una caída se puede usar nuevamente.
-    - Un huevo roto queda descartado.
-    - El efecto de una caída es el mismo para todos los huevos.
-    - Si un huevo rompe al caer desde un piso, romperá si se cae desde un piso superior.
-    - Si un huevo no rompe desde un piso, tampoco romperá desde un piso superior.
+Tenemos `N` huevos y un edificio de `H` pisos. Queremos saber el piso más alto desde el que podemos dejar caer el huevo sin que se rompa. Con las siguientes suposiciones:
 
-La búsqueda binaria no sirve. Por ejemplo, si solo tenemos un huevo N=1, el mejor algoritmo es la búsqueda lineal: ir tirando desde pisos consecutivos hasta que rompa. Si tenemos N = 2 huevos en un edificio de 100 plantas y probamos en el piso 50 y rompe, solo nos queda un huevo para 49 pruebas adicionales. El óptimo para N=2 y H=100 es empezar desde el piso 14. La búsqueda binaria vale cuando hay más huevos que pisos.
+- Un huevo que sobrevive a una caída se puede usar nuevamente;
+- Un huevo roto queda descartado;
+- El efecto de una caída es el mismo para todos los huevos;
+- Si un huevo rompe al caer desde un piso, romperá si se cae desde un piso superior;
+- Si un huevo no rompe desde un piso, tampoco romperá desde un piso superior.
+
+La búsqueda binaria no sirve. Por ejemplo, si solo tenemos un huevo `N=1`, el mejor algoritmo es la búsqueda lineal: ir tirando desde pisos consecutivos hasta que rompa. Si tenemos `N=2` huevos en un edificio de 100 plantas y probamos en el piso 50 y rompe, solo nos queda un huevo para 49 pruebas adicionales. El óptimo para `N=2` y `H=100` es empezar desde el piso 14. La búsqueda binaria vale cuando hay más huevos que pisos.
 
 Para averiguar el piso óptimo solo necesitamos tener en cuenta cuántos pisos tenemos para probar. Es decir, es lo mismo buscar en los pisos del 1 al 10 que entre el 71 y el 80.
 
-Para averiguar el número máximo de pruebas con N huevos y H pisos podemos usar un método recursivo:
+Para averiguar el número máximo de pruebas con `N` huevos y `H` pisos podemos usar un método recursivo:
 ```java
 def drops(n, h):
     if n == 1:
@@ -33,52 +34,56 @@ def drops(n, h):
             1 + max(drops(n - 1, x - 1), drops(n, h - x))
         return res;
 ```
-Simplemente probamos todos los pisos X en el rango de pisos y para cada uno de ellos tenemos 2 opciones
-    - que el huevo se rompa y tenemos N-1 huevos y X-1 pisos
-    - que el huevo no rompa y tenemos N huevos y H-X pisos
 
-Probamos este código y va muy muy lento. Medimos tiempos para N=2 y obtenemos esto:
+Simplemente probamos todos los pisos `X` en el rango de pisos y para cada uno de ellos tenemos 2 opciones:
+
+- Que el huevo se rompa y tenemos `N-1` huevos y `X-1` pisos;
+- Que el huevo no rompa y tenemos `N` huevos y `H-X` pisos.
+
+Probamos este código y va muy muy lento. Medimos tiempos para `N=2` y obtenemos esto:
 
 ![](./extra/extra_ex01.png)
 
-- (a) (2,5 puntos) Indicar la complejidad del algoritmo recursivo en función de H. No se pide que la calcule analíticamente, solo que la marque y la valide a partir de las medidas realizadas.
+- (a) (2,5 puntos) Indicar la complejidad del algoritmo recursivo en función de `H`. No se pide que la calcule analíticamente, solo que la marque y la valide a partir de las medidas realizadas.
 
 ??? note "Mostrar solución"
     Estudio de opciones en base al coeficiente de correlación.
 
-    | Complejidad     | r     | Evaluación |
-    |-----------------|-------|------------|
-    | O(log h)        | 0.36  | NO, r << 1.0 |
-    | O(h)            | 0.41  | NO, r << 1.0 |
-    | O(h log h)      | 0.43  | NO, r << 1.0 |
-    | O(h^18)         | 0.98  | Posible     |
-    | O(1.9^h)        | 1.00  | Posible     |
+    | Complejidad     | r     | Evaluación     |
+    |-----------------|-------|----------------|
+    | $O(log h)$      | 0.36  | NO, $r << 1.0$ |
+    | $O(h)$          | 0.41  | NO, $r << 1.0$ |
+    | $O(h log h)$    | 0.43  | NO, $r << 1.0$ |
+    | $O(h^18)$       | 0.98  | Posible        |
+    | $O(1.9^h)$      | 1.00  | Posible        |
 
     De las 2 opciones posibles, es absurdo que en un algoritmo recursivo como el presentado aparezca un polinomio de orden 18.
 
-    Sí es posible una complejidad O(2^h), que es probablemente la solución.
+    Sí es posible una complejidad $O(2^h)$, que es probablemente la solución.
 
-    Del análisis de la relación de recurrencia, para N = 2, tenemos un bucle interno sobre `x` que se ejecuta `h` veces en forma de serie aritmética:
-    ```
-    T(n, h-1) + T(n, h-2) + … + T(n, 1)
-    = h * (T(n, h-1) + T(n, 1)) / 2
-    ≈ h * T(n, h-1)
-    ```
+    Del análisis de la relación de recurrencia, para `N=2`, tenemos un bucle interno sobre `x` que se ejecuta `h` veces en forma de serie aritmética:
+
+    $T(n, h-1) + T(n, h-2) + … + T(n, 1)$
+
+    $= h * (T(n, h-1) + T(n, 1)) / 2$
+
+    $≈ h * T(n, h-1)$
+
     El algoritmo completo queda definido por la recurrencia:
-    ```
-    T(h) = h * T(h-1)
-    ```
-    Intentamos validar la solución propuesta:
-    ```
-    T(h) = 2^h
-    ```
-    Sustituyendo en la recurrencia:
-    ```
-    2^h = h * 2^{h-1}
-    ```
-    Esta igualdad se cumple para h >> 1 (cuando `h` tiende a infinito).
 
-    Para n constante, el algoritmo tiene complejidad O(2^h).
+    $T(h) = h * T(h-1)$
+
+    Intentamos validar la solución propuesta:
+
+    $T(h) = 2^h$
+
+    Sustituyendo en la recurrencia:
+
+    $2^h = h * 2^{h-1}$
+
+    Esta igualdad se cumple para $h >> 1$ (cuando `h` tiende a infinito).
+
+    Para `n` constante, el algoritmo tiene complejidad $O(2^h)$.
 
 
 Como el algoritmo recursivo no es práctico, recurrimos a memorizar resultados intermedios, de forma similar a como se hace con las series de Fibonacci.
@@ -106,24 +111,24 @@ Como el algoritmo recursivo no es práctico, recurrimos a memorizar resultados i
 21  }
 ```
 
-- (b) (2,5 puntos) Se pide que calcule la complejidad de la implementación iterativa, en función de N y H. Se valorará la corrección de los razonamientos usados para determinar la complejidad.
+- (b) (2,5 puntos) Se pide que calcule la complejidad de la implementación iterativa, en función de `N` y `H`. Se valorará la corrección de los razonamientos usados para determinar la complejidad.
 
 ??? note "Mostrar solución"
     | Línea | Complejidad                                       |
-    | ----: | ------------------------------------------------- |
-    |     2 | O(1)                                              |
-    |   3–6 | n · O(1) = O(n)                               |
-    |   7–8 | h · O(1) = O(h)                               |
-    |     9 | n · … (bucle `for`)                               |
-    |    10 | h · … (bucle `for`)                               |
-    |    11 | O(1)                                              |
-    |    12 | h · … (bucle `for`)                               |
-    | 13–15 | O(1)                                              |
-    | 12–16 | h · O(1) = O(h)                               |
-    |    17 | O(1)                                              |
-    | 10–18 | h · (O(1) + O(h) + O(1)) = O(h²)              |
-    |  9–19 | n · O(h²) = O(n·h²)                           |
-    |    20 | O(1)                                              |
-    |  2–21 | O(1) + O(n) + O(h) + O(n·h²) + O(1) = O(n·h²) |
+    | ----- | ------------------------------------------------- |
+    |     2 | $O(1)$                                            |
+    |   3–6 | $n · O(1) = O(n)$                                 |
+    |   7–8 | $h · O(1) = O(h)$                                 |
+    |     9 | $n · ...(bucle$ `for`$)$                          |
+    |    10 | $h · ...(bucle$ `for`$)$                          |
+    |    11 | $O(1)$                                            |
+    |    12 | $h · ...(bucle$ `for`$)$                          |
+    | 13–15 | $O(1)$                                            |
+    | 12–16 | $h · O(1) = O(h)$                                 |
+    |    17 | $O(1)$                                            |
+    | 10–18 | $h · (O(1) + O(h) + O(1)) = O(h^2)$               |
+    |  9–19 | $n · O(h^2) = O(n·h^2)$                           |
+    |    20 | $O(1)$                                            |
+    |  2–21 | $O(1) + O(n) + O(h) + O(n·h^2) + O(1) = O(n·h^2)$ |
     
     Hemos convertido un algoritmo recursivo de orden exponencial en un algoritmo iterativo de orden cuadrático.

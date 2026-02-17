@@ -6,7 +6,7 @@ tags:
  - android
 ---
 
-Para la aplicación Android DaysUntil se desea añadir la posibilidad de añadir una descripción del evento introducido por el usuario. Esta información es opcional para la funcionalidad básica de la aplicación. Sin embargo, en caso de existir una descripción, esta debe incluirse en la información pasada como intención implícita para la creación de un evento en el calendario del usuario al pulsar un botón.
+Para la aplicación Android `DaysUntil` se desea añadir la posibilidad de añadir una descripción del evento introducido por el usuario. Esta información es opcional para la funcionalidad básica de la aplicación. Sin embargo, en caso de existir una descripción, esta debe incluirse en la información pasada como intención implícita para la creación de un evento en el calendario del usuario al pulsar un botón.
 
 Siendo el esqueleto del código el siguiente:
 ```java
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 </android.support.constraint.ConstraintLayout>
 ```
 
-- (a) Complete el código asociado a dicha funcionalidad, tanto en el código java como en la definición del layout asociado a la actividad en cuestión. Considere implementados los métodos getNombre y getFecha. Ha de implementar completamente cualquier otro método auxiliar que considere necesario. Nota: la clave esperada por la intención de crear un evento para la descripción del mismo es ```CalendarContract.Events.DESCRIPTION ```.
+- (a) Complete el código asociado a dicha funcionalidad, tanto en el código java como en la definición del `layout` asociado a la actividad en cuestión. Considere implementados los métodos `getNombre` y `getFecha`. Ha de implementar completamente cualquier otro método auxiliar que considere necesario. Nota: la clave esperada por la intención de crear un evento para la descripción del mismo es `CalendarContract.Events.DESCRIPTION`.
 
 ??? note "Mostrar solución"
     ```java

@@ -7,10 +7,11 @@ tags:
 ---
 
 Se desea ampliar el juego de la serpiente con un contador de las manzanas que ha comido la serpiente. Naturalmente, cuando la serpiente come una manzana, este contador debe aumentar en una unidad. Para añadir dificultad al jugador, también puede perder manzanas de este contador por dos motivos:
-    - Si una bola choca con una manzana, el jugador pierde una unidad de su contador de manzanas comidas. El contador no puede nunca tener un valor inferior a cero como resultado de esta pérdida, pero la pérdida debe ejecutarse tan pronto como sea posible.
-    - Si la serpiente es golpeada en la cabeza por una bola, el contador de manzanas se reduce a la mitad, redondeando al entero inmediatamente inferior. Esto es, si el jugador tenía 7 puntos debe quedarse con 3.
 
-Siendo la clase manzanas:
+- Si una bola choca con una manzana, el jugador pierde una unidad de su contador de manzanas comidas. El contador no puede nunca tener un valor inferior a cero como resultado de esta pérdida, pero la pérdida debe ejecutarse tan pronto como sea posible;
+- Si la serpiente es golpeada en la cabeza por una bola, el contador de manzanas se reduce a la mitad, redondeando al entero inmediatamente inferior. Esto es, si el jugador tenía 7 puntos debe quedarse con 3.
+
+Siendo la clase `Manzanas`:
 ```java
 public class Manzanas
 implements Screen.Thing {
@@ -43,8 +44,7 @@ implements Screen.Thing {
 }
 ```
 
-Se pide que complete y modifique la clase monitor Manzanas como considere oportuno para obtener la
-funcionalidad descrita.
+- (a) (5 puntos) Se pide que complete y modifique la clase monitor `Manzanas` como considere oportuno para obtener la funcionalidad descrita.
 
 ??? note "Mostrar solución"
     ```java
