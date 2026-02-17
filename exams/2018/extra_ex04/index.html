@@ -2875,12 +2875,13 @@
   <h1>Extra ex04</h1>
 
 <p>La panadería Molinga S.L. quiere modernizar sus instalaciones robotizando su sistema de producción de pan. Para ello han encargado a los alumnos de ADSW que realicen parte del sistema.</p>
-<p>Se desea realizar dos monitores para gestionar la amasadora y el horno de la panadería, con acceso exclusivo por parte de varios robots (threads). Existen 3 tipos de robots en la panadería:
-    - Robots de almacén, que meten ingredientes en la amasadora.
-    - Robots amasadores, que cuando tienen los ingredientes necesarios amasan y después meten la masa en el horno.
-    - Robots horneadores, que cuando tienen las masas necesarias para llenar un horno, hornean el pan.</p>
-<p>La amasadora permitirá introducir ingredientes a los r obots de almacén y amasar a los robots amasadores. Para hacer una masa de pan hacen falta cuatro ingredientes: agua, harina, levadura y sal, en la proporción de 4, 3, 2 y 1 unidades. No se permitirá a los robots de almacén introducir más ingredientes si hay suficientes para hacer una masa, y de igual manera no se permitirá a los robots amasadores amasar si no hay suficientes ingredientes para
-hacer una masa.</p>
+<p>Se desea realizar dos monitores para gestionar la amasadora y el horno de la panadería, con acceso exclusivo por parte de varios robots (<em>threads</em>). Existen 3 tipos de robots en la panadería:</p>
+<ul>
+<li>Robots de almacén, que meten ingredientes en la amasadora;</li>
+<li>Robots amasadores, que cuando tienen los ingredientes necesarios amasan y después meten la masa en el horno;</li>
+<li>Robots horneadores, que cuando tienen las masas necesarias para llenar un horno, hornean el pan.</li>
+</ul>
+<p>La amasadora permitirá introducir ingredientes a los robots de almacén y amasar a los robots amasadores. Para hacer una masa de pan hacen falta cuatro ingredientes: agua, harina, levadura y sal, en la proporción de <code>4</code>, <code>3</code>, <code>2</code>, y <code>1</code> unidades. No se permitirá a los robots de almacén introducir más ingredientes si hay suficientes para hacer una masa, y de igual manera no se permitirá a los robots amasadores amasar si no hay suficientes ingredientes para hacer una masa.</p>
 <p>El horno permitirá introducir masas a los robots amasadores y hornear a los robots horneadores. Un horno tiene un tamaño concreto, que recibirá como parámetro en el constructor, indicando el número de masas que es capaz de hornear. Por motivos de eficiencia, los robots horneadores solo podrán hornear si el horno está completamente lleno, y los robots amasadores solo podrán meter masas si hay hueco en el horno.</p>
 <p>Estructura de clases de la panadería:</p>
 <p><img alt="" src="../extra/extra_ex04.png" /></p>
@@ -2931,7 +2932,7 @@ hacer una masa.</p>
 <span class="p">}</span>
 </code></pre></div></p>
 <ul>
-<li>(a) (2,5 puntos) Desarrollar el monitor Amasadora</li>
+<li>(a) (2,5 puntos) Desarrollar el monitor <code>Amasadora</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2982,7 +2983,7 @@ hacer una masa.</p>
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2 puntos) Desarrollar el monitor Horno</li>
+<li>(b) (2 puntos) Desarrollar el monitor <code>Horno</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3018,7 +3019,7 @@ hacer una masa.</p>
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (0,5 puntos) Proponer el método run() del Robot Amasador</li>
+<li>(c) (0,5 puntos) Proponer el método <code>run()</code> del robot amasador.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>

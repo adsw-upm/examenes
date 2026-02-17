@@ -2874,10 +2874,12 @@
 
   <h1>Extra ex05</h1>
 
-<p>Se desea ampliar el juego de la serpiente con un contador de las manzanas que ha comido la serpiente. Naturalmente, cuando la serpiente come una manzana, este contador debe aumentar en una unidad. Para añadir dificultad al jugador, también puede perder manzanas de este contador por dos motivos:
-    - Si una bola choca con una manzana, el jugador pierde una unidad de su contador de manzanas comidas. El contador no puede nunca tener un valor inferior a cero como resultado de esta pérdida, pero la pérdida debe ejecutarse tan pronto como sea posible.
-    - Si la serpiente es golpeada en la cabeza por una bola, el contador de manzanas se reduce a la mitad, redondeando al entero inmediatamente inferior. Esto es, si el jugador tenía 7 puntos debe quedarse con 3.</p>
-<p>Siendo la clase manzanas:
+<p>Se desea ampliar el juego de la serpiente con un contador de las manzanas que ha comido la serpiente. Naturalmente, cuando la serpiente come una manzana, este contador debe aumentar en una unidad. Para añadir dificultad al jugador, también puede perder manzanas de este contador por dos motivos:</p>
+<ul>
+<li>Si una bola choca con una manzana, el jugador pierde una unidad de su contador de manzanas comidas. El contador no puede nunca tener un valor inferior a cero como resultado de esta pérdida, pero la pérdida debe ejecutarse tan pronto como sea posible;</li>
+<li>Si la serpiente es golpeada en la cabeza por una bola, el contador de manzanas se reduce a la mitad, redondeando al entero inmediatamente inferior. Esto es, si el jugador tenía 7 puntos debe quedarse con 3.</li>
+</ul>
+<p>Siendo la clase <code>Manzanas</code>:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Manzanas</span>
 <span class="kd">implements</span><span class="w"> </span><span class="n">Screen</span><span class="p">.</span><span class="na">Thing</span><span class="w"> </span><span class="p">{</span>
 
@@ -2908,8 +2910,9 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<p>Se pide que complete y modifique la clase monitor Manzanas como considere oportuno para obtener la
-funcionalidad descrita.</p>
+<ul>
+<li>(a) (5 puntos) Se pide que complete y modifique la clase monitor <code>Manzanas</code> como considere oportuno para obtener la funcionalidad descrita.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="cm">/**</span>

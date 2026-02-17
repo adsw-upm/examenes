@@ -3023,17 +3023,17 @@
 
 <h1 id="examen-2018-parcial-1">Examen 2018 — Parcial 1</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>En el ejercicio 1 de la asignatura se han recorrido los nodos de un grafo. Utilizando las clases Graph, Node y Link de ese mismo ejercicio, se pide codificar un nuevo método de Graph:
+<p>En el ejercicio 1 de la asignatura se han recorrido los nodos de un grafo. Utilizando las clases <code>Graph</code>, <code>Node</code> y <code>Link</code> de ese mismo ejercicio, se pide codificar un nuevo método de <code>Graph</code>:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">reachableNodes</span><span class="p">(</span><span class="n">Node</span><span class="w"> </span><span class="n">src</span><span class="p">)</span>
 </code></pre></div>
-que devuelve una lista de todos los nodos del grafo, obtenida recorriendo el grafo desde un nodo inicial (src). </p>
-<p>En el ejercicio 2 se ha propuesto usar la clase Map para reducir el tiempo de ejecución de algunos métodos. </p>
+que devuelve una lista de todos los nodos del grafo, obtenida recorriendo el grafo desde un nodo inicial (<code>src</code>). </p>
+<p>En el ejercicio 2 se ha propuesto usar la clase <code>Map</code> para reducir el tiempo de ejecución de algunos métodos. </p>
 <ul>
-<li>(a) (2 puntos) Use la clase Map en la solución para mejorar el tiempo de ejecución del método reachableNodes(). Justifique la mejora que se consigue con su utilización.</li>
+<li>(a) (2 puntos) Use la clase <code>Map</code> en la solución para mejorar el tiempo de ejecución del método <code>reachableNodes()</code>. Justifique la mejora que se consigue con su utilización.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Una posible solución, basada en el recorrido que usa BFS, se muestra a continuación. Se mejora la complejidad al usar un HahsSet para comprobar si ya hemos visitado un nodo. Si se usa otro algoritmo para componer la lista de nodos a visitar, se debería usar una estrategia similar.
+<p>Una posible solución, basada en el recorrido que usa BFS, se muestra a continuación. Se mejora la complejidad al usar un <code>HahsSet</code> para comprobar si ya hemos visitado un nodo. Si se usa otro algoritmo para componer la lista de nodos a visitar, se debería usar una estrategia similar.
 <div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="p">();</span>
 
@@ -3059,17 +3059,19 @@ que devuelve una lista de todos los nodos del grafo, obtenida recorriendo el gra
 </code></pre></div></p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>Una ordenación topológica (topological sort) de un grafo dirigido G es una lista con todos los nodos de G tal que no existe ningún enlace hacia atrás. </p>
+<p>Una ordenación topológica (<em>topological sort</em>) de un grafo dirigido <code>G</code> es una lista con todos los nodos de <code>G</code> tal que no existe ningún enlace hacia atrás. </p>
 <p><img alt="" src="p1_ex02.png" /></p>
-<p>Ejemplos
-    - correcto: [calcetines, camisa, pantalón, jersey, cinturón, zapatos]
-    - correcto: [pantalón, camisa, jersey, calcetines, zapatos, cinturón]
-    - correcto: [pantalón, calcetines, zapatos, camisa, jersey, cinturón]
-    - incorrecto: [pantalón, cinturón, calcetines, zapatos, CAMISA, jersey]</p>
-<p>La última ordenación es incorrecta porque camisa debería estar antes que cinturón.</p>
-<p>Suponga que tenemos un grafo de N nodos y una media de 5 enlaces por nodo. </p>
+<p>Ejemplos:</p>
 <ul>
-<li>(a) (2,5 puntos) Haga suposiciones razonadas sobre la complejidad de las llamadas a los métodos de Graph, en función del tamaño N del grafo.</li>
+<li>correcto: <code>[calcetines, camisa, pantalón, jersey, cinturón, zapatos]</code></li>
+<li>correcto: <code>[pantalón, camisa, jersey, calcetines, zapatos, cinturón]</code></li>
+<li>correcto: <code>[pantalón, calcetines, zapatos, camisa, jersey, cinturón]</code></li>
+<li>incorrecto: <code>[pantalón, cinturón, calcetines, zapatos, CAMISA, jersey]</code></li>
+</ul>
+<p>La última ordenación es incorrecta porque camisa debería estar antes que cinturón.</p>
+<p>Suponga que tenemos un grafo de <code>N</code> nodos y una media de 5 enlaces por nodo. </p>
+<ul>
+<li>(a) (2,5 puntos) Haga suposiciones razonadas sobre la complejidad de las llamadas a los métodos de <code>Graph</code>, en función del tamaño <code>N</code> del grafo.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3083,33 +3085,33 @@ que devuelve una lista de todos los nodos del grafo, obtenida recorriendo el gra
 <tbody>
 <tr>
 <td><code>graph.getNodes()</code></td>
-<td>O(1) si se ha implementado con una <code>List</code> que se va cargando cuando se añaden nodos al grafo (lo habitual en el ejercicio 1 entregado)</td>
+<td><span class="arithmatex">\(O(1)\)</span> si se ha implementado con una <code>List</code> que se va cargando cuando se añaden nodos al grafo (lo habitual en el ejercicio 1 entregado).</td>
 </tr>
 <tr>
 <td></td>
-<td>O(n) si se calcula al llamar a la función agregando las tablas de nodos con enlaces (frecuente en el ejercicio 2 entregado)</td>
+<td><span class="arithmatex">\(O(n)\)</span> si se calcula al llamar a la función agregando las tablas de nodos con enlaces (frecuente en el ejercicio 2 entregado).</td>
 </tr>
 <tr>
 <td><code>graph.getNode(String)</code></td>
-<td>O(n) si hay que recorrer la lista hasta encontrar el nodo (lo habitual en el ejercicio 1 entregado)</td>
+<td><span class="arithmatex">\(O(n)\)</span> si hay que recorrer la lista hasta encontrar el nodo (lo habitual en el ejercicio 1 entregado).</td>
 </tr>
 <tr>
 <td></td>
-<td>O(1) si hay un diccionario que asocia el nombre al nodo (lo habitual en el ejercicio 2 entregado)</td>
+<td><span class="arithmatex">\(O(1)\)</span> si hay un diccionario que asocia el nombre al nodo (lo habitual en el ejercicio 2 entregado).</td>
 </tr>
 <tr>
 <td><code>graph.getLinks(Node)</code></td>
-<td>O(n) si hay que recorrer la lista hasta encontrar el nodo (lo habitual en el ejercicio 1 entregado)</td>
+<td><span class="arithmatex">\(O(n)\)</span> si hay que recorrer la lista hasta encontrar el nodo (lo habitual en el ejercicio 1 entregado).</td>
 </tr>
 <tr>
 <td></td>
-<td>O(1) si hay un diccionario que asocia el nodo a los enlaces (lo habitual en el ejercicio 2 entregado)</td>
+<td><span class="arithmatex">\(O(1)\)</span> si hay un diccionario que asocia el nodo a los enlaces (lo habitual en el ejercicio 2 entregado).</td>
 </tr>
 </tbody>
 </table>
 </details>
 <ul>
-<li>(b) (2,5 puntos) Calcule la complejidad del método sort() en función de N.</li>
+<li>(b) (2,5 puntos) Calcule la complejidad del método <code>sort()</code> en función de <code>N</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3141,11 +3143,11 @@ que devuelve una lista de todos los nodos del grafo, obtenida recorriendo el gra
 <span class="mi">48</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">L</span><span class="p">;</span>
 <span class="mi">49</span><span class="w">    </span><span class="p">}</span>
 </code></pre></div></p>
-<p>Si todas las operaciones en Graph se optimizan a O(1), la complejidad del conjunto viene condicionada por el coste de extraer un elemento aleatorio de S (en la línea 36).</p>
-<p>Se podría prescindir de la aleatoriedad extrayendo el último elemento de la lista, que es una operación O(1).
+<p>Si todas las operaciones en <code>Graph</code> se optimizan a <span class="arithmatex">\(O(1)\)</span>, la complejidad del conjunto viene condicionada por el coste de extraer un elemento aleatorio de <code>S</code> (en la línea 36).</p>
+<p>Se podría prescindir de la aleatoriedad extrayendo el último elemento de la lista, que es una operación <span class="arithmatex">\(O(1)\)</span>.
 <div class="highlight"><pre><span></span><code><span class="n">Node</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-Y el algoritmo quedaría O(n).</p>
+Y el algoritmo quedaría <span class="arithmatex">\(O(n)\)</span>.</p>
 </details>
 
 

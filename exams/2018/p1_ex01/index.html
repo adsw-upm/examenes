@@ -2874,17 +2874,17 @@
 
   <h1>P1 ex01</h1>
 
-<p>En el ejercicio 1 de la asignatura se han recorrido los nodos de un grafo. Utilizando las clases Graph, Node y Link de ese mismo ejercicio, se pide codificar un nuevo método de Graph:
+<p>En el ejercicio 1 de la asignatura se han recorrido los nodos de un grafo. Utilizando las clases <code>Graph</code>, <code>Node</code> y <code>Link</code> de ese mismo ejercicio, se pide codificar un nuevo método de <code>Graph</code>:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">reachableNodes</span><span class="p">(</span><span class="n">Node</span><span class="w"> </span><span class="n">src</span><span class="p">)</span>
 </code></pre></div>
-que devuelve una lista de todos los nodos del grafo, obtenida recorriendo el grafo desde un nodo inicial (src). </p>
-<p>En el ejercicio 2 se ha propuesto usar la clase Map para reducir el tiempo de ejecución de algunos métodos. </p>
+que devuelve una lista de todos los nodos del grafo, obtenida recorriendo el grafo desde un nodo inicial (<code>src</code>). </p>
+<p>En el ejercicio 2 se ha propuesto usar la clase <code>Map</code> para reducir el tiempo de ejecución de algunos métodos. </p>
 <ul>
-<li>(a) (2 puntos) Use la clase Map en la solución para mejorar el tiempo de ejecución del método reachableNodes(). Justifique la mejora que se consigue con su utilización.</li>
+<li>(a) (2 puntos) Use la clase <code>Map</code> en la solución para mejorar el tiempo de ejecución del método <code>reachableNodes()</code>. Justifique la mejora que se consigue con su utilización.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Una posible solución, basada en el recorrido que usa BFS, se muestra a continuación. Se mejora la complejidad al usar un HahsSet para comprobar si ya hemos visitado un nodo. Si se usa otro algoritmo para componer la lista de nodos a visitar, se debería usar una estrategia similar.
+<p>Una posible solución, basada en el recorrido que usa BFS, se muestra a continuación. Se mejora la complejidad al usar un <code>HahsSet</code> para comprobar si ya hemos visitado un nodo. Si se usa otro algoritmo para componer la lista de nodos a visitar, se debería usar una estrategia similar.
 <div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="p">();</span>
 

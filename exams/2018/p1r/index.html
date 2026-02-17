@@ -3023,30 +3023,36 @@
 
 <h1 id="examen-2018-parcial-1-recuperacion">Examen 2018 — Parcial 1 Recuperación</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>Dado un conjunto P de puntos en un plano de 2 dimensiones, necesitamos calcular el subconjunto de P tal que una banda elástica alrededor de ellos no deja a ningún punto fuera.</p>
-<p>En geometría, a este subconjunto se le denomina envolvente convexa (convex hull). Una de sus propiedades es que si enumeramos los puntos según las agujas del reloj (L1, L2, …, Ln) todos los pares de segmentos consecutivos van girando hacia la derecha. Por ejemplo, L1-L2 está girado a la derecha en comparación con L0-L1.</p>
+<p>Dado un conjunto <code>P</code> de puntos en un plano de 2 dimensiones, necesitamos calcular el subconjunto de <code>P</code> tal que una banda elástica alrededor de ellos no deja a ningún punto fuera.</p>
+<p>En geometría, a este subconjunto se le denomina envolvente convexa (<em>convex hull</em>). Una de sus propiedades es que si enumeramos los puntos según las agujas del reloj (<code>L1, L2, ..., Ln</code>) todos los pares de segmentos consecutivos van girando hacia la derecha. Por ejemplo, <code>L1-L2</code> está girado a la derecha en comparación con <code>L0-L1</code>.</p>
 <p>En Internet hemos encontrado este algoritmo (Andrew, 1979) que divide el problema en 2 partes. Calcula la envolvente superior, luego la inferior, y las une.</p>
-<p>El algoritmo es como sigue para un conjunto de N puntos:
-    - 1. Se ordenan los puntos P en orden creciente de coordenada X y, si tienen el mismo X, en orden creciente de coordenada Y.
-    - 2. Se prepara una lista UPPER con los 2 primeros puntos, L0 y L1
-    - 3. Para i entre 2 y N,
-        - I. se añade Li a la lista UPPER
-        - II. mientras los 3 últimos puntos en la lista UPPER hagan un giro a la izquierda, se elimina el punto intermedio de esos 3
-    - 4. Se prepara una lista LOWER con los 2 últimos puntos L(n-1), L(n-2)
-    - 5. Para i entre N-3 y 0, descendiendo,
-        - I. se añade Li a la lista LOWER
-        - II. mientras los 3 últimos puntos en la lista LOWER hagan un giro a la izquierda, se elimina el punto intermedio de esos 3
-    - 6. Se concatenan las listas UPPER y LOWER prescindiendo de los puntos finales de cada una</p>
-<p>Suponga que disponemos de un método auxiliar que, dados 3 puntos, nos dice si los segmentos AB y BC hacen un giro a la izquierda: 
+<p>El algoritmo es como sigue para un conjunto de <code>N</code> puntos:</p>
+<ol>
+<li>Se ordenan los puntos <code>P</code> en orden creciente de coordenada <code>X</code> y, si tienen el mismo <code>X</code>, en orden creciente de coordenada <code>Y</code>;</li>
+<li>Se prepara una lista <code>UPPER</code> con los 2 primeros puntos, <code>L0</code> y <code>L1</code>;</li>
+<li>Para <code>i</code> entre <code>2</code> y <code>N</code>:<ol>
+<li>Se añade <code>Li</code> a la lista <code>UPPER</code>;</li>
+<li>Mientras los 3 últimos puntos en la lista <code>UPPER</code> hagan un giro a la izquierda, se elimina el punto intermedio de esos 3.</li>
+</ol>
+</li>
+<li>Se prepara una lista <code>LOWER</code> con los 2 últimos puntos <code>L(n-1), L(n-2)</code>;</li>
+<li>Para <code>i</code> entre <code>N-3</code> y <code>0</code>, descendiendo:<ol>
+<li>Se añade <code>Li</code> a la lista <code>LOWER</code>;</li>
+<li>Mientras los 3 últimos puntos en la lista <code>LOWER</code> hagan un giro a la izquierda, se elimina el punto intermedio de esos 3.</li>
+</ol>
+</li>
+<li>Se concatenan las listas <code>UPPER</code> y <code>LOWER</code> prescindiendo de los puntos finales de cada una.</li>
+</ol>
+<p>Suponga que disponemos de un método auxiliar que, dados 3 puntos, nos dice si los segmentos <code>AB</code> y <code>BC</code> hacen un giro a la izquierda: 
 <div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="nf">giroIzquierda</span><span class="p">(</span><span class="n">Punto</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">Punto</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">Punto</span><span class="w"> </span><span class="n">C</span><span class="p">)</span>
 </code></pre></div></p>
 <ul>
-<li>(a) (5 puntos) Calcular la complejidad del algoritmo en función del tamaño N del conjunto de puntos P.</li>
+<li>(a) (5 puntos) Calcular la complejidad del algoritmo en función del tamaño <code>N</code> del conjunto de puntos <code>P</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>El método auxiliar, giroIzquierda(), trabaja sobre 3 puntos A, B y C y es por tanto independiente del tamaño N del conjunto de puntos. Su complejidad es O(1).</p>
-<p>El algoritmo principal ordena una lista de N puntos. La comparación entre 2 puntos A y B es independiente del número de puntos, y por tanto es de complejidad O(1). El algoritmo de ordenación introduce su propia complejidad que se puede estimar en O(n log n) si escogemos un buen algoritmo como puede ser el merge sort.</p>
+<p>El método auxiliar, <code>giroIzquierda()</code>, trabaja sobre 3 puntos <code>A</code>, <code>B</code>, y <code>C</code> y es por tanto independiente del tamaño <code>N</code> del conjunto de puntos. Su complejidad es <span class="arithmatex">\(O(1)\)</span>.</p>
+<p>El algoritmo principal ordena una lista de <code>N</code> puntos. La comparación entre 2 puntos <code>A</code> y <code>B</code> es independiente del número de puntos, y por tanto es de complejidad <span class="arithmatex">\(O(1)\)</span>. El algoritmo de ordenación introduce su propia complejidad que se puede estimar en <span class="arithmatex">\(O(n log n)\)</span> si escogemos un buen algoritmo como puede ser el <em>merge sort</em>.</p>
 <p>El algoritmo global:</p>
 <table>
 <thead>
@@ -3060,42 +3066,42 @@
 <tr>
 <td style="text-align: right;">1</td>
 <td>Ordenación</td>
-<td>O(n log n)</td>
+<td><span class="arithmatex">\(O(n log n)\)</span></td>
 </tr>
 <tr>
 <td style="text-align: right;">2</td>
-<td>new list UPPER</td>
-<td>O(1)</td>
+<td><code>new list UPPER</code></td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
 </tr>
 <tr>
 <td style="text-align: right;">3</td>
-<td>bucle 2..N</td>
-<td>O(n) (*)</td>
+<td>bucle <code>2..N</code></td>
+<td><span class="arithmatex">\(O(n)\)</span>(*)</td>
 </tr>
 <tr>
 <td style="text-align: right;">4</td>
-<td>new list LOWER</td>
-<td>O(1)</td>
+<td><code>new list LOWER</code></td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
 </tr>
 <tr>
 <td style="text-align: right;">5</td>
-<td>bucle 2..N</td>
-<td>O(n) (*)</td>
+<td>bucle <code>2..N</code></td>
+<td><span class="arithmatex">\(O(n)\)</span>(*)</td>
 </tr>
 <tr>
 <td style="text-align: right;">6</td>
 <td>concatena</td>
-<td>O(n)</td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
 </tr>
 <tr>
 <td style="text-align: right;">TOTAL</td>
 <td></td>
-<td>O(n log n)</td>
+<td><span class="arithmatex">\(O(n log n)\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>(*) En principio parece un bucle de N veces sobre una lista que va creciendo hasta N; resultando en N^2. Pero ocurre que cada pasada por el bucle elimina un elemento de la lista y o la lista es larga y el while termina pronto, o al revés. En resumen, que por una razón u otra no pasamos de O(n). En otras palabras, la combinación FOR-WHILE recorre exactamente N puntos, bien conservando cada punto o eliminándolo.</p>
-<p>Por otra parte, la operación remove(penúltimo) es independiente del tamaño de la lista y, por tanto, de O(1)</p>
+<p>(*) En principio parece un bucle de <code>N</code> veces sobre una lista que va creciendo hasta <code>N</code>; resultando en <span class="arithmatex">\(n^2\)</span>. Pero ocurre que cada pasada por el bucle elimina un elemento de la lista y o la lista es larga y el <code>while</code> termina pronto, o al revés. En resumen, que por una razón u otra no pasamos de <span class="arithmatex">\(O(n)\)</span>. En otras palabras, la combinación <code>FOR-WHILE</code> recorre exactamente <code>N</code> puntos, bien conservando cada punto o eliminándolo.</p>
+<p>Por otra parte, la operación <code>remove(penúltimo)</code> es independiente del tamaño de la lista y, por tanto, de <span class="arithmatex">\(O(1)\)</span>.</p>
 <p>Codificación en Java:
 <div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Punto</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">scan</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Punto</span><span class="o">&gt;</span><span class="w"> </span><span class="n">puntos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">puntos</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
@@ -3173,7 +3179,7 @@
 </code></pre></div></p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>Se dispone de la clase Graph, con los métodos que se indican a continuación:
+<p>Se dispone de la clase <code>Graph</code>, con los métodos que se indican a continuación:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addNode</span><span class="p">(</span><span class="n">Node</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">vois</span><span class="w"> </span><span class="nf">addLink</span><span class="p">(</span><span class="n">Link</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addLink2D</span><span class="p">(</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span>
@@ -3184,8 +3190,8 @@
 <span class="kd">public</span><span class="w"> </span><span class="n">Link</span><span class="w"> </span><span class="nf">getLink</span><span class="p">(</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getWeight</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="p">)</span>
 </code></pre></div></p>
-<p>Un algoritmo alternativo a BFS y Dijkstra para recorrer un grafo es el algoritmo DFS (Depth First Search). El recorrido en profundidad se produce de tal forma que partiendo de un nodo se procesa el primero de los nodos alcanzables desde él mediante un Link, después el segundo y así sucesivamente todos los nodos que se pueden alcanzar con un solo Link. Para procesar cada uno de los nodos se utiliza el mismo procedimiento, siempre teniendo en cuenta que, al ser un grafo, no pasemos dos veces por el mismo nodo. En definitiva, se trata del recorrido en pre-orden usado para los árboles binarios BST.</p>
-<p>Se muestra a continuación un ejemplo del orden de recorrido de DFS sobre un árbol para ver si desde el nodo “A” se puede alcanzar el nodo destino “J”:</p>
+<p>Un algoritmo alternativo a BFS y Dijkstra para recorrer un grafo es el algoritmo DFS (<em>Depth First Search</em>). El recorrido en profundidad se produce de tal forma que partiendo de un nodo se procesa el primero de los nodos alcanzables desde él mediante un <code>Link</code>, después el segundo y así sucesivamente todos los nodos que se pueden alcanzar con un solo <code>Link</code>. Para procesar cada uno de los nodos se utiliza el mismo procedimiento, siempre teniendo en cuenta que, al ser un grafo, no pasemos dos veces por el mismo nodo. En definitiva, se trata del recorrido en pre-orden usado para los árboles binarios BST.</p>
+<p>Se muestra a continuación un ejemplo del orden de recorrido de DFS sobre un árbol para ver si desde el nodo <code>A</code> se puede alcanzar el nodo destino <code>J</code>:</p>
 <p><img alt="" src="p1r_ex02.png" /></p>
 <p>Una de las formas de implementar DFS en un grafo es mediante un método recursivo, cuyo seudocódigo se proporciona a continuación:</p>
 <div class="highlight"><pre><span></span><code>1 método DFS(origen):
@@ -3196,7 +3202,7 @@
 6       llamamos recursivamente DFS(v)
 </code></pre></div>
 <ul>
-<li>(a) (5 puntos) Codificar el algoritmo ListaNodos que devuelve todos los nodos alcanzables desde un determinado nodo src. Los nodos alcanzables desde un nodo son todos aquellos a los que se puede llegar desde ese nodo siguiendo una secuencia de enlaces (Link) definidos en el grafo. En el caso del grafo del ejemplo anterior, desde el nodo C serían alcanzables: <C,E,I,J,F,K,L> y desde el nodo D: <D, G, H>. Tenga en cuenta que en un caso real pudiera haber bucles al tratarse de un grafo. Se valorará con 2 puntos el uso de la clase Set para aumentar la velocidad del método ListaNodos, si además se justifica adecuadamente la mejora producida por su utilización.</li>
+<li>(a) (5 puntos) Codificar el algoritmo <code>ListaNodos</code> que devuelve todos los nodos alcanzables desde un determinado nodo <code>src</code>. Los nodos alcanzables desde un nodo son todos aquellos a los que se puede llegar desde ese nodo siguiendo una secuencia de enlaces (<code>Link</code>) definidos en el grafo. En el caso del grafo del ejemplo anterior, desde el nodo <code>C</code> serían alcanzables: <code>&lt;C,E,I,J,F,K,L&gt;</code> y desde el nodo <code>D</code>: <code>&lt;D,G,H&gt;</code>. Tenga en cuenta que en un caso real pudiera haber bucles al tratarse de un grafo. Se valorará con 2 puntos el uso de la clase <code>Set</code> para aumentar la velocidad del método <code>ListaNodos</code>, si además se justifica adecuadamente la mejora producida por su utilización.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3240,8 +3246,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>El uso de Set para controlar la lista de visitados permite mejorar el algoritmo frente a List, ya que la búsqueda en listas no
-está tan optimizada como en Set.</p>
+<p>El uso de <code>Set</code> para controlar la lista de visitados permite mejorar el algoritmo frente a <code>List</code>, ya que la búsqueda en listas no
+está tan optimizada como en <code>Set</code>.</p>
 </details>
 
 

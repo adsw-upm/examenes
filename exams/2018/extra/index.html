@@ -3112,15 +3112,17 @@
 <h1 id="examen-2018-extraordinario">Examen 2018 — Extraordinario</h1>
 <h2 id="problema-1">Problema 1</h2>
 <p>Vamos a trabajar el algoritmo del huevo. Sirve para modelar algoritmos de búsqueda rápida cuando las pruebas son destructivas, reemplazando a la búsqueda binaria en un array.</p>
-<p>Tenemos N huevos y un edificio de H pisos. Queremos saber el piso más alto desde el que podemos dejar caer el huevo sin que se rompa. Con las siguientes suposiciones:
-    - Un huevo que sobrevive a una caída se puede usar nuevamente.
-    - Un huevo roto queda descartado.
-    - El efecto de una caída es el mismo para todos los huevos.
-    - Si un huevo rompe al caer desde un piso, romperá si se cae desde un piso superior.
-    - Si un huevo no rompe desde un piso, tampoco romperá desde un piso superior.</p>
-<p>La búsqueda binaria no sirve. Por ejemplo, si solo tenemos un huevo N=1, el mejor algoritmo es la búsqueda lineal: ir tirando desde pisos consecutivos hasta que rompa. Si tenemos N = 2 huevos en un edificio de 100 plantas y probamos en el piso 50 y rompe, solo nos queda un huevo para 49 pruebas adicionales. El óptimo para N=2 y H=100 es empezar desde el piso 14. La búsqueda binaria vale cuando hay más huevos que pisos.</p>
+<p>Tenemos <code>N</code> huevos y un edificio de <code>H</code> pisos. Queremos saber el piso más alto desde el que podemos dejar caer el huevo sin que se rompa. Con las siguientes suposiciones:</p>
+<ul>
+<li>Un huevo que sobrevive a una caída se puede usar nuevamente;</li>
+<li>Un huevo roto queda descartado;</li>
+<li>El efecto de una caída es el mismo para todos los huevos;</li>
+<li>Si un huevo rompe al caer desde un piso, romperá si se cae desde un piso superior;</li>
+<li>Si un huevo no rompe desde un piso, tampoco romperá desde un piso superior.</li>
+</ul>
+<p>La búsqueda binaria no sirve. Por ejemplo, si solo tenemos un huevo <code>N=1</code>, el mejor algoritmo es la búsqueda lineal: ir tirando desde pisos consecutivos hasta que rompa. Si tenemos <code>N=2</code> huevos en un edificio de 100 plantas y probamos en el piso 50 y rompe, solo nos queda un huevo para 49 pruebas adicionales. El óptimo para <code>N=2</code> y <code>H=100</code> es empezar desde el piso 14. La búsqueda binaria vale cuando hay más huevos que pisos.</p>
 <p>Para averiguar el piso óptimo solo necesitamos tener en cuenta cuántos pisos tenemos para probar. Es decir, es lo mismo buscar en los pisos del 1 al 10 que entre el 71 y el 80.</p>
-<p>Para averiguar el número máximo de pruebas con N huevos y H pisos podemos usar un método recursivo:
+<p>Para averiguar el número máximo de pruebas con <code>N</code> huevos y <code>H</code> pisos podemos usar un método recursivo:
 <div class="highlight"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="nf">drops</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">):</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">h</span>
@@ -3132,14 +3134,16 @@
 <span class="w">            </span><span class="n">res</span><span class="p">,</span>
 <span class="w">            </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">drops</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">drops</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
-</code></pre></div>
-Simplemente probamos todos los pisos X en el rango de pisos y para cada uno de ellos tenemos 2 opciones
-    - que el huevo se rompa y tenemos N-1 huevos y X-1 pisos
-    - que el huevo no rompa y tenemos N huevos y H-X pisos</p>
-<p>Probamos este código y va muy muy lento. Medimos tiempos para N=2 y obtenemos esto:</p>
+</code></pre></div></p>
+<p>Simplemente probamos todos los pisos <code>X</code> en el rango de pisos y para cada uno de ellos tenemos 2 opciones:</p>
+<ul>
+<li>Que el huevo se rompa y tenemos <code>N-1</code> huevos y <code>X-1</code> pisos;</li>
+<li>Que el huevo no rompa y tenemos <code>N</code> huevos y <code>H-X</code> pisos.</li>
+</ul>
+<p>Probamos este código y va muy muy lento. Medimos tiempos para <code>N=2</code> y obtenemos esto:</p>
 <p><img alt="" src="extra_ex01.png" /></p>
 <ul>
-<li>(a) (2,5 puntos) Indicar la complejidad del algoritmo recursivo en función de H. No se pide que la calcule analíticamente, solo que la marque y la valide a partir de las medidas realizadas.</li>
+<li>(a) (2,5 puntos) Indicar la complejidad del algoritmo recursivo en función de <code>H</code>. No se pide que la calcule analíticamente, solo que la marque y la valide a partir de las medidas realizadas.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3154,50 +3158,46 @@ Simplemente probamos todos los pisos X en el rango de pisos y para cada uno de e
 </thead>
 <tbody>
 <tr>
-<td>O(log h)</td>
+<td><span class="arithmatex">\(O(log h)\)</span></td>
 <td>0.36</td>
-<td>NO, r &lt;&lt; 1.0</td>
+<td>NO, <span class="arithmatex">\(r &lt;&lt; 1.0\)</span></td>
 </tr>
 <tr>
-<td>O(h)</td>
+<td><span class="arithmatex">\(O(h)\)</span></td>
 <td>0.41</td>
-<td>NO, r &lt;&lt; 1.0</td>
+<td>NO, <span class="arithmatex">\(r &lt;&lt; 1.0\)</span></td>
 </tr>
 <tr>
-<td>O(h log h)</td>
+<td><span class="arithmatex">\(O(h log h)\)</span></td>
 <td>0.43</td>
-<td>NO, r &lt;&lt; 1.0</td>
+<td>NO, <span class="arithmatex">\(r &lt;&lt; 1.0\)</span></td>
 </tr>
 <tr>
-<td>O(h^18)</td>
+<td><span class="arithmatex">\(O(h^18)\)</span></td>
 <td>0.98</td>
 <td>Posible</td>
 </tr>
 <tr>
-<td>O(1.9^h)</td>
+<td><span class="arithmatex">\(O(1.9^h)\)</span></td>
 <td>1.00</td>
 <td>Posible</td>
 </tr>
 </tbody>
 </table>
 <p>De las 2 opciones posibles, es absurdo que en un algoritmo recursivo como el presentado aparezca un polinomio de orden 18.</p>
-<p>Sí es posible una complejidad O(2^h), que es probablemente la solución.</p>
-<p>Del análisis de la relación de recurrencia, para N = 2, tenemos un bucle interno sobre <code>x</code> que se ejecuta <code>h</code> veces en forma de serie aritmética:
-<div class="highlight"><pre><span></span><code>T(n, h-1) + T(n, h-2) + … + T(n, 1)
-= h * (T(n, h-1) + T(n, 1)) / 2
-≈ h * T(n, h-1)
-</code></pre></div>
-El algoritmo completo queda definido por la recurrencia:
-<div class="highlight"><pre><span></span><code>T(h) = h * T(h-1)
-</code></pre></div>
-Intentamos validar la solución propuesta:
-<div class="highlight"><pre><span></span><code>T(h) = 2^h
-</code></pre></div>
-Sustituyendo en la recurrencia:
-<div class="highlight"><pre><span></span><code>2^h = h * 2^{h-1}
-</code></pre></div>
-Esta igualdad se cumple para h &gt;&gt; 1 (cuando <code>h</code> tiende a infinito).</p>
-<p>Para n constante, el algoritmo tiene complejidad O(2^h).</p>
+<p>Sí es posible una complejidad <span class="arithmatex">\(O(2^h)\)</span>, que es probablemente la solución.</p>
+<p>Del análisis de la relación de recurrencia, para <code>N=2</code>, tenemos un bucle interno sobre <code>x</code> que se ejecuta <code>h</code> veces en forma de serie aritmética:</p>
+<p><span class="arithmatex">\(T(n, h-1) + T(n, h-2) + … + T(n, 1)\)</span></p>
+<p><span class="arithmatex">\(= h * (T(n, h-1) + T(n, 1)) / 2\)</span></p>
+<p><span class="arithmatex">\(≈ h * T(n, h-1)\)</span></p>
+<p>El algoritmo completo queda definido por la recurrencia:</p>
+<p><span class="arithmatex">\(T(h) = h * T(h-1)\)</span></p>
+<p>Intentamos validar la solución propuesta:</p>
+<p><span class="arithmatex">\(T(h) = 2^h\)</span></p>
+<p>Sustituyendo en la recurrencia:</p>
+<p><span class="arithmatex">\(2^h = h * 2^{h-1}\)</span></p>
+<p>Esta igualdad se cumple para <span class="arithmatex">\(h &gt;&gt; 1\)</span> (cuando <code>h</code> tiende a infinito).</p>
+<p>Para <code>n</code> constante, el algoritmo tiene complejidad <span class="arithmatex">\(O(2^h)\)</span>.</p>
 </details>
 <p>Como el algoritmo recursivo no es práctico, recurrimos a memorizar resultados intermedios, de forma similar a como se hace con las series de Fibonacci.
 <div class="highlight"><pre><span></span><code><span class="mo">01</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">eggDrop</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3223,80 +3223,80 @@ Esta igualdad se cumple para h &gt;&gt; 1 (cuando <code>h</code> tiende a infini
 <span class="mi">21</span><span class="w">  </span><span class="p">}</span>
 </code></pre></div></p>
 <ul>
-<li>(b) (2,5 puntos) Se pide que calcule la complejidad de la implementación iterativa, en función de N y H. Se valorará la corrección de los razonamientos usados para determinar la complejidad.</li>
+<li>(b) (2,5 puntos) Se pide que calcule la complejidad de la implementación iterativa, en función de <code>N</code> y <code>H</code>. Se valorará la corrección de los razonamientos usados para determinar la complejidad.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <table>
 <thead>
 <tr>
-<th style="text-align: right;">Línea</th>
+<th>Línea</th>
 <th>Complejidad</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">2</td>
-<td>O(1)</td>
+<td>2</td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
 </tr>
 <tr>
-<td style="text-align: right;">3–6</td>
-<td>n · O(1) = O(n)</td>
+<td>3–6</td>
+<td><span class="arithmatex">\(n · O(1) = O(n)\)</span></td>
 </tr>
 <tr>
-<td style="text-align: right;">7–8</td>
-<td>h · O(1) = O(h)</td>
+<td>7–8</td>
+<td><span class="arithmatex">\(h · O(1) = O(h)\)</span></td>
 </tr>
 <tr>
-<td style="text-align: right;">9</td>
-<td>n · … (bucle <code>for</code>)</td>
+<td>9</td>
+<td><span class="arithmatex">\(n · ...(bucle\)</span> <code>for</code><span class="arithmatex">\()\)</span></td>
 </tr>
 <tr>
-<td style="text-align: right;">10</td>
-<td>h · … (bucle <code>for</code>)</td>
+<td>10</td>
+<td><span class="arithmatex">\(h · ...(bucle\)</span> <code>for</code><span class="arithmatex">\()\)</span></td>
 </tr>
 <tr>
-<td style="text-align: right;">11</td>
-<td>O(1)</td>
+<td>11</td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
 </tr>
 <tr>
-<td style="text-align: right;">12</td>
-<td>h · … (bucle <code>for</code>)</td>
+<td>12</td>
+<td><span class="arithmatex">\(h · ...(bucle\)</span> <code>for</code><span class="arithmatex">\()\)</span></td>
 </tr>
 <tr>
-<td style="text-align: right;">13–15</td>
-<td>O(1)</td>
+<td>13–15</td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
 </tr>
 <tr>
-<td style="text-align: right;">12–16</td>
-<td>h · O(1) = O(h)</td>
+<td>12–16</td>
+<td><span class="arithmatex">\(h · O(1) = O(h)\)</span></td>
 </tr>
 <tr>
-<td style="text-align: right;">17</td>
-<td>O(1)</td>
+<td>17</td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
 </tr>
 <tr>
-<td style="text-align: right;">10–18</td>
-<td>h · (O(1) + O(h) + O(1)) = O(h²)</td>
+<td>10–18</td>
+<td><span class="arithmatex">\(h · (O(1) + O(h) + O(1)) = O(h^2)\)</span></td>
 </tr>
 <tr>
-<td style="text-align: right;">9–19</td>
-<td>n · O(h²) = O(n·h²)</td>
+<td>9–19</td>
+<td><span class="arithmatex">\(n · O(h^2) = O(n·h^2)\)</span></td>
 </tr>
 <tr>
-<td style="text-align: right;">20</td>
-<td>O(1)</td>
+<td>20</td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
 </tr>
 <tr>
-<td style="text-align: right;">2–21</td>
-<td>O(1) + O(n) + O(h) + O(n·h²) + O(1) = O(n·h²)</td>
+<td>2–21</td>
+<td><span class="arithmatex">\(O(1) + O(n) + O(h) + O(n·h^2) + O(1) = O(n·h^2)\)</span></td>
 </tr>
 </tbody>
 </table>
 <p>Hemos convertido un algoritmo recursivo de orden exponencial en un algoritmo iterativo de orden cuadrático.</p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>Disponemos de las clases Datos, DatosOrdenado y BST, cuyos esquemas se pueden ver debajo. La case Datos almacena valores enteros sin ordenar en un array de tamaño fijado en el constructor. La clase DatosOrdenado almacena valores enteros ordenados de menor a mayor en un array de tamaño fijado en el constructor. La clase BST almacena valores enteros en un BST, donde en cada nodo del árbol se almacena un número entero en el campo valor.
+<p>Disponemos de las clases <code>Datos</code>, <code>DatosOrdenado</code>, y <code>BST</code>, cuyos esquemas se pueden ver debajo. La case <code>Datos</code> almacena valores enteros sin ordenar en un array de tamaño fijado en el constructor. La clase <code>DatosOrdenado</code> almacena valores enteros ordenados de menor a mayor en un array de tamaño fijado en el constructor. La clase <code>BST</code> almacena valores enteros en un BST, donde en cada nodo del árbol se almacena un número entero en el campo valor.
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Datos</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">valores</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// …..</span>
@@ -3330,9 +3330,9 @@ Esta igualdad se cumple para h &gt;&gt; 1 (cuando <code>h</code> tiende a infini
 <span class="w">    </span><span class="c1">// …</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<p>En una aplicación concreta que estamos desarrollando, deseamos conocer cuántos valores almacenados son menores que un cierto valor val que se pasa como parámetro. Este valor que se pasa como parámetro puede no ser uno de los valores almacenados.</p>
+<p>En una aplicación concreta que estamos desarrollando, deseamos conocer cuántos valores almacenados son menores que un cierto valor <code>val</code> que se pasa como parámetro. Este valor que se pasa como parámetro puede no ser uno de los valores almacenados.</p>
 <ul>
-<li>(a) (2,5 puntos) Codificar el método public int cuentaMenores (int val), en cada una de las 3 clases: Datos, DatosOrdenado y BST. Nota: Para simplificar suponga que tanto en Datos como en DatosOrdenado, los arrays de enteros están ocupados en su totalidad por valores almacenados. Suponga que no hay datos repetidos y que no hay operaciones de modificación (inserción o borrado), sino exclusivamente se trata de buscar en una estructura de datos construida.</li>
+<li>(a) (2,5 puntos) Codificar el método <code>public int cuentaMenores (int val)</code>, en cada una de las 3 clases: <code>Datos</code>, <code>DatosOrdenado</code> y <code>BST</code>. Nota: Para simplificar suponga que tanto en <code>Datos</code> como en <code>DatosOrdenado</code>, los arrays de enteros están ocupados en su totalidad por valores almacenados. Suponga que no hay datos repetidos y que no hay operaciones de modificación (inserción o borrado), sino exclusivamente se trata de buscar en una estructura de datos construida.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3388,18 +3388,18 @@ Esta igualdad se cumple para h &gt;&gt; 1 (cuando <code>h</code> tiende a infini
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2,5 puntos) Se pide: Considerando sólo los métodos cuentaMenores que acaba de implementar, cuál de las tres clases seleccionaría para almacenar un conjunto de valores de tamaño fijo (M) donde se vayan a realizar frecuentes llamas al método cuentaMenores.</li>
+<li>(b) (2,5 puntos) Se pide: Considerando sólo los métodos <code>cuentaMenores</code> que acaba de implementar, cuál de las tres clases seleccionaría para almacenar un conjunto de valores de tamaño fijo <code>M</code>, donde se vayan a realizar frecuentes llamas al método <code>cuentaMenores</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La clase Datos al tener los valores no ordenados nos obliga a recorrer todo el array, por lo tanto, la complejidad es proporcional al número de valores almacenados: O(N)</p>
-<p>La Clase DatosOrdenado, tiene los valores ordenados de menor a mayor. Que los valores estén ordenados permite utilizar búsqueda dicotómica para localizar el valor, o en su defecto la posición donde debería estar el valor que estamos buscando. Esta operación tiene una complejidad O(log N). Una vez localizada la posición donde está o debería estar el valor, todos los de la izquierda son menores que él, por lo tanto, por lo que directamente conocemos el número de valores menores que el que nos pasan como parámetro usando el índice de la posición del array donde está o debería estar el valor pasado como parámetro. El resultado es un algoritmo de orden O(log N)</p>
-<p>En el caso del BST la estructura de BST ayuda a encontrar el valor en el árbol con una complejidad O(log N),pero como lo que nos piden es el número de valores menor que el valor pasado como parámetro, e incluso puede ocurrir que le propio valor no se encuentre en el árbol, debemos recorrer casi todo el árbol con una complejidad O(N).</p>
-<p>Por lo tanto, a la vista de este análisis, para nuestro problema concreto, la clase seleccionada es DatosOrdenado</p>
+<p>La clase <code>Datos</code> al tener los valores no ordenados nos obliga a recorrer todo el array, por lo tanto, la complejidad es proporcional al número de valores almacenados: <span class="arithmatex">\(O(N)\)</span>.</p>
+<p>La clase <code>DatosOrdenado</code>, tiene los valores ordenados de menor a mayor. Que los valores estén ordenados permite utilizar búsqueda dicotómica para localizar el valor, o en su defecto la posición donde debería estar el valor que estamos buscando. Esta operación tiene una complejidad <span class="arithmatex">\(O(log N)\)</span>. Una vez localizada la posición donde está o debería estar el valor, todos los de la izquierda son menores que él, por lo tanto, por lo que directamente conocemos el número de valores menores que el que nos pasan como parámetro usando el índice de la posición del array donde está o debería estar el valor pasado como parámetro. El resultado es un algoritmo de orden <span class="arithmatex">\(O(log N)\)</span>.</p>
+<p>En el caso de <code>BST</code> la estructura de BST ayuda a encontrar el valor en el árbol con una complejidad <span class="arithmatex">\(O(log N)\)</span>,pero como lo que nos piden es el número de valores menor que el valor pasado como parámetro, e incluso puede ocurrir que le propio valor no se encuentre en el árbol, debemos recorrer casi todo el árbol con una complejidad <span class="arithmatex">\(O(N)\)</span>.</p>
+<p>Por lo tanto, a la vista de este análisis, para nuestro problema concreto, la clase seleccionada es <code>DatosOrdenado</code>.</p>
 </details>
 <h2 id="problema-3">Problema 3</h2>
 <ul>
-<li>(a) (2 puntos) Explique brevemente cuál es la diferencia entre interbloqueo (deadlock) y bloqueo vivo (livelock).</li>
+<li>(a) (2 puntos) Explique brevemente cuál es la diferencia entre interbloqueo (<em>deadlock</em>) y bloqueo vivo (<em>livelock</em>).</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3407,29 +3407,32 @@ Esta igualdad se cumple para h &gt;&gt; 1 (cuando <code>h</code> tiende a infini
 <p>En un bloqueo vivo hay igualmente varias hebras intentando conseguir recursos que tienen otras hebras. La diferencia es que cuando una hebra no puede conseguir todos sus recursos libera los que tiene y lo vuelve a intentar. Como consecuencia, las hebras implicadas están continuamente activas, aunque sin realizar ningún progreso.</p>
 <p>Por tanto, la diferencia fundamental es que en un interbloqueo las hebras estás suspendidas y nunca se ejecutan, mientras que en un bloqueo vivo las hebras se ejecutan pero no progresan.</p>
 </details>
-<p>Sea un sistema con 8 GB de memoria principal. Tenemos procesos concurrentes que solicitan memoria en bloques de 2 GB a medida que la necesitan para su ejecución. Un proceso que ya tiene N bloques de memoria asignados puede solicitar más memoria, y si ya no hay memoria disponible espera a que la haya antes de continuar. La memoria asignada a un proceso se libera completamente cuando el proceso termina su ejecución.</p>
+<p>Sea un sistema con 8 GB de memoria principal. Tenemos procesos concurrentes que solicitan memoria en bloques de 2 GB a medida que la necesitan para su ejecución. Un proceso que ya tiene <code>N</code> bloques de memoria asignados puede solicitar más memoria, y si ya no hay memoria disponible espera a que la haya antes de continuar. La memoria asignada a un proceso se libera completamente cuando el proceso termina su ejecución.</p>
 <ul>
-<li>(b) (3 puntos) Indique razonadamente si es posible que se dé una situación de interbloqueo (deadlock), en qué circunstancias podría ocurrir y, si éste es el caso, cómo se podría evitar.</li>
+<li>(b) (3 puntos) Indique razonadamente si es posible que se dé una situación de interbloqueo (<em>deadlock</em>), en qué circunstancias podría ocurrir y, si éste es el caso, cómo se podría evitar.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Los procesos acceden a un conjunto de recursos, los bloques de memoria, todos iguales, con una disponibilidad total limitada a 4 bloques en total. Se pueden producir interbloqueos si varios procesos intentan adquirir más memoria cuando ya está toda asignada a otros procesos que también necesitan más memoria.</p>
-<p>Por ejemplo, supóngase que hay dos procesos P y Q, que tiene asignados 2 bloques de memoria cada uno, es decir 4 en total, por lo que no hay bloques libres. Si ambos solicitan un bloque adicional cada uno, al no estar disponible se suspenden esperando que haya memoria libre. Para ello uno de los dos tendría que terminar, liberando su memoria, pero al no poder avanzar ninguno de los dos se quedan suspendidos indefinidamente.</p>
-<p>Podemos comprobar que se cumplen las condiciones necesarias de Coffman:
-1. Exclusión mutua: un bloque de memoria sólo puede estar asignado a un proceso.
-2. Tener y esperar: un proceso puede tener asignada memoria y esperar que conseguir más.
-3. Sin expulsión: no se quita memoria a un proceso hasta que termina su ejecución.
-4. Espera circular, como pone de manifiesto el ejemplo anterior.</p>
+<p>Por ejemplo, supóngase que hay dos procesos <code>P</code> y <code>Q</code>, que tiene asignados 2 bloques de memoria cada uno, es decir 4 en total, por lo que no hay bloques libres. Si ambos solicitan un bloque adicional cada uno, al no estar disponible se suspenden esperando que haya memoria libre. Para ello uno de los dos tendría que terminar, liberando su memoria, pero al no poder avanzar ninguno de los dos se quedan suspendidos indefinidamente.</p>
+<p>Podemos comprobar que se cumplen las condiciones necesarias de Coffman:</p>
+<ol>
+<li>Exclusión mutua: Un bloque de memoria sólo puede estar asignado a un proceso.</li>
+<li>Tener y esperar: Un proceso puede tener asignada memoria y esperar que conseguir más.</li>
+<li>Sin expulsión: No se quita memoria a un proceso hasta que termina su ejecución.</li>
+<li>Espera circular, como pone de manifiesto el ejemplo anterior.</li>
+</ol>
 <p>Para evitar el interbloqueo la solución más sencilla sería obligar a que los procesos soliciten toda la memoria que pueden necesitar al iniciarse, invalidando la condición 2. Nótese que la solución frecuentemente recomendada de asignar los recursos siempre en el mismo orden no es aplicable aquí porque todos los bloques de memoria son iguales</p>
 </details>
 <h2 id="problema-4">Problema 4</h2>
 <p>La panadería Molinga S.L. quiere modernizar sus instalaciones robotizando su sistema de producción de pan. Para ello han encargado a los alumnos de ADSW que realicen parte del sistema.</p>
-<p>Se desea realizar dos monitores para gestionar la amasadora y el horno de la panadería, con acceso exclusivo por parte de varios robots (threads). Existen 3 tipos de robots en la panadería:
-    - Robots de almacén, que meten ingredientes en la amasadora.
-    - Robots amasadores, que cuando tienen los ingredientes necesarios amasan y después meten la masa en el horno.
-    - Robots horneadores, que cuando tienen las masas necesarias para llenar un horno, hornean el pan.</p>
-<p>La amasadora permitirá introducir ingredientes a los r obots de almacén y amasar a los robots amasadores. Para hacer una masa de pan hacen falta cuatro ingredientes: agua, harina, levadura y sal, en la proporción de 4, 3, 2 y 1 unidades. No se permitirá a los robots de almacén introducir más ingredientes si hay suficientes para hacer una masa, y de igual manera no se permitirá a los robots amasadores amasar si no hay suficientes ingredientes para
-hacer una masa.</p>
+<p>Se desea realizar dos monitores para gestionar la amasadora y el horno de la panadería, con acceso exclusivo por parte de varios robots (<em>threads</em>). Existen 3 tipos de robots en la panadería:</p>
+<ul>
+<li>Robots de almacén, que meten ingredientes en la amasadora;</li>
+<li>Robots amasadores, que cuando tienen los ingredientes necesarios amasan y después meten la masa en el horno;</li>
+<li>Robots horneadores, que cuando tienen las masas necesarias para llenar un horno, hornean el pan.</li>
+</ul>
+<p>La amasadora permitirá introducir ingredientes a los robots de almacén y amasar a los robots amasadores. Para hacer una masa de pan hacen falta cuatro ingredientes: agua, harina, levadura y sal, en la proporción de <code>4</code>, <code>3</code>, <code>2</code>, y <code>1</code> unidades. No se permitirá a los robots de almacén introducir más ingredientes si hay suficientes para hacer una masa, y de igual manera no se permitirá a los robots amasadores amasar si no hay suficientes ingredientes para hacer una masa.</p>
 <p>El horno permitirá introducir masas a los robots amasadores y hornear a los robots horneadores. Un horno tiene un tamaño concreto, que recibirá como parámetro en el constructor, indicando el número de masas que es capaz de hornear. Por motivos de eficiencia, los robots horneadores solo podrán hornear si el horno está completamente lleno, y los robots amasadores solo podrán meter masas si hay hueco en el horno.</p>
 <p>Estructura de clases de la panadería:</p>
 <p><img alt="" src="extra_ex04.png" /></p>
@@ -3480,7 +3483,7 @@ hacer una masa.</p>
 <span class="p">}</span>
 </code></pre></div></p>
 <ul>
-<li>(a) (2,5 puntos) Desarrollar el monitor Amasadora</li>
+<li>(a) (2,5 puntos) Desarrollar el monitor <code>Amasadora</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3531,7 +3534,7 @@ hacer una masa.</p>
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2 puntos) Desarrollar el monitor Horno</li>
+<li>(b) (2 puntos) Desarrollar el monitor <code>Horno</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3567,7 +3570,7 @@ hacer una masa.</p>
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (0,5 puntos) Proponer el método run() del Robot Amasador</li>
+<li>(c) (0,5 puntos) Proponer el método <code>run()</code> del robot amasador.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3580,10 +3583,12 @@ hacer una masa.</p>
 </code></pre></div>
 </details>
 <h2 id="problema-5">Problema 5</h2>
-<p>Se desea ampliar el juego de la serpiente con un contador de las manzanas que ha comido la serpiente. Naturalmente, cuando la serpiente come una manzana, este contador debe aumentar en una unidad. Para añadir dificultad al jugador, también puede perder manzanas de este contador por dos motivos:
-    - Si una bola choca con una manzana, el jugador pierde una unidad de su contador de manzanas comidas. El contador no puede nunca tener un valor inferior a cero como resultado de esta pérdida, pero la pérdida debe ejecutarse tan pronto como sea posible.
-    - Si la serpiente es golpeada en la cabeza por una bola, el contador de manzanas se reduce a la mitad, redondeando al entero inmediatamente inferior. Esto es, si el jugador tenía 7 puntos debe quedarse con 3.</p>
-<p>Siendo la clase manzanas:
+<p>Se desea ampliar el juego de la serpiente con un contador de las manzanas que ha comido la serpiente. Naturalmente, cuando la serpiente come una manzana, este contador debe aumentar en una unidad. Para añadir dificultad al jugador, también puede perder manzanas de este contador por dos motivos:</p>
+<ul>
+<li>Si una bola choca con una manzana, el jugador pierde una unidad de su contador de manzanas comidas. El contador no puede nunca tener un valor inferior a cero como resultado de esta pérdida, pero la pérdida debe ejecutarse tan pronto como sea posible;</li>
+<li>Si la serpiente es golpeada en la cabeza por una bola, el contador de manzanas se reduce a la mitad, redondeando al entero inmediatamente inferior. Esto es, si el jugador tenía 7 puntos debe quedarse con 3.</li>
+</ul>
+<p>Siendo la clase <code>Manzanas</code>:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Manzanas</span>
 <span class="kd">implements</span><span class="w"> </span><span class="n">Screen</span><span class="p">.</span><span class="na">Thing</span><span class="w"> </span><span class="p">{</span>
 
@@ -3614,8 +3619,9 @@ hacer una masa.</p>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<p>Se pide que complete y modifique la clase monitor Manzanas como considere oportuno para obtener la
-funcionalidad descrita.</p>
+<ul>
+<li>(a) (5 puntos) Se pide que complete y modifique la clase monitor <code>Manzanas</code> como considere oportuno para obtener la funcionalidad descrita.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="cm">/**</span>
@@ -3662,7 +3668,7 @@ funcionalidad descrita.</p>
 </code></pre></div>
 </details>
 <h2 id="problema-6">Problema 6</h2>
-<p>Para la aplicación Android DaysUntil se desea añadir la posibilidad de añadir una descripción del evento introducido por el usuario. Esta información es opcional para la funcionalidad básica de la aplicación. Sin embargo, en caso de existir una descripción, esta debe incluirse en la información pasada como intención implícita para la creación de un evento en el calendario del usuario al pulsar un botón.</p>
+<p>Para la aplicación Android <code>DaysUntil</code> se desea añadir la posibilidad de añadir una descripción del evento introducido por el usuario. Esta información es opcional para la funcionalidad básica de la aplicación. Sin embargo, en caso de existir una descripción, esta debe incluirse en la información pasada como intención implícita para la creación de un evento en el calendario del usuario al pulsar un botón.</p>
 <p>Siendo el esqueleto del código el siguiente:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="w"> </span><span class="p">{</span>
 
@@ -3705,7 +3711,7 @@ funcionalidad descrita.</p>
 <span class="nt">&lt;/android.support.constraint.ConstraintLayout&gt;</span>
 </code></pre></div>
 <ul>
-<li>(a) Complete el código asociado a dicha funcionalidad, tanto en el código java como en la definición del layout asociado a la actividad en cuestión. Considere implementados los métodos getNombre y getFecha. Ha de implementar completamente cualquier otro método auxiliar que considere necesario. Nota: la clave esperada por la intención de crear un evento para la descripción del mismo es <code>CalendarContract.Events.DESCRIPTION</code>.</li>
+<li>(a) Complete el código asociado a dicha funcionalidad, tanto en el código java como en la definición del <code>layout</code> asociado a la actividad en cuestión. Considere implementados los métodos <code>getNombre</code> y <code>getFecha</code>. Ha de implementar completamente cualquier otro método auxiliar que considere necesario. Nota: la clave esperada por la intención de crear un evento para la descripción del mismo es <code>CalendarContract.Events.DESCRIPTION</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>

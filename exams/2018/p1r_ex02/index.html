@@ -2874,7 +2874,7 @@
 
   <h1>P1r ex02</h1>
 
-<p>Se dispone de la clase Graph, con los métodos que se indican a continuación:
+<p>Se dispone de la clase <code>Graph</code>, con los métodos que se indican a continuación:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addNode</span><span class="p">(</span><span class="n">Node</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">vois</span><span class="w"> </span><span class="nf">addLink</span><span class="p">(</span><span class="n">Link</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addLink2D</span><span class="p">(</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span>
@@ -2885,8 +2885,8 @@
 <span class="kd">public</span><span class="w"> </span><span class="n">Link</span><span class="w"> </span><span class="nf">getLink</span><span class="p">(</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getWeight</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="p">)</span>
 </code></pre></div></p>
-<p>Un algoritmo alternativo a BFS y Dijkstra para recorrer un grafo es el algoritmo DFS (Depth First Search). El recorrido en profundidad se produce de tal forma que partiendo de un nodo se procesa el primero de los nodos alcanzables desde él mediante un Link, después el segundo y así sucesivamente todos los nodos que se pueden alcanzar con un solo Link. Para procesar cada uno de los nodos se utiliza el mismo procedimiento, siempre teniendo en cuenta que, al ser un grafo, no pasemos dos veces por el mismo nodo. En definitiva, se trata del recorrido en pre-orden usado para los árboles binarios BST.</p>
-<p>Se muestra a continuación un ejemplo del orden de recorrido de DFS sobre un árbol para ver si desde el nodo “A” se puede alcanzar el nodo destino “J”:</p>
+<p>Un algoritmo alternativo a BFS y Dijkstra para recorrer un grafo es el algoritmo DFS (<em>Depth First Search</em>). El recorrido en profundidad se produce de tal forma que partiendo de un nodo se procesa el primero de los nodos alcanzables desde él mediante un <code>Link</code>, después el segundo y así sucesivamente todos los nodos que se pueden alcanzar con un solo <code>Link</code>. Para procesar cada uno de los nodos se utiliza el mismo procedimiento, siempre teniendo en cuenta que, al ser un grafo, no pasemos dos veces por el mismo nodo. En definitiva, se trata del recorrido en pre-orden usado para los árboles binarios BST.</p>
+<p>Se muestra a continuación un ejemplo del orden de recorrido de DFS sobre un árbol para ver si desde el nodo <code>A</code> se puede alcanzar el nodo destino <code>J</code>:</p>
 <p><img alt="" src="../p1r/p1r_ex02.png" /></p>
 <p>Una de las formas de implementar DFS en un grafo es mediante un método recursivo, cuyo seudocódigo se proporciona a continuación:</p>
 <div class="highlight"><pre><span></span><code>1 método DFS(origen):
@@ -2897,7 +2897,7 @@
 6       llamamos recursivamente DFS(v)
 </code></pre></div>
 <ul>
-<li>(a) (5 puntos) Codificar el algoritmo ListaNodos que devuelve todos los nodos alcanzables desde un determinado nodo src. Los nodos alcanzables desde un nodo son todos aquellos a los que se puede llegar desde ese nodo siguiendo una secuencia de enlaces (Link) definidos en el grafo. En el caso del grafo del ejemplo anterior, desde el nodo C serían alcanzables: <C,E,I,J,F,K,L> y desde el nodo D: <D, G, H>. Tenga en cuenta que en un caso real pudiera haber bucles al tratarse de un grafo. Se valorará con 2 puntos el uso de la clase Set para aumentar la velocidad del método ListaNodos, si además se justifica adecuadamente la mejora producida por su utilización.</li>
+<li>(a) (5 puntos) Codificar el algoritmo <code>ListaNodos</code> que devuelve todos los nodos alcanzables desde un determinado nodo <code>src</code>. Los nodos alcanzables desde un nodo son todos aquellos a los que se puede llegar desde ese nodo siguiendo una secuencia de enlaces (<code>Link</code>) definidos en el grafo. En el caso del grafo del ejemplo anterior, desde el nodo <code>C</code> serían alcanzables: <code>&lt;C,E,I,J,F,K,L&gt;</code> y desde el nodo <code>D</code>: <code>&lt;D,G,H&gt;</code>. Tenga en cuenta que en un caso real pudiera haber bucles al tratarse de un grafo. Se valorará con 2 puntos el uso de la clase <code>Set</code> para aumentar la velocidad del método <code>ListaNodos</code>, si además se justifica adecuadamente la mejora producida por su utilización.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2941,8 +2941,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>El uso de Set para controlar la lista de visitados permite mejorar el algoritmo frente a List, ya que la búsqueda en listas no
-está tan optimizada como en Set.</p>
+<p>El uso de <code>Set</code> para controlar la lista de visitados permite mejorar el algoritmo frente a <code>List</code>, ya que la búsqueda en listas no
+está tan optimizada como en <code>Set</code>.</p>
 </details>
 
 

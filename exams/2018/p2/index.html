@@ -3023,7 +3023,7 @@
 
 <h1 id="examen-2018-parcial-2">Examen 2018 — Parcial 2</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>Se desea realizar un monitor para gestionar un tipo de recursos con acceso exclusivo por parte de varias hebras (threads). Para ello se parte del esquema de la clase Recurso:
+<p>Se desea realizar un monitor para gestionar un tipo de recursos con acceso exclusivo por parte de varias hebras (<em>threads</em>). Para ello se parte del esquema de la clase <code>Recurso</code>:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Recurso</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// número de usuarios del recurso</span>
@@ -3040,11 +3040,11 @@
 <span class="p">}</span>
 </code></pre></div></p>
 <ul>
-<li>(a) (2,5 puntos) Complete el código de la clase Recurso de forma que se cumplan las aserciones que figuran como comentarios.</li>
+<li>(a) (2,5 puntos) Complete el código de la clase <code>Recurso</code> de forma que se cumplan las aserciones que figuran como comentarios.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Una posible implementación de la clase Recurso es:
+<p>Una posible implementación de la clase <code>Recurso</code> es:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Recurso</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// número de usuarios del recurso</span>
 
@@ -3080,25 +3080,27 @@
 <span class="p">}</span>
 </code></pre></div></p>
 </details>
-<p>Se crean tres hebras, T1, T2 y T3, cuyos métodos run incluyen los siguientes accesos a dos objetos, R1 y R2, de la clase Recurso:
-<div class="highlight"><pre><span></span><code><span class="o">-</span><span class="w"> </span><span class="n">T1</span><span class="p">:</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="na">adquirir</span><span class="p">();</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="na">liberar</span><span class="p">();</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="na">adquirir</span><span class="p">();</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="na">liberar</span><span class="p">();</span>
-<span class="o">-</span><span class="w"> </span><span class="n">T2</span><span class="p">:</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="na">adquirir</span><span class="p">();</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="na">adquirir</span><span class="p">();</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="na">liberar</span><span class="p">();</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="na">liberar</span><span class="p">();</span>
-<span class="o">-</span><span class="w"> </span><span class="n">T3</span><span class="p">:</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="na">adquirir</span><span class="p">();</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="na">adquirir</span><span class="p">();</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="na">liberar</span><span class="p">();</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="na">liberar</span><span class="p">();</span>
+<p>Se crean tres hebras, <code>T1</code>, <code>T2</code>, y <code>T3</code>, cuyos métodos run incluyen los siguientes accesos a dos objetos, <code>R1</code> y <code>R2</code>, de la clase <code>Recurso</code>:
+<div class="highlight"><pre><span></span><code><span class="nl">T1</span><span class="p">:</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="na">adquirir</span><span class="p">();</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="na">liberar</span><span class="p">();</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="na">adquirir</span><span class="p">();</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="na">liberar</span><span class="p">();</span>
+<span class="nl">T2</span><span class="p">:</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="na">adquirir</span><span class="p">();</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="na">adquirir</span><span class="p">();</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="na">liberar</span><span class="p">();</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="na">liberar</span><span class="p">();</span>
+<span class="nl">T3</span><span class="p">:</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="na">adquirir</span><span class="p">();</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="na">adquirir</span><span class="p">();</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="na">liberar</span><span class="p">();</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="na">liberar</span><span class="p">();</span>
 </code></pre></div></p>
 <ul>
-<li>(b) (2,5 puntos) Analice el comportamiento de este programa, indicando si se pueden producir interbloqueos entre todas o algunas de las hebras. Justifique la respuesta mediante las condiciones de interbloqueo explicadas en clase. NOTA : no hace falta implementar las hebras T1, T2, T3, ni los métodos run() respectivos.</li>
+<li>(b) (2,5 puntos) Analice el comportamiento de este programa, indicando si se pueden producir interbloqueos entre todas o algunas de las hebras. Justifique la respuesta mediante las condiciones de interbloqueo explicadas en clase. NOTA : no hace falta implementar las hebras <code>T1</code>, <code>T2</code>, <code>T3</code>, ni los métodos <code>run()</code> respectivos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Examinamos las condiciones de Coffman:
-    - Exclusión mutua: las tres hebras acceden a los recursos de forma mutuamente exclusiva, por medio de los métodos adquirir() y liberar(). Por tanto esta condición se cumple para las tres hebras.
-    - Tener y esperar: La hebra T1 sólo adquiere un recurso a la vez. T2 accede a R2 y luego a R1, y la hebra T3 accede a R1 y luego R2. Por tanto, la condición se cumple para T2 y T3, pero no para T1.
-    - Sin expulsión: La implementación de los métodos adquirir() y liberar() no permite expulsar a una hebra de un recurso ya adquirido. Por tanto, esta condici´n se cumple para todas las hebras.
-    - Espera circular: Se puede producir una espera circular entre T2 y T3, como se muestra en el siguiente esquema:</p>
+<p>Examinamos las condiciones de Coffman:</p>
+<ul>
+<li>Exclusión mutua: Las tres hebras acceden a los recursos de forma mutuamente exclusiva, por medio de los métodos <code>adquirir()</code> y <code>liberar()</code>. Por tanto esta condición se cumple para las tres hebras.</li>
+<li>Tener y esperar: La hebra <code>T1</code> sólo adquiere un recurso a la vez. <code>T2</code> accede a <code>R2</code> y luego a <code>R1</code>, y la hebra <code>T3</code> accede a <code>R1</code> y luego <code>R2</code>. Por tanto, la condición se cumple para <code>T2</code> y <code>T3</code>, pero no para <code>T1</code>.</li>
+<li>Sin expulsión: La implementación de los métodos <code>adquirir()</code> y <code>liberar()</code> no permite expulsar a una hebra de un recurso ya adquirido. Por tanto, esta condición se cumple para todas las hebras.</li>
+<li>Espera circular: Se puede producir una espera circular entre <code>T2</code> y <code>T3</code>, como se muestra en el siguiente esquema:</li>
+</ul>
 <p><img alt="" src="p2_ex01.png" /></p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>Se desea realizar un monitor para gestionar paso de peatones en una carretera con acceso exclusivo por parte de varias hebras (threads). Hay dos tipos de hebras, los coches y los peatones.</p>
+<p>Se desea realizar un monitor para gestionar paso de peatones en una carretera con acceso exclusivo por parte de varias hebras (<em>threads</em>). Hay dos tipos de hebras, los coches y los peatones.</p>
 <p>Los peatones y los coches irán apareciendo aleatoriamente para cruzar el paso de peatones.</p>
 <p>En el paso de peatones no puede haber a la vez coches y peatones. Los coches esperan a que no haya peatones para pasar. Igualmente, los peatones esperan a que no haya coches. En caso de conflicto se da prioridad a los peatones.
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Coche</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
@@ -3140,7 +3142,7 @@
 <span class="p">}</span>
 </code></pre></div></p>
 <ul>
-<li>(a) (5 puntos) Crear un monitor PasoPeatones que gestione el acceso al paso de peatones según las condiciones expuestas en el enunciado.
+<li>(a) (5 puntos) Crear un monitor <code>PasoPeatones</code> que gestione el acceso al paso de peatones según las condiciones expuestas en el enunciado.
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PasoPeatones</span><span class="w"> </span><span class="p">{</span>
 <span class="p">...</span>
 <span class="p">}</span>
