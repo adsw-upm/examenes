@@ -2874,41 +2874,39 @@
 
   <h1>P1r ex02</h1>
 
-<p>La solución debe presentarse en Java y comentando lo que hace el código. Alternativamente se puede presentar la solución en pseudocódigo.</p>
-<p>Se debe implementar los tres métodos principales de una clase llamada ListaEnlazadaOrdenada: añadirValor, eliminarValor y buscarElementoAnterior.</p>
-<p>El objetivo de dicha clase consiste en mantener un conjunto de objetos de la clase Elemento ordenados de menor a mayor. La clase ListaEnlazadaOrdenada solo tendrá un variable de clase que será el primer objeto Elemento.</p>
+<p>Se debe implementar los tres métodos principales de una clase llamada <code>ListaEnlazadaOrdenada</code>: <code>añadirValor</code>, <code>eliminarValor</code>, y <code>buscarElementoAnterior</code>.</p>
+<p>El objetivo de dicha clase consiste en mantener un conjunto de objetos de la clase <code>Elemento</code> ordenados de menor a mayor. La clase <code>ListaEnlazadaOrdenada</code> solo tendrá un variable de clase que será el primer objeto <code>Elemento</code>.</p>
 <p>La lista debe mantenerse ordenada en todo momento.</p>
-<p>La clase Elemento está implementada y podemos utilizarla según la descripción de métodos que se muestran a continuación:
+<p>La clase <code>Elemento</code> está implementada y podemos utilizarla según la descripción de métodos que se muestran a continuación:
 <div class="highlight"><pre><span></span><code><span class="n">Elemento</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span>
 <span class="n">Elemento</span><span class="w"> </span><span class="nf">getSiguiente</span><span class="p">()</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">setSiguiente</span><span class="w"> </span><span class="p">(</span><span class="n">Elemento</span><span class="w"> </span><span class="n">siguiente</span><span class="p">)</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">getValor</span><span class="p">()</span>
-</code></pre></div>
-La clase Elemento almacena un entero que pasamos en el método constructor. Además, guarda un enlace al siguiente objeto de la clase Elemento que le sucede. El constructor inicializa el enlace al siguiente objeto Elemento
-a null.</p>
-<p>La clase ListaEnlazadaOrdenada deberá usar los métodos setSiguiente y getSiguiente para mantener el orden entre los objetos de la clase Elemento. Si no hubiera siguiente elemento entonces el valor para el siguiente será
-null.</p>
-<p>Descripción de los métodos que deberá implementar de la clase ListaEnlazadaOrdenada:</p>
+</code></pre></div></p>
+<p>La clase <code>Elemento</code> almacena un entero que pasamos en el método constructor. Además, guarda un enlace al siguiente objeto de la clase <code>Elemento</code> que le sucede. El constructor inicializa el enlace al siguiente objeto <code>Elemento</code> a <code>null</code>.</p>
+<p>La clase <code>ListaEnlazadaOrdenada</code> deberá usar los métodos <code>setSiguiente</code> y <code>getSiguiente</code> para mantener el orden entre los objetos de la clase <code>Elemento</code>. Si no hubiera siguiente elemento entonces el valor para el siguiente será
+<code>null</code>.</p>
+<p>Descripción de los métodos que deberá implementar de la clase <code>ListaEnlazadaOrdenada</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Elemento</span><span class="w"> </span><span class="nf">buscarElementoAnterior</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
 </code></pre></div>
-<p>Se recomienda empezar por este método ya que va a resultar muy útil para la realización de los métodos añadirValor y eliminarValor.</p>
-<p>Este método busca y devuelve un objeto Elemento en la ListaEnlazadaOrdenada. La lista está ordenada de menor a mayor, por lo tanto, el Elemento que devuelve debe ser el que tenga el valor más pequeño al que se pasa por parámetro en el parámetro valor.</p>
+<p>Se recomienda empezar por este método ya que va a resultar muy útil para la realización de los métodos <code>añadirValor</code> y <code>eliminarValor</code>.</p>
+<p>Este método busca y devuelve un objeto Elemento en la <code>ListaEnlazadaOrdenada</code>. La lista está ordenada de menor a mayor, por lo tanto, el Elemento que devuelve debe ser el que tenga el valor más pequeño al que se pasa por parámetro en el parámetro valor.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">añadirValor</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
 </code></pre></div>
-<p>Este método debe añadir un objeto Elemento nuevo que contenga el entero valor que se pasa por parámetro. Se debe mantener el orden. Se pueden añadir varios elementos con el mismo valor.</p>
-<p>Devuelve true cuando se ha podido añadir el objeto Elemento con el valor que se pasa por parámetro.</p>
-<p>Devuelve false cuando NO se ha podido añadir el objeto Elemento con el valor que se pasa por parámetro.</p>
+<p>Este método debe añadir un objeto <code>Elemento</code> nuevo que contenga el entero valor que se pasa por parámetro. Se debe mantener el orden. Se pueden añadir varios elementos con el mismo valor.</p>
+<p>Devuelve <code>true</code> cuando se ha podido añadir el objeto <code>Elemento</code> con el valor que se pasa por parámetro.</p>
+<p>Devuelve <code>false</code> cuando NO se ha podido añadir el objeto <code>Elemento</code> con el valor que se pasa por parámetro.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">eliminarValor</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
 </code></pre></div>
-<p>Este método debe eliminar un objeto Elemento que contenga el entero valor que se pasa por parámetro al método. Después de eliminar el Elemento debe garantizar que se mantenga el orden de la lista.</p>
-<p>Devuelve true cuando se ha podido eliminar el objeto Elemento con el valor que se pasa por parámetro.</p>
-<p>Devuelve false cuando NO se ha podido eliminar el objeto Elemento con el valor que se pasa por parámetro.</p>
-<p>Notas: No se pueden utilizar estructuras de datos adicionales como Listas, ArrayList, HashSet, Maps, Diccionarios, etc. Solo las clases Elemento y ListaEnlazadaOrdenada. No se trata de un array, por lo tanto, no se pueden hacer accesos del tipo miLista[posicion] o miLista[14].</p>
+<p>Este método debe eliminar un objeto <code>Elemento</code> que contenga el entero valor que se pasa por parámetro al método. Después de eliminar el <code>Elemento</code> debe garantizar que se mantenga el orden de la lista.</p>
+<p>Devuelve <code>true</code> cuando se ha podido eliminar el objeto <code>Elemento</code> con el valor que se pasa por parámetro.</p>
+<p>Devuelve <code>false</code> cuando NO se ha podido eliminar el objeto <code>Elemento</code> con el valor que se pasa por parámetro.</p>
+<p>Notas: La solución debe presentarse en Java y comentando lo que hace el código. Alternativamente se puede presentar la solución en pseudocódigo. No se pueden utilizar estructuras de datos adicionales como <code>List</code>, <code>ArrayList</code>, <code>HashSet</code>, <code>Map</code>, <code>Diccionario</code>, etc. Solo las clases <code>Elemento</code> y <code>ListaEnlazadaOrdenada</code>. No se trata de un array, por lo tanto, no se pueden hacer accesos del tipo <code>miLista[posicion]</code> o <code>miLista[14]</code>.</p>
 <p>Ejemplos:</p>
 <p><img alt="" src="../p1r/p1r_ex02-1.png" /></p>
 <p><img alt="" src="../p1r/p1r_ex02-2.png" /></p>
 <ul>
-<li>(a) (1,5 puntos) Implementar el método <code>public boolean añadirValor (int valor)</code> de la clase ListaEnlazadaOrdenada.</li>
+<li>(a) (1,5 puntos) Implementar el método <code>public boolean añadirValor (int valor)</code> de la clase <code>ListaEnlazadaOrdenada</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2950,7 +2948,7 @@ null.</p>
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (1,5 puntos) Implementar el método <code>public boolean eliminarValor (int valor)</code> de la clase ListaEnlazadaOrdenada.</li>
+<li>(b) (1,5 puntos) Implementar el método <code>public boolean eliminarValor (int valor)</code> de la clase <code>ListaEnlazadaOrdenada</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3005,7 +3003,7 @@ null.</p>
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2 puntos) Implementar el método <code>private Elemento buscarElementoAnterior (int valor)</code> de la clase ListaEnlazadaOrdenada.</li>
+<li>(c) (2 puntos) Implementar el método <code>private Elemento buscarElementoAnterior (int valor)</code> de la clase <code>ListaEnlazadaOrdenada</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>

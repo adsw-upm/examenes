@@ -2875,15 +2875,15 @@
   <h1>P2 ex01</h1>
 
 <p>Se quiere desarrollar un sistema de gestión de eventos. Este sistema está compuesto por un conjunto de productores y consumidores. Los productores ponen eventos con una prioridad asociada en el sistema. Los consumidores recogen eventos del sistema para procesarlos.</p>
-<p>Los eventos se representan con la clase Event definida como sigue (no hay que desarrollarla):
+<p>Los eventos se representan con la clase <code>Event</code> definida como sigue (no hay que desarrollarla):
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Event</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EventInformation</span><span class="w"> </span><span class="n">info</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EventPriority</span><span class="w"> </span><span class="n">priority</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// getters &amp; setters</span>
 <span class="p">}</span>
-</code></pre></div>
-EventInformation indica la información asociada al evento. No es necesario conocer los detalles de esta clase, ni desarrollarla. </p>
-<p>EventPriority indica la prioridad del evento, definida como sigue:
+</code></pre></div></p>
+<p><code>EventInformation</code> indica la información asociada al evento. No es necesario conocer los detalles de esta clase, ni desarrollarla. </p>
+<p><code>EventPriority</code> indica la prioridad del evento, definida como sigue:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">EventPriority</span><span class="w"> </span><span class="p">{</span><span class="n">High</span><span class="p">,</span><span class="w"> </span><span class="n">Low</span><span class="p">}</span>
 </code></pre></div></p>
 <p>Dado el siguiente esquema:
@@ -2906,7 +2906,7 @@ EventInformation indica la información asociada al evento. No es necesario cono
 <span class="p">}</span>
 </code></pre></div></p>
 <ul>
-<li>(a) (4,5 puntos) Desarrolle el monitor EventManager. Se puede utilizar el siguiente esquema:
+<li>(a) (4,5 puntos) Desarrolle el monitor <code>EventManager</code>. Se puede utilizar el siguiente esquema:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Buffer</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Event</span><span class="o">[]</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
@@ -2992,7 +2992,7 @@ EventInformation indica la información asociada al evento. No es necesario cono
 </details>
 <p>Suponiendo que el tiempo de proceso de los consumidores es mayor que el de los productores, puede ocurrir que las colas de eventos pendientes se mantengan llenas durante un tiempo prolongado y, por tanto, se bloqueen los productores.</p>
 <ul>
-<li>(b) (2,5 puntos) Para corregir este problema, se pide desarrollar una clase ThreadManager que cree hebras consumidoras cuando el número de eventos pendientes sea mayor al 90 % del número máximo de eventos. Esta clase responde al
+<li>(b) (2,5 puntos) Para corregir este problema, se pide desarrollar una clase <code>ThreadManager</code> que cree hebras consumidoras cuando el número de eventos pendientes sea mayor al 90% del número máximo de eventos. Esta clase responde al
 siguiente esquema:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ThreadManager</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DELAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"> </span><span class="c1">//intervalo de comprobación (ms)</span>
@@ -3007,7 +3007,7 @@ siguiente esquema:
 <span class="p">}</span>
 </code></pre></div></li>
 </ul>
-<p>La clase Consumer responde al esquema siguiente y no es necesario desarrollarla:
+<p>La clase <code>Consumer</code> responde al esquema siguiente y no es necesario desarrollarla:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Consumer</span>
 <span class="w">    </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="nf">Consumer</span><span class="p">(...)</span><span class="w"> </span><span class="p">{...}</span>

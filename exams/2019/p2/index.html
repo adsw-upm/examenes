@@ -3024,15 +3024,15 @@
 <h1 id="examen-2019-parcial-2">Examen 2019 — Parcial 2</h1>
 <h2 id="problema-1">Problema 1</h2>
 <p>Se quiere desarrollar un sistema de gestión de eventos. Este sistema está compuesto por un conjunto de productores y consumidores. Los productores ponen eventos con una prioridad asociada en el sistema. Los consumidores recogen eventos del sistema para procesarlos.</p>
-<p>Los eventos se representan con la clase Event definida como sigue (no hay que desarrollarla):
+<p>Los eventos se representan con la clase <code>Event</code> definida como sigue (no hay que desarrollarla):
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Event</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EventInformation</span><span class="w"> </span><span class="n">info</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EventPriority</span><span class="w"> </span><span class="n">priority</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// getters &amp; setters</span>
 <span class="p">}</span>
-</code></pre></div>
-EventInformation indica la información asociada al evento. No es necesario conocer los detalles de esta clase, ni desarrollarla. </p>
-<p>EventPriority indica la prioridad del evento, definida como sigue:
+</code></pre></div></p>
+<p><code>EventInformation</code> indica la información asociada al evento. No es necesario conocer los detalles de esta clase, ni desarrollarla. </p>
+<p><code>EventPriority</code> indica la prioridad del evento, definida como sigue:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">EventPriority</span><span class="w"> </span><span class="p">{</span><span class="n">High</span><span class="p">,</span><span class="w"> </span><span class="n">Low</span><span class="p">}</span>
 </code></pre></div></p>
 <p>Dado el siguiente esquema:
@@ -3055,7 +3055,7 @@ EventInformation indica la información asociada al evento. No es necesario cono
 <span class="p">}</span>
 </code></pre></div></p>
 <ul>
-<li>(a) (4,5 puntos) Desarrolle el monitor EventManager. Se puede utilizar el siguiente esquema:
+<li>(a) (4,5 puntos) Desarrolle el monitor <code>EventManager</code>. Se puede utilizar el siguiente esquema:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Buffer</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Event</span><span class="o">[]</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
@@ -3141,7 +3141,7 @@ EventInformation indica la información asociada al evento. No es necesario cono
 </details>
 <p>Suponiendo que el tiempo de proceso de los consumidores es mayor que el de los productores, puede ocurrir que las colas de eventos pendientes se mantengan llenas durante un tiempo prolongado y, por tanto, se bloqueen los productores.</p>
 <ul>
-<li>(b) (2,5 puntos) Para corregir este problema, se pide desarrollar una clase ThreadManager que cree hebras consumidoras cuando el número de eventos pendientes sea mayor al 90 % del número máximo de eventos. Esta clase responde al
+<li>(b) (2,5 puntos) Para corregir este problema, se pide desarrollar una clase <code>ThreadManager</code> que cree hebras consumidoras cuando el número de eventos pendientes sea mayor al 90% del número máximo de eventos. Esta clase responde al
 siguiente esquema:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ThreadManager</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DELAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"> </span><span class="c1">//intervalo de comprobación (ms)</span>
@@ -3156,7 +3156,7 @@ siguiente esquema:
 <span class="p">}</span>
 </code></pre></div></li>
 </ul>
-<p>La clase Consumer responde al esquema siguiente y no es necesario desarrollarla:
+<p>La clase <code>Consumer</code> responde al esquema siguiente y no es necesario desarrollarla:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Consumer</span>
 <span class="w">    </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="nf">Consumer</span><span class="p">(...)</span><span class="w"> </span><span class="p">{...}</span>
@@ -3189,16 +3189,22 @@ siguiente esquema:
 </code></pre></div>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>Se desea programar una aplicación llamada ParApp, que recibiendo una entrada de texto del usuario indique si su tamaño es par o impar. Para ello, recibimos una interfaz gráfica ya diseñada que incluye:
-    - Un EditText con id “etEntrada”
-    - Un TextView con id “tvResultado”
-    - Un botón con id “bComprobar”</p>
-<p>Cuando el usuario pulsa el botón se ha de comprobar el tamaño de la cadena de texto introducida en el campo de entrada de texto. Pueden darse 3 situaciones:
-    - Si el tamaño de texto es 0, se ha de lanzar un aviso al usuario para que introduzca una cadena de texto.
-    - Si el tamaño es par, el campo de texto de salida se actualiza con el siguiente mensaje: “El texto introducido tiene un tamaño par” seguido del tamaño de la cadena entre paréntesis. Ej: (6).
-    - Si el tamaño es impar, el campo de texto de salida se actualiza con el siguiente mensaje: “El texto introducido tiene un tamaño impar” seguido del tamaño de la cadena entre paréntesis. Ej: (5).</p>
+<p>Se desea programar una aplicación llamada <code>ParApp</code>, que recibiendo una entrada de texto del usuario indique si su tamaño es par o impar. Para ello, recibimos una interfaz gráfica ya diseñada que incluye:</p>
 <ul>
-<li>(a) (0,5 puntos) ¿Mediante qué atributo asociaría la ejecución de un método Java cuando el botón es pulsado por el usuario?</li>
+<li>Un <code>EditText</code> con <code>id</code> “etEntrada';</li>
+<li>Un <code>TextView</code> con <code>id</code> “tvResultado';</li>
+<li>Un botón con <code>id</code> 'bComprobar'.</li>
+</ul>
+<p>Cuando el usuario pulsa el botón se ha de comprobar el tamaño de la cadena de texto introducida en el campo de entrada de texto. Pueden darse 3 situaciones:</p>
+<ul>
+<li>Si el tamaño de texto es <code>0</code>, se ha de lanzar un aviso al usuario para que introduzca una cadena de texto;</li>
+<li>Si el tamaño es par, el campo de texto de salida se actualiza con el siguiente mensaje: “El texto introducido tiene un tamaño par” seguido del tamaño de la cadena entre paréntesis. Ej: <code>(6)</code>;</li>
+<li>
+<p>Si el tamaño es impar, el campo de texto de salida se actualiza con el siguiente mensaje: “El texto introducido tiene un tamaño impar” seguido del tamaño de la cadena entre paréntesis. Ej: <code>(5)</code>.</p>
+</li>
+<li>
+<p>(a) (0,5 puntos) ¿Mediante qué atributo asociaría la ejecución de un método Java cuando el botón es pulsado por el usuario?</p>
+</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3206,7 +3212,7 @@ siguiente esquema:
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2,5 puntos) Programe un método calculoParidad que implemente la funcionalidad descrita.</li>
+<li>(b) (2,5 puntos) Programe un método <code>calculoParidad</code> que implemente la funcionalidad descrita.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
