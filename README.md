@@ -97,8 +97,7 @@ La configuración de búsqueda está optimizada para dar mayor peso a los tags (
 
 ## Problemas Conocidos
 
-- Hay que revisar la publicación de las fórmulas de complejidad. Muchas no tienen el formato correcto.
-- Algunas imágenes referenciadas no existen (ej: `p1r_ex1.png` en 2014)
+- 2019/pract carece de solución
 
 ## Licencia
 
