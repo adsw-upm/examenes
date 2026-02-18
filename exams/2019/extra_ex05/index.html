@@ -2874,16 +2874,20 @@
 
   <h1>Extra ex05</h1>
 
-<p>Se desea desarrollar una aplicación llamada Tiempo Perdido, cuya funcionalidad es comparar el tiempo en segundos que la aplicación ha estado completamente visible con un valor introducido por el usuario. Para ello se ha diseñado la siguiente interfaz gráfica:</p>
+<p>Se desea desarrollar una aplicación llamada 'Tiempo Perdido', cuya funcionalidad es comparar el tiempo en segundos que la aplicación ha estado completamente visible con un valor introducido por el usuario. Para ello se ha diseñado la siguiente interfaz gráfica:</p>
 <p><img alt="" src="../extra/extra_ex05.png" /></p>
-<p>En ella se han emplazado los siguientes elementos:
-    - Un EditText con id: etNumber e inputType: number. Este último atributo solo permite al usuario introducir números enteros no negativos.
-    - Un TextView con id: tvResult donde se muestra el resultado de la comparación.
-        - Si el valor introducido por el usuario coincide con el tiempo en segundos que la aplicación ha estado completamente visible indica “¡correcto!”.
-        - Si el usuario introduce un valor mayor indica “Te has pasado por X segundos” donde X es la diferencia entre el valor introducido y el correcto.
-        - Si el usuario introduce un valor menor indica “Te has quedado corto por X segundos” donde X es la diferencia entre el valor introducido y el correcto.
-    - Un botón con id: bComprobar que lanza la comprobación. Si al pulsar el botón etNumber no contiene un número no negativo se ha de lanzar un mensaje de alerta al usuario.</p>
-<p>Para la implementación nos apoyaremos en la clase Chrono que ofrece los siguientes métodos:</p>
+<p>En ella se han emplazado los siguientes elementos:</p>
+<ul>
+<li>Un <code>EditText</code> con <code>id</code>: <code>etNumber</code> e <code>inputType: number</code>. Este último atributo solo permite al usuario introducir números enteros no negativos.</li>
+<li>Un <code>TextView</code> con <code>id: tvResult</code> donde se muestra el resultado de la comparación.<ul>
+<li>Si el valor introducido por el usuario coincide con el tiempo en segundos que la aplicación ha estado completamente visible indica “¡correcto!”.</li>
+<li>Si el usuario introduce un valor mayor indica “Te has pasado por X segundos” donde <code>X</code> es la diferencia entre el valor introducido y el correcto.</li>
+<li>Si el usuario introduce un valor menor indica “Te has quedado corto por X segundos” donde <code>X</code> es la diferencia entre el valor introducido y el correcto.</li>
+</ul>
+</li>
+<li>Un botón con <code>id: bComprobar</code> que lanza la comprobación. Si al pulsar el botón <code>etNumber</code> no contiene un número no negativo se ha de lanzar un mensaje de alerta al usuario.</li>
+</ul>
+<p>Para la implementación nos apoyaremos en la clase <code>Chrono</code> que ofrece los siguientes métodos:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Chrono</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">time</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Chrono</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>

@@ -2881,15 +2881,17 @@
 
   <h1>Extra ex02</h1>
 
-<p>Se debe realizar un algoritmo para etiquetar con un número todos los nodos de un grafo cumpliendo las siguientes condiciones:
-    - 1. Dos nodos adyacentes no pueden tener el mismo número.
-    - 2. Sobre el grafo pasado como parámetro, el algoritmo debe asignar el número mínimo que pueda a todos los nodos, cumpliendo la condición del punto 1, y devolver el número máximo utilizado para etiquetar todos los nodos. (Ver ejemplos).
-    - 3. Se considera que todos los enlaces son bidireccionales y se han creado con el siguiente método:
+<p>Se debe realizar un algoritmo para etiquetar con un número todos los nodos de un grafo cumpliendo las siguientes condiciones:</p>
+<ol>
+<li>Dos nodos adyacentes no pueden tener el mismo número;</li>
+<li>Sobre el grafo pasado como parámetro, el algoritmo debe asignar el número mínimo que pueda a todos los nodos, cumpliendo la condición del punto 1, y devolver el número máximo utilizado para etiquetar todos los nodos. (Ver ejemplos).</li>
+<li>Se considera que todos los enlaces son bidireccionales y se han creado con el siguiente método:
     <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addLink2D</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span>
 </code></pre></div>
-    que añade a un grafo un enlace entre el nodo a y el b, y otro enlace entre b y a. Todos los enlaces tiene peso w = 1.
-    - 4. Se usará el modelo de los ejercicios de prácticas 1 y 2, donde tenemos la clase Graph que contiene objetos de la clase Node para definir los vértices (nodos), y objetos de la clase Link para definir los arcos (enlaces.)</p>
-<p>Notas: Una posible solución trivial podría ser hacer un for con un índice y asignar ese índice a cada nodo. Esta solución no sería válida porque, aunque cumple el punto 2, no cumple el punto 3. Para asignar valores a los nodos se recomienda usar una estructura del estilo Map<Node, Integer>, donde la clave (key) es el Node que queremos etiquetar y el valor (value) es el Integer con el valor etiquetado.</p>
+que añade a un grafo un enlace entre el nodo <code>a</code> y el <code>b</code>, y otro enlace entre <code>b</code> y <code>a</code>. Todos los enlaces tiene peso <code>w = 1</code>.</li>
+<li>Se usará el modelo de los ejercicios de prácticas 1 y 2, donde tenemos la clase <code>Graph</code> que contiene objetos de la clase <code>Node</code> para definir los vértices (nodos), y objetos de la clase <code>Link</code> para definir los arcos (enlaces.)</li>
+</ol>
+<p>Notas: Una posible solución trivial podría ser hacer un <code>for</code> con un índice y asignar ese índice a cada nodo. Esta solución no sería válida porque, aunque cumple el punto 2, no cumple el punto 3. Para asignar valores a los nodos se recomienda usar una estructura del estilo <code>Map&lt;Node, Integer&gt;</code>, donde la clave (<em>key</em>) es el <code>Node</code> que queremos etiquetar y el valor (<em>value</em>) es el <code>Integer</code> con el valor etiquetado.</p>
 <p>Ejemplos:</p>
 <p><img alt="" src="../extra/extra_ex02.png" /></p>
 <ul>
@@ -3007,7 +3009,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (1 punto) ¿Cuál es la complejidad de dicho algoritmo? (Razone su respuesta)</li>
+<li>(b) (1 punto) ¿Cuál es la complejidad de dicho algoritmo? (Razone su respuesta).</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>

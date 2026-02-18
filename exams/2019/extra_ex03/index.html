@@ -2874,8 +2874,9 @@
 
   <h1>Extra ex03</h1>
 
-<p>Se quiere desarrollar un sistema de gestión de eventos. Este sistema está compuesto por un conjunto de productores y consumidores. Los productores ponen eventos en el sistema. Los consumidores recogen eventos del sistema para procesarlos.
-- (a) Desarrolle el monitor EventManager con el siguiente esquema (Nota: el método getEvents tiene más peso en la calificación que el resto del código):
+<p>Se quiere desarrollar un sistema de gestión de eventos. Este sistema está compuesto por un conjunto de productores y consumidores. Los productores ponen eventos en el sistema. Los consumidores recogen eventos del sistema para procesarlos.</p>
+<ul>
+<li>(a) Desarrolle el monitor <code>EventManager</code> con el siguiente esquema (Nota: el método <code>getEvents</code> tiene más peso en la calificación que el resto del código):
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EventManager</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Número máximo de eventos que se pueden almacenar</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_PENDING_EVENTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
@@ -2895,7 +2896,8 @@
 <span class="cm">    */</span>
 <span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">Event</span><span class="o">[]</span><span class="w"> </span><span class="nf">getEvents</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">nEventos</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
 <span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div></li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EventManager</span><span class="w"> </span><span class="p">{</span>

@@ -3089,7 +3089,7 @@
 
 <h1 id="examen-2019-extraordinario">Examen 2019 — Extraordinario</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>Una empresa de telecomunicaciones necesita gestionar una tabla de abonados con sus números de línea correspondientes. Para ello utiliza una clase Java denominada TablaAbonados con la interfaz que se especifica a continuación:
+<p>Una empresa de telecomunicaciones necesita gestionar una tabla de abonados con sus números de línea correspondientes. Para ello utiliza una clase Java denominada <code>TablaAbonados</code> con la interfaz que se especifica a continuación:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TablaAbonados</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">...</span>
 <span class="w">    </span><span class="cm">/**</span>
@@ -3110,53 +3110,57 @@
 <span class="cm">    */</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">abonado</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">numero</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
 <span class="p">}</span>
-</code></pre></div>
-Las operaciones insertar y abonado se ejecutan muchas veces al día, y la operación eliminar se ejecuta con menos frecuencia. Para implementar la tabla se utiliza internamente una tabla hash con listas.</p>
+</code></pre></div></p>
+<p>Las operaciones insertar y abonado se ejecutan muchas veces al día, y la operación eliminar se ejecuta con menos frecuencia. Para implementar la tabla se utiliza internamente una tabla hash con listas.</p>
 <p>Nota: no escriba código, sólo indique qué algoritmos habría que utilizar</p>
 <ul>
 <li>(a) (1 punto) Explique razonadamente qué parámetros se deben tomar como clave y valor, respectivamente, en la tabla hash.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Un número de línea permite identificarla de forma unívoca, mientras que los abonados se pueden repetir, por ejemplo, si un abonado tiene varios números. Por tanto, se debe usar el número como clave y el abonado como valor en la tabla</p>
+<p>Un número de línea permite identificarla de forma unívoca, mientras que los abonados se pueden repetir, por ejemplo, si un abonado tiene varios números. Por tanto, se debe usar el número como clave y el abonado como valor en la tabla.</p>
 </details>
 <ul>
-<li>(b) (1 punto) Si el número máximo de abonados de empresa se puede estimar en 1 000 000, aproximadamente, indique razonadamente cuál sería el número mínimo de ranuras (slots) de la tabla hash para obtener un comportamiento eficiente.</li>
+<li>(b) (1 punto) Si el número máximo de abonados de empresa se puede estimar en 1.000.000, aproximadamente, indique razonadamente cuál sería el número mínimo de ranuras (<em>slots</em>) de la tabla hash para obtener un comportamiento eficiente.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Para mantener la complejidad O (1) en las operaciones con la tabla hash, el número k de ranuras debe ser significativamente superior al número de claves, N. Por ejemplo, si se quiere mantener la carga de la tabla por debajo del 50 % harían falta 2 000 000 de ranuras</p>
+<p>Para mantener la complejidad <span class="arithmatex">\(O(1)\)</span> en las operaciones con la tabla hash, el número <span class="arithmatex">\(k\)</span> de ranuras debe ser significativamente superior al número de claves, <span class="arithmatex">\(N\)</span>. Por ejemplo, si se quiere mantener la carga de la tabla por debajo del 50% harían falta 2.000.000 de ranuras</p>
 </details>
 <ul>
 <li>(c) (1,5 puntos) Indique cuál sería la complejidad que se puede esperar de las operaciones de la tabla para el caso anterior, justificando la respuesta.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Para una tabla hash con listas y una carga reducida, el tiempo de acceso para las operaciones de la tabla sería t = th + top ≈ constante. Por tanto, para N grande se puede suponer t ∈ O (1).</p>
+<p>Para una tabla hash con listas y una carga reducida, el tiempo de acceso para las operaciones de la tabla sería <span class="arithmatex">\(t=th+top≈constante\)</span>. Por tanto, para <span class="arithmatex">\(N\)</span> grande se puede suponer <span class="arithmatex">\(t\in O(1)\)</span>.</p>
 </details>
 <ul>
 <li>(d)  (1,5 puntos) Una vez al trimestre la empresa debe entregar a la administración, a efectos fiscales, una lista de abonados ordenada alfabéticamente. Para ello se añade a la clase anterior un nuevo método:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">listaAbonados</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
-</code></pre></div>
-que genera la lista a partir del contenido de la tabla hash. Explique, justificando la respuesta, cómo se podría generar esta y cuál sería la complejidad de la operación listaAbonados (1,5 puntos).</li>
+</code></pre></div></li>
 </ul>
+<p>que genera la lista a partir del contenido de la tabla hash. Explique, justificando la respuesta, cómo se podría generar esta y cuál sería la complejidad de la operación <code>listaAbonados</code> (1,5 puntos).</p>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Para obtener la lista ordenada hay que efectuar las siguientes operaciones:
-    - Obtener una lista con todos los elementos de la tabla hash. Para ello hay que recorrer toda la tabla, y por tanto esta operación tiene complejidad lineal, O (N).
-    - Ordenar la lista. Si se usa un algoritmo de ordenación eficiente, como QuickSort o MergeSort, la complejidad de esta operación es, en promedio, O (N log N).</p>
-<p>Por tanto, la complejidad total de la operación será O(N) + O(N log N) ≈ O (N log N)</p>
+<p>Para obtener la lista ordenada hay que efectuar las siguientes operaciones:</p>
+<ul>
+<li>Obtener una lista con todos los elementos de la tabla hash: Para ello hay que recorrer toda la tabla, y por tanto esta operación tiene complejidad lineal, <span class="arithmatex">\(O(N)\)</span>;</li>
+<li>Ordenar la lista: Si se usa un algoritmo de ordenación eficiente, como <code>QuickSort</code> o <code>MergeSort</code>, la complejidad de esta operación es, en promedio, <span class="arithmatex">\(O(Nlog N)\)</span>.</li>
+</ul>
+<p>Por tanto, la complejidad total de la operación será <span class="arithmatex">\(O(N)+O(NlogN)≈O(NlogN)\)</span>.</p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>Se debe realizar un algoritmo para etiquetar con un número todos los nodos de un grafo cumpliendo las siguientes condiciones:
-    - 1. Dos nodos adyacentes no pueden tener el mismo número.
-    - 2. Sobre el grafo pasado como parámetro, el algoritmo debe asignar el número mínimo que pueda a todos los nodos, cumpliendo la condición del punto 1, y devolver el número máximo utilizado para etiquetar todos los nodos. (Ver ejemplos).
-    - 3. Se considera que todos los enlaces son bidireccionales y se han creado con el siguiente método:
+<p>Se debe realizar un algoritmo para etiquetar con un número todos los nodos de un grafo cumpliendo las siguientes condiciones:</p>
+<ol>
+<li>Dos nodos adyacentes no pueden tener el mismo número;</li>
+<li>Sobre el grafo pasado como parámetro, el algoritmo debe asignar el número mínimo que pueda a todos los nodos, cumpliendo la condición del punto 1, y devolver el número máximo utilizado para etiquetar todos los nodos. (Ver ejemplos).</li>
+<li>Se considera que todos los enlaces son bidireccionales y se han creado con el siguiente método:
     <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addLink2D</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span>
 </code></pre></div>
-    que añade a un grafo un enlace entre el nodo a y el b, y otro enlace entre b y a. Todos los enlaces tiene peso w = 1.
-    - 4. Se usará el modelo de los ejercicios de prácticas 1 y 2, donde tenemos la clase Graph que contiene objetos de la clase Node para definir los vértices (nodos), y objetos de la clase Link para definir los arcos (enlaces.)</p>
-<p>Notas: Una posible solución trivial podría ser hacer un for con un índice y asignar ese índice a cada nodo. Esta solución no sería válida porque, aunque cumple el punto 2, no cumple el punto 3. Para asignar valores a los nodos se recomienda usar una estructura del estilo Map<Node, Integer>, donde la clave (key) es el Node que queremos etiquetar y el valor (value) es el Integer con el valor etiquetado.</p>
+que añade a un grafo un enlace entre el nodo <code>a</code> y el <code>b</code>, y otro enlace entre <code>b</code> y <code>a</code>. Todos los enlaces tiene peso <code>w = 1</code>.</li>
+<li>Se usará el modelo de los ejercicios de prácticas 1 y 2, donde tenemos la clase <code>Graph</code> que contiene objetos de la clase <code>Node</code> para definir los vértices (nodos), y objetos de la clase <code>Link</code> para definir los arcos (enlaces.)</li>
+</ol>
+<p>Notas: Una posible solución trivial podría ser hacer un <code>for</code> con un índice y asignar ese índice a cada nodo. Esta solución no sería válida porque, aunque cumple el punto 2, no cumple el punto 3. Para asignar valores a los nodos se recomienda usar una estructura del estilo <code>Map&lt;Node, Integer&gt;</code>, donde la clave (<em>key</em>) es el <code>Node</code> que queremos etiquetar y el valor (<em>value</em>) es el <code>Integer</code> con el valor etiquetado.</p>
 <p>Ejemplos:</p>
 <p><img alt="" src="extra_ex02.png" /></p>
 <ul>
@@ -3274,15 +3278,16 @@ que genera la lista a partir del contenido de la tabla hash. Explique, justifica
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (1 punto) ¿Cuál es la complejidad de dicho algoritmo? (Razone su respuesta)</li>
+<li>(b) (1 punto) ¿Cuál es la complejidad de dicho algoritmo? (Razone su respuesta).</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>La solución dependerá de la respuesta a la pregunta (a).</p>
 </details>
 <h2 id="problema-3">Problema 3</h2>
-<p>Se quiere desarrollar un sistema de gestión de eventos. Este sistema está compuesto por un conjunto de productores y consumidores. Los productores ponen eventos en el sistema. Los consumidores recogen eventos del sistema para procesarlos.
-- (a) Desarrolle el monitor EventManager con el siguiente esquema (Nota: el método getEvents tiene más peso en la calificación que el resto del código):
+<p>Se quiere desarrollar un sistema de gestión de eventos. Este sistema está compuesto por un conjunto de productores y consumidores. Los productores ponen eventos en el sistema. Los consumidores recogen eventos del sistema para procesarlos.</p>
+<ul>
+<li>(a) Desarrolle el monitor <code>EventManager</code> con el siguiente esquema (Nota: el método <code>getEvents</code> tiene más peso en la calificación que el resto del código):
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EventManager</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Número máximo de eventos que se pueden almacenar</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_PENDING_EVENTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
@@ -3302,7 +3307,8 @@ que genera la lista a partir del contenido de la tabla hash. Explique, justifica
 <span class="cm">    */</span>
 <span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">Event</span><span class="o">[]</span><span class="w"> </span><span class="nf">getEvents</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">nEventos</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
 <span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div></li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EventManager</span><span class="w"> </span><span class="p">{</span>
@@ -3371,7 +3377,7 @@ que genera la lista a partir del contenido de la tabla hash. Explique, justifica
 </code></pre></div>
 </details>
 <h2 id="problema-4">Problema 4</h2>
-<p>A continuación se muestra el método getEvent de una versión alternativa de un gestor de eventos con prioridades, al que acceden concurrentemente varias hebras.
+<p>A continuación se muestra el método <code>getEvent</code> de una versión alternativa de un gestor de eventos con prioridades, al que acceden concurrentemente varias hebras.
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Event</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EventInformation</span><span class="w"> </span><span class="n">info</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EventPriority</span><span class="w"> </span><span class="n">priority</span><span class="p">;</span>
@@ -3433,21 +3439,25 @@ que genera la lista a partir del contenido de la tabla hash. Explique, justifica
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Esta solución es incorrecta en un programa concurrente. Cuando se ejecuta GetEvent se hace una copia de list a aux. Esta variable es local en cada instancia del método, por lo que sólo se puede cambiar al ejecutar la hebra que ha invocado este método. Eso quiere decir que si varias hebras han invocado a GetEvent, cada una tiene una variable aux local.</p>
-<p>Si la lista aux está vacía, por tanto, su tamaño es cero. En consecuencia, la hebra se quedará bloqueada en el wait y nunca volverá a ejecutarse, por que ninguna otra hebra podrá cambiar el valor de la variable aux local.</p>
-<p>Además, en el caso de que esta hebra se ejecutara, también hay varios errores en el código. Por ejemplo, cuando actualiza el valor de list machaca su versión actual.</p>
+<p>Esta solución es incorrecta en un programa concurrente. Cuando se ejecuta <code>GetEvent</code> se hace una copia de <code>list</code> a <code>aux</code>. Esta variable es local en cada instancia del método, por lo que sólo se puede cambiar al ejecutar la hebra que ha invocado este método. Eso quiere decir que si varias hebras han invocado a <code>GetEvent</code>, cada una tiene una variable <code>aux</code> local.</p>
+<p>Si la lista <code>aux</code> está vacía, por tanto, su tamaño es cero. En consecuencia, la hebra se quedará bloqueada en el <code>wait</code> y nunca volverá a ejecutarse, por que ninguna otra hebra podrá cambiar el valor de la variable <code>aux</code> local.</p>
+<p>Además, en el caso de que esta hebra se ejecutara, también hay varios errores en el código. Por ejemplo, cuando actualiza el valor de <code>list</code> machaca su versión actual.</p>
 </details>
 <h2 id="problema-5">Problema 5</h2>
-<p>Se desea desarrollar una aplicación llamada Tiempo Perdido, cuya funcionalidad es comparar el tiempo en segundos que la aplicación ha estado completamente visible con un valor introducido por el usuario. Para ello se ha diseñado la siguiente interfaz gráfica:</p>
+<p>Se desea desarrollar una aplicación llamada 'Tiempo Perdido', cuya funcionalidad es comparar el tiempo en segundos que la aplicación ha estado completamente visible con un valor introducido por el usuario. Para ello se ha diseñado la siguiente interfaz gráfica:</p>
 <p><img alt="" src="extra_ex05.png" /></p>
-<p>En ella se han emplazado los siguientes elementos:
-    - Un EditText con id: etNumber e inputType: number. Este último atributo solo permite al usuario introducir números enteros no negativos.
-    - Un TextView con id: tvResult donde se muestra el resultado de la comparación.
-        - Si el valor introducido por el usuario coincide con el tiempo en segundos que la aplicación ha estado completamente visible indica “¡correcto!”.
-        - Si el usuario introduce un valor mayor indica “Te has pasado por X segundos” donde X es la diferencia entre el valor introducido y el correcto.
-        - Si el usuario introduce un valor menor indica “Te has quedado corto por X segundos” donde X es la diferencia entre el valor introducido y el correcto.
-    - Un botón con id: bComprobar que lanza la comprobación. Si al pulsar el botón etNumber no contiene un número no negativo se ha de lanzar un mensaje de alerta al usuario.</p>
-<p>Para la implementación nos apoyaremos en la clase Chrono que ofrece los siguientes métodos:</p>
+<p>En ella se han emplazado los siguientes elementos:</p>
+<ul>
+<li>Un <code>EditText</code> con <code>id</code>: <code>etNumber</code> e <code>inputType: number</code>. Este último atributo solo permite al usuario introducir números enteros no negativos.</li>
+<li>Un <code>TextView</code> con <code>id: tvResult</code> donde se muestra el resultado de la comparación.<ul>
+<li>Si el valor introducido por el usuario coincide con el tiempo en segundos que la aplicación ha estado completamente visible indica “¡correcto!”.</li>
+<li>Si el usuario introduce un valor mayor indica “Te has pasado por X segundos” donde <code>X</code> es la diferencia entre el valor introducido y el correcto.</li>
+<li>Si el usuario introduce un valor menor indica “Te has quedado corto por X segundos” donde <code>X</code> es la diferencia entre el valor introducido y el correcto.</li>
+</ul>
+</li>
+<li>Un botón con <code>id: bComprobar</code> que lanza la comprobación. Si al pulsar el botón <code>etNumber</code> no contiene un número no negativo se ha de lanzar un mensaje de alerta al usuario.</li>
+</ul>
+<p>Para la implementación nos apoyaremos en la clase <code>Chrono</code> que ofrece los siguientes métodos:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Chrono</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">time</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Chrono</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>

@@ -2874,7 +2874,7 @@
 
   <h1>Extra ex04</h1>
 
-<p>A continuación se muestra el método getEvent de una versión alternativa de un gestor de eventos con prioridades, al que acceden concurrentemente varias hebras.
+<p>A continuación se muestra el método <code>getEvent</code> de una versión alternativa de un gestor de eventos con prioridades, al que acceden concurrentemente varias hebras.
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Event</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EventInformation</span><span class="w"> </span><span class="n">info</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EventPriority</span><span class="w"> </span><span class="n">priority</span><span class="p">;</span>
@@ -2936,9 +2936,9 @@
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Esta solución es incorrecta en un programa concurrente. Cuando se ejecuta GetEvent se hace una copia de list a aux. Esta variable es local en cada instancia del método, por lo que sólo se puede cambiar al ejecutar la hebra que ha invocado este método. Eso quiere decir que si varias hebras han invocado a GetEvent, cada una tiene una variable aux local.</p>
-<p>Si la lista aux está vacía, por tanto, su tamaño es cero. En consecuencia, la hebra se quedará bloqueada en el wait y nunca volverá a ejecutarse, por que ninguna otra hebra podrá cambiar el valor de la variable aux local.</p>
-<p>Además, en el caso de que esta hebra se ejecutara, también hay varios errores en el código. Por ejemplo, cuando actualiza el valor de list machaca su versión actual.</p>
+<p>Esta solución es incorrecta en un programa concurrente. Cuando se ejecuta <code>GetEvent</code> se hace una copia de <code>list</code> a <code>aux</code>. Esta variable es local en cada instancia del método, por lo que sólo se puede cambiar al ejecutar la hebra que ha invocado este método. Eso quiere decir que si varias hebras han invocado a <code>GetEvent</code>, cada una tiene una variable <code>aux</code> local.</p>
+<p>Si la lista <code>aux</code> está vacía, por tanto, su tamaño es cero. En consecuencia, la hebra se quedará bloqueada en el <code>wait</code> y nunca volverá a ejecutarse, por que ninguna otra hebra podrá cambiar el valor de la variable <code>aux</code> local.</p>
+<p>Además, en el caso de que esta hebra se ejecutara, también hay varios errores en el código. Por ejemplo, cuando actualiza el valor de <code>list</code> machaca su versión actual.</p>
 </details>
 
 

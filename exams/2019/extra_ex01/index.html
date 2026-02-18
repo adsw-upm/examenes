@@ -2874,7 +2874,7 @@
 
   <h1>Extra ex01</h1>
 
-<p>Una empresa de telecomunicaciones necesita gestionar una tabla de abonados con sus números de línea correspondientes. Para ello utiliza una clase Java denominada TablaAbonados con la interfaz que se especifica a continuación:
+<p>Una empresa de telecomunicaciones necesita gestionar una tabla de abonados con sus números de línea correspondientes. Para ello utiliza una clase Java denominada <code>TablaAbonados</code> con la interfaz que se especifica a continuación:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TablaAbonados</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">...</span>
 <span class="w">    </span><span class="cm">/**</span>
@@ -2895,42 +2895,44 @@
 <span class="cm">    */</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">abonado</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">numero</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
 <span class="p">}</span>
-</code></pre></div>
-Las operaciones insertar y abonado se ejecutan muchas veces al día, y la operación eliminar se ejecuta con menos frecuencia. Para implementar la tabla se utiliza internamente una tabla hash con listas.</p>
+</code></pre></div></p>
+<p>Las operaciones insertar y abonado se ejecutan muchas veces al día, y la operación eliminar se ejecuta con menos frecuencia. Para implementar la tabla se utiliza internamente una tabla hash con listas.</p>
 <p>Nota: no escriba código, sólo indique qué algoritmos habría que utilizar</p>
 <ul>
 <li>(a) (1 punto) Explique razonadamente qué parámetros se deben tomar como clave y valor, respectivamente, en la tabla hash.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Un número de línea permite identificarla de forma unívoca, mientras que los abonados se pueden repetir, por ejemplo, si un abonado tiene varios números. Por tanto, se debe usar el número como clave y el abonado como valor en la tabla</p>
+<p>Un número de línea permite identificarla de forma unívoca, mientras que los abonados se pueden repetir, por ejemplo, si un abonado tiene varios números. Por tanto, se debe usar el número como clave y el abonado como valor en la tabla.</p>
 </details>
 <ul>
-<li>(b) (1 punto) Si el número máximo de abonados de empresa se puede estimar en 1 000 000, aproximadamente, indique razonadamente cuál sería el número mínimo de ranuras (slots) de la tabla hash para obtener un comportamiento eficiente.</li>
+<li>(b) (1 punto) Si el número máximo de abonados de empresa se puede estimar en 1.000.000, aproximadamente, indique razonadamente cuál sería el número mínimo de ranuras (<em>slots</em>) de la tabla hash para obtener un comportamiento eficiente.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Para mantener la complejidad O (1) en las operaciones con la tabla hash, el número k de ranuras debe ser significativamente superior al número de claves, N. Por ejemplo, si se quiere mantener la carga de la tabla por debajo del 50 % harían falta 2 000 000 de ranuras</p>
+<p>Para mantener la complejidad <span class="arithmatex">\(O(1)\)</span> en las operaciones con la tabla hash, el número <span class="arithmatex">\(k\)</span> de ranuras debe ser significativamente superior al número de claves, <span class="arithmatex">\(N\)</span>. Por ejemplo, si se quiere mantener la carga de la tabla por debajo del 50% harían falta 2.000.000 de ranuras</p>
 </details>
 <ul>
 <li>(c) (1,5 puntos) Indique cuál sería la complejidad que se puede esperar de las operaciones de la tabla para el caso anterior, justificando la respuesta.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Para una tabla hash con listas y una carga reducida, el tiempo de acceso para las operaciones de la tabla sería t = th + top ≈ constante. Por tanto, para N grande se puede suponer t ∈ O (1).</p>
+<p>Para una tabla hash con listas y una carga reducida, el tiempo de acceso para las operaciones de la tabla sería <span class="arithmatex">\(t=th+top≈constante\)</span>. Por tanto, para <span class="arithmatex">\(N\)</span> grande se puede suponer <span class="arithmatex">\(t\in O(1)\)</span>.</p>
 </details>
 <ul>
 <li>(d)  (1,5 puntos) Una vez al trimestre la empresa debe entregar a la administración, a efectos fiscales, una lista de abonados ordenada alfabéticamente. Para ello se añade a la clase anterior un nuevo método:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">listaAbonados</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
-</code></pre></div>
-que genera la lista a partir del contenido de la tabla hash. Explique, justificando la respuesta, cómo se podría generar esta y cuál sería la complejidad de la operación listaAbonados (1,5 puntos).</li>
+</code></pre></div></li>
 </ul>
+<p>que genera la lista a partir del contenido de la tabla hash. Explique, justificando la respuesta, cómo se podría generar esta y cuál sería la complejidad de la operación <code>listaAbonados</code> (1,5 puntos).</p>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Para obtener la lista ordenada hay que efectuar las siguientes operaciones:
-    - Obtener una lista con todos los elementos de la tabla hash. Para ello hay que recorrer toda la tabla, y por tanto esta operación tiene complejidad lineal, O (N).
-    - Ordenar la lista. Si se usa un algoritmo de ordenación eficiente, como QuickSort o MergeSort, la complejidad de esta operación es, en promedio, O (N log N).</p>
-<p>Por tanto, la complejidad total de la operación será O(N) + O(N log N) ≈ O (N log N)</p>
+<p>Para obtener la lista ordenada hay que efectuar las siguientes operaciones:</p>
+<ul>
+<li>Obtener una lista con todos los elementos de la tabla hash: Para ello hay que recorrer toda la tabla, y por tanto esta operación tiene complejidad lineal, <span class="arithmatex">\(O(N)\)</span>;</li>
+<li>Ordenar la lista: Si se usa un algoritmo de ordenación eficiente, como <code>QuickSort</code> o <code>MergeSort</code>, la complejidad de esta operación es, en promedio, <span class="arithmatex">\(O(Nlog N)\)</span>.</li>
+</ul>
+<p>Por tanto, la complejidad total de la operación será <span class="arithmatex">\(O(N)+O(NlogN)≈O(NlogN)\)</span>.</p>
 </details>
 
 
