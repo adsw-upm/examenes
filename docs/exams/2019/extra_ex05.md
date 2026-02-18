@@ -6,19 +6,20 @@ tags:
  - android
 ---
 
-Se desea desarrollar una aplicación llamada Tiempo Perdido, cuya funcionalidad es comparar el tiempo en segundos que la aplicación ha estado completamente visible con un valor introducido por el usuario. Para ello se ha diseñado la siguiente interfaz gráfica:
+Se desea desarrollar una aplicación llamada 'Tiempo Perdido', cuya funcionalidad es comparar el tiempo en segundos que la aplicación ha estado completamente visible con un valor introducido por el usuario. Para ello se ha diseñado la siguiente interfaz gráfica:
 
 ![](./extra/extra_ex05.png)
 
 En ella se han emplazado los siguientes elementos:
-    - Un EditText con id: etNumber e inputType: number. Este último atributo solo permite al usuario introducir números enteros no negativos.
-    - Un TextView con id: tvResult donde se muestra el resultado de la comparación.
-        - Si el valor introducido por el usuario coincide con el tiempo en segundos que la aplicación ha estado completamente visible indica “¡correcto!”.
-        - Si el usuario introduce un valor mayor indica “Te has pasado por X segundos” donde X es la diferencia entre el valor introducido y el correcto.
-        - Si el usuario introduce un valor menor indica “Te has quedado corto por X segundos” donde X es la diferencia entre el valor introducido y el correcto.
-    - Un botón con id: bComprobar que lanza la comprobación. Si al pulsar el botón etNumber no contiene un número no negativo se ha de lanzar un mensaje de alerta al usuario.
 
-Para la implementación nos apoyaremos en la clase Chrono que ofrece los siguientes métodos:
+- Un `EditText` con `id`: `etNumber` e `inputType: number`. Este último atributo solo permite al usuario introducir números enteros no negativos.
+- Un `TextView` con `id: tvResult` donde se muestra el resultado de la comparación.
+    - Si el valor introducido por el usuario coincide con el tiempo en segundos que la aplicación ha estado completamente visible indica “¡correcto!”.
+    - Si el usuario introduce un valor mayor indica “Te has pasado por X segundos” donde `X` es la diferencia entre el valor introducido y el correcto.
+    - Si el usuario introduce un valor menor indica “Te has quedado corto por X segundos” donde `X` es la diferencia entre el valor introducido y el correcto.
+- Un botón con `id: bComprobar` que lanza la comprobación. Si al pulsar el botón `etNumber` no contiene un número no negativo se ha de lanzar un mensaje de alerta al usuario.
+
+Para la implementación nos apoyaremos en la clase `Chrono` que ofrece los siguientes métodos:
 
 ```java
 public class Chrono {

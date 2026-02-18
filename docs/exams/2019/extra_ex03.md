@@ -7,7 +7,8 @@ tags:
 ---
 
 Se quiere desarrollar un sistema de gestión de eventos. Este sistema está compuesto por un conjunto de productores y consumidores. Los productores ponen eventos en el sistema. Los consumidores recogen eventos del sistema para procesarlos.
-- (a) Desarrolle el monitor EventManager con el siguiente esquema (Nota: el método getEvents tiene más peso en la calificación que el resto del código):
+
+- (a) Desarrolle el monitor `EventManager` con el siguiente esquema (Nota: el método `getEvents` tiene más peso en la calificación que el resto del código):
 ```java
 public class EventManager {
     // Número máximo de eventos que se pueden almacenar

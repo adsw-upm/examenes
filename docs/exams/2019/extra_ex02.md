@@ -8,16 +8,17 @@ tags:
 ---
 
 Se debe realizar un algoritmo para etiquetar con un número todos los nodos de un grafo cumpliendo las siguientes condiciones:
-    - 1. Dos nodos adyacentes no pueden tener el mismo número.
-    - 2. Sobre el grafo pasado como parámetro, el algoritmo debe asignar el número mínimo que pueda a todos los nodos, cumpliendo la condición del punto 1, y devolver el número máximo utilizado para etiquetar todos los nodos. (Ver ejemplos).
-    - 3. Se considera que todos los enlaces son bidireccionales y se han creado con el siguiente método:
+
+1. Dos nodos adyacentes no pueden tener el mismo número;
+2. Sobre el grafo pasado como parámetro, el algoritmo debe asignar el número mínimo que pueda a todos los nodos, cumpliendo la condición del punto 1, y devolver el número máximo utilizado para etiquetar todos los nodos. (Ver ejemplos).
+3. Se considera que todos los enlaces son bidireccionales y se han creado con el siguiente método:
     ```java
     public void addLink2D(String a, String b, int w) {…}
     ```
-    que añade a un grafo un enlace entre el nodo a y el b, y otro enlace entre b y a. Todos los enlaces tiene peso w = 1.
-    - 4. Se usará el modelo de los ejercicios de prácticas 1 y 2, donde tenemos la clase Graph que contiene objetos de la clase Node para definir los vértices (nodos), y objetos de la clase Link para definir los arcos (enlaces.)
+que añade a un grafo un enlace entre el nodo `a` y el `b`, y otro enlace entre `b` y `a`. Todos los enlaces tiene peso `w = 1`.
+4. Se usará el modelo de los ejercicios de prácticas 1 y 2, donde tenemos la clase `Graph` que contiene objetos de la clase `Node` para definir los vértices (nodos), y objetos de la clase `Link` para definir los arcos (enlaces.)
 
-Notas: Una posible solución trivial podría ser hacer un for con un índice y asignar ese índice a cada nodo. Esta solución no sería válida porque, aunque cumple el punto 2, no cumple el punto 3. Para asignar valores a los nodos se recomienda usar una estructura del estilo Map<Node, Integer>, donde la clave (key) es el Node que queremos etiquetar y el valor (value) es el Integer con el valor etiquetado.
+Notas: Una posible solución trivial podría ser hacer un `for` con un índice y asignar ese índice a cada nodo. Esta solución no sería válida porque, aunque cumple el punto 2, no cumple el punto 3. Para asignar valores a los nodos se recomienda usar una estructura del estilo `Map<Node, Integer>`, donde la clave (*key*) es el `Node` que queremos etiquetar y el valor (*value*) es el `Integer` con el valor etiquetado.
 
 Ejemplos:
 
@@ -138,7 +139,7 @@ int getMinimunInt(Graph g) {
     ```
 
 
-- (b) (1 punto) ¿Cuál es la complejidad de dicho algoritmo? (Razone su respuesta)
+- (b) (1 punto) ¿Cuál es la complejidad de dicho algoritmo? (Razone su respuesta).
 
 ??? note "Mostrar solución"
     La solución dependerá de la respuesta a la pregunta (a).
