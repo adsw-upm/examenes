@@ -6,11 +6,11 @@ tags:
  - complejidad
 ---
 
-Utilizando el modelo de datos de la práctica 2 donde un vértice representaba un actor y una arista representa la película en la que han colaborado ambos actores. Se disponen las clases GraphLoader, Movie y DijkstraSP que podemos utilizar para resolver el problema. Y en el campo EdgeWeightedDigraph g de la clase GraphLoader tenemos ya cargado el grafo de actores y películas. Según el siguiente diagrama de clases:
+Utilizando el modelo de datos de la práctica 2 donde un vértice representaba un actor y una arista representa la película en la que han colaborado ambos actores. Se disponen las clases `GraphLoader`, `Movie` y `DijkstraSP` que podemos utilizar para resolver el problema. Y en el campo `EdgeWeightedDigraph g` de la clase `GraphLoader` tenemos ya cargado el grafo de actores y películas. Según el siguiente diagrama de clases:
 
 ![](./p1r/p1r_ex01.png)
 
-### Class EdgeWeightedDigraph
+Clase `EdgeWeightedDigraph`
 
 | Tipo                   | Método                    | Descripción                                                   |
 | ---------------------- | ------------------------- | ------------------------------------------------------------- |
@@ -22,7 +22,7 @@ Utilizando el modelo de datos de la práctica 2 donde un vértice representaba u
 
 ---
 
-### Class DijkstraSP
+Clase `DijkstraSP`
 
 | Constructor                                | Descripción                                                                                                   |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
@@ -35,7 +35,7 @@ Utilizando el modelo de datos de la práctica 2 donde un vértice representaba u
 
 ---
 
-### Class DirectedEdge 
+Clase `DirectedEdge` 
 
 | Tipo   | Método     | Descripción                                   |
 | ------ | ---------- | --------------------------------------------- |
@@ -45,7 +45,8 @@ Utilizando el modelo de datos de la práctica 2 donde un vértice representaba u
 
 
 Se pide:
-- (a) (1 punto) Desarrolle el método obtenerIndiceMayor: Recibe un array de enteros y devuelve un int con el índice de la posición con el valor mayor. En caso de empate, se puede devolver cualquiera de los n índices que empatan: public int obtenerIndiceMayor(int[] array)
+
+- (a) (1 punto) Desarrolle el método `obtenerIndiceMayor`: Recibe un array de enteros y devuelve un `int` con el índice de la posición con el valor mayor. En caso de empate, se puede devolver cualquiera de los n índices que empatan: `public int obtenerIndiceMayor(int[] array)`.
 
 ??? note "Mostrar solución"
     ```java
@@ -64,7 +65,7 @@ Se pide:
     ```
 
 
-- (b) (2 punto) El algoritmo Dijkstra calcula el árbol de caminos más cortos desde un nodo. El constructor calcula este algoritmo y proporciona un método (pathTo) para obtener el camino mínimo desde el origen. Se pide desarrollar el método actorCentralDesdeOrigen que retorna un array, cuyo tamaño es el número de vértices (en el grafo) y sus valores son el número de veces que aparece el vértice en cualquier camino: public int[] actorCentralDesdeOrigen(int origen)
+- (b) (2 punto) El algoritmo Dijkstra calcula el árbol de caminos más cortos desde un nodo. El constructor calcula este algoritmo y proporciona un método (`pathTo`) para obtener el camino mínimo desde el origen. Se pide desarrollar el método `actorCentralDesdeOrigen` que retorna un array, cuyo tamaño es el número de vértices (en el grafo) y sus valores son el número de veces que aparece el vértice en cualquier camino: `public int[] actorCentralDesdeOrigen(int origen)`.
 
 ??? note "Mostrar solución"
     ```java
@@ -85,7 +86,7 @@ Se pide:
     ```
 
 
-- (c) (2 punto) Desarrolle el método que retorne el actor más central del grafo. Para ello, hay que calcular el actor más central entre los árboles de caminos de los vértices del grafo: public String actorCentral()
+- (c) (2 punto) Desarrolle el método que retorne el actor más central del grafo. Para ello, hay que calcular el actor más central entre los árboles de caminos de los vértices del grafo: `public String actorCentral()`.
 
 ??? note "Mostrar solución"
     ```java
