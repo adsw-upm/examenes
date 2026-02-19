@@ -59,11 +59,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#class-edgeweighteddigraph" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -2851,47 +2846,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#class-edgeweighteddigraph" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Class EdgeWeightedDigraph
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#class-dijkstrasp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Class DijkstraSP
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#class-directededge" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Class DirectedEdge
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2920,9 +2874,9 @@
 
   <h1>P1r ex01</h1>
 
-<p>Utilizando el modelo de datos de la práctica 2 donde un vértice representaba un actor y una arista representa la película en la que han colaborado ambos actores. Se disponen las clases GraphLoader, Movie y DijkstraSP que podemos utilizar para resolver el problema. Y en el campo EdgeWeightedDigraph g de la clase GraphLoader tenemos ya cargado el grafo de actores y películas. Según el siguiente diagrama de clases:</p>
+<p>Utilizando el modelo de datos de la práctica 2 donde un vértice representaba un actor y una arista representa la película en la que han colaborado ambos actores. Se disponen las clases <code>GraphLoader</code>, <code>Movie</code> y <code>DijkstraSP</code> que podemos utilizar para resolver el problema. Y en el campo <code>EdgeWeightedDigraph g</code> de la clase <code>GraphLoader</code> tenemos ya cargado el grafo de actores y películas. Según el siguiente diagrama de clases:</p>
 <p><img alt="" src="../p1r/p1r_ex01.png" /></p>
-<h3 id="class-edgeweighteddigraph">Class EdgeWeightedDigraph</h3>
+<p>Clase <code>EdgeWeightedDigraph</code></p>
 <table>
 <thead>
 <tr>
@@ -2960,7 +2914,7 @@
 </tbody>
 </table>
 <hr />
-<h3 id="class-dijkstrasp">Class DijkstraSP</h3>
+<p>Clase <code>DijkstraSP</code></p>
 <table>
 <thead>
 <tr>
@@ -2997,7 +2951,7 @@
 </tbody>
 </table>
 <hr />
-<h3 id="class-directededge">Class DirectedEdge</h3>
+<p>Clase <code>DirectedEdge</code> </p>
 <table>
 <thead>
 <tr>
@@ -3024,8 +2978,10 @@
 </tr>
 </tbody>
 </table>
-<p>Se pide:
-- (a) (1 punto) Desarrolle el método obtenerIndiceMayor: Recibe un array de enteros y devuelve un int con el índice de la posición con el valor mayor. En caso de empate, se puede devolver cualquiera de los n índices que empatan: public int obtenerIndiceMayor(int[] array)</p>
+<p>Se pide:</p>
+<ul>
+<li>(a) (1 punto) Desarrolle el método <code>obtenerIndiceMayor</code>: Recibe un array de enteros y devuelve un <code>int</code> con el índice de la posición con el valor mayor. En caso de empate, se puede devolver cualquiera de los n índices que empatan: <code>public int obtenerIndiceMayor(int[] array)</code>.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">obtenerIndiceMayor</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3043,7 +2999,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2 punto) El algoritmo Dijkstra calcula el árbol de caminos más cortos desde un nodo. El constructor calcula este algoritmo y proporciona un método (pathTo) para obtener el camino mínimo desde el origen. Se pide desarrollar el método actorCentralDesdeOrigen que retorna un array, cuyo tamaño es el número de vértices (en el grafo) y sus valores son el número de veces que aparece el vértice en cualquier camino: public int[] actorCentralDesdeOrigen(int origen)</li>
+<li>(b) (2 punto) El algoritmo Dijkstra calcula el árbol de caminos más cortos desde un nodo. El constructor calcula este algoritmo y proporciona un método (<code>pathTo</code>) para obtener el camino mínimo desde el origen. Se pide desarrollar el método <code>actorCentralDesdeOrigen</code> que retorna un array, cuyo tamaño es el número de vértices (en el grafo) y sus valores son el número de veces que aparece el vértice en cualquier camino: <code>public int[] actorCentralDesdeOrigen(int origen)</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3064,7 +3020,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2 punto) Desarrolle el método que retorne el actor más central del grafo. Para ello, hay que calcular el actor más central entre los árboles de caminos de los vértices del grafo: public String actorCentral()</li>
+<li>(c) (2 punto) Desarrolle el método que retorne el actor más central del grafo. Para ello, hay que calcular el actor más central entre los árboles de caminos de los vértices del grafo: <code>public String actorCentral()</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>

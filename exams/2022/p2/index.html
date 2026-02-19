@@ -3023,11 +3023,10 @@
 
 <h1 id="examen-2022-parcial-2">Examen 2022 — Parcial 2</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>Se dispone un puente elevado para autom!viles. Se quiere desarrollar un sistema de seguridad que impide que hayan m"s de 10 veh#culos simult"neamente en el puente y con un peso total mayor que 15.000 Kg.</p>
-<p>Cuando un veh#culo quiere entrar en el puente, ejecuta el m<span class="arithmatex">\(todo entrarPuente y cuando lo abandona, ejecuta el m\)</span>todo salirPuente. Las ambulancias tienen que invocar el m$todo entrarPuenteAmbulancia para tener prioridad en el acceso.</p>
+<p>Se dispone un puente elevado para automóviles. Se quiere desarrollar un sistema de seguridad que impide que haya más de 10 vehículos simultáneamente en el puente y con un peso total mayor que 15.000 Kg.</p>
+<p>Cuando un vehículo quiere entrar en el puente, ejecuta el método <code>entrarPuente</code> y cuando lo abandona, ejecuta el método <code>salirPuente</code>. Las ambulancias tienen que invocar el método <code>entrarPuenteAmbulancia</code> para tener prioridad en el acceso.</p>
 <ul>
-<li>(a) (1,5 puntos) Desarrolle el monitor con las restricciones indicadas como se muestra en la plantilla que se muestra a
-continuaci!n. NOTA: El par"metro peso en cada m$todo se refiere al peso del veh#culo. No es imprescindible proporcionar una soluci!n sin hambruna. Si lo hubiera se deber#a indicarlo y justificarlo.</li>
+<li>(a) (1,5 puntos) Desarrolle el monitor con las restricciones indicadas como se muestra en la plantilla que se muestra a continuación. NOTA: El parámetro peso en cada método se refiere al peso del vehículo. No es imprescindible proporcionar una solución sin hambruna. Si lo hubiera se debería indicarlo y justificarlo.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorPuenteSeguro</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pesoMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">;</span>
@@ -3054,8 +3053,8 @@ continuaci!n. NOTA: El par"metro peso en cada m$todo se refiere al peso del veh#
 </code></pre></div>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>A continuaci!n, se propone una soluci!n al enunciado, que satisface los requisitos de sincronizaci!n condicional generales planteados. Adem"s, se asegura que no van a ocurrir interbloqueos.</p>
-<p>Esta soluci!n no evita la hambruna. Si continuamente intentan a entrar ambulancia, podr#a ocurrir que ning%n coche podr#a acceder. Igualmente, los veh#culos con poco peso tienen m"s probabilidad de entrar al puente que los veh#culos con mayor peso. En situaciones desfavorables, podr#a ocurrir la hambruna para los veh#culos m"s pesados.</p>
+<p>A continuación, se propone una solución al enunciado, que satisface los requisitos de sincronización condicional generales planteados. Además, se asegura que no van a ocurrir interbloqueos.</p>
+<p>Esta solución no evita la hambruna. Si continuamente intentan a entrar ambulancias, podría ocurrir que ningún coche podría acceder. Igualmente, los vehículos con poco peso tienen más probabilidad de entrar al puente que los vehículos con mayor peso. En situaciones desfavorables, podría ocurrir la hambruna para los vehículos más pesados.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">es.upm.dit.adsw.puente_limitado</span><span class="p">;</span>
 
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PuenteSeguro</span><span class="w"> </span><span class="p">{</span>
@@ -3095,7 +3094,7 @@ continuaci!n. NOTA: El par"metro peso en cada m$todo se refiere al peso del veh#
 </code></pre></div>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>El problema de los lectores/escritores est" compuesto de un conjunto de hebras que comparten datos. Las hebras lectoras (Lectora) s!lo leen los datos, mientras que las hebras escritoras (Escritora) leen y escriben los datos. Varios lectoras pueden acceder simult"neamente a los datos compartidos, mientras que una escritora tiene que acceder con exclusi!n mutua con otros lectores o escritores. A continuaci!n, se muestra una implementaci!n muy sencilla de un monitor que gestione a las hebras lectoras y escritoras para acceder a los datos compartidos:</p>
+<p>El problema de los lectores/escritores está compuesto de un conjunto de hebras que comparten datos. Las hebras lectoras (<code>Lectora</code>) sólo leen los datos, mientras que las hebras escritoras (<code>Escritora</code>) leen y escriben los datos. Varios lectoras pueden acceder simultáneamente a los datos compartidos, mientras que una escritora tiene que acceder con exclusión mutua con otros lectores o escritores. A continuación, se muestra una implementación muy sencilla de un monitor que gestione a las hebras lectoras y escritoras para acceder a los datos compartidos:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorLE</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Gestor</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
@@ -3131,16 +3130,16 @@ continuaci!n. NOTA: El par"metro peso en cada m$todo se refiere al peso del veh#
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>El c!digo de las hebras lectoras y escritoras est" implementado como un bucle acotado que solicitan el acceso a los datos (empiezaLeer / empiezaEscribir), usan los datos durante un tiempo aleatorio, terminan el acceso a los datos (terminLeer / terminaEscribir) y est"n ociosos durante un tiempo aleatorio. Las clases Lectora y Escritora extienden Thread y que su constructor recibe como par"metro una instancia de GestorLE y su identificador.</p>
+<p>El código de las hebras lectoras y escritoras está implementado como un bucle acotado que solicitan el acceso a los datos (<code>empiezaLeer</code> / <code>empiezaEscribir</code>), usan los datos durante un tiempo aleatorio, terminan el acceso a los datos (<code>terminLeer</code> / <code>terminaEscribir</code>) y están ociosos durante un tiempo aleatorio. Las clases <code>Lectora</code> y <code>Escritora</code> extienden <code>Thread</code> y que su constructor recibe como parámetro una instancia de <code>GestorLE</code> y su identificador.</p>
 <ul>
-<li>(a) (0,5 puntos) Analice y justifique si el monitor en este enunciado puede producir inanici!n o hambruna.</li>
+<li>(a) (0,5 puntos) Analice y justifique si el monitor en este enunciado puede producir inanición o hambruna.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Esa solución puede tener inanición. Por ejemplo, 2 lectores y un escritor. El primer lector pide acceso y se lo da el gestor. El escritor intenta entrar y queda bloqueado. Antes de que termine de leer el primer lector, el segundo lector empieza a leer. El primer lector termina de leer (pero el segundo está leyendo y el escritor sigue bloqueado). Antes de que termine el segundo lector, el primero empieza a leer, y después termina el segundo (el escritor sigue bloqueado), y seguimos así indefinidamente, y los lectores entre ellos no dejar trabajar al escritor.</p>
 </details>
 <ul>
-<li>(b) (1,5 puntos) Escribe una clase con un m$todo main, que construye un GestorLE, dos hebras lectoras y dos hebras escritoras, cuyos par"metros son un identificador de la hebra y un objeto de la clase GestorLE para su sincronizaci!n. Los identificadores de las hebras ser"n respectivamente 1, 2, 3 y 4. La prueba debe arrancar las hebras, los objetos necesarios y escribir un mensaje por consola informando que todas las hebras hayan terminado su ejecuci!n.</li>
+<li>(b) (1,5 puntos) Escribe una clase con un método <code>main</code>, que construye un <code>GestorLE</code>, dos hebras lectoras y dos hebras escritoras, cuyos parámetros son un identificador de la hebra y un objeto de la clase <code>GestorLE</code> para su sincronización. Los identificadores de las hebras serán respectivamente 1, 2, 3 y 4. La prueba debe arrancar las hebras, los objetos necesarios y escribir un mensaje por consola informando que todas las hebras hayan terminado su ejecución.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3165,12 +3164,12 @@ continuaci!n. NOTA: El par"metro peso en cada m$todo se refiere al peso del veh#
 <span class="w">        </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Todos han terminado&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">áTodos</span><span class="w"> </span><span class="n">han</span><span class="w"> </span><span class="n">terminadoá</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (1,5 puntos) Cambie la clase GestorLE de este enunciado para que dos hebras escritoras no puedan acceder a los datos, antes de que al menos una hebra haya accedido despu$s de la %ltima escritura. En este caso, habr#a que bloquear a la segunda escritora, antes de que accediera a los datos alguna hebra lectora.</li>
+<li>(c) (1,5 puntos) Cambie la clase <code>GestorLE</code> de este enunciado para que dos hebras escritoras no puedan acceder a los datos, antes de que al menos una hebra haya accedido después de la última escritura. En este caso, habr#a que bloquear a la segunda escritora, antes de que accediera a los datos alguna hebra lectora.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3216,7 +3215,7 @@ continuaci!n. NOTA: El par"metro peso en cada m$todo se refiere al peso del veh#
 </code></pre></div>
 </details>
 <ul>
-<li>(d) (1,5 puntos) Cambie la clase GestorLE de este enunciado para que no puedan acceder m"s de tres lecturas para una misma escritura (no se puede leer en mismo dato mas de tres veces).</li>
+<li>(d) (1,5 puntos) Cambie la clase <code>GestorLE</code> de este enunciado para que no puedan acceder más de tres lecturas para una misma escritura (no se puede leer en mismo dato mas de tres veces).</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3261,7 +3260,7 @@ continuaci!n. NOTA: El par"metro peso en cada m$todo se refiere al peso del veh#
 <span class="p">}</span>
 </code></pre></div>
 </details>
-<p>En los dos %ltimos ejercicios, no es necesario reescribir por completo la clase GestorLE. Es suficiente indicar donde se incluyen las nuevas l#neas de c!digo, o el n%mero de l#neas que haya que borrar.</p>
+<p>En los dos últimos ejercicios, no es necesario reescribir por completo la clase <code>GestorLE</code>. Es suficiente indicar donde se incluyen las nuevas líneas de código, o el número de líneas que haya que borrar.</p>
 
 
 

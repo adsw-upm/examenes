@@ -2874,11 +2874,10 @@
 
   <h1>P2 ex01</h1>
 
-<p>Se dispone un puente elevado para autom!viles. Se quiere desarrollar un sistema de seguridad que impide que hayan m"s de 10 veh#culos simult"neamente en el puente y con un peso total mayor que 15.000 Kg.</p>
-<p>Cuando un veh#culo quiere entrar en el puente, ejecuta el m<span class="arithmatex">\(todo entrarPuente y cuando lo abandona, ejecuta el m\)</span>todo salirPuente. Las ambulancias tienen que invocar el m$todo entrarPuenteAmbulancia para tener prioridad en el acceso.</p>
+<p>Se dispone un puente elevado para automóviles. Se quiere desarrollar un sistema de seguridad que impide que haya más de 10 vehículos simultáneamente en el puente y con un peso total mayor que 15.000 Kg.</p>
+<p>Cuando un vehículo quiere entrar en el puente, ejecuta el método <code>entrarPuente</code> y cuando lo abandona, ejecuta el método <code>salirPuente</code>. Las ambulancias tienen que invocar el método <code>entrarPuenteAmbulancia</code> para tener prioridad en el acceso.</p>
 <ul>
-<li>(a) (1,5 puntos) Desarrolle el monitor con las restricciones indicadas como se muestra en la plantilla que se muestra a
-continuaci!n. NOTA: El par"metro peso en cada m$todo se refiere al peso del veh#culo. No es imprescindible proporcionar una soluci!n sin hambruna. Si lo hubiera se deber#a indicarlo y justificarlo.</li>
+<li>(a) (1,5 puntos) Desarrolle el monitor con las restricciones indicadas como se muestra en la plantilla que se muestra a continuación. NOTA: El parámetro peso en cada método se refiere al peso del vehículo. No es imprescindible proporcionar una solución sin hambruna. Si lo hubiera se debería indicarlo y justificarlo.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorPuenteSeguro</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pesoMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">;</span>
@@ -2905,8 +2904,8 @@ continuaci!n. NOTA: El par"metro peso en cada m$todo se refiere al peso del veh#
 </code></pre></div>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>A continuaci!n, se propone una soluci!n al enunciado, que satisface los requisitos de sincronizaci!n condicional generales planteados. Adem"s, se asegura que no van a ocurrir interbloqueos.</p>
-<p>Esta soluci!n no evita la hambruna. Si continuamente intentan a entrar ambulancia, podr#a ocurrir que ning%n coche podr#a acceder. Igualmente, los veh#culos con poco peso tienen m"s probabilidad de entrar al puente que los veh#culos con mayor peso. En situaciones desfavorables, podr#a ocurrir la hambruna para los veh#culos m"s pesados.</p>
+<p>A continuación, se propone una solución al enunciado, que satisface los requisitos de sincronización condicional generales planteados. Además, se asegura que no van a ocurrir interbloqueos.</p>
+<p>Esta solución no evita la hambruna. Si continuamente intentan a entrar ambulancias, podría ocurrir que ningún coche podría acceder. Igualmente, los vehículos con poco peso tienen más probabilidad de entrar al puente que los vehículos con mayor peso. En situaciones desfavorables, podría ocurrir la hambruna para los vehículos más pesados.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">es.upm.dit.adsw.puente_limitado</span><span class="p">;</span>
 
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PuenteSeguro</span><span class="w"> </span><span class="p">{</span>
