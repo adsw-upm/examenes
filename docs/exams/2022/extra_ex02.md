@@ -6,16 +6,15 @@ tags:
  - complejidad
 ---
 
-Se dispone de una clase RedSocial que representa una red social de amistad entre personas. En concreto, se quiere representar la relación “seguir a una persona”. Para ello, se utiliza un grafo (g) dirigido para representar esta relación: un vértice (nodo) representa una persona y un arco (arista) una relación. En concreto A à B representa que la persona A siga a la persona B. Este arco no implica que B sigua a A.
+Se dispone de una clase `RedSocial` que representa una red social de amistad entre personas. En concreto, se quiere representar la relación “seguir a una persona”. Para ello, se utiliza un grafo (`g`) dirigido para representar esta relación: un vértice (nodo) representa una persona y un arco (arista) una relación. En concreto `A` à `B` representa que la persona `A` siga a la persona `B`. Este arco no implica que `B` sigua a `A`.
 
-En la clase RedSocial se utiliza un mapa (Map<Integer, String> mapaPersonas) que permite obtener el nombre de la persona de un vértice. El arco que representa la relación “seguir a una persona” se modelará en un objeto de la clase DirectedEdge, con peso 1. La clase RedSocial se describa en el diagrama de clases adjuntado.
+En la clase `RedSocial` se utiliza un mapa (`Map<Integer, String> mapaPersonas`) que permite obtener el nombre de la persona de un vértice. El arco que representa la relación “seguir a una persona” se modelará en un objeto de la clase `DirectedEdge`, con peso 1. La clase `RedSocial` se describa en el diagrama de clases adjuntado.
 
-En el sistema, se disponen las clases DijkstraSP, EdgeWeightedDigraph y DirectedEdge, para modelar el
-sistema. 
+En el sistema, se disponen las clases `DijkstraSP`, `EdgeWeightedDigraph` y `DirectedEdge`, para modelar el sistema. 
 
 ![](./extra/extra_ex02.png)
 
-- (a) (1 punto) Desarrolle el método public double getMediaSeguidores(), que devuelve el número medio de seguidores en el grafo. 
+- (a) (1 punto) Desarrolle el método `public double getMediaSeguidores()`, que devuelve el número medio de seguidores en el grafo. 
 
 ??? note "Mostrar solución"
     ```java
@@ -25,7 +24,7 @@ sistema.
     ```
 
 
-- (b) (1,5 puntos) Desarrolle el método public String getVerticeMasSeguidores(), que devuelve el nombre de la persona que tiene más seguidores.
+- (b) (1,5 puntos) Desarrolle el método `public String getVerticeMasSeguidores()`, que devuelve el nombre de la persona que tiene más seguidores.
 
 ??? note "Mostrar solución"
     ```java
@@ -45,7 +44,7 @@ sistema.
     ```
 
 
-- (c) (2,5 putnos) Desarrolle el método public List<String> getListaMinimoAmigosComun(int verticeOrigen, int verticeDestino), que recibe por parámetro un vértice de origen y un vértice de destino y debe devolver una lista de String con el nombre de las personas de la cadena mínima de amistad entre el origen y el destino. Nota: ni el nombre de la persona origen ni destino deberán aparecer en la lista.
+- (c) (2,5 putnos) Desarrolle el método `public List<String> getListaMinimoAmigosComun(int verticeOrigen, int verticeDestino)`, que recibe por parámetro un vértice de origen y un vértice de destino y debe devolver una lista de `String` con el nombre de las personas de la cadena mínima de amistad entre el origen y el destino. Nota: ni el nombre de la persona origen ni destino deberán aparecer en la lista.
 
 ??? note "Mostrar solución"
     ```java
