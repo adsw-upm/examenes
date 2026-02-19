@@ -100,6 +100,7 @@ La configuración de búsqueda está optimizada para dar mayor peso a los tags (
 - 2019/pract carece de solución.
 - 2021/p2r/ex02/(c) carece de solución.
 - 2021/extra/ex02/(c) carece de solución.
+- 2022/p1/ex01/(b) y (c) carecen de solución.
 
 ## Licencia
 
