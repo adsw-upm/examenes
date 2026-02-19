@@ -2874,14 +2874,14 @@
 
   <h1>Extra ex01</h1>
 
-<p>Un sistema real se describe como un grafo no dirigido. Los arcos o aristas (edge) tienen un coste o peso mayor que cero. Un camino es una secuencia de arcos que conectan dos nodos o vértices. Un camino se representa mediante una lista (List<Edge>). En este sistema, interesa agrupar a todos los posibles caminos entre dos nodos concretos, que se representa mediante una lista de caminos (List<List\<Edge>>).</p>
+<p>Un sistema real se describe como un grafo no dirigido. Los arcos o aristas (<em>edge</em>) tienen un coste o peso mayor que cero. Un camino es una secuencia de arcos que conectan dos nodos o vértices. Un camino se representa mediante una lista (List<Edge>). En este sistema, interesa agrupar a todos los posibles caminos entre dos nodos concretos, que se representa mediante una lista de caminos (<code>List&lt;List&lt;Edge&gt;&gt;</code>).</p>
 <p>Se pide desarrollar dos métodos, descritos en el cuadro adjunto:</p>
 <ul>
 <li>
-<p>(a) (2 puntos) menorCamino selecciona el camino mínimo (el de menor coste total) de una lista de caminos. Se aconseja (no obligatorio) desarrollar un método que reciba como entrada un camino y retorne el peso total del camino.</p>
+<p>(a) (2 puntos) <code>menorCamino</code> selecciona el camino mínimo (el de menor coste total) de una lista de caminos. Se aconseja (no obligatorio) desarrollar un método que reciba como entrada un camino y retorne el peso total del camino.</p>
 </li>
 <li>
-<p>(b) (3 puntos) numeroVecesUsadoArco: genera un diccionario (Map<Edge, Integer>) con el número de veces que aparece cada arco en la lista de caminos del parámetro de entrada.</p>
+<p>(b) (3 puntos) <code>numeroVecesUsadoArco</code>: genera un diccionario (<code>Map&lt;Edge, Integer&gt;</code>) con el número de veces que aparece cada arco en la lista de caminos del parámetro de entrada.</p>
 </li>
 </ul>
 <table>
@@ -2901,7 +2901,7 @@
 <td><strong>Parameters</strong></td>
 </tr>
 <tr>
-<td>listaCaminos - una lista de caminos del grafo del sistema entre dos vértices.</td>
+<td><code>listaCaminos</code> - una lista de caminos del grafo del sistema entre dos vértices.</td>
 </tr>
 <tr>
 <td><strong>Returns</strong></td>
@@ -2928,7 +2928,7 @@
 <td>Parameters</td>
 </tr>
 <tr>
-<td>listaCaminos - una lista de caminos del grafo del sistema entre dos vértices.</td>
+<td><code>listaCaminos</code> - una lista de caminos del grafo del sistema entre dos vértices.</td>
 </tr>
 <tr>
 <td>Returns</td>
