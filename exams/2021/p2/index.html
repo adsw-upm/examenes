@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -3023,26 +3023,31 @@
 
 <h1 id="examen-2021-parcial-2">Examen 2021 — Parcial 2</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>Se quiere desarrollar una clase monitora TorreControl para gestionar una !nica pista de aterrizaje de un aeropuerto, con acceso exclusivo por parte de objetos de la clase Avion, que ser"n las hebras. Los aviones pueden pedir a la torre de control aterrizar y despegar. Se pide desarrollar los siguientes m#todos:</p>
+<p>Se quiere desarrollar una clase monitora <code>TorreControl</code> para gestionar una única pista de aterrizaje de un aeropuerto, con acceso exclusivo por parte de objetos de la clase <code>Avion</code>, que serán las hebras. Los aviones pueden pedir a la torre de control aterrizar y despegar. Se pide desarrollar los siguientes métodos:</p>
 <p><img alt="" src="../p1r/p1r_ex01.png" /></p>
 <ul>
 <li>
-<p>(a) (1,5 puntos) public … void avisoAterrizaje(Avion unAvion): para la maniobra de aterrizaje, los aviones primero avisar"n a la torre de control (con este m#todo) de su intenci<span class="arithmatex">\(n de aterrizar y despu#s preguntar"n por el permiso para poder aterrizar. Cuando la torre de control reciba un aviso de aterrizaje deber" a%adir el avi\)</span>n que solicit$ el permiso a una lista. Esta lista se ordenar" por el combustible que tengan los aviones, siendo el que tenga menos combustible el primero de la lista y el primero en aterrizar (en caso de haber dos aviones con el mismo combustible ser" indiferente el orden de aterrizaje entre ellos).</p>
+<p>(a) (1,5 puntos) <code>public ... void avisoAterrizaje(Avion unAvion)</code>: Para la maniobra de aterrizaje, los aviones primero avisarán a la torre de control (con este método) de su intención de aterrizar y después preguntarán por el permiso para poder aterrizar. Cuando la torre de control reciba un aviso de aterrizaje deberá añadir el avión que solicitó el permiso a una lista. Esta lista se ordenará por el combustible que tengan los aviones, siendo el que tenga menos combustible el primero de la lista y el primero en aterrizar (en caso de haber dos aviones con el mismo combustible será indiferente el orden de aterrizaje entre ellos).</p>
 </li>
 <li>
-<p>(b) (2 puntos) public … void permisoAterrizaje(Avion unAvion): un avi<span class="arithmatex">\(n invoca este m#todo para pedir permiso para aterrizar. Cuando la torre de control reciba la llamada de permiso de aterrizaje entonces solo dejar" aterrizar al avi\)</span>n si lo tiene guardado en la lista de menos combustible y si la pista est" libre. </p>
+<p>(b) (2 puntos) <code>public ... void permisoAterrizaje(Avion unAvion)</code>: Un avión invoca este método para pedir permiso para aterrizar. Cuando la torre de control reciba la llamada de permiso de aterrizaje entonces solo dejará aterrizar al avión si lo tiene guardado en la lista de menos combustible y si la pista está libre. </p>
 </li>
 <li>
-<p>(c) (1,5 puntos) public … void permisoDespegue(Avion unAvion para la maniobra de despegue los aviones pedir"n permiso para despegar. Se supone que todos los aviones tienen el m"ximo de combustible y no hay prioridad, as&amp; que cuando pidan despegar podr"n hacerlo siempre y cuando la pista est# libre.</p>
+<p>(c) (1,5 puntos) <code>public ... void permisoDespegue(Avion unAvion)</code>: Para la maniobra de despegue los aviones pedirán permiso para despegar. Se supone que todos los aviones tienen el máximo de combustible y no hay prioridad, así que cuando pidan despegar podrán hacerlo siempre y cuando la pista est# libre.</p>
 </li>
 </ul>
 <p>Aclaraciones sobre el ejercicio:</p>
-<pre><code>- En la clase TorreControl se controla cuándo la pista está ocupada o libre. La pista estará ocupada cuando un avión ha recibido permiso a través de los métodos permisoAterrizaje o permisoDespegue. La pista se debe marcar como ocupada dentro de este método cuando un avión tiene permiso y se mantiene así en un tiempo, representado como Thread.sleep(random.nextInt(5000)). Al expirar este temporizador, la pista se marcará como libre.
-
-- Para simplificar este ejercicio, se supone que un avión mantiene constante su nivel de combustible, desde que notifica su intención de aterrizar (con el método avisoAterrizaje) hasta que recibe el permiso (con el método permisoAterrizaje).
-
-- Se dispone un método (no es necesario implementarlo) que recibe una lista de aviones y retorna una lista de aviones ordenada de menor a mayor por el combustible del avión: List&lt;Avion&gt; ordenarAvionesPorCompustible(List&lt;Avion&gt; listaAviones))
-</code></pre>
+<ul>
+<li>
+<p>En la clase <code>TorreControl</code> se controla cuándo la pista está ocupada o libre. La pista estará ocupada cuando un avión ha recibido permiso a través de los métodos <code>permisoAterrizaje</code> o <code>permisoDespegue</code>. La pista se debe marcar como ocupada dentro de este método cuando un avión tiene permiso y se mantiene así en un tiempo, representado como <code>Thread.sleep(random.nextInt(5000))</code>. Al expirar este temporizador, la pista se marcará como libre.</p>
+</li>
+<li>
+<p>Para simplificar este ejercicio, se supone que un avión mantiene constante su nivel de combustible, desde que notifica su intención de aterrizar (con el método <code>avisoAterrizaje</code>) hasta que recibe el permiso (con el método <code>permisoAterrizaje</code>).</p>
+</li>
+<li>
+<p>Se dispone un método (no es necesario implementarlo) que recibe una lista de aviones y retorna una lista de aviones ordenada de menor a mayor por el combustible del avión: <code>List&lt;Avion&gt; ordenarAvionesPorCompustible(List&lt;Avion&gt; listaAviones))</code>.</p>
+</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="c1">// Ejemplo del posible código de una hebra de la clase Avion</span>
 
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Avion</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
@@ -3170,8 +3175,8 @@
 </code></pre></div>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>Se desea implementar un sistema que simule un conjunto de jugadores de un equipo de f!tbol americano, que est"n sedientos, y una persona que actuar" como aguador. Cada jugador se encargar" peri$dicamente de extraer un vaso de una lista de vasos compartida, y de llenarlo de agua de una botella tambi#n compartida. El aguador comprobar" continuamente que haya disponibles vasos y agua en la botella, rellenando ambos en caso contrario. Tanto los jugadores como el aguador tienen que poder trabajar de forma concurrente.</p>
-<p>Se incluye la implementaci$n de las clases necesarias, adem"s del m#todo ExtraordinarioP2.main, que permite probar el programa con 20 jugadores y un aguador. </p>
+<p>Se desea implementar un sistema que simule un conjunto de jugadores de un equipo de fútbol americano, que están sedientos, y una persona que actuará como aguador. Cada jugador se encargará periódicamente de extraer un vaso de una lista de vasos compartida, y de llenarlo de agua de una botella también compartida. El aguador comprobará continuamente que haya disponibles vasos y agua en la botella, rellenando ambos en caso contrario. Tanto los jugadores como el aguador tienen que poder trabajar de forma concurrente.</p>
+<p>Se incluye la implementación de las clases necesarias, además del método <code>ExtraordinarioP2.main</code>, que permite probar el programa con 20 jugadores y un aguador. </p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
 
@@ -3293,35 +3298,34 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Nota: Se recuerda que un bloque synchronized se asocia al objeto en el parámetro. Se garantiza exclusión mutua entre los bloques sincronizados que se invocan con el mismo objeto.</p>
+<p>Nota: Se recuerda que un bloque <code>synchronized</code> se asocia al objeto en el parámetro. Se garantiza exclusión mutua entre los bloques sincronizados que se invocan con el mismo objeto.</p>
 <ul>
-<li>(a) (2 puntos) 'Existe alg!n problema de acceso concurrente en esta implementaci$n?. Si es as&amp;, 'de qu# tipo es?.
-Justifique su respuesta.</li>
+<li>(a) (2 puntos) ¿Existe algún problema de acceso concurrente en esta implementación? Si es así, ¿De qué tipo es? Justifique su respuesta.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Sí existe. Hay bloqueo exclusivo de los recursos, con espera, y en orden inverso: Aguador bloquea botella y luego vasos, mientras que Jugador bloquea los vasos primero.</p>
+<p>Sí existe. Hay bloqueo exclusivo de los recursos, con espera, y en orden inverso: <code>Aguador</code> bloquea <code>botella</code> y luego <code>vasos</code>, mientras que <code>Jugador</code> bloquea los <code>vasos</code> primero.</p>
 </details>
 <ul>
-<li>(b) (1 punto) 'C$mo solucionar&amp;a el problema?</li>
+<li>(b) (1 punto) Si existiera algún problema ¿Cómo lo solucionaría?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La solución más sencilla es invertir el orden del bloqueo en Aguador o en Jugador. Analizando el código vemos que no se necesita bloquear sobre ambos recursos a la vez, así que una mejor solución sería separar las dos regiones críticas: primero bloquear vasos, acabar el bloque, y luego bloquear la botella (o viceversa).</p>
+<p>La solución más sencilla es invertir el orden del bloqueo en <code>Aguador</code> o en <code>Jugador</code>. Analizando el código vemos que no se necesita bloquear sobre ambos recursos a la vez, así que una mejor solución sería separar las dos regiones críticas: primero bloquear <code>vasos</code>, acabar el bloque, y luego bloquear la <code>botella</code> (o viceversa).</p>
 </details>
 <ul>
-<li>(c) (1 punto) Los vasos tienen una capacidad de 1 litro. Sin modificar la implementaci$n de Jugador, 'cu"l es el n!mero m"ximo de jugadores que podr&amp;an beber por minuto?</li>
+<li>(c) (1 punto) Los <code>vasos</code> tienen una capacidad de 1 litro. Sin modificar la implementación de <code>Jugador</code>, ¿Cuál es el número máximo de jugadores que podrían beber por minuto?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Nos piden el máximo, con lo que usaremos el caso mejor. Para que un jugador pueda beber, tiene que haber bloqueado los vasos (500ms de espera) y luego la botella (1000ms). Ese es el mínimo tiempo necesario por jugador, y durante el cual los recursos están bloqueados. El tiempo de espera tras beber no afecta, porque se puede aumentar el número de jugadores.</p>
 <p>Por tanto, el número máximo de jugadores sería 60s/ (1.5s/1 jugador) = 40 jugadores.</p>
 <p>Para este máximo, hemos supuesto que el tiempo de procesamiento (bloqueo) por el aguador, el de las operaciones básicas y el consumido por los cambios de contexto son despreciables.</p>
-<p>Se podría aumentar el número de jugadores por minuto separando los dos bloques synchronized (ver respuesta anterior), de forma que el tiempo de espera se reparta entre los dos elementos. De esa forma, el primer jugador tardaría 1.5s en beber, pero los siguientes podrían tardar sólo 1s (la espera sobre los vasos puede darse a la vez que la espera sobre la botella). En ese caso, en el primer minuto podría haber 59 jugadores, y 60 en los siguientes.</p>
+<p>Se podría aumentar el número de jugadores por minuto separando los dos bloques <code>synchronized</code> (ver respuesta anterior), de forma que el tiempo de espera se reparta entre los dos elementos. De esa forma, el primer jugador tardaría 1.5s en beber, pero los siguientes podrían tardar sólo 1s (la espera sobre los vasos puede darse a la vez que la espera sobre la botella). En ese caso, en el primer minuto podría haber 59 jugadores, y 60 en los siguientes.</p>
 <p>Si se considera que NO se puede aumentar el número de jugadores en ExtraordinarioP2, el número máximo sería 20 (es el número de jugadores que añadimos), que podrían llegar a beber 2 veces en ese minuto (20 jugadores tardan 30 segundos en completar, que es menor que el tiempo de espera post-bebida).</p>
 </details>
 <ul>
-<li>(d) (1 punto) Si se desease sustituir los bloques sincronizados por m#todos sincronizados, 'en qu# clase o clases los implementar&amp;a?</li>
+<li>(d) (1 punto) Si se desease sustituir los bloques sincronizados por métodos sincronizados ¿En qué clase o clases los implementaría?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>

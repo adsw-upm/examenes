@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -2874,7 +2874,7 @@
 
   <h1>P1r ex01</h1>
 
-<p>Se quiere desarrollar un programa que analice un documento de texto y calcule el n!mero de veces que aparece cada palabra (String). El resultado es una lista de ContadorPalabra, que es una clase que se muestra a continuación:</p>
+<p>Se quiere desarrollar un programa que analice un documento de texto y calcule el n!mero de veces que aparece cada palabra (<code>String</code>). El resultado es una lista de <code>ContadorPalabra</code>, que es una clase que se muestra a continuación:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ContadorPalabra</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span><span class="w"> </span><span class="c1">// Nombre en el documento</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">contador</span><span class="p">;</span><span class="w"> </span><span class="c1">//Núm. de veces que aparece</span>
@@ -2882,11 +2882,11 @@
 <span class="w">    </span><span class="c1">// Están disponibles los getters y setters</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>En una fase inicial del programa, se crean dos hebras que analizan una mitad del documento. El resultado de cada hebra es una lista (java.util.List<ContadorPalabra>), con el contador de cada palabra de la mitad correspondiente. Los elementos de cada lista est"n ordenados por el atributo nombre de cada ContadorPalabra.</p>
-<p>En este ejercicio, se quiere desarrollar un m#todo para agregar las
+<p>En una fase inicial del programa, se crean dos hebras que analizan una mitad del documento. El resultado de cada hebra es una lista (<code>java.util.List&lt;ContadorPalabra&gt;</code>), con el contador de cada palabra de la mitad correspondiente. Los elementos de cada lista están ordenados por el atributo nombre de cada <code>ContadorPalabra</code>.</p>
+<p>En este ejercicio, se quiere desarrollar un método para agregar las
 dos listas generadas de cada mitad. Se pide:</p>
 <ul>
-<li>(a) (1,5 puntos) Desarrolle el m#todo Menor, que recibe dos listas ordenadas y retorna el ContadorPalabra con la menor palabra en cualquiera de las dos mitades. </li>
+<li>(a) (1,5 puntos) Desarrolle el método <code>Menor</code>, que recibe dos listas ordenadas y retorna el <code>ContadorPalabra</code> con la menor palabra en cualquiera de las dos mitades. </li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">ContadorPalabra</span><span class="w"> </span><span class="nf">Menor</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ag1</span><span class="p">,</span>
@@ -2915,21 +2915,21 @@ dos listas generadas de cada mitad. Se pide:</p>
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (3,5 puntos) Desarrolle el m#todo Agregar, que recibe dos listas y retorna una lista ordenada que agregue los objetos PalabraContador de los parámetros de entrada. En concreto, calcula el valor de cada palabra en cada mitad en el documento. Este m#todo puede usar Menor, pero no es obligatorio. </li>
+<li>(b) (3,5 puntos) Desarrolle el método <code>Agregar</code>, que recibe dos listas y devuelve una lista ordenada que agregue los objetos <code>PalabraContador</code> de los parámetros de entrada. En concreto, calcula el valor de cada palabra en cada mitad en el documento. Este método puede usar <code>Menor</code>, pero no es obligatorio. </li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Agregar</span><span class="p">(</span>
 <span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ag1</span><span class="p">,</span>
 <span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">ContadorPalabra</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ag2</span><span class="p">))</span>
 <span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p>Ejemplo: Los dos parámetros de entrada de Agregar o Menor podrían ser:
+<p>Ejemplo: Los dos parámetros de entrada de <code>Agregar</code> o <code>Menor</code> podrían ser:
 <div class="highlight"><pre><span></span><code><span class="n">Ag1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">adiós</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">bueno</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">hola</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">malo</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
 <span class="n">Ag2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">adiós</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">bueno</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">malo</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div></p>
-<p>La salida del método agregar sería:
+<p>La salida del método <code>agregar</code> sería:
 <div class="highlight"><pre><span></span><code><span class="n">agregar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">adiós</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">bueno</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">hola</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="err">“</span><span class="n">malo</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div></p>
-<p>A continuación se muestran algunos m#todos relevantes de la colección List.</p>
+<p>A continuación se muestran algunos métodos relevantes de la colección <code>List</code>.</p>
 <p><img alt="" src="../p1r/p1r_ex01.png" /></p>
 <details class="note">
 <summary>Mostrar solución</summary>

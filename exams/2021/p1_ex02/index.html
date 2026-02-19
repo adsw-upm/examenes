@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -2874,15 +2874,17 @@
 
   <h1>P1 ex02</h1>
 
-<p>Como parte de un proyecto internacional, se quiere diseñar un sistema que permite guardar y consultar el historial de posiciones de ciertos elementos. Se sabe que el sistema necesitará internamente un diccionario para guardar la información (Clave=elemento, Valor=posición).</p>
-<p>Se van a considerar sólo las siguientes estructuras de datos para implementar el diccionario, que se implementarán en las clases en paréntesis:
-    - Array con duplicados (DiccionarioArrayDuplicados)
-    - Array ordenado sin duplicados (DiccionarioArrayOrdenado)
-    - Árbol binario de búsqueda (DiccionarioArbol)
-    - Tabla hash con listas (DiccionarioHash)</p>
+<p>Como parte de un proyecto internacional, se quiere diseñar un sistema que permite guardar y consultar el historial de posiciones de ciertos elementos. Se sabe que el sistema necesitará internamente un diccionario para guardar la información (<code>Clave=elemento</code>, <code>Valor=posición</code>).</p>
+<p>Se van a considerar sólo las siguientes estructuras de datos para implementar el diccionario, que se implementarán en las clases en paréntesis:</p>
+<ul>
+<li>Array con duplicados (<code>DiccionarioArrayDuplicados</code>)</li>
+<li>Array ordenado sin duplicados (<code>DiccionarioArrayOrdenado</code>)</li>
+<li>Árbol binario de búsqueda (<code>DiccionarioArbol</code>)</li>
+<li>Tabla hash con listas (<code>DiccionarioHash</code>)</li>
+</ul>
 <p>Se pide:</p>
 <ul>
-<li>(a) (1,5 puntos) Diseñe un algoritmo que calcule la menor clave almacenada (claveMin), y otro que calcule el menor valor (valorMin), usando las siguientes signaturas y los métodos de la interfaz Diccionario<K,V> especificados al final del enunciado:
+<li>(a) (1,5 puntos) Diseñe un algoritmo que calcule la menor clave almacenada (<code>claveMin</code>), y otro que calcule el menor valor (<code>valorMin</code>), usando las siguientes signaturas y los métodos de la interfaz <code>Diccionario&lt;K,V&gt;</code> especificados al final del enunciado:
 <div class="highlight"><pre><span></span><code><span class="n">K</span><span class="w"> </span><span class="nf">claveMin</span><span class="p">(</span><span class="n">Diccionario</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">//TODO a rellenar por el alumno</span>
 <span class="p">}</span>
@@ -2891,7 +2893,7 @@
 <span class="p">}</span>
 </code></pre></div></li>
 </ul>
-<p>Utilice el interfaz de Diccionario <K,V> que se muestra a continuación:</p>
+<p>Utilice el interfaz de <code>Diccionario&lt;K,V&gt;</code> que se muestra a continuación:</p>
 <p><img alt="" src="../p1/p1_ex02.png" /></p>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2920,36 +2922,38 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (0,5 puntos) Si claveMin y valorMin pudieran tener acceso a la estructura de datos interna de cada una de las implementaciones consideradas (p.e., la tabla hash en DiccionarioHash), ¿podría diseñarse una alternativa de menor complejidad?. Razone su respuesta sin escribir el algoritmo. </li>
+<li>(b) (0,5 puntos) Si <code>claveMin</code> y <code>valorMin</code> pudieran tener acceso a la estructura de datos interna de cada una de las implementaciones consideradas (p.e., la tabla hash en <code>DiccionarioHash</code>), ¿podría diseñarse una alternativa de menor complejidad?. Razone su respuesta sin escribir el algoritmo. </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Los métodos implementados tiene complejidad en tiempo de ejecución O(n), pero claveMin podría usar ser más eficiente en DiccionarioArrayOrdenado y DiccionarioArbol, porque las claves están ordenadas. Para valorMin no sería posible.</p>
-<p>El algoritmo para la interfaz tiene complejidad O(n), porque tiene que recorrer todas las claves y todos los valores.</p>
-<p>En DiccionarioHash y DiccionarioArrayDuplicados también habría que recorrer todos los elementos, así que la complejidad sería similar.</p>
-<p>En DiccionarioArrayOrdenado y DiccionarioArbol las claves están ordenadas.</p>
-<p>Por tanto, en DiccionarioArrayOrdenado se podría conseguir O(1) para claveMin, porque simplemente hay que acceder al primer elemento. En DiccionarioArbol tendríamos complejidad O(log(n)), porque hay que recorrer toda la profundidad (log2(n), en un árbol balanceado).</p>
-<p>Para valorMin no se podría conseguir un algoritmo mejor porque los valores no están ordenados, sólo las claves.</p>
+<p>Los métodos implementados tienen complejidad en tiempo de ejecución <span class="arithmatex">\(O(n)\)</span>, pero <code>claveMin</code> podría usar ser más eficiente en <code>DiccionarioArrayOrdenado</code> y <code>DiccionarioArbol</code>, porque las claves están ordenadas. Para <code>valorMin</code> no sería posible.</p>
+<p>El algoritmo para la interfaz tiene complejidad <span class="arithmatex">\(O(n)\)</span>, porque tiene que recorrer todas las claves y todos los valores.</p>
+<p>En <code>DiccionarioHash</code> y <code>DiccionarioArrayDuplicados</code> también habría que recorrer todos los elementos, así que la complejidad sería similar.</p>
+<p>En <code>DiccionarioArrayOrdenado</code> y <code>DiccionarioArbol</code> las claves están ordenadas.</p>
+<p>Por tanto, en <code>DiccionarioArrayOrdenado</code> se podría conseguir <span class="arithmatex">\(O(1)\)</span> para <code>claveMin</code>, porque simplemente hay que acceder al primer elemento. En <code>DiccionarioArbol</code> tendríamos complejidad <span class="arithmatex">\(O(log(n))\)</span>, porque hay que recorrer toda la profundidad (<span class="arithmatex">\(log2(n)\)</span>, en un árbol balanceado).</p>
+<p>Para <code>valorMin</code> no se podría conseguir un algoritmo mejor porque los valores no están ordenados, sólo las claves.</p>
 </details>
-<p>Elije entre las implementaciones consideradas la mejor adaptada para cada uno de los siguientes usos del sistema. Razone su respuesta usando los criterios de complejidad.
-- (c) (1 punto) Directorio de salas en la universidad. Consultas (get) frecuentes, actualizaciones (put, remove) poco frecuentes.</p>
+<p>Elija entre las implementaciones consideradas la mejor adaptada para cada uno de los siguientes usos del sistema. Razone su respuesta usando los criterios de complejidad.</p>
+<ul>
+<li>(c) (1 punto) Directorio de salas en la universidad. Consultas (<code>get</code>) frecuentes, actualizaciones (<code>put</code>, <code>remove</code>) poco frecuentes.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Directorio de salas en la universidad. Consultas (get) frecuentes, actualizaciones (put, remove) poco frecuentes. DiccionarioHash, porque tiene búsquedas muy rápidas (O(1)). Además, al haber pocas actualizaciones podremos dimensionar la tabla correctamente.</p>
+<p><code>DiccionarioHash</code>, porque tiene búsquedas muy rápidas (<span class="arithmatex">\(O(1)\)</span>). Además, al haber pocas actualizaciones podremos dimensionar la tabla correctamente.</p>
 </details>
 <ul>
 <li>(d) (1 punto) Registro de seguridad de la posición en cada hora de los miembros del personal. Consultas poco frecuentes, actualizaciones muy frecuentes y no se deben sobreescribir valores antiguos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Registro de seguridad de la posición en cada hora de los miembros del personal. Consultas poco frecuentes, actualizaciones muy frecuentes y no se deben sobreescribir valores antiguos. DiccionarioArrayDuplicados. No se deben sobreescribir valores, y es el único con esa condición en caso de actualización. Además, las consultas son O(n), pero priman las actualizaciones (O(1)).</p>
+<p><code>DiccionarioArrayDuplicados</code>. No se deben sobreescribir valores, y es el único con esa condición en caso de actualización. Además, las consultas son <span class="arithmatex">\(O(n)\)</span>, pero priman las actualizaciones (<span class="arithmatex">\(O(1)\)</span>).</p>
 </details>
 <ul>
 <li>(e) (1 punto) Prevención de colisiones de vehículos con actualizaciones y consultas cada minuto. Consultas y actualizaciones igual de frecuentes. </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Prevención de colisiones de vehículos con actualizaciones y consultas cada minuto. Consultas y actualizaciones igual de frecuentes. DiccionarioHash. Tanto consultas como actualizaciones tienen complejidad O(1). Puede</p>
+<p><code>DiccionarioHash</code>. Tanto consultas como actualizaciones tienen complejidad <span class="arithmatex">\(O(1)\)</span>.</p>
 </details>
 
 

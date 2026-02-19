@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -2874,8 +2874,8 @@
 
   <h1>P2 ex02</h1>
 
-<p>Se desea implementar un sistema que simule un conjunto de jugadores de un equipo de f!tbol americano, que est"n sedientos, y una persona que actuar" como aguador. Cada jugador se encargar" peri$dicamente de extraer un vaso de una lista de vasos compartida, y de llenarlo de agua de una botella tambi#n compartida. El aguador comprobar" continuamente que haya disponibles vasos y agua en la botella, rellenando ambos en caso contrario. Tanto los jugadores como el aguador tienen que poder trabajar de forma concurrente.</p>
-<p>Se incluye la implementaci$n de las clases necesarias, adem"s del m#todo ExtraordinarioP2.main, que permite probar el programa con 20 jugadores y un aguador. </p>
+<p>Se desea implementar un sistema que simule un conjunto de jugadores de un equipo de fútbol americano, que están sedientos, y una persona que actuará como aguador. Cada jugador se encargará periódicamente de extraer un vaso de una lista de vasos compartida, y de llenarlo de agua de una botella también compartida. El aguador comprobará continuamente que haya disponibles vasos y agua en la botella, rellenando ambos en caso contrario. Tanto los jugadores como el aguador tienen que poder trabajar de forma concurrente.</p>
+<p>Se incluye la implementación de las clases necesarias, además del método <code>ExtraordinarioP2.main</code>, que permite probar el programa con 20 jugadores y un aguador. </p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
 
@@ -2997,35 +2997,34 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Nota: Se recuerda que un bloque synchronized se asocia al objeto en el parámetro. Se garantiza exclusión mutua entre los bloques sincronizados que se invocan con el mismo objeto.</p>
+<p>Nota: Se recuerda que un bloque <code>synchronized</code> se asocia al objeto en el parámetro. Se garantiza exclusión mutua entre los bloques sincronizados que se invocan con el mismo objeto.</p>
 <ul>
-<li>(a) (2 puntos) 'Existe alg!n problema de acceso concurrente en esta implementaci$n?. Si es as&amp;, 'de qu# tipo es?.
-Justifique su respuesta.</li>
+<li>(a) (2 puntos) ¿Existe algún problema de acceso concurrente en esta implementación? Si es así, ¿De qué tipo es? Justifique su respuesta.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Sí existe. Hay bloqueo exclusivo de los recursos, con espera, y en orden inverso: Aguador bloquea botella y luego vasos, mientras que Jugador bloquea los vasos primero.</p>
+<p>Sí existe. Hay bloqueo exclusivo de los recursos, con espera, y en orden inverso: <code>Aguador</code> bloquea <code>botella</code> y luego <code>vasos</code>, mientras que <code>Jugador</code> bloquea los <code>vasos</code> primero.</p>
 </details>
 <ul>
-<li>(b) (1 punto) 'C$mo solucionar&amp;a el problema?</li>
+<li>(b) (1 punto) Si existiera algún problema ¿Cómo lo solucionaría?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La solución más sencilla es invertir el orden del bloqueo en Aguador o en Jugador. Analizando el código vemos que no se necesita bloquear sobre ambos recursos a la vez, así que una mejor solución sería separar las dos regiones críticas: primero bloquear vasos, acabar el bloque, y luego bloquear la botella (o viceversa).</p>
+<p>La solución más sencilla es invertir el orden del bloqueo en <code>Aguador</code> o en <code>Jugador</code>. Analizando el código vemos que no se necesita bloquear sobre ambos recursos a la vez, así que una mejor solución sería separar las dos regiones críticas: primero bloquear <code>vasos</code>, acabar el bloque, y luego bloquear la <code>botella</code> (o viceversa).</p>
 </details>
 <ul>
-<li>(c) (1 punto) Los vasos tienen una capacidad de 1 litro. Sin modificar la implementaci$n de Jugador, 'cu"l es el n!mero m"ximo de jugadores que podr&amp;an beber por minuto?</li>
+<li>(c) (1 punto) Los <code>vasos</code> tienen una capacidad de 1 litro. Sin modificar la implementación de <code>Jugador</code>, ¿Cuál es el número máximo de jugadores que podrían beber por minuto?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Nos piden el máximo, con lo que usaremos el caso mejor. Para que un jugador pueda beber, tiene que haber bloqueado los vasos (500ms de espera) y luego la botella (1000ms). Ese es el mínimo tiempo necesario por jugador, y durante el cual los recursos están bloqueados. El tiempo de espera tras beber no afecta, porque se puede aumentar el número de jugadores.</p>
 <p>Por tanto, el número máximo de jugadores sería 60s/ (1.5s/1 jugador) = 40 jugadores.</p>
 <p>Para este máximo, hemos supuesto que el tiempo de procesamiento (bloqueo) por el aguador, el de las operaciones básicas y el consumido por los cambios de contexto son despreciables.</p>
-<p>Se podría aumentar el número de jugadores por minuto separando los dos bloques synchronized (ver respuesta anterior), de forma que el tiempo de espera se reparta entre los dos elementos. De esa forma, el primer jugador tardaría 1.5s en beber, pero los siguientes podrían tardar sólo 1s (la espera sobre los vasos puede darse a la vez que la espera sobre la botella). En ese caso, en el primer minuto podría haber 59 jugadores, y 60 en los siguientes.</p>
+<p>Se podría aumentar el número de jugadores por minuto separando los dos bloques <code>synchronized</code> (ver respuesta anterior), de forma que el tiempo de espera se reparta entre los dos elementos. De esa forma, el primer jugador tardaría 1.5s en beber, pero los siguientes podrían tardar sólo 1s (la espera sobre los vasos puede darse a la vez que la espera sobre la botella). En ese caso, en el primer minuto podría haber 59 jugadores, y 60 en los siguientes.</p>
 <p>Si se considera que NO se puede aumentar el número de jugadores en ExtraordinarioP2, el número máximo sería 20 (es el número de jugadores que añadimos), que podrían llegar a beber 2 veces en ese minuto (20 jugadores tardan 30 segundos en completar, que es menor que el tiempo de espera post-bebida).</p>
 </details>
 <ul>
-<li>(d) (1 punto) Si se desease sustituir los bloques sincronizados por m#todos sincronizados, 'en qu# clase o clases los implementar&amp;a?</li>
+<li>(d) (1 punto) Si se desease sustituir los bloques sincronizados por métodos sincronizados ¿En qué clase o clases los implementaría?</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
