@@ -19,7 +19,7 @@
     
     
       
-        <title>Ejercicio 2 (2.5 puntos) - Catálogo ejercicios años anteriores</title>
+        <title>P1 ex02 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -59,11 +59,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#ejercicio-2-25-puntos" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ejercicio 2 (2.5 puntos)
+              P1 ex02
             
           </span>
         </div>
@@ -2850,8 +2845,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -2886,7 +2879,8 @@
 
 
 
-<h1 id="ejercicio-2-25-puntos">Ejercicio 2 (2.5 puntos)</h1>
+  <h1>P1 ex02</h1>
+
 <p>Dado el siguiente código:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">funcion</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="o">[]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">    </span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -2910,16 +2904,17 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>Se pide:</p>
-<ol>
-<li>(2 puntos) ¿Qué valor tendrá el array <code>arr</code> tras ejecutar la instrucción <code>funcion(arr);</code> y qué texto se mostrará por consola durante su ejecución en los siguientes casos?</li>
-<li>Cuando <code>int[] arr = {1, 4, 3, 2, 5};</code></li>
-<li>Cuando <code>int[] arr = {1, 2, 3, 2, 1};</code></li>
-<li>(0.5 puntos) Estime el orden de complejidad del algoritmo. Razone su respuesta.</li>
-</ol>
+<ul>
+<li>
+<p>(a) (2 puntos) ¿Qué valor tendrá el array <code>arr</code> tras ejecutar la instrucción <code>funcion(arr);</code> y qué texto se mostrará por consola durante su ejecución en los siguientes casos?</p>
+<ul>
+<li>Cuando <code>int[] arr = {1, 4, 3, 2, 5}</code>;</li>
+<li>Cuando <code>int[] arr = {1, 2, 3, 2, 1}</code>;</li>
+</ul>
+</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<ol>
-<li>
 <p>Salida por consola:
 <div class="highlight"><pre><span></span><code>4
 0
@@ -2929,11 +2924,13 @@
 4
 </code></pre></div>
 Y <code>arr = {5, 4, 3, 2, 1}</code></p>
-</li>
-<li>
+</details>
+<ul>
+<li>(b) (0.5 puntos) Estime el orden de complejidad del algoritmo. Razone su respuesta.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
 <p><span class="arithmatex">\(O(n)\)</span>, siendo <span class="arithmatex">\(n\)</span> el tamaño del array <code>a</code>.</p>
-</li>
-</ol>
 </details>
 
 

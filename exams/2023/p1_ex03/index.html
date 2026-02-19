@@ -19,7 +19,7 @@
     
     
       
-        <title>Ejercicio 3 - Catálogo ejercicios años anteriores</title>
+        <title>P1 ex03 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -59,11 +59,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#ejercicio-3" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ejercicio 3
+              P1 ex03
             
           </span>
         </div>
@@ -2850,8 +2845,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -2886,7 +2879,8 @@
 
 
 
-<h1 id="ejercicio-3">Ejercicio 3</h1>
+  <h1>P1 ex03</h1>
+
 <p>Tenemos un árbol binario de búsqueda en el que almacenamos direcciones <code>IP</code>. Las direcciones <code>IP</code> son objetos de la clase <code>IP</code>, que tiene como atributos los cuatro bytes por los que se compone una <code>IP</code>; siendo el primer byte el número decimal situado más a la izquierda y el último byte, el situado a la derecha (ej: en la <code>IP</code> 192.168.1.0, el primer byte representa el 192, el segundo el 168, el tercero el 1 y el cuarto el 0).</p>
 <p>El árbol binario cuenta con los métodos habituales de un diccionario. Sus nodos tienen referencias a los hijos izquierdo y derecho, y un objeto <code>IP</code> que sirve tanto de clave como de valor.</p>
 <div class="highlight"><pre><span></span><code>classDiagram
@@ -2943,42 +2937,34 @@
     ip3 --&gt; ip7
     ip3 --&gt; ip6
 </code></pre></div>
-<ol>
-<li>
-<p>(1 punto) La clase IP debería implementar la interfaz <code>Comparable&lt;IP&gt;</code>, identifique y desarrolle los métodos necesarios para cumplir con dicha interfaz.</p>
-</li>
-<li>
-<p>(2 puntos) Queremos diseñar un método del árbol que nos permita comprobar cuantas IP de las almacenadas están dentro de un rango dado como parámetro (extremos incluidos). Desarrolle el cuerpo del método que tendrá esta cabecera: <code>public int ipsEnRango(IP inicio, IP final)</code>. En el árbol de ejemplo, si invocamos el método con los parámetros inicio = 8.8.8.8 y final = 192.168.0.0, el resultado deberá ser 4.</p>
-</li>
-<li>
-<p>(1 punto) ¿Cuál es la complejidad del algoritmo desarrollado?</p>
-</li>
-<li>
-<p>(1 punto) Si en vez de un árbol binario, se guardaran las <code>IP</code> en un array ordenado, ¿Qué complejidad tendría el método desarrollado en el apartado 2? Razone su respuesta. No es necesario escribir el código, pero puede utilizarse como apoyo a la justificación de la respuesta.</p>
-</li>
-</ol>
+<ul>
+<li>(a) (1 punto) La clase IP debería implementar la interfaz <code>Comparable&lt;IP&gt;</code>, identifique y desarrolle los métodos necesarios para cumplir con dicha interfaz.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<ol>
-<li>Una posible solución es
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">IP</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">primero</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">primero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">primero</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">primero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">segundo</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">segundo</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">segundo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">segundo</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">tercero</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">tercero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">tercero</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">tercero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">cuarto</span><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">cuarto</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">cuarto</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">cuarto</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-</code></pre></div></li>
-</ol>
-<p>2.
+<p>Una posible solución es
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nd">@Override</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">IP</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">primero</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">primero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">primero</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">primero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">segundo</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">segundo</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">segundo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">segundo</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">tercero</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">tercero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">tercero</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">tercero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">cuarto</span><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">cuarto</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">cuarto</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">cuarto</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</details>
+<ul>
+<li>(b) (2 puntos) Queremos diseñar un método del árbol que nos permita comprobar cuantas IP de las almacenadas están dentro de un rango dado como parámetro (extremos incluidos). Desarrolle el cuerpo del método que tendrá esta cabecera: <code>public int ipsEnRango(IP inicio, IP final)</code>. En el árbol de ejemplo, si invocamos el método con los parámetros inicio = 8.8.8.8 y final = 192.168.0.0, el resultado deberá ser 4.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">ipsEnRango</span><span class="p">(</span><span class="n">IP</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="kd">final</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">ipsEnRango</span><span class="p">(</span><span class="n">raiz</span><span class="p">,</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="kd">final</span><span class="p">);</span>
-<span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ipsEnRango</span><span class="p">(</span><span class="n">raiz</span><span class="p">,</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="kd">final</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
 <span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">ipsEnRango</span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodo</span><span class="p">,</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="kd">final</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -2987,8 +2973,20 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ipsEnRango</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">hijoIzquierdo</span><span class="p">)</span><span class="o">+</span><span class="n">ipsEnRango</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">hijoDerecho</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-3. Para comprobar que nodos forman parte del rango debemos recorrer todas las partes del árbol que pudieran pertenecer al rango, haciendo que la complejidad sea O(n).
-4. Si contamos con un array ordenado, la complejidad será O(log(n)). Utilizando búsqueda binaria podemos obtener las posiciones en el array del primer y último elemento que pertenecen al rango y después simplemente restarlas para obtener cuantos elementos hay entre ambas.</p>
+</details>
+<ul>
+<li>(c) (1 punto) ¿Cuál es la complejidad del algoritmo desarrollado?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Para comprobar que nodos forman parte del rango debemos recorrer todas las partes del árbol que pudieran pertenecer al rango, haciendo que la complejidad sea <span class="arithmatex">\(O(n)\)</span>.</p>
+</details>
+<ul>
+<li>(d) (1 punto) Si en vez de un árbol binario, se guardaran las <code>IP</code> en un array ordenado, ¿Qué complejidad tendría el método desarrollado en el apartado 2? Razone su respuesta. No es necesario escribir el código, pero puede utilizarse como apoyo a la justificación de la respuesta.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Si contamos con un array ordenado, la complejidad será <span class="arithmatex">\(O(log(n))\)</span>. Utilizando búsqueda binaria podemos obtener las posiciones en el array del primer y último elemento que pertenecen al rango y después simplemente restarlas para obtener cuantos elementos hay entre ambas.</p>
 </details>
 
 

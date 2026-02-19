@@ -2463,6 +2463,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#problema-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2982,6 +3004,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#problema-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3001,7 +3045,6 @@
 
 <h1 id="examen-2023-parcial-1">Examen 2023 — Parcial 1</h1>
 <h2 id="problema-1">Problema 1</h2>
-<h1 id="ejercicio-1-25-puntos">Ejercicio 1 (2.5 puntos)</h1>
 <p>El siguiente código ofrece una implementación de un algoritmo de potenciación de dos números (<span class="arithmatex">\(a^b\)</span>):</p>
 <div class="highlight"><pre><span></span><code><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">potenciaLenta</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3010,23 +3053,18 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">potenciaLenta</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<ol>
-<li>(0.5 puntos) Exprese, <strong>en función de <span class="arithmatex">\(a\)</span> y <span class="arithmatex">\(b\)</span></strong>, la complejidad del algoritmo implementado en <code>potenciaLenta</code>. Puede suponer que la multiplicación de dos números es <span class="arithmatex">\(O(1)\)</span>.</li>
-<li>(0.5 puntos) Reimplemente el algoritmo de <code>potenciaLenta</code> usando únicamente código iterativo.</li>
-<li>(1.5 puntos) Diseñe e implemente un algoritmo de potenciación con complejidad logarítmica basado en la estrategia de "divide y vencerás".</li>
-</ol>
-<p>Su algoritmo debería aprovechar que <span class="arithmatex">\(a^b = (a^2)^{b/2}\)</span>.
-Recuerde que tanto la base como el exponente siempre deben ser un número entero.</p>
+<ul>
+<li>(a) (0.5 puntos) Exprese, <strong>en función de <span class="arithmatex">\(a\)</span> y <span class="arithmatex">\(b\)</span></strong>, la complejidad del algoritmo implementado en <code>potenciaLenta</code>. Puede suponer que la multiplicación de dos números es <span class="arithmatex">\(O(1)\)</span>.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<ol>
-<li><span class="arithmatex">\(T(a, b) = T(a, b-1) + O(1)\)</span> y <span class="arithmatex">\(T(a, 0) = O(1)\)</span>.</li>
-</ol>
+<p><span class="arithmatex">\(T(a, b) = T(a, b-1) + O(1)\)</span> y <span class="arithmatex">\(T(a, 0) = O(1)\)</span>.</p>
 <p>Por tanto: <span class="arithmatex">\(T(b) = O(b)\)</span>.</p>
 <p>En otras palabras: la complejidad es <span class="arithmatex">\(O(n)\)</span>, siendo <span class="arithmatex">\(n=b\)</span>.</p>
-<ol>
-<li></li>
-</ol>
+</details>
+<p>-(b) (0.5 puntos) Reimplemente el algoritmo de <code>potenciaLenta</code> usando únicamente código iterativo.</p>
+<details>
+<summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">potenciaLentaIt</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3035,7 +3073,14 @@ Recuerde que tanto la base como el exponente siempre deben ser un número entero
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div>
-<p>3.</p>
+</details>
+<ul>
+<li>(c) (1.5 puntos) Diseñe e implemente un algoritmo de potenciación con complejidad logarítmica basado en la estrategia de "divide y vencerás".</li>
+</ul>
+<p>Su algoritmo debería aprovechar que <span class="arithmatex">\(a^b = (a^2)^{b/2}\)</span>.
+Recuerde que tanto la base como el exponente siempre deben ser un número entero.</p>
+<details>
+<summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">potenciaOptimizada</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
@@ -3050,7 +3095,6 @@ Recuerde que tanto la base como el exponente siempre deben ser un número entero
 </code></pre></div>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<h1 id="ejercicio-2-25-puntos">Ejercicio 2 (2.5 puntos)</h1>
 <p>Dado el siguiente código:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">funcion</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="o">[]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">    </span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -3074,16 +3118,17 @@ Recuerde que tanto la base como el exponente siempre deben ser un número entero
 <span class="p">}</span>
 </code></pre></div>
 <p>Se pide:</p>
-<ol>
-<li>(2 puntos) ¿Qué valor tendrá el array <code>arr</code> tras ejecutar la instrucción <code>funcion(arr);</code> y qué texto se mostrará por consola durante su ejecución en los siguientes casos?</li>
-<li>Cuando <code>int[] arr = {1, 4, 3, 2, 5};</code></li>
-<li>Cuando <code>int[] arr = {1, 2, 3, 2, 1};</code></li>
-<li>(0.5 puntos) Estime el orden de complejidad del algoritmo. Razone su respuesta.</li>
-</ol>
+<ul>
+<li>
+<p>(a) (2 puntos) ¿Qué valor tendrá el array <code>arr</code> tras ejecutar la instrucción <code>funcion(arr);</code> y qué texto se mostrará por consola durante su ejecución en los siguientes casos?</p>
+<ul>
+<li>Cuando <code>int[] arr = {1, 4, 3, 2, 5}</code>;</li>
+<li>Cuando <code>int[] arr = {1, 2, 3, 2, 1}</code>;</li>
+</ul>
+</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<ol>
-<li>
 <p>Salida por consola:
 <div class="highlight"><pre><span></span><code>4
 0
@@ -3093,14 +3138,15 @@ Recuerde que tanto la base como el exponente siempre deben ser un número entero
 4
 </code></pre></div>
 Y <code>arr = {5, 4, 3, 2, 1}</code></p>
-</li>
-<li>
+</details>
+<ul>
+<li>(b) (0.5 puntos) Estime el orden de complejidad del algoritmo. Razone su respuesta.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
 <p><span class="arithmatex">\(O(n)\)</span>, siendo <span class="arithmatex">\(n\)</span> el tamaño del array <code>a</code>.</p>
-</li>
-</ol>
 </details>
 <h2 id="problema-3">Problema 3</h2>
-<h1 id="ejercicio-3">Ejercicio 3</h1>
 <p>Tenemos un árbol binario de búsqueda en el que almacenamos direcciones <code>IP</code>. Las direcciones <code>IP</code> son objetos de la clase <code>IP</code>, que tiene como atributos los cuatro bytes por los que se compone una <code>IP</code>; siendo el primer byte el número decimal situado más a la izquierda y el último byte, el situado a la derecha (ej: en la <code>IP</code> 192.168.1.0, el primer byte representa el 192, el segundo el 168, el tercero el 1 y el cuarto el 0).</p>
 <p>El árbol binario cuenta con los métodos habituales de un diccionario. Sus nodos tienen referencias a los hijos izquierdo y derecho, y un objeto <code>IP</code> que sirve tanto de clave como de valor.</p>
 <div class="highlight"><pre><span></span><code>classDiagram
@@ -3157,42 +3203,34 @@ Y <code>arr = {5, 4, 3, 2, 1}</code></p>
     ip3 --&gt; ip7
     ip3 --&gt; ip6
 </code></pre></div>
-<ol>
-<li>
-<p>(1 punto) La clase IP debería implementar la interfaz <code>Comparable&lt;IP&gt;</code>, identifique y desarrolle los métodos necesarios para cumplir con dicha interfaz.</p>
-</li>
-<li>
-<p>(2 puntos) Queremos diseñar un método del árbol que nos permita comprobar cuantas IP de las almacenadas están dentro de un rango dado como parámetro (extremos incluidos). Desarrolle el cuerpo del método que tendrá esta cabecera: <code>public int ipsEnRango(IP inicio, IP final)</code>. En el árbol de ejemplo, si invocamos el método con los parámetros inicio = 8.8.8.8 y final = 192.168.0.0, el resultado deberá ser 4.</p>
-</li>
-<li>
-<p>(1 punto) ¿Cuál es la complejidad del algoritmo desarrollado?</p>
-</li>
-<li>
-<p>(1 punto) Si en vez de un árbol binario, se guardaran las <code>IP</code> en un array ordenado, ¿Qué complejidad tendría el método desarrollado en el apartado 2? Razone su respuesta. No es necesario escribir el código, pero puede utilizarse como apoyo a la justificación de la respuesta.</p>
-</li>
-</ol>
+<ul>
+<li>(a) (1 punto) La clase IP debería implementar la interfaz <code>Comparable&lt;IP&gt;</code>, identifique y desarrolle los métodos necesarios para cumplir con dicha interfaz.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<ol>
-<li>Una posible solución es
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">IP</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">primero</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">primero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">primero</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">primero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">segundo</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">segundo</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">segundo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">segundo</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">tercero</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">tercero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">tercero</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">tercero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">cuarto</span><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">cuarto</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">cuarto</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">cuarto</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-</code></pre></div></li>
-</ol>
-<p>2.
+<p>Una posible solución es
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nd">@Override</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">IP</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">primero</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">primero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">primero</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">primero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">segundo</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">segundo</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">segundo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">segundo</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">tercero</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">tercero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">tercero</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">tercero</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">cuarto</span><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">cuarto</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">cuarto</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">cuarto</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</details>
+<ul>
+<li>(b) (2 puntos) Queremos diseñar un método del árbol que nos permita comprobar cuantas IP de las almacenadas están dentro de un rango dado como parámetro (extremos incluidos). Desarrolle el cuerpo del método que tendrá esta cabecera: <code>public int ipsEnRango(IP inicio, IP final)</code>. En el árbol de ejemplo, si invocamos el método con los parámetros inicio = 8.8.8.8 y final = 192.168.0.0, el resultado deberá ser 4.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">ipsEnRango</span><span class="p">(</span><span class="n">IP</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="kd">final</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">ipsEnRango</span><span class="p">(</span><span class="n">raiz</span><span class="p">,</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="kd">final</span><span class="p">);</span>
-<span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ipsEnRango</span><span class="p">(</span><span class="n">raiz</span><span class="p">,</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="kd">final</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
 <span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">ipsEnRango</span><span class="p">(</span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodo</span><span class="p">,</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">inicio</span><span class="p">,</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="kd">final</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -3201,8 +3239,20 @@ Y <code>arr = {5, 4, 3, 2, 1}</code></p>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ipsEnRango</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">hijoIzquierdo</span><span class="p">)</span><span class="o">+</span><span class="n">ipsEnRango</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">hijoDerecho</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-3. Para comprobar que nodos forman parte del rango debemos recorrer todas las partes del árbol que pudieran pertenecer al rango, haciendo que la complejidad sea O(n).
-4. Si contamos con un array ordenado, la complejidad será O(log(n)). Utilizando búsqueda binaria podemos obtener las posiciones en el array del primer y último elemento que pertenecen al rango y después simplemente restarlas para obtener cuantos elementos hay entre ambas.</p>
+</details>
+<ul>
+<li>(c) (1 punto) ¿Cuál es la complejidad del algoritmo desarrollado?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Para comprobar que nodos forman parte del rango debemos recorrer todas las partes del árbol que pudieran pertenecer al rango, haciendo que la complejidad sea <span class="arithmatex">\(O(n)\)</span>.</p>
+</details>
+<ul>
+<li>(d) (1 punto) Si en vez de un árbol binario, se guardaran las <code>IP</code> en un array ordenado, ¿Qué complejidad tendría el método desarrollado en el apartado 2? Razone su respuesta. No es necesario escribir el código, pero puede utilizarse como apoyo a la justificación de la respuesta.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>Si contamos con un array ordenado, la complejidad será <span class="arithmatex">\(O(log(n))\)</span>. Utilizando búsqueda binaria podemos obtener las posiciones en el array del primer y último elemento que pertenecen al rango y después simplemente restarlas para obtener cuantos elementos hay entre ambas.</p>
 </details>
 
 
