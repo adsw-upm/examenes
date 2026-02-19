@@ -6,7 +6,7 @@ tags:
  - hebras
 ---
 
-Se quiere desarrollar un programa que analice un documento de texto y calcule el n!mero de veces que aparece cada palabra (String). El resultado es una lista de ContadorPalabra, que es una clase que se muestra a continuación:
+Se quiere desarrollar un programa que analice un documento de texto y calcule el n!mero de veces que aparece cada palabra (`String`). El resultado es una lista de `ContadorPalabra`, que es una clase que se muestra a continuación:
 
 ```java
 public class ContadorPalabra {
@@ -17,12 +17,12 @@ public class ContadorPalabra {
 }
 ```
 
-En una fase inicial del programa, se crean dos hebras que analizan una mitad del documento. El resultado de cada hebra es una lista (java.util.List<ContadorPalabra>), con el contador de cada palabra de la mitad correspondiente. Los elementos de cada lista est"n ordenados por el atributo nombre de cada ContadorPalabra.
+En una fase inicial del programa, se crean dos hebras que analizan una mitad del documento. El resultado de cada hebra es una lista (`java.util.List<ContadorPalabra>`), con el contador de cada palabra de la mitad correspondiente. Los elementos de cada lista están ordenados por el atributo nombre de cada `ContadorPalabra`.
 
-En este ejercicio, se quiere desarrollar un m#todo para agregar las
+En este ejercicio, se quiere desarrollar un método para agregar las
 dos listas generadas de cada mitad. Se pide:
 
-- (a) (1,5 puntos) Desarrolle el m#todo Menor, que recibe dos listas ordenadas y retorna el ContadorPalabra con la menor palabra en cualquiera de las dos mitades. 
+- (a) (1,5 puntos) Desarrolle el método `Menor`, que recibe dos listas ordenadas y retorna el `ContadorPalabra` con la menor palabra en cualquiera de las dos mitades. 
 
 ```java
 public ContadorPalabra Menor (
@@ -53,7 +53,7 @@ public ContadorPalabra Menor (
     ```
 
 
-- (b) (3,5 puntos) Desarrolle el m#todo Agregar, que recibe dos listas y retorna una lista ordenada que agregue los objetos PalabraContador de los parámetros de entrada. En concreto, calcula el valor de cada palabra en cada mitad en el documento. Este m#todo puede usar Menor, pero no es obligatorio. 
+- (b) (3,5 puntos) Desarrolle el método `Agregar`, que recibe dos listas y devuelve una lista ordenada que agregue los objetos `PalabraContador` de los parámetros de entrada. En concreto, calcula el valor de cada palabra en cada mitad en el documento. Este método puede usar `Menor`, pero no es obligatorio. 
 
 ```java
 public java.util.List<ContadorPalabra> Agregar(
@@ -62,18 +62,18 @@ java.util.List<ContadorPalabra> ag2))
 { . . . }
 ```
 
-Ejemplo: Los dos parámetros de entrada de Agregar o Menor podrían ser:
+Ejemplo: Los dos parámetros de entrada de `Agregar` o `Menor` podrían ser:
 ```java
 Ag1 = { [“adiós”, 3], [“bueno”, 1], [“hola”, 2], [“malo”, 4] }
 Ag2 = { [“adiós”, 4], [“bueno”, 7], [“malo”, 2] }
 ```
 
-La salida del método agregar sería:
+La salida del método `agregar` sería:
 ```java
 agregar = { [“adiós”, 7], [“bueno”, 8], [“hola”, 2], [“malo”, 6] }
 ```
 
-A continuación se muestran algunos m#todos relevantes de la colección List.
+A continuación se muestran algunos métodos relevantes de la colección `List`.
 
 ![](./p1r/p1r_ex01.png)
 
