@@ -2954,13 +2954,11 @@ Thread &lt;|-- Hebra : extends
 </table>
 
 <p>Se pide:</p>
-<p>1) Complete el método <code>main</code> para replicar el escenario mostrado en el diagrama de objetos. Debe esperar a que todas las hebras terminen su ejecución. [1 punto]
-2) Implemente la clase <code>Grupo</code>. Razone, para cada uno de sus métodos, si debe ser sincronizado. [1.5 puntos]
-3) Implemente la clase <code>Recurso</code>. Razone, para cada uno de sus métodos, si debe ser sincronizado. [3 puntos]
-4) En su solución de los apartados anteriores, ¿puede haber problemas de inanición?. Razone su respuesta. [0.5 puntos]</p>
+<ul>
+<li>(a) (1 punto) Complete el método <code>main</code> para replicar el escenario mostrado en el diagrama de objetos. Debe esperar a que todas las hebras terminen su ejecución.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>1) Complete el método <code>main</code> para replicar el escenario mostrado en el diagrama de objetos. Debe esperar a que todas las hebras terminen su ejecución. [1 punto]</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">Recurso</span><span class="w"> </span><span class="n">rec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Recurso</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 <span class="w">  </span><span class="n">Grupo</span><span class="w"> </span><span class="n">g0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Grupo</span><span class="p">(</span><span class="n">rec</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
@@ -2983,7 +2981,12 @@ Thread &lt;|-- Hebra : extends
 <span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Todas las hebras han acabado&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>2) Implemente la clase <code>Grupo</code>. Razone, para cada uno de sus métodos, si debe ser sincronizado. [1.5 puntos]</p>
+</details>
+<ul>
+<li>(b) (1, puntos) Implemente la clase <code>Grupo</code>. Razone, para cada uno de sus métodos, si debe ser sincronizado.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Grupo</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Recurso</span><span class="w"> </span><span class="n">rec</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
@@ -3006,7 +3009,12 @@ Thread &lt;|-- Hebra : extends
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>3) Implemente la clase <code>Recurso</code>. Razone, para cada uno de sus métodos, si debe ser sincronizado. [3 puntos]</p>
+</details>
+<ul>
+<li>(c) (3 puntos) Implemente la clase <code>Recurso</code>. Razone, para cada uno de sus métodos, si debe ser sincronizado.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Recurso</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ocupado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numGrupos</span><span class="p">;</span>
@@ -3040,7 +3048,12 @@ Thread &lt;|-- Hebra : extends
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>4) En su solución de los apartados anteriores, ¿puede haber problemas de inanición?. Razone su respuesta. [0.5 puntos]</p>
+</details>
+<ul>
+<li>(d) (0,5 puntos) En su solución de los apartados anteriores, ¿puede haber problemas de inanición? Razone su respuesta. </li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
 <p>En la solución dada no hay ningún control de orden de acceso de las hebras de un mismo grupo al recurso. Puede haber inanición.</p>
 <p>Podría evitarse implementando algún control simple como una cola FIFO.</p>
 </details>

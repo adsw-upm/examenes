@@ -3103,13 +3103,11 @@ Thread &lt;|-- Hebra : extends
 </table>
 
 <p>Se pide:</p>
-<p>1) Complete el método <code>main</code> para replicar el escenario mostrado en el diagrama de objetos. Debe esperar a que todas las hebras terminen su ejecución. [1 punto]
-2) Implemente la clase <code>Grupo</code>. Razone, para cada uno de sus métodos, si debe ser sincronizado. [1.5 puntos]
-3) Implemente la clase <code>Recurso</code>. Razone, para cada uno de sus métodos, si debe ser sincronizado. [3 puntos]
-4) En su solución de los apartados anteriores, ¿puede haber problemas de inanición?. Razone su respuesta. [0.5 puntos]</p>
+<ul>
+<li>(a) (1 punto) Complete el método <code>main</code> para replicar el escenario mostrado en el diagrama de objetos. Debe esperar a que todas las hebras terminen su ejecución.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>1) Complete el método <code>main</code> para replicar el escenario mostrado en el diagrama de objetos. Debe esperar a que todas las hebras terminen su ejecución. [1 punto]</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">Recurso</span><span class="w"> </span><span class="n">rec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Recurso</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 <span class="w">  </span><span class="n">Grupo</span><span class="w"> </span><span class="n">g0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Grupo</span><span class="p">(</span><span class="n">rec</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
@@ -3132,7 +3130,12 @@ Thread &lt;|-- Hebra : extends
 <span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Todas las hebras han acabado&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>2) Implemente la clase <code>Grupo</code>. Razone, para cada uno de sus métodos, si debe ser sincronizado. [1.5 puntos]</p>
+</details>
+<ul>
+<li>(b) (1, puntos) Implemente la clase <code>Grupo</code>. Razone, para cada uno de sus métodos, si debe ser sincronizado.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Grupo</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Recurso</span><span class="w"> </span><span class="n">rec</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
@@ -3155,7 +3158,12 @@ Thread &lt;|-- Hebra : extends
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>3) Implemente la clase <code>Recurso</code>. Razone, para cada uno de sus métodos, si debe ser sincronizado. [3 puntos]</p>
+</details>
+<ul>
+<li>(c) (3 puntos) Implemente la clase <code>Recurso</code>. Razone, para cada uno de sus métodos, si debe ser sincronizado.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Recurso</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">ocupado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numGrupos</span><span class="p">;</span>
@@ -3189,7 +3197,12 @@ Thread &lt;|-- Hebra : extends
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>4) En su solución de los apartados anteriores, ¿puede haber problemas de inanición?. Razone su respuesta. [0.5 puntos]</p>
+</details>
+<ul>
+<li>(d) (0,5 puntos) En su solución de los apartados anteriores, ¿puede haber problemas de inanición? Razone su respuesta. </li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
 <p>En la solución dada no hay ningún control de orden de acceso de las hebras de un mismo grupo al recurso. Puede haber inanición.</p>
 <p>Podría evitarse implementando algún control simple como una cola FIFO.</p>
 </details>
@@ -3231,20 +3244,25 @@ Thread &lt;|-- Hebra : extends
 </code></pre></div>
 Este conjunto de clases nos permiten modelar un grafo no dirigido y con pesos. La diferencia con el código utilizado en los laboratorios es la clase <code>Arista</code>, que se utiliza para conectar dos <code>Nodo</code> y su peso representa la distancia a la que se encuentran dichos nodos. El método <code>contrario</code> de la clase <code>Arista</code> recibe como parámetro uno de los <code>Nodo</code> de los extremos de la arista y devuelve el otro. El atributo <code>vecinos</code> de la clase <code>Nodo</code> ahora es una lista de objetos <code>Arista</code> que llevan a los vecinos.
 Se proporciona, además, el siguiente grafo de ejemplo:</p>
-<p><img alt="Alt text" src="img/grafo.png" /></p>
+<p><img alt="" src="p2_ex02.png" /></p>
 <p>Queremos utilizar este modelo de grafos para simular la propagación de un virus. Los nodos pueden estar infectados, esto se refleja en el atributo <code>infectado</code>, y pueden propagar el virus a sus vecinos. Un nodo infectado, contagia el virus a todos sus vecinos que estén a una distancia menor o igual a 4. Para saber la distancia entre dos nodos, podemos comprobar el peso de la arista que los conecta. Cuando un nodo contagia a uno de sus vecinos, ese nodo vecino contagiará a su vez a sus vecinos, que a su vez contagiarán a sus vecinos, etc, creando una reacción en cadena.</p>
-<ol>
-<li>
-<p>Suponiendo que en el ejemplo, el nodo 'A' está infectado, al simular la propagación del virus ¿cuántos nodos quedarán infectados? [0.5 puntos]</p>
-</li>
-<li>
-<p>Implemente el método <code>simulaContagios</code> de la clase <code>Grafo</code>, que reciba un <code>Nodo</code> como parámetro. Este método deberá cambiar el estado de este nodo a infectado y simular la propagación del virus, según las reglas explicadas anteriormente. El método debe devolver el número de nodos del grafo que han quedado infectados tras la propagación del virus. [2.5 puntos]
-<em>Nota</em>: El algoritmo a desarollar es similar al de calcular los vecinos de orden n del Laboratorio 3.</p>
-</li>
-<li>
-<p>Implemente el método <code>inmunes</code> que debe devolver un conjunto con los <code>Nodo</code> que no pueden ser contagiados por ningún otro <code>Nodo</code> con las reglas de propagación dadas. [1 punto]</p>
-</li>
-</ol>
+<ul>
+<li>(a) (0,5 puntos) Suponiendo que en el ejemplo, el nodo 'A' está infectado, al simular la propagación del virus ¿cuántos nodos quedarán infectados?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>N/A</p>
+</details>
+<ul>
+<li>(b) (2,5 puntos) Implemente el método <code>simulaContagios</code> de la clase <code>Grafo</code>, que reciba un <code>Nodo</code> como parámetro. Este método deberá cambiar el estado de este nodo a infectado y simular la propagación del virus, según las reglas explicadas anteriormente. El método debe devolver el número de nodos del grafo que han quedado infectados tras la propagación del virus. <em>Nota</em>: El algoritmo a desarollar es similar al de calcular los vecinos de orden n del Laboratorio 3.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>N/A</p>
+</details>
+<ul>
+<li>(c) (1 punto) Implemente el método <code>inmunes</code> que debe devolver un conjunto con los <code>Nodo</code> que no pueden ser contagiados por ningún otro <code>Nodo</code> con las reglas de propagación dadas.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>N/A</p>

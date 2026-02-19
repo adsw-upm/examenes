@@ -2911,20 +2911,25 @@
 </code></pre></div>
 Este conjunto de clases nos permiten modelar un grafo no dirigido y con pesos. La diferencia con el código utilizado en los laboratorios es la clase <code>Arista</code>, que se utiliza para conectar dos <code>Nodo</code> y su peso representa la distancia a la que se encuentran dichos nodos. El método <code>contrario</code> de la clase <code>Arista</code> recibe como parámetro uno de los <code>Nodo</code> de los extremos de la arista y devuelve el otro. El atributo <code>vecinos</code> de la clase <code>Nodo</code> ahora es una lista de objetos <code>Arista</code> que llevan a los vecinos.
 Se proporciona, además, el siguiente grafo de ejemplo:</p>
-<p><img alt="Alt text" src="img/grafo.png" /></p>
+<p><img alt="" src="../p2/p2_ex02.png" /></p>
 <p>Queremos utilizar este modelo de grafos para simular la propagación de un virus. Los nodos pueden estar infectados, esto se refleja en el atributo <code>infectado</code>, y pueden propagar el virus a sus vecinos. Un nodo infectado, contagia el virus a todos sus vecinos que estén a una distancia menor o igual a 4. Para saber la distancia entre dos nodos, podemos comprobar el peso de la arista que los conecta. Cuando un nodo contagia a uno de sus vecinos, ese nodo vecino contagiará a su vez a sus vecinos, que a su vez contagiarán a sus vecinos, etc, creando una reacción en cadena.</p>
-<ol>
-<li>
-<p>Suponiendo que en el ejemplo, el nodo 'A' está infectado, al simular la propagación del virus ¿cuántos nodos quedarán infectados? [0.5 puntos]</p>
-</li>
-<li>
-<p>Implemente el método <code>simulaContagios</code> de la clase <code>Grafo</code>, que reciba un <code>Nodo</code> como parámetro. Este método deberá cambiar el estado de este nodo a infectado y simular la propagación del virus, según las reglas explicadas anteriormente. El método debe devolver el número de nodos del grafo que han quedado infectados tras la propagación del virus. [2.5 puntos]
-<em>Nota</em>: El algoritmo a desarollar es similar al de calcular los vecinos de orden n del Laboratorio 3.</p>
-</li>
-<li>
-<p>Implemente el método <code>inmunes</code> que debe devolver un conjunto con los <code>Nodo</code> que no pueden ser contagiados por ningún otro <code>Nodo</code> con las reglas de propagación dadas. [1 punto]</p>
-</li>
-</ol>
+<ul>
+<li>(a) (0,5 puntos) Suponiendo que en el ejemplo, el nodo 'A' está infectado, al simular la propagación del virus ¿cuántos nodos quedarán infectados?</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>N/A</p>
+</details>
+<ul>
+<li>(b) (2,5 puntos) Implemente el método <code>simulaContagios</code> de la clase <code>Grafo</code>, que reciba un <code>Nodo</code> como parámetro. Este método deberá cambiar el estado de este nodo a infectado y simular la propagación del virus, según las reglas explicadas anteriormente. El método debe devolver el número de nodos del grafo que han quedado infectados tras la propagación del virus. <em>Nota</em>: El algoritmo a desarollar es similar al de calcular los vecinos de orden n del Laboratorio 3.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<p>N/A</p>
+</details>
+<ul>
+<li>(c) (1 punto) Implemente el método <code>inmunes</code> que debe devolver un conjunto con los <code>Nodo</code> que no pueden ser contagiados por ningún otro <code>Nodo</code> con las reglas de propagación dadas.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>N/A</p>
