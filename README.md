@@ -101,6 +101,9 @@ La configuración de búsqueda está optimizada para dar mayor peso a los tags (
 - 2021/p2r/ex02/(c) carece de solución.
 - 2021/extra/ex02/(c) carece de solución.
 - 2022/p1/ex01/(b) y (c) carecen de solución.
+- 2023/p1/ex03 los diagramas de clases no están cargando de manera adecuada.
+- 2023/p2/ex01 los diagramas de clases no están cargando de manera adecuada.
+- 2023/p2/ex02 carece de solución.
 
 ## Licencia
 
