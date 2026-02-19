@@ -6,13 +6,13 @@ tags:
  - grafos
 ---
 
-Un sistema real se describe como un grafo no dirigido. Los arcos o aristas (edge) tienen un coste o peso mayor que cero. Un camino es una secuencia de arcos que conectan dos nodos o vértices. Un camino se representa mediante una lista (List<Edge>). En este sistema, interesa agrupar a todos los posibles caminos entre dos nodos concretos, que se representa mediante una lista de caminos (List<List<Edge>>).
+Un sistema real se describe como un grafo no dirigido. Los arcos o aristas (*edge*) tienen un coste o peso mayor que cero. Un camino es una secuencia de arcos que conectan dos nodos o vértices. Un camino se representa mediante una lista (List<Edge>). En este sistema, interesa agrupar a todos los posibles caminos entre dos nodos concretos, que se representa mediante una lista de caminos (`List<List<Edge>>`).
 
 Se pide desarrollar dos métodos, descritos en el cuadro adjunto:
 
-- (a) (2 puntos) menorCamino selecciona el camino mínimo (el de menor coste total) de una lista de caminos. Se aconseja (no obligatorio) desarrollar un método que reciba como entrada un camino y retorne el peso total del camino.
+- (a) (2 puntos) `menorCamino` selecciona el camino mínimo (el de menor coste total) de una lista de caminos. Se aconseja (no obligatorio) desarrollar un método que reciba como entrada un camino y retorne el peso total del camino.
 
-- (b) (3 puntos) numeroVecesUsadoArco: genera un diccionario (Map<Edge, Integer>) con el número de veces que aparece cada arco en la lista de caminos del parámetro de entrada.
+- (b) (3 puntos) `numeroVecesUsadoArco`: genera un diccionario (`Map<Edge, Integer>`) con el número de veces que aparece cada arco en la lista de caminos del parámetro de entrada.
 
 
 | **menorCamino**                                                                                                                                                |
@@ -20,7 +20,7 @@ Se pide desarrollar dos métodos, descritos en el cuadro adjunto:
 |`public java.util.List<Edge> menorCamino (java.util.List<java.util.List<Edge>> listaCaminos)`                                                                   |
 | Seleccionar el camino con el menor coste total.                                                                                                                |
 | **Parameters**                                                                                                                                                 |
-| listaCaminos - una lista de caminos del grafo del sistema entre dos vértices.                                                                                  |
+| `listaCaminos` - una lista de caminos del grafo del sistema entre dos vértices.                                                                                  |
 | **Returns**                                                                                                                                                    |
 |La respuesta es un camino que sea el mínimo de la lista recibida. Si hubieran varios caminos mínimos con el mismo coste, se puede retornar cualquiera de ellos. |
 
@@ -30,7 +30,7 @@ Se pide desarrollar dos métodos, descritos en el cuadro adjunto:
 | `public java.util.Map<Edge,java.lang.Integer> numeroVecesUsadoArco (java.util.List<java.util.List<Edge>> listaCaminos)`                                       |
 | Determinta cuántas veces aparece cada arco en una lista de caminos                                                                                            |
 | Parameters                                                                                                                                                    | 
-| listaCaminos - una lista de caminos del grafo del sistema entre dos vértices.                                                                                 |
+| `listaCaminos` - una lista de caminos del grafo del sistema entre dos vértices.                                                                                 |
 | Returns                                                                                                                                                       |
 | Devuelve un diccionario, en el que la clave es un arco y el valor un entero que representa el número de veces que el arco aparece en el parámetro de entrada. |
 
