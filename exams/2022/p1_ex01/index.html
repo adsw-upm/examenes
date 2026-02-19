@@ -2881,41 +2881,50 @@
 
   <h1>P1 ex01</h1>
 
-<p>Un grafo multigrafo permite que haya varios arcos entre dos nodos. En una entidad bancaria se quiere modelar las transferencias ejecutadas entre los bancos durante un d!a en una clase (Banco). En esta clase, se dispone de un atributo (transferGrafo) que es un multigrafo que modela estas transferencias:</p>
-<pre><code>- Un nodo modela un banco.
-
-- Un arco modela una transacci"n. Su peso representa la cantidad transferida.
-</code></pre>
-<p>Una transferencia (la clase Transfer) se modela mediante los identificadores del banco origen y del banco destino, la cantidad, el nombre del ordenante y el nombre del beneficiario. Adem#s, se quiere relacionar cada arco del grafo con la informaci"n de su transferencia asociada. </p>
+<p>Un grafo multigrafo permite que haya varios arcos entre dos nodos. En una entidad bancaria se quiere modelar las transferencias ejecutadas entre los bancos durante un día en una clase (<code>Banco</code>). En esta clase, se dispone de un atributo (<code>transferGrafo</code>) que es un multigrafo que modela estas transferencias:</p>
+<ul>
+<li>Un nodo modela un banco.   </li>
+<li>Un arco modela una transacción. Su peso representa la cantidad transferida.</li>
+</ul>
+<p>Una transferencia (la clase <code>Transfer</code>) se modela mediante los identificadores del banco origen y del banco destino, la cantidad, el nombre del ordenante y el nombre del beneficiario. Además, se quiere relacionar cada arco del grafo con la información de su transferencia asociada. </p>
 <p>menorCamino</p>
-<pre><code>public java.util.List&lt;Edge&gt; menorCamino(java.util.List&lt;java.util.List&lt;Edge&gt;&gt; listaCaminos)
-</code></pre>
-<p><em>Seleccionar el camino con el menor coste total.</em></p>
-<ul>
-<li><em>Parameters:</em><ul>
-<li>listaCaminos - una lista de caminos del grafo del sistema entre dos vértices.</li>
-</ul>
-</li>
-<li><em>Returns:</em><ul>
-<li>La respuesta es un camino que sea el mínimo de la lista recibida. Si hubieran varios caminos mínimos con el mismo coste, se puede retornar cualquiera de ellos.</li>
-</ul>
-</li>
-</ul>
-<hr />
+<table>
+<thead>
+<tr>
+<th><code>public java.util.List&lt;Edge&gt; menorCamino(java.util.List&lt;java.util.List&lt;Edge&gt;&gt; listaCaminos)</code></th>
+<th>Seleccionar el camino con el menor coste total.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parameters</td>
+<td><code>listaCaminos</code> - una lista de caminos del grafo del sistema entre dos vértices.</td>
+</tr>
+<tr>
+<td>Returns</td>
+<td>La respuesta es un camino que sea el mínimo de la lista recibida. Si hubieran varios caminos mínimos con el mismo coste, se puede retornar cualquiera de ellos.</td>
+</tr>
+</tbody>
+</table>
 <p>numeroVecesUsadoArco</p>
-<pre><code>public java.util.Map&lt;Edge, java.lang.Integer&gt; numeroVecesUsadoArco(java.util.List&lt;java.util.List&lt;Edge&gt;&gt; listaCaminos)
-</code></pre>
-<p><em>Determinar cuántas veces aparece cada arco en una lista de caminos</em></p>
-<ul>
-<li><em>Parameters:</em><ul>
-<li>listaCaminos - una lista de caminos del grafo del sistema entre dos vértices.</li>
-</ul>
-</li>
-<li><em>Returns:</em><ul>
-<li>devuelve un diccionario, en el que la clave es un arco y el valor un entero que representa el número de veces que el arco aparece en el parámetro de entrada.</li>
-</ul>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th><code>public java.util.Map&lt;Edge, java.lang.Integer&gt; numeroVecesUsadoArco(java.util.List&lt;java.util.List&lt;Edge&gt;&gt; listaCaminos)</code></th>
+<th>Determina cuántas veces aparece cada arco en una lista de caminos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parameters</td>
+<td><code>listaCaminos</code> - una lista de caminos del grafo del sistema entre dos vértices.</td>
+</tr>
+<tr>
+<td>Returns</td>
+<td>devuelve un diccionario, en el que la clave es un arco y el valor un entero que representa el número de veces que el arco aparece en el parámetro de entrada.</td>
+</tr>
+</tbody>
+</table>
 <p>Edge</p>
 <table>
 <thead>
@@ -3034,7 +3043,7 @@
 </table>
 <p>Se pide:</p>
 <ul>
-<li>(a) (1,5 puntos) Proponga un atributo de una clase adecuada para relacionar un arco con su transferencia asociada y desarrolle el m$todo ponerTransfer para mantener esta relaci"n e integrar la transferencia en el grafo. </li>
+<li>(a) (1,5 puntos) Proponga un atributo de una clase adecuada para relacionar un arco con su transferencia asociada y desarrolle el método <code>ponerTransfer</code> para mantener esta relación e integrar la transferencia en el grafo. </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3123,14 +3132,14 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2 puntos) Desarrolle el m$todo netoTransfer que retorne la cantidad de dinero neto transferido entre dos bancos en un d!a. Habr# que restar la cantidad de las transferencias entre los dos bancos.</li>
+<li>(b) (2 puntos) Desarrolle el método <code>netoTransfer</code> que retorne la cantidad de dinero neto transferido entre dos bancos en un día. Habrá que restar la cantidad de las transferencias entre los dos bancos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Vacío</p>
 </details>
 <ul>
-<li>(c) (1,5 puntos) Desarrolle el m$todo clienteTransfer que retorne la lista no ordenada de las transferencias que ha ejecutado una persona (ordenante) durante un d!a.</li>
+<li>(c) (1,5 puntos) Desarrolle el método <code>clienteTransfer</code> que retorne la lista no ordenada de las transferencias que ha ejecutado una persona (ordenante) durante un día.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>

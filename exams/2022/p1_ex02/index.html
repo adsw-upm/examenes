@@ -2874,7 +2874,7 @@
 
   <h1>P1 ex02</h1>
 
-<p>Dado un conjunto de n%meros, la distancia entre un elemento del conjunto y el resto del conjunto es la m!nima diferencia entre ese n%mero y otro cualquiera del conjunto. Por ejemplo, la distancia de 10 en el conjunto {3,6,10,16,17} es 4, y la de 16 es 1. El elemento m#s aislado del conjunto es el elemento que tenga la distancia mayor. Si varios n%meros tienen esa misma distancia mayor, el m#s aislado es uno cualquiera de ellos. En el conjunto anterior, el elemento m#s aislado es el 10. Podemos suponer que el conjunto tiene al menos un n%mero. Si solo hay uno, seria el m#s aislado y su distancia es infinito.</p>
+<p>Dado un conjunto de números, la distancia entre un elemento del conjunto y el resto del conjunto es la mínima diferencia entre ese número y otro cualquiera del conjunto. Por ejemplo, la distancia de 10 en el conjunto {3,6,10,16,17} es 4, y la de 16 es 1. El elemento más aislado del conjunto es el elemento que tenga la distancia mayor. Si varios números tienen esa misma distancia mayor, el más aislado es uno cualquiera de ellos. En el conjunto anterior, el elemento más aislado es el 10. Podemos suponer que el conjunto tiene al menos un número. Si solo hay uno, seria el más aislado y su distancia es infinito.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BSTAislados</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Nodo</span><span class="w"> </span><span class="n">raíz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
@@ -2891,34 +2891,28 @@
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>(a) (1,5 puntos) Se dispone un conjunto de n%meros ordenado por el valor de los n%meros con un array. No hay ninguna estructura de datos adicional, en relaci"n con el conjunto de n%meros. &amp;Qu$ complejidad tendr# el algoritmo m#s eficiente que calcule el n%mero m#s aislado del conjunto? Justifique la respuesta. No se est# pidiendo una implementaci"n.</li>
+<li>(a) (1,5 puntos) Se dispone un conjunto de números ordenado por el valor de los números con un array. No hay ninguna estructura de datos adicional, en relación con el conjunto de números. ¿Qué complejidad tendrá el algoritmo más eficiente que calcule el número más aislado del conjunto? Justifique la respuesta. No se está pidiendo una implementación.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Si los números están ordenados por valor, los números más próximos a uno dado son el anterior y el siguiente. La distancia de un número es la menor de las diferencias con el anterior y el siguiente. Este es un cálculo de complejidad constante y no depende del tamaño del conjunto. Pero el más aislado puede ser cualquiera de los números, porque, aunque estén ordenados, la deferencia entre un número y el siguiente puede ser cualquiera. Para calcular el más aislado hay que recorrer todo el array y calcular la distancia para cada posición, y el más aislado será el que tenga distancia mayor. </p>
-<p>Complejidad O(n) donde n es el tamaño del conjunto.</p>
+<p>Complejidad <span class="arithmatex">\(O(n)\)</span> donde <span class="arithmatex">\(n\)</span> es el tamaño del conjunto.</p>
 </details>
 <ul>
-<li>(b) (1,5 puntos) Se dispone un conjunto de n%meros ordenado por el valor de los n%meros con un #rbol binario. No hay ninguna estructura de datos adicional, en relaci"n con el conjunto de n%meros. Se supone que los n%meros que incluye el #rbol se han insertado de forma aleatoria y son valores aleatorios. &amp;Qu$ complejidad tendr# el algoritmo m#s eficiente que calcule el n%mero m#s aislado del conjunto? Justifique la respuesta. No se est# pidiendo una implementaci"n.</li>
+<li>(b) (1,5 puntos) Se dispone un conjunto de números ordenado por el valor de los números con un árbol binario. No hay ninguna estructura de datos adicional, en relación con el conjunto de números. Se supone que los números que incluye el árbol se han insertado de forma aleatoria y son valores aleatorios. ¿Qué complejidad tendrá el algoritmo más eficiente que calcule el número más aislado del conjunto? Justifique la respuesta. No se está pidiendo una implementación.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>En el caso de que representemos el conjunto mediante un árbol binario seguimos necesitando recorrer todo el árbol para encontrar el más aislado. La diferencia entre el valor de un nodo y cualquiera de sus descendientes directos o indirectos puede ser cualquiera. Podemos utilizar como algoritmos un algoritmo de recorrido del árbol en orden. Recorreremos empezando por los números más pequeños y terminaremos con los grandes. En el recorrido del árbol, actualizamos los tres últimos nodos visitados (por ejemplo, un array de tres elementos que incluye el nodo que visitamos y los dos anteriores, ese array puede ser un parámetro del método que recorre los nodos o un atributo auxiliar). La distancia del nodo anterior al nodo que visitamos es la menor de las diferencias entre el penúltimo nodo, el ante-penúltimo y el que visitamos. La diferencia del primer nodo la calculamos en la segunda visita, y la última visita calculamos la del último con el penúltimo. En total visitamos todos los nodos y el calculo de las distancias es constante.</p>
-<p>Complejidad de orden O(n) donde n es el tamaño del conjunto y del árbol.</p>
+<p>Complejidad de orden <span class="arithmatex">\(O(n)\)</span> donde <span class="arithmatex">\(n\)</span> es el tamaño del conjunto y del árbol.</p>
 </details>
 <ul>
-<li>(c) (2 puntos) Se dispone de un #rbol binario que incluye el conjunto de n%meros ordenado por el valor de cada n%mero que representan los nodos. Implemente el m$todo que devuelve la distancia del n%mero para el nodo en el par#metro. La respuesta debe incluir: <ul>
 <li>
+<p>(c) (2 puntos) Se dispone de un árbol binario que incluye el conjunto de números ordenado por el valor de cada número que representan los nodos. Implemente el método que devuelve la distancia del número para el nodo en el parámetro. La respuesta debe incluir: </p>
 <ol>
-<li>La implementaci"n del algoritmo. La puntuaci"n de la pregunta ser# mayor para soluciones m#s eficientes, y menor para las soluciones m#s ineficientes. En las clases Nodo y BSTAislados se puede incluir cualquier atributo o m$todo auxiliar.</li>
-</ol>
-</li>
-<li>
-<ol>
+<li>La implementación del algoritmo. La puntuación de la pregunta será mayor para soluciones más eficientes, y menor para las soluciones más ineficientes. En las clases <code>Nodo</code> y <code>BSTAislados</code> se puede incluir cualquier atributo o método auxiliar.</li>
 <li>La complejidad del algoritmo implementado.</li>
 </ol>
-</li>
-</ul>
 </li>
 </ul>
 <details class="note">
@@ -2981,8 +2975,8 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Si un nodo tiene descendientes izquierdo y derecho, el número menor más próximo es el mayor del sub-árbol izquierdo, el nodo más abajo por las ramas derechas del subárbol izquierdo. Y el mayor más próximo es el menor del sub-árbol derecho, que es el que se encuentra más abajo por las ramas izquierdas del sub-árbol derecho. Si el nodo no tiene descendientes, el nodo más próximo es uno de sus antecesores hasta llegar a la raíz y si tiene un solo descendiente puede ser el más próximo de su rama descendiente, o uno de sus antecesores hasta la raíz. Si es un antecesor, tiene que ser un nodo en el camino que va desde la raíz hasta el nodo. Si la profundidad del árbol es log n, y buscamos el mayor menor o el menor mayor, como mucho recorremos log n nodos. Si recorremos desde la raíz hasta el nodo, como mucho recorremos log n nodos (cuando el nodo no tiene descendientes). Si recorremos desde la raíz al nodo y desde el nodo por su descendiente, en total el recorrido como mucho es log n.</p>
-<p>Complejidad O(log n)</p>
+<p>Si un nodo tiene descendientes izquierdo y derecho, el número menor más próximo es el mayor del sub-árbol izquierdo, el nodo más abajo por las ramas derechas del subárbol izquierdo. Y el mayor más próximo es el menor del sub-árbol derecho, que es el que se encuentra más abajo por las ramas izquierdas del sub-árbol derecho. Si el nodo no tiene descendientes, el nodo más próximo es uno de sus antecesores hasta llegar a la raíz y si tiene un solo descendiente puede ser el más próximo de su rama descendiente, o uno de sus antecesores hasta la raíz. Si es un antecesor, tiene que ser un nodo en el camino que va desde la raíz hasta el nodo. Si la profundidad del árbol es <span class="arithmatex">\(log n\)</span>, y buscamos el mayor menor o el menor mayor, como mucho recorremos <span class="arithmatex">\(log n\)</span> nodos. Si recorremos desde la raíz hasta el nodo, como mucho recorremos <span class="arithmatex">\(log n\)</span> nodos (cuando el nodo no tiene descendientes). Si recorremos desde la raíz al nodo y desde el nodo por su descendiente, en total el recorrido como mucho es <span class="arithmatex">\(log n\)</span>.</p>
+<p>Complejidad <span class="arithmatex">\(O(log n)\)</span>.</p>
 </details>
 
 
