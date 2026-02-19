@@ -97,7 +97,8 @@ La configuración de búsqueda está optimizada para dar mayor peso a los tags (
 
 ## Problemas Conocidos
 
-- 2019/pract carece de solución
+- 2019/pract carece de solución.
+- 2021/p2r/ex02/(c) carece de solución.
 
 ## Licencia
 

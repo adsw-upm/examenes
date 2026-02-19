@@ -6,11 +6,11 @@ tags:
  - complejidad
 ---
 
-La pr!ctica 4 inclu$a un conjunto de trenes que se mov$an de forma concurrente en su l$nea de metro, con bastantes simplificaciones respecto a la realidad. Una de ellas es que no se controlaba que varios trenes puedan estar cargando/descargando pasajeros de forma simult!nea en un mismo anden.
+La práctica 4 incluía un conjunto de trenes que se movían de forma concurrente en su línea de metro, con bastantes simplificaciones respecto a la realidad. Una de ellas es que no se controlaba que varios trenes puedan estar cargando/descargando pasajeros de forma simultánea en un mismo anden.
 
-Se ha modificado el m#todo irA (el m#todo que simulaba la entrada/salida en estaciones y en los tramos de l$nea) para evitar que m!s de un tren pueda estar ocupando un and#n de la misma l$nea y sentido, al mismo tiempo. Antes de entrar en la estaci"n el tren pide permiso para entrar, indicando por qu# l$nea se mueve y su sentido. En el metro de Madrid, cada l$nea de metro tiene un and#n en cada sentido en todas las estaciones por las que pasa, que no comparte con ninguna otra l$nea. El c"digo del m#todo irA queda de la siguiente forma (con simplificaciones). Se han insertado 2 l$neas de c"digo (8 y 11): una para solicitar la entrada en la estaci"n antes de entrar y otra para indicar que un tren abandona el and#n de la estaci"n.
+Se ha modificado el método `irA` (el metodo que simulaba la entrada/salida en estaciones y en los tramos de línea) para evitar que m!s de un tren pueda estar ocupando un andén de la misma línea y sentido, al mismo tiempo. Antes de entrar en la estación el tren pide permiso para entrar, indicando por qué línea se mueve y su sentido. En el metro de Madrid, cada línea de metro tiene un andén en cada sentido en todas las estaciones por las que pasa, que no comparte con ninguna otra línea. El código del método `irA` queda de la siguiente forma (con simplificaciones). Se han insertado 2 líneas de código (8 y 11): una para solicitar la entrada en la estación antes de entrar y otra para indicar que un tren abandona el andén de la estación.
 
-El atributo estacion de la clase Tren representa la %ltima estaci"n a la que ha llegado el tren. Para que este c"digo funcione, la clase Estaci"n debe implementar los m#todos permisoEntrada y salidaEstacion. Se puede modificar el constructor de Estaci"n si fuera necesario.
+El atributo `estacion` de la clase `Tren` representa la última estación a la que ha llegado el tren. Para que este código funcione, la clase Estación debe implementar los métodos `permisoEntrada` y `salidaEstacion`. Se puede modificar el constructor de `Estación` si fuera necesario.
 
 ```java
 01  TrayectoLineaMetro tr=linea.getSecuenciaMovimientos(origen,destino,ida);
@@ -29,7 +29,9 @@ El atributo estacion de la clase Tren representa la %ltima estaci"n a la que ha 
 14     pasos.add(destino);
 ```
 
-- (a) (1 Punto) Incluir atributos en la clase Estacion que permitan saber los andenes de las l$neas que pasan por esa estaci"n que est!n ocupados. Si es necesario modificar el constructor para inicializar esos atributos, se debe hacer en esta sub-pregunta.
+Asumiendo que los parámetros que se pasan al invocar un método son correctos, es decir, no es necesario validarlos, y no hay ninguna restricción en la estructura de datos que se use en una solución. Se pide:
+
+- (a) (1 Punto) Incluir atributos en la clase `Estacion` que permitan saber los andenes de las líneas que pasan por esa estación que están ocupados. Si es necesario modificar el constructor para inicializar esos atributos, se debe hacer en esta sub-pregunta.
 
 ```java
 // Constructor: id: identificador de estación, posición de la estación en el mapa,
@@ -44,7 +46,7 @@ public Estacion(int id, Vector posicion, double tiempo, String nombre) { ... }
 ```
 
 ??? note "Mostrar solución" 
-    Con esta soluci"n hacemos lo que nos piden en el ejercicio: no mas de un tren est! descargando en un anden al mismo tiempo.
+    Con esta solución hacemos lo que nos piden en el ejercicio: no mas de un tren está descargando en un anden al mismo tiempo.
 
     ```java
     private Set<LineaMetro>[] andenes = new Set[2];
@@ -82,10 +84,10 @@ public Estacion(int id, Vector posicion, double tiempo, String nombre) { ... }
 
 
 
-- (b) (2 puntos) Implementar el m#todo permisoEntrada (incluida la cabecera) para que no m!s de un tren pueda estar ocupando un and#n en la estaci"n.
+- (b) (2 puntos) Implementar el método `permisoEntrada` (incluida la cabecera) para que no más de un tren pueda estar ocupando un andén en la estación.
 
 ??? note "Mostrar solución" 
-    Con esta soluci"n vamos un poco mas alla de lo que nos piden en el ejercicio: no solo evitamos que varios trenes est#n descargando en un and#n, sino que adem!s los trenes no podr!n adelantarse entre ellos, cuando llegan a una estaci"n para descargar.
+    Con esta solución vamos un poco mas alla de lo que nos piden en el ejercicio: no solo evitamos que varios trenes están descargando en un andén, sino que adem!s los trenes no podrán adelantarse entre ellos, cuando llegan a una estación para descargar.
 
     ```java
     private Map<LineaMetro, List<Thread>>[] andenes = new Map[2];
@@ -128,9 +130,7 @@ public Estacion(int id, Vector posicion, double tiempo, String nombre) { ... }
     ```
 
 
-- (c) (2 puntos) Implementar el m#todo salidaEstacion (incluida la cabecera) que libera el and#n y permite a otro tren que est! esperando ocupar el and#n.
+- (c) (2 puntos) Implementar el método `salidaEstacion` (incluida la cabecera) que libera el andén y permite a otro tren que está esperando ocupar el andén.
 
 ??? note "Mostrar solución" 
     Vacío
-
-Nota: Los par!metros que se pasan al invocar un m#todo son correctos. No es necesario validarlos. No hay ninguna restricci"n en la estructura de datos que se use en una soluci"n.
