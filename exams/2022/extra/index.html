@@ -3024,13 +3024,20 @@
 <h1 id="examen-2022-extraordinario">Examen 2022 — Extraordinario</h1>
 <h2 id="problema-1">Problema 1</h2>
 <p>DIT Computers ha decidido implementar un nuevo sistema operativo revolucionario utilizando el lenguaje de programación Java. La primera tarea será implementar un sistema revolucionario de acceso a ficheros, para lo que decide subcontratar a alumnos de ADSW.</p>
-<p>Se propone un prototipo de un sistema de ficheros simplificado, que solo permite acceder a ficheros a partir de su nombre, y almacenar nuevos ficheros en el sistema. Habrá cuatro clases en el sistema: 1) Fichero; 2) Gestor, que será la clase principal; 3) Disco, que contendrá un conjunto de ficheros; 4) Cache, para almacenar ficheros que han sido utilizados recientemente y evitar volver a buscarlos. La relación entre estas clases se ve en el diagrama adjunto.</p>
+<p>Se propone un prototipo de un sistema de ficheros simplificado, que solo permite acceder a ficheros a partir de su nombre, y almacenar nuevos ficheros en el sistema. Habrá cuatro clases en el sistema: </p>
+<ol>
+<li><code>Fichero</code>; </li>
+<li><code>Gestor</code>, que será la clase principal; </li>
+<li><code>Disco</code>, que contendrá un conjunto de ficheros; </li>
+<li><code>Cache</code>, para almacenar ficheros que han sido utilizados recientemente y evitar volver a buscarlos. </li>
+</ol>
+<p>La relación entre estas clases se ve en el diagrama adjunto.</p>
 <p><img alt="" src="extra_ex01.png" /></p>
-<p>El Gestor deberá permitir obtener (get) ficheros existentes o almacenar (put) ficheros nuevos. Internamente, un gestor tiene acceso a un elemento de tipo Cache y a varios de tipo Disco. Un fichero se obtiene a través de su nombre. Para obtener un fichero, el gestor primero consulta si el fichero está disponible en su caché y, si no, consultará uno a uno a sus discos. En caso de no encontrar el fichero en ninguno de los discos, se devolverá un null. Cuando el gestor obtiene el fichero de un disco, lo debe añadir a su caché para que se encuentre más rápido en el próximo acceso. La caché tiene poca capacidad de almacenamiento. Cuando hay que guardar un fichero y no hay capacidad suficiente, se elimina el fichero más antiguo y se almacena el nuevo.</p>
+<p>El <code>Gestor</code> deberá permitir obtener (<code>get</code>) ficheros existentes o almacenar (<code>put</code>) ficheros nuevos. Internamente, un gestor tiene acceso a un elemento de tipo <code>Cache</code> y a varios de tipo <code>Disco</code>. Un fichero se obtiene a través de su nombre. Para obtener un fichero, el gestor primero consulta si el fichero está disponible en su caché y, si no, consultará uno a uno a sus discos. En caso de no encontrar el fichero en ninguno de los discos, se devolverá un <code>null</code>. Cuando el gestor obtiene el fichero de un disco, lo debe añadir a su caché para que se encuentre más rápido en el próximo acceso. La caché tiene poca capacidad de almacenamiento. Cuando hay que guardar un fichero y no hay capacidad suficiente, se elimina el fichero más antiguo y se almacena el nuevo.</p>
 <p>A la hora de guardar el fichero, el gestor asumirá que el fichero es nuevo, y lo guardará tanto en uno de sus discos, como en la caché. Los ficheros deberán distribuirse de manera uniforme entre todos los discos del gestor.</p>
 <p>Asuma que el resto de las clases ya están implementadas, de acuerdo al diagrama de clases del enunciado. Pueden añadirse atributos a cualquiera de las clases, pero deberá indicarse.</p>
 <ul>
-<li>(a) (1 punto) Desarrolle método get de Gestor.</li>
+<li>(a) (1 punto) Desarrolle método <code>get</code> de <code>Gestor</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3066,7 +3073,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (1 punto) El método put de Gestor.</li>
+<li>(b) (1 punto) El método <code>put</code> de <code>Gestor</code>.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3077,43 +3084,48 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2 puntos) En el diagrama de clases, Disco y Cache no especifican qué estructura de datos utilizan internamente para guardar los ficheros. Siendo d el número de discos, f el número de ficheros totales almacenados, c el número máximo de ficheros que puede contener la caché (con f &gt;&gt; c), razone qué estructura de datos (p.e., Lista, Tabla Hash, etc.) utilizaría en Disco y en Cache para cumplir que:<ul>
-<li>Obtener un fichero reciente del Gestor sea como máximo O(c) en tiempo de ejecución.</li>
-<li>Obtener un fichero cualquiera del Gestor sea como máximo O(log(f)) en tiempo de ejecución.</li>
-<li>Guardar un fichero en el Gestor sea como máximo O(log(f)) en tiempo de ejecución.</li>
+<li>(c) (2 puntos) En el diagrama de clases, <code>Disco</code> y <code>Cache</code> no especifican qué estructura de datos utilizan internamente para guardar los ficheros. Siendo <code>d</code> el número de discos, <code>f</code> el número de ficheros totales almacenados, <code>c</code> el número máximo de ficheros que puede contener la caché (con <code>f &gt;&gt; c</code>), razone qué estructura de datos (p.e., Lista, Tabla Hash, etc.) utilizaría en <code>Disco</code> y en Cache para cumplir que:<ul>
+<li>Obtener un fichero reciente del <code>Gestor</code> sea como máximo <span class="arithmatex">\(O(c)\)</span> en tiempo de ejecución;</li>
+<li>Obtener un fichero cualquiera del <code>Gestor</code> sea como máximo <span class="arithmatex">\(O(log(f))\)</span> en tiempo de ejecución;</li>
+<li>Guardar un fichero en el <code>Gestor</code> sea como máximo <span class="arithmatex">\(O(log(f))\)</span> en tiempo de ejecución.</li>
 </ul>
 </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Las operaciones en Gestor tendrán una complejidad:
-    - get() en general es O(t_get_cache + t_get_disco * d + t_put_cache)
-    - get() de un fichero reciente es O(t_get_cache)
-    - put() es O(t_put_cache + t_put_disco)</p>
-<p>Por tanto, dados los requisitos en complejidad:
-    - Cache podría utilizar cualquiera de las estructuras que hemos visto. La más sencilla sería una lista.
-    - Disco debería usar una estructura que permita complejidad logarítmica en get y put. Por ejemplo:
-        - Árbol binario
-        - TreeMap
-        - También sería posible usar cualquiera de las opciones de Hash (O(1) en caso mejor, O(f) en caso peor), pero se necesitaría más almacenamiento para evitar colisiones</p>
+<p>Las operaciones en Gestor tendrán una complejidad:</p>
+<ul>
+<li><code>get()</code> en general es <span class="arithmatex">\(O(t\_get\_cache + t\_get\_disco * d + t\_put\_cache)\)</span>;</li>
+<li><code>get()</code> de un fichero reciente es <span class="arithmatex">\(O(t\_get\_cache)\)</span>;</li>
+<li><code>put()</code> es <span class="arithmatex">\(O(t\_put\_cache + t\_put\_disco)\)</span>.</li>
+</ul>
+<p>Por tanto, dados los requisitos en complejidad:</p>
+<ul>
+<li><code>Cache</code> podría utilizar cualquiera de las estructuras que hemos visto. La más sencilla sería una lista.</li>
+<li><code>Disco</code> debería usar una estructura que permita complejidad logarítmica en <code>get</code> y <code>put</code>. Por ejemplo:<ul>
+<li>Árbol binario</li>
+<li><code>TreeMap</code></li>
+<li>También sería posible usar cualquiera de las opciones de Hash (<span class="arithmatex">\(O(1)\)</span> en caso mejor, <span class="arithmatex">\(O(f)\)</span> en caso peor), pero se necesitaría más almacenamiento para evitar colisiones.</li>
+</ul>
+</li>
+</ul>
 </details>
 <ul>
-<li>(d) (1 punto) Se desea introducir nuevos tipos de gestores de ficheros con estrategias de acceso y almacenado diferentes. Explique qué cambios introduciría para permitirlo. ¿Y si se quisiera también que Disco o Cache pudieran reemplazar al gestor de ficheros? Se valorará que los cambios se añadan al diagrama UML, pero no será necesario.</li>
+<li>(d) (1 punto) Se desea introducir nuevos tipos de gestores de ficheros con estrategias de acceso y almacenado diferentes. Explique qué cambios introduciría para permitirlo. ¿Y si se quisiera también que <code>Disco</code> o <code>Cache</code> pudieran reemplazar al gestor de ficheros? Se valorará que los cambios se añadan al diagrama UML, pero no será necesario.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Para la primera parte, simplemente sería posible heredando de la clase Gestor. No obstante, eso forzaría a que el constructor de Gestor siguiera funcionando con esa firma.</p>
-<p>Para la segunda parte, y en general, lo recomendable sería utilizar un Interfaz con los métodos get y put, como se muestra en el diagrama adjunto.</p>
+<p>Para la primera parte, simplemente sería posible heredando de la clase <code>Gestor</code>. No obstante, eso forzaría a que el constructor de <code>Gestor</code> siguiera funcionando con esa firma.</p>
+<p>Para la segunda parte, y en general, lo recomendable sería utilizar un Interfaz con los métodos <code>get</code> y <code>put</code>, como se muestra en el diagrama adjunto.</p>
 <p>Como las 3 clases existentes contienen los métodos necesarios con la misma firma, sólo habría que especificar la nueva herencia (implements).</p>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>Se dispone de una clase RedSocial que representa una red social de amistad entre personas. En concreto, se quiere representar la relación “seguir a una persona”. Para ello, se utiliza un grafo (g) dirigido para representar esta relación: un vértice (nodo) representa una persona y un arco (arista) una relación. En concreto A à B representa que la persona A siga a la persona B. Este arco no implica que B sigua a A.</p>
-<p>En la clase RedSocial se utiliza un mapa (Map<Integer, String> mapaPersonas) que permite obtener el nombre de la persona de un vértice. El arco que representa la relación “seguir a una persona” se modelará en un objeto de la clase DirectedEdge, con peso 1. La clase RedSocial se describa en el diagrama de clases adjuntado.</p>
-<p>En el sistema, se disponen las clases DijkstraSP, EdgeWeightedDigraph y DirectedEdge, para modelar el
-sistema. </p>
+<p>Se dispone de una clase <code>RedSocial</code> que representa una red social de amistad entre personas. En concreto, se quiere representar la relación “seguir a una persona”. Para ello, se utiliza un grafo (<code>g</code>) dirigido para representar esta relación: un vértice (nodo) representa una persona y un arco (arista) una relación. En concreto <code>A</code> à <code>B</code> representa que la persona <code>A</code> siga a la persona <code>B</code>. Este arco no implica que <code>B</code> sigua a <code>A</code>.</p>
+<p>En la clase <code>RedSocial</code> se utiliza un mapa (<code>Map&lt;Integer, String&gt; mapaPersonas</code>) que permite obtener el nombre de la persona de un vértice. El arco que representa la relación “seguir a una persona” se modelará en un objeto de la clase <code>DirectedEdge</code>, con peso 1. La clase <code>RedSocial</code> se describa en el diagrama de clases adjuntado.</p>
+<p>En el sistema, se disponen las clases <code>DijkstraSP</code>, <code>EdgeWeightedDigraph</code> y <code>DirectedEdge</code>, para modelar el sistema. </p>
 <p><img alt="" src="extra_ex02.png" /></p>
 <ul>
-<li>(a) (1 punto) Desarrolle el método public double getMediaSeguidores(), que devuelve el número medio de seguidores en el grafo. </li>
+<li>(a) (1 punto) Desarrolle el método <code>public double getMediaSeguidores()</code>, que devuelve el número medio de seguidores en el grafo. </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3123,7 +3135,7 @@ sistema. </p>
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (1,5 puntos) Desarrolle el método public String getVerticeMasSeguidores(), que devuelve el nombre de la persona que tiene más seguidores.</li>
+<li>(b) (1,5 puntos) Desarrolle el método <code>public String getVerticeMasSeguidores()</code>, que devuelve el nombre de la persona que tiene más seguidores.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3143,7 +3155,7 @@ sistema. </p>
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2,5 putnos) Desarrolle el método public List<String> getListaMinimoAmigosComun(int verticeOrigen, int verticeDestino), que recibe por parámetro un vértice de origen y un vértice de destino y debe devolver una lista de String con el nombre de las personas de la cadena mínima de amistad entre el origen y el destino. Nota: ni el nombre de la persona origen ni destino deberán aparecer en la lista.</li>
+<li>(c) (2,5 putnos) Desarrolle el método <code>public List&lt;String&gt; getListaMinimoAmigosComun(int verticeOrigen, int verticeDestino)</code>, que recibe por parámetro un vértice de origen y un vértice de destino y debe devolver una lista de <code>String</code> con el nombre de las personas de la cadena mínima de amistad entre el origen y el destino. Nota: ni el nombre de la persona origen ni destino deberán aparecer en la lista.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>

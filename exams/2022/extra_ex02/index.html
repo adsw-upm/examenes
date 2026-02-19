@@ -2874,13 +2874,12 @@
 
   <h1>Extra ex02</h1>
 
-<p>Se dispone de una clase RedSocial que representa una red social de amistad entre personas. En concreto, se quiere representar la relación “seguir a una persona”. Para ello, se utiliza un grafo (g) dirigido para representar esta relación: un vértice (nodo) representa una persona y un arco (arista) una relación. En concreto A à B representa que la persona A siga a la persona B. Este arco no implica que B sigua a A.</p>
-<p>En la clase RedSocial se utiliza un mapa (Map<Integer, String> mapaPersonas) que permite obtener el nombre de la persona de un vértice. El arco que representa la relación “seguir a una persona” se modelará en un objeto de la clase DirectedEdge, con peso 1. La clase RedSocial se describa en el diagrama de clases adjuntado.</p>
-<p>En el sistema, se disponen las clases DijkstraSP, EdgeWeightedDigraph y DirectedEdge, para modelar el
-sistema. </p>
+<p>Se dispone de una clase <code>RedSocial</code> que representa una red social de amistad entre personas. En concreto, se quiere representar la relación “seguir a una persona”. Para ello, se utiliza un grafo (<code>g</code>) dirigido para representar esta relación: un vértice (nodo) representa una persona y un arco (arista) una relación. En concreto <code>A</code> à <code>B</code> representa que la persona <code>A</code> siga a la persona <code>B</code>. Este arco no implica que <code>B</code> sigua a <code>A</code>.</p>
+<p>En la clase <code>RedSocial</code> se utiliza un mapa (<code>Map&lt;Integer, String&gt; mapaPersonas</code>) que permite obtener el nombre de la persona de un vértice. El arco que representa la relación “seguir a una persona” se modelará en un objeto de la clase <code>DirectedEdge</code>, con peso 1. La clase <code>RedSocial</code> se describa en el diagrama de clases adjuntado.</p>
+<p>En el sistema, se disponen las clases <code>DijkstraSP</code>, <code>EdgeWeightedDigraph</code> y <code>DirectedEdge</code>, para modelar el sistema. </p>
 <p><img alt="" src="../extra/extra_ex02.png" /></p>
 <ul>
-<li>(a) (1 punto) Desarrolle el método public double getMediaSeguidores(), que devuelve el número medio de seguidores en el grafo. </li>
+<li>(a) (1 punto) Desarrolle el método <code>public double getMediaSeguidores()</code>, que devuelve el número medio de seguidores en el grafo. </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2890,7 +2889,7 @@ sistema. </p>
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (1,5 puntos) Desarrolle el método public String getVerticeMasSeguidores(), que devuelve el nombre de la persona que tiene más seguidores.</li>
+<li>(b) (1,5 puntos) Desarrolle el método <code>public String getVerticeMasSeguidores()</code>, que devuelve el nombre de la persona que tiene más seguidores.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -2910,7 +2909,7 @@ sistema. </p>
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2,5 putnos) Desarrolle el método public List<String> getListaMinimoAmigosComun(int verticeOrigen, int verticeDestino), que recibe por parámetro un vértice de origen y un vértice de destino y debe devolver una lista de String con el nombre de las personas de la cadena mínima de amistad entre el origen y el destino. Nota: ni el nombre de la persona origen ni destino deberán aparecer en la lista.</li>
+<li>(c) (2,5 putnos) Desarrolle el método <code>public List&lt;String&gt; getListaMinimoAmigosComun(int verticeOrigen, int verticeDestino)</code>, que recibe por parámetro un vértice de origen y un vértice de destino y debe devolver una lista de <code>String</code> con el nombre de las personas de la cadena mínima de amistad entre el origen y el destino. Nota: ni el nombre de la persona origen ni destino deberán aparecer en la lista.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
