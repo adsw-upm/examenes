@@ -3023,8 +3023,8 @@
 
 <h1 id="examen-2021-parcial-2-recuperacion">Examen 2021 — Parcial 2 Recuperación</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>El problema de los lectores/escritores est! planteado con un conjunto de hebras que comparten datos. Una parte de estas hebras (lectores) s"lo leen los datos, mientras que el resto (escritores) leen y escriben. Varios lectores pueden acceder simult!neamente a los datos compartidos, pero se debe evitar que mientras un escritor est# accediendo a los datos acceda a ellos otra hebra de cualquier tipo.</p>
-<p>Las hebras correctas deben solicitar permiso para acceder los datos con empiezaLeer (lectores) o empiezaEscribir (escritores). Al terminar de usar los datos compartidos deben invocar a terminaLeer (lectores) o terminaEscribir (escritores). El acceso a los datos compartidos se hace fuera de este monitor. Si este protocolo para acceder a estos m#todos se satisface, se garantiza los requisitos del problema.</p>
+<p>El problema de los lectores/escritores est! planteado con un conjunto de hebras que comparten datos. Una parte de estas hebras (lectores) sólo leen los datos, mientras que el resto (escritores) leen y escriben. Varios lectores pueden acceder simultáneamente a los datos compartidos, pero se debe evitar que mientras un escritor está accediendo a los datos acceda a ellos otra hebra de cualquier tipo.</p>
+<p>Las hebras correctas deben solicitar permiso para acceder los datos con <code>empiezaLeer</code> (lectores) o <code>empiezaEscribir</code> (escritores). Al terminar de usar los datos compartidos deben invocar a <code>terminaLeer</code> (lectores) o <code>terminaEscribir</code> (escritores). El acceso a los datos compartidos se hace fuera de este monitor. Si este protocolo para acceder a estos métodos se satisface, se garantiza los requisitos del problema.</p>
 <table>
 <thead>
 <tr>
@@ -3057,20 +3057,22 @@
 </tbody>
 </table>
 <ul>
-<li>(a) (2,5 puntos) Sup"ngase que en este sistema hay dos instancias de los datos compartidos: D1 y D2. Algunas hebras escritoras tienen que acceder con exclusi"n mutua simult!neamente a D1 y D2, para cambiar los datos con coherencia. Es imprescindible hacerlo de esta forma. Justifique si en este supuesto podr$a producir interbloqueos.</li>
+<li>(a) (2,5 puntos) Supóngase que en este sistema hay dos instancias de los datos compartidos: <code>D1</code> y <code>D2</code>. Algunas hebras escritoras tienen que acceder con exclusión mutua simultáneamente a <code>D1</code> y <code>D2</code>, para cambiar los datos con coherencia. Es imprescindible hacerlo de esta forma. Justifique si en este supuesto podría producir interbloqueos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Si se analizan las condiciones de Coffman:
-    - 1. Exclusi"n mutua: es as<span class="arithmatex">\(, por el enunciado del problema
-    - 2. Tener y esperar: en los ejercicios que se han hecho, se usa este esquema. (se podr\)</span>a haber propuesto una implementaci"n alternativa)
-    - 3. Sin expulsi"n: al igual que en le caso anterior, no hay explusi"n. Se podr$a proporcionar una alternativa.
-    - 4. Espera circular: en el enunciado, se indica que hay dos instancias para acceder a los datos y no se especifica en el orden en el que se pueda hacer. Por tanto, puede que haya espera circular, como se muestra a continuaci"n. En este caso, E1 intenta coger D1 y D2, y E2 intenta coger en el otro orden</p>
+<p>Si se analizan las condiciones de Coffman:</p>
+<ol>
+<li>Exclusión mutua: Es así, por el enunciado del problema;</li>
+<li>Tener y esperar: En los ejercicios que se han hecho, se usa este esquema (se podría haber propuesto una implementación alternativa);</li>
+<li>Sin expulsión: Al igual que en le caso anterior, no hay explusión. Se podría proporcionar una alternativa;</li>
+<li>Espera circular: En el enunciado, se indica que hay dos instancias para acceder a los datos y no se especifica en el orden en el que se pueda hacer. Por tanto, puede que haya espera circular, como se muestra a continuación. En este caso, <code>E1</code> intenta coger <code>D1</code> y <code>D2</code>, y <code>E2</code> intenta coger en el otro orden.</li>
+</ol>
 <p><img alt="" src="../p2/p2_ex01.png" /></p>
-<p>Se cumplan las cuatro condiciones, por lo que puede ocurrir un interbloqueo.</p>
+<p>Se cumplen las cuatro condiciones, por lo que puede ocurrir un interbloqueo.</p>
 </details>
 <ul>
-<li>(b) (2,5 puntos) A continuaci"n, se muestra una posible soluci"n al problema de los lectores/escritores. Analice este c"digo y justifique si es correcto. En caso contrario, indique los cambios necesarios para que este c"digo fuera una soluci"n correcta.</li>
+<li>(b) (2,5 puntos) A continuación, se muestra una posible solución al problema de los lectores/escritores. Analice este código y justifique si es correcto. En caso contrario, indique los cambios necesarios para que este código fuera una solución correcta.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorLE2</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">nLectores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -3109,11 +3111,13 @@
 </code></pre></div>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>El c"digo es incorrecto. Hay que hacer los siguientes cambios:
-    - Los atributos tienen que ser privados
-    - Los m#todos wait, tienen que estar en un bloque while
-    - La declaraci"n nLectores en el m#todo empiezaLeer no tiene sentido
-    - En el m#todo terminaLeer s"lo hay asignar true a bloqueoLector cuando no hay lectores.</p>
+<p>El código es incorrecto. Hay que hacer los siguientes cambios:</p>
+<ul>
+<li>Los atributos tienen que ser privados;</li>
+<li>Los métodos <code>wait</code>, tienen que estar en un bloque <code>while</code>;</li>
+<li>La declaración <code>nLectores</code> en el método <code>empiezaLeer</code> no tiene sentido;</li>
+<li>En el método <code>terminaLeer</code> sólo hay que asignar <code>true</code> a <code>bloqueoLector</code> cuando no hay lectores.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorLE</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
@@ -3154,9 +3158,9 @@
 </code></pre></div>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>La pr!ctica 4 inclu<span class="arithmatex">\(a un conjunto de trenes que se mov\)</span>an de forma concurrente en su l$nea de metro, con bastantes simplificaciones respecto a la realidad. Una de ellas es que no se controlaba que varios trenes puedan estar cargando/descargando pasajeros de forma simult!nea en un mismo anden.</p>
-<p>Se ha modificado el m#todo irA (el m#todo que simulaba la entrada/salida en estaciones y en los tramos de l<span class="arithmatex">\(nea) para evitar que m!s de un tren pueda estar ocupando un and#n de la misma l\)</span>nea y sentido, al mismo tiempo. Antes de entrar en la estaci"n el tren pide permiso para entrar, indicando por qu# l<span class="arithmatex">\(nea se mueve y su sentido. En el metro de Madrid, cada l\)</span>nea de metro tiene un and#n en cada sentido en todas las estaciones por las que pasa, que no comparte con ninguna otra l<span class="arithmatex">\(nea. El c"digo del m#todo irA queda de la siguiente forma (con simplificaciones). Se han insertado 2 l\)</span>neas de c"digo (8 y 11): una para solicitar la entrada en la estaci"n antes de entrar y otra para indicar que un tren abandona el and#n de la estaci"n.</p>
-<p>El atributo estacion de la clase Tren representa la %ltima estaci"n a la que ha llegado el tren. Para que este c"digo funcione, la clase Estaci"n debe implementar los m#todos permisoEntrada y salidaEstacion. Se puede modificar el constructor de Estaci"n si fuera necesario.</p>
+<p>La práctica 4 incluía un conjunto de trenes que se movían de forma concurrente en su línea de metro, con bastantes simplificaciones respecto a la realidad. Una de ellas es que no se controlaba que varios trenes puedan estar cargando/descargando pasajeros de forma simultánea en un mismo anden.</p>
+<p>Se ha modificado el método <code>irA</code> (el metodo que simulaba la entrada/salida en estaciones y en los tramos de línea) para evitar que m!s de un tren pueda estar ocupando un andén de la misma línea y sentido, al mismo tiempo. Antes de entrar en la estación el tren pide permiso para entrar, indicando por qué línea se mueve y su sentido. En el metro de Madrid, cada línea de metro tiene un andén en cada sentido en todas las estaciones por las que pasa, que no comparte con ninguna otra línea. El código del método <code>irA</code> queda de la siguiente forma (con simplificaciones). Se han insertado 2 líneas de código (8 y 11): una para solicitar la entrada en la estación antes de entrar y otra para indicar que un tren abandona el andén de la estación.</p>
+<p>El atributo <code>estacion</code> de la clase <code>Tren</code> representa la última estación a la que ha llegado el tren. Para que este código funcione, la clase Estación debe implementar los métodos <code>permisoEntrada</code> y <code>salidaEstacion</code>. Se puede modificar el constructor de <code>Estación</code> si fuera necesario.</p>
 <div class="highlight"><pre><span></span><code><span class="mo">01</span><span class="w">  </span><span class="n">TrayectoLineaMetro</span><span class="w"> </span><span class="n">tr</span><span class="o">=</span><span class="n">linea</span><span class="p">.</span><span class="na">getSecuenciaMovimientos</span><span class="p">(</span><span class="n">origen</span><span class="p">,</span><span class="n">destino</span><span class="p">,</span><span class="n">ida</span><span class="p">);</span>
 <span class="mo">02</span><span class="w">  </span><span class="n">pasos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">estacion</span><span class="p">);</span>
 <span class="mo">03</span><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">tr</span><span class="p">.</span><span class="na">finMovimiento</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -3172,8 +3176,9 @@
 <span class="mi">13</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pasos</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">destino</span><span class="p">))</span>
 <span class="mi">14</span><span class="w">     </span><span class="n">pasos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">destino</span><span class="p">);</span>
 </code></pre></div>
+<p>Asumiendo que los parámetros que se pasan al invocar un método son correctos, es decir, no es necesario validarlos, y no hay ninguna restricción en la estructura de datos que se use en una solución. Se pide:</p>
 <ul>
-<li>(a) (1 Punto) Incluir atributos en la clase Estacion que permitan saber los andenes de las l$neas que pasan por esa estaci"n que est!n ocupados. Si es necesario modificar el constructor para inicializar esos atributos, se debe hacer en esta sub-pregunta.</li>
+<li>(a) (1 Punto) Incluir atributos en la clase <code>Estacion</code> que permitan saber los andenes de las líneas que pasan por esa estación que están ocupados. Si es necesario modificar el constructor para inicializar esos atributos, se debe hacer en esta sub-pregunta.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">// Constructor: id: identificador de estación, posición de la estación en el mapa,</span>
 <span class="c1">// tiempo de espera en los andenes, nombre de la estación</span>
@@ -3187,7 +3192,7 @@
 </code></pre></div>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Con esta soluci"n hacemos lo que nos piden en el ejercicio: no mas de un tren est! descargando en un anden al mismo tiempo.</p>
+<p>Con esta solución hacemos lo que nos piden en el ejercicio: no mas de un tren está descargando en un anden al mismo tiempo.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">andenes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Set</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
 
 <span class="kd">public</span><span class="w"> </span><span class="nf">EstacionS</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">posicion</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3222,11 +3227,11 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2 puntos) Implementar el m#todo permisoEntrada (incluida la cabecera) para que no m!s de un tren pueda estar ocupando un and#n en la estaci"n.</li>
+<li>(b) (2 puntos) Implementar el método <code>permisoEntrada</code> (incluida la cabecera) para que no más de un tren pueda estar ocupando un andén en la estación.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Con esta soluci"n vamos un poco mas alla de lo que nos piden en el ejercicio: no solo evitamos que varios trenes est#n descargando en un and#n, sino que adem!s los trenes no podr!n adelantarse entre ellos, cuando llegan a una estaci"n para descargar.</p>
+<p>Con esta solución vamos un poco mas alla de lo que nos piden en el ejercicio: no solo evitamos que varios trenes están descargando en un andén, sino que adem!s los trenes no podrán adelantarse entre ellos, cuando llegan a una estación para descargar.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;&gt;[]</span><span class="w"> </span><span class="n">andenes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Map</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
 
 <span class="kd">public</span><span class="w"> </span><span class="nf">Estacion</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">posicion</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3267,13 +3272,12 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2 puntos) Implementar el m#todo salidaEstacion (incluida la cabecera) que libera el and#n y permite a otro tren que est! esperando ocupar el and#n.</li>
+<li>(c) (2 puntos) Implementar el método <code>salidaEstacion</code> (incluida la cabecera) que libera el andén y permite a otro tren que está esperando ocupar el andén.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Vacío</p>
 </details>
-<p>Nota: Los par!metros que se pasan al invocar un m#todo son correctos. No es necesario validarlos. No hay ninguna restricci"n en la estructura de datos que se use en una soluci"n.</p>
 
 
 

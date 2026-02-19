@@ -2874,8 +2874,8 @@
 
   <h1>P2r ex01</h1>
 
-<p>El problema de los lectores/escritores est! planteado con un conjunto de hebras que comparten datos. Una parte de estas hebras (lectores) s"lo leen los datos, mientras que el resto (escritores) leen y escriben. Varios lectores pueden acceder simult!neamente a los datos compartidos, pero se debe evitar que mientras un escritor est# accediendo a los datos acceda a ellos otra hebra de cualquier tipo.</p>
-<p>Las hebras correctas deben solicitar permiso para acceder los datos con empiezaLeer (lectores) o empiezaEscribir (escritores). Al terminar de usar los datos compartidos deben invocar a terminaLeer (lectores) o terminaEscribir (escritores). El acceso a los datos compartidos se hace fuera de este monitor. Si este protocolo para acceder a estos m#todos se satisface, se garantiza los requisitos del problema.</p>
+<p>El problema de los lectores/escritores est! planteado con un conjunto de hebras que comparten datos. Una parte de estas hebras (lectores) sólo leen los datos, mientras que el resto (escritores) leen y escriben. Varios lectores pueden acceder simultáneamente a los datos compartidos, pero se debe evitar que mientras un escritor está accediendo a los datos acceda a ellos otra hebra de cualquier tipo.</p>
+<p>Las hebras correctas deben solicitar permiso para acceder los datos con <code>empiezaLeer</code> (lectores) o <code>empiezaEscribir</code> (escritores). Al terminar de usar los datos compartidos deben invocar a <code>terminaLeer</code> (lectores) o <code>terminaEscribir</code> (escritores). El acceso a los datos compartidos se hace fuera de este monitor. Si este protocolo para acceder a estos métodos se satisface, se garantiza los requisitos del problema.</p>
 <table>
 <thead>
 <tr>
@@ -2908,20 +2908,22 @@
 </tbody>
 </table>
 <ul>
-<li>(a) (2,5 puntos) Sup"ngase que en este sistema hay dos instancias de los datos compartidos: D1 y D2. Algunas hebras escritoras tienen que acceder con exclusi"n mutua simult!neamente a D1 y D2, para cambiar los datos con coherencia. Es imprescindible hacerlo de esta forma. Justifique si en este supuesto podr$a producir interbloqueos.</li>
+<li>(a) (2,5 puntos) Supóngase que en este sistema hay dos instancias de los datos compartidos: <code>D1</code> y <code>D2</code>. Algunas hebras escritoras tienen que acceder con exclusión mutua simultáneamente a <code>D1</code> y <code>D2</code>, para cambiar los datos con coherencia. Es imprescindible hacerlo de esta forma. Justifique si en este supuesto podría producir interbloqueos.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Si se analizan las condiciones de Coffman:
-    - 1. Exclusi"n mutua: es as<span class="arithmatex">\(, por el enunciado del problema
-    - 2. Tener y esperar: en los ejercicios que se han hecho, se usa este esquema. (se podr\)</span>a haber propuesto una implementaci"n alternativa)
-    - 3. Sin expulsi"n: al igual que en le caso anterior, no hay explusi"n. Se podr$a proporcionar una alternativa.
-    - 4. Espera circular: en el enunciado, se indica que hay dos instancias para acceder a los datos y no se especifica en el orden en el que se pueda hacer. Por tanto, puede que haya espera circular, como se muestra a continuaci"n. En este caso, E1 intenta coger D1 y D2, y E2 intenta coger en el otro orden</p>
+<p>Si se analizan las condiciones de Coffman:</p>
+<ol>
+<li>Exclusión mutua: Es así, por el enunciado del problema;</li>
+<li>Tener y esperar: En los ejercicios que se han hecho, se usa este esquema (se podría haber propuesto una implementación alternativa);</li>
+<li>Sin expulsión: Al igual que en le caso anterior, no hay explusión. Se podría proporcionar una alternativa;</li>
+<li>Espera circular: En el enunciado, se indica que hay dos instancias para acceder a los datos y no se especifica en el orden en el que se pueda hacer. Por tanto, puede que haya espera circular, como se muestra a continuación. En este caso, <code>E1</code> intenta coger <code>D1</code> y <code>D2</code>, y <code>E2</code> intenta coger en el otro orden.</li>
+</ol>
 <p><img alt="" src="../p2/p2_ex01.png" /></p>
-<p>Se cumplan las cuatro condiciones, por lo que puede ocurrir un interbloqueo.</p>
+<p>Se cumplen las cuatro condiciones, por lo que puede ocurrir un interbloqueo.</p>
 </details>
 <ul>
-<li>(b) (2,5 puntos) A continuaci"n, se muestra una posible soluci"n al problema de los lectores/escritores. Analice este c"digo y justifique si es correcto. En caso contrario, indique los cambios necesarios para que este c"digo fuera una soluci"n correcta.</li>
+<li>(b) (2,5 puntos) A continuación, se muestra una posible solución al problema de los lectores/escritores. Analice este código y justifique si es correcto. En caso contrario, indique los cambios necesarios para que este código fuera una solución correcta.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorLE2</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">nLectores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -2960,11 +2962,13 @@
 </code></pre></div>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>El c"digo es incorrecto. Hay que hacer los siguientes cambios:
-    - Los atributos tienen que ser privados
-    - Los m#todos wait, tienen que estar en un bloque while
-    - La declaraci"n nLectores en el m#todo empiezaLeer no tiene sentido
-    - En el m#todo terminaLeer s"lo hay asignar true a bloqueoLector cuando no hay lectores.</p>
+<p>El código es incorrecto. Hay que hacer los siguientes cambios:</p>
+<ul>
+<li>Los atributos tienen que ser privados;</li>
+<li>Los métodos <code>wait</code>, tienen que estar en un bloque <code>while</code>;</li>
+<li>La declaración <code>nLectores</code> en el método <code>empiezaLeer</code> no tiene sentido;</li>
+<li>En el método <code>terminaLeer</code> sólo hay que asignar <code>true</code> a <code>bloqueoLector</code> cuando no hay lectores.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GestorLE</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoEscritor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">bloqueoLector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>

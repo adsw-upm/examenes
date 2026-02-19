@@ -2874,9 +2874,9 @@
 
   <h1>P2r ex02</h1>
 
-<p>La pr!ctica 4 inclu<span class="arithmatex">\(a un conjunto de trenes que se mov\)</span>an de forma concurrente en su l$nea de metro, con bastantes simplificaciones respecto a la realidad. Una de ellas es que no se controlaba que varios trenes puedan estar cargando/descargando pasajeros de forma simult!nea en un mismo anden.</p>
-<p>Se ha modificado el m#todo irA (el m#todo que simulaba la entrada/salida en estaciones y en los tramos de l<span class="arithmatex">\(nea) para evitar que m!s de un tren pueda estar ocupando un and#n de la misma l\)</span>nea y sentido, al mismo tiempo. Antes de entrar en la estaci"n el tren pide permiso para entrar, indicando por qu# l<span class="arithmatex">\(nea se mueve y su sentido. En el metro de Madrid, cada l\)</span>nea de metro tiene un and#n en cada sentido en todas las estaciones por las que pasa, que no comparte con ninguna otra l<span class="arithmatex">\(nea. El c"digo del m#todo irA queda de la siguiente forma (con simplificaciones). Se han insertado 2 l\)</span>neas de c"digo (8 y 11): una para solicitar la entrada en la estaci"n antes de entrar y otra para indicar que un tren abandona el and#n de la estaci"n.</p>
-<p>El atributo estacion de la clase Tren representa la %ltima estaci"n a la que ha llegado el tren. Para que este c"digo funcione, la clase Estaci"n debe implementar los m#todos permisoEntrada y salidaEstacion. Se puede modificar el constructor de Estaci"n si fuera necesario.</p>
+<p>La práctica 4 incluía un conjunto de trenes que se movían de forma concurrente en su línea de metro, con bastantes simplificaciones respecto a la realidad. Una de ellas es que no se controlaba que varios trenes puedan estar cargando/descargando pasajeros de forma simultánea en un mismo anden.</p>
+<p>Se ha modificado el método <code>irA</code> (el metodo que simulaba la entrada/salida en estaciones y en los tramos de línea) para evitar que m!s de un tren pueda estar ocupando un andén de la misma línea y sentido, al mismo tiempo. Antes de entrar en la estación el tren pide permiso para entrar, indicando por qué línea se mueve y su sentido. En el metro de Madrid, cada línea de metro tiene un andén en cada sentido en todas las estaciones por las que pasa, que no comparte con ninguna otra línea. El código del método <code>irA</code> queda de la siguiente forma (con simplificaciones). Se han insertado 2 líneas de código (8 y 11): una para solicitar la entrada en la estación antes de entrar y otra para indicar que un tren abandona el andén de la estación.</p>
+<p>El atributo <code>estacion</code> de la clase <code>Tren</code> representa la última estación a la que ha llegado el tren. Para que este código funcione, la clase Estación debe implementar los métodos <code>permisoEntrada</code> y <code>salidaEstacion</code>. Se puede modificar el constructor de <code>Estación</code> si fuera necesario.</p>
 <div class="highlight"><pre><span></span><code><span class="mo">01</span><span class="w">  </span><span class="n">TrayectoLineaMetro</span><span class="w"> </span><span class="n">tr</span><span class="o">=</span><span class="n">linea</span><span class="p">.</span><span class="na">getSecuenciaMovimientos</span><span class="p">(</span><span class="n">origen</span><span class="p">,</span><span class="n">destino</span><span class="p">,</span><span class="n">ida</span><span class="p">);</span>
 <span class="mo">02</span><span class="w">  </span><span class="n">pasos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">estacion</span><span class="p">);</span>
 <span class="mo">03</span><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">tr</span><span class="p">.</span><span class="na">finMovimiento</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -2892,8 +2892,9 @@
 <span class="mi">13</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pasos</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">destino</span><span class="p">))</span>
 <span class="mi">14</span><span class="w">     </span><span class="n">pasos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">destino</span><span class="p">);</span>
 </code></pre></div>
+<p>Asumiendo que los parámetros que se pasan al invocar un método son correctos, es decir, no es necesario validarlos, y no hay ninguna restricción en la estructura de datos que se use en una solución. Se pide:</p>
 <ul>
-<li>(a) (1 Punto) Incluir atributos en la clase Estacion que permitan saber los andenes de las l$neas que pasan por esa estaci"n que est!n ocupados. Si es necesario modificar el constructor para inicializar esos atributos, se debe hacer en esta sub-pregunta.</li>
+<li>(a) (1 Punto) Incluir atributos en la clase <code>Estacion</code> que permitan saber los andenes de las líneas que pasan por esa estación que están ocupados. Si es necesario modificar el constructor para inicializar esos atributos, se debe hacer en esta sub-pregunta.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">// Constructor: id: identificador de estación, posición de la estación en el mapa,</span>
 <span class="c1">// tiempo de espera en los andenes, nombre de la estación</span>
@@ -2907,7 +2908,7 @@
 </code></pre></div>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Con esta soluci"n hacemos lo que nos piden en el ejercicio: no mas de un tren est! descargando en un anden al mismo tiempo.</p>
+<p>Con esta solución hacemos lo que nos piden en el ejercicio: no mas de un tren está descargando en un anden al mismo tiempo.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="o">&gt;[]</span><span class="w"> </span><span class="n">andenes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Set</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
 
 <span class="kd">public</span><span class="w"> </span><span class="nf">EstacionS</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">posicion</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2942,11 +2943,11 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2 puntos) Implementar el m#todo permisoEntrada (incluida la cabecera) para que no m!s de un tren pueda estar ocupando un and#n en la estaci"n.</li>
+<li>(b) (2 puntos) Implementar el método <code>permisoEntrada</code> (incluida la cabecera) para que no más de un tren pueda estar ocupando un andén en la estación.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Con esta soluci"n vamos un poco mas alla de lo que nos piden en el ejercicio: no solo evitamos que varios trenes est#n descargando en un and#n, sino que adem!s los trenes no podr!n adelantarse entre ellos, cuando llegan a una estaci"n para descargar.</p>
+<p>Con esta solución vamos un poco mas alla de lo que nos piden en el ejercicio: no solo evitamos que varios trenes están descargando en un andén, sino que adem!s los trenes no podrán adelantarse entre ellos, cuando llegan a una estación para descargar.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">LineaMetro</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;&gt;[]</span><span class="w"> </span><span class="n">andenes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Map</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
 
 <span class="kd">public</span><span class="w"> </span><span class="nf">Estacion</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">posicion</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2987,13 +2988,12 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2 puntos) Implementar el m#todo salidaEstacion (incluida la cabecera) que libera el and#n y permite a otro tren que est! esperando ocupar el and#n.</li>
+<li>(c) (2 puntos) Implementar el método <code>salidaEstacion</code> (incluida la cabecera) que libera el andén y permite a otro tren que está esperando ocupar el andén.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <p>Vacío</p>
 </details>
-<p>Nota: Los par!metros que se pasan al invocar un m#todo son correctos. No es necesario validarlos. No hay ninguna restricci"n en la estructura de datos que se use en una soluci"n.</p>
 
 
 
