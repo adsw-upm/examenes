@@ -2874,7 +2874,7 @@
 
   <h1>Extra ex02</h1>
 
-<p>En este problema se trabajará con una tabla hash que almacena los nombres de los alumnos de un curso y sus respectivas notas. La tabla hash funciona con direccionamiento abierto. La resolución de las colisiones se realizará mediante el método de la exploración cuadrática. Esto significa que si al insertar un elemento en la tabla hash se produce una colisión, se elegirá una nueva posición mediante la fórmula (posicion + i^2) % tabla.length, donde i es el número de intentos de reubicación en la tabla y la operación % es el módulo que devuelve el resto de la división.</p>
+<p>En este problema se trabajará con una tabla hash que almacena los nombres de los alumnos de un curso y sus respectivas notas. La tabla hash funciona con direccionamiento abierto. La resolución de las colisiones se realizará mediante el método de la exploración cuadrática. Esto significa que si al insertar un elemento en la tabla hash se produce una colisión, se elegirá una nueva posición mediante la fórmula <span class="arithmatex">\((posicion\)</span> <span class="arithmatex">\(+ i^2)\%\)</span><code>tabla.length</code>, donde <span class="arithmatex">\(i\)</span> es el número de intentos de reubicación en la tabla y la operación <span class="arithmatex">\(\%\)</span> es el módulo que devuelve el resto de la división.</p>
 <p>Se proporciona el siguiente código que realiza la acción de insertar un elemento en la tabla hash:</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm"> * El método insertar trata de añadir un elemento a la tabla hash.</span>
@@ -2907,8 +2907,10 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><img alt="" src="../extra/extra_ex02-1.png" /></p>
-<p>Se pide:
-- (a) (1 punto) Suponga que se tiene una tabla hash como la descrita de tamaño 7. Inserte los siguientes elementos en la tabla hash en el orden que se presentan. Muestre el estado de la tabla después de cada inserción.</p>
+<p>Se pide:</p>
+<ul>
+<li>(a) (1 punto) Suponga que se tiene una tabla hash como la descrita de tamaño 7. Inserte los siguientes elementos en la tabla hash en el orden que se presentan. Muestre el estado de la tabla después de cada inserción.</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -2944,54 +2946,30 @@
 </table>
 <details class="note">
 <summary>Mostrar solución</summary>
-<ul>
-<li>
 <ol>
-<li>Alejandro se coloca sin colisiones en la posición 2</li>
+<li>Alejandro se coloca sin colisiones en la posición <code>2</code>;</li>
+<li>David se coloca sin colisiones en la posición <code>5</code>;</li>
+<li>Diego colisiona en la posición <code>5</code>, la siguiente prueba <span class="arithmatex">\((5 + 1*1)\% 7 = 6\)</span> es válida;</li>
+<li>Fernando se coloca sin colisiones en la posición <code>1</code>;</li>
+<li>Javier colisiona en la posición <code>6</code>, la siguiente prueba <span class="arithmatex">\((6 + 1*1) \% 7 = 0\)</span> es válida;</li>
+<li>Miguel colisiona en la posición <code>6</code>, la siguiente prueba <span class="arithmatex">\((6 + 1*1) \% 7 = 0\)</span> también colisiona, la siguiente prueba <span class="arithmatex">\((6 + 2*2) \% 7 = 3\)</span> es válida.</li>
 </ol>
-</li>
-<li>
-<ol>
-<li>David se coloca sin colisiones en la posición 5</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>Diego colisiona en la posición 5, la siguiente prueba (5 + 1*1) % 7 = 6 es válida</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>Fernando se coloca sin colisiones en la posición 1</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>Javier colisiona en la posición 6, la siguiente prueba (6 + 1*1) % 7 = 0 es válida</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>Miguel colisiona en la posición 6, la siguiente prueba (6 + 1<em>1) % 7 = 0 también colisiona, la siguiente prueba (6 + 2</em>2) % 7 = 3 es válida</li>
-</ol>
-</li>
-</ul>
 <p><img alt="" src="../extra/extra_ex02-2.png" /></p>
 </details>
 <ul>
 <li>(b) (1 punto) Razone la complejidad algorítmica de la operación de inserción en la tabla hash descrita. Suponga los casos en los que el número de elementos que contiene la tabla es:<ul>
-<li>mucho menor que el tamaño de la tabla.</li>
-<li>similar al tamaño de la tabla.</li>
+<li>Mucho menor que el tamaño de la tabla;</li>
+<li>Similar al tamaño de la tabla.</li>
 </ul>
 </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Si el número de elementos que contiene la tabla es mucho menor que el tamaño de la tabla, la complejidad algorítmica es O(1) ya que se inserta en la primera posición disponible o tras pocas pruebas.</p>
-<p>Si el número de elementos que contiene la tabla es similar al tamaño de la tabla, la complejidad algorítmica es O(n) ya que se debe recorrer la tabla completa para encontrar una posición disponible.</p>
+<p>Si el número de elementos que contiene la tabla es mucho menor que el tamaño de la tabla, la complejidad algorítmica es <span class="arithmatex">\(O(1)\)</span> ya que se inserta en la primera posición disponible o tras pocas pruebas.</p>
+<p>Si el número de elementos que contiene la tabla es similar al tamaño de la tabla, la complejidad algorítmica es <span class="arithmatex">\(O(n)\)</span> ya que se debe recorrer la tabla completa para encontrar una posición disponible.</p>
 </details>
 <ul>
-<li>(c) (2 puntos) Implemente el método buscar(String nombre) que recibe el nombre de un alumno y retorna el objeto ElementoDeTabla correspondiente o null si no lo encuentra.</li>
+<li>(c) (2 puntos) Implemente el método <code>buscar(String nombre)</code> que recibe el nombre de un alumno y retorna el objeto <code>ElementoDeTabla</code> correspondiente o <code>null</code> si no lo encuentra.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3016,7 +2994,7 @@
 </details>
 <p>Suponga ahora que debido a la cantidad de elementos que se quieren almacenar, se decide cambiar el tipo de tabla hash a una tabla con direccionamiento cerrado. En este caso los elementos que colisionen se almacenarán en una lista que se encuentra en la posición que generó la colisión. Puede asumir que la tabla se ha inicializado con listas vacías en cada posición.</p>
 <ul>
-<li>(d) (2 puntos) Implemente el método insertar(ElementoDeTabla alumno) que inserta un nuevo elemento en la tabla hash con direccionamiento cerrado. En caso de colisión, el nuevo elemento se debe agregar a la lista que se encuentra en la posición que generó la colisión. Si ya existe un elemento con el mismo nombre, debe reemplazar su valor.</li>
+<li>(d) (2 puntos) Implemente el método <code>insertar(ElementoDeTabla alumno)</code> que inserta un nuevo elemento en la tabla hash con direccionamiento cerrado. En caso de colisión, el nuevo elemento se debe agregar a la lista que se encuentra en la posición que generó la colisión. Si ya existe un elemento con el mismo nombre, debe reemplazar su valor.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>

@@ -3090,7 +3090,7 @@
 <h1 id="examen-2024-practicas">Examen 2024 — Prácticas</h1>
 <h2 id="problema-1">Problema 1</h2>
 <ul>
-<li>(a) (6 puntos) En relación al método getPuntuacionMediana, se quiere modificar con la siguiente signatura:</li>
+<li>(a) (6 puntos) En relación al método <code>getPuntuacionMediana</code>, se quiere modificar con la siguiente signatura:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm">* Este método devuelve la mediana en el rango especificado en la lista</span>
@@ -3101,9 +3101,11 @@
 <span class="cm">*/</span>
 <span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPuntuacionMediana</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">){</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.}</span>
 </code></pre></div>
-<p>Notas:
-    - Min y max se refieren a índices en la lista que se usa.
-    - Suponga que los parámetros min y max que se reciben son válidos.</p>
+<p>Notas:</p>
+<ul>
+<li><code>min</code> y <code>max</code> se refieren a índices en la lista que se usa;</li>
+<li>Suponga que los parámetros <code>min</code> y <code>max</code> que se reciben son válidos.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPuntuacionMediana</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3123,7 +3125,10 @@
 </code></pre></div>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>Suponga que se tiene una variable tableroPruebas que contiene un tablero con las piezas dispuestas como en la imagen siguiente. Diseñe una prueba que compruebe que se calculan correctamente las puntuaciones de cada uno de los bandos.</p>
+<p>Suponga que se tiene una variable <code>tableroPruebas</code> que contiene un tablero con las piezas dispuestas como en la imagen siguiente. </p>
+<ul>
+<li>(a) (4 puntos) Diseñe una prueba que compruebe que se calculan correctamente las puntuaciones de cada uno de los bandos.</li>
+</ul>
 <p><img alt="" src="pract_ex01.png" /></p>
 <table>
 <thead>
@@ -3170,7 +3175,7 @@
 </details>
 <h2 id="problema-3">Problema 3</h2>
 <ul>
-<li>(a) (6 puntos) Desarrolle el método getPorcentajeTablerosConVentaja(Bando bando) en la clase GestorTableros. Este método debe devolver un número decimal que represente el tanto por ciento de tableros en que el bando que se pasa como parámetro tiene una puntuación superior al bando contrario.
+<li>(a) (6 puntos) Desarrolle el método <code>getPorcentajeTablerosConVentaja(Bando bando)</code> en la clase <code>GestorTableros</code>. Este método debe devolver un número decimal que represente el tanto por ciento de tableros en que el bando que se pasa como parámetro tiene una puntuación superior al bando contrario.
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">getPorcentajeTablerosConVentaja</span><span class="p">(</span><span class="n">Bando</span><span class="w"> </span><span class="n">bando</span><span class="p">)</span>
 </code></pre></div></li>
 </ul>
@@ -3201,7 +3206,7 @@
 </details>
 <h2 id="problema-4">Problema 4</h2>
 <ul>
-<li>(a) (4 puntos) Modifique el método getTablerosConPuntuacionMinima para convertirlo en getTablerosConPuntuacionMaxima, que devuelva todos los tableros que tengan una puntuación igual o inferior a la que se pase como parámetro.</li>
+<li>(a) (4 puntos) Modifique el método <code>getTablerosConPuntuacionMinima</code> para convertirlo en <code>getTablerosConPuntuacionMaxima</code>, que devuelva todos los tableros que tengan una puntuación igual o inferior a la que se pase como parámetro.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Tablero</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getTablerosConPuntuacionMaxima</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">puntuacion</span><span class="p">)</span>
 </code></pre></div>
@@ -3220,7 +3225,7 @@
 </code></pre></div>
 </details>
 <h2 id="problema-5">Problema 5</h2>
-<p>En la práctica 2 empleábamos diferentes implementaciones de diccionarios para localizar la partida de un cierto tablero. En este ejercicio vamos a emplear la siguiente implementación de la clase Tablero y las siguientes pruebas JUnit. La implementación de Tablero será igual que teníamos en el enunciado o solución de la práctica, salvo lo que incluimos a continuación:</p>
+<p>En la práctica 2 empleábamos diferentes implementaciones de diccionarios para localizar la partida de un cierto tablero. En este ejercicio vamos a emplear la siguiente implementación de la clase <code>Tablero</code> y las siguientes pruebas JUnit. La implementación de <code>Tablero</code> será igual que teníamos en el enunciado o solución de la práctica, salvo lo que incluimos a continuación:</p>
 <div class="highlight"><pre><span></span><code><span class="mi">1</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Tablero</span><span class="w"> </span><span class="p">{</span>
 <span class="mi">2</span><span class="w">      </span><span class="c1">// Resto es como enunciado/solución práctica</span>
 <span class="mi">3</span><span class="w">      </span><span class="nd">@Override</span>
@@ -3274,28 +3279,30 @@
 <span class="mi">30</span><span class="w">     </span><span class="p">}</span>
 <span class="mi">31</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p>Las pruebas que incluimos utilizan dos ficheros:
-    - t1.txt: es un fichero con 5 partidas y cada partida 3 tableros. Los 15 tableros tienen todos representaciones de fichas deferentes.
-    - t2.txt: es un fichero con 5 partidas y cada partida 3 tableros. Pero todas las partidas tienen un tablero con una representación de fichas iguales a otro tablero de otra partida.</p>
+<p>Las pruebas que incluimos utilizan dos ficheros:</p>
+<ul>
+<li>t1.txt: es un fichero con 5 partidas y cada partida 3 tableros. Los 15 tableros tienen todos representaciones de fichas deferentes;</li>
+<li>t2.txt: es un fichero con 5 partidas y cada partida 3 tableros. Pero todas las partidas tienen un tablero con una representación de fichas iguales a otro tablero de otra partida.</li>
+</ul>
 <p>Se pide:</p>
 <ul>
-<li>(a) (4 puntos) Con estas implementaciones de pruebas y Tablero, cuales de las pruebas fallan o tienen errores y cuales son pruebas correctas. Si la respuesta para alguna prueba es que falla o tiene error, justificar el motivo del fallo.</li>
+<li>(a) (4 puntos) Con estas implementaciones de pruebas y <code>Tablero</code>, cuales de las pruebas fallan o tienen errores y cuales son pruebas correctas. Si la respuesta para alguna prueba es que falla o tiene error, justificar el motivo del fallo.</li>
 </ul>
 <details class="note">
 <summary>Mostrar Solución</summary>
 <p>Las dos pruebas comprueban que un tablero no remplaza a otro tablero en el mapa, y como todos los tablaros tienen el mismo hashCode, una clave remplaza a otro cuando dos claves son iguales. Las claves son iguales cuando las representaciones son iguales.</p>
-<p>t1.txt no tiene tableros con representaciones iguales. La prueba test1 no falla</p>
-<p>t2.txt tiene tableros con representaciones iguales. La prueba test2 falla.</p>
+<p>t1.txt no tiene tableros con representaciones iguales. La prueba <code>test1</code> no falla.</p>
+<p>t2.txt tiene tableros con representaciones iguales. La prueba <code>test2</code> falla.</p>
 </details>
 <ul>
 <li>(b) (6 puntos) Cambiamos la línea 16 de las pruebas por la siguiente línea:
 <div class="highlight"><pre><span></span><code><span class="k">new</span><span class="w"> </span><span class="n">TreeMap</span><span class="o">&lt;</span><span class="n">Tablero</span><span class="p">,</span><span class="n">Partida</span><span class="o">&gt;</span><span class="p">();</span>
 </code></pre></div>
-Cambiar la clase Tablero para que las pruebas test1 y test2 funcionen correctamente. Se debe incluir cualquier cambio incluido en la solución de la práctica, que no estuviese incluido en el enunciado que incluía inicialmente la práctica, y que sean necesarios para que las dos pruebas funcionen.</li>
+Cambiar la clase <code>Tablero</code> para que las pruebas <code>test1</code> y <code>test2</code> funcionen correctamente. Se debe incluir cualquier cambio incluido en la solución de la práctica, que no estuviese incluido en el enunciado que incluía inicialmente la práctica, y que sean necesarios para que las dos pruebas funcionen.</li>
 </ul>
 <details class="note">
 <summary>Mostrar Solución</summary>
-<p>Para utilizar TreeMap Tablero tiene que implementar Comparable<Tablero> y los Tableros no pueden ser iguales cuando comparamos dos tableros. Actualizamos Tablero de la siguiente forma:
+<p>Para utilizar <code>TreeMap Tablero</code> tiene que implementar <code>Comparable&lt;Tablero&gt;</code> y los tableros no pueden ser iguales cuando comparamos dos tableros. Actualizamos <code>Tablero</code> de la siguiente forma:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Tablero</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Tablero</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ID</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="o">=</span><span class="n">ID</span><span class="o">++</span><span class="p">;</span>

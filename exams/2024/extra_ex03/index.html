@@ -2875,35 +2875,43 @@
   <h1>Extra ex03</h1>
 
 <p>La pregunta consiste en simular la gestión de una gasolinera. La gasolinera tiene una cantidad limitada de surtidores y depósitos de diferentes tipos de combustibles (Gasolina y Diesel). Los vehículos y los camiones cisterna representan hebras que interactúan con la gasolinera y una taquilla de cobro/pago.</p>
-<p>Monitor Gasolinera:
-    - Controla el acceso a los surtidores y depósitos de combustible.
-    - Se inicializa con un número de surtidores. Los depósitos se inicializan con 100 que será el tamaño máximo.
-    - Permite la entrada de vehículos si hay surtidores disponibles.
-    - Permite a los vehículos repostar si hay suficiente combustible en el depósito e inmediatamente después el vehículo sale de la gasolinera.
-    - Permite a un camión cisterna rellenar un depósito si el nivel está por debajo del 10%, pero solo puede haber un camión repostando.</p>
-<p>Monitor Taquilla:
-    - Controla los pagos y cobros de la gasolinera y solo tiene una ventanilla para atender.
-    - Permite que un vehículo pague por el combustible repostado y permite que un camión cisterna cobre por el combustible rellenado. Actualizando el dinero en caja.</p>
-<p>Comportamiento de la hebra Vehículo:
-    - Cada vehículo tiene un nombre y un tipo de combustible que usa. Un vehículo:
-        - Entra en la gasolinera (si hay surtidores disponibles).
-        - Reposta una cantidad específica de combustible y sale inmediatamente después.
-        - Paga en la taquilla indicando el dinero a pagar.</p>
-<p>Comportamiento de la hebra Camión Cisterna (no es un Vehículo):
-    - Cada camión cisterna tiene un nombre y un tipo de combustible que puede rellenar.
-    - Un camión cisterna:
-        - Rellena un depósito de la gasolinera (si el nivel de combustible está por debajo del 10%).
-        - Cobra en la taquilla indicando el dinero que debe cobrar.</p>
+<p>Monitor <code>Gasolinera</code>:</p>
+<ul>
+<li>Controla el acceso a los surtidores y depósitos de combustible;</li>
+<li>Se inicializa con un número de surtidores. Los depósitos se inicializan con 100 que será el tamaño máximo;</li>
+<li>Permite la entrada de vehículos si hay surtidores disponibles;</li>
+<li>Permite a los vehículos repostar si hay suficiente combustible en el depósito e inmediatamente después el vehículo sale de la gasolinera;</li>
+<li>Permite a un camión cisterna rellenar un depósito si el nivel está por debajo del 10%, pero solo puede haber un camión repostando.</li>
+</ul>
+<p>Monitor <code>Taquilla</code>:</p>
+<ul>
+<li>Controla los pagos y cobros de la gasolinera y solo tiene una ventanilla para atender;</li>
+<li>Permite que un vehículo pague por el combustible repostado y permite que un camión cisterna cobre por el combustible rellenado. Actualizando el dinero en caja.</li>
+</ul>
+<p>Comportamiento de la hebra <code>Vehiculo</code>:</p>
+<ul>
+<li>Cada vehículo tiene un nombre y un tipo de combustible que usa. Un vehículo:<ul>
+<li>Entra en la gasolinera (si hay surtidores disponibles);</li>
+<li>Reposta una cantidad específica de combustible y sale inmediatamente después;</li>
+<li>Paga en la taquilla indicando el dinero a pagar.</li>
+</ul>
+</li>
+</ul>
+<p>Comportamiento de la hebra <code>CamionCisterna</code> (no es un <code>Vehiculo</code>):
+- Cada camión cisterna tiene un nombre y un tipo de combustible que puede rellenar;
+- Un camión cisterna:
+    - Rellena un depósito de la gasolinera (si el nivel de combustible está por debajo del 10%);
+    - Cobra en la taquilla indicando el dinero que debe cobrar.</p>
 <p>Diagrama de clases:</p>
 <p><img alt="" src="../extra/extra_ex03.png" /></p>
 <p>Se pide:</p>
-<p>Desarrolla el código del monitor Gasolinera:
+<p>Desarrolla el código del monitor <code>Gasolinera</code>:
 - (a) (1 punto) Implementa el método
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrar</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span>
 </code></pre></div></p>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>FALTA.</p>
+<p>N/A</p>
 </details>
 <ul>
 <li>(b) (1,5 puntos) Implementa el método
@@ -2912,7 +2920,7 @@
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>FALTA.</p>
+<p>N/A</p>
 </details>
 <ul>
 <li>(c) (1,5 puntos) Implementa el método 
@@ -2921,9 +2929,9 @@
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>FALTA.</p>
+<p>N/A</p>
 </details>
-<p>Desarrolla el código del monitor Taquilla:</p>
+<p>Desarrolla el código del monitor <code>Taquilla</code>:</p>
 <ul>
 <li>(d) (0,5 puntos) Implementa el método
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">pagar</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cantidad</span><span class="p">,</span><span class="w"> </span><span class="n">Combustible</span><span class="w"> </span><span class="n">tipo</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span>
@@ -2931,7 +2939,7 @@
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>FALTA.</p>
+<p>N/A</p>
 </details>
 <ul>
 <li>(e) (0,5 puntos) Implementa el método
@@ -2940,7 +2948,7 @@
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>FALTA.</p>
+<p>N/A</p>
 </details>
 
 

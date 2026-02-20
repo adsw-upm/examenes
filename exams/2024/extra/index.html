@@ -3067,16 +3067,16 @@
 
 <h1 id="examen-2024-extraordinario">Examen 2024 — Extraordinario</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>Considere la clase ArrayDoble, con los atributos descritos en el diagrama de debajo. El atributo array es un array de enteros de dimensión n. Los elementos están separados en dos partes. Los i primeros elementos de este array son números impares ordenados de menor a mayor. Los últimos n-i elementos son números pares ordenados de menor a mayor. Puede haber posiciones vacías, cuyo valor será null, pero solo al final de cada una de las partes (par e impar). También puede haber valores repetidos. A continuación, se puede ver un ejemplo del contenido de este array:</p>
+<p>Considere la clase <code>ArrayDoble</code>, con los atributos descritos en el diagrama de debajo. El atributo <code>array</code> es un array de enteros de dimensión <code>n</code>. Los elementos están separados en dos partes. Los <code>i</code> primeros elementos de este array son números impares ordenados de menor a mayor. Los últimos <code>n-i</code> elementos son números pares ordenados de menor a mayor. Puede haber posiciones vacías, cuyo valor será <code>null</code>, pero solo al final de cada una de las partes (par e impar). También puede haber valores repetidos. A continuación, se puede ver un ejemplo del contenido de este array:</p>
 <p><img alt="" src="extra_ex01-1.png" /></p>
 <p><img alt="" src="extra_ex01-2.png" /></p>
 <p>Se pide, considerando como parcialmente válidas las implementaciones que apliquen simplificaciones y no cumplan todos los requisitos (p.e., que no consideren elementos duplicados):</p>
 <ul>
-<li>(a) (1.5 puntos) Implemente el método buscar. Este método debe devolver true cuando el valor buscado se encuentre en el array, y false en el resto de los casos. Su complejidad debe ser menor que O(n). Justifique su elección de algoritmo. Puede crear tantos métodos auxiliares como considere adecuados.</li>
+<li>(a) (1.5 puntos) Implemente el método <code>buscar</code>. Este método debe devolver <code>true</code> cuando el valor buscado se encuentre en el array, y <code>false</code> en el resto de los casos. Su complejidad debe ser menor que <span class="arithmatex">\(O(n)\)</span>. Justifique su elección de algoritmo. Puede crear tantos métodos auxiliares como considere adecuados.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>El método buscar aplica búsqueda binaria sobre la parte adecuada del array. En el caso peor, su complejidad será O(log(n)).
+<p>El método buscar aplica búsqueda binaria sobre la parte adecuada del array. En el caso peor, su complejidad será <span class="arithmatex">\(O(log(n))\)</span>.
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">posicion</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">valor</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
@@ -3120,11 +3120,11 @@
 </code></pre></div></p>
 </details>
 <ul>
-<li>(b) (2.5 puntos) Implemente el método eliminar. Tras ejecutar este método, ningún elemento del array debe coincidir con ese valor, y las condiciones del enunciado sobre el orden de los valores y la posición de los valores null deben seguir cumpliéndose.</li>
+<li>(b) (2.5 puntos) Implemente el método <code>eliminar</code>. Tras ejecutar este método, ningún elemento del array debe coincidir con ese valor, y las condiciones del enunciado sobre el orden de los valores y la posición de los valores <code>null</code> deben seguir cumpliéndose.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Hay al menos dos alternativas a la hora de eliminar un elemento impar. Pueden desplazarse todos los elementos a la derecha del borrado o sólo desplazarse los impares. En el primer caso, deberá decrementarse el valor de i, en el segundo el valor de i se mantiene.</p>
+<p>Hay al menos dos alternativas a la hora de eliminar un elemento impar. Pueden desplazarse todos los elementos a la derecha del borrado o sólo desplazarse los impares. En el primer caso, deberá decrementarse el valor de <code>i</code>, en el segundo el valor de <code>i</code> se mantiene.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">eliminar</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
@@ -3151,7 +3151,7 @@
 </code></pre></div>
 </details>
 <h2 id="problema-2">Problema 2</h2>
-<p>En este problema se trabajará con una tabla hash que almacena los nombres de los alumnos de un curso y sus respectivas notas. La tabla hash funciona con direccionamiento abierto. La resolución de las colisiones se realizará mediante el método de la exploración cuadrática. Esto significa que si al insertar un elemento en la tabla hash se produce una colisión, se elegirá una nueva posición mediante la fórmula (posicion + i^2) % tabla.length, donde i es el número de intentos de reubicación en la tabla y la operación % es el módulo que devuelve el resto de la división.</p>
+<p>En este problema se trabajará con una tabla hash que almacena los nombres de los alumnos de un curso y sus respectivas notas. La tabla hash funciona con direccionamiento abierto. La resolución de las colisiones se realizará mediante el método de la exploración cuadrática. Esto significa que si al insertar un elemento en la tabla hash se produce una colisión, se elegirá una nueva posición mediante la fórmula <span class="arithmatex">\((posicion\)</span> <span class="arithmatex">\(+ i^2)\%\)</span><code>tabla.length</code>, donde <span class="arithmatex">\(i\)</span> es el número de intentos de reubicación en la tabla y la operación <span class="arithmatex">\(\%\)</span> es el módulo que devuelve el resto de la división.</p>
 <p>Se proporciona el siguiente código que realiza la acción de insertar un elemento en la tabla hash:</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm"> * El método insertar trata de añadir un elemento a la tabla hash.</span>
@@ -3184,8 +3184,10 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><img alt="" src="extra_ex02-1.png" /></p>
-<p>Se pide:
-- (a) (1 punto) Suponga que se tiene una tabla hash como la descrita de tamaño 7. Inserte los siguientes elementos en la tabla hash en el orden que se presentan. Muestre el estado de la tabla después de cada inserción.</p>
+<p>Se pide:</p>
+<ul>
+<li>(a) (1 punto) Suponga que se tiene una tabla hash como la descrita de tamaño 7. Inserte los siguientes elementos en la tabla hash en el orden que se presentan. Muestre el estado de la tabla después de cada inserción.</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -3221,54 +3223,30 @@
 </table>
 <details class="note">
 <summary>Mostrar solución</summary>
-<ul>
-<li>
 <ol>
-<li>Alejandro se coloca sin colisiones en la posición 2</li>
+<li>Alejandro se coloca sin colisiones en la posición <code>2</code>;</li>
+<li>David se coloca sin colisiones en la posición <code>5</code>;</li>
+<li>Diego colisiona en la posición <code>5</code>, la siguiente prueba <span class="arithmatex">\((5 + 1*1)\% 7 = 6\)</span> es válida;</li>
+<li>Fernando se coloca sin colisiones en la posición <code>1</code>;</li>
+<li>Javier colisiona en la posición <code>6</code>, la siguiente prueba <span class="arithmatex">\((6 + 1*1) \% 7 = 0\)</span> es válida;</li>
+<li>Miguel colisiona en la posición <code>6</code>, la siguiente prueba <span class="arithmatex">\((6 + 1*1) \% 7 = 0\)</span> también colisiona, la siguiente prueba <span class="arithmatex">\((6 + 2*2) \% 7 = 3\)</span> es válida.</li>
 </ol>
-</li>
-<li>
-<ol>
-<li>David se coloca sin colisiones en la posición 5</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>Diego colisiona en la posición 5, la siguiente prueba (5 + 1*1) % 7 = 6 es válida</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>Fernando se coloca sin colisiones en la posición 1</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>Javier colisiona en la posición 6, la siguiente prueba (6 + 1*1) % 7 = 0 es válida</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>Miguel colisiona en la posición 6, la siguiente prueba (6 + 1<em>1) % 7 = 0 también colisiona, la siguiente prueba (6 + 2</em>2) % 7 = 3 es válida</li>
-</ol>
-</li>
-</ul>
 <p><img alt="" src="extra_ex02-2.png" /></p>
 </details>
 <ul>
 <li>(b) (1 punto) Razone la complejidad algorítmica de la operación de inserción en la tabla hash descrita. Suponga los casos en los que el número de elementos que contiene la tabla es:<ul>
-<li>mucho menor que el tamaño de la tabla.</li>
-<li>similar al tamaño de la tabla.</li>
+<li>Mucho menor que el tamaño de la tabla;</li>
+<li>Similar al tamaño de la tabla.</li>
 </ul>
 </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Si el número de elementos que contiene la tabla es mucho menor que el tamaño de la tabla, la complejidad algorítmica es O(1) ya que se inserta en la primera posición disponible o tras pocas pruebas.</p>
-<p>Si el número de elementos que contiene la tabla es similar al tamaño de la tabla, la complejidad algorítmica es O(n) ya que se debe recorrer la tabla completa para encontrar una posición disponible.</p>
+<p>Si el número de elementos que contiene la tabla es mucho menor que el tamaño de la tabla, la complejidad algorítmica es <span class="arithmatex">\(O(1)\)</span> ya que se inserta en la primera posición disponible o tras pocas pruebas.</p>
+<p>Si el número de elementos que contiene la tabla es similar al tamaño de la tabla, la complejidad algorítmica es <span class="arithmatex">\(O(n)\)</span> ya que se debe recorrer la tabla completa para encontrar una posición disponible.</p>
 </details>
 <ul>
-<li>(c) (2 puntos) Implemente el método buscar(String nombre) que recibe el nombre de un alumno y retorna el objeto ElementoDeTabla correspondiente o null si no lo encuentra.</li>
+<li>(c) (2 puntos) Implemente el método <code>buscar(String nombre)</code> que recibe el nombre de un alumno y retorna el objeto <code>ElementoDeTabla</code> correspondiente o <code>null</code> si no lo encuentra.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3293,7 +3271,7 @@
 </details>
 <p>Suponga ahora que debido a la cantidad de elementos que se quieren almacenar, se decide cambiar el tipo de tabla hash a una tabla con direccionamiento cerrado. En este caso los elementos que colisionen se almacenarán en una lista que se encuentra en la posición que generó la colisión. Puede asumir que la tabla se ha inicializado con listas vacías en cada posición.</p>
 <ul>
-<li>(d) (2 puntos) Implemente el método insertar(ElementoDeTabla alumno) que inserta un nuevo elemento en la tabla hash con direccionamiento cerrado. En caso de colisión, el nuevo elemento se debe agregar a la lista que se encuentra en la posición que generó la colisión. Si ya existe un elemento con el mismo nombre, debe reemplazar su valor.</li>
+<li>(d) (2 puntos) Implemente el método <code>insertar(ElementoDeTabla alumno)</code> que inserta un nuevo elemento en la tabla hash con direccionamiento cerrado. En caso de colisión, el nuevo elemento se debe agregar a la lista que se encuentra en la posición que generó la colisión. Si ya existe un elemento con el mismo nombre, debe reemplazar su valor.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3313,35 +3291,43 @@
 </details>
 <h2 id="problema-3">Problema 3</h2>
 <p>La pregunta consiste en simular la gestión de una gasolinera. La gasolinera tiene una cantidad limitada de surtidores y depósitos de diferentes tipos de combustibles (Gasolina y Diesel). Los vehículos y los camiones cisterna representan hebras que interactúan con la gasolinera y una taquilla de cobro/pago.</p>
-<p>Monitor Gasolinera:
-    - Controla el acceso a los surtidores y depósitos de combustible.
-    - Se inicializa con un número de surtidores. Los depósitos se inicializan con 100 que será el tamaño máximo.
-    - Permite la entrada de vehículos si hay surtidores disponibles.
-    - Permite a los vehículos repostar si hay suficiente combustible en el depósito e inmediatamente después el vehículo sale de la gasolinera.
-    - Permite a un camión cisterna rellenar un depósito si el nivel está por debajo del 10%, pero solo puede haber un camión repostando.</p>
-<p>Monitor Taquilla:
-    - Controla los pagos y cobros de la gasolinera y solo tiene una ventanilla para atender.
-    - Permite que un vehículo pague por el combustible repostado y permite que un camión cisterna cobre por el combustible rellenado. Actualizando el dinero en caja.</p>
-<p>Comportamiento de la hebra Vehículo:
-    - Cada vehículo tiene un nombre y un tipo de combustible que usa. Un vehículo:
-        - Entra en la gasolinera (si hay surtidores disponibles).
-        - Reposta una cantidad específica de combustible y sale inmediatamente después.
-        - Paga en la taquilla indicando el dinero a pagar.</p>
-<p>Comportamiento de la hebra Camión Cisterna (no es un Vehículo):
-    - Cada camión cisterna tiene un nombre y un tipo de combustible que puede rellenar.
-    - Un camión cisterna:
-        - Rellena un depósito de la gasolinera (si el nivel de combustible está por debajo del 10%).
-        - Cobra en la taquilla indicando el dinero que debe cobrar.</p>
+<p>Monitor <code>Gasolinera</code>:</p>
+<ul>
+<li>Controla el acceso a los surtidores y depósitos de combustible;</li>
+<li>Se inicializa con un número de surtidores. Los depósitos se inicializan con 100 que será el tamaño máximo;</li>
+<li>Permite la entrada de vehículos si hay surtidores disponibles;</li>
+<li>Permite a los vehículos repostar si hay suficiente combustible en el depósito e inmediatamente después el vehículo sale de la gasolinera;</li>
+<li>Permite a un camión cisterna rellenar un depósito si el nivel está por debajo del 10%, pero solo puede haber un camión repostando.</li>
+</ul>
+<p>Monitor <code>Taquilla</code>:</p>
+<ul>
+<li>Controla los pagos y cobros de la gasolinera y solo tiene una ventanilla para atender;</li>
+<li>Permite que un vehículo pague por el combustible repostado y permite que un camión cisterna cobre por el combustible rellenado. Actualizando el dinero en caja.</li>
+</ul>
+<p>Comportamiento de la hebra <code>Vehiculo</code>:</p>
+<ul>
+<li>Cada vehículo tiene un nombre y un tipo de combustible que usa. Un vehículo:<ul>
+<li>Entra en la gasolinera (si hay surtidores disponibles);</li>
+<li>Reposta una cantidad específica de combustible y sale inmediatamente después;</li>
+<li>Paga en la taquilla indicando el dinero a pagar.</li>
+</ul>
+</li>
+</ul>
+<p>Comportamiento de la hebra <code>CamionCisterna</code> (no es un <code>Vehiculo</code>):
+- Cada camión cisterna tiene un nombre y un tipo de combustible que puede rellenar;
+- Un camión cisterna:
+    - Rellena un depósito de la gasolinera (si el nivel de combustible está por debajo del 10%);
+    - Cobra en la taquilla indicando el dinero que debe cobrar.</p>
 <p>Diagrama de clases:</p>
 <p><img alt="" src="extra_ex03.png" /></p>
 <p>Se pide:</p>
-<p>Desarrolla el código del monitor Gasolinera:
+<p>Desarrolla el código del monitor <code>Gasolinera</code>:
 - (a) (1 punto) Implementa el método
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrar</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span>
 </code></pre></div></p>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>FALTA.</p>
+<p>N/A</p>
 </details>
 <ul>
 <li>(b) (1,5 puntos) Implementa el método
@@ -3350,7 +3336,7 @@
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>FALTA.</p>
+<p>N/A</p>
 </details>
 <ul>
 <li>(c) (1,5 puntos) Implementa el método 
@@ -3359,9 +3345,9 @@
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>FALTA.</p>
+<p>N/A</p>
 </details>
-<p>Desarrolla el código del monitor Taquilla:</p>
+<p>Desarrolla el código del monitor <code>Taquilla</code>:</p>
 <ul>
 <li>(d) (0,5 puntos) Implementa el método
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">pagar</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cantidad</span><span class="p">,</span><span class="w"> </span><span class="n">Combustible</span><span class="w"> </span><span class="n">tipo</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span>
@@ -3369,7 +3355,7 @@
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>FALTA.</p>
+<p>N/A</p>
 </details>
 <ul>
 <li>(e) (0,5 puntos) Implementa el método
@@ -3378,14 +3364,14 @@
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>FALTA.</p>
+<p>N/A</p>
 </details>
 <h2 id="problema-4">Problema 4</h2>
 <p>Durante la construcción de una nueva ciudad, se está planificando el despliegue de la red de Internet. Para extender la red, se han empezado a instalar cables de red entre las casas, asegurando que, si una casa tiene conexión a Internet, todas las casas conectadas a ella también la tengan. La salida de la red de la ciudad se realiza con cables de fibra óptica que se conectan a una de las casas, dándole acceso a Internet.</p>
 <p>Este escenario se modela como un grafo no dirigido, donde los nodos son las casas y las aristas son los cables de red. En el siguiente diagrama se puede ver cómo se han diseñado las clases que modelan el grafo adjunto.</p>
 <p><img alt="" src="extra_ex04.png" /></p>
 <ul>
-<li>(a) (3 puntos) Por problemas de presupuesto, inicialmente solo se contará con un cable de fibra óptica para conectar la red de Internet a la ciudad. Este cable se debe conectar de manera que la cantidad de casas que tengan acceso a Internet sea la máxima posible. Implemente el método nodoPreferido() en la clase GrafoCiudad que retorne el nodo al que se debe conectar la fibra óptica para que el mayor número de casas tenga conexión. Si hay varias opciones válidas, devuelva cualquiera de ellas.</li>
+<li>(a) (3 puntos) Por problemas de presupuesto, inicialmente solo se contará con un cable de fibra óptica para conectar la red de Internet a la ciudad. Este cable se debe conectar de manera que la cantidad de casas que tengan acceso a Internet sea la máxima posible. Implemente el método <code>nodoPreferido()</code> en la clase <code>GrafoCiudad</code> que retorne el nodo al que se debe conectar la fibra óptica para que el mayor número de casas tenga conexión. Si hay varias opciones válidas, devuelva cualquiera de ellas.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
@@ -3431,11 +3417,11 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2 puntos) Cuando avanza la construcción de la ciudad, se decide poner nuevos cables de fibra óptica que traigan la conexión desde fuera de la ciudad. Los cables de fibra se conectarán a una sola casa, de la misma manera que en el apartado anterior. En esta ocasión, se necesita conocer el número mínimo de cables de fibra necesarios para dar conexión a todas las casas. Implemente el método cablesMinimos() en la clase GrafoCiudad que retorne el número de cables necesarios para garantizar la conectividad de todas las casas.</li>
+<li>(b) (2 puntos) Cuando avanza la construcción de la ciudad, se decide poner nuevos cables de fibra óptica que traigan la conexión desde fuera de la ciudad. Los cables de fibra se conectarán a una sola casa, de la misma manera que en el apartado anterior. En esta ocasión, se necesita conocer el número mínimo de cables de fibra necesarios para dar conexión a todas las casas. Implemente el método <code>cablesMinimos()</code> en la clase <code>GrafoCiudad</code> que retorne el número de cables necesarios para garantizar la conectividad de todas las casas.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>En este apartado se debe calcular el número de componentes conexas que forman el grafo</p>
+<p>En este apartado se debe calcular el número de componentes conexas que forman el grafo:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cablesMinimos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Nodo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visitados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="p">();</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">componentes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
