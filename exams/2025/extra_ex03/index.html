@@ -2890,63 +2890,34 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>Podemos suponer que el código de las hebras es el siguiente:
-<div class="highlight"><pre><span></span><code>\noindent
-\begin{minipage}[t]{0.48\linewidth}
-\raggedright
-\begin{lstlisting}[
-  language=Java,
-  keywordstyle=\color{blue}\bfseries,
-  commentstyle=\color{gray}\itshape,
-  stringstyle=\color{red},
-  identifierstyle=\color{black},
-  basicstyle=\ttfamily\small,
-  frame=single,
-  breaklines=true
-]
-// Hebra de tipo A
-private Set&lt;String&gt; colec=new HashSet&lt;String&gt;();
-private ISalaTokens sala;
-private String[] tokens = new String[2]; 
-public void run() {
-  while (true) {
-    tokens=buscarTokensA();
-    if (!colec.contains(tokens[0]) &amp;&amp; 
-        !colec.contains(tokens[1]))
-      tokens=sala.entraA(tokens[0],tokens[1]);
-    colec.add(tokens[0]); colec.add(tokens[1]);
-  }
-}
-\end{lstlisting}
-\end{minipage}%
-\hfill
-\begin{minipage}[t]{0.48\linewidth}
-\raggedleft
-\begin{lstlisting}[
-  language=Java,
-  keywordstyle=\color{blue}\bfseries,
-  commentstyle=\color{gray}\itshape,
-  stringstyle=\color{red},
-  identifierstyle=\color{black},
-  basicstyle=\ttfamily\small,
-  frame=single,
-  breaklines=true
-]
-// Hebra de tipo B
-private Set&lt;String&gt; colec=new HashSet&lt;String&gt;();
-private ISalaTokens sala;
-private String token=null;
-public void run() {
-  while (true) {
-    token=buscarTokenB();
-    if (!colec.contains(token))
-      token=sala.entraB(token);
-    colec.add(token);
-  }
-}
-\end{lstlisting}
-\end{minipage}%
+<div class="highlight"><pre><span></span><code><span class="c1">// Hebra de tipo A</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">colec</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">ISalaTokens</span><span class="w"> </span><span class="n">sala</span><span class="p">;</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">tokens</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span><span class="w"> </span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tokens</span><span class="o">=</span><span class="n">buscarTokensA</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">colec</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">tokens</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="w">        </span><span class="o">!</span><span class="n">colec</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">tokens</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">))</span>
+<span class="w">      </span><span class="n">tokens</span><span class="o">=</span><span class="n">sala</span><span class="p">.</span><span class="na">entraA</span><span class="p">(</span><span class="n">tokens</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="n">tokens</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+<span class="w">    </span><span class="n">colec</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">tokens</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span><span class="w"> </span><span class="n">colec</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">tokens</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Hebra de tipo B</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">colec</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">ISalaTokens</span><span class="w"> </span><span class="n">sala</span><span class="p">;</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">token</span><span class="o">=</span><span class="kc">null</span><span class="p">;</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">token</span><span class="o">=</span><span class="n">buscarTokenB</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">colec</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
+<span class="w">      </span><span class="n">token</span><span class="o">=</span><span class="n">sala</span><span class="p">.</span><span class="na">entraB</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
+<span class="w">    </span><span class="n">colec</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></p>
-<p><strong>Nota:</strong> Suponga que los métodos <code>buscarTokensA</code> y <code>buscarTokenB</code> están implementados y devuelven los tokens necesarios para el intercambio.</p>
+<p>Nota: Suponga que los métodos <code>buscarTokensA</code> y <code>buscarTokenB</code> están implementados y devuelven los tokens necesarios para el intercambio.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="numberLines highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SalaTokens</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ISalaTokens</span><span class="w"> </span><span class="p">{</span>

@@ -2875,13 +2875,14 @@
   <h1>Extra ex06</h1>
 
 <ul>
-<li>(a) (4 puntos) Modifique el código de sus prácticas para que las hebras resuelvan primero las tareas (TareaCamino) que tengan un camino más corto.</li>
+<li>(a) (4 puntos) Modifique el código de sus prácticas para que las hebras resuelvan primero las tareas (<code>TareaCamino</code>) que tengan un camino más corto.</li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Modificaciones necesarias:
-<strong>1. En la clase <code>TareaCamino</code>:</strong>
-- Implementar la interfaz <code>Comparable&lt;TareaCamino&gt;</code></p>
+<p>Modificaciones necesarias:</p>
+<ul>
+<li>En la clase <code>TareaCamino</code>, implementar la interfaz <code>Comparable&lt;TareaCamino&gt;</code>:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">TareaCamino</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">TareaCamino</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Nodo</span><span class="w"> </span><span class="n">nodoAVisitar</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Nodo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">caminoRecorrido</span><span class="p">;</span>
@@ -2898,8 +2899,9 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>2. En el método <code>getTarea()</code> de <code>PoolHebras</code>:</strong>
-- Ordenar la lista antes de extraer la tarea</p>
+<ul>
+<li>En el método <code>getTarea()</code> de <code>PoolHebras</code>, ordenar la lista antes de extraer la tarea:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="n">TareaCamino</span><span class="w"> </span><span class="nf">getTarea</span><span class="p">(</span><span class="n">HebraWorker</span><span class="w"> </span><span class="n">hw</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">tareas</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">hw</span><span class="p">.</span><span class="na">keepWorking</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">wait</span><span class="p">();</span>
