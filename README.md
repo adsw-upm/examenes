@@ -104,6 +104,7 @@ La configuración de búsqueda está optimizada para dar mayor peso a los tags (
 - 2023/p1/ex03 los diagramas de clases no están cargando de manera adecuada.
 - 2023/p2/ex01 los diagramas de clases no están cargando de manera adecuada.
 - 2023/p2/ex02 carece de solución.
+- 2024/extra/ex03 carece de solución.
 
 ## Licencia
 

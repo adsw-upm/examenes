@@ -12,7 +12,7 @@ Este escenario se modela como un grafo no dirigido, donde los nodos son las casa
 
 ![](./extra/extra_ex04.png)
 
-- (a) (3 puntos) Por problemas de presupuesto, inicialmente solo se contará con un cable de fibra óptica para conectar la red de Internet a la ciudad. Este cable se debe conectar de manera que la cantidad de casas que tengan acceso a Internet sea la máxima posible. Implemente el método nodoPreferido() en la clase GrafoCiudad que retorne el nodo al que se debe conectar la fibra óptica para que el mayor número de casas tenga conexión. Si hay varias opciones válidas, devuelva cualquiera de ellas.
+- (a) (3 puntos) Por problemas de presupuesto, inicialmente solo se contará con un cable de fibra óptica para conectar la red de Internet a la ciudad. Este cable se debe conectar de manera que la cantidad de casas que tengan acceso a Internet sea la máxima posible. Implemente el método `nodoPreferido()` en la clase `GrafoCiudad` que retorne el nodo al que se debe conectar la fibra óptica para que el mayor número de casas tenga conexión. Si hay varias opciones válidas, devuelva cualquiera de ellas.
 
 ??? note "Mostrar solución"
     En este apartado se debe buscar la componente conexa más grande del grafo y devolver cualquiera de los nodos que pertenezcan a esa componente. Una posible solución es:
@@ -59,10 +59,10 @@ Este escenario se modela como un grafo no dirigido, donde los nodos son las casa
     ```
 
 
-- (b) (2 puntos) Cuando avanza la construcción de la ciudad, se decide poner nuevos cables de fibra óptica que traigan la conexión desde fuera de la ciudad. Los cables de fibra se conectarán a una sola casa, de la misma manera que en el apartado anterior. En esta ocasión, se necesita conocer el número mínimo de cables de fibra necesarios para dar conexión a todas las casas. Implemente el método cablesMinimos() en la clase GrafoCiudad que retorne el número de cables necesarios para garantizar la conectividad de todas las casas.
+- (b) (2 puntos) Cuando avanza la construcción de la ciudad, se decide poner nuevos cables de fibra óptica que traigan la conexión desde fuera de la ciudad. Los cables de fibra se conectarán a una sola casa, de la misma manera que en el apartado anterior. En esta ocasión, se necesita conocer el número mínimo de cables de fibra necesarios para dar conexión a todas las casas. Implemente el método `cablesMinimos()` en la clase `GrafoCiudad` que retorne el número de cables necesarios para garantizar la conectividad de todas las casas.
 
 ??? note "Mostrar solución"
-    En este apartado se debe calcular el número de componentes conexas que forman el grafo
+    En este apartado se debe calcular el número de componentes conexas que forman el grafo:
     
     ```java
     public int cablesMinimos() {
