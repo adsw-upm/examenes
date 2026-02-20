@@ -2846,34 +2846,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Problema 2">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#documentacion-de-la-clase-gestorpersonas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Documentación de la clase GestorPersonas
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#referencia-rapida-de-colecciones" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Referencia rápida de colecciones
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -3030,34 +3002,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Problema 2">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#documentacion-de-la-clase-gestorpersonas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Documentación de la clase GestorPersonas
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#referencia-rapida-de-colecciones" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Referencia rápida de colecciones
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -3142,9 +3086,7 @@
 <p>(b) (2,5 puntos) Se quiere obtener una lista de las ciudades que tengan el mayor número de personas con un nombre. En este caso no es crítico el rendimiento, pero se considerará su comportamiento. </p>
 </li>
 </ul>
-<h3 id="documentacion-de-la-clase-gestorpersonas">Documentación de la clase GestorPersonas</h3>
-<p><div class="highlight"><pre><span></span><code>\begin{minipage}[thp]{13cm}
-</code></pre></div>
+<p>Documentación de la clase <code>GestorPersonas</code>
 <div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm"> * Constructor de la clase GestorPersonas</span>
 <span class="cm"> * </span>
@@ -3173,71 +3115,97 @@
 <span class="cm"> */</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">masCiudadNombre</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span>
 </code></pre></div></p>
-<p><div class="highlight"><pre><span></span><code>\end{minipage}
-\begin{minipage}[thp]{5cm}
-\begin{center}
-</code></pre></div>
-<img alt="" src="img/gestorpersonas.png" width="5cm" /></p>
-<div class="highlight"><pre><span></span><code>\end{center}
-\end{minipage}
-
-\vspace{-0.2cm}
-</code></pre></div>
-<h3 id="referencia-rapida-de-colecciones">Referencia rápida de colecciones</h3>
-<div class="highlight"><pre><span></span><code>\vspace{-0.2cm}
-\begin{table}[h!]
-  \centering
-  \begin{footnotesize}
-
-  \begin{minipage}{.48\linewidth}
-    \centering
-    \textbf{List}\\[6pt]
-    \begin{tabular}{|l|p{6.5cm}|}
-      \hline
-      \textbf{Type} &amp; \textbf{Method and Description} \\
-      \hline
-      boolean &amp; \texttt{add(E e)} – Appends the specified element to the end of this list (optional). \\
-      \hline
-      void &amp; \texttt{add(int index, E element)} – Inserts the specified element at the specified position in this list (optional). \\
-      \hline
-      boolean &amp; \texttt{contains(Object o)} – Returns \texttt{true} if this list contains the specified element. \\
-      \hline
-      \texttt{E} &amp; \texttt{get(int index)} – Returns the element at the specified position in this list. \\
-      \hline
-      boolean &amp; \texttt{isEmpty()} – Returns \texttt{true} if this list contains no elements. \\
-      \hline
-      \texttt{E} &amp; \texttt{remove(int index)} – Removes the element at the specified position in this list (optional). \\
-      \hline
-      int &amp; \texttt{size()} – Returns the number of elements in this list. \\
-      \hline
-    \end{tabular}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{.48\linewidth}
-    \centering
-    \textbf{Map}\\[6pt]
-    \begin{tabular}{|l|p{6.5cm}|}
-      \hline
-      \textbf{Type} &amp; \textbf{Method and Description} \\
-      \hline
-      boolean &amp; \texttt{containsKey(Object key)} – Returns \texttt{true} if this map contains a mapping for the specified key. \\
-      \hline
-      \texttt{V} &amp; \texttt{get(Object key)} – Returns the value mapped to the key, or \texttt{null} if none exists. \\
-      \hline
-      \texttt{Set&lt;K&gt;} &amp; \texttt{keySet()} – Returns a \texttt{Set} view of the keys contained in this map. \\
-      \hline
-      \texttt{V} &amp; \texttt{put(K key, V value)} – Associates the specified value with the specified key in this map (optional). \\
-      \hline
-      \texttt{V} &amp; \texttt{remove(Object key)} – Removes the mapping for a key from this map if present (optional). \\
-      \hline
-      int &amp; \texttt{size()} – Returns the number of key-value mappings in this map. \\
-      \hline
-    \end{tabular}
-  \end{minipage}
-  \end{footnotesize}
-\end{table}
-</code></pre></div>
-<p><strong>Nota:</strong> Se pueden utilizar colecciones adicionales con otras estructuras de datos, como podría ser un <code>Set</code> en un <code>for</code> para recorrer las claves de un <code>Map</code>.</p>
+<p>Referencia rápida de colecciones</p>
+<p>List</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean</code></td>
+<td><code>add(E e)</code></td>
+<td>Appends the specified element to the end of this list (optional).</td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>add(int index, E element)</code></td>
+<td>Inserts the specified element at the specified position in this list (optional).</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>contains(Object o)</code></td>
+<td>Returns true if this list contains the specified element.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>get(int index)</code></td>
+<td>Returns the element at the specified position in this list.</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>isEmpty()</code></td>
+<td>Returns true if this list contains no elements.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><code>remove(int index)</code></td>
+<td>Removes the element at the specified position in this list (optional).</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>size()</code></td>
+<td>Returns the number of elements in this list.</td>
+</tr>
+</tbody>
+</table>
+<p>Map</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean</code></td>
+<td><code>containsKey(Object key)</code></td>
+<td>Returns true if this map contains a mapping for the specified key.</td>
+</tr>
+<tr>
+<td><code>V</code></td>
+<td><code>get(Object key)</code></td>
+<td>Returns the value mapped to the key, or null if none exists.</td>
+</tr>
+<tr>
+<td><code>Set&lt;K&gt;</code></td>
+<td><code>keySet()</code></td>
+<td>Returns a Set view of the keys contained in this map.</td>
+</tr>
+<tr>
+<td><code>V</code></td>
+<td><code>put(K key, V value)</code></td>
+<td>Associates the specified value with the specified key in this map (optional).</td>
+</tr>
+<tr>
+<td><code>V</code></td>
+<td><code>remove(Object key)</code></td>
+<td>Removes the mapping for a key from this map if present (optional).</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>size()</code></td>
+<td>Returns the number of key-value mappings in this map.</td>
+</tr>
+</tbody>
+</table>
+<p>Nota: Se pueden utilizar colecciones adicionales con otras estructuras de datos, como podría ser un <code>Set</code> en un <code>for</code> para recorrer las claves de un <code>Map</code>.</p>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="numberLines highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>

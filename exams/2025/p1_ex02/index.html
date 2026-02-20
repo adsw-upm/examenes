@@ -19,7 +19,7 @@
     
     
       
-        <title>Ejercicio 2: DiccionarioTrie - Catálogo ejercicios años anteriores</title>
+        <title>P1 ex02 - Catálogo ejercicios años anteriores</title>
       
     
     
@@ -59,11 +59,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#ejercicio-2-diccionariotrie" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ejercicio 2: DiccionarioTrie
+              P1 ex02
             
           </span>
         </div>
@@ -2850,8 +2845,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -2879,10 +2872,10 @@
 
 
 
-<h1 id="ejercicio-2-diccionariotrie">Ejercicio 2: <code>DiccionarioTrie</code></h1>
-<p>Se requiere implementar <code>DiccionarioTrie</code>, un tipo de diccionario que almacena valores de tipo <code>int</code> asociados a claves de tipo <code>String</code>.
-Esta clase será similar a <code>DiccionarioArbol</code>, salvo que los nodos estarán representados por la clase <code>NodoTrie</code>.
-Se proporciona el siguiente código:</p>
+  <h1>P1 ex02</h1>
+
+<p>Se requiere implementar <code>DiccionarioTrie</code>, un tipo de diccionario que almacena valores de tipo <code>int</code> asociados a claves de tipo <code>String</code>. Esta clase será similar a <code>DiccionarioArbol</code>, salvo que los nodos estarán representados por la clase <code>NodoTrie</code>.</p>
+<p>Se proporciona el siguiente código:
 <div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">NodoTrie</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="n">NodoTrie</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hijos</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">;</span>
@@ -2897,27 +2890,26 @@ Se proporciona el siguiente código:</p>
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">raiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NodoTrie</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="p">...</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></p>
 <p>Además, se muestra la estructura de un <code>DiccionarioTrie</code> con 3 palabras (<code>CASA</code>, <code>CALLE</code> y <code>CERO</code>):</p>
-<p><img alt="" class="center" src="img/ejemplotrie.png" width="80%" /></p>
+<p><img alt="" src="../p1/p1_ex02.png" /></p>
 <p>El número de cada nodo representa su valor.
 Las letrasFuerzaBruta en las relaciones entre nodos corresponden a una clave en el diccionario <code>hijos</code> de cada nodo, cuyo valor es el nodo representado a la derecha.
 Nótese que, además de los nodos correspondientes a cada palabra, la estructura muestra varios nodos intermedios con valor <code>0</code>.
 Estos nodos corresponden a prefijos de alguna de las palabras guardadas (p.e., <code>CAS</code>, <code>CAL</code>, <code>CE</code>).</p>
 <p>Se pide:</p>
-<ol>
-<li><strong>[ 0.5 puntos ]</strong> Dibuje el estado de un <code>DiccionarioTrie</code> en que se han añadido las palabras <code>aprobar</code>, <code>adsw</code> y <code>nota</code>, con valores <code>100</code>, <code>200</code> y <code>300</code>, respectivamente.</li>
-<li><strong>[ 1.5 puntos ]</strong> Implemente el método <code>put(String clave, int valor)</code>. El método debe asignar el valor dado a la clave dada. Si el diccionario ya contenía esa clave, su valor se sobreescribe.</li>
-<li><strong>[ 2 puntos ]</strong> Implemente el método <code>Integer sum(String clave)</code>. El método devuelve la suma de los valores asociados a <strong>todas las palabras que empiecen por la clave dada</strong> (prefijo). Para el diccionario mostrado en el ejemplo, la operación <code>sum("ca")</code> devolvería el valor <code>2</code>, y <code>sum("")</code> devolvería <code>4</code>.</li>
-<li><strong>[ 1 punto ]</strong> Razone el orden de complejidad en tiempo de ejecución en el caso peor para los métodos <code>put</code> y <code>sum</code> en función de: el número de palabras (<code>n</code>), la longitud de la palabra más larga (<code>l</code>) y la longitud de la clave dada como argumento (<code>k</code>). Es decir, calcule <code>T(n, l, k)</code>.</li>
-</ol>
+<ul>
+<li>(a) (0,5 puntos) Dibuje el estado de un <code>DiccionarioTrie</code> en que se han añadido las palabras <code>aprobar</code>, <code>adsw</code> y <code>nota</code>, con valores <code>100</code>, <code>200</code> y <code>300</code>, respectivamente.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<ol>
-<li></li>
-</ol>
-<p><img alt="" src="img/soluciontrie.png" width="80%" /></p>
-<p>2.</p>
+<p><img alt="" src="../p1/p1_ex02-sol.png" /></p>
+</details>
+<ul>
+<li>(b) (1,5 puntos) Implemente el método <code>put(String clave, int valor)</code>. El método debe asignar el valor dado a la clave dada. Si el diccionario ya contenía esa clave, su valor se sobreescribe.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">palabra</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">NodoTrie</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">raiz</span><span class="p">;</span>
 <span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">palabra</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2930,7 +2922,12 @@ Estos nodos corresponden a prefijos de alguna de las palabras guardadas (p.e., <
 <span class="w">        </span><span class="n">target</span><span class="p">.</span><span class="na">valor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valor</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div>
-<p>3.</p>
+</details>
+<ul>
+<li>(c) (2 puntos) Implemente el método <code>Integer sum(String clave)</code>. El método devuelve la suma de los valores asociados a todas las palabras que empiecen por la clave dada (prefijo). Para el diccionario mostrado en el ejemplo, la operación <code>sum("ca")</code> devolvería el valor <code>2</code>, y <code>sum("")</code> devolvería <code>4</code>.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
 <p>Hay que encontrar el nodo correspondiente al prefijo, y después sumar todos los valores a partir de ese nodo (<code>sumFrom</code>).</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">prefijo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">NodoTrie</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">raiz</span><span class="p">;</span>
@@ -2952,10 +2949,15 @@ Estos nodos corresponden a prefijos de alguna de las palabras guardadas (p.e., <
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cuenta</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div>
-<p>4.</p>
+</details>
 <ul>
-<li><code>put</code>: <code>T(n, l, k) = O(k)</code> en todos los casos, porque se recorre o añade un nodo por cada letra en la palabra clave.</li>
-<li><code>sum</code>: El caso peor es aquel en que todas las palabras tienen la longitud máxima (<code>l</code>), y coinciden en prefijo con la clave dada (<code>k</code>), pero no coinciden en ninguna otra letra. En ese caso, se recorren <code>k</code> nodos hasta llegar al prefijo (profundidad <code>k</code>), y luego <code>n</code> ramas de profundidad <code>l</code>, por lo que: <code>T(n, l, k) = O(k + n * (l-k))</code>. También se aceptan respuestas del tipo <code>O(l * n)</code>.</li>
+<li>(d) (1 punto) Razone el orden de complejidad en tiempo de ejecución en el caso peor para los métodos <code>put</code> y <code>sum</code> en función de: el número de palabras (<code>n</code>), la longitud de la palabra más larga (<code>l</code>) y la longitud de la clave dada como argumento (<code>k</code>). Es decir, calcule <code>T(n, l, k)</code>.</li>
+</ul>
+<details class="note">
+<summary>Mostrar solución</summary>
+<ul>
+<li><code>put</code>: <span class="arithmatex">\(T(n, l, k) = O(k)\)</span> en todos los casos, porque se recorre o añade un nodo por cada letra en la palabra clave.</li>
+<li><code>sum</code>: El caso peor es aquel en que todas las palabras tienen la longitud máxima (<code>l</code>), y coinciden en prefijo con la clave dada (<code>k</code>), pero no coinciden en ninguna otra letra. En ese caso, se recorren <code>k</code> nodos hasta llegar al prefijo (profundidad <code>k</code>), y luego <code>n</code> ramas de profundidad <code>l</code>, por lo que: <span class="arithmatex">\(T(n, l, k) = O(k + n * (l-k))\)</span>. También se aceptan respuestas del tipo <span class="arithmatex">\(O(l * n)\)</span>.</li>
 </ul>
 </details>
 
