@@ -12,11 +12,8 @@ En un sistema de gestión de la información de personas, se quieren implementar
 
 - (b) (2,5 puntos) Se quiere obtener una lista de las ciudades que tengan el mayor número de personas con un nombre. En este caso no es crítico el rendimiento, pero se considerará su comportamiento. 
 
-### Documentación de la clase GestorPersonas
-```{=latex}
-\begin{minipage}[thp]{13cm}
-```
-```{.java fontSize=/footnotesize}
+Documentación de la clase `GestorPersonas`
+```java
 /**
  * Constructor de la clase GestorPersonas
  * 
@@ -46,80 +43,34 @@ public List<Persona> personasEnCiudad(String ciudad)
 public List<String> masCiudadNombre(String nombre)
 ```
 
-```{=latex}
+Referencia rápida de colecciones
 
-\end{minipage}
-\begin{minipage}[thp]{5cm}
-\begin{center}
+List
 
-```
-![](img/gestorpersonas.png){width=5cm}
+| Type      | Method                      | Description                                                                      |
+| --------- | --------------------------- | -------------------------------------------------------------------------------- |
+| `boolean` | `add(E e)`                  | Appends the specified element to the end of this list (optional).                |
+| `void`    | `add(int index, E element)` | Inserts the specified element at the specified position in this list (optional). |
+| `boolean` | `contains(Object o)`        | Returns true if this list contains the specified element.                        |
+| `E`       | `get(int index)`            | Returns the element at the specified position in this list.                      |
+| `boolean` | `isEmpty()`                 | Returns true if this list contains no elements.                                  |
+| `E`       | `remove(int index)`         | Removes the element at the specified position in this list (optional).           |
+| `int`     | `size()`                    | Returns the number of elements in this list.                                     |
 
-```{=latex}
-\end{center}
-\end{minipage}
 
-\vspace{-0.2cm}
-```
 
-### Referencia rápida de colecciones
-```{=latex}
+Map
 
-\vspace{-0.2cm}
-\begin{table}[h!]
-  \centering
-  \begin{footnotesize}
+| Type      | Method                    | Description                                                                   |
+| --------- | ------------------------- | ----------------------------------------------------------------------------- |
+| `boolean` | `containsKey(Object key)` | Returns true if this map contains a mapping for the specified key.            |
+| `V`       | `get(Object key)`         | Returns the value mapped to the key, or null if none exists.                  |
+| `Set<K>`  | `keySet()`                | Returns a Set view of the keys contained in this map.                         |
+| `V`       | `put(K key, V value)`     | Associates the specified value with the specified key in this map (optional). |
+| `V`       | `remove(Object key)`      | Removes the mapping for a key from this map if present (optional).            |
+| `int`     | `size()`                  | Returns the number of key-value mappings in this map.                         |
 
-  \begin{minipage}{.48\linewidth}
-    \centering
-    \textbf{List}\\[6pt]
-    \begin{tabular}{|l|p{6.5cm}|}
-      \hline
-      \textbf{Type} & \textbf{Method and Description} \\
-      \hline
-      boolean & \texttt{add(E e)} – Appends the specified element to the end of this list (optional). \\
-      \hline
-      void & \texttt{add(int index, E element)} – Inserts the specified element at the specified position in this list (optional). \\
-      \hline
-      boolean & \texttt{contains(Object o)} – Returns \texttt{true} if this list contains the specified element. \\
-      \hline
-      \texttt{E} & \texttt{get(int index)} – Returns the element at the specified position in this list. \\
-      \hline
-      boolean & \texttt{isEmpty()} – Returns \texttt{true} if this list contains no elements. \\
-      \hline
-      \texttt{E} & \texttt{remove(int index)} – Removes the element at the specified position in this list (optional). \\
-      \hline
-      int & \texttt{size()} – Returns the number of elements in this list. \\
-      \hline
-    \end{tabular}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{.48\linewidth}
-    \centering
-    \textbf{Map}\\[6pt]
-    \begin{tabular}{|l|p{6.5cm}|}
-      \hline
-      \textbf{Type} & \textbf{Method and Description} \\
-      \hline
-      boolean & \texttt{containsKey(Object key)} – Returns \texttt{true} if this map contains a mapping for the specified key. \\
-      \hline
-      \texttt{V} & \texttt{get(Object key)} – Returns the value mapped to the key, or \texttt{null} if none exists. \\
-      \hline
-      \texttt{Set<K>} & \texttt{keySet()} – Returns a \texttt{Set} view of the keys contained in this map. \\
-      \hline
-      \texttt{V} & \texttt{put(K key, V value)} – Associates the specified value with the specified key in this map (optional). \\
-      \hline
-      \texttt{V} & \texttt{remove(Object key)} – Removes the mapping for a key from this map if present (optional). \\
-      \hline
-      int & \texttt{size()} – Returns the number of key-value mappings in this map. \\
-      \hline
-    \end{tabular}
-  \end{minipage}
-  \end{footnotesize}
-\end{table}
-```
-
-**Nota:** Se pueden utilizar colecciones adicionales con otras estructuras de datos, como podría ser un `Set` en un `for` para recorrer las claves de un `Map`.
+Nota: Se pueden utilizar colecciones adicionales con otras estructuras de datos, como podría ser un `Set` en un `for` para recorrer las claves de un `Map`.
 
 ??? note "Mostrar solución"
     ```{.java .numberLines fontSize=/footnotesize}
