@@ -2874,13 +2874,10 @@
 
   <h1>P2 ex01</h1>
 
-<p>Se quiere simular un sistema de impresión con una impresora a la que varios usuarios pueden pedir impresiones.
-Los usuarios pueden pedir imprimir un texto (una cadena de caracteres).
-La impresora debe imprimir un texto solo cuando no esté ocupada, y siempre debe dar prioridad al texto más corto.
-Los usuarios se modelan como hebras independientes.</p>
-<p>Se proporciona el siguiente diagrama de clases como referencia, y se pide:</p>
-<div class="highlight"><pre><span></span><code>\begin{minipage}[thp]{12cm}
-</code></pre></div>
+<p>Se quiere simular un sistema de impresión con una impresora a la que varios usuarios pueden pedir impresiones. Los usuarios pueden pedir imprimir un texto (una cadena de caracteres). La impresora debe imprimir un texto solo cuando no esté ocupada, y siempre debe dar prioridad al texto más corto. Los usuarios se modelan como hebras independientes.</p>
+<p>Se proporciona el siguiente diagrama de clases como referencia:</p>
+<p><img alt="" src="../p2/p2_ex01.png" /></p>
+<p>Se pide: </p>
 <ul>
 <li>(a) (1 punto) Implementar la clase <code>Usuario</code>, que será una hebra con un nombre, un texto a imprimir y una referencia a la impresora, y su única labor es imprimir el texto dado en la impresora.</li>
 </ul>
@@ -2905,12 +2902,12 @@ Los usuarios se modelan como hebras independientes.</p>
 </details>
 <ul>
 <li>(b) (2 puntos) Implementa una clase <code>Impresora</code> que contenga un método <code>imprimir</code> que asegure que:<ul>
-<li>Solo se permite imprimir un texto en cada momento</li>
-<li>Los textos se imprimen a una velocidad de un carácter por milisegundo. Para simular la impresión, se debe usar el método <code>Thread.sleep(long millis)</code>, que puede lanzar excepciones del tipo <code>InterruptedException</code>.</li>
-<li>Una vez comienza la impresión de un texto, no se podrá empezar con otro hasta haberlo terminado</li>
-<li>Si varias hebras intentan imprimir, los textos más cortos tendrán prioridad</li>
-<li>Se guarda un registro (<code>registro</code>) de <strong>todos</strong> los caracteres impresos hasta el momento por la impresora</li>
-<li>Se debe mostrar por consola un mensaje en los siguientes momentos: 1) cuando un usuario intenta imprimir; 2) tras imprimir cada carácter; y 3) cuando se ha terminado de imprimir un texto completo. Los mensajes deben contener el nombre de la hebra que ha realizado la acción.</li>
+<li>Solo se permite imprimir un texto en cada momenton;</li>
+<li>Los textos se imprimen a una velocidad de un carácter por milisegundo. Para simular la impresión, se debe usar el método <code>Thread.sleep(long millis)</code>, que puede lanzar excepciones del tipo <code>InterruptedException</code>;</li>
+<li>Una vez comienza la impresión de un texto, no se podrá empezar con otro hasta haberlo terminado;</li>
+<li>Si varias hebras intentan imprimir, los textos más cortos tendrán prioridad;</li>
+<li>Se guarda un registro (<code>registro</code>) de todos los caracteres impresos hasta el momento por la impresora;</li>
+<li>Se debe mostrar por consola un mensaje en los siguientes momentos: (1) Cuando un usuario intenta imprimir; (2) Tras imprimir cada carácter; (3) Cuando se ha terminado de imprimir un texto completo. Los mensajes deben contener el nombre de la hebra que ha realizado la acción.</li>
 </ul>
 </li>
 </ul>
@@ -3033,7 +3030,6 @@ Por ejemplo:</p>
 <summary>Mostrar solución</summary>
 <p>Habría que cambiar el flag de imprimiendo para que fuera un entero con el número de usuarios imprimiendo en ese momento. También habría que sacar el <code>sleep</code> de la zona crítica. De lo contrario, mientras una hebra está imprimiendo el resto quedarían bloqueadas.</p>
 </details>
-<p><img alt="" src="img/impresora.png" width="6cm" /></p>
 
 
 
