@@ -9,19 +9,19 @@ tags:
 En esta asignatura se ha trabajado en la representación de las partidas
 de ajedrez. Se pide desarrollar los siguientes métodos:
 
-- (a) (1,5 puntos) CompararTableros
-
+- (a) (1,5 puntos) `CompararTableros`:
 ```java
 public boolean compararPiezas(Pieza p1, Pieza p2)
 ```
 
 Este método comprueba si dos piezas coinciden: el mismo tipo y bando
 
-Parameters :
-    p1 - primera pieza para la comparación
-    p2 - segundo pieza para la comparación
-Returns:
-    devuelve true si las piezas coinciden
+|Parameters|
+|---|
+|`p1` - primera pieza para la comparación |
+|`p2` - segundo pieza para la comparación |
+|**Returns**o | 
+| devuelve `true` si las piezas coinciden |
 
 ??? note "Mostrar solución"
     ```java
@@ -44,7 +44,7 @@ Returns:
     ```
 
 
-- (b) (1,5 puntos) CompararTableros
+- (b) (1,5 puntos) `compararTableros`:
 
 ```java
 public boolean compararTableros(Tablero t1, Tablero t2)
@@ -52,12 +52,12 @@ public boolean compararTableros(Tablero t1, Tablero t2)
 
 Este método comprueba si dos tableros coinciden: tienen que tener el mismo número de piezas y las mismas piezas en todas las posiciones.
 
-Parameters:
-    t1 - primer tablero para la comparación
-    t2 - segundo tablero para la comparación
-
-Returns:
-    Devuelve true si los tableros coinciden
+|Parameters|
+|---|
+| `t1` - primer tablero para la comparación |
+| `t2` - segundo tablero para la comparación |
+| **Returns** |
+| Devuelve `true` si los tableros coinciden |
 
 ??? note "Mostrar solución"
     ```java
@@ -77,23 +77,19 @@ Returns:
     ```
 
 
-
-
-
-- (c) (2 puntos) Comparar Partidas
-
+- (c) (2 puntos) `compararPartidas`
 ```java
 public boolean compararPartidas(Partida p1, Partida p2)
 ```
 
 Este método comprueba si dos partidas coinciden: tienen el mismo número de tableros, el mismo orden y los tableros coinciden
 
-Parameters:
-    p1 - primera partida para la comparación
-    p2 - segunda partida para la comparación
-
-Returns:
-    Devuelve true si las partidas coinciden
+|Parameters|
+|---|
+| `p1` - primera partida para la comparación |
+| `p2` - segunda partida para la comparación |
+| **Returns** |
+| Devuelve `true` si las partidas coinciden |
 
 ??? note "Mostrar solución"
     ```java
