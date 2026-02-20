@@ -6,7 +6,7 @@ tags:
  - hebras
 ---
 
-- (a) (6 puntos) Desarrolle el método getPorcentajeTablerosConVentaja(Bando bando) en la clase GestorTableros. Este método debe devolver un número decimal que represente el tanto por ciento de tableros en que el bando que se pasa como parámetro tiene una puntuación superior al bando contrario.
+- (a) (6 puntos) Desarrolle el método `getPorcentajeTablerosConVentaja(Bando bando)` en la clase `GestorTableros`. Este método debe devolver un número decimal que represente el tanto por ciento de tableros en que el bando que se pasa como parámetro tiene una puntuación superior al bando contrario.
 ```java
 public double getPorcentajeTablerosConVentaja(Bando bando)
 ```

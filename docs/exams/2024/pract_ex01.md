@@ -6,7 +6,7 @@ tags:
  - complejidad
 ---
 
-- (a) (6 puntos) En relación al método getPuntuacionMediana, se quiere modificar con la siguiente signatura:
+- (a) (6 puntos) En relación al método `getPuntuacionMediana`, se quiere modificar con la siguiente signatura:
 
 ```java
 /**
@@ -20,8 +20,9 @@ public int getPuntuacionMediana(int min, int max){ . . .}
 ```
 
 Notas:
-    - Min y max se refieren a índices en la lista que se usa.
-    - Suponga que los parámetros min y max que se reciben son válidos.
+
+- `min` y `max` se refieren a índices en la lista que se usa;
+- Suponga que los parámetros `min` y `max` que se reciben son válidos.
 
 ??? note "Mostrar solución"
     ```java

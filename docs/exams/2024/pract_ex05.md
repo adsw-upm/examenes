@@ -6,7 +6,7 @@ tags:
  - complejidad
 ---
 
-En la práctica 2 empleábamos diferentes implementaciones de diccionarios para localizar la partida de un cierto tablero. En este ejercicio vamos a emplear la siguiente implementación de la clase Tablero y las siguientes pruebas JUnit. La implementación de Tablero será igual que teníamos en el enunciado o solución de la práctica, salvo lo que incluimos a continuación:
+En la práctica 2 empleábamos diferentes implementaciones de diccionarios para localizar la partida de un cierto tablero. En este ejercicio vamos a emplear la siguiente implementación de la clase `Tablero` y las siguientes pruebas JUnit. La implementación de `Tablero` será igual que teníamos en el enunciado o solución de la práctica, salvo lo que incluimos a continuación:
 
 ```java
 1  public class Tablero {
@@ -66,29 +66,30 @@ En la práctica 2 empleábamos diferentes implementaciones de diccionarios para 
 ```
 
 Las pruebas que incluimos utilizan dos ficheros:
-    - t1.txt: es un fichero con 5 partidas y cada partida 3 tableros. Los 15 tableros tienen todos representaciones de fichas deferentes.
-    - t2.txt: es un fichero con 5 partidas y cada partida 3 tableros. Pero todas las partidas tienen un tablero con una representación de fichas iguales a otro tablero de otra partida.
+
+- t1.txt: es un fichero con 5 partidas y cada partida 3 tableros. Los 15 tableros tienen todos representaciones de fichas deferentes;
+- t2.txt: es un fichero con 5 partidas y cada partida 3 tableros. Pero todas las partidas tienen un tablero con una representación de fichas iguales a otro tablero de otra partida.
 
 Se pide:
 
-- (a) (4 puntos) Con estas implementaciones de pruebas y Tablero, cuales de las pruebas fallan o tienen errores y cuales son pruebas correctas. Si la respuesta para alguna prueba es que falla o tiene error, justificar el motivo del fallo.
+- (a) (4 puntos) Con estas implementaciones de pruebas y `Tablero`, cuales de las pruebas fallan o tienen errores y cuales son pruebas correctas. Si la respuesta para alguna prueba es que falla o tiene error, justificar el motivo del fallo.
 
 ??? note "Mostrar Solución"
     Las dos pruebas comprueban que un tablero no remplaza a otro tablero en el mapa, y como todos los tablaros tienen el mismo hashCode, una clave remplaza a otro cuando dos claves son iguales. Las claves son iguales cuando las representaciones son iguales.
 
-    t1.txt no tiene tableros con representaciones iguales. La prueba test1 no falla
+    t1.txt no tiene tableros con representaciones iguales. La prueba `test1` no falla.
 
-    t2.txt tiene tableros con representaciones iguales. La prueba test2 falla.
+    t2.txt tiene tableros con representaciones iguales. La prueba `test2` falla.
 
 
 - (b) (6 puntos) Cambiamos la línea 16 de las pruebas por la siguiente línea:
 ```java
 new TreeMap<Tablero,Partida>();
 ```
-Cambiar la clase Tablero para que las pruebas test1 y test2 funcionen correctamente. Se debe incluir cualquier cambio incluido en la solución de la práctica, que no estuviese incluido en el enunciado que incluía inicialmente la práctica, y que sean necesarios para que las dos pruebas funcionen.
+Cambiar la clase `Tablero` para que las pruebas `test1` y `test2` funcionen correctamente. Se debe incluir cualquier cambio incluido en la solución de la práctica, que no estuviese incluido en el enunciado que incluía inicialmente la práctica, y que sean necesarios para que las dos pruebas funcionen.
 
 ??? note "Mostrar Solución"
-    Para utilizar TreeMap Tablero tiene que implementar Comparable<Tablero> y los Tableros no pueden ser iguales cuando comparamos dos tableros. Actualizamos Tablero de la siguiente forma:
+    Para utilizar `TreeMap Tablero` tiene que implementar `Comparable<Tablero>` y los tableros no pueden ser iguales cuando comparamos dos tableros. Actualizamos `Tablero` de la siguiente forma:
     ```java
     public class Tablero implements Comparable<Tablero> {
         private static int ID=0;

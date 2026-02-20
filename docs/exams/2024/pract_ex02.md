@@ -6,7 +6,9 @@ tags:
  - complejidad
 ---
 
-Suponga que se tiene una variable tableroPruebas que contiene un tablero con las piezas dispuestas como en la imagen siguiente. Diseñe una prueba que compruebe que se calculan correctamente las puntuaciones de cada uno de los bandos.
+Suponga que se tiene una variable `tableroPruebas` que contiene un tablero con las piezas dispuestas como en la imagen siguiente. 
+
+- (a) (4 puntos) Diseñe una prueba que compruebe que se calculan correctamente las puntuaciones de cada uno de los bandos.
 
 ![](./pract/pract_ex01.png)
 

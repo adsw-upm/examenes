@@ -6,7 +6,7 @@ tags:
  - grafos
 ---
 
-- (a) (4 puntos) Modifique el método getTablerosConPuntuacionMinima para convertirlo en getTablerosConPuntuacionMaxima, que devuelva todos los tableros que tengan una puntuación igual o inferior a la que se pase como parámetro.
+- (a) (4 puntos) Modifique el método `getTablerosConPuntuacionMinima` para convertirlo en `getTablerosConPuntuacionMaxima`, que devuelva todos los tableros que tengan una puntuación igual o inferior a la que se pase como parámetro.
 
 ```java
 public List<Tablero> getTablerosConPuntuacionMaxima(int puntuacion)
