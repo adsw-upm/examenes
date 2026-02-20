@@ -2875,26 +2875,32 @@
   <h1>P2 ex01</h1>
 
 <p>El examen consiste en implementar un sistema concurrente que simule el funcionamiento de un refugio de gatos.</p>
-<p>En este refugio, los gatos serán representados por hebras que pueden realizar diferentes actividades (dormir, comer, jugar) y un alimentador que se encarga de añadir comida a la sala de alimentación. Cada gato solo puede hacer una acción a la vez y elige su acción de forma aleatoria. La acción de dormir se realiza simplemente haciendo un sleep().</p>
+<p>En este refugio, los gatos serán representados por hebras que pueden realizar diferentes actividades (dormir, comer, jugar) y un alimentador que se encarga de añadir comida a la sala de alimentación. Cada gato solo puede hacer una acción a la vez y elige su acción de forma aleatoria. La acción de dormir se realiza simplemente haciendo un <code>sleep()</code>.</p>
 <p>Requisitos:</p>
-<p>Sala de Alimentación:
-    - Es un monitor donde los gatos deben entrar en orden de llegada.
-    - La sala tiene un contador de cantidad de comida. Puede haber una cantidad infinita de comida.
-    - Los gatos pueden entrar si hay huecos libres, siguiendo el orden de llegada.
-    - La sala puede albergar hasta un número específico de gatos, determinado por el constructor del monitor.
-    - Un gato sale de la sala de alimentación después de comer una cantidad de comida aleatoria entre 1 y 10, que se restará del contador de comida.
-    - Si la sala está llena, el gato se queda esperando en la cola.</p>
-<p>Sala de Juegos:
-    - Es otro monitor donde los gatos pueden entrar si hay huecos libres.
-    - No es necesario que los gatos entren en orden de llegada.
-    - Si la sala está llena, el gato se quedará esperando.</p>
-<p>Comportamiento de la hebra Alimentador:
-    - Es una hebra que añade comida a la sala de alimentación.
-    - Añade una cantidad de comida aleatoria.</p>
-<p>Se ofrece el código del método run() de la hebra Alimentador y un ejemplo del método main().
+<p>Sala de Alimentación:</p>
+<ul>
+<li>Es un monitor donde los gatos deben entrar en orden de llegada;</li>
+<li>La sala tiene un contador de cantidad de comida. Puede haber una cantidad infinita de comida;</li>
+<li>Los gatos pueden entrar si hay huecos libres, siguiendo el orden de llegada.</li>
+<li>La sala puede albergar hasta un número específico de gatos, determinado por el constructor del monitor;</li>
+<li>Un gato sale de la sala de alimentación después de comer una cantidad de comida aleatoria entre 1 y 10, que se restará del contador de comida;</li>
+<li>Si la sala está llena, el gato se queda esperando en la cola.</li>
+</ul>
+<p>Sala de Juegos:</p>
+<ul>
+<li>Es otro monitor donde los gatos pueden entrar si hay huecos libres;</li>
+<li>No es necesario que los gatos entren en orden de llegada;</li>
+<li>Si la sala está llena, el gato se quedará esperando.</li>
+</ul>
+<p>Comportamiento de la hebra <code>Alimentador</code>:</p>
+<ul>
+<li>Es una hebra que añade comida a la sala de alimentación;</li>
+<li>Añade una cantidad de comida aleatoria.</li>
+</ul>
+<p>Se ofrece el código del método <code>run()</code> de la hebra <code>Alimentador</code> y un ejemplo del método <code>main()</code>.
 Diagrama de clases:</p>
 <p><img alt="" src="../p2/p2_ex01.png" /></p>
-<p>Ejemplo de main:
+<p>Ejemplo de <code>main()</code>:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">SalaAlimentacion</span><span class="w"> </span><span class="n">salaAlimentacion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SalaAlimentacion</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span>
 <span class="w">    </span><span class="n">SalaJuegos</span><span class="w"> </span><span class="n">salaJuegos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SalaJuegos</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
@@ -2909,7 +2915,7 @@ Diagrama de clases:</p>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<p>Ejemplo de run de la clase Alimentador:
+<p>Ejemplo de <code>run()</code> de la clase <code>Alimentador</code>:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Random</span><span class="w"> </span><span class="n">rand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">();</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -2923,18 +2929,20 @@ Diagrama de clases:</p>
 <span class="p">}</span>
 </code></pre></div></p>
 <p>SE PIDE:
-Desarrolla el código del monitor SalaAlimentación:
-- (a) (1,5 puntos) Implementa el método public synchronized void entrar(Gato gato) throws InterruptedException</p>
+Desarrolla el código del monitor <code>SalaAlimentación</code>:</p>
 <ul>
 <li>
-<p>(b) (1,5 punto) Implementa el método public synchronized void comerYSalir(Gato gato, int cantidadComida) throws InterruptedException</p>
+<p>(a) (1,5 puntos) Implementa el método <code>public synchronized void entrar(Gato gato) throws InterruptedException</code>.</p>
 </li>
 <li>
-<p>(c) (1 punto) Implementa el método public synchronized void añadirComida(int cantidad) throws InterruptedException</p>
+<p>(b) (1,5 punto) Implementa el método <code>public synchronized void comerYSalir(Gato gato, int cantidadComida) throws InterruptedException</code>.</p>
+</li>
+<li>
+<p>(c) (1 punto) Implementa el método <code>public synchronized void añadirComida(int cantidad) throws InterruptedException</code>.</p>
 </li>
 </ul>
 <details class="note">
-<summary>Mostrar solución</summary>
+<summary>Mostrar solución a las preguntas (a), (b), y (c)</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrar</span><span class="p">(</span><span class="n">Gato</span><span class="w"> </span><span class="n">gato</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">gatosEnSala</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">capacidad</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>
 <span class="w">           </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">colaEspera</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">colaEspera</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">gato</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
@@ -2974,17 +2982,17 @@ Desarrolla el código del monitor SalaAlimentación:
 <span class="p">}</span>
 </code></pre></div>
 </details>
-<p>Desarrolla el código del monitor SalaJuegos:</p>
+<p>Desarrolla el código del monitor <code>SalaJuegos</code>:</p>
 <ul>
 <li>
-<p>(d) (0,5 puntos) Implementa el método public synchronized void entrar() throws InterruptedException</p>
+<p>(d) (0,5 puntos) Implementa el método <code>public synchronized void entrar() throws InterruptedException</code>.</p>
 </li>
 <li>
-<p>(e) (0,5 puntos) Implementa el método public synchronized void salir() throws InterruptedException</p>
+<p>(e) (0,5 puntos) Implementa el método <code>public synchronized void salir() throws InterruptedException</code>.</p>
 </li>
 </ul>
 <details class="note">
-<summary>Mostrar solución</summary>
+<summary>Mostrar solución a las preguntas (d) y (e)</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entrar</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">gatosDentro</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">capacidadGatos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">wait</span><span class="p">();</span>
