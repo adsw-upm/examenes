@@ -6,8 +6,7 @@ tags:
  - complejidad
 ---
 
-- (a) (6 puntos) Desarrolle un método que permita saber cual es la pieza (el tipo de pieza) que se usa en el movimiento más utilizado como apertura de las blancas (primera pieza que mueven) en el conjunto de partidas cargadas. De la misma manera, desarrolle un método que permita saber cual es el movimiento más utilizado como apertura de las negras (primera pieza que mueven) en contestación a la apertura de las blancas más utilizada.
-Consejo: piense qué piezas se pueden mover al inicio de una partida de ajedrez.
+- (a) (6 puntos) Desarrolle un método que permita saber cual es la pieza (el tipo de pieza) que se usa en el movimiento más utilizado como apertura de las blancas (primera pieza que mueven) en el conjunto de partidas cargadas. De la misma manera, desarrolle un método que permita saber cual es el movimiento más utilizado como apertura de las negras (primera pieza que mueven) en contestación a la apertura de las blancas más utilizada. Consejo: piense qué piezas se pueden mover al inicio de una partida de ajedrez.
 
 ??? note "Mostrar solución"
     Métodos a incluir en la clase `AnalizadorGrafos`:

@@ -17,7 +17,7 @@ Tras aplicar el algoritmo:
   * Tanto `a` como `b` siguen estando ordenados correctamente
   * El conjunto de números (es decir, números contenidos en `a` o `b`) siguen siendo los mismos
 
-Por ejemplo, si partimos de `a = [1, 3, 5, 7]; b = [2, 4, 6, 8]`, el resultado sería `a = [1, 2, 3, 4]; b = [5, 6, 7, 8]`.
+Por ejemplo, si partimos de `a = [1, 3, 5, 7]; b = [2, 4, 6, 8]`, el resultado sería `a = [1, 2, 3, 4]`; `b = [5, 6, 7, 8]`.
 
 Se pide:
 
@@ -26,11 +26,11 @@ Se pide:
 ??? note "Mostrar solución"
     Casos de prueba para el método `splitSort`:
 
-       - Caso 1: `a = [1, 3, 5, 7]`, `b = [2, 4, 6, 8]` → Resultado esperado: `a = [1, 2, 3, 4]`, `b = [5, 6, 7, 8]`
-       - Caso 2: `a = [10, 20, 30]`, `b = [15, 25, 35]` → Resultado esperado: `a = [10, 15, 20]`, `b = [25, 30, 35]`
-       - Caso 3: `a = [5, 10]`, `b = [1, 2]` → Resultado esperado: `a = [1, 2]`, `b = [5, 10]`
-       - Caso 4: `a = [1000, 2000]`, `b = [1500, 2500]` → Resultado esperado: `a = [1000, 1500]`, `b = [2000, 2500]`
-       - Caso 5: `a = [3]`, `b = [4]` → Resultado esperado: `a = [3]`, `b = [4]`
+       - Caso 1: `a = [1, 3, 5, 7]`, `b = [2, 4, 6, 8]` $\rightarrow$ Resultado esperado: `a = [1, 2, 3, 4]`, `b = [5, 6, 7, 8]`
+       - Caso 2: `a = [10, 20, 30]`, `b = [15, 25, 35]` $\rightarrow$ Resultado esperado: `a = [10, 15, 20]`, `b = [25, 30, 35]`
+       - Caso 3: `a = [5, 10]`, `b = [1, 2]` $\rightarrow$ Resultado esperado: `a = [1, 2]`, `b = [5, 10]`
+       - Caso 4: `a = [1000, 2000]`, `b = [1500, 2500]` $\rightarrow$ Resultado esperado: `a = [1000, 1500]`, `b = [2000, 2500]`
+       - Caso 5: `a = [3]`, `b = [4]` $\rightarrow$ Resultado esperado: `a = [3]`, `b = [4]`
 
 
 - (b) (4 puntos) Desarrollar el código del método `void splitSort(int[] a, int[] b)`. Se valorará:

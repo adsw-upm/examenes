@@ -8,17 +8,12 @@ tags:
 
 Se dispone de un grafo no dirigido que relaciona ciudades y las personas que han viajado entre ellas.
 
-* **Nodo** representa a una ciudad.
-* **Arista** representa a una persona que ha realizado un viaje entre dos ciudades.
+* Nodo representa a una ciudad.
+* Arista representa a una persona que ha realizado un viaje entre dos ciudades.
 
 En el grafo no existe más de una arista entre las mismas dos ciudades con la misma persona.
 
-\FloatBarrier
-\noindent
-\begin{center}
-\includegraphics[width=\textwidth]{diagram.pdf}
-\end{center}
-\FloatBarrier
+![](extra/extra_ex04.png)
 
 - (a) (5 puntos) Se pide implementar el siguiente método:
 

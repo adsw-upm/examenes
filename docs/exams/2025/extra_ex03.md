@@ -24,20 +24,7 @@ Tres hebras Java de dos tipos diferentes, tipos A y B, entran en una sala para i
 ```
 
 Podemos suponer que el código de las hebras es el siguiente:
-```{=latex}
-\noindent
-\begin{minipage}[t]{0.48\linewidth}
-\raggedright
-\begin{lstlisting}[
-  language=Java,
-  keywordstyle=\color{blue}\bfseries,
-  commentstyle=\color{gray}\itshape,
-  stringstyle=\color{red},
-  identifierstyle=\color{black},
-  basicstyle=\ttfamily\small,
-  frame=single,
-  breaklines=true
-]
+```java
 // Hebra de tipo A
 private Set<String> colec=new HashSet<String>();
 private ISalaTokens sala;
@@ -51,21 +38,7 @@ public void run() {
     colec.add(tokens[0]); colec.add(tokens[1]);
   }
 }
-\end{lstlisting}
-\end{minipage}%
-\hfill
-\begin{minipage}[t]{0.48\linewidth}
-\raggedleft
-\begin{lstlisting}[
-  language=Java,
-  keywordstyle=\color{blue}\bfseries,
-  commentstyle=\color{gray}\itshape,
-  stringstyle=\color{red},
-  identifierstyle=\color{black},
-  basicstyle=\ttfamily\small,
-  frame=single,
-  breaklines=true
-]
+
 // Hebra de tipo B
 private Set<String> colec=new HashSet<String>();
 private ISalaTokens sala;
@@ -78,11 +51,9 @@ public void run() {
     colec.add(token);
   }
 }
-\end{lstlisting}
-\end{minipage}%
 ```
 
-**Nota:** Suponga que los métodos `buscarTokensA` y `buscarTokenB` están implementados y devuelven los tokens necesarios para el intercambio.
+Nota: Suponga que los métodos `buscarTokensA` y `buscarTokenB` están implementados y devuelven los tokens necesarios para el intercambio.
 
 ??? note "Mostrar solución"
     ```{.java .numberLines}

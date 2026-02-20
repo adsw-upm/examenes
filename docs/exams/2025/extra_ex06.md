@@ -7,12 +7,12 @@ tags:
 ---
 
 
-- (a) (4 puntos) Modifique el código de sus prácticas para que las hebras resuelvan primero las tareas (TareaCamino) que tengan un camino más corto.
+- (a) (4 puntos) Modifique el código de sus prácticas para que las hebras resuelvan primero las tareas (`TareaCamino`) que tengan un camino más corto.
 
 ??? note "Mostrar solución"
     Modificaciones necesarias:
-    **1. En la clase `TareaCamino`:**
-    - Implementar la interfaz `Comparable<TareaCamino>`
+
+    - En la clase `TareaCamino`, implementar la interfaz `Comparable<TareaCamino>`:
     
     ```java
     class TareaCamino implements Comparable<TareaCamino> {
@@ -32,8 +32,7 @@ tags:
     }
     ```
     
-    **2. En el método `getTarea()` de `PoolHebras`:**
-    - Ordenar la lista antes de extraer la tarea
+    - En el método `getTarea()` de `PoolHebras`, ordenar la lista antes de extraer la tarea:
     
     ```java
     public synchronized TareaCamino getTarea(HebraWorker hw) throws InterruptedException {
