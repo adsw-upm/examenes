@@ -2877,16 +2877,32 @@
 <p>En esta asignatura se ha trabajado en la representación de las partidas
 de ajedrez. Se pide desarrollar los siguientes métodos:</p>
 <ul>
-<li>(a) (1,5 puntos) CompararTableros</li>
-</ul>
+<li>(a) (1,5 puntos) <code>CompararTableros</code>:
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">compararPiezas</span><span class="p">(</span><span class="n">Pieza</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">Pieza</span><span class="w"> </span><span class="n">p2</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></li>
+</ul>
 <p>Este método comprueba si dos piezas coinciden: el mismo tipo y bando</p>
-<p>Parameters :
-    p1 - primera pieza para la comparación
-    p2 - segundo pieza para la comparación
-Returns:
-    devuelve true si las piezas coinciden</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>p1</code> - primera pieza para la comparación</td>
+</tr>
+<tr>
+<td><code>p2</code> - segundo pieza para la comparación</td>
+</tr>
+<tr>
+<td><strong>Returns</strong>o</td>
+</tr>
+<tr>
+<td>devuelve <code>true</code> si las piezas coinciden</td>
+</tr>
+</tbody>
+</table>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">compararPiezas</span><span class="p">(</span><span class="n">Pieza</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">Pieza</span><span class="w"> </span><span class="n">p2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2908,16 +2924,32 @@ Returns:
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (1,5 puntos) CompararTableros</li>
+<li>(b) (1,5 puntos) <code>compararTableros</code>:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">compararTableros</span><span class="p">(</span><span class="n">Tablero</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="w"> </span><span class="n">Tablero</span><span class="w"> </span><span class="n">t2</span><span class="p">)</span>
 </code></pre></div>
 <p>Este método comprueba si dos tableros coinciden: tienen que tener el mismo número de piezas y las mismas piezas en todas las posiciones.</p>
-<p>Parameters:
-    t1 - primer tablero para la comparación
-    t2 - segundo tablero para la comparación</p>
-<p>Returns:
-    Devuelve true si los tableros coinciden</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>t1</code> - primer tablero para la comparación</td>
+</tr>
+<tr>
+<td><code>t2</code> - segundo tablero para la comparación</td>
+</tr>
+<tr>
+<td><strong>Returns</strong></td>
+</tr>
+<tr>
+<td>Devuelve <code>true</code> si los tableros coinciden</td>
+</tr>
+</tbody>
+</table>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">compararTableros</span><span class="p">(</span><span class="n">Tablero</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="w"> </span><span class="n">Tablero</span><span class="w"> </span><span class="n">t2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2936,16 +2968,32 @@ Returns:
 </code></pre></div>
 </details>
 <ul>
-<li>(c) (2 puntos) Comparar Partidas</li>
-</ul>
+<li>(c) (2 puntos) <code>compararPartidas</code>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">compararPartidas</span><span class="p">(</span><span class="n">Partida</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">Partida</span><span class="w"> </span><span class="n">p2</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></li>
+</ul>
 <p>Este método comprueba si dos partidas coinciden: tienen el mismo número de tableros, el mismo orden y los tableros coinciden</p>
-<p>Parameters:
-    p1 - primera partida para la comparación
-    p2 - segunda partida para la comparación</p>
-<p>Returns:
-    Devuelve true si las partidas coinciden</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>p1</code> - primera partida para la comparación</td>
+</tr>
+<tr>
+<td><code>p2</code> - segunda partida para la comparación</td>
+</tr>
+<tr>
+<td><strong>Returns</strong></td>
+</tr>
+<tr>
+<td>Devuelve <code>true</code> si las partidas coinciden</td>
+</tr>
+</tbody>
+</table>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">compararPartidas</span><span class="p">(</span><span class="n">Partida</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">Partida</span><span class="w"> </span><span class="n">p2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
