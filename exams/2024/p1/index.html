@@ -3023,7 +3023,7 @@
 
 <h1 id="examen-2024-parcial-1">Examen 2024 — Parcial 1</h1>
 <h2 id="problema-1">Problema 1</h2>
-<p>Dada la clase FraseCelebre, que se utiliza para almacenar información sobre frases célebres, incluyendo el año en que se dijo la frase, el autor de la frase, y la frase en sí. Se debe desarrollar el código necesario para que sus objetos puedan ser ordenados. El criterio de ordenación es, primero se debe ordenar por año de más actual a más antigua y segundo por orden alfabético del nombre del autor.</p>
+<p>Dada la clase <code>FraseCelebre</code>, que se utiliza para almacenar información sobre frases célebres, incluyendo el año en que se dijo la frase, el autor de la frase, y la frase en sí. Se debe desarrollar el código necesario para que sus objetos puedan ser ordenados. El criterio de ordenación es, primero se debe ordenar por año de más actual a más antigua y segundo por orden alfabético del nombre del autor.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FraseCelebre</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// Atributos de la clase</span>
@@ -3042,8 +3042,10 @@
 <span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Se pide:
-- (a) (2 puntos) Modifique, añade o desarrolle el código necesario para que tras la ejecución del siguiente código de ejemplo se muestre por consola las frases célebres ordenadas con el criterio de ordenación indicado. </p>
+<p>Se pide:</p>
+<ul>
+<li>(a) (2 puntos) Modifique, añade o desarrolle el código necesario para que tras la ejecución del siguiente código de ejemplo se muestre por consola las frases célebres ordenadas con el criterio de ordenación indicado. </li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FraseCelebre</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">FraseCelebre</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -3069,7 +3071,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2 puntos) Desarrolle el método public static String calcularModaDeAutores(ArrayList<FraseCelebre> array), que recibe como parámetro un ArrayList de objetos FraseCelebre y calcule la moda de los autores de las frases célebres del ArrayList. La moda se define como el valor que más se repite en un conjunto de datos. En caso de que haya más de un autor tenga la máxima frecuencia, el método puede retornar cualquiera de ellos.</li>
+<li>(b) (2 puntos) Desarrolle el método <code>public static String calcularModaDeAutores(ArrayList&lt;FraseCelebre&gt; array)</code>, que recibe como parámetro un <code>ArrayList</code> de objetos <code>FraseCelebre</code> y calcule la moda de los autores de las frases célebres del <code>ArrayList</code>. La moda se define como el valor que más se repite en un conjunto de datos. En caso de que haya más de un autor tenga la máxima frecuencia, el método puede retornar cualquiera de ellos.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
@@ -3198,11 +3200,15 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Nota: En relación a los métodos solicitados en las preguntas (a), (b), y (c):
-    - En la evaluación de estas preguntas, se tendrá en cuenta la complejidad de la solución elegida. En la calificación, se valorará la complejidad de la solución propuesta.
-    - No se puede cambiar la signatura de estas clases. Si son necesarios métodos auxiliares podrán incluirse métodos o atributos adicionales, pero habrá que mantener su signatura.</p>
-<p>Se puede suponer que los árboles que soportan estas clases son árboles equilibrados. Se pide:
-- (a) (1,5 puntos) Implemente el método cuentaValores, según la especificación descrito en el código mostrado.</p>
+<p>Nota: En relación a los métodos solicitados en las preguntas (a), (b), y (c):</p>
+<ul>
+<li>En la evaluación de estas preguntas, se tendrá en cuenta la complejidad de la solución elegida. En la calificación, se valorará la complejidad de la solución propuesta.</li>
+<li>No se puede cambiar la signatura de estas clases. Si son necesarios métodos auxiliares podrán incluirse métodos o atributos adicionales, pero habrá que mantener su signatura.</li>
+</ul>
+<p>Se puede suponer que los árboles que soportan estas clases son árboles equilibrados. Se pide:</p>
+<ul>
+<li>(a) (1,5 puntos) Implemente el método <code>cuentaValores</code>, según la especificación descrito en el código mostrado.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaValores</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">unValor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3224,13 +3230,15 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (0,5 puntos) Calcule la complejidad de la solución implementada de la clase cuentaValores. </li>
+<li>(b) (0,5 puntos) Calcule la complejidad de la solución implementada de la clase <code>cuentaValores</code>. </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>La complejidad de esta implementación es N, donde N es el número de elementos del árbol. La implementación recorre el árbol con un algoritmo de pre-orden. Hay que recorrer el árbol entero porque los valores pueden estar ubicados en cualquier parte del árbol.</p>
+<p>La complejidad de esta implementación es <span class="arithmatex">\(N\)</span>, donde <span class="arithmatex">\(N\)</span> es el número de elementos del árbol. La implementación recorre el árbol con un algoritmo de pre-orden. Hay que recorrer el árbol entero porque los valores pueden estar ubicados en cualquier parte del árbol.</p>
 </details>
-<p>-(c) (2 puntos) Implemente el método cuentaClaves. cuentaClaves devuelve el número de nodos que tiene como clave una clave mayor que minClave y menor que maxClave.</p>
+<ul>
+<li>(c) (2 puntos) Implemente el método <code>cuentaClaves</code>. <code>cuentaClaves</code> devuelve el número de nodos que tiene como clave una clave mayor que <code>minClave</code> y menor que <code>maxClave</code>.</li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">cuentaClaves</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">minClave</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxClave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3259,38 +3267,26 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(d) (1 punto) ¿Cuál es la funcionalidad del método m? </li>
+<li>(d) (1 punto) ¿Cuál es la funcionalidad del método <code>m</code>? </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>El método m es una implementación del método size de Diccionario. Esta implementación cuenta el número de elementos del árbol, recorriendo todo el árbol.</p>
+<p>El método <code>m</code> es una implementación del método <code>size</code> de <code>Diccionario</code>. Esta implementación cuenta el número de elementos del árbol, recorriendo todo el árbol.</p>
 </details>
 <ul>
-<li>(e) (0,5 puntos) ¿Cuál es la complejidad del método m? </li>
+<li>(e) (0,5 puntos) ¿Cuál es la complejidad del método <code>m</code>? </li>
 </ul>
 <details class="note">
 <summary>Mostrar solución</summary>
-<p>Es un algoritmo de complejidad N. Suponiendo que el árbol es equilibrado, la función de recurrencia de el algoritmo que se utiliza es:</p>
-<p>T(n)=O(1)+T(n-1/2)+T(n-1/2)=O(1)+T(n-1)=O(n)</p>
+<p>Es un algoritmo de complejidad <span class="arithmatex">\(N\)</span>. Suponiendo que el árbol es equilibrado, la función de recurrencia de el algoritmo que se utiliza es:</p>
+<p><span class="arithmatex">\(T(n)=O(1)+T(n-1/2)+T(n-1/2)=O(1)+T(n-1)=O(n)\)</span></p>
 </details>
 <ul>
-<li>(f) (0,5 puntos) ¿Qué tipo de función es la implementación del método m? <ul>
-<li>
-<ol>
+<li>(f) (0,5 puntos) ¿Qué tipo de función es la implementación del método <code>m</code>? <ol>
 <li>Una función pre-orden</li>
-</ol>
-</li>
-<li>
-<ol>
 <li>Una función en-orden</li>
-</ol>
-</li>
-<li>
-<ol>
 <li>Una función post-orden</li>
 </ol>
-</li>
-</ul>
 </li>
 </ul>
 <details class="note">

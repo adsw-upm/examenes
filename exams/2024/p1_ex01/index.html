@@ -2874,7 +2874,7 @@
 
   <h1>P1 ex01</h1>
 
-<p>Dada la clase FraseCelebre, que se utiliza para almacenar información sobre frases célebres, incluyendo el año en que se dijo la frase, el autor de la frase, y la frase en sí. Se debe desarrollar el código necesario para que sus objetos puedan ser ordenados. El criterio de ordenación es, primero se debe ordenar por año de más actual a más antigua y segundo por orden alfabético del nombre del autor.</p>
+<p>Dada la clase <code>FraseCelebre</code>, que se utiliza para almacenar información sobre frases célebres, incluyendo el año en que se dijo la frase, el autor de la frase, y la frase en sí. Se debe desarrollar el código necesario para que sus objetos puedan ser ordenados. El criterio de ordenación es, primero se debe ordenar por año de más actual a más antigua y segundo por orden alfabético del nombre del autor.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FraseCelebre</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// Atributos de la clase</span>
@@ -2893,8 +2893,10 @@
 <span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Se pide:
-- (a) (2 puntos) Modifique, añade o desarrolle el código necesario para que tras la ejecución del siguiente código de ejemplo se muestre por consola las frases célebres ordenadas con el criterio de ordenación indicado. </p>
+<p>Se pide:</p>
+<ul>
+<li>(a) (2 puntos) Modifique, añade o desarrolle el código necesario para que tras la ejecución del siguiente código de ejemplo se muestre por consola las frases célebres ordenadas con el criterio de ordenación indicado. </li>
+</ul>
 <details class="note">
 <summary>Mostrar solución</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FraseCelebre</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">FraseCelebre</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -2920,7 +2922,7 @@
 </code></pre></div>
 </details>
 <ul>
-<li>(b) (2 puntos) Desarrolle el método public static String calcularModaDeAutores(ArrayList<FraseCelebre> array), que recibe como parámetro un ArrayList de objetos FraseCelebre y calcule la moda de los autores de las frases célebres del ArrayList. La moda se define como el valor que más se repite en un conjunto de datos. En caso de que haya más de un autor tenga la máxima frecuencia, el método puede retornar cualquiera de ellos.</li>
+<li>(b) (2 puntos) Desarrolle el método <code>public static String calcularModaDeAutores(ArrayList&lt;FraseCelebre&gt; array)</code>, que recibe como parámetro un <code>ArrayList</code> de objetos <code>FraseCelebre</code> y calcule la moda de los autores de las frases célebres del <code>ArrayList</code>. La moda se define como el valor que más se repite en un conjunto de datos. En caso de que haya más de un autor tenga la máxima frecuencia, el método puede retornar cualquiera de ellos.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
