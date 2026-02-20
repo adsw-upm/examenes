@@ -2973,7 +2973,7 @@
 <li>A profundidad 1 habrá 2 huecos. Con un total de 1 + 2 = 3 posiciones.</li>
 <li>A profundidad 2 habrá 4 huecos. Con un total de 3 + 4 = 7 posiciones.</li>
 <li>A profundidad 3 habrá 8 huecos. Con un total de 7 + 8 = 15 posiciones.</li>
-<li>A profundidad <span class="arithmatex">\(k\)</span> habrá <span class="arithmatex">\(2ˆ(k+1)-1\)</span> posiciones. Por lo que para <span class="arithmatex">\(n\)</span> posiciones: <span class="arithmatex">\(n = 2ˆ(k+1)-1 \Rightarrow k = log_2(n+1) - 1\)</span></li>
+<li>A profundidad <span class="arithmatex">\(k\)</span> habrá <span class="arithmatex">\(2ˆ(k+1)-1\)</span> posiciones. Por lo que para <span class="arithmatex">\(n\)</span> posiciones: <span class="arithmatex">\(n = 2(k+1)-1 \Rightarrow k = log_2(n+1) - 1\)</span></li>
 </ul>
 <p>Por tanto, con 1023 posiciones habría espacio para 9 niveles completos de árbol binario.</p>
 <p>También podríamos concluir que, dado que cada nivel se rellena “de izquierda a derecha” (las posiciones más bajas son valores menores para cada nivel), la ocupación máxima en este caso sería igual hasta 1023+512=1535 huecos.</p>
