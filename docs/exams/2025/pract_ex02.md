@@ -23,9 +23,7 @@ tags:
     ```
 
 
-- (b) (5 puntos) Desarrolle un método que reciba como parámetro dos tableros y calcule el camino **de longitud impar** más corto, entre ellos. El método debe devolver una secuencia de `Nodo` que represente el camino encontrado.
-   - Si no existe un camino entre los dos tableros, el método debe devolver `null`.
-   - Si hay varios caminos de la misma longitud, devolverá el primero que se encuentre.
+- (b) (5 puntos) Desarrolle un método que reciba como parámetro dos tableros y calcule el camino de longitud impar más corto, entre ellos. El método debe devolver una secuencia de `Nodo` que represente el camino encontrado. Tenga en cuenta que si no existe un camino entre los dos tableros, el método debe devolver `null`. Si hay varios caminos de la misma longitud, devolverá el primero que se encuentre.
 
 ??? note "Mostrar solución"
     Usamos el mismo algoritmo que hayamos implementado en la práctica 2. Solo se debe añadir la condición de longitud impar para considerar un camino válido

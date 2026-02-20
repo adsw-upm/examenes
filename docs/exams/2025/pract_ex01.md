@@ -12,7 +12,6 @@ En ajedrez, coronar un peón ocurre cuando un peón alcanza la última fila del 
 ```java
 public boolean sonVariasDamas(Tablero unTablero)
 ```
----
 
 ??? note "Mostrar solución"
     ```java
