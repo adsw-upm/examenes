@@ -110,7 +110,7 @@ Se pide:
     - A profundidad 1 habrá 2 huecos. Con un total de 1 + 2 = 3 posiciones.
     - A profundidad 2 habrá 4 huecos. Con un total de 3 + 4 = 7 posiciones.
     - A profundidad 3 habrá 8 huecos. Con un total de 7 + 8 = 15 posiciones.
-    - A profundidad $k$ habrá $2ˆ(k+1)-1$ posiciones. Por lo que para $n$ posiciones: $n = 2ˆ(k+1)-1 \Rightarrow k = log_2(n+1) - 1$
+    - A profundidad $k$ habrá $2ˆ(k+1)-1$ posiciones. Por lo que para $n$ posiciones: $n = 2(k+1)-1 \Rightarrow k = log_2(n+1) - 1$
 
     Por tanto, con 1023 posiciones habría espacio para 9 niveles completos de árbol binario.
 
