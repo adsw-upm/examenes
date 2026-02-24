@@ -1,6 +1,6 @@
 ---
-id: ex-20XX-02
-year: 20XX
+id: ex-2025-02
+year: 2025
 exam: extraordinario
 tags:
  - complejidad
