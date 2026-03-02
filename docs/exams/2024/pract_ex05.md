@@ -3,6 +3,8 @@ id: ex-2024-05
 year: 2024
 exam: practicas
 tags:
+ - diccionarios
+ - tablas hash
  - complejidad
 ---
 

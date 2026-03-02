@@ -3,6 +3,8 @@ id: ex-2025-02
 year: 2025
 exam: extraordinario
 tags:
+ - búsqueda
+ - grafos
  - complejidad
 ---
 

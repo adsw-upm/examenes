@@ -3,7 +3,8 @@ id: ex-2024-04
 year: 2024
 exam: practicas
 tags:
- - grafos
+ - búsqueda
+ - complejidad
 ---
 
 - (a) (4 puntos) Modifique el método `getTablerosConPuntuacionMinima` para convertirlo en `getTablerosConPuntuacionMaxima`, que devuelva todos los tableros que tengan una puntuación igual o inferior a la que se pase como parámetro.
