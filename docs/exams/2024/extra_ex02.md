@@ -4,6 +4,7 @@ year: 2024
 exam: extraordinario
 tags:
  - complejidad
+ - tablas hash
 ---
 
 En este problema se trabajará con una tabla hash que almacena los nombres de los alumnos de un curso y sus respectivas notas. La tabla hash funciona con direccionamiento abierto. La resolución de las colisiones se realizará mediante el método de la exploración cuadrática. Esto significa que si al insertar un elemento en la tabla hash se produce una colisión, se elegirá una nueva posición mediante la fórmula $(posicion$ $+ i^2)\%$`tabla.length`, donde $i$ es el número de intentos de reubicación en la tabla y la operación $\%$ es el módulo que devuelve el resto de la división.

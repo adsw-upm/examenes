@@ -4,6 +4,7 @@ year: 2025
 exam: parcial 1 recuperacion
 tags:
  - complejidad
+ - ordenación
 ---
 
 Tenemos arrays de `2n` números enteros dispuestos de forma capicúa y ordenados en sentido ascendente-descendente. En la primera mitad del array hay `n` números ordenados de forma ascendente, y en la segunda mitad, los mismos `n` números pero ordenados de forma descendente. El valor de `n` siempre es una potencia de 2.

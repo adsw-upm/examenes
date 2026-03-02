@@ -4,6 +4,7 @@ year: 2024
 exam: extraordinario
 tags:
  - complejidad
+ - búsqueda
 ---
 
 Considere la clase `ArrayDoble`, con los atributos descritos en el diagrama de debajo. El atributo `array` es un array de enteros de dimensión `n`. Los elementos están separados en dos partes. Los `i` primeros elementos de este array son números impares ordenados de menor a mayor. Los últimos `n-i` elementos son números pares ordenados de menor a mayor. Puede haber posiciones vacías, cuyo valor será `null`, pero solo al final de cada una de las partes (par e impar). También puede haber valores repetidos. A continuación, se puede ver un ejemplo del contenido de este array:

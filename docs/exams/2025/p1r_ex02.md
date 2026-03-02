@@ -4,6 +4,8 @@ year: 2025
 exam: parcial 1 recuperacion
 tags:
  - complejidad
+ - diccionarios
+ - tablas hash
 ---
 
 En un sistema de gestión de la información de personas, se quieren implementar los métodos que se describen a continuación. Se pide:

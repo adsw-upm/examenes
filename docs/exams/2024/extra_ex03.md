@@ -3,7 +3,8 @@ id: ex-2024-03
 year: 2024
 exam: extraordinario
 tags:
- - hebras
+ - concurrencia
+ - monitores
 ---
 
 La pregunta consiste en simular la gestión de una gasolinera. La gasolinera tiene una cantidad limitada de surtidores y depósitos de diferentes tipos de combustibles (Gasolina y Diesel). Los vehículos y los camiones cisterna representan hebras que interactúan con la gasolinera y una taquilla de cobro/pago.

@@ -4,6 +4,7 @@ year: 2025
 exam: extraordinario
 tags:
  - complejidad
+ - grafos
 ---
 
 Se dispone de un grafo no dirigido que relaciona ciudades y las personas que han viajado entre ellas.

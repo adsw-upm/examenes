@@ -4,6 +4,7 @@ year: 2025
 exam: extraordinario
 tags:
  - complejidad
+ - ordenación
 ---
 
 Se quiere desarrollar un algoritmo al que llamaremos *split sort*.

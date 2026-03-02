@@ -4,6 +4,7 @@ year: 2024
 exam: parcial 1 recuperacion
 tags:
  - complejidad
+ - árboles binarios
 ---
 
 Se desea implementar una estructura capaz de almacenar direcciones IP únicas y un algoritmo para consultar las direcciones almacenadas de manera eficiente. Esta estructura se basará en un árbol binario de búsqueda (BST). Dado que la aplicación que usa esta estructura será desplegada en un router empotrado, se decide almacenar el árbol en forma de array de tamaño fijo. Para ello, se procede de la siguiente manera. La posición `0` del array contendrá el nodo raíz. Dado un nodo en la posición `i`, su hijo izquierdo se encontrará en la posición `2*i+1`, y su hijo derecho en la posición `2*i+2`. Las posiciones con valor null corresponden a nodos que no existen en el BST. El siguiente es un ejemplo del estado del comienzo del array tras insertar 5 direcciones IP:

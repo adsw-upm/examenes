@@ -4,6 +4,8 @@ year: 2025
 exam: extraordinario
 tags:
  - complejidad
+ - concurrencia
+ - monitores
 ---
 
 Tres hebras Java de dos tipos diferentes, tipos A y B, entran en una sala para intercambiar tokens. Las hebras de tipo A solo salen de la sala cuando han intercambiado tokens con las dos hebras de tipo B, y las hebras de tipo B intercambian un solo token, cada una, con la hebra de tipo A. Las tres hebras no salen de la sala mientras que todas no han intercambiado sus tokens, y cuando las tres han intercambiado deben salir de la sala y más adelante volver a entrar para iniciar nuevos intercambios. Las hebras solo empiezan a intercambiar tokens cuando están las tres en la sala.
