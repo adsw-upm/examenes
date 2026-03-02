@@ -3,7 +3,8 @@ id: ex-2021-01
 year: 2021
 exam: parcial 1 recuperacion
 tags:
- - hebras
+ - concurrencia
+ - ordenación
 ---
 
 Se quiere desarrollar un programa que analice un documento de texto y calcule el n!mero de veces que aparece cada palabra (`String`). El resultado es una lista de `ContadorPalabra`, que es una clase que se muestra a continuación:

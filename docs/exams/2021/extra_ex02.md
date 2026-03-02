@@ -4,6 +4,8 @@ year: 2021
 exam: extraordinario
 tags:
  - complejidad
+ - búsqueda
+ - ordenación
 ---
 
 Se quiere evaluar tres algoritmos que calculan cuántas veces aparecen los números en un rango de valores enteros en otra secuencia de enteros representada en un array desordenado y sin valores repetidos. Los tres algoritmos retornan los mismos valores y son correctos. La signatura de los tres algoritmos es: `buscar(int[] buscados, int inicio, int fin)`, donde: `buscados` es el array de enteros e `inicio` y `fin` (`inicio <= fin`) determinan el rango de enteros a buscar.

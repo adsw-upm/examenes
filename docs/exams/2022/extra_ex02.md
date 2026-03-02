@@ -4,6 +4,8 @@ year: 2022
 exam: extraordinario
 tags:
  - complejidad
+ - grafos
+ - caminos mínimos
 ---
 
 Se dispone de una clase `RedSocial` que representa una red social de amistad entre personas. En concreto, se quiere representar la relación “seguir a una persona”. Para ello, se utiliza un grafo (`g`) dirigido para representar esta relación: un vértice (nodo) representa una persona y un arco (arista) una relación. En concreto `A` à `B` representa que la persona `A` siga a la persona `B`. Este arco no implica que `B` sigua a `A`.

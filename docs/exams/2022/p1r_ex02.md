@@ -4,6 +4,7 @@ year: 2022
 exam: parcial 1 recuperacion
 tags:
  - complejidad
+ - ordenación
 ---
 
 Se dispone de un array de números enteros, que incluye `n` secuencias repetidas de números ordenados ascendentemente del 1 al `m`. Por ejemplo, si `m` es 8, y `n` es 4, el contenido del array será:

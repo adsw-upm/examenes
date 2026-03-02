@@ -3,7 +3,7 @@ id: ex-2021-02
 year: 2021
 exam: parcial 2
 tags:
- - complejidad
+ - concurrencia
 ---
 
 La práctica 4 incluía un conjunto de trenes que se movían de forma concurrente en su línea de metro, con bastantes simplificaciones respecto a la realidad. Una de ellas es que no se controlaba que varios trenes puedan estar cargando/descargando pasajeros de forma simultánea en un mismo anden.

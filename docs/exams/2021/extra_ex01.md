@@ -4,6 +4,8 @@ year: 2021
 exam: extraordinario
 tags:
  - grafos
+ - caminos mínimos
+ - diccionarios
 ---
 
 Un sistema real se describe como un grafo no dirigido. Los arcos o aristas (*edge*) tienen un coste o peso mayor que cero. Un camino es una secuencia de arcos que conectan dos nodos o vértices. Un camino se representa mediante una lista (List<Edge>). En este sistema, interesa agrupar a todos los posibles caminos entre dos nodos concretos, que se representa mediante una lista de caminos (`List<List<Edge>>`).

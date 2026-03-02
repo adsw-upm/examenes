@@ -3,7 +3,8 @@ id: ex-2021-02
 year: 2021
 exam: parcial 1 recuperacion
 tags:
- - grafos
+ - árboles binarios
+ - complejidad
 ---
 
 Se quiere desarrollar un sistema para calcular de forma eficiente las notas medias en la UPM a diferentes niveles. Nos interesan las notas medias a nivel de asignatura, a nivel de Escuela, y a nivel de Universidad. Se quiere que cada vez que se publique la nota de una asignatura se recalculen las medias a nivel de Escuela y Universidad, sin realizar operaciones innecesarias.

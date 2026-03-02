@@ -4,6 +4,9 @@ year: 2022
 exam: extraordinario
 tags:
  - grafos
+ - diccionarios
+ - tablas hash
+ - árboles binarios
 ---
 
 DIT Computers ha decidido implementar un nuevo sistema operativo revolucionario utilizando el lenguaje de programación Java. La primera tarea será implementar un sistema revolucionario de acceso a ficheros, para lo que decide subcontratar a alumnos de ADSW.

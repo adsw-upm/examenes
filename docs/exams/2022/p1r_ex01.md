@@ -4,6 +4,8 @@ year: 2022
 exam: parcial 1 recuperacion
 tags:
  - complejidad
+ - grafos
+ - caminos mínimos
 ---
 
 Utilizando el modelo de datos de la práctica 2 donde un vértice representaba un actor y una arista representa la película en la que han colaborado ambos actores. Se disponen las clases `GraphLoader`, `Movie` y `DijkstraSP` que podemos utilizar para resolver el problema. Y en el campo `EdgeWeightedDigraph g` de la clase `GraphLoader` tenemos ya cargado el grafo de actores y películas. Según el siguiente diagrama de clases:
