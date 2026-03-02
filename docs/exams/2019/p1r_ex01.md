@@ -3,6 +3,7 @@ id: ex-2019-01
 year: 2019
 exam: parcial 1 recuperacion
 tags:
+ - árboles binarios
  - complejidad
 ---
 

@@ -3,6 +3,8 @@ id: ex-2018-02
 year: 2018
 exam: extraordinario
 tags:
+ - búsqueda
+ - árboles binarios
  - complejidad
 ---
 

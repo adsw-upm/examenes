@@ -3,6 +3,8 @@ id: ex-2017-02
 year: 2017
 exam: extraordinario
 tags:
+ - diccionarios
+ - tablas hash
  - complejidad
 ---
 

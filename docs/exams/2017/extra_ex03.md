@@ -3,7 +3,7 @@ id: ex-2017-01
 year: 2017
 exam: extraordinario
 tags:
- - hebras
+ - concurrencia
 ---
 
 Varios ingenieros utilizan una base de datos para almacenar informes. Para ello disponen de una aplicación que permite almacenar un informe o recuperar un informe anterior. El acceso a los datos se organiza mediante una clase de Java que responde al esquema siguiente esquema:

@@ -3,6 +3,10 @@ id: ex-2017-01
 year: 2017
 exam: parcial 1 recuperacion
 tags:
+ - búsqueda
+ - diccionarios
+ - tablas hash
+ - árboles binarios
  - complejidad
 ---
 

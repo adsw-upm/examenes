@@ -3,7 +3,8 @@ id: ex-2018-03
 year: 2018
 exam: extraordinario
 tags:
- - hebras
+ - concurrencia
+ - condiciones de Coffman
 ---
 
 - (a) (2 puntos) Explique brevemente cuál es la diferencia entre interbloqueo (*deadlock*) y bloqueo vivo (*livelock*).
