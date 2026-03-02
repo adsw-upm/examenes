@@ -3,6 +3,7 @@ id: ex-2017-01
 year: 2017
 exam: extraordinario
 tags:
+ - búsqueda
  - complejidad
 ---
 

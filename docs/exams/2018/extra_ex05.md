@@ -3,6 +3,7 @@ id: ex-2018-05
 year: 2018
 exam: extraordinario
 tags:
+ - concurrencia
  - monitores
 ---
 

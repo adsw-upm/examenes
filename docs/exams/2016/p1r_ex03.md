@@ -3,6 +3,7 @@ id: ex-2016-03
 year: 2016
 exam: parcial 1 recuperacion
 tags:
+ - concurrencia
  - monitores
 ---
 

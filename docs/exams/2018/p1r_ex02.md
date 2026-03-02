@@ -3,7 +3,9 @@ id: ex-2018-02
 year: 2018
 exam: parcial 1 recuperacion
 tags:
+ - búsqueda
  - grafos
+ - complejidad
 ---
 
 Se dispone de la clase `Graph`, con los métodos que se indican a continuación:

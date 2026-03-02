@@ -2,8 +2,9 @@
 id: ex-2017-01
 year: 2017
 exam: extraordinario
-tags:
- - complejidad
+tags: - ordenación
+ - diccionarios
+ - tablas hash - complejidad
 ---
 
 - (a) (?? puntos) ¿A qué orden de complejidad se debería aproximar la gráfica de tiempo de ejecución para los métodos de ordenación por inserción y mezcla (*merge sort*)?
