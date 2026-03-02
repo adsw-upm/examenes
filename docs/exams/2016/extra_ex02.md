@@ -3,7 +3,9 @@ id: ex-2016-02
 year: 2016
 exam: extraordinario
 tags:
- - complejidad
+    - búsqueda
+    - tablas hash
+    - complejidad
 ---
 
 Se pide programar un método que determine si existen dos elementos de un array de enteros que sumen un cierto valor `K`.

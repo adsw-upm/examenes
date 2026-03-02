@@ -3,6 +3,7 @@ id: ex-2013-01
 year: 2013
 exam: extraordinario
 tags:
+    - árboles binarios
     - complejidad
 ---
 

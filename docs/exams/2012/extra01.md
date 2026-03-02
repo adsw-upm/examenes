@@ -3,7 +3,8 @@ id: ex-2012-03
 year: 2012
 exam: extraordinario
 tags:
-    - android
+    - búsqueda
+    - complejidad
 ---
 
 Se pide escribir un algoritmo para extraer la mediana de los valores de un array. Si un array de $N$ datos está ordenado, la mediana es el valor del medio, $\text{array}[N/2]$.

@@ -3,7 +3,8 @@ id: ex-2016-01
 year: 2016
 exam: extraordinario
 tags:
- - complejidad
+    - tablas hash
+    - complejidad
 ---
 
 Queremos programar una clase `Conjunto` usando internamente una tabla hash con lista de desbordamiento. Se pide programar los siguientes métodos:

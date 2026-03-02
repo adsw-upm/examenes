@@ -3,7 +3,7 @@ id: ex-2016-03
 year: 2016
 exam: extraordinario
 tags:
- - hebras
+    - concurrencia
 ---
 
 En un programa de supervisión y control de una central térmica, existen un conjunto de hebras que toman la temperatura del vapor en distintos puntos de la caldera regularmente y la almacenan junto con la hora de la medida, para que posteriormente otro conjunto de hebras pueda leer la última temperatura y hora medidas y realizar cálculos con ellas. Y se desea que cada una de las hebras del primer conjunto almacene la temperatura y hora medidas con exclusión mutua de todas las demás hebras, pero que cualquier número de hebras del segundo tipo pueda estar leyendo esos valores al mismo tiempo.

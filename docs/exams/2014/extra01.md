@@ -3,7 +3,8 @@ id: ex-2014-01
 year: 2014
 exam: extraordinario
 tags:
- - complejidad
+    - búsqueda
+    - complejidad
 ---
 
 En una matriz de valores enteros de dos dimensiones, se dice que un elemento es un pico si es mayor o igual que sus cuatro vecinos en vertical y horizontal (o sus tres vecinos, en el caso de que se encuentre en el borde de la matriz, o sus dos vecinos si está en una esquina).

@@ -3,7 +3,8 @@ id: ex-2015-01
 year: 2015
 exam: extraordinario
 tags:
- - complejidad
+    - búsqueda
+    - complejidad
 ---
 
 Para un programa de análisis del genoma humano, necesitamos encontrar una subsecuencia de elementos en orden creciente. Esto corresponde a un problema de programación conocido como LIS (Longest Increasing Subsequence) donde, por ejemplo, dada la secuencia:
