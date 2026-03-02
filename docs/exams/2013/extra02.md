@@ -3,6 +3,7 @@ id: ex-2013-02
 year: 2013
 exam: extraordinario
 tags:
+    - concurrencia
     - monitores
 ---
 

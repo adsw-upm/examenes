@@ -3,6 +3,7 @@ id: ex-2014-01
 year: 2014
 exam: parcial 1 recuperacion
 tags:
+ - ordenación
  - complejidad
 ---
 

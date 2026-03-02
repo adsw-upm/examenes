@@ -3,6 +3,7 @@ id: ex-2013-01
 year: 2013
 exam: parcial 1 recuperacion
 tags:
+ - búsqueda
  - complejidad
 ---
 - (a) (2,5 puntos) Dada una matriz de enteros de tamaño $N×N$, desarrolle un algoritmo de orden $O(N^2)$ para averiguar si un valor $K$ está presente o no en la matriz. Razone el orden de complejidad del algoritmo desarrollado.
