@@ -3,7 +3,8 @@ id: ex-2024-03
 year: 2024
 exam: practicas
 tags:
- - hebras
+ - búsqueda
+ - complejidad
 ---
 
 - (a) (6 puntos) Desarrolle el método `getPorcentajeTablerosConVentaja(Bando bando)` en la clase `GestorTableros`. Este método debe devolver un número decimal que represente el tanto por ciento de tableros en que el bando que se pasa como parámetro tiene una puntuación superior al bando contrario.

@@ -3,7 +3,9 @@ id: ex-2021-01
 year: 2021
 exam: parcial 2
 tags:
- - hebras
+ - concurrencia
+ - condiciones de Coffman
+ - monitores
 ---
 
 El problema de los lectores/escritores est! planteado con un conjunto de hebras que comparten datos. Una parte de estas hebras (lectores) sólo leen los datos, mientras que el resto (escritores) leen y escriben. Varios lectores pueden acceder simultáneamente a los datos compartidos, pero se debe evitar que mientras un escritor está accediendo a los datos acceda a ellos otra hebra de cualquier tipo.

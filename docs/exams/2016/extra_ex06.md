@@ -3,7 +3,8 @@ id: ex-2016-06
 year: 2016
 exam: extraordinario
 tags:
- - ???
+ - árboles binarios
+ - diccionarios
 ---
 
 Se quiere construir un diccionario donde las claves son `Object` que no se pueden comparar entre sí. Los valores también son `Object` de Java. Para ello se ha decidido programar un árbol binario de búsqueda, usando el hash de la clave como criterio para optar por el subárbol izquierdo o el derecho.

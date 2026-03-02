@@ -3,7 +3,8 @@ id: ex-2019-02
 year: 2019
 exam: parcial 1 recuperacion
 tags:
- - ???
+ - búsqueda
+ - ordenación
 ---
 
 Se debe implementar los tres métodos principales de una clase llamada `ListaEnlazadaOrdenada`: `añadirValor`, `eliminarValor`, y `buscarElementoAnterior`.

@@ -3,7 +3,8 @@ id: ex-2025-03
 year: 2025
 exam: practicas
 tags:
- - hebras
+ - concurrencia
+ - monitores
 ---
 
 - (a) (6 puntos) Escriba las modificaciones necesarias en `AnalizadorConcurrente` para asegurar que nunca haya más más tareas pendientes (en la cola) que hebras procesadoras de tareas.

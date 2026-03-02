@@ -3,7 +3,7 @@ id: ex-2016-02
 year: 2016
 exam: parcial 1 recuperacion
 tags:
- - ???
+ - diccionarios
 ---
 
 Una aplicación móvil registra la actividad de un senderista. Cuando empieza una caminata, la aplicación guarda la fecha (de comienzo del paseo) y una lista de coordenadas en el plano `(x, y)`, obtenidas cada segundo. Cuando el senderista termina su actividad, la aplicación manda a un servidor la siguiente información: nombre completo del senderista (`String`), fecha de comienzo de la actividad (`Date`) y la lista de coordenadas recorridas.

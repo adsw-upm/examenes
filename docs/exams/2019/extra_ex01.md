@@ -3,7 +3,8 @@ id: ex-2019-01
 year: 2019
 exam: extraordinario
 tags:
- - ???
+ - tablas hash
+ - diccionarios
 ---
 
 Una empresa de telecomunicaciones necesita gestionar una tabla de abonados con sus números de línea correspondientes. Para ello utiliza una clase Java denominada `TablaAbonados` con la interfaz que se especifica a continuación:

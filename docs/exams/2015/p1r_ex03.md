@@ -3,7 +3,7 @@ id: ex-2015-02
 year: 2015
 exam: parcial 1 recuperacion
 tags:
- - ???
+ - unknown
 ---
 
 Dado el siguiente terreno de prueba y la situación del jugador y el depredador que se muestra:

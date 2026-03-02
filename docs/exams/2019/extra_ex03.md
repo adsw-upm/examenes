@@ -3,7 +3,8 @@ id: ex-2019-03
 year: 2019
 exam: extraordinario
 tags:
- - hebras
+ - concurrencia
+ - monitores
 ---
 
 Se quiere desarrollar un sistema de gestión de eventos. Este sistema está compuesto por un conjunto de productores y consumidores. Los productores ponen eventos en el sistema. Los consumidores recogen eventos del sistema para procesarlos.

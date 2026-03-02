@@ -2,7 +2,8 @@
 year: 2019
 exam: extraordinario
 tags:
- - hebras
+ - concurrencia
+ - monitores
 ---
 
 A continuación se muestra el método `getEvent` de una versión alternativa de un gestor de eventos con prioridades, al que acceden concurrentemente varias hebras.
