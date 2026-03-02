@@ -3,6 +3,7 @@ id: ex-2016-04
 year: 2016
 exam: extraordinario
 tags:
+ - concurrencia
  - monitores
 ---
 

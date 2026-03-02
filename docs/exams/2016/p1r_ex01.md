@@ -3,6 +3,7 @@ id: ex-2016-01
 year: 2016
 exam: parcial 1 recuperacion
 tags:
+ - búsqueda
  - complejidad
 ---
 

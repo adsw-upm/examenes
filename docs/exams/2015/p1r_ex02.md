@@ -3,6 +3,7 @@ id: ex-2015-02
 year: 2015
 exam: parcial 1 recuperacion
 tags:
+ - concurrencia
  - monitores
 ---
 
