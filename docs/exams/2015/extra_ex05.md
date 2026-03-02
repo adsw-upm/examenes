@@ -4,6 +4,7 @@ year: 2015
 exam: extraordinario
 tags:
  - android
+ - actividades
 ---
 
 - (a) (2 puntos) El proyecto 2 se basa en una adaptación del proyecto 1. Seleccione la respuesta o respuestas correctas en la hoja de respuestas. Las respuestas incorrectas restan.

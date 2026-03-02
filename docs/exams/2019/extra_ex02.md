@@ -3,6 +3,8 @@ id: ex-2019-02
 year: 2019
 exam: extraordinario
 tags:
+ - búsqueda
+ - diccionarios
  - grafos
  - complejidad
 ---

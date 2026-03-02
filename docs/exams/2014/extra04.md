@@ -4,6 +4,7 @@ year: 2014
 exam: extraordinario
 tags:
  - android
+ - actividades
 ---
 
 - (a) (0,8 puntos) Una aplicación Android llamada APP está ejecutándose y dispone del foco (interactúa con el usuario). Supongamos que se recibe una llamada telefónica, el usuario la atiende y luego cuelga. ¿Cuáles son los métodos del ciclo de vida de APP llamados?

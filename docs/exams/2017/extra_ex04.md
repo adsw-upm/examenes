@@ -4,6 +4,7 @@ year: 2017
 exam: extraordinario
 tags:
  - android
+ - actividades
 ---
 
 Se dispone de una aplicación Android para la consulta de notas por parte de los alumnos. La aplicación consta de dos pantallas, denominadas `MainActivity` y `ResultActivity`.
