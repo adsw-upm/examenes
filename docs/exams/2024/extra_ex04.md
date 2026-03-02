@@ -3,7 +3,9 @@ id: ex-2024-04
 year: 2024
 exam: extraordinario
 tags:
+ - búsqueda
  - grafos
+ - complejidad
 ---
 
 Durante la construcción de una nueva ciudad, se está planificando el despliegue de la red de Internet. Para extender la red, se han empezado a instalar cables de red entre las casas, asegurando que, si una casa tiene conexión a Internet, todas las casas conectadas a ella también la tengan. La salida de la red de la ciudad se realiza con cables de fibra óptica que se conectan a una de las casas, dándole acceso a Internet.
